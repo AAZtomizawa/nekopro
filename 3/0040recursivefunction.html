@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>再帰関数</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+    <h1>再帰関数</h1>
+      <p>再帰関数のしくみを知ることができます👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 作った関数はテンプレート</summary>
+
+    <header>
+      <h2>作った関数はテンプレート</h2>
+    </header>
+
+
+<ul>
+<li><p>「<ruby><strong class="special">再帰関数</strong><rt>さいきかんすう</rt></ruby>」と読みます。</p></li>
+<li><p>こんな関数を作ったとします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+    print(x)
+    return
+
+kansuu(0)
+</code></pre>
+
+<code>0</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>単純に 0 を引数にして 関数内で <code class="output">0</code> を出力して終了するプログラムです。</p></li>
+<li><p>これがどのような流れで動いているのかを追ってみます。</p>
+
+↓ 関数が引数を受け取る
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(0):  # ← ココ
+    print(x)
+    return
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 0 を出力する
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(0):
+    print(0)  # ← ココ
+    return
+
+kansuu(0)
+</code></pre>
+
+<code>0</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(0):
+    print(0)
+    return  # None を返す
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(0):
+    print(0)
+    return
+
+None  # 関数が戻り値に化ける
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>ここで <code>None</code> に化けても無意味なので、プログラムはこのまま終了します。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>さて、この <code>kansuu(0)</code> で呼び出す関数は、どの関数を使って処理しているのでしょうか？</p></li>
+<li><p>当然、先に書かれている <code>def kansuu(x):</code> を使って処理されています。</p>
+<br><br>
+<p>と思ったら大間違い！</p></li>
+<br>
+<li><p>関数が呼び出されたら、<code>def kansuu(x):</code> の関数全体をそっくりコピーし、<strong>コピーした関数を使って処理されます。</strong></p></li>
+<li><p>コピー機でコピーしたら、コピーしたほうに書き込むのと同じ要領です。</p></li>
+<li><p>作った関数は見本です。テンプレートです。</p></li>
+<li><p>コピーした関数が実際にどこかに見えているというわけではありません。イメージしてください。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p><strong>この流れを憶えてください。</strong><strong>重要です。</strong><strong>最優先事項よ♪</strong></p>
+
+
+↓ 呼び出された関数をコピーする
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+    print(x)
+    return
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(x):
+    print(x)
+    return
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ コピーした関数のほうが使われる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):  # ← 見本はいじらない
+    print(x)  # ← 見本はいじらない
+    return
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):
+    print(0)
+    return
+</code></pre>
+
+<code>0</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓ 関数の処理が終了したら、コピーした関数の全てが破棄される
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+    print(x)
+    return
+
+None  # ← 戻り値 None に化けてプログラムは終了する
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>----- コピーした関数は破棄された -----</p>
+</li>
+</ul>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">関数はテンプレート</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - 再帰関数の&Psi;難</summary>
+
+    <header>
+      <h2>再帰関数はみんなつまづく</h2>
+    </header>
+
+
+    <article>
+
+      <details id="c2-1"><summary>再帰関数とは</summary>
+
+        <header>
+          <h3>【結論】 再帰関数なんてものは存在しません</h3>
+        </header>
+    
+    
+<ul>
+<li><p>「再帰関数とは『自分自身を呼び出す関数』のことです。」</p></li>
+<p>嘘だッ！！！！！</p>
+<br>
+<li><p>「SAIKI関数は、ありまーす！」</p></li>
+<p>嘘だッ！！！！！</p>
+</ul>
+
+<ul>
+<li><p>再帰関数を使ったプログラムを見てみます。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+    if x == 2:  # 再帰関数の終了条件
+        return
+
+    print(x)
+
+    return kansuu(x + 1)  # ← ココに注目
+
+kansuu(0)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>戻り値を返す前に、<code>kansuu(x + 1)</code> を呼び出しています。</p></li>
+<li><p><code>kansuu(x + 1)</code> の戻り値が、今処理している関数の <strong>return</strong> の戻り値となるので、先に <code>kansuu(x + 1)</code> を呼び出して処理をします。</p></li>
+<br>
+<li><p>「・・・じゃあ今処理中の関数はどうなるの？」</p></li>
+<li><p>「自身の関数を呼び出すという意味がよくわからない。」</p></li>
+<br>
+<li><p>皆、様々な理由でつまづきます。処理のイメージが掴めないからです。</p></li>
+</ul>
+
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">再帰関数とは</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-2"><summary>関数はテンプレート 再び！</summary>
+
+      <header>
+        <h3>関数はコピーして使う</h3>
+      </header>
+  
+  
+<ul>
+<li><p>Chatpter.1 で説明したものと同じ内容です。</p></li>
+<li><p><strong>もう一度この流れを見て理解してください。</strong></p>
+
+
+↓ 呼び出された関数をコピーする
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  print(x)
+  return
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(x):
+    print(x)
+    return
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ コピーした関数のほうが使われる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):  # ← 見本はいじらない
+  print(x)  # ← 見本はいじらない
+  return
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):
+    print(0)
+    return
+</code></pre>
+
+<code>0</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓ 関数の処理が終了したら、コピーした関数の全てが破棄される
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  print(x)
+  return
+
+None  # 関数が戻り値に化ける
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>----- コピーした関数は破棄された -----</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">関数はテンプレート 再び！</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-3"><summary>再帰関数の解説</summary>
+
+      <header>
+        <h3>再帰関数は再帰しない</h3>
+      </header>
+
+
+<ul>
+<li><p>もう一度このプログラムを使って説明します。</p>
+
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  if x == 2:  # 再帰関数の終了条件
+    return
+  print(x)
+  return kansuu(x + 1)  # ← ココ
+
+kansuu(0)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p>まず <code>kansuu(0)</code> で、関数を呼び出します。</p></li>
+<li><p>呼び出された関数は、<strong>自身をコピー</strong>して、<strong>コピーを渡します。</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  if x == 2:
+    return
+  print(x)
+  return kansuu(x + 1)
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(x):  # 新しいコピー
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 最初に、引数 <code>0</code> を受け取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 実行中
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>0 == 2</code> ではないので <code>0</code> を出力
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 実行中
+    if False:
+        return
+    print(0)
+    return kansuu(x + 1)
+</code></pre>
+
+<code>0</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓ <code>kansuu(0 + 1)</code> → <code>kansuu(1)</code> となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 実行中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>return する前に、引数 <code>1</code> の為の <code>kansuu(x)</code> が呼び出される</p>
+<code>kansuu(x)</code> は、<code>kansuu(1)</code> 用にテンプレート(自身)をコピーして、そのコピーを渡す。</li>
+<br>
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(x):  # 新しいコピー
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 引数 <code>1</code> を受け取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):  # 実行中
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>1 == 2</code> ではないので <code>1</code> を出力
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):  # 実行中
+    if False:
+        return
+    print(1)
+    return kansuu(x + 1)
+</code></pre>
+
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓ <code>kansuu(1 + 1)</code> → <code>kansuu(2)</code> となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):  # 実行中
+    if False:
+        return
+    print(1)
+    return kansuu(2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>return する前に、引数 <code>2</code> の為の <code>kansuu(x)</code> が呼び出される</p>
+<code>kansuu(x)</code> は、<code>kansuu(2)</code> 用にテンプレートをコピーして、そのコピーを渡す。</li>
+<br>
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):  # 待機中
+    if False:
+        return
+    print(1)
+    return kansuu(2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(x):  # 新しいコピー
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 引数 <code>2</code> を受け取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):  # 待機中
+    if False:
+        return
+    print(1)
+    return kansuu(2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(2):  # 実行中
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>2 == 2</code> で True になり、処理中のこの関数の終了条件となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):  # 待機中
+    if False:
+        return
+    print(1)
+    return kansuu(2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(2):  # 実行中
+    if True:  # ← 再帰関数の終了条件になる
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 戻り値 <code>None</code> で 呼び出し元に <strong>return</strong> する
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 待機中
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):  # 実行中
+    if False:
+        return
+    print(1)
+    return None  # ← ココに戻る
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+----- <code>def kansuu(2):</code> は破棄された -----<br>
+
+<p>↓ 戻り値 <code>None</code> で呼び出し元に <strong>return</strong> する</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 実行中
+    if False:
+        return
+    print(0)
+    return None  # ← ココに戻る
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+----- <code>def kansuu(1):</code> は破棄された -----<br>
+
+<p>↓ 戻り値 <code>None</code> で呼び出し元に <strong>return</strong> する</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  if x == 2:
+    return
+  print(x)
+  return kansuu(x + 1)
+
+kansuu(0)  # ← ココに戻る
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):  # 実行中
+    if False:
+        return
+    print(0)
+    return None
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  if x == 2:
+    return
+  print(x)
+  return kansuu(x + 1)
+
+None  # ← 戻り値 None に化ける
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+----- <code>def kansuu(0):</code> は破棄された -----<br>
+<br>
+<li><p>これでこの再帰関数プログラムは正常に終了しました。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-3')">再帰関数の解説</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-4"><summary>再帰関数の流れを掴む</summary>
+
+      <header>
+        <h3>まとめ</h3>
+      </header>
+
+
+<ul>
+<li><p>先ほどの解説では流れが見づらいので、ざっくりとまとめました。</p></li>
+
+<p>↓ スタート</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  if x == 2:
+    return
+  print(x)
+  return kansuu(x + 1)
+
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(x):
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):
+    if False:
+        return
+    print(0)
+    return kansuu(0 + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):
+    if False:
+        return
+    print(1)
+    return kansuu(1 + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):
+    if False:
+        return
+    print(1)
+    return kansuu(2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(2):
+    if True:
+        return
+    print(x)
+    return kansuu(x + 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):
+    if False:
+        return
+    print(0)
+    return kansuu(1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(1):
+    if False:
+        return
+    print(1)
+    return None
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">def kansuu(0):
+    if False:
+        return
+    print(0)
+    return None
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+  if x == 2:
+    return
+  print(x)
+  return kansuu(x + 1)
+
+None
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<ul>
+<li><p>やっぱり自身を呼び出す関数ではありませんでしたね。</p></li>
+<li><p><strong>呼び出す関数のテンプレートをコピーして使う処理</strong>でした。</p></li>
+<li><p>再帰してません。</p></li>
+<li><p>これがたとえ <code>return kansuu2()</code> だったとしても、<code>kansuu2()</code> の中の return で戻って来れば同じ流れになります。</p></li>
+<li><p>何を呼び出しているかは問題ではありません。</p></li>
+<li><p>処理中に関数の呼び出しに出遇い、その関数に引数を与えて実行しているだけなのです。</p></li>
+<li><p>それは return の戻り値でなくても、どこに書いても同じです。</p></li>
+<li><p><strong class="if"></strong>などで呼び出し先を複数作ったとしてもまったく同じです。</p></li>
+<li><p><strong>関数をコピーして処理し、終わったらコピーを破棄する。</strong></p></li>
+<li><p>関数はすべてこれをしているだけなのです。</p></li>
+<br>
+<li><p>この流れが理解できたらもうなにも怖いものはありません。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-4')">再帰関数の流れを掴む</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">再帰関数の&Psi;難</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - 再帰関数っていったい・・・</summary>
+
+    <header>
+      <h2>便利と言えば便利</h2>
+    </header>
+
+
+<ul>
+<li><p>再帰関数と呼ばれているものは「関数&alpha;の中で関数&alpha;を呼ぶ機関」です。</p></li>
+<li><p>つまり、ただのループです。</p></li>
+<li><p>最も近いのは<strong class="while"></strong> です。</p></li>
+</ul>
+
+<ul>
+<li><p>次の再帰関数プログラムを<strong class="while"></strong> の書き方と比較してみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+    if x == 2:
+        return
+    print(x)
+    return kansuu(x + 1)
+
+kansuu(0)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/EhgKcPFPdmXfNebZIyS6uA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>これを<strong class="while"></strong> で書くと・・・</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+    while x &lt; 2:
+        print(x)
+        x += 1
+    return
+
+kansuu(0)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/kq1xYxvvDvD-1x8C922-Yw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>まったく同じ結果が得られ、正しく終了されます。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>共通する注目点は「<strong>ループを止める条件が必要</strong>」な点です。</p></li>
+<li><p>再帰関数は「条件式が<small>(基本的には)</small>Trueの時」、<strong class="while"></strong> のほうは「条件式が Falseの時」にループを抜けます。</p></li>
+<li><p>そして上のどちらのプログラムも結果は同じでも、<strong class="b">経過は大きく異なります。</strong></p></li>
+<li><p><strong class="while"></strong> のほうは関数を１つ呼び出し、関数の中の<strong class="while"></strong>文でループしています。</p></li>
+<li><p>再帰関数のほうは１つ関数を呼び出し、その関数が終了しないままもう１つ関数を呼び出すので、処理中の関数が呼び出した分だけどんどんメモリに溜まっていき、やがてメモリの容量をオーバーし、最悪システムダウンへと繋がるという恐れがあります。バ〇オハザードです。原〇事故です。</p></li>
+<li><p>Python3 では、再帰関数のループ上限が 1000回に定められています。(回数を任意に指定したり、無限回に変更可能)</p></li>
+<li><p>1000回を超えるとエラーになります。(逆にありがたい)</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def kansuu(x):
+    print(x)
+    return kansuu(x + 1)
+# 終了条件を書き忘れると・・・
+kansuu(0)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 5, in &lt;module&gt;
+    kansuu(0)
+  File "Main.py", line 3, in kansuu
+    return kansuu(x + 1)
+  File "Main.py", line 3, in kansuu
+    return kansuu(x + 1)
+  File "Main.py", line 3, in kansuu
+    return kansuu(x + 1)
+  [Previous line repeated 1000 more times]
+  File "Main.py", line 2, in kansuu
+    print(x)
+RecursionError: maximum recursion depth exceeded while getting the str of an object
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>怒り具合が尋常ではありませんね。😹</p>
+<br>
+<li><p>再帰関数の利点はあえて言うならば「呼び出したい所で呼び出せる」というところでしょうか。</p></li>
+<li><p><strong class="while"></strong> を使った場合は、例えば<strong class="while"></strong> の中で条件分岐すると、途端に複雑になってしまいます。</p></li>
+<li><p>再帰関数の場合は終了条件さえ付ければ、あとは呼び出す「関数１つ」を置きたい所に置くだけで済みますし、関数名が処理内容を表していますし、再帰かどうかということも一目でわかります。</p></li>
+<li><p>そういう理由では、再帰関数が使えるのならば使ったほうが良いかもしれません。</p></li>
+<li><p>もしダメならば、その時は違う方法を導入すれば良いですし。(「もしダメ」のリスクが高いですが😓)</p></li>
+<br>
+<li><p>再帰関数を使うとイケてる感が湧くかもしれませんが、必ずしも最良の方法というわけではありませんのでドヤ顔してやったりしないでくださいね。🤣</p></li>
+</ul>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">再帰関数っていったい・・・</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>再帰関数</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>オブジェクト指向</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+    <h1>オブジェクト指向</h1>
+      <p>オブジェクト指向プログラミングの超基本的な書き方がわかるようになります。👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - オブジェクト指向とは</summary>
+
+    <header>
+      <h2>オブジェクト指向とは</h2>
+    </header>
+
+
+<ul>
+<li><p>オブジェクト<em>(Object)</em> とは、「物」という意味です。</p></li>
+<li><p>suspicious object (サスピシアス・オブジェクト) で「不審物」といいます。(関係無い)</p></li>
+<li><p>現実にある「物」の構造の様な、現実の要素を参考にプログラムを構築していきます。</p></li>
+<br>
+<li><p>プログラムの構築のしかたは、大きく３つに分類されます。</p></li>
+
+<dl>
+  <dt>手続き型</dt>
+    <dd>プログラムは先頭から順に実行されていきます。<br>
+      従来の書き方です。
+    </dd>
+  
+  <dt>関数型</dt>
+    <dd>機能の１つ１つを関数に分類し、関数に引数を与えて実行していく構造です。<br>
+      <strong class="b">「関数(の機能)」が中心</strong>となり、値の受け渡しをして処理されます。<br>
+      メインプログラムから関数に引数を与えて指示をし、関数の中から更に関数を呼び出しあいながらプログラムが実行されていきます。
+    </dd>
+  
+  <dt>オブジェクト指向型</dt>
+    <dd><strong>『値』が中心</strong>となり、値を操作するための機能(メソッド)を使って値が操作されていきます。<br>
+      手続き型、関数型で散乱しがちだった<strong>値を一括管理する</strong>ことができるようになります。<br>
+      詳しくは追々説明していきます。
+    </dd>
+</dl>
+</ul>
+
+<ul>
+  <li><p>オブジェクト指向を本やネットで学ぼうとすると、大概『車』や『ゲーム』など身近にある「物」に例えて説明されています。</p></li>
+  <li><p>しかし、プログラムの！オブジェクト指向の！ことを知ろうとしているのにいきなり車の話されても困りますよね。しかも全然伝わってこないし。</p></li>
+  <li><p>理由は様々ですが、オブジェクト指向は多くの人がつまづきます。わからなすぎて習得を諦める人もいるようです。</p></li>
+  <br>
+  <li><p>オブジェクト指向の構造は手続き型と比べると大きく異なります。</p></li>
+  <li><p>そして追及していくと奥が深くて完成形がありません。哲学を超えて、もはや芸術です。</p></li>
+  <li><p>そんな姿形が定まらないオブジェクト指向の全貌を掴むことではなく、まずは『ピンとくる』くらいを目標にして説明を進めていきます。</p></li>
+  <br>
+  <li><p>『オブジェクト指向とは』の説明にも届かない内容になってしまいました。あせらないあせらない。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">オブジェクト指向とは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - クラス型</summary>
+
+    <header>
+      <h2>基本は手続き型、あとは流れで</h2>
+    </header>
+
+
+    <article>
+
+      <details id="c2-1"><summary>手続き型</summary>
+
+        <header>
+          <h3>手続き型</h3>
+        </header>
+    
+    
+<ul>
+<li><p>このプログラム例を使っていきます。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">operand = '++-+*/+-+*'
+total = 0
+for i, op in enumerate(operand, start=1):
+    if op == '+':
+        total += i
+    elif op == '-':
+        total -= i
+    elif op == '*':
+        total *= i
+    else:
+        total //= i
+
+    print(total)
+</code></pre>
+
+<div class="grid-output">
+  <code>1</code><span>0 + 1 = 1</span>
+  <code>3</code><span>1 + 2 = 3</span>
+  <code>0</code><span>3 - 3 = 0</span>
+  <code>4</code><span>0 + 4 = 4</span>
+  <code>20</code><span>4 * 5 = 20</span>
+  <code>3</code><span>20 // 6 = 3 <small>余り 2</small></span>
+  <code>10</code><span>3 + 7 = 10</span>
+  <code>2</code><span>10 - 8 = 2</span>
+  <code>11</code><span>2 + 9 = 11</span>
+  <code>110</code><span>11 * 10 = 110</span>
+</div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>1 から 10 までを、変数 <code>op</code> の算術演算子を前から順に使って計算して <code>total</code> に足していく流れです。</p>
+</ul>
+
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">手続き型</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-2"><summary>関数型</summary>
+
+      <header>
+        <h3>関数型</h3>
+      </header>
+  
+  
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def addition(total, a):
+    return total + a
+
+def subtraction(total, a):
+    return total - a
+
+def multiplication(total, a):
+    return total * a
+
+def division(total, a):
+    return total // a
+
+def setup():
+    calc_func = {'+': addition,
+                 '-': subtraction,
+                 '*': multiplication,
+                 '/': division
+    }
+    operand = '++-+*/+-+*'
+
+    return calc_func, operand
+
+def output_calc(calc_func, operand, total=0):
+    for i, op in enumerate(operand, start=1):
+        total = calc_func[op](total, i)
+        print(total)
+    return
+
+
+output_calc(*setup())  # メインプログラムはココ１行だけ
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+※ 出力は省略
+
+<br>
+<p>関数を目立たせるために、少し複雑な書き方をしました。</p>
+<p><code>calc_func</code> は、算術演算子 <code>+</code> <code>-</code> <code>*</code> <code>/</code> をキーにして、値を<strong>関数型</strong>の関数名にしています。</p>
+<br>
+<li>
+  <p><strong class="func">output_calc()</strong> 内の２行目の部分の変化は次の通りです。</p>
+  <p>１回目のループで、<code>i</code> が <code>1</code> の時</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">calc_func = {'+': addition,
+             '-': subtraction,
+             '*': multiplication,
+             '/': division
+}
+operand = '++-+*/+-+*'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_calc(calc_func, operand, total=0):
+    for i, op in enumerate(operand, start=1):
+        total = calc_func[op](total, i)  # ← ココ
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>op</code> = '+'
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">total = calc_func['+'](total, i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>calc_func['+']</code> = addition ← 関数型の関数名
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">total = addition(total, i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">total = addition(0, 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 0 + 1 の戻り値 <code>1</code> が返る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">total = 1
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p>メインプログラムに機能を書くのではなく、関数に値を渡して関数の中で処理をするので、手続き型に比べてプログラムの管理はしやすいのですが、値が散乱しがちになります。</p></li>
+  <li><p>プログラムにおいて値が最も大切な要素なのに、最も大切な値がきちんと管理できる構造になっていないのです。</p></li>
+  <li><p>これでは「動けばなんでもいくね？」思考が抜け出せず、明確なルールを作らない限り作り手によって作り方が大きく異なってしまいます。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">関数型</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-3"><summary>オブジェクト指向で書くと</summary>
+
+      <header>
+        <h3>値は神様です</h3>
+      </header>
+
+
+<ul>
+<li><p>オブジェクト指向の「クラス型」というので書いてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Calc:  # クラス宣言
+    def __init__(self, operand):  # コンストラクタ
+        self.operand = operand
+        self.total = 0
+        self.calc_func = {
+            '+': self.addition,
+            '-': self.subtraction,
+            '*': self.multiplication,
+            '/': self.division
+        }
+
+    def calc(self):  # メソッド
+        for i, op in enumerate(self.operand, start=1):
+            self.total = self.calc_func[op](i)
+            print(self.total)
+    
+    def addition(self, a):  # メソッド
+        return self.total + a
+    
+    def subtraction(self, a):  # メソッド
+        return self.total - a
+    
+    def multiplication(self, a):  # メソッド
+        return self.total * a
+    
+    def division(self, a):  # メソッド
+        return self.total // a
+
+
+def main():
+    calc1 = Calc('++-+*/+-+*')
+    calc1.calc()
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p>このプログラム例では簡単な説明に留めておきます。</p></li>
+<li><p>意味がわからなくても読むだけ読んでみてください。後程わかりやすい例を使って改めてきちんと解説していきます。</p></li>
+</ul>
+
+<ul>
+<li><p>一行目の</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">class Calc:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>というのが「クラス宣言」です。「<strong>クラス型</strong>」という型で生まれます。</p>
+</li>
+<li><p><code>Calc</code> というのが「<strong class="special">クラス名</strong>」になります。</p></li>
+<li><p>関数の宣言と同じように、クラスもインデントを付けて範囲を示します。</p></li>
+<li><p>関数と違って () は不要です。</p></li>
+<br>
+<li><p>その次の <code>def __init__(self):</code> というのが値を一括管理する場所になります。</p></li>
+<li><p>「<strong class="special">コンストラクタ</strong>」と言います。値の『祭壇』です。</p></li>
+<li><p>尊ばれるべき値たちをここに祀ります。</p></li>
+<br>
+<li><p>次以降にある <code>def</code> というのが、お馴染みの「<strong class="special">メソッド</strong>」です。</p></li>
+<li><p><code>def</code> の範囲だけを見れば、関数と同じ書き方をして、同じ働きをします。</p></li>
+<li><p>関数は関数自体が独立して働くのに対し、メソッドはクラスの中で働きます。</p></li>
+<br>
+<li><p>所々に変数の前に書かれている <code>self.</code> というのは、また後で説明します。</p></li>
+<br>
+<li><p><strong class="func">main()</strong>関数の中にある、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    calc1 = Calc('++-+*/+-+*')
+    calc1.calc()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>というところで、プログラムを実行しています。</p>
+</li>
+<br>
+<li><p>最後の、</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if __name__ == '__main__':
+    main()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>というのは、プログラムの開始を<strong class="func">main()</strong>関数から実行するように指示をする呪文です。</p>
+<li><p>今まで地べたに書いていたプログラムを<strong class="func">main()</strong>関数の中に移したので、<strong class="b">まずその関数からプログラムをスタートしてください</strong>という意味の文と捉えてください。</p></li>
+<li><p><strong class="b">__init__, __name__, __main__</strong> どれもアンダースコア２つで挟んでいます。</p></li>
+<li><p><strong class="if"></strong>文を書かずに main() を書くだけでも動きますけど、説明は省きますが、<strong>オブジェクト指向ではこのように書いておいてください。</strong></p></li>
+<li><p>ほぼ定型文なので、メインプログラムを<strong class="func">main()</strong>関数に収めさえすればこのまま写して問題ありません。</p></li>
+<li><p>この２行を書き忘れるとプログラムが始まらないので注意してください。</p></li>
+<li><p>しょっちゅう忘れますけど。😹</p></li>
+</ul>
+
+<ul>
+<li><p>それでは実際に動くかどうか試してみましょう。</p></li>
+
+<details class="sample-code"><summary></summary>これで動かなかったら笑える。😹
+	<iframe src="https://paiza.io/projects/e/AVSby6Aw7Sa8pgAMTxUp1g?theme=twilight" width="100%" height="780" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-3')">オブジェクト指向で書くと</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">クラス型</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+<section>
+
+  <details id="c3"><summary>Chatpter.3 - クラス型の解説</summary>
+
+    <header>
+      <h2>学校をつくろう！</h2>
+    </header>
+
+
+  <article>
+
+    <details id="c3-1"><summary>3.1 - クラスをつくる - クラス宣言</summary>
+
+      <header>
+        <h3>クラス宣言</h3>
+      </header>
+
+
+<ul>
+<li><p>せっかく「クラス」という言葉が使われているので、学校に例えて説明していきます。</p></li>
+<li><p>まずクラスを作るには「クラス宣言」をします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>この一文を書くだけですが、『宣言』ですので「よし！クラスをつくるぞ！」と宣言しただけになります。</p>
+</li>
+<li><p>これを試しに実行してみると・・・</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">  File "Main.py", line 2
+    
+                    ^
+SyntaxError: unexpected EOF while parsing
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong class="b">「言うだけじゃなくてちゃんとつくれよ！！」</strong>と言っています。(意訳)</p>
+</li>
+<li><p>試しに言ってみただけなのに本気で怒ってくるとか、まぁ本気で話を聞いてくれている Python3 にハンパな事を言ったこちらが悪いんですけどね。😓</p></li>
+<li><p><code>class</code> は関数で言う <code>def</code> みたいなものです。</p></li>
+<li><p>そのあとに続く <code>Student</code> というのが「<strong>クラス名</strong>」です。<br>
+    生徒をつくるので <code>Student</code> というクラス名にしました。</p></li>
+<li><p>クラス名は原則として<strong>先頭の文字だけを大文字で書きます。</strong></p></li>
+<li><p>そしてこれ以降のインデントをつけた範囲が <code>Student</code> のクラスとなります。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-1')">クラスをつくる</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+  <article>
+
+    <details id="c3-2"><summary>3.2 - 生徒名簿をつくる - コンストラクタ</summary>
+
+      <header>
+        <h3>コンストラクタ</h3>
+      </header>
+
+
+<ul>
+<li><p>生徒名簿を作る際の「名前」とか「生年月日」とかを扱う為の変数と値を準備します。</p></li>
+<li><p><strong class="special">コンストラクタ</strong>の書き方は、次のような感じになります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self):  # コンストラクタ
+        name_1st = None
+        name_fml = None
+        birth_month = None
+        birth_day = None
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong>コンストラクタ</strong>に値を集約することで値の管理がしやすくなりますが、この部分は値だけでなく、関数と同じようにプログラムを書くこともできます。</p>
+</li>
+<li><p><strong>コンストラクタ</strong>を作るのは単に値の一括管理が目的というわけではなく、真の役割があるのですが、これは <strong>インスタンス</strong> のところで説明します。</p></li>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-2')">生徒名簿をつくる</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+  <article>
+
+    <details id="c3-3"><summary>3.3 - 生徒をつくる - インスタンス</summary>
+
+      <header>
+        <h3>インスタンス</h3>
+      </header>
+
+
+<ul>
+<li><p><strong class="special">インスタンス</strong>は、作ったクラスを実際に変数にして使えるようにしたものです。</p></li>
+<li><p>一般的にクラスは「設計図」、インスタンスは設計図をもとに「実体化」したもの(一個体)と説明されます。</p></li>
+<li><p>漠然とした『生徒』ではなく、生徒『個人』として受け入れます。</p></li>
+<li><p>設計図から生まれた一個体なので、クラスからいくらでもインスタンスを作ることができるようになります。</p></li>
+<li><p>関数の時と同じように、クラスをコピーしてインスタンスを作るイメージです。</p></li>
+<li><p>関数の時はコピーした関数が見えませんでしたけど、インスタンスは見られます。</p></li>
+<li><p>そして一時的にコピーされ、使い終わったら破棄される関数とは違い、インスタンスは勝手に無くなったりはしません。</p></li>
+<li><p>ここでは生徒名簿も作るので、生徒の個人情報を書き込みながら、新しく作ったクラス(教室)に迎え入れていきます。</p></li>
+<li><p>コンストラクタには「出席番号」「名前」「誕生日」を空欄(None)として予め用意しました。</p></li>
+
+<li><p>これに次の生徒の情報を書き込んで名簿をつくります。</p>
+
+  <p>【生徒１】<br>
+    名前&nbsp;&nbsp;： 赤座 あかり<br>
+    誕生日： ７月２４日</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self):  # コンストラクタ
+        name_1st = None
+        name_fml = None
+        birth_month = None
+        birth_day = None
+
+akari = Student()  # インスタンスを作成
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>最後の行で <strong class="b">akari</strong> という生徒をつくりました。</p></li>
+<li><p>しかし不完全です。生徒の情報がなにもありません。</p></li>
+<li><p>これではいるはずの生徒がいないようになってしまいます。<span style="font-family: 'Consolas'; white-space: nowrap;">\ｱｯｶﾘｰﾝ/</span></p></li>
+</ul>
+
+<ul>
+<li><p>生徒が持つ個人情報をきちんと登録するためにはこのように書き換えます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name_1st, name_fml, birth_month, birth_day):
+        self.name_1st = name_1st
+        self.name_fml = name_fml
+        self.birth_month = birth_month
+        self.birth_day = birth_day
+
+akari = Student('あかり', '赤座', 7, 24)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>難しいので１つ１つ説明していきます。</p>
+</ul>
+
+<ul>
+<li><p>まず一番下の一行、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">akari = Student('あかり', '赤座', 7, 24)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>で、「赤座あかり」という生徒をクラスに迎い入れます。</p>
+</li>
+<li><p><code>Student</code> クラスの<strong>コンストラクタ(__init__)</strong>に、生徒のそれぞれの情報を引数として渡します。</p></li>
+
+  <li class="look">
+    <p><strong>コンストラクタ</strong>の真の役割とは、インスタンスを新しく作る際に<strong>一番最初に、<wbr>一度だけ、<wbr>必ず実行されるメソッド</strong>です。</p>
+  </li>
+<li><p> <code>self</code> というのが、インスタンス「自身」を指しています。<br>
+    インスタンス自身というのが、<strong>あかりちゃん自身</strong>です。(以降あかり)</p>
+</li>
+<li><p><code>__init__(self)</code>という<strong>コンストラクタ</strong>、<code>self.name_1st</code>という変数、以降同じ様に <code>self</code> がついているものは全て「<strong>あかりの所有物</strong>」になります。</p></li>
+<li><p>名前も誕生日もあかりの情報ですし、コンストラクタもあかりの為に<strong>最初に１回だけ実行されます。</strong></p></li>
+<li><p>Chatpter.2 で書いたプログラムの中のメソッドにも、第一引数として <code>self</code> が書かれていました。<br>
+    <code>self</code> が付いたメソッドも、ここでは全てあかりが所有するものになります。</p></li>
+</ul>
+
+<ul>
+<li><p>まとめると、<code>self</code> が付いた「<strong>コンストラクタ</strong>」「<strong>変数</strong>」「<strong>メソッド</strong>」は、すべてあかりが所有するもので、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">akari = Student('あかり', '赤座', 7, 24)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>ここでインスタンス <code>akari</code> が作られる際に、これら引数の全ての値が <code>akari</code> という変数の中に収められます。</p>
+</li>
+<li><p>もちろん引数だけでなく、コンストラクタに書かれた <code>self.</code> 付きの変数全てが <code>akari</code> という変数に格納されます。</p></li>
+<li><p>ここで生み出された <code>akari</code> が『インスタンス』で、インスタンスの名前のことを『<strong class="special">インスタンス名</strong>』といいます。この場合のインスタンス名は <code>akari</code> になります。</p></li>
+<li><p>先程まで、インスタンスのことを変数と呼んでいましたが、正確には変数ではなく、<strong>インスタンス</strong>と言います。(ややこしいですね💦)</p></li>
+<li><p>インスタンスは複数の<strong class="b">インスタンス変数</strong>(後述)を持ち、複数のメソッド(関数)を持ちます。</p></li>
+</ul>
+
+<ul>
+<li><p>今までは変数には１つの値しか収めることができませんでした。</p></li>
+<li><p>リストや辞書なども１つの値で、その値の中に複数の値(要素)を入れることができる構造になっています。</p></li>
+<li><p>そういう構造をもつ変数を「リスト<strong>型</strong>」「辞書<strong>型</strong>」と呼んでいました。</p></li>
+<li><p>リスト型変数というのは <mark>List</mark> というクラスのインスタンスです。</p></li>
+<li><p>辞書型変数というのは <mark>Dict</mark> というクラスのインスタンスです。</p></li>
+<li><p>今回の <code>akari</code> という変数は、<mark>Student</mark> というクラスのインスタンスです。<br>
+  <code>akari</code> は <strong class="b">Student型</strong>変数ということになります。(インスタンスだけど・・・)</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-3')">生徒名簿をつくる</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c3-4"><summary>3.4 - 個人をつくる - self</summary>
+
+      <header>
+        <h3>self</h3>
+      </header>
+
+
+
+<ul>
+<li><p><strong>self</strong> がついているものは、生徒(インスタンス)が個人的に持っているものを指しています。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name_1st, name_fml, birth_month, birth_day):
+        self.name_1st = name_1st
+        self.name_fml = name_fml
+        self.birth_month = birth_month
+        self.birth_day = birth_day
+
+akari = Student('あかり', '赤座', 7, 24)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>メソッドの第一引数にある <strong>self</strong> と、変数の前にある <strong>self</strong> の二種類があります。</p></li>
+<li><p>この２つは、どちらも生徒(インスタンス)が個人的に持っているものということを示しています。</p></li>
+<li><p>クラスの中にあるメソッドは、必ず <strong>self</strong> を第一引数に書かなければなりません。</p></li>
+<li><p>そうしないと、そのメソッドは自分のクラスのものと認識できず、エラーとなります。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(name):
+        self.name = name
+
+akari = Student('あかり')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 5, in <module>
+    akari = Student('あかり')
+TypeError: __init__() takes 1 positional argument but 2 were given
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>エラーメッセージに詳しく書かれていませんけど、「引数を２つ分渡さないといけないのに、１つ分しか用意されてませんよ」というのは、本来コンストラクタの第一引数に <strong>self</strong> を書かないといけないのに、それが書かれていなかった為にこのエラーが出たのです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name):  # ← self を書く
+        self.name = name
+
+akari = Student('あかり')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これで <code>__init__()</code> はインスタンス用のメソッドになりました。</p>
+</li>
+<li><p><strong>self</strong> が第一引数にあるせいで引数の位置がずれていますけど、<strong>self</strong> は無いものとして考えてください。</p></li>
+<li><p><code>Student('あかり')</code> の第一引数 <code>'あかり'</code> は、そのまま <code>__init__(self, name)</code> の第二引数 <code>name</code> に直結しています。</p>
+</li>
+<br>
+<li>
+  <p>厳密に言うと、第一引数の <strong>self</strong> は、<strong class="b">引数ではありません。</strong><br>
+    よって、第二引数と呼んでいた <code>name</code> が本当の第一引数となります。</p>
+  <p>だから <strong>self</strong> のせいでずれていても正しく動くのです。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>なぜ <strong>self</strong> が必要なのか。簡単に考えると、「個人(インスタンス)」の持ち物の他に「クラスの共有物」というものがあります。<p></li>
+<li><p>掲示物や黒板など、個人の物ではなく誰の物でもなくクラスの誰もが見たり使ったりできる物である。これを <strong>cls</strong> と書いて示します。(今回は <strong>cls</strong> は扱いません)</p></li>
+<li><p>「個人の所有物 (<strong>self</strong>)」か「クラスの共有物 (<strong>cls</strong>)」かという事を区別する為のものと考えてください。</p></li>
+</ul>
+
+<ul>
+<li><p>変数に付く <strong>self</strong> ですが、これも個人が持つ変数であることを示しています。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">akari = Student('あかり')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>ここで <mark>Student</mark>クラスからインスタンスを作成する際に、<code>'あかり'</code> を引数としてコンストラクタに渡しています。</p>
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def __init__(self, name):  # コンストラクタ
+    self.name = name
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>引数として渡された <code>'あかり'</code> はコンストラクタの <code>name</code> に入ります。</p>
+<p>この時点での <code>name</code> は引数として渡された、ただの変数です。</p>
+<p>この <code>name</code> を、インスタンスが持つ変数に代入して受け渡しをします。</p>
+<p><code>self.name</code> の様に <code>self.</code> が付いた変数の事を「<strong class="special">インスタンス変数</strong>」と言います。</p>
+</li>
+<li><p>インスタンスが持つ変数だから<strong>インスタンス変数</strong>です。</p></li>
+<li><p><code>Student('あかり')</code> は「差出人」<br>
+<code>name</code> は「配達人」<br>
+<code>self.name</code> は「受取人」</p></li>
+<li><p>こうしてインスタンスの <code>akari</code> が持つ変数や値がコンストラクタによって作成されます。</p></li>
+<li><p>作成されたインスタンス変数やその値は、インスタンス自身が存在し続ける限り、無くなることはありません。</p></li>
+<li><p>あかりの個人情報は今後、あかりが所有し続けることになります。</p></li>
+<li><p>そしてあかりの個人情報はここ(あかりのインスタンス内)以外に作成されたり管理されたりすることはありません。</p></li>
+<li><p>今後あかりの個人情報を参照したり操作したりする場合は、常にあかりが持つインスタンス変数にアクセスして行われます。</p></li>
+<li><p>あかりの個人情報が管理されずにその辺に転がっているということはなく、あかりだけが持ち、必ずあかりを通してその個人情報を扱うことになります。</p></li>
+<br>
+<li><p>こういう仕組みを作ることで、最も大切な「値」をしっかり管理できるようになるわけです。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-4')">個人をつくる</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c3-5"><summary>3.5 - 生徒の情報の参照</summary>
+
+      <header>
+        <h3>インスタンス変数にアクセスする</h3>
+      </header>
+
+
+<ul>
+<li><p>インスタンスに入っている値を扱う場合、次のような書き方をします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name):  # ← self を書く
+        self.name = name   # self.name
+
+akari = Student('あかり')
+
+student_name = akari.name  # akari.name
+print(student_name)
+</code></pre>
+
+<code>あかり</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>インスタンス名(akari)の後に、メソッドの書き方の様に、メソッドの代わりに変数名を書きます。</p>
+<p>つまり、<strong>self</strong> の所に akari を指定して <code>akari.name</code> と書くわけです。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>あかりの個人情報を参照してみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name_1st, name_fml, birth_month, birth_day):
+        self.name_1st = name_1st
+        self.name_fml = name_fml
+        self.birth_month = birth_month
+        self.birth_day = birth_day
+
+akari = Student('あかり', '赤座', 7, 24)
+
+print('名前：', akari.name_fml + akari.name_1st)
+print('誕生日：', str(akari.birth_month) + '月' + str(akari.birth_day) + '日')
+</code></pre>
+
+<code>名前： 赤座あかり</code><br>
+<code>誕生日： 7月24日</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>インスタンス変数の <strong>self</strong> の所に参照したいインスタンス名を外側から指定すれば、これまでの変数と同じように扱うことができます。</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-5')">生徒の情報の参照</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c3-6"><summary>3.6 - 自己紹介 (メソッド)</summary>
+
+      <header>
+        <h3>メソッドをつくる</h3>
+      </header>
+
+
+<ul>
+<li><p>メソッドの作り方は関数とほとんど同じです。</p></li>
+<li><p>あかりに自己紹介してもらうメソッドを作ってみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name_1st, name_fml, birth_month, birth_day):
+        self.name_1st = name_1st
+        self.name_fml = name_fml
+        self.birth_month = birth_month
+        self.birth_day = birth_day
+
+    def presentation(self):
+        print('私の名前は', self.name_fml + self.name_1st, 'です。')
+        print('誕生日は',
+              str(self.birth_month) + '月',
+              str(self.birth_day) + '日です。')
+
+akari = Student('あかり', '赤座', 7, 24)
+
+akari.presentation()
+</code></pre>
+
+<code>私の名前は 赤座あかり です。</code><br>
+<code>誕生日は 7月 24日です。</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>関数とメソッドの書き方の違いは２点あります。</p></li>
+<li><p>１つめは、第一引数に <strong>self</strong> を付けます。</p></li>
+<li><p>２つめは、メソッドの最後は戻り値が無い場合は <strong>return</strong> は書きません。不必要な文は極力省略して簡素化します。</p></li>
+<li><p>引数を与えたり、<strong>return</strong> で戻り値を返したりする場合は関数と書き方は同じです。</p></li>
+<br>
+<li><p>このメソッドを呼び出しているのが最後の行の <code>akari.presentation()</code> です。</p></li>
+<li><p>インスタンス変数を参照する時の様に、メソッド名の前にインスタンス名を書き記すだけで呼び出せます。</p></li>
+<li><p>引数を与える時は、この () 内に書きます。<strong>self</strong> の存在は無視して、書き方は関数と全く同じで大丈夫です。</p></li>
+<li><p>インスタンス(クラス)内でメソッドを呼び出すときは、インスタンス変数と同じように <code>self.presentation()</code> と、メソッド名の前に <strong>self</strong> を付けます。</p></li>
+<li><p>自分自身のメソッドを呼び出すという意味です。</p></li>
+</ul>
+
+<ul>
+<li><p>ここで注目してほしいのが、メソッド内のインスタンス変数の扱いです。</p></li>
+<li><p>関数の場合は名前と誕生日の値を関数に引数として与えて関数内で扱えるようにしていましたが、インスタンス内での変数とメソッドは同じ <strong>self</strong>、つまりあかりのものです。</p></li>
+<li><p>メソッドと呼んでいるこのメソッドは「インスタンスメソッド」と言って、インスタンス変数と<strong>同じインスタンスのもの</strong>です。</p></li>
+<li><p>変数もメソッドも同じインスタンスの持ち物なので引数を与える必要はありません。</p></li>
+<li><p>その代わりに同じインスタンスの持ち物であるということを示す <strong>self</strong> をつけます。</p></li>
+<li><p>この <strong>self</strong> にクラスの外側(メインプログラムや関数など)から akari を指定することで、あかりの名前や誕生日などの情報が扱えたり、メソッドであかりに指示を与えたりすることができるようになります。</p></li>
+<li><p>扱う値はコンストラクタ内に常に一覧となって一か所にまとまっていて、その値を操作するためのメソッドをその下に作っていく。この書き方をすることでどんなプログラムを作ったとしても同じような見た目になるので誰が見てもわかりやすくなり、管理もしやすくなるというわけです。</p></li>
+<br>
+<li><p>これまでは生徒一人の情報だけしか扱ってきませんでしたが、次で新たに生徒を増やしてみます。</p></li>
+</ul>
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-6')">自己紹介 (メソッド)</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c3-6"><summary>3.7 - すべての生徒を受け入れる</summary>
+
+      <header>
+        <h3>インスタンスをさらに増やす</h3>
+      </header>
+
+
+<ul>
+<li><p>今回の例では、インスタンスは「１人の生徒」を指します。</p></li>
+<li><p>あかり以外にも生徒を増やしてみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name_1st, name_fml, birth_month, birth_day):
+        self.name_1st = name_1st
+        self.name_fml = name_fml
+        self.birth_month = birth_month
+        self.birth_day = birth_day
+
+akari = Student('あかり', '赤座', 7, 24)
+sakurako = Student('櫻子', '大室', 9, 7)
+himawari = Student('向日葵', '古谷', 6, 16)
+chinatsu = Student('ちなつ', '吉川', 11, 6)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>あかりの時と同じ様に、各情報を引数として与えるだけです。<br>
+そしてそれぞれの生徒に認識しやすいインスタンス名を付けてあげるだけで何人でも増やせるようになります。</p>
+</li>
+<br>
+<li><p>みんなに自己紹介してもらいましょう。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    # コンストラクタ - 各生徒の個人情報
+    def __init__(self, name_1st, name_fml, birth_month, birth_day):
+        self.name_1st = name_1st
+        self.name_fml = name_fml
+        self.birth_month = birth_month
+        self.birth_day = birth_day
+
+    # class の中の def は 「メソッド」
+    def presentation(self):  # 自己紹介
+        print('私の名前は',
+              self.name_fml + self.name_1st,
+              'です。')
+        print('誕生日は',
+              str(self.birth_month) + '月',
+              str(self.birth_day) + '日です。')
+
+
+# class の外の def は 「関数」
+def setup():
+    # 各生徒(インスタンス)の作成
+    akari = Student('あかり', '赤座', 7, 24)
+    sakurako = Student('櫻子', '大室', 9, 7)
+    himawari = Student('向日葵', '古谷', 6, 16)
+    chinatsu = Student('ちなつ', '吉川', 11, 6)
+
+    return akari, sakurako, himawari, chinatsu
+
+
+def main():
+    akari, sakurako, himawari, chinatsu = setup()
+
+    akari.presentation()     # あかり の 自己紹介
+    sakurako.presentation()  # 櫻子 の 自己紹介
+    himawari.presentation()  # 向日葵 の 自己紹介
+    chinatsu.presentation()  # ちなつ の 自己紹介
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+<code>私の名前は 赤座あかり です。</code><br>
+<code>誕生日は 7月 24日です。</code><br>
+<code>私の名前は 大室櫻子 です。</code><br>
+<code>誕生日は 9月 7日です。</code><br>
+<code>私の名前は 古谷向日葵 です。</code><br>
+<code>誕生日は 6月 16日です。</code><br>
+<code>私の名前は 吉川ちなつ です。</code><br>
+<code>誕生日は 11月 6日です。</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>このようにインスタンス名を付けるだけで、指定した生徒のインスタンスメソッドが呼び出されて自己紹介をしてくれるようになります。</p></li>
+</ul>
+
+    <footer>
+      <a class="backto" href="#c3" onclick="closeAccordion('c3-7')">すべての生徒を受け入れる</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+<article>
+
+  <details id="c3-6"><summary>3.8 - 生徒をリストにする</summary>
+
+    <header>
+      <h3>インスタンスをリストに格納する</h3>
+    </header>
+
+
+<ul>
+<li><p>今度は、生徒ごとに作成したインスタンスをリスト型変数に格納して扱ってみます。</p>
+  
+  
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Student:
+    def __init__(self, name_1st, name_fml, birth_month, birth_day):
+        self.name_1st = name_1st
+        self.name_fml = name_fml
+        self.birth_month = birth_month
+        self.birth_day = birth_day
+
+    def presentation(self):  # 自己紹介
+        print('私の名前は',
+              self.name_fml + self.name_1st,
+              'です。')
+        print('誕生日は',
+              str(self.birth_month) + '月',
+              str(self.birth_day) + '日です。')
+
+
+def setup():
+    # 各生徒の個人情報リスト
+    students_data = [
+        ['あかり', '赤座', 7, 24],
+        ['櫻子', '大室', 9, 7],
+        ['向日葵', '古谷', 6, 16],
+        ['ちなつ', '吉川', 11, 6]
+    ]
+
+    # インスタンス(生徒)を、リスト内で作成
+    students = [Student(*data) for data in students_data]
+
+    return students
+
+
+def main(students):
+    for student in students:
+        student.presentation()     # 生徒が順番に自己紹介する
+
+
+if __name__ == '__main__':
+    main(setup())
+</code></pre>
+
+<code>私の名前は 赤座あかり です。</code><br>
+<code>誕生日は 7月 24日です。</code><br>
+<code>私の名前は 大室櫻子 です。</code><br>
+<code>誕生日は 9月 7日です。</code><br>
+<code>私の名前は 古谷向日葵 です。</code><br>
+<code>誕生日は 6月 16日です。</code><br>
+<code>私の名前は 吉川ちなつ です。</code><br>
+<code>誕生日は 11月 6日です。</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>自己紹介のメソッドを実行する際、リストにまとめることによって <strong class="for"></strong>文で記述を２行に収めることが出来ました。</p>
+<p>その代わり、誰がどこにいるのかがわかりにくくなりましたので、別途把握できる方法が必要になります。(要素番号=出席番号順など)</p>
+</li>
+<br>
+<li><p>そして学年の各クラスをリストにまとめると学年の名簿に、さらに各学年をリストにまとめると全校生徒の名簿になります。</p>
+<p>【例】nanamori[学年][組][出席番号]</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># 七森中学校１年２組 出席番号１番
+student = nanamori[0][1][0] # 出席番号のリストにクラスの生徒のインスタンスが入っている
+
+print(student.name_fml, student.name_1st)
+</code></pre>
+
+<code>赤座 あかり</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>なんてこともできます。<code>nanamori</code> という変数１つの中に、全校生徒の情報がすべて入っているのです。すごいね。</p>
+</li>
+<li><p>ですので、nanamoriメモリをうっかり紛失してしまったら、まさに大事件です。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-8')">生徒をリストにする</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">クラス型の解説</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - まとめ</summary>
+
+    <header>
+      <h2>オブジェクト指向は世界の常識</h2>
+    </header>
+
+
+<ul>
+  <li><p>今回は「値の管理」を目的とした最低限の書き方をしました。</p></li>
+  <li><p>まだ <strong>cls</strong> の事をも説明していませんが、しばらくはクラスの書き方としてこの形式に慣れていってください。</p></li>
+
+  <ol>
+    <li><strong>クラスを宣言</strong>し、クラスに名前を付ける。</li>
+    <li>コンストラクタ<strong class="func">__init__(self)</strong>内で、インスタンスで使う変数や値の<strong>初期設定をする。</strong></li>
+    <li>インスタンスが持つ値を操作する為の<strong>メソッドを書く。</strong></li>
+  </ol>
+
+  <li><p>そしてメインプログラムからは、</p></li>
+
+  <ol>
+    <li>コンストラクタに必要な引数を渡し、クラスから<strong>インスタンスを生み出す。</strong></li>
+    <li>生み出したインスタンスの値を、<strong>メソッドを使って</strong>操作する。</li>
+  </ol>
+
+  <p>この５つを流れをまず習得しましょう。</p>
+</ul>
+
+<ul>
+  <li><p>コンストラクタとインスタンスメソッドはセットでなければならないという事はありません。それぞれ独立した役割を持っています。</p></li>
+  <li><p>もしまだメソッドを書くところまでの理解が難しいなと感じているならば、最初はクラスをコンストラクタのみにして、その値をメインプログラムからアクセスする書き方にしてみましょう。<br>
+    【Chatpter.3.5 - 生徒の情報の参照】の形です。</p></li>
+  <li><p>その構造が理解出来たら、あとはゆっくりとメソッド化を試していけば、全体の構造と流れが理解できるようになっていくと思います。</p></li>
+</ul>
+
+<ul>
+  <li><p>オブジェクト指向の世界は広すぎて、一気に学ぼうとすると挫折します。</p></li>
+  <li><p>また、形式があるのに柔軟性も高いので、あれこれ本を読んでいっても著者によって考え方に違いがあったりしてかえって混乱します。</p></li>
+  <li><p>オブジェクト指向で書かなくてもプログラムは動きますが、オブジェクト指向で書くことで汎用性が広がります。</p></li>
+  <li><p>例えると、手続型は「アプリがインストール出来ないガラケー」、オブジェクト指向は「アプリがインストールできるスマホ」という違いがあります。</p></li>
+  <li><p>「電話できればいいじゃん？」「ネットで検索できればいいじゃん？」というだけなら問題無いでしょうけど、ぐりぐり動くゲームがやりたい、テレビに繋げて高画質動画が観たい、アプリ開発もやりたい！というならスマホというように、初めからオブジェクト指向で組んでおくと後々便利になる可能性が生まれます。</p></li>
+  <li><p>欠点としては、オブジェクト指向で組むと、どうしてもプログラムが大きくなってしまうことです。</p></li>
+  <li><p><code>print('A')</code> だけのプログラムなのに、これをいちいちクラスを使って書くのもおかしな話ですが、もしこれがあちこちで何度も使うというくらい重要な一文であるならば、クラスを使って書く意味があります。</p></li>
+  <li><p>実感はまだ湧かないと思いますが、これまでに使ってきた便利な「関数」もクラスで書かれています。</p></li>
+  <li><p>いつぞやの <code>import random</code> という「モジュール」というものもオブジェクト指向の便利機能です。</p></li>
+  <li><p>いままで何気なく使ってきた便利な機能はすべてオブジェクト指向の概念のお陰だったのです。</p></li>
+  <li><p>恩恵を受けるだけでなく、これからは世界の住人『与える側』としてもプログラムが組んでいけるようになっていきましょう。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">まとめ</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>オブジェクト指向</p>
+</footer>
+</body>
+</html>

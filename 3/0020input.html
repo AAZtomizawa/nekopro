@@ -1,0 +1,2819 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>標準入力</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+    <h1>標準入力</h1>
+      <p>競プロやいくつかの学習サイトで役立ちます👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - input()</summary>
+
+    <header>
+      <h2>標準入力とは</h2>
+    </header>
+
+
+<ul>
+<li><p>ここで紹介する「標準入力」というものは、主に『<strong>競技プログラミング</strong>』という、
+    多くの参加者がプログラミングの実力を競い合って評価されるコンテストでよく使われる入力方式です。</p></li>
+<li><p>国内で最も有名なのが「AtCoder」というコンテストです。</p></li>
+<li><p>それをこれから参加して頑張りましょう！ということではありません。</p></li>
+<li><p>そこには過去に出題された「この問題をプログラムで作ってください」という、
+    通称「過去問」が数多く掲載されています。</p></li>
+<br>
+<li><p>それらの問題を使ってプログラムを自分で作ってみることが、学習する上で非常に有益なんです！</p></li>
+<li><p>せっかく基礎を学んでも、作りたいプログラムが無ければ宝の持ち腐れです。</p></li>
+<li><p>そしてせっかく学んだのにどんどん忘れていきます。</p></li>
+<li><p>作りたいアプリの為に学んでいるのならば特に問題は無いですが、そうでない場合はまずは「これを作ってください。」と与えられたたくさんの問題をガシガシ解いていくのが手っ取り早いです。</p></li>
+</ul>
+
+<ul>
+<li><p>おすすめは「paiza」という学習サイトで、こちらは問題集とスキルチェックという２つの方法で出題されています。</p></li>
+<li><p>AtCoder も paiza も、詳しいことは各サイト上の説明にお任せします。</p></li>
+<li><p>最もやさしい難易度の問題(paizaはＤランク)は、１章の内容がわかっていればだいたい解けるはずです。</p></li>
+<li><p>paizaでは先に問題集を解いてプログラムを組むことに慣れてからスキルチェックに挑んでみると良いです。</p></li>
+</ul>
+
+<ul>
+<li><p>その際に使われる「<strong>標準入力</strong>」というものをこれから紹介していきます。</p></li>
+<li><p>「標準入力」は、与えられたデータを変数に取り込んで使う為に必要な「呪文」です。</p></li>
+<li><p>解説はしますけど、内容は理解しなくて全く問題ありません。</p></li>
+<li><p>このデータを入力したい時にどの入力方法を使えばよいか。</p></li>
+<li><p>まずはいろいろな方法を知って、それから徐々に使い慣れていきましょう。</p></li>
+</ul>
+
+
+    <header>
+      <h3>input()</h3>
+    </header>
+
+
+<ul>
+<li><p><strong>input()</strong> という関数がどういうものかを知りましょう。</p></li>
+<br>
+<li><p><strong>print()</strong> が「出力」に対して、<strong>input()</strong> は「入力」になります。</p></li>
+<li>
+  <p>まずはこれを見てください。</p>
+        
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = input('入力: ')
+print(s)
+</code></pre>
+
+    <div class="grid-output">
+        <code>入力: |</code><span>← | はカーソルのつもり😅</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p><code class="output">入力: </code> と表示された後に「入力待ち」が発生します。<br>
+  ここになにか文字を、例えば<strong class="b">『もじれつ』と入力して[Enter]キーを押す</strong>と、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+    <div class="grid-output">
+        <code>入力: もじれつ</code><sapn>← <strong>input()</strong></sapn>
+        <code>もじれつ</code><span>← print()</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>と、表示されます。</p>
+
+  <li class="look">
+    <p>入力された値は、必ず <strong>文字列型(<em>str</em>)</strong> で読み取ります。</p>
+  </li>
+
+</li>
+</ul>
+
+<ul>
+  <li><p>AtCoder や paiza では、この入力する値(<ruby><strong>入力値</strong><rt>にゅうりょくち</rt></ruby>と言います)がすでに与えられています。</p></li>
+  <li><p>わざわざ自分で値を入力したり、自分で変数に値を直接打ち込んで代入しないで、与えられた入力値を <strong>input()</strong> 関数を使って読み取ります。</p></li>
+  <li><p>「読み取る」とかいきなり難しそうに感じますが、ほぼ<strong class="b">定型文</strong>なので、これらを参考に面倒でわけのわからない標準入力とやらを済ませてしまいましょう。</p></li>
+</ul>
+
+<ul>
+  <li><p>ネコプロでは標準入力は使いません。基本、読むだけなので。</p></li>
+  <li><p>まだ他のサイトに興味が無い方は、完全に読み飛ばして次に進んでください。</p></li>
+  <li><p>興味が出てきた時に、ピンポイントでここに訪れてもらえればそれでOKです。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">input()</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+
+<section>
+
+  <details id="veryeasy"><summary>難易度：とてもやさしい</summary>
+
+    <header>
+      <h2>難易度：とてもやさしい</h2>
+    </header>
+
+  <article>
+
+    <details id="veryeasy-1"><summary>整数を１つ入力する - int(input())</summary>
+
+      <header>
+        <h3>整数を１つ入力する</h3>
+      </header>
+
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = int(input())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1
+</code></pre>
+
+n = <code class="cmt">1</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    100
+</code></pre>
+
+n = <code class="cmt">100</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    -123
+</code></pre>
+
+n = <code class="cmt">-123</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+    <br>
+</ul>
+
+<ul>
+【 解説 】
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = int(input())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = int('1')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 1
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<ul>
+<li>
+  <p>入力値が複数行の場合は、変数を変えて同じものを書いていくだけです。</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">4
+    1
+    12
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = int(input())
+m = int(input())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = int('1')
+m = int(input())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 1
+m = int(input())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 1
+m = int('12')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 1
+m = 12
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+                    
+<br>
+<p class="inlook text-center">順に書いていくと長～～くなってしまうので、以降はある程度まとめた形にさせていただきます。🙏</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#veryeasy" onclick="closeAccordion('veryeasy-1')">整数を１つ入力する</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="veryeasy-2"><summary>文字列を１つ入力する - input()</summary>
+
+      <header>
+        <h3>文字列を１つ入力する</h3>
+      </header>
+  
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = input()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    もじれつ
+</code></pre>
+
+s = <code class="cmt">'もじれつ'</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    Hello world!
+</code></pre>
+
+s = <code class="cmt">'Hello world!'</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    -123
+</code></pre>
+
+s = <code class="cmt">'-123'</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    Hello world!
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = input()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = 'Hello world!'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>入力値が複数行の場合は、変数を変えて同じものを書いていくだけです。</p>
+
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">4
+    Hello world!
+    Bonjour, le monde!
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = input()
+t = input()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = 'Hello world!'
+t = 'Bonjour, le monde!'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>リストに変換したい時は <strong>list(input())</strong> に置き換えます。</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">5
+    #..#.#
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = list(input())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = list('#..#.#')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = ['#', '.', '.', '#', '.', '#']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#veryeasy" onclick="closeAccordion('veryeasy-2')">文字列を１つ入力する</a>
+      </footer>
+
+    </details>
+
+  </article>
+        
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('veryeasy')">難易度：とてもやさしい</a>
+    </footer>
+
+  </details>
+
+</section>
+        
+
+
+
+
+
+
+
+<section>
+
+  <details id="easy"><summary>難易度：やさしい</summary>
+
+    <header>
+      <h2>難易度：やさしい</h2>
+    </header>
+
+
+
+  <article>
+
+    <details id="easy-1"><summary>横並びの整数を入力する - map(int, input().split())</summary>
+
+      <header>
+        <h3>変数ごとに振り分ける場合</h3>
+      </header>
+    
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n, m = map(int, input().split())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1 2
+</code></pre>
+
+n = <code class="cmt">1</code><br>
+m = <code class="cmt">2</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    100 0
+</code></pre>
+
+n = <code class="cmt">100</code><br>
+m = <code class="cmt">0</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    123 -123
+</code></pre>
+
+n = <code class="cmt">123</code><br>
+m = <code class="cmt">-123</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1 2
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n, m = map(int, input().split())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n, m = map(int, '1 2'.split())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n, m = map(int, ['1', '2'])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n, m = [1, 2]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+            
+<p><code>1</code> は <code>n</code> へ、<br>
+<code>2</code> は <code>m</code> へ、代入されていきます。</p>
+<p>このような代入のやり方を「<strong class="b">アンパック</strong><em>(unpack)</em> 代入」または「アンパッキング代入」と言います。</p>
+</li>
+  
+  <li class="warning">
+      <p>アンパック代入は<strong class="b">「変数」の個数</strong> と<strong class="b">「代入する値(要素)」の個数</strong>が<strong>同じ個数</strong>でなければいけません。</p>
+  </li>
+
+<li><p>１つでも異なると<s>パッキンマンにやられます。</s>エラーになります。</p>
+<br>
+
+<li>
+  <p>代入しようとする値の個数が<strong>多すぎ</strong>て力が出ない時🤢</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n, m = [1, 2, 3]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 1, in &lt;module&gt;
+    n, m = [1, 2, 3]
+ValueError: too many values to unpack (expected 2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>代入しようとする値の個数が<strong>少なすぎ</strong>て力が出ない時🤢</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n, m = [1]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 1, in &lt;module&gt;
+    n, m = [1]
+ValueError: not enough values to unpack (expected 2, got 1)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+</li>
+<br>
+
+<li><p>わりとうっかりしてよく見てしまうエラーです。😹</p></li>
+
+</ul>
+
+<ul>
+<li>
+  <p>入力値が複数行の場合は、変数を変えて同じものを書いていくだけです。</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">4
+    1 5
+    12 -21
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = map(int, input().split())
+n, m = map(int, input().split())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = map(int, '1 5'.split())
+n, m = map(int, '12 -21'.split())
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = map(int, ['1', '5'])
+n, m = map(int, ['12', '-21'])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ map() は本当は <code>&lt;map object at 0x149d2f2f30d0&gt;</code><br>
+↓ でもこのまま代入できる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = [1, 5]
+n, m = [12, -21]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ (おまけ) この代入方法もアンパック代入と言います
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = 1, 5 # (1, 5) の () が省略されている
+n, m = 12, -21 # (12, -21) の () が省略されている
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 結果、それぞれにこんな感じで代入される
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 1
+b = 5
+n = 12
+m = -21
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#easy" onclick="closeAccordion('easy-1')">横並びの整数を入力する</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+    <article>
+
+      <details id="easy-2"><summary>横並びの整数をリストで入力する - list(map(int, input().split()))</summary>
+
+        <header>
+            <h3>リストとして代入する場合</h3>
+        </header>
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = list(map(int, input().split()))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1 2 3 4 5
+</code></pre>
+
+nums = <code class="cmt">[1, 2, 3, 4, 5]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1 2 3 4 5
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = list(map(int, input().split()))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = list(map(int, '1 2 3 4 5'.split()))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = list(map(int, ['1', '2', '3', '4', '5']))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ map() は本当は <code>&lt;map object at 0x145c147291c0&gt;</map></code>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = list(1, 2, 3, 4, 5)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p>どんなにたくさん分割されても、この一文だけで全て整数＆リスト化されます。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#easy" onclick="closeAccordion('easy-2')">横並びの整数をリストで入力する</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="easy-3"><summary>横並びの文字列を入力する - input().split()</summary>
+
+      <header>
+        <h3>変数ごとに振り分ける場合</h3>
+      </header>
+
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s, t = input().split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    あ い
+</code></pre>
+
+s = <code class="cmt">'あ'</code><br>
+t = <code class="cmt">'い'</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    閻魔 あい
+</code></pre>
+
+s = <code class="cmt">'閻魔'</code><br>
+t = <code class="cmt">'あい'</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    Hello world!
+</code></pre>
+
+s = <code class="cmt">'Hello'</code><br>
+t = <code class="cmt">'world!'</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    閻魔 あい
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s, t = input().split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s, t = '閻魔 あい'.split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s, t = ['閻魔', 'あい']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = '閻魔'
+t = 'あい'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p><strong>input()</strong> は入力値を文字列で読み取るだけに、整数と比べて簡単になっています。</p></li>
+
+</ul>
+
+<ul>
+<li>
+  <p>入力値が複数行の場合は、変数を変えて同じものを書いていくだけです。</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">4
+    ONE Kanon
+    AIR CLANNAD
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = input().split()
+c, d = input().split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = 'ONE Kanon'.split()
+c, d = 'AIR CLANNAD'.split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = ['ONE', 'Kanon']
+c, d = ['AIR', 'CLANNAD']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 'ONE'
+b = 'Kanon'
+c = 'AIR'
+d = 'CLANNAD'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#easy" onclick="closeAccordion('easy-3')">横並びの文字列を入力する</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="easy-4"><summary>横並びの文字列をリストで入力する - input().split()</summary>
+
+      <header>
+        <h3>リストとして代入する場合</h3>
+      </header>
+
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = input().split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    閻魔 あい
+</code></pre>
+
+names = <code class="cmt">['閻魔', 'あい']</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<ul>
+【 解説 】
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    閻魔 あい
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+            <br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = input().split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = '閻魔 あい'.split()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = ['閻魔', 'あい']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p>もともと <strong>.split()</strong> メソッドは、文字列を分割して <strong>リストにする</strong> 機能なので、そのままの形で使えます。</p></li>
+<li><p>どんなにたくさん分割されても、この一文だけで済みます。</p></li>
+</ul>
+                
+
+      <footer>
+        <a class="backto" href="#easy" onclick="closeAccordion('easy-4')">横並びの文字列をリストで入力する</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('easy')">難易度：やさしい</a>
+    </footer>
+
+  </details>
+
+</section>
+        
+
+
+
+
+<section>
+
+  <details id="normal"><summary>難易度：ふつう</summary>
+
+      <header>
+          <h2>難易度：ふつう</h2>
+      </header>
+
+
+
+  <article>
+
+    <details id="normal-1"><summary>複数行の整数をリストで入力する - 内包表記</summary>
+
+      <header>
+        <h3>複数行の整数をリストで入力する</h3>
+      </header>
+    
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())  # N は行数
+nums = [int(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    1
+    2
+</code></pre>
+
+nums = <code class="cmt">[1, 2]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    3
+    100
+    0
+    50
+</code></pre>
+
+nums = <code class="cmt">[100, 0, 50]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    5
+    123
+    -123
+    25
+    1024
+    -1
+</code></pre>
+
+nums = <code class="cmt">[123, -123, 25, 1024, -1]</code><br>
+
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    1
+    2
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+ 
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+nums = [int(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ まず N の値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int('2')
+nums = [int(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [int(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [int(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ２行目の入力値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [int('1') int(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [1 int(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ３行目の入力値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [1, int('2') int(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [1, 2 int(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ for文の処理が終了して結果となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [1, 2]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+            
+<br>
+
+<li><p>たった２行のプログラムで、たった３行の入力値でもこれだけの処理がなされています。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#normal" onclick="closeAccordion('normal-1')">複数行の整数をリストで入力する - 内包表記</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="normal-2"><summary>複数行の文字列をリストで入力する - 内包表記</summary>
+
+      <header>
+        <h3>複数行の文字列をリストで入力する</h3>
+      </header>
+    
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [input() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    Hello
+    world!
+</code></pre>
+
+lst = <code class="cmt">['Hello', 'world!']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    3
+    Mike
+    Kuro
+    Tama
+</code></pre>
+
+lst = <code class="cmt">['Mike', 'Kuro', 'Tama']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    5
+    デ
+    ス
+    ノ
+    ヲ
+    ト
+</code></pre>
+
+lst = <code class="cmt">['デ', 'ス', 'ノ', 'ヲ', 'ト']</code><br>
+
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    Hello
+    world!
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+ 
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [input() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ まず N の値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int('2')
+lst = [input() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [input() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [input() for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ２行目の入力値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = ['Hello' input() for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ３行目の入力値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = ['Hello', 'world!' input() for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ for文の処理が終了して結果となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = ['Hello', 'world!']
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+            
+<br>
+</ul>
+                
+
+      <footer>
+        <a class="backto" href="#normal" onclick="closeAccordion('normal-2')">複数行の文字列をリストで入力する - 内包表記</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="normal-3"><summary>複数行にわたる横並びの整数をリストで入力する - 二次元リスト</summary>
+
+      <header>
+        <h3>複数行にわたる横並びの整数をリストで入力する</h3>
+      </header>
+
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+nums = [list(map(int, input().split())) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    0 1 2
+    3 4 5
+</code></pre>
+
+nums = <code class="cmt">[[0, 1, 2], [3, 4, 5]]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    3
+    2 4 6 8
+    3 6 9
+    4 8 12 16 20
+</code></pre>
+
+nums = <code class="cmt">[[2, 4, 6, 8], [3, 6, 9], [4, 8, 12, 16, 20]]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    5
+    0 1
+    2 3
+    4 5
+    6 7
+    8 9
+</code></pre>
+
+nums = <code class="cmt">[[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    0 1 2
+    3 4 5
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+ 
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+nums = [list(map(int, input().split())) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ まず N の値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int('2')
+nums = [list(map(int, input().split())) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [list(map(int, input().split())) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [list(map(int, input().split())) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ２行目の入力値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [list(map(int, '0 1 2'.split())) list(map(int, input().split())) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [list(map(int, ['0', '1', '2'])) list(map(int, input().split())) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [[0, 1, 2] list(map(int, input().split())) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ３行目の入力値を読み取る (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [[0, 1, 2], [3, 4, 5] list(map(int, input().split())) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ for文の処理が終了して結果となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+nums = [[0, 1, 2], [3, 4, 5]]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+            
+<br>
+<li><p>目で追うのを諦めたくなるような複雑さに見えますが、<code>int(input())</code> が <code>list(map(int, input().split()))</code>に変わっただけです。</p></li>
+<li><p>結果も二次元リストとなっただけです。</p></li>
+</ul>
+                
+
+      <footer>
+        <a class="backto" href="#normal" onclick="closeAccordion('normal-3')">複数行にわたる横並びの整数をリストで入力する - 二次元リスト</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="normal-4"><summary>複数行にわたる横並びの文字列をリストで入力する - 二次元リスト</summary>
+
+      <header>
+        <h3>複数行にわたる横並びの文字列をリストで入力する</h3>
+      </header>
+    
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [input().split() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    Hello world!
+    西園寺 世界!
+</code></pre>
+
+lst = <code class="cmt">[['Hello', 'world'], ['西園寺', '世界!']]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    3
+    # # #
+    # . #
+    # # #
+</code></pre>
+
+lst = <code class="cmt">[['#', '#', '#'], ['#', '.', '#'], ['#', '#', '#']]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    2
+    One for all , all for one
+    YES, WE are CATs!
+</code></pre>
+
+lst = <br><code class="cmt" style="white-space: pre; display: inline-block;">[['One', 'for', 'all', ',', 'all', 'for', 'one'],
+['YES,', 'WE', 'are', 'CATs!']]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    Hello world!
+    西園寺 世界!
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+ 
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [input().split() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ まず N の値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int('2')
+lst = [input().split() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [input().split() for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [input().split() for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ２行目の入力値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = ['Hello world!'.split() input().split() for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [['Hello', 'world!'] input().split() for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ３行目の入力値を読み取る (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [['Hello', 'world!'], ['西園寺', '世界!'] input().split() for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ for文の処理が終了して結果となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [['Hello', 'world!'], ['西園寺', '世界!']]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+            
+<br>
+<li><p>文字列の途中に半角スペースがある場合の二次元リスト化です。</p></li>
+</ul>
+                
+
+      <footer>
+        <a class="backto" href="#normal" onclick="closeAccordion('normal-4')">複数行にわたる横並びの文字列をリストで入力する - 二次元リスト</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="normal-2"><summary>複数行にわたる１つの文字列をリスト化して入力する - マップ化</summary>
+
+      <header>
+        <h3>複数行にわたる１つの文字列をリスト化して入力する</h3>
+      </header>
+
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [list(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    #.#.#
+    .#.#.
+</code></pre>
+
+lst = <br><code class="cmt" style="white-space: pre; display: inline-block;">[['#', '.', '#', '.', '#'],
+['.', '#', '.', '#', '.']]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    3
+    ###
+    #.#
+    ###
+</code></pre>
+
+lst = <br><code class="cmt" style="white-space: pre; display: inline-block;">[['#', '#', '#'],
+['#', '.', '#'],
+['#', '#', '#']]
+</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    5
+    #
+    ##
+    ###
+    ####
+    #####
+</code></pre>
+
+lst = <br><code class="cmt" style="white-space: pre; display: inline-block;">[['#'],
+['#', '#'],
+['#', '#', '#'],
+['#', '#', '#', '#'],
+['#', '#','#','#','#']]
+</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    #.#.#
+    .#.#.
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+ 
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [list(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ まず N の値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int('2')
+lst = [list(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [list(input()) for _ in range(N)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [list(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ２行目の入力値を読み取る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [list('#.#.#') list(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [['#', '.', '#', '.', '#'] list(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ３行目の入力値を読み取る (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [['#', '.', '#', '.', '#'], ['.', '#', '.', '#', '.'] list(input()) for _ in range(2)]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ for文の処理が終了して結果となる
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [['#', '.', '#', '.', '#'], ['.', '#', '.', '#', '.']]
+</code></pre>
+     
+</div>
+<!-- ----------------------- code end ----------------------- -->
+            
+<br>
+<li><p>入力値として与えられた二次元マップを、後で部分的に書き換える場合に使う方法です。</p></li>
+<li><p>問題の難易度が上がると使うようになります。</p></li>
+</ul>
+                
+
+      <footer>
+        <a class="backto" href="#normal" onclick="closeAccordion('normal-4')">複数行にわたる１つの文字列をリスト化して入力する - マップ化</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('normal')">難易度：ふつう</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<section>
+
+  <details id="hard"><summary>難易度：むずかしい</summary>
+
+    <header>
+      <h2>難易度：むずかしい</h2>
+    </header>
+
+
+
+  <article>
+
+    <details id="hard-1"><summary>様々な値を任意の型に変換する - 内包表記</summary>
+
+      <header>
+        <h3>様々な値を任意の型に変換する</h3>
+      </header>
+    
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[int(x), s] for x, s in [input().split()]][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1 kotetsu
+</code></pre>
+
+lst = <code class="cmt">[1, 'kotetsu']</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    2000 g
+</code></pre>
+
+lst = <code class="cmt">[2000, 'g']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    14 才
+</code></pre>
+
+lst = <code class="cmt">[14, '才']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    14 才
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[int(x), s] for x, s in [input().split()]][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[int(x), s] for x, s in ['14 才'.split()]][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[int(x), s] for x, s in [['14', '才']]][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[int(x), s] for x='14', s='才' in [['14', '才']]][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[int('14'), '才'] for x='14', s='才' in [['14', '才']]][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[int('14'), '才']][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [[14, '才']][0]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 添字の <code>[0]</code> で、中のリストを取り出す
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [14, '才']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<li><p><code>[input().split()]</code> の [ ] は必要です。</p></li>
+<li><p><code>[['14', '才']]</code> の中の <code>['14', '才']</code> を、<code>x, s</code> にアンパック代入しているからです。</p></li>
+<li><p>[ ] が無いと <code>['14', '才']</code> を左から順に１つずつ渡すことになり、
+  変数と値の個数が合わずに<strong>エラー</strong>となります。</p></li>
+<li><p><code>[0]</code> よりも <code>.pop()</code> のほうがわかりやすいかもしれません。</p>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#hard" onclick="closeAccordion('hard-1')">様々な値を任意の型に変換する - １行</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="hard-2"><summary>様々な値を任意の型に変換する - 複数行</summary>
+
+      <header>
+        <h3>複数行にわたる様々な値を任意の型に変換する</h3>
+      </header>
+    
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [[int(x), s] for _ in range(N) for x, s in [input().split()]]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    1 s
+    2 t
+</code></pre>
+
+lst = <code class="cmt">[[1, 's'], [2, 't']]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    3
+    3 か月
+    1 才
+    8 才
+</code></pre>
+
+lst = <code class="cmt">[[3, 'か月'], [1, '才'], [8, '才']]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    4
+    1 Gold
+    2 Silver
+    3 Bronze
+    4 Stone
+    
+</code></pre>
+
+lst = <code class="cmt">[[1, 'Gold'], [2, 'Silver'], [3, 'Bronze'], [4, 'Stone']]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    1 s
+    2 t
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+lst = [[int(x), s] for _ in range(N) for x, s in [input().split()]]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ N の入力は省略
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [[int(x), s] for _ in range(2) for x, s in [input().split()]]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [[int(x), s] for _ in range(2) for x, s in ['1 s'.split()]]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓ (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [[1, 's'] [int(x), s] for _ in range(2) for x='1', s='s' in [['1', 's']]]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓ ３行目の読み取り (ループ２回目)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [[1, 's'] [int(x), s] for _ in range(2) for x, s in ['2 t'.split()]]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓ (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [[1, 's'], [2, 't'] [int(x), s] for _ in range(2) for x='2', s='t' in [['2', 't']]]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+lst = [[1, 's'], [2, 't']]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+              
+
+      <footer>
+        <a class="backto" href="#hard" onclick="closeAccordion('hard-2')">様々な値を任意の型に変換する - 複数行</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('hard')">難易度：むずかしい</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+
+
+
+<!-- <section>
+
+  <details id="veryhard"><summary>難易度：とてもむずかしい</summary>
+
+      <header>
+        <h2>難易度：とてもむずかしい</h2>
+      </header>
+
+
+
+  <article>
+
+    <details id="veryhard-1"><summary></summary>
+
+      <header>
+        <h3></h3>
+      </header>
+    
+
+<ul>
+</ul>
+
+            <footer>
+                <a class="backto" href="#veryhard" onclick="closeAccordion('veryhard-1')"></a>
+            </footer>
+
+        </details>
+
+    </article>
+
+
+        <footer>
+            <a class="backto" href="#" onclick="closeAccordion('veryhard')">難易度：とてもむずかしい</a>
+        </footer>
+
+    </details>
+
+</section> -->
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>標準入力</p>
+</footer>
+</body>
+</html>

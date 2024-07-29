@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/prism_coy.css">
+		<script type="text/javascript" src='../js/prism.js'></script>
+		<script type="text/javascript" src='../js/custom.js'></script>
+		<title>関数</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+		<h1>関数</h1>
+			<p>関数の仕組みを知り、関数をDIYすることができるようになります👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+	<details id="c1"><summary>Chatpter.1 - 関数のしくみ</summary>
+
+		<header>
+			<h2>関数のしくみ</h2>
+		</header>
+
+
+<ul>
+<li><p>関数は、受け取った引数を使って決められた処理をする仕事を担います。</p></li>
+<ol>
+	<li><strong class="b">引数を受け取る</strong> (省略可)</li>
+	<li><strong>関数の処理を実行する</strong></li>
+	<li><strong class="b">戻り値を返す</strong> (省略可)</li>
+</ol>
+<p>２番目だけですね、必要なのは <s>A's</s>。<br>
+	しかし厳密にはこの３つがあって「関数」と言うことになっています。</p>
+<p>２番目の部分に関数の機能となるプログラムを書きます。</p>
+<br>
+<li><p>初めはちょっと難しく感じるかもしれません。</p></li>
+<li><p>でも読み進めていくと、途中から急に関数というものが理解できるようになると思います。</p></li>
+</ul>
+
+<ul>
+<li><p>関数はこんな風に書きます。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def function(a, b):  # 関数を定義する
+	c = a + b  # 関数の機能部分
+	return c   # 関数が作った戻り値
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>一行目の最初に書かれている <code>def</code> というのが「関数宣言」です。</p>
+<p>♪ 値を中に もらう前に 言っておきたい 事がある ♪</p></li>
+<li><p>その言っておきたい事というのが <code>def</code> です。</p></li>
+<li><p><code>def</code> は <strong><em>define</em></strong> (定義する) の <code>def</code> です。</p></li>
+<li><p><code>def</code> の末尾に <code>:</code> があります。<br>
+<strong class="for"></strong> や<strong class="if"></strong> と同じように、インデントをつけることで関数の範囲を示します。</p></li>
+</ul>
+
+<ul>
+<li><p><code>def</code> と <code>()</code> の間にあるのが、おなじみの「<strong>関数名</strong>」です。</p></li>
+<li><p>今まで使ってきた関数<strong class="func">sorted()</strong>とかの <strong>sorted</strong> の部分です。</p></li>
+<li><p>例では関数という意味でテキトーに <em>function</em> と名付けましたが、関数の機能に合った名前を付けておかないと、どんな機能の関数なのかがわからなくなってしまいます。</p></li>
+</ul>
+
+<ul>
+<li><p>その次の <code>()</code> が、引数を受け取る所です。</p>
+<p><code>(a, b)</code> は、例えば、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def function(a, b):  # 関数を定義する
+	c = a + b  # 関数の機能部分
+	return c   # 関数が作った戻り値
+	
+function(1, 2)  # ← 「関数を呼び出す」と言います
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<p>として引数を渡した時、<br>
+<code>a</code> には <code>1</code>、<code>b</code> には <code>2</code> が渡されます。</p>
+</li>
+
+	<li class="warning">
+		<p>渡す引数の個数と、受け取る引数の個数は同じでなければいけません。</p>
+	</li>
+
+<p>異なるとエラーになります。</p>
+
+<li><p>引数を変数にした場合、<strong class="b">渡す側の変数名</strong>と<strong class="b">受け取る側の変数名</strong>は異なっていても構いません。値を「<strong>見せるだけ</strong>」なので。</p></li>
+
+
+<li><p>それと、引数の値は関数に「見せるだけ」なので、可変不変は関係ありませんし、値であればどんな型や形のものでも渡せます。</p></li>
+</ul>
+
+<ul>
+<li><p>二行目の</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">	c = a + b
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<p>は、それぞれ受け取った引数の <code>a</code> と <code>b</code> の値を使って足し算をした結果を <code>c</code> に代入しています。</p>
+<p>ここが関数の機能となるプログラムになります。</p></li>
+</ul>
+
+<ul>
+<li><p>そして最後の行の</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">	return c
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>で <code>c</code> の値を<strong>戻り値</strong>として、呼び出した関数の所に返します。</p>
+</li>
+<br>
+
+<li><p>戻り値は最終的に呼び出した関数が戻り値に化けて、この関数の一連の動作が終了します。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">function(1, 2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">3
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def function(a, b):  # 関数を定義する
+	c = a + b  # 関数の機能部分
+	return c   # 関数が作った戻り値
+
+print(function(1, 2))
+</code></pre>
+
+<code>3</code><br>
+
+<details class="sample-code"><summary></summary>引数を変えて試してみよう！
+	<iframe src="https://paiza.io/projects/e/Ld4ygGjLMp0bb_IJU4sJBA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これでこのプログラムが、理解して読めるようになったはずです。</p>
+</ul>
+
+
+				<footer>
+						<a class="backto" href="#" onclick="closeAccordion('c1')">関数のしくみ</a>
+				</footer>
+
+		</details>
+
+</article>
+
+
+
+
+
+<section>
+
+	<details id="c2"><summary>Chatpter.2 - 自分で関数をつくる</summary>
+
+		<header>
+			<h2>ずっと自分には無理と思っていた事を或る時恐るゝゝやってみたら、実に呆気無く容易く出来てしまった時のあの感動を！</h2>
+		</header>
+
+
+		<article>
+
+			<details id="c2-1"><summary>2.1 - 関数の命名</summary>
+
+				<header>
+					<h3>ハンドメイド関数にメイ名する</h3>
+				</header>
+		
+		
+<ul>
+<li><p>関数名としてふさわしい命名のコツは、まず関数名を見て「機能が一目でわかる」ことです。</p></li>
+<li><p>次に「名前の最初を<strong>動詞</strong>にする」ことです。</p></li>
+<li><p>特定の処理を「する」機能なので、動詞が適切となります。</p></li>
+<li><p>英語で書きます。英語がわからないと途端につまづきます。</p></li>
+<li><p>無料の ChatGPT先生の出番です。</p></li>
+<li><p>どうしてもうまく命名できないという場合は、とりあえずはローマ字表記の日本語でも構いません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def tasizan(a, b):
+</code></pre>
+
+<pre><code class="language-python">def kansuu1(a, b):  # 足し算する
+</code></pre>
+
+<pre><code class="language-python">def f1(a, b):  # 足し算する
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+	
+<p>あとで考えるパターンです。😸</p>
+</li>
+</ul>
+
+<ul>
+	<li><p>試しに ChatGPT先生に考えていただきましょう。<br>
+	先生、お願いしやす。</p></li>
+
+<p style="font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">😾 <strong class="b">あなた</strong><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a と b を足し算する機能に適した関数名をいくつか提案してください。</p>
+
+	<li class="ChatGPT">
+		<div class="grid-output">
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>もちろんです。以下は、a と b を足し算する機能に適した関数名のいくつかです。</p>
+		</div>
+
+		<ol>
+			<li>add_numbers</li>
+			<li>sum_values</li>
+			<li>calculate_sum</li>
+			<li>add</li>
+			<li>compute_total</li>
+		</ol>
+
+		<div class="grid-output">
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>これらの関数名はわかりやすく、機能に対して適切なものです。どれか気に入ったものがあれば、それをお使いいただけます。</p>
+		</div>
+	</li>
+
+	<p>ご苦労様でした、先生！😼<br>
+	また次もよろしくお願い致しやす！</p>
+</ul>
+
+<ul>
+	<li><p>add でいいや。(´∀｀*)</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(a, b):
+	c = a + b
+	return c
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これで以前より適した関数名になったかと思います。</p>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c2" onclick="closeAccordion('c2-1')">関数名</a>
+			</footer>
+
+		</details>
+
+	</article>
+
+
+
+	<article>
+
+		<details id="c2-2"><summary>2.2 - 関数のプログラム部分</summary>
+
+			<header>
+				<h3>関数のお役目を作る</h3>
+			</header>
+	
+	
+<ul>
+<li><p>関数で書いたプログラム。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(a, b):
+	c = a + b  # ← この部分
+	return c
+
+print(add(1, 2))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>これを今までの書き方で書くと、こんな感じです。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a, b = 1, 2
+c = a + b
+print(c)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>一見、関数のほうが回りくどくて面倒に思えるかもしれません。</p></li>
+<li><p>短いプログラムでは利便さがよくわかりませんね。</p></li>
+<br>
+<li><p>関数を使うメリットは、足し算をするたびに「何度も同じプログラムを書かなくて済む」点です。</p></li>
+<li><p>要するに、<strong>プログラムを「再利用」できるようにする</strong>のです。</p></li>
+<li><p>引数を与えるだけであとは関数が仕事してくれます。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(a, b):
+	c = a + b
+	return c
+
+print(add(1, 2))
+print(add(2, 3))
+print(add(5, 5))
+print(add(3, 8))
+print(add(10, 20))
+</code></pre>
+
+<code>3</code><br>
+<code>5</code><br>
+<code>10</code><br>
+<code>11</code><br>
+<code>30</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<p>今まで使ってきたどの関数も「引数を与えるだけ」で関数が担当する仕事を請け負ってくれていました。</p>
+</ul>
+
+<ul>
+<li><p>ここでまた Fizz Buzz を、今度は関数を使って書いてみます。</p></li>
+
+<p>ふつうの書き方</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(1, 101):
+	if i % 3 == 0 and i % 5 == 0:
+		print('アホイヌ')
+	elif i % 3 == 0:
+		print('アホ')
+	elif i % 5 == 0:
+		print('イヌ')
+	else:
+		print(i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>関数を使った書き方</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def fizzbuzz(x):
+	if x % 3 == 0 and x % 5 == 0:
+		return 'アホイヌ'
+	elif x % 3 == 0:
+		return 'アホ'
+	elif x % 5 == 0:
+		return 'イヌ'
+	else:
+		return x
+
+for i in range(1, 101):
+	print(fizzbuzz(i))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><small>※ 出力結果は省略します</small></p>
+<li><p>どういう風に違うかというと、ふつうの書き方の場合は<strong class="for"></strong>文の中身が大きくなると、<strong class="for"></strong>文全体がごちゃごちゃしてわかりにくくなります。</p></li>
+<li><p>関数を使うと、Fizz Buzz のプログラムの部分が別の場所に書かれているので、そのプログラムの部分が何なのか、<strong class="for"></strong>文が何をしているのかがわかりやすくなります。</p></li>
+<li><p>メインプログラムがシンプルになると、プログラム全体の流れを把握しやすくなります。</p></li>
+<li><p>代わりに Fizz Buzz のプログラム部分があった所に関数名を置いて「この部分は <var>i</var> を引数に fizz buzz をする」とざっくりコメントしています。</p></li>
+<li><p>なので、関数の命名はとても重要です。</p></li>
+<li><p>「add でいいや。(´∀｀*)」とか言ってちゃいけないのです。😅</p></li>
+<li><p>「add にしよう！」と言いましょう。😊</p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#c2" onclick="closeAccordion('c2-2')">関数のプログラム部分</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+<article>
+
+	<details id="c2-3"><summary>2.3 - 引数なし</summary>
+
+		<header>
+			<h3>引数を与えない関数の使い方</h3>
+		</header>
+
+
+<ul>
+<li><p>「引数なし」の関数の使い方を説明します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen():
+	print('Hello world!')
+	return
+
+output_screen()
+</code></pre>
+
+<code>Hello world!</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>完全に関数の中だけで処理を完結させています。なので、戻り値もありません。</p>
+</li>
+
+<li><p>戻り値だけ設定すると、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen():
+	return 'Hello world!'
+
+print(output_screen())
+</code></pre>
+
+<code>Hello world!</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>という形で書きます。</p>
+</li>
+
+<li><p>引数なしの関数も「再利用」を目的として作られます。</p></li>
+<li><p>他にも、メインプログラム中に書かれた長くなってしまったプログラムを関数化してすっきり見通し良くする目的でも行なったりします。たとえ一回しか使わないプログラムだったとしても。</p></li>
+<li><p>もちろんそこに関数名を印に置く形になります。</p></li>
+<li><p>早い話が「移転」ですね。</p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#c2" onclick="closeAccordion('c2-3')">引数なし</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+
+	<details id="c2-4"><summary>2.4 - キーワード引数</summary>
+
+		<header>
+			<h3>key= を作ってみる</h3>
+		</header>
+
+
+<ul>
+<li><p>むずかしくないよー。簡単よー。</p></li>
+</ul>
+
+<ul>
+<li><p>「キーワード引数」というのは、<strong class="func">sorted()</strong>などで使ってた <code>key=lambda ・・</code> とか <code>reverse=True</code> とかです。</p></li>
+<li>
+	<p>今からこれを自分で作ります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen(key=False):
+	if key:
+		return 'Kanon'
+	else:
+		return 'One'
+
+print(output_screen(key=True))
+</code></pre>
+
+<code>Kanon</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>引数を渡す際、キーワード引数は<strong>省略できます。</strong></p></li>
+<li><p>キーワード引数が省略された場合は「変数(キーワード)に<strong>初期値が代入</strong>」されます。</p></li>
+<li><p>関数の ( ) に入っている <code>key</code> というのが、関数内でそのまま使われる変数になります。</p></li>
+<li><p>まず、<code>key</code> に <code>False</code> が代入されます。<code>key=False</code></p></li>
+<dl>
+	<dt>キーワード引数がある場合</dt>
+	  <dd>その引数は <code>key</code> に上書き代入されます。<code>key=引数</code></dd>
+	<dt>省略された場合</dt>
+	  <dd><code>key=False</code> のままです。</dd>
+</dl>
+<li><p>関数の呼び出し(最下行)の中の <code>key=True</code> で、<code>key</code> の値を <code>True</code> にして引数として関数に渡しています。</p></li>
+<li><p>結果、<strong class="if"></strong>文で <code>key</code> が <code>True</code> と判定されて <code>'Kanon'</code> が戻り値として返ります。</p></li>
+<br>
+<li><p>このキーワード引数を省略すると、</p>
+	
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(output_screen())
+</code></pre>
+
+<code>One</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>初期値の <code>key=False</code> が適用されて <code class="output">One</code> と出力されます。</p>
+</li>
+
+<details class="sample-code"><summary></summary>引数なしにしてみよう！
+	<iframe src="https://paiza.io/projects/e/nuilzeVP--2YP1tRZmGhEA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+<ul>
+<li><p>引数を渡す側と受け取る側の引数の位置が合っている場合は、キーワードを省略して値だけ書くこともできます。<strong>(非推奨)</strong></p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen(key=False):
+	if key:
+		return 'Kanon'
+	else:
+		return 'One'
+
+print(output_screen(True))
+</code></pre>
+
+<code>Kanon</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>キーワードを作ってキーワードで引数を渡すと、引数を渡す順番が不問となります。辞書のキーと値の関係と同じです。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen(key1=False, key2=False, key3=False):
+	if key1 and key2 and key3:
+		return 'Kanon AIR CLANNAD'
+	else:
+		return 'One'
+
+print(output_screen(key2=True, key3=True, key1=True))
+</code></pre>
+
+<code>Kanon AIR CLANNAD</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen(key1=False, key2=False, key3=False):
+	return key1, key2, key3  # ← 最後はこの順番で出力される
+
+print('key1=省略,', 'key2=True,', 'key3=False')
+print(output_screen(key3=False, key2=True))
+</code></pre>
+
+<code>key1=省略, key2=True, key3=False</code><br>
+<code>(False, True, False)</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>キーワードはそのまま変数になりますので、変数の命名規則が適用されます。</p></li>
+<li><p>規則の範囲内でしたらどんな名前を付けてもOKです。</p></li>
+<li><p>長すぎる名前は扱いにくくなりますので、省略形にしてなるべく短くすることが多いです。</p></li>
+</ul>
+
+<ul>
+<li><p>キーワード引数を設定することによって、作った関数を柔軟にすることができます。</p></li>
+<li><p><strong class="func">sorted()</strong>関数のように、ただリストを昇順にソートするだけでなく、キーワード引数を設定して降順ソートにも対応したり、lambdaなどの関数を使ってあらゆる方法でソートすることが出来るようになります。</p></li>
+<li><p>キーワード引数が無ければ「昇順ソートの関数」と「降順ソートの関数」とを、２つ用意しなければなりません。</p></li>
+<li><p>これをキーワード引数を使うことによって１つにまとめています。</p></li>
+<li><p><strong class="func">print()</strong>関数も <mark>end=</mark> や <mark>sep=</mark> のおかげで、とても便利に使わせてもらえています。 <strong class="func">print()</strong>関数マジ神。</p></li>
+<li><p>初めのうちは先の事なんて考えてる余裕もないのでなかなか自分で作って使う機会はないかもしれません。</p></li>
+<li><p>でもキーワード引数を使うことによって、１つの関数が多機能になります。</p></li>
+<li><p>逆に関数を使用する側としてみれば「ソートするなら<strong class="func">sorted()</strong>」と１つ憶えておくだけで済みます。</p></li>
+<li><p>使いどころを見つけたら、ぜひ使ってみてください。</p></li>
+</ul>
+
+
+				<footer>
+					<a class="backto" href="#c2" onclick="closeAccordion('c2-4')">キーワード引数</a>
+				</footer>
+
+			</details>
+
+		</article>
+
+
+
+	<article>
+
+		<details id="c2-5"><summary>2.5 - return で戻り値を返す</summary>
+
+			<header>
+				<h3>return</h3>
+			</header>
+
+
+<ul>
+<li><p>関数の中に <strong>return</strong> は１つでなければならないということはありません。</p></li>
+<li><p>複数あっても、<strong>return</strong> となった所で <strong>return</strong> します。</p></li>
+<li><p><strong>return</strong> する時は、その後ろの値を「<strong>戻り値</strong>」にして返し、関数を終了します。</p></li>
+</ul>
+
+<ul>
+<li><p>先ほどのプログラムを例にします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen(key=False):
+	if key:
+		return 'Kanon'
+	else:
+		return 'One'
+
+print(output_screen(key=True))
+</code></pre>
+
+<code>Kanon</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong>return</strong> が２つありますが、<strong>True</strong>側と <strong>False</strong>側のそれぞれに <strong>return</strong> があり、<strong class="if"></strong>文の判定後にそれぞれの <strong>return</strong> で返っていきます。</p>
+</li>
+
+<li><p>関数の範囲はインデントをつけることで示されていますので、<strong>return</strong> が無くても、インデントの最後を越えた場合は、そこで関数が<strong>正常終了</strong>します。</p></li>
+<li><p>これは<strong class="if"></strong>文の <strong>else:</strong> を省略した時と同じ挙動です。</p></li>
+<li><p>ただし、<strong>return</strong> がある場合も同じですが、戻り値が無い場合は、戻り値は「<strong>None</strong>」で返ります。</p></li>
+<li><p><strong>None</strong> は「値が無いという<strong>値</strong>」です。</p></li>
+<li><p>最後に戻り値を変数に代入して使う場合などでは、意図しない形で <strong>None</strong> が返らないように気を付けてください。</p></li>
+<li><p>👇こういうことです。👇</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen(key=False):
+	if key:
+		return 'Kanon'
+
+print(output_screen())
+</code></pre>
+
+<code>None</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>None って言われても・・・。</p>
+</li>
+<br>
+<li><p>わかっていてもたまにやりますが・・・やるというより「なってしまう」が近いですね。😽</p></li>
+</ul>
+
+<ul>
+<li><p>このプログラムは簡潔に書くことができます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def output_screen(key=False):
+	return 'Kanon' if key else 'One'
+
+print(output_screen(key=True))
+</code></pre>
+
+<code>Kanon</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong>return</strong> の後にいきなり<strong class="b">内包表記</strong>で<strong class="if"></strong>文を書き、その判定結果を戻り値にして <strong>return</strong> で返しています。</p>
+<p>チート行為ではなく、日常的に使われる記法です。<br>
+<small>(プログラミングではむしろ、チートは神です。チーターもネコ科)</small></p>
+</li>
+<li><p>内包表記のところが<strong class="b">内包されていない</strong>ように見えますが、本来なら書かれている <strong>( ) が省略された形</strong>であんな見た目になっているのです。問題なし！👍</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">return 'Kanon' if key else 'One'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">return ('Kanon' if key else 'One')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">return ('Kanon')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">return 'Kanon'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>要素が１つだけの時は ( ) が自動で省略されます。</p></li>
+<li><p>あの <code>'Kanon' if key else 'One'</code> も、値を１つ作る前の１要素です。</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c2" onclick="closeAccordion('c2-5')">return</a>
+			</footer>
+
+		</details>
+
+	</article>
+
+
+
+
+	<article>
+
+		<details id="c2-6"><summary>2.6 - return で多重ループを一気に抜ける</summary>
+
+			<header>
+				<h3>関数を使えばフラグが不要に</h3>
+			</header>
+
+
+<ul>
+<li><p>２章の「bool型 True と False」の Chatpter.5 では、<strong>フラグを立てる</strong>やり方で多重ループを抜けるやり方を紹介しました。</p></li>
+<li><p>その時にまだむずかしいと言ったやり方というのがこれ、関数の <strong>return</strong> を使って一気に多重ループを抜ける方法です。</p></li>
+<br>
+<li><p>と言っても、もうお判りですよね。😸</p></li>
+<li><p>関数の中で多重ループを作り、<strong>return</strong> の特性を利用して関数を終えれば、何重ループであってもあっさり抜けてしまいます。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def loops(cat):
+	while True:
+		while True:
+			while True:
+				while True:
+					while True:
+						return cat
+print(loops('😺'))
+</code></pre>
+
+<code>😺</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/YL_kzCr1JipjvOSm069GjQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A5%E3%83%AC%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%AC%E3%83%BC%E3%81%AE%E7%8C%AB" class="linked">シュレディンガー</a>ですら百歩も退いてしまうであろう、何ともえげつない閉じ込め方ですが、これでも一度で脱出してしまいます。さすが液体。</p>
+<li><p>多重ループでフラグが必要になったら、即座にまとめて関数にしてしまいましょう。</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c2" onclick="closeAccordion('c2-6')">return で多重ループを一気に抜ける</a>
+			</footer>
+
+		</details>
+
+	</article>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c2')">自分で関数をつくる</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+		<p>関数</p>
+</footer>
+</body>
+</html>

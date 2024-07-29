@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/prism_coy.css">
+	<script type="text/javascript" src='../js/prism.js'></script>
+	<script type="text/javascript" src='../js/custom.js'></script>
+	<title>内包表記</title>
+	<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+	<h1>内包表記</h1>
+		<p>内包表記で書けると小顔になれます👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+	<details id="c1"><summary>Chatpter.1 - 内包表記とは</summary>
+
+		<header>
+				<h2>内包表記とは</h2>
+		</header>
+
+
+<ul>
+<li>
+	<p>これまでも何回かちらりほらりと見てきました、あの括弧内に<strong class="for"></strong> とか<strong class="if"></strong> とかを一行で書ききるあの書き方です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [i*2 for i in range(10)]  # ← これ
+print(nums)
+</code></pre>
+
+<code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+						
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 10
+print('偶数' if n % 2 == 0 else '奇数')  # ← これ
+</code></pre>
+
+<code>偶数</code><br>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+<br>
+</li>
+
+<li><p>括弧 <code>()</code> <code>[]</code> <code>{}</code> で囲まれた中でなら内包表記が使えます。<br>
+  <small>※ () 内の要素が１つの時のみ () が省略できます。<br>
+    例）<mark>result = '偶数' if n % 2 == 0 else '奇数'</mark></small></p></li>
+<li><p><strong>内包表記</strong>は『Pythonらしい』と言われる見た目の文法です。</p></li>
+<li><p>内包表記で書くメリットがあります。</p></li>
+
+<dl>
+	<dt>データの作成速度が超速</dt>
+		<dd>[ ] の中でデータの作成処理をするので<strong class="func">.append()</strong>が不要な分、高速です。</dd>
+	<dt>書き方が決まっているので、慣れれば読みやすい</dt>
+		<dd>誰が書いてもほぼ同じ書き方になるので、<wbr>上手下手がほとんどありません。<br>
+</dl>
+
+<li><p>デメリットもあります。</p></li>
+<dl>
+	<dt class="dm">書き慣れるまでが大変</dt>
+		<dd>文法をしっかり理解していないと、内包表記を書いてるだけで時間がかかってしまいます。</dd>
+	<dt class="dm">変数に代入できない</dt>
+		<dd>内包表記は、法則に従って一気にデータを作成していきます。その為、変数を作成して値を代入するというよそ見ができません。猪突猛進型です。<br>
+		<small>※ 全く無理というわけではないのですが・・・。</small></dd>
+	<dt class="dm">使いどころがむずかしい</dt>
+		<dd>１行で書けて可読性の向上が期待できても、使いどころを誤ると逆に可読性が低下します。<br>
+		例えば<strong class="if"></strong>文は長文になりがちで、従来どおりの書き方のほうが見やすいことがあります。<br>
+		それを内包表記で無理して書くと、横に<wbr>長～～～～～くなってしまい、<wbr>とても読みにくくなってしまいます。<br>
+	  その許容の判断が見る人によるので見極めが難しいです。</dd>
+</dl>
+<p>※ 用法・用量を守って正しく使用してください。</p>
+<br>
+
+<li><p>しかし初めは勉強なのでどんどん使って早く慣れましょう！</p></li>
+</ul>
+
+<ul>
+	<li><p>次に<strong class="for"></strong>文で、一般の書き方と<strong>内包表記</strong>とを比べてみます。</p>
+		<p>一般</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = []
+for i in range(10):
+	nums.append(i * 2)
+print(nums)
+</code></pre>
+
+<code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>内包表記</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [i*2 for i in range(10)]
+print(nums)
+</code></pre>
+
+<code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<details class="sample-code"><summary></summary>見様見真似で内包表記に挑戦してみよう！
+  <iframe src="https://paiza.io/projects/e/QSAl46yYb-WXZQI9pf-CXA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+<ul>
+	<li><p><strong class="if"></strong>文も、比べてみます。</p>
+		<p>一般</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 10
+if n % 2 == 0:
+	print('偶数')
+else:
+	print('奇数')
+</code></pre>
+
+<code>偶数</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>内包表記</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 10
+print('偶数' if n % 2 == 0 else '奇数')
+</code></pre>
+
+<code>偶数</code><br>
+
+<details class="sample-code"><summary></summary>見様見真似で内包表記に挑戦してみよう！
+  <iframe src="https://paiza.io/projects/e/M30jIwmgBUZnSkugzv3-MA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+	<li><p>このあと、書き方や使いどころなどを詳しく説明していきます。</p></li>
+</ul>
+
+
+		<footer>
+				<a class="backto" href="#" onclick="closeAccordion('c1')">内包表記とは</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+
+	<details id="c2"><summary>Chatpter.2 - イテラブル</summary>
+
+		<header>
+			<h2>イテラブルとは</h2>
+		</header>
+
+
+<ul>
+
+	<li class="look">
+		<p class="text-center"><strong class="b">リスト内包表記の書き方</strong></p>
+		<p class="inlook text-center">[<strong>値</strong> for i in <strong>イテラブル</strong>]</p>
+		<p class="inlook text-center">[<strong>値1</strong> if 〔条件式〕 else <strong>値2</strong> for i in <strong>イテラブル</strong>]</p>
+		<p class="inlook text-center">[<strong>値</strong> for i in <strong>イテラブル</strong> if 〔条件式〕]</p>
+		<p><strong>イテラブル</strong><em>(Iterable)</em>を使って、新しいリストを作成します。</p>
+	</li>
+	<p><strong class="for"></strong> や<strong class="if"></strong> の末尾に <code>:</code> は<strong>不要です。</strong></p>
+
+<br>
+<li><p>「<strong class="special">イテラブル</strong>」とは、値が列になっているデータ構造群を指します。</p></li>
+<li><p>わかりやすく言うと、<strong>リスト</strong>、<strong>辞書</strong>、<strong>タプル</strong>、<strong>セット</strong>、他に <strong class="func">zip()</strong>や<strong class="func">reversed()</strong>の様な見えないデータもイテラブルで、すでに何回も使ってきましたね。その総称、またはその１つ１つを「<strong>イテラブル</strong>」と呼びます。</p></li>
+<li><p><strong>イテラブル</strong>を<strong class="for"></strong>文の決められた場所に使うと、イテラブルの値を先頭から順番に(またはスライスなどで指示した順に) <code>i</code> に代入していってくれます。<br>
+			<small>※ for文の使い方を、新しい言葉を使って改めて説明しているだけです。</small></p></li>
+<li><p>野菜を置いたら自動で等間隔にカットする機械みたいな感じです。その野菜が<s>ベジタ</s><wbr>イテラブルです。</p></li>
+</ul>
+
+<ul>
+<li><p>耳慣れない「<strong>イテラブル</strong>」という用語自体はプログラミングに必須の用語ではないのですが、ネットで調べると普通に使ってくる言葉なので憶えて損はありません。</p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c2')">イテラブル</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<section>
+
+	<details id="c3"><summary>Chatpter.3 - リスト内包表記</summary>
+
+		<header>
+			<h2>様々な書き方</h2>
+		</header>
+
+
+	<article>
+
+		<details id="c3-1"><summary>3.1 - for文</summary>
+
+			<header>
+				<h3>for文のみの書き方</h3>
+			</header>
+
+
+<ul>
+<li class="look">
+	<p class="inlook text-center">[<strong>値</strong> for i in <strong>イテラブル</strong>]</p>
+	<p class="inlook text-center">(<strong>値</strong> for i in <strong>イテラブル</strong>)</p>
+	<p class="inlook text-center">{<strong>値</strong> for i in <strong>イテラブル</strong>}</p>
+</li>
+
+<li>
+	<p>↓これは <code>nums = list(range(10))</code> と同等です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [i for i in range(10)]
+print(nums)
+</code></pre>
+
+<code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+	<p>値を加工して使います。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [i**2 for i in range(10)]
+print(nums)
+</code></pre>
+
+<code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+	<p>文字列も使えます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['旋風乱舞', '風の太刀', '烈風']
+new_lst = [s + '!' for s in lst]
+print(new_lst)
+</code></pre>
+
+<code>['旋風乱舞!', '風の太刀!', '烈風!']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+	<p><strong class="func">zip()</strong>の戻り値も使えます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst1 = [1, 2, 3]
+lst2 = [4, 5, 6]
+ziped_lst = [[i, j] for i, j in zip(lst1, lst2)]
+print(ziped_lst)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst1 = [1, 2, 3]
+lst2 = [4, 5, 6]
+ziped_lst = [[i, j] for i, j in [(1, 4), (2, 5), (3, 6)]]
+print(ziped_lst)
+</code></pre>
+
+	<div class="grid-output">
+		<code>[[1, 4], [2, 5], [3, 6]]</code><span>← 内部のタプルをリストに変換した</span>
+	</div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c3" onclick="closeAccordion('c3-1')">for文のみの書き方</a>
+			</footer>
+		
+		</details>
+		
+	</article>
+		
+
+
+
+
+	<article>
+
+		<details id="c3-2"><summary>3.2 - for文 と if ～ else文</summary>
+
+			<header>
+				<h3>for文 と if ～ else文</h3>
+			</header>
+
+
+<ul>
+<li class="look">
+	<p class="inlook text-center">[<strong>値1</strong> <strong style="color:magenta">if 〔条件式〕 else</strong> <strong>値2</strong> <strong style="color:blue">for i in イテラブル</strong>]</p>
+	<p><strong>値1</strong>は〔条件式〕が <strong>True</strong> の時、<br>
+		<strong>値2</strong>は〔条件式〕が <strong>False</strong> の時に選ばれます。</p>
+	<p>それを<strong class="for"></strong> の分だけ繰り返します。</p>
+</li>
+<p><strong class="if"></strong>文は、<strong class="for"></strong>文の<strong>前</strong>に置きます。</p>
+
+<li><p>従来の書き方と比較してみます。</p>
+	<p>従来の書き方</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 1, 2, 3, 4, 5]
+
+odd_even = []
+for i in nums:
+	if i % 2 == 0:
+		odd_even.append('偶数')
+	else:
+		odd_even.append('奇数')
+
+print(odd_even)
+</code></pre>
+
+
+<code>['偶数', '奇数', '偶数', '奇数', '偶数', '奇数']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>内包表記での書き方</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 1, 2, 3, 4, 5]
+odd_even = ['偶数' if i % 2 == 0 else '奇数' for i in nums]
+print(odd_even)
+</code></pre>
+
+<code>['偶数', '奇数', '偶数', '奇数', '偶数', '奇数']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>読み慣れるまではかえってわかりにくいかもしれませんが、余分に書かれる <code>odd_even.append()</code> が無くなった分、すっきりしました。</p>
+</li>
+<li><p>内包表記は <strong class="func">.append()</strong> する前提ですでにリストの中で動作しています。</p></li>
+<li><p>追加どころか、もうすでに中に入ってますから使わないのも当然です。</p></li>
+
+<details class="sample-code"><summary></summary>このプログラムを参考に書いてみよう！
+	<iframe src="https://paiza.io/projects/e/BgSJFlPfqHcYZdI42fUV8w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c3" onclick="closeAccordion('c3-2')">for文 と if ～ else文</a>
+			</footer>
+	
+		</details>
+	
+	</article>
+
+	
+
+
+
+	<article>
+
+		<details id="c3-3"><summary>3.3 - for文 と if ～ else if ～ else文</summary>
+
+			<header>
+				<h3>for文 と if ～ else if ～ else文</h3>
+			</header>
+
+
+<ul>
+<li class="look">
+	<p class="inlook text-center">[<strong>値1</strong><strong class="if"></strong><strong style="color:darkmagenta">〔条件式&alpha;〕</strong>else <strong>値2</strong><strong class="if"></strong><strong style="color:darkolivegreen">〔条件式&beta;〕</strong>else <strong>値3</strong><br>
+		<strong class="for"></strong> i in イテラブル]</p>
+	<p><strong>値1</strong>は<strong class="b" style="color:darkmagenta">〔条件式&alpha;〕</strong>が <strong>True</strong> の時、<br>
+		<strong>値2</strong>は<strong class="b" style="color:darkolivegreen">〔条件式&beta;〕</strong>が <strong>True</strong> の時、<br>
+		<strong>値3</strong>は<strong class="b" style="color:darkolivegreen">〔条件式&beta;〕</strong>が <strong>False</strong> の時に選ばれます。</p>
+	<p>それを<strong class="for"></strong> の分だけ繰り返します。</p>
+</li>
+<p><strong class="if"></strong>文は、<strong class="for"></strong>文の<strong>前</strong>に置きます。<br>
+	elif ではなく、<mark>else 〔値〕<strong class="if"></strong></mark> になります。</p>
+<br>
+
+<li><p>すっかりお馴染みの Fizz Buzz を例に比較してみます。</p>
+	<p>従来の書き方</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fizzbuzz = []
+for i in range(1, 101):
+	if i % 3 == 0 and i % 5 == 0:
+		fizzbuzz.append('アホイヌ')
+	elif i % 3 == 0:
+		fizzbuzz.append('アホ')
+	elif i % 5 == 0:
+		fizzbuzz.append('イヌ')
+	else:
+		fizzbuzz.append(i)
+
+print(fizzbuzz)
+</code></pre>
+
+
+<code>[・・(略) 11, 'アホ', 13, 14, 'アホイヌ', 16 ・・(略)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>内包表記での書き方</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fizzbuzz = ['アホイヌ' if i % 3 == 0 and i % 5 == 0 else 'アホ' if i % 3 == 0 else 'イヌ' if i % 5 == 0 else i for i in range(1, 101)]
+print(fizzbuzz)
+</code></pre>
+
+<code>[・・(略) 11, 'アホ', 13, 14, 'アホイヌ', 16 ・・(略)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>横に長～～～～～くなってしまいましたね。💦</p>
+<p>目で追うのも大変です。</p>
+</li>
+<li><p>これが初めに言ったデメリットの１つです。</p></li>
+<li><p>これでは可読性が低すぎてどうしようもないので、従来の書き方で書くしかありませんね・・・。😿</p></li>
+<br>
+
+<li><p>いえいえ、あきらめたらそこでごはん終了です。</p>
+	<p>こういう時は、次のように書くこともできます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fizzbuzz = [
+	'アホイヌ' if i % 3 == 0 and i % 5 == 0 else
+	'アホ' if i % 3 == 0 else
+	'イヌ' if i % 5 == 0 else i
+	for i in range(1, 101)
+	]
+
+print(fizzbuzz)
+</code></pre>
+
+<code>[・・(略) 11, 'アホ', 13, 14, 'アホイヌ', 16 ・・(略)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+<li><p>どこで区切るかは書き手様々なのですが、おおむねこのように書くことができます。</p></li>
+<li><p>これなら安心してごはんを超速処理できますね。💨</p></li>
+<li><p>そしてこの書き方なら次のように解釈できると思います。</p>
+	<p><strong>「先頭の値は、次の条件文の判定結果が True の時に選ばれる値」</strong></p></li>
+<li><p>複雑な文法なので、工夫して何とかモノにしましょう！</p></li>
+
+<details class="sample-code"><summary></summary>上のプログラムを参考に書いてみよう！
+	<iframe src="https://paiza.io/projects/e/CozKvI-yTMX-gKn1DzG-aQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c3" onclick="closeAccordion('c3-3')">for文 と if ～ else if ～ else文</a>
+			</footer>
+	
+		</details>
+	
+	</article>
+
+
+
+
+	<article>
+
+		<details id="c3-4"><summary>3.4 - for文 と if文</summary>
+
+			<header>
+				<h3>for文 と if文</h3>
+			</header>
+
+
+<ul>
+	<li class="look">
+		<p class="inlook text-center">[<strong>値</strong><strong class="for" style="color:blue"> i in イテラブル</strong> <strong class="if" style="color:magenta">〔条件式〕</strong>]</p>
+		<p><strong class="if"></strong> の条件式が <strong>True</strong> の時だけ値を作ります。</p>
+		<p>条件式が <strong>False</strong> の時の値は無視されます。</p>
+	</li>
+<p>今度は<strong class="for"></strong>文の<strong>後ろ</strong>に、<strong class="if"></strong>文を置きます。</p>
+<p>「<strong style="color:blue">i</strong> をリストの値として作るでしょう。そう、<strong class="if" style="color:magenta"> True</strong>ならね。」</p>
+<br>
+
+<li><p>イテラブルから値を作る際の条件が加わったものです。</p></li>
+<li><p>たいていは<strong class="for"></strong>文の <code>i</code> を使って条件式を作り、その条件式が <strong>True</strong> の時に <code>i</code> を使って値を作るという書き方をします。</p>
+
+	<p>偶数の時に値を作る、従来の書き方</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">even_nums = []
+for i in range(10):
+	if i % 2 == 0:
+		even_nums.append(i)
+print(even_nums)
+</code></pre>
+
+
+<code>[0, 2, 4, 6, 8]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>内包表記での書き方</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">even_nums = [i for i in range(10) if i % 2 == 0]
+print(even_nums)
+</code></pre>
+
+<code>[0, 2, 4, 6, 8]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>とてもわかりやすいかと思います。</p>
+</li>
+
+
+<li><p>途中で『やっぱり else を使う～』となった時は、
+	<strong class="if"></strong>文を<strong class="for"></strong> の前に移動しないとエラーになってしまいますのでご注意を。</p>
+
+	<details class="sample-code"><summary></summary><strong class="if"></strong>を「奇数の場合」に変えて書いてみよう！
+		<iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+	</details>
+		
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c3" onclick="closeAccordion('c3-4')">for文 と if文</a>
+			</footer>
+	
+		</details>
+	
+	</article>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c3')">リスト内包表記</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+
+
+<section>
+
+	<details id="c4"><summary>Chatpter.4 - 辞書内包表記</summary>
+
+		<header>
+			<h2>辞書は内包表記より・・・</h2>
+		</header>
+
+
+
+
+	<article>
+
+		<details id="c4-1"><summary>4.1 - 辞書内包表記の使い方</summary>
+
+			<header>
+				<h3>辞書内包表記の使い方</h3>
+			</header>
+
+
+<ul>
+<li class="look">
+	<p class="inlook text-center">{<strong>キー: 値</strong> <strong class="for"></strong> i in <strong>イテラブル</strong>}</p>
+	<p class="inlook text-center">{<strong>キー: 値</strong> <strong class="for"></strong> key, value in <strong>二次元リスト等</strong>}</p>
+</li>
+
+<li><p>辞書は内包表記よりも <strong class="func">dict()</strong> を使うほうが便利です。</p></li>
+<li><p>ただし、まったく内包表記は使わないかというとそうでもありません。</p></li>
+<br>
+<li>
+	<p>筆頭に思いつく事と言えば「<strong>キーと値を入れ替える</strong>」時に内包表記を使います。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {'a': 97, 'b': 98, 'c': 99}
+swapped_dic = {v: k for k, v in dic.items()}
+print(swapped_dic)
+</code></pre>
+
+<code>{97: 'a', 98: 'b', 99: 'c'}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+	<p>値を 0 などに予め<strong>初期化する時</strong>も使います。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = ['ゆるめ', 'サエ', 'くみ', '松吉']
+names_money = {name: 0 for name in names}
+print(names_money)
+</code></pre>
+
+<code>{'ゆるめ': 0, 'サエ': 0, 'くみ': 0, '松吉': 0}</code><br>
+
+<details class="sample-code"><summary></summary>それぞれをコピペして試してみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-1')">辞書内包表記の使い方</a>
+			</footer>
+		
+		</details>
+		
+	</article>
+		
+
+
+
+
+	<article>
+
+		<details id="c4-2"><summary>4.2 - dict()</summary>
+
+			<header>
+				<h3>dict()</h3>
+			</header>
+
+
+<ul>
+<li class="look">
+	<p class="text-center"><strong>dict(イテラブル)</strong></p>
+	<p class="inlook text-center">dict(<strong>[</strong><strong style="color:blue">[</strong>キー1, 値1<strong style="color:blue">]</strong>, <strong style="color:blue">[</strong>キー2, 値2<strong style="color:blue">]</strong>, ・・<strong>]</strong>)</p>
+	<p class="inlook text-center">dict(<strong>[</strong><strong style="color:blue">(</strong>キー1, 値1<strong style="color:blue">)</strong>, <strong style="color:blue">(</strong>キー2, 値2<strong style="color:blue">)</strong>, ・・<strong>]</strong>)</p>
+	<p class="inlook text-center">dict(<strong>{</strong>キー1: 値1, キー2: 値2, ・・<strong>}</strong>)</p>
+	<p>キーと値のペアが１つの要素になっていれば辞書に変換できます。</p>
+</li>
+
+<li><p><strong class="func">dict()</strong>は既存のイテラブルを使って辞書を作るのに役立ちます。</p></li>
+<li><p><strong class="func">zip()</strong>の感じに似ていて、<strong class="func">dict()</strong>では<mark>(要素1, 要素2)</mark>のペアで辞書を作ります。</p></li>
+</ul>
+
+<ul>
+<li><p>まずは<strong class="func">dict()</strong>を<strong class="b">引数なし</strong>にすると、空の辞書が作られます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = dict()
+print(dic)
+</code></pre>
+
+
+<code>{}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これは <code>dic = {}</code> と書くのと同じです。</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>二次元リストから辞書に変換する</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">regions = [['北海道', 1], ['四国', 4], ['九州', 7]]
+dic = dict(regions)
+print(dic)
+</code></pre>
+
+<code>{'北海道': 1, '四国': 4, '九州': 7}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>最初のリストの各値の <mark>[要素1, 要素2]</mark> を使って <mark>{要素1: 要素2}</mark> を作っていきます。</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>２つのリストを使って辞書に変換する</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">regions = ['北海道', '四国', '九州']
+nums = [1, 4, 7]
+
+dic = dict(zip(regions, nums))
+print(dic)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 忘れてはならない<strong class="func">zip()</strong>の化け方
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">regions = ['北海道', '四国', '九州']
+nums = [1, 4, 7]
+
+dic = dict(&lt;zip object at 0x153265bb7c40&gt;)
+print(dic)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ こんなのでも引数としてふつうに使える
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">regions = ['北海道', '四国', '九州']
+nums = [1, 4, 7]
+
+dic = dict([('北海道', 1), ('四国', 4), ('九州', 7)])
+print(dic)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">regions = ['北海道', '四国', '九州']
+nums = [1, 4, 7]
+
+dic = {'北海道': 1, '四国': 4, '九州': 7}
+print(dic)
+</code></pre>
+
+<code>{'北海道': 1, '四国': 4, '九州': 7}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p><strong>辞書をコピーする</strong></p>
+	
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">regions = {'北海道': 1, '四国': 4, '九州': 7}
+
+dic = dict(regions)		# 辞書をコピー
+
+dic['東北'] = 6	 # コピーしたほうに新しい要素を作る
+print(dic)
+print(regions)
+</code></pre>
+
+<code>{'北海道': 1, '四国': 4, '九州': 7, '東北': 6}</code><br>
+<code>{'北海道': 1, '四国': 4, '九州': 7}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>辞書は<strong>可変(ミュータブル)</strong>なので、変数のままコピーできません。</p>
+<p>辞書をそのまま引数にして同じ値の辞書を新しく作り、それを代入します。</p>
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = dict(regions)		# 辞書をコピー
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {'北海道': 1, '四国': 4, '九州': 7}  # 値に化けて代入される
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-2')">dict()</a>
+			</footer>
+	
+		</details>
+	
+	</article>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c4')">辞書内包表記</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+
+
+
+<section>
+
+	<details id="c5"><summary>Chatpter.5 - その<ruby>総合評価<rt>エニーとオール</rt>はちょい使う</ruby></summary>
+
+		<header>
+			<h2>any()関数 と all()関数</h2>
+		</header>
+
+
+
+
+	<article>
+
+		<details id="c5-1"><summary>5.1 - any()</summary>
+
+			<header>
+				<h3>any()</h3>
+			</header>
+
+
+<ul>
+	<li><p><strong class="func">any()</strong> と <strong class="func">all()</strong> の ( ) の中でも<strong>内包表記</strong>がよく使われます。</p></li>
+	<li class="look">
+		<p class="inlook text-center"><strong>any(イテラブル)</strong></p>
+		<p>( ) 内に <strong>True</strong> がある時、<strong>True</strong> を返します。<br>
+			全ての要素を <strong>or</strong> で繋げて評価にかけるのと同じ考え方です。</p>
+	</li>
+
+<li><p>どういう事かと言うと、</p>
+
+	
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+if any(n % 2 == 0 for n in nums):
+	print('偶数が存在します')
+else:
+	print('奇数しかありません')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if any(n % 2 == 0 for n in [1, 2, 3, 4, 5]):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if any(False, True, False, True, False):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>True</code> が１つ以上ある
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+if True:
+	print('偶数が存在します')
+else:
+	print('奇数しかありません')
+</code></pre>
+
+<code>偶数が存在します</code><br>
+
+<details class="sample-code"><summary></summary>リストの要素をいじって試してみよう！
+  <iframe src="https://paiza.io/projects/e/LtCr5jFDxR1Ldx8MjsYy3g?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>( ) の中の値に <strong>True</strong> となるものが<strong>１つでもある場合</strong>に、<strong class="func">any()</strong>関数が <strong>True</strong> に化けます。</p>
+</li>
+</ul>
+
+
+
+		<footer>
+			<a class="backto" href="#c5" onclick="closeAccordion('c5-1')">any()</a>
+		</footer>
+	
+	</details>
+	
+</article>
+	
+
+
+<article>
+
+	<details id="c5-2"><summary>5.2 - all()</summary>
+
+		<header>
+			<h3>all()</h3>
+		</header>
+
+
+<ul>
+<li class="look">
+	<p class="inlook text-center"><strong>all(イテラブル)</strong></p>
+	<p>( ) 内のイテラブルの要素全てが <strong>True</strong> の時、<strong>True</strong> を返します。</p>
+	<p>１つでも <strong>False</strong> がある場合は <strong>False</strong> を返します。<br>
+	全ての要素を <strong>and</strong> で繋げて評価にかけるのと同じ考え方です。</p>
+</li>
+
+<li><p>これもどういう事かと言うと、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 2, 4, 8, 16]
+if all(n % 2 == 0 for n in nums):
+    print('すべてが偶数です')
+else:
+    print('奇数が混ざっています')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if all(n % 2 == 0 for n in [0, 2, 4, 8, 16]):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if all(True, True, True, True, True):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ イテラブルの要素が全て <code>True</code>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 2, 4, 8, 16]
+if True:
+    print('すべてが偶数です')
+else:
+    print('奇数が混ざっています')
+</code></pre>
+
+<code>すべてが偶数です</code><br>
+
+<details class="sample-code"><summary></summary>リストの要素をいじって試してみよう！
+  <iframe src="https://paiza.io/projects/e/2Ns5pnO301SoE5UEIpzzCg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>( ) の中の値が全て <strong>True</strong> のとき</strong>だけ、<strong class="func">all()</strong>関数が <strong>True</strong> に化けます。</p>
+</li>
+</ul>
+
+<ul>
+	<li><p>頻繁に使う関数ではありませんが、これらの関数の機能を知っておくとプログラムが簡潔に書けるようになったりする・・・のはどの関数やメソッドでも同じですね。😸</p></li>
+	<li><p>多くの方法を知ってラクをしましょう！</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c5" onclick="closeAccordion('c5-2')">all()</a>
+			</footer>
+
+		</details>
+
+	</article>
+
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c5')">その総合評価はちょい使う</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+
+
+<section>
+
+	<details id="c6"><summary>Chatpter.6 - その他使える内包表記</summary>
+
+		<header>
+			<h2>内包表記をさがせ</h2>
+		</header>
+
+
+
+
+	<article>
+
+		<details id="c6-1"><summary>6.1 - print() の中にいる</summary>
+
+			<header>
+				<h3>print() の中にいる</h3>
+			</header>
+
+
+<ul>
+<li><p>Chatpter.1 で紹介した例を、もう一度書きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 10
+print('偶数' if n % 2 == 0 else '奇数')  # ← これ
+</code></pre>
+
+<code>偶数</code><br>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+<br>
+</li>
+
+<li><p><strong class="for"></strong>文が無くなっただけで、書き方はこれまでと変わりはありません。</p></li>
+<li><p><strong>内包表記</strong>は、どこで使ってもパターンは一緒です。</p></li>
+</ul>
+
+<ul>
+<li><p>リストの要素を、縦に表示することもできます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = ['ゆるめ', 'サエ', 'くみ', '松吉']
+print(name for name in names)
+</code></pre>
+
+<code>&lt;generator object &lt;genexpr&gt; at 0x154e7876dac0&gt;</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>なん……………………だと………………!!</p>
+</li>
+
+<li><p>これは「<strong class="b">ジェネレータ</strong>」と言って、<strong class="func">zip()</strong>の戻り値のような罠の１つです。</p></li>
+<li><p>この罠は解除せず、回避します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = ['ゆるめ', 'サエ', 'くみ', '松吉']
+[print(name) for name in names]
+</code></pre>
+
+<code>ゆるめ</code><br>
+<code>サエ</code><br>
+<code>くみ</code><br>
+<code>松吉</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>しかしこの書き方には注意が必要です。</p></li>
+<li><p>詳しい説明は省きますが、先に全てのデータを作ってから出力していきますので、データの大きさによってはメモリ領域に負荷をかけてしまいますし、データの作成が終わるまで待っていなければなりません。</p></li>
+<br>
+<li><p>この場合、素直にこうします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = ['ゆるめ', 'サエ', 'くみ', '松吉']
+for name in names:
+	print(name)
+</code></pre>
+
+<code>ゆるめ</code><br>
+<code>サエ</code><br>
+<code>くみ</code><br>
+<code>松吉</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>やだよ・・・・・。😟</p>
+</li>
+<br>
+<li><p>そんな🤬には、この方法が簡単でおすすめです。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">names = ['ゆるめ', 'サエ', 'くみ', '松吉']
+print(*names, sep='\n')
+</code></pre>
+
+<code>ゆるめ</code><br>
+<code>サエ</code><br>
+<code>くみ</code><br>
+<code>松吉</code><br>
+
+<details class="sample-code"><summary></summary>それぞれをコピペして試してみよう！
+	<iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p><strong>内包表記</strong>がどっか行ってしまいましたけど、<strong class="for"></strong>文で出力するより<strong class="func">print()</strong>の持つ機能を使うほうが賢明のようです。</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c6" onclick="closeAccordion('c6-1')">print() の中にいる</a>
+			</footer>
+		
+		</details>
+		
+	</article>
+		
+
+
+
+
+	<article>
+
+		<details id="c6-2"><summary>6.2 - 代入式にいる</summary>
+
+			<header>
+				<h3>代入式にいる</h3>
+			</header>
+
+
+<ul>
+<li><p>簡単に四捨五入をしてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num = 1.7320508
+int_num = int(num) + (1 if num*10 % 10 >= 5 else 0)
+print(int_num)
+</code></pre>
+
+
+<code>2</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>小数第一位で四捨五入する例です。内包表記の部分は、</p>
+<p>「<code>num</code> の値を 10倍してから 10 で割った余り(一の位)が 5 以上の時には 1 、それ以外の時には 0 」(を足す)ということをしている文です。</p>
+<br>
+<li><p>このような、単に結果の値が 1 か 0 かだけの場合は、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num = 1.7320508
+int_num = int(num) + (num*10 % 10 >= 5)
+print(int_num)
+</code></pre>
+
+
+<code>2</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>と条件式だけにすれば、<strong>True</strong> か <strong>False</strong> が 1 か 0 に変換されます。</p>
+</li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c6" onclick="closeAccordion('c6-2')">代入式にいる</a>
+			</footer>
+	
+		</details>
+	
+	</article>
+
+
+
+	<article>
+
+		<details id="c6-3"><summary>6.3 - while文にいる</summary>
+
+			<header>
+				<h3>while文にいる</h3>
+			</header>
+
+
+<ul>
+<li><p><strong class="while"></strong> の横にいる条件式でも<strong>内包表記</strong>が扱えます。</p></li>
+<li><p>これは主にリストの値をこの場で評価するという時に使います。</p>
+<p><strong>リストの値がすべて「偶数」の時にループする</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [10, 50, 100, 500]
+while all(num%2 == 0 for num in nums):
+	nums = [num // 2 for num in nums]
+print(nums)
+</code></pre>
+
+
+<code>[5, 25, 50, 250]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>nums</code> の各要素の値の計算結果が評価にかけられ、<strong>True</strong> か <strong>False</strong> に順に化けていき、全ての要素の値が <strong>True</strong> になった時に<strong class="func">all()</strong>が <strong>True</strong> を返してループします。</p>
+<p>１つでも奇数があると、そこでループを抜けます。</p>
+<br>
+<li><p>「<strong class="while"></strong>文で使う 」と言うより、これは<strong class="func">any()</strong>と<strong class="func">all()</strong>の恩恵なのですが。😓</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c6" onclick="closeAccordion('c6-3')">while文にいる</a>
+			</footer>
+	
+		</details>
+	
+	</article>
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c6')">その他で使える内包表記</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+		<p>内包表記</p>
+</footer>
+
+
+
+</body>
+</html>

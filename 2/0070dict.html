@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>辞書型</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>辞書型</h1>
+  <p><ruby>仔猫<rt>値</rt>に名前を付けて愛でることができるようになります👍</ruby></p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 辞書とは</summary>
+
+    <header>
+      <h2>辞書とは</h2>
+    </header>
+
+
+<ul>
+    <li class="look"><p class="inlook text-center">{キー1: 値, キー2: 値, ・・・}</p>
+        <p><ruby>一意<rt>いちい</rt></ruby>の<strong>キー</strong>と<strong>、そのキーが持つ値</strong>をペアとしたデータ構造です。😺❓</p>
+    </li>
+
+<li>
+  <p>こんな風に書きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>'一穂': 24</code> で１つの<strong>要素</strong>となっています。</p>
+</li>
+<br>
+
+<li><p>要素とは言いますが、リストとは違って<strong>要素番号はありません。</strong></p></li>
+<li><p>辞書の場合は要素番号の代わりに「<strong class="special">キー</strong>」で値を扱います。そのため、</p></li>
+
+  <li class="warning">
+    <p><strong>キー</strong>は一意でなければならず、<strong>キー</strong>の<ruby>重複<rt>ちょうふく</rt></ruby>を許しません。</p>
+  </li>
+
+<li><p>１つの辞書の中に、２つ以上の同じキーがあってはいけませんということです。</p></li>
+<li><p>リストの要素番号も 0 から順に一意の番号が振られていました。それと同じです。</p></li>
+<li><p>要するに、<strong>リストでは見えなかった要素番号を見えるようにしたもの</strong>が辞書の<strong>キー</strong>です。</p></li>
+<li><p>その上、数値だけでなく、文字列なども使えますし、何より順番が決まっていません。</p></li>
+<li><p>とても自由度が高いです。</p></li>
+<li><p>リストの場合は要素番号で管理しているために、求める値がどこにあるかを把握していないとわかりませんでした。</p></li>
+<li><p>辞書の場合は、添字に<strong>キー</strong>を指定するだけで、求める値がどこにあっても見つけることができます。</p></li>
+<li><p>ちょっとしたデータベースです。(じゅうぶん立派です)</p></li>
+<br>
+<li><p>辞書は <code>{ }</code> の中に <code>キー: 値</code> をペアに、カンマ <code>,</code> で区切って入れていきます。</p></li>
+<li><p><code>キー</code> と <code>値</code> の間にコロン <code>:</code> をはさみます。</p></li>
+</ul>
+
+
+<ul>
+<li>
+  <p>まだよく意味がわからないと思います。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>を例に説明すると、</p>
+</li>
+
+<li><p><code>'一穂'</code> は、<code>24</code> という値を持っている。</p>
+  <p><code>'ひかげ'</code> は、<code>16</code> という値を持っている。</p>
+  <p><code>'れんげ'</code> は、<code>7</code> という値を持っている。</p>
+</li>
+
+<li>
+  <p>一応それぞれの値は年齢を指しているつもりですが、各キーから値を見てみると、</p>
+            
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+
+sisters_age1 = profiles['一穂']  # ← 添字が独特
+sisters_age2 = profiles['ひかげ']
+sisters_age3 = profiles['れんげ']
+
+print(sisters_age1)
+print(sisters_age2)
+print(sisters_age3)
+</code></pre>
+
+<code>24</code><br>
+<code>16</code><br>
+<code>7</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/8e4TjVH6hWu2glIocwHP9Q?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+                
+</li>
+
+<li><p>リストの要素番号が、そのまま<strong>キー</strong>に置き換わっただけです。</p></li>
+<li><p>「値を見る」だけなら、添字の所を<strong>キー</strong>にするだけなので扱いは簡単かと思います。</p></li>
+<li><p>それ以外のほとんどがリストとは異なりますので、リストとは別に新しく学ぶことになります。</p></li>
+</ul>
+
+<ul>
+  <li><p>「辞書」のことを、もともとは『<ruby><strong class="special">連想配列</strong><rt>れんそうはいれつ</rt></ruby>』と言います。</p></li>
+  <li><p>Pythonでは「<strong>辞書</strong>」と言っていますが、同じものです。</p></li>
+  <li><p>ここでも Python流に倣って「<strong>辞書</strong> <em>(辞書型)</em>」という言葉を使っていきます。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">辞書とは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+  <details id="c2"><summary>Chatpter.2 - なんで辞書を使うの？</summary>
+
+    <header>
+      <h2>なんで辞書を使うの？</h2>
+    </header>
+
+
+<ul>
+<li>
+  <p>こんな風に使えて便利だから！！！ (リストの時の真似)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+
+for name, age in profiles.items():
+    print(name + ':', age)
+</code></pre>
+
+<code>一穂: 24</code><br>
+<code>ひかげ: 16</code><br>
+<code>れんげ: 7</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/ICj6yjAEyy4fC61NXVC7Kg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong class="func">.items()</strong>メソッドの機能説明は、２章の「辞書を使いこなす機能一覧」でします。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>キー、値の片方だけでも forで利用できる！</p>
+  <p><strong>キー</strong>だけ</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+
+for name in profiles.keys():
+    print(name + ': secret')</code></pre>
+
+<code>一穂: secret</code><br>
+<code>ひかげ: secret</code><br>
+<code>れんげ: secret</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/8H0_AwntNGCe_lurZxQVJg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br><br>
+<p><strong>値</strong>だけ</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+
+for age in profiles.values():
+    print('secret:', str(age) + '才')</code></pre>
+
+<code>secret: 24才</code><br>
+<code>secret: 16才</code><br>
+<code>secret: 7才</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/_iYmQuv5t2__jeImFjD4-A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>キーの型は統一されてなくても全然イケる！<br>
+      (こんな使い方はしませんけど)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'長女': '一穂', 16: 'ひかげ', ('れんげ', 7): '小学一年生'}
+
+for key, value in profiles.items():
+    print(key , ':', value)</code></pre>
+
+<code>長女 : 一穂</code><br>
+<code>16 : ひかげ</code><br>
+<code>('れんげ', 7) : 小学一年生</code><br>
+↑ リストをキーにすることはできません。タプルはOK！
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/TtjftUAintlTz9UosussgA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>もちろん値の変更もできる！！！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+
+for name in profiles.keys():
+    profiles[name] += 1
+
+for name, age in profiles.items():
+    print(name + ':', age)
+</code></pre>
+
+<code>一穂: 25</code><br>
+<code>ひかげ: 17</code><br>
+<code>れんげ: 8</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/sSyH836lwutdUM7c59rgxQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>もろちん<s>上京</s>要素を取り除いたりすることもできる！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'ひかげ': 16, 'れんげ': 7}
+del profiles['ひかげ']
+print(profiles)
+</code></pre>
+
+<code>{'一穂': 24, 'れんげ': 7}</code>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/XpeBSfOglHPKOHccNPX9zQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>もちろん<s>里帰り</s>要素の追加もできる！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24, 'れんげ': 7}
+profiles['ひかげ'] = 16  # 代入っぽくキーに値を入れると辞書に追加できる
+print(profiles)
+</code></pre>
+
+<code>{'一穂': 24, 'れんげ': 7, 'ひかげ': 16}</code><br>
+<p>※ 並び順は要素の追加順になります。</p>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/m_YIlj7BiWD6k4Qz-HZXpQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p>初めのうちは使い慣れなくて抵抗あるかもしれません。</p></li>
+  <li><p>でも便利さがわかると、むしろリストのほうがめんどくさく感じるようになったりならなかったり？</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">なんで辞書を使うの？</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - リストにできて辞書にできないこと</summary>
+
+    <header>
+      <h2>リストと辞書は根本から別物なので仕方がない</h2>
+    </header>
+
+
+<ul>
+  <li class="look">
+    <ol>
+      <p class="text-center"><strong class="b">リストと辞書の相違点</strong></p>
+
+      <li><p><strong>順序の有無：</strong> リストは順序を持っており、要素は順番に配置されています。一方で、辞書は順序が保証されていません。(※)</p></li>
+
+      <li><p><strong>要素へのアクセス方法：</strong> リストでは要素番号を使用して要素にアクセスしますが、辞書ではキーを使用して値にアクセスします。</li>
+
+      <li><p><strong>重複する値の扱い：</strong> リストでは同じ値の要素を複数回持つことができますが、辞書は同じキーの要素を複数回持つことができません。キーは一意でなければなりません。</p></li>
+
+      <li><p><strong>変更可能性：</strong> リストは可変（mutable）であり、要素の追加、変更、削除が可能です。一方で、辞書も可変ですが、キーは不変（immutable）でなければなりません。</p></li>
+
+      <li><p><strong class="b">リテラル表現の違い：</strong> リストは角括弧 [] を使用して表現されますが、辞書は波括弧 {} を使用します。</p></li>
+    </ol>
+    <p class="text-right"><em>&lt; ChatGPT の回答を一部加筆修正 &gt;</em></p>
+  </li>
+
+  <li><p>もう少し説明すると、</p></li>
+  <ol>
+    <li>実はPythonは今でも進化し続けています。<br>
+      その途中で辞書にも「(※)順序の保証」が加えられました。<br>
+      これによって<strong class="for"></strong>文でも安心して辞書の順番どおりに処理を行うことができます。<br>
+      以前は順番がめちゃめちゃで使いにくかったのです。😓<br>
+      ただし、この順序は辞書への追加順です。<br>
+    <li>要素番号がキーに置き換わっただけです。<br>
+      この理由によってリストでは勝手に各要素に順に番号が振られていたものを、辞書では自分で全ての要素に名前をつけなければなりません。それが「<strong>キー</strong>」なのです。<br>
+      逆に、名前を自分でつけられることによって値へのアクセスの自由度が生まれます。<br>
+      ちなみに、キーを数値にすると <code>lst[0]</code> <code>dic[0]</code> と、見た目が変わらなくなります。<br>
+      ただし順序がないのでスライスは使えません。</li>
+    <li>平たく言うと、キーは「ID」です。同じIDが複数あってはいけません。同じ見た目の双子でも、それぞれ個人として別々の意識を持っているのと同じです。</li>
+    <li>可変・不変はタプルをやるときに説明します。<br>
+      キーは一度「これ！」と決めたら途中で何があっても変わらない<strong>変更不可能な型</strong>でないとダメですということです。〇ギとダ〇みたいなことは絶対に許されません。</li>
+    <li>意味はあるのですが、この場での説明は割愛します。</li>
+  </ol>
+  <br>
+  <li><p>このような感じで決してダメな子というわけではないんです。</p></li>
+  <li><p>リストの [ ] と 辞書の { } は、まったくの別物なんです。</p></li>
+
+</ul>
+
+
+<ul>
+<li>
+<p>なので、すでにあるキーを新しく<strong class="b">追加</strong>することはできないんです。❌<br>
+(3. 重複する値の扱い)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comics = {'にゃんにゃんびより': 1}
+comics['にゃんにゃんびより'] = 2
+print(comics)
+</code></pre>
+
+<code>{'にゃんにゃんびより': 2}</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/U-iziRfih6TPdl3vO4NasA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>このように<strong>値が(要素ごと)上書きされてしまいます。</strong></p>
+</li>
+
+<li><p><strong>キー</strong>は、必ず<strong>一意</strong>でなければなりません。</p></li>
+</ul>
+
+<ul>
+<li><p>この現象によって不都合があるとすれば、</p>
+<p><strong>「キーがあれば値を足す。無ければ要素を追加する。」</strong></p>
+これがわりとめんどくさいんです。</p>
+<p>もう、見るからに<strong class="b">条件分岐</strong>してますしね。😅</p>
+</li>
+<br>
+
+<li>
+  <p>✅ すでにあるキーの値に足し算してみます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comics = {'にゃんにゃんびより': 1}
+comics['にゃんにゃんびより'] += 1
+print(comics)
+</code></pre>
+
+<code>{'にゃんにゃんびより': 2}</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これは問題がありません。<br>
+  すでにキーがあり、その値に 1 を足すことができます。</p>
+</li>
+<br>
+
+<li>
+  <p><strong>存在しないキー</strong>には値を足しようがないので、エラーになります。❌</p>
+
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comics = {}  # 空の辞書
+comics['にゃんにゃんびより'] += 1
+print(comics)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    comics['にゃんにゃんびより'] += 1
+KeyError: 'にゃんにゃんびより'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>エラーメッセージがシンプルすぎますね。</p>
+<p>「このキーは存在しないよ」ということです。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>解決法は主に２つあります。</p></li>
+<br>
+<li>
+  <p><strong>✅ if文で判別する方法。</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comics = {}  # 空の辞書
+print(comics)  # 空の辞書を出力
+
+title = 'にゃんにゃんびより'
+for i in range(3):
+    if title in comics:  # キーが辞書にあったら、
+        comics[title] += 1  # キーが持つ値に 1 を足す
+    else:
+        comics[title] = 1  # 初期値 1 で要素を追加する
+   
+    print(comics)
+</code></pre>
+
+  <div class="grid-output">
+      <code>{}</code><span>← 最初は空</span>
+      <code>{'にゃんにゃんびより': 1}</code><span>if は False</span>
+      <code>{'にゃんにゃんびより': 2}</code><span>if は True</span>
+      <code>{'にゃんにゃんびより': 3}</code><span>if は True</span>
+  </div>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/5RN_j-yWwY0tXYozWWvAVw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+  
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br><br>
+<li>
+  <p><strong>✅ 難しい構文で短く書く方法。</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comics = {}  # 空の辞書
+print(comics)  # 空の辞書を出力
+
+title = 'にゃんにゃんびより'
+for i in range(3):
+    comics[title] = comics.get(title, 0) + 1
+   
+    print(comics)
+</code></pre>
+
+  <div class="grid-output">
+      <code>{}</code><span>← 最初は空</span>
+      <code>{'にゃんにゃんびより': 1}</code><span>初期値 0 で新しく要素が作られて、その値に 1 を足す</span>
+      <code>{'にゃんにゃんびより': 2}</code><span>1 を足す</span>
+      <code>{'にゃんにゃんびより': 3}</code><span>1 を足す</span>
+  </div>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/W5vrC4NSTSzn4j7lppN3Kw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><code>comics.get(title, 0) + 1</code> が、if文の代わりです。</p>
+<p><strong class="b">comics</strong>(辞書)の中に <strong class="b">title</strong>(キー)がなかったら、<code>comics[title] = 0</code> で要素を新しく作り、
+  あったらそのキーの値に 1 を足す <code>comics[title] += 1</code> しますといった具合です。</p>
+</li>
+
+<li><p><strong>.get()</strong> は、辞書型のメソッドです。</p>
+<p>このメソッドの紹介はまた今度に。</p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>あと、こんなことすらできません。❌</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24} + {'ひかげ': 16, 'れんげ': 7}
+print(profiles)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 1, in &lt;module&gt;
+    profiles = {'一穂': 24} + {'ひかげ': 16, 'れんげ': 7}
+TypeError: unsupported operand type(s) for +: 'dict' and 'dict'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>{辞書} + {辞書} はちょっとむり。すまんぬ。</p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>✅ 辞書の接続はこうします！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24}
+profiles.update({'ひかげ': 16, 'れんげ': 7})
+print(profiles)
+</code></pre>
+
+<code>{'一穂': 24, 'ひかげ': 16, 'れんげ': 7}</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/ZF9fWCpEEUcr0vneSYtcVg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>いちいちこんなことしないとくっつけられないのかと思うかもしれないけど、そもそも辞書と辞書をくっつけること自体、あんまりしないかも？</p>
+</li>
+</ul>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">リストにできて辞書にできないこと</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 -  ぼくたちは代入ができない ２期</summary>
+
+    <header>
+      <h2>辞書も変数のまま代入できうぇい系</h2>
+    </header>
+
+
+<ul>
+<li><p>おさらい</p></li>
+  <li class="look">
+    <p class="text-center"><code>変数2 = 変数1</code></p>
+    <p>このやり方を「<strong>コピー</strong><em>(copy)</em>」または「<strong>値のコピー</strong>」と言います。</p>
+  </li>
+
+
+<li>
+  <p>変数のまま <code>変数2</code> に <code>変数1</code> を代入する(コピーする)ことが、</p>
+
+<table>
+<thead>
+<tr>
+  <th class="text-center">できる！</th>
+  <th class="text-center">できない！</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="text-center"><strong>str</strong></td>
+  <td class="text-center"><strong>list</strong></td>
+</tr>
+<tr>
+  <td class="text-center"><strong>int</strong></td>
+  <td class="text-center"><strong class="blink-text">dict</strong></td>
+</tr>
+<tr>
+  <td class="text-center">tuple</td>
+  <td class="text-center">set</td>
+</tr>
+</tbody>
+</table>
+
+<p><small>※ まだ学んでいない型は細字になっています。</small></p>
+</li>
+</ul>
+
+<ul>
+  <li><p>辞書もリストと同様に、スライスで解決させたいところですが、辞書はスライスが使えません。</p></li>
+  <li><p>今のところは <strong class="func">dict()</strong> という関数がありますので、これを使いましょう。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p><strong class="func">dict()</strong> 関数でコピーする。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = {'一穂': 24}
+new_profs = dict(profiles)
+print(new_profs)
+
+new_profs['一穂'] = '長女'
+print(new_profs)
+print(profiles)
+</code></pre>
+
+  <div class="grid-output">
+    <code>{'一穂': 24}</code>← コピー直後 の new_profs<br>
+    <code>{'一穂': '長女'}</code>← 書き換えた方の new_profs<br>
+    <code>{'一穂': 24}</code>← コピー元の profiles<br>
+  </div>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/MdPdIgCrk6cn2xEataecDg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+  
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p>けど、辞書をコピーすること自体がほとんど無いかと思います。💦</p></li>
+</ul>
+
+<ul>
+  <li><p>今回は実際に入力してみることはしませんでしたが、辞書は慣れるまで扱いがむずかしいと思います。</p></li>
+  <li><p>まずはキーや値をおそるおそる変えてみて、自分で書いた気になってみましょう！😸</p></li>
+</ul>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">ぼくたちは代入ができない ２期</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>辞書型</p>
+</footer>
+</body>
+</html>

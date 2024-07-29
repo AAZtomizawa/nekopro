@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>文字列の操作を使いこなす機能一覧</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+    <h1>文字列の操作を使いこなす機能一覧</h1>
+    <p></p>
+</header>
+
+
+
+<main>
+
+
+    
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 文字列とリストとの違い</summary>
+
+    <header>
+      <h2>文字列の特徴</h2>
+    </header>
+
+
+<ul>
+<li><p>文字列は <code>'</code> や <code>"</code> で囲われた文字列が<strong>１つの値</strong>になります。</p></li>
+<li><p>リストのほうは「要素」が０個以上の集まりになっていて、「要素の値」を書き換えることが出来ます。</p></li>
+<li><p>文字列は、<strong>値の一部分だけを指定して書き換えることはできません。</strong></p></li>
+<br>
+
+<li>
+  <p>文字列の一部分を書き換えようとすると・・・</p>
+    
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">name = '天使のぼる'  # 誰？
+name[3] = 'え'  # 'ぼ' を 'え' に書き換える
+print(name)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    name[3] = 'え'  # 'ぼ' を 'え' に書き換える
+TypeError: 'str' object does not support item assignment
+</code></pre>    
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>リストと同じやり方で書き換えようとしてもエラーが出てしまいます。</p>
+</li>
+<li>
+  <p>一部分を書き換える代わりに、変数の値をまるごと更新します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">name = '天使のぼる'
+name = '天使のえる'  # 値をまるごと新しくする
+print(name)
+</code></pre>
+
+<code>天使のえる</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  <li><p>どうしてもリストみたいに値の一部分だけを書き換えたい場合、Chatpter.5 の中の「文字列の一部分だけを書き換える」でそのやり方を紹介します。</p></li>
+  <li><p>また、特定の文字を別の文字にゴッソリ書き換えたい時などは「Chatpter.2 - メソッド」の <strong class="func">.replace() </strong>で書き換えることも出来ます。</p></li>
+  <li><p>しかし、文字列はリストのような柔軟さはありません。</p></li>
+  <li><p>必ず決まったルールの下で扱うことになります。</p></li>
+  <li><p>リストよりも単純に見えて、何かしようとすると制限が多くて扱いにくいのが文字列の難点です。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">文字列とリストとの違い</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+    <details id="c2"><summary>Chatpter.2 - メソッド</summary>
+
+        <header>
+            <h2>メソッドとは</h2>
+        </header>
+
+
+<ul>
+  <li><p><strong class="b">int()</strong> や <strong class="b">print()</strong> みたいな関数の「<strong>文字列型 <em>(str)</em> 専用版</strong>」です。</p></li>
+  <li><p><code>変数.メソッド</code> のような書き方をして使います。</p></li>
+  <li><p>リスト型と違って、文字列型のメソッドは関数と同じ形で、最後は値に化けます。</p></li>
+  <li>
+    <p>なので、変数に代入して使うことになります。</p>
+
+    <table id="table_method">
+    <thead>
+    <tr>
+      <th class="text-center">メソッド</th>
+      <th class="text-center">( ) の中身</th>
+      <th class="text-center">機能</th>
+      <th class="text-center">なかったら</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-count" onclick="openAccordion('-count')">count()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">( ) 内の文字がいくつあるかを数える</td>
+      <td class="text-center"><code>0</code></td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-find" onclick="openAccordion('-find')">find()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">( ) 内の文字がある位置の位置番号を取得する。</td>
+      <td class="text-center"><code>-1</code></td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-find" onclick="openAccordion('-find')">rfind()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">find() は左から、rfind() は右から調べる</td>
+      <td class="text-center"><code>-1</code></td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-index" onclick="openAccordion('-index')">index()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">find() と 同じ</td>
+      <td class="text-center"><strong>エラー</strong></td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-index" onclick="openAccordion('-index')">rindex()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">rfind() と 同じ</td>
+      <td class="text-center"><strong>エラー</strong></td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-lower" onclick="openAccordion('-lower')">lower()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">( ) 内のアルファベットを、全部小文字にする</td>
+      <td class="text-center">変化なし</td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-lower" onclick="openAccordion('-lower')">upper()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">( ) 内のアルファベットを、全部大文字にする</td>
+      <td class="text-center">変化なし</td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-replace" onclick="openAccordion('-replace')">replace()</a></td>
+      <td class="text-center">現文字, 新文字</td>
+      <td class="text-left">現文字を新文字に全て置き換える</td>
+      <td class="text-center">変化なし</td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-split" onclick="openAccordion('-split')">split()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">( ) 内の文字の所で<strong>左から</strong>区切って、リストに変換する</td>
+      <td class="text-center"><code>['']</code></td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-split" onclick="openAccordion('-split')">rsplit()</a></td>
+      <td class="text-center">文字</td>
+      <td class="text-left">( ) 内の文字の所で<strong>右から</strong>区切って、リストに変換する</td>
+      <td class="text-center"><code>['']</code></td>
+    </tr>
+    </tbody>
+    </table>
+
+    <p>※ 文字列型 <em>(<strong>str</strong>)</em> のメソッドは他にもいろいろあります。憶えるのが大変！<br>
+        ※ リストと違って「要素」ではなく「<strong>位置</strong>」という言葉に置き換えてますが、同じように考えて大丈夫です。</p>
+  </li>
+</ul>
+
+
+    <article>
+
+        <details id="column"><summary>【 コラム 】 - 「位置」についての追加説明</summary>
+
+            <header>
+                <h3>「位置」について</h3>
+            </header>
+
+
+<ul>
+<li>
+  <p>要素の場合は、その中の値がどんなに大きな数であっても、どんなに長い文字列であっても「１つの要素」です。<br>
+  <code>[0, float('inf'), '黒猫', '俺の美コードがこんなに見にくいわけがない']</code><br>
+  → 要素(値)は４つ</p>
+  <p>リストの「要素」は、そのリストの中の「左から何要素目」と１要素(値)ずつ数えます。</p>
+</li>
+<li><p>文字列の場合は、どんなに長い文字列であっても「１つの値」です。<br>
+  <code>'寿限無寿限無五劫の擦り切れ回砂利水魚の・・・'</code><br>
+  → 22文字だけど、値は１つ</p>
+  <p>文字列の「位置」は、その値の中の「左から何文字目」と、0文字目から１文字ずつ数えます。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>前回の Chatpter.5 でも触れましたが、</p>
+
+ <!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = ['絶対', '運命', '黙示録']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+                
+  <p>の場合、リストは <code>'絶対'</code> <code>'運命'</code> <code>'黙示録'</code> で、要素数は「3」です。<br>
+      それぞれの要素の値の文字数は、「2(文字)」「2(文字)」「3(文字)」です。</p>
+</li>
+
+  <p class="inlook">要素0 の、左から 0番目の位置の文字は <code>絶</code> となります。words[0][0]</p></li>
+  <p class="inlook">要素2 の、左から 1番目の位置の文字は <code>示</code> となります。words[2][1]</p></li>
+
+<li><p>でも考え方は、要素でも位置でも<strong>「左から何番目」</strong>ということです。</p></li>
+<li><p>要素、位置のどちらの添字も <code>[0]</code> というように [ ] 書きで書かれます。</p></li>
+<li><p>なので<strong class="b">リストの場合の「要素」</strong>を、<strong class="b">文字列の場合の「位置」</strong>という言葉に置き換えても添字の書き方は同じで、やり方も同じということになります。</p></li>
+
+</ul>
+
+
+            <footer>
+                <a class="backto" href="#table_method" onclick="closeAccordion('column')">【 コラム 】 - 「位置」についての追加説明</a>
+            </footer>
+
+        </details>
+
+    </article>
+
+
+
+    <article>
+
+        <details id="-count"><summary>.count()</summary>
+
+            <header>
+                <h3>.count(引数)</h3>
+            </header>
+
+
+<ul>
+<li>
+  <p>引数の文字が文字列にいくつあるかを数えます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'ボベボーバ・ボーブビ'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = title.count('ボ')
+print(cnt)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = 3       # 'ボ' が３個見つかった
+print(cnt)
+</code></pre>
+
+<code>3</code><br>
+
+<details class="sample-code"><summary></summary>何度も実行して、動きを確認してみてください！
+  <iframe src="https://paiza.io/projects/e/oAa8lyCi7dR-X5E8OQRbHQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>試しにいろいろいじくりまわしてみましょう！<br>
+  めちゃくちゃになって戻せなくなってしまったら、そっと『閉じる』を押しましょう。😹</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-count')">.count()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-find"><summary>.find() .rfind()</summary>
+
+      <header>
+        <h3>.find(引数)</h3>
+      </header>
+
+
+<ul>
+<li><p>引数の文字列がある位置の先頭の位置番号に化けます。</p></li>
+<li>
+  <p>複数ある場合は、左から探して最初に見つかった位置の位置番号に化けます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'Re:ゼロから始めるfind検索'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = title.find('find')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = 10      # find の 'f' の位置の位置番号に化ける
+print(idx)
+</code></pre>
+
+<code>10</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>検索文字が複数含まれている時</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'find:ゼロから始めるfind検索'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = title.find('find')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = 0    # 左の find がヒットする
+print(idx)
+</code></pre>
+
+<code>0</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>見つからなかった時</p>
+
+                    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = title.find('イチ')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = -1
+print(idx)
+</code></pre>
+
+<code>-1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  実際に動かして見てみよう！
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/K6XuPCjDpx6CcC73GJvExw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+
+</ul>
+
+
+    <header>
+        <h3>.rfind(引数)</h3>
+    </header>
+
+
+<ul>
+<li><p>引数の文字列がある位置の先頭の位置番号に化けます。</p></li>
+<li><p>複数ある場合は、<strong>右</strong>から探して最初に見つかった位置の<strong>位置番号</strong>に化けます。</p></li>
+<li>
+  <p>右から探しても、引数の文字列の先頭の位置が位置番号となって化けます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'Re:シリから始めるfind検索'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = title.rfind('find')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = 10     # 位置番号なので find() の時と位置は同じ
+print(idx)
+</code></pre>
+
+    <div class="grid-output">
+        <code>10</code><span>← <strong>'f'</strong> の位置の位置番号</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>検索文字が複数含まれている時</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'rfind:シリから始めるfind検索'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = title.rfind('find')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = 13    # 右の find がヒットする
+print(idx)
+</code></pre>
+
+<code>13</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>見つからなかった時</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'Re:シリから始めるfind検索'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = title.rfind('ゼロ')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">idx = -1
+print(idx)
+</code></pre>
+
+<code>-1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  実際に動かして見てみよう！
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/nBj8F4x4uDuoz2Si46KpBw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+
+</ul>
+
+<ul>
+  <li><p>リスト型には .find() .rfind() は存在しません。ご注意を。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-find')">.find() .rfind()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-index"><summary>.index() .rindex()</summary>
+
+      <header>
+        <h3>.index(引数)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>引数の文字が文字列から見つからなかった時、</p>
+
+
+  <li class="look">
+    <p>化ける値が <code>-1</code> になるのが .find() .rfind()</p>
+    <p><strong>エラーになる</strong>のが <strong class="func">.index() .rindex()</strong></p>
+  </li>
+
+<p>となること以外は同じです。</p>
+</li>
+
+<li>
+  <p>エラーメッセージはこんな感じで出てきます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = '魔法少女プリティセガ'
+idx = title.index('サミー')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File &quot;Main.py&quot;, line 2, in &lt;module&gt;
+    idx = title.index('サミー')
+ValueError: substring not found
+</code></pre>
+
+<details class="sample-code"><summary></summary>怒られてみよう！ω･&rpar;
+  <iframe src="https://paiza.io/projects/e/Tl7V6RHHW27fBGD2M6rCTA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p>一方、リスト型にはなぜか .index() しかありません。<br>
+        .rindex() は存在しませんので、ご注意を。</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-index')">.index() .rindex()</a>
+      </footer>
+            
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-lower"><summary>.lower() .upper()</summary>
+
+      <header>
+        <h3>.lower()</h3>
+      </header>
+
+
+<ul>
+<li><p>文字列に含まれるアルファベットを、全て小文字にします。</p></li>
+<li>
+  <p>アルファベットなら全角文字でも特殊文字でも大文字から小文字に変換します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'AＡÀあア'
+text_lowered = text.lower()
+print(text)
+print(text_lowered)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'AＡÀあア'
+text_lowered = 'aａàあア'   # 全て小文字になって化けてから変数に代入
+print(text)
+print(text_lowered)
+</code></pre>
+
+  <div class="grid-output">
+    <code>AＡÀあア</code><span>← 元の文字列は変わらない</span>
+    <code>aａàあア</code><span>← 日本語には影響がない</span>
+  </div>
+
+<details class="sample-code"><summary></summary>打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/v_4oiBB7WcSFgl9wczV0Zw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+    
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+    <header>
+        <h3>.upper()</h3>
+    </header>
+
+
+<ul>
+<li><p>文字列に含まれるアルファベットを、全て大文字にします。</p></li>
+<li>
+  <p>アルファベットなら全角文字でも特殊文字でも小文字から大文字に変換します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'aａàぁァ'
+text_uppered = text.upper()
+print(text)
+print(text_uppered)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'aａàぁァ'
+text_uppered = 'AＡÀぁァ'   # 全て大文字になって化けてから変数に代入
+print(text)
+print(text_uppered)
+</code></pre>
+
+    <div class="grid-output">
+        <code>aａàぁァ</code><span>← 元の文字列は変わらない</span>
+        <code>AＡÀぁァ</code><span>← 日本語には影響がない</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <details class="sample-code"><summary></summary>打ち込んでみよう！
+    <iframe src="https://paiza.io/projects/e/v_4oiBB7WcSFgl9wczV0Zw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+</ul>
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-lower')">.lower() .upper()</a>
+      </footer>
+          
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-replace"><summary>.replace()</summary>
+
+      <header>
+        <h3>.replace(引数1, 引数2)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p><strong>引数1</strong>の文字列を、<strong>引数2</strong>に<strong>置き換え</strong>ます。(置換 = <em>replace</em>)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'ちょっとごめんねずこ'
+title_replaced = title.replace('ねずこ', 'ねこ')
+print(title_replaced)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'ちょっとごめんねずこ'
+title_replaced = 'ちょっとごめんねこ'   # 'ねずこ' が 'ねこ' に置き換わる
+print(title_replaced)
+</code></pre>
+
+<code>ちょっとごめんねこ</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>置き換えられる文字が複数ある時は、全部まとめて一括変換します。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'The government of the people, by the people, for the people.'
+text_replaced = text.replace('people', 'cats')
+print(text_replaced)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'The government of the people, by the people, for the people.'
+text_replaced = 'The government of the cats, by the cats, for the cats.'
+print(text_replaced)
+</code></pre>
+
+<code>The government of the cats, by the cats, for the cats.</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/lTWdxlqpDqP-wiVOUJRsQQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+</ul>
+
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-replace')">.replace()</a>
+      </footer>
+            
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-split"><summary>.split() .rsplit()</summary>
+
+      <header>
+        <h3>.split(引数, maxsplit=区切りを入れる個数)</h3>
+      </header>
+
+
+<ul>
+<li><p>引数の「区切り文字」を境に、文字列をリスト型に分割します。</p></li>
+<li><p>引数を省略すると、区切り文字が半角スペース <code>' '</code> となります。</p></li>
+<li>
+  <p>意味がよくわからないと思いますので、実際に変化を見てみてください。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse cow cat rabbit dragon snake'
+texts = text.split()
+print(texts)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse cow cat rabbit dragon snake'
+texts = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
+print(texts)
+</code></pre>
+
+<code>['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>区切り文字を指定するときは、引数に区切り文字を入れます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse,cow,cat,rabbit,dragon,snake'
+texts = text.split(',')
+print(texts)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse,cow,cat,rabbit,dragon,snake'
+texts = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
+print(texts)
+</code></pre>
+
+<code>['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><code>maxsplit=</code> で、区切りを入れる個数を指定できます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse,cow,cat,rabbit,dragon,snake'
+texts = text.split(',', maxsplit=2)
+print(texts)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 区切る回数が２回
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse,cow,cat,rabbit,dragon,snake'
+texts = ['mouse', 'cow', 'cat,rabbit,dragon,snake']
+print(texts)
+</code></pre>
+
+<code>['mouse', 'cow', 'cat,rabbit,dragon,snake']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  <p><code>maxsplit=</code> の数値を変えてみてください！</p>
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/mJjitvP9hRd5pQKCBHUz0w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+</ul>
+
+
+    <header>
+      <h3>.rsplit(引数, maxsplit=区切りを入れる個数)</h3>
+    </header>
+
+
+<ul>
+<li>
+  <p><strong class="func">.split()</strong> の<strong>右から</strong>版です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse cow cat rabbit dragon snake'
+texts = text.rsplit(maxsplit=2)
+print(texts)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'mouse cow cat rabbit dragon snake'
+texts = ['mouse cow cat rabbit', 'dragon', 'snake']
+print(texts)
+</code></pre>
+
+<code>['mouse cow cat rabbit', 'dragon', 'snake']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><code>maxsplit=</code> を省略すると、<strong class="func">.split()</strong> と同じ結果になります。</p></li>
+</ul>
+
+<ul>
+  <p><code>maxsplit=</code> の数値を変えてみてください！</p>
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/Y1ZGub49xD0nNQiaS_DLRQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-split')">.split() .rsplit()</a>
+      </footer>
+            
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">メソッド</a>
+    </footer>
+  
+  </details>
+
+</section>
+
+
+
+
+
+<section>
+
+  <details id="c3"><summary>Chatpter.3 - 関数</summary>
+
+    <header>
+        <h2>文字列型で使える関数は・・・</h2>
+    </header>
+
+
+<ul>
+  <li><p>文字列の操作はほとんどの場合、メソッドのほうを使います。</p></li>
+  <li><p>文字列を関数の引数にして何か色々するということはそんなに多くありません。</p></li>
+  <li><p>そのぶん、メソッドの機能のほうをたくさん憶えましょう！</p></li>
+  <li>
+    <p><code>()</code> の中身は、今回は文字列型変数が入ります。</p>
+
+    <table id="table_function">
+    <thead>
+    <tr>
+      <th class="text-center">関数</th>
+      <th class="text-left">機能</th>
+      <th class="text-center">戻り値の型</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="link text-center"><a class="td" href="#len" onclick="openAccordion('len')">len()</a></td>
+      <td class="text-left">文字列の文字数を数える</td>
+      <td class="text-center"><strong>int</strong></td>
+    </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#list" onclick="openAccordion('list')">list()</a></td>
+      <td class="text-left">文字列をリストに変換します</td>
+      <td class="text-center"><strong>list</strong></td>
+    </tr>
+    </tbody>
+    </table>
+  </li>
+</ul>
+
+
+
+
+  <article>
+
+    <details id="len"><summary>len()</summary>
+
+      <header>
+        <h3>len(引数)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>文字列の文字数を数えます。<em>(length)</em></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">word = 'ラーメン大好き小沼さん'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">word_len = len(words)
+print(word_len)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">word_len = len('ラーメン大好き小沼さん')
+print(word_len)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">word_len = 11    # 文字数は 11
+print(word_len)
+</code></pre>
+
+<code>11</code><br>
+
+<details class="sample-code"><summary></summary>打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/aB8dAPgDZsYToD-AETw_lg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+      <footer>
+          <a class="backto" href="#len" onclick="closeAccordion('len')">len()</a>
+      </footer>
+            
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="list"><summary>list()</summary>
+
+      <header>
+        <h3>list(引数)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>文字列をリストに変換します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'ゆるばら'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">listed_title = list(title)
+print(listed_title)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">listed_title = list('ゆるばら')
+print(listed_title)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">listed_title = ['ゆ', 'る', 'ば', 'ら']
+print(listed_title)
+</code></pre>
+
+<code>['ゆ', 'る', 'ば', 'ら']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>文字列を一文字ずつ要素に分割してくれます。</p>
+</li>
+<br>
+
+<li>
+  <p>もし分割して欲しくない、<code>['ゆるばら']</code>として欲しい！という時にはこうする方法があります。</p>
+
+  <p><strong class="b">最も簡単な方法</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'ゆるばら'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">listed_title = [title]
+print(listed_title)
+</code></pre>
+
+<code>['ゆるばら']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong class="func">.append()</strong> を使う方法</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'ゆるばら'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">listed_title = []
+listed_title.append(title)
+
+print(listed_title)
+</code></pre>
+
+<code>['ゆるばら']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  いろんなパターンを試してみよう！
+<details class="sample-code"><summary></summary>打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/z0a484kKmFytVvUY5HgiRA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+ 
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#len" onclick="closeAccordion('list')">list()</a>
+      </footer>
+            
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">関数</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - in</summary>
+
+    <header>
+      <h2>in</h2>
+    </header>
+        
+
+<ul>
+<li><p>文字列の中身に特定の値が含まれているかを判定する <strong>in</strong> という機能があります。</p></li>
+<li><p>含まれていたら <strong>True</strong> 、含まれていなかったら <strong>False</strong> に化けます。</p></li>
+<li>
+  <p>リスト型と使い方は全く同じです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'スレイヤーズ TEXT'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>含まれる時</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 'イヤー' in title:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True:    # 'イヤー' が見つかったので True に化けた
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>含まれない時</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 'デイ' in title:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if False:    # 'デイ' が見つからなかったので False に化けた
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>もちろん <code>and</code> と <code>or</code> も使えます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'スレイヤーズ TEXT'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong>or</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 'スレイヤーズ' or 'NEXT' in title:    # 'スレイヤーズ' か 'NEXT' のどちらかある？
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True:     # 'NEXT' は無いけど 'スレイヤーズ' は見つかったので True に化けた
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>and</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 'スレイヤーズ' and 'NEXT' in title:    # 'スレイヤーズ' と 'NEXT' の両方ある？
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if False:    # 'スレイヤーズ' はあったけど 'NEXT' はなかったよ
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>基本はやっぱり変数を使って探します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'スレイヤーズ TEXT'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">word = 'イヤー'
+if word in title:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">word = 'イヤー'
+if True:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p>リスト型と文字列型は似て異なるものです。</p></li>
+  <li><p>でも関数やメソッドの使い方が同じだったり、使えそうで使えなかったりするので混乱します。</p></li>
+  <li><p>使えないと思ったら実は使えたなんてこともありますので、思い込まずに使えるかどうかすぐにちょっと試してみましょう。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#c4" onclick="closeAccordion('c4')">in</a>
+    </footer>
+        
+  </details>
+
+</article>
+
+
+
+<section>
+
+  <details id="c5"><summary>Chatpter.5 - 小ワザ集</summary>
+
+    <header>
+      <h2>教わるまでもないちょいテク</h2>
+    </header>
+
+  <article>
+
+    <details id="c5-1"><summary>文字列の一部分だけを書き換える</summary>
+
+      <header>
+        <h3>文字列の一部分だけを書き換える</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>スライスで切り取って、間に文字列を入れる方法。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">name = '天使のぼる'
+name = name[:3] + 'え' + name[4:]
+print(name)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">name = '天使のぼる'
+name = '天使の' + 'え' + 'る'  # 化けるとこんな風
+print(name)
+</code></pre>
+
+<code>天使のえる</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>位置3 の所をよけて、位置3 の所に <code>'え'</code> を入れて <code>+</code> で繋げています。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c5" onclick="closeAccordion('c5-1')">文字列の一部分だけを書き換える</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c5-2"><summary>文字列の前後を入れ替える</summary>
+
+      <header>
+        <h3>文字列の前後を入れ替える</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>スライスで切り取って、まるごと場所を入れ替えるだけです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'こっちそっち'
+title = title[3:] + title[:3]
+print(title)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">title = 'こっちそっち'
+title = 'そっち' + 'こっち'  # 化けるとこんな風
+print(title)
+</code></pre>
+
+<code>そっちこっち</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+      <footer>
+          <a class="backto" href="#c5" onclick="closeAccordion('c5-2')">文字列の前後を入れ替える</a>
+      </footer>
+
+    </details>
+
+  </article>
+        
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c5')">文字列型で使えるその他機能</a>
+    </footer>
+    
+  </details>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>文字列の操作を使いこなす機能一覧</p>
+</footer>
+</body>
+</html>

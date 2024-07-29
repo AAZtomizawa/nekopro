@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>見える化ちゃん</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>見える化ちゃん</h1>
+    <p>見えてはいけないモノが見えるようになります</p>
+</header>
+
+
+
+<main>
+
+
+
+<section>
+
+  <details id="c1"><summary>Chatpter.1 - print() のさらなる機能</summary>
+
+    <header>
+      <h2>よく使う便利な機能の紹介</h2>
+    </header>
+
+
+  <article>
+
+    <details id="c1-1"><summary>1.1 - end=</summary>
+
+      <header>
+        <h3>end=</h3>
+      </header>
+
+
+
+<ul>
+<li>
+  <p><strong class="func">print()</strong> をそのまま使うと、最後は必ず改行されます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print('勝手に改行')
+print('しないでね')
+</code></pre>
+
+<code>勝手に改行</code><br>
+<code>しないでね</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>するなっつーの。</p>
+<br>
+</li>
+
+<li>
+  <p>こうすると改行されません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+                  
+<pre><code class="language-python">print('勝手に改行', end='')
+print('しないでね')
+</code></pre>
+
+<code>勝手に改行しないでね</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+
+  <li class="look">
+    <p></p><code>end=</code> とは、改行しない代わりに何の文字で終えるかを指定する機能です。<br>
+    <strong class="func">print()</strong>で改行されるのは、<strong>end=</strong> を省略すると、自動で<strong>改行コード</strong>になるからです。</p>
+  </li>
+  
+  <li>
+    <p><strong>改行</strong>というのは、<strong class="b">Word</strong> や <strong class="b">メモ帳</strong> などで、
+      <code>Enter</code>キーを押すと<strong class="b">行が１つ下がって先頭にカーソルが移る</strong>アレです。<br>
+      <small>【 キャリッジリターン・ラインフィード (CRLF) 】と言いますが、憶えなくていいです。豆知識...</small><br></p>
+      <p><code>Enter</code>キーを押すのを、コンピュータに代わりにやってもらう時に <code>\n</code> と書くと改行してくれます。</p>
+    <p><strong>改行コード</strong>のことは、この後の <strong>''.join()</strong> でも<small>さりげなく</small>します。</p>
+  </li>
+<br>
+
+<li>
+  <p><code>''</code> の中に好きな文字を入れると、末尾がその文字で終わります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print('勝手に改行', end='---')
+print('しないでね')
+</code></pre>
+
+<code>勝手に改行---しないでね</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong class="for"></strong>文で使ったりもします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = ['りんご', 'ゴリラ', 'ラッコ']
+for word in words:
+    print(word, end='！')
+</code></pre>
+
+<code>りんご！ゴリラ！ラッコ！</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>逆に、空行を入れたい時はこうします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print('♪わ～がま～まは～ こどもの罪～')
+print()
+print('♪そーれーをー許さないのは 大人の罪～')
+</code></pre>
+
+<code>♪わ～がま～まは～ こどもの罪～</code><br>
+<br>
+<code>♪そーれーをー許さないのは 大人の罪～</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+<li><p>一行目を<code>end='\n\n'</code>にしてもいいのですが、<code>print()</code>のほうがわかりやすいと思います。</p></li>
+<br>
+<li><p><code>end=</code> はとくに <strong class="for"></strong>文で使うかもしれません。</p></li>
+</ul>
+
+<ul>
+<li><p>以上の機能を 👇自由に試してみてください。👇</p></li>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+
+      <footer>
+          <a class="backto" href="#c1" onclick="closeAccordion('c1-1')">end=</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+
+  <article>
+
+    <details id="c1-2"><summary>1.2 - ''.join()</summary>
+
+      <header>
+        <h3>''.join()</h3>
+      </header>
+
+
+<ul>
+  <li class="look">
+      <p>これはリストの要素の値が<strong>すべて文字列のときにだけ使える</strong>機能です。</p>
+  </li>
+
+
+<li>
+  <p>リストの要素の値を、一気に<strong>連結して文字列に変換</strong>します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+print(''.join(a_gyou))
+</code></pre>
+
+<code>あいうえお</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><code>''</code> は、区切り文字として機能します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+print(','.join(a_gyou))
+</code></pre>
+
+<code>あ,い,う,え,お</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>区切り文字を<strong>改行コード</strong> <code>\n</code> というのにするとこうなります。<br>
+    <code>\</code> は 「右シフト」キーの左隣、または「BackSpace←」キーの左隣(￥)で入力出来ます。<br>
+    <code >\</code> は <strong>バックスラッシュ</strong>と言います。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+print('\n'.join(a_gyou))
+</code></pre>
+
+<code>あ</code><br>
+<code>い</code><br>
+<code>う</code><br>
+<code>え</code><br>
+<code>お</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<p>区切り文字を <code>\n</code></span> にすると、<strong class="for"></strong>文を使わないで一気に出力できますね。👍</p>
+</li>
+<br>
+
+<li>
+  <p>ちなみに文字列以外で <code>''.join()</code> を使うとエラーになります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+print(''.join(nums))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File &quot;Main.py&quot;, line 2, in &lt;module&gt;
+    print(''.join(nums))
+TypeError: sequence item 0: expected str instance, int found
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>この場合は、この後説明する <strong>print(*)</strong> と <strong>sep=</strong> を使ってください。</p>
+    
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+print(*nums, sep='')
+</code></pre>
+
+<code>12345</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+<ul>
+<li><p>以上の機能を 👇自由に試してみてください。👇</p></li>
+  
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c1" onclick="closeAccordion('c1-2')">''.join()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="c1-3"><summary>1.3 - print(*)</summary>
+
+      <header>
+        <h3>print(*)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リストを<strong>アンパック(展開)する</strong>機能です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+print(*nums)
+</code></pre>
+
+<code>1 2 3 4 5</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>流れは、以下のとおりです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+print(*nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(*[1, 2, 3, 4, 5])   # nums が化けて、
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(1, 2, 3, 4, 5)      # [] が外れて要素が展開される
+</code></pre>
+
+<code>1 2 3 4 5</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>型が混在していてもOK！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['1', 2, 'の', '３で', 5]
+print(*lst)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(*['1', 2, 'の', '３で', 5])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print('1', 2, 'の', '３で', 5)
+</code></pre>
+
+<code>1 2 の ３で 5</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+<li><p><strong class="special">アンパック</strong> という言葉と機能は使う機会が多いです。</p></li>
+<li><p>機能を理解するのは簡単なようで意外に難しいのですが、いろいろ試してみることでわかるようになっていきます。</p></li>
+<li><p><strong>アンパック</strong>に関しては「<strong>学ぶより慣れろ</strong>」です。</p></li>
+<li><p>ある程度慣れてから後追いで機能を知っていくととてもよく理解できます。</p></li>
+<li><p>今後も時々扱っていきますので、徐々にわかっていくと思います。</p></li>
+</ul>
+
+
+<ul>
+<li><p>以上の機能を 👇自由に試してみてください。👇</p></li>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+
+      <footer>
+          <a class="backto" href="#c1" onclick="closeAccordion('c1-3')">print(*)</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+
+
+  <article>
+
+    <details id="c1-4"><summary>1.4 - sep=</summary>
+
+      <header>
+        <h3>sep=</h3>
+      </header>
+
+<ul>
+<li>
+  <p>これは、<strong>print(*)</strong> と組み合わせて使う機能です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+print(*nums, sep='-')
+</code></pre>
+
+<code>1-2-3-4-5</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><code>'-'.join()</code> は文字列型のみ使えましたが、この機能を使えば型が混在していてもOK！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['1', 2, 'の', '３で', 5]
+print(*lst, sep='-')
+</code></pre>
+
+<code>1-2-の-３で-5</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>もちろん、<code>''.join()</code> と同じ結果を得ることも出来ます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+print(*a_gyou, sep='')
+</code></pre>
+
+<code>あいうえお</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+print(*a_gyou, sep=',')
+</code></pre>
+
+<code>あ,い,う,え,お</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+<ul>
+<li><p>以上の機能を 👇自由に試してみてください。👇</p></li>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c1" onclick="closeAccordion('c1-4')">sep=</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">print() のさらなる機能</a>
+    </footer>
+    
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c2"><summary>Chatpter.2 - 見える化ちゃん</summary>
+
+    <header>
+      <h2>print() で値を調べる</h2>
+    </header>
+
+
+<ul>
+<li><p>プログラムを組んでいると、思いの結果が得られないことは日常茶飯事です。</p></li>
+<li><p>そんな時は慌てずに <strong class="func">print()</strong> を使って、見てみたい値を確認してみましょう。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p><strong class="func">print(👻)</strong> は、たいていの値を見せてくれます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+print(*nums)
+
+nums[0], nums[1] = nums[1], nums[0]   # 値交換(スワップ)という裏ワザ
+print(*nums, ':2と1を交換')
+
+nums[2], nums[3] = nums[3], nums[2]
+print(*nums, ':4と3を交換')
+
+nums[4], nums[5] = nums[5], nums[4]
+print(*nums, ':6と5を交換')
+</code></pre>
+
+<code>2 1 4 3 6 5</code><br>
+<code>1 2 4 3 6 5 :2と1を交換</code><br>
+<code>1 2 3 4 6 5 :4と3を交換</code><br>
+<code>1 2 3 4 5 6 :6と5を交換</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>確認OKなら不要な <strong class="func">print()</strong> は消します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+
+nums[0], nums[1] = nums[1], nums[0]
+nums[2], nums[3] = nums[3], nums[2]
+nums[4], nums[5] = nums[5], nums[4]
+print(*nums)
+</code></pre>
+
+<code>1 2 3 4 5 6</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/oxuel65VwS78Y3Z3Xs_gkw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p>ちょっと見てみたい値を <strong class="func">print()</strong> で見てみるということです。</p></li>
+  <li><p>あまりにあちこちおかしすぎて <strong class="func">print()</strong> だらけになるなんてことはしょっちゅうです。</p></li>
+  <li><p>どれが何の値かがわかるように<strong class="b">変数名を添えたり</strong>、上のプログラムみたいに<strong class="b">確認のコメントを書いておく</strong>といいですよ。👍</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">見える化ちゃん</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>見える化ちゃん</p>
+</footer>
+</body>
+</html>

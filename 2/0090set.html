@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>セット型</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>セットさんは重複を許さない</h1>
+    <p>集合型(set)とちょっとだけ数学知識が身に付きます👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - セット型とは</summary>
+
+    <header>
+      <h2>セット型 (set) とは</h2>
+    </header>
+
+
+<ul>
+<li><p>リストや辞書と同じようなデータ構造をしています。</p></li>
+<li><p>見た目はリストに、性質は辞書に似ています。</p></li>
+<li>
+  <p>こんな書き方をします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = {1, 2, 3, 4, 5}
+</code></pre>
+
+<pre><code class="language-python">titles = {'セットの花嫁', 'セット会の一存', '怪盗セットテール'}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>{ } で囲います。辞書と同じです。</p>
+</li>
+<br>
+<li>
+  <p>空のセットを作る場合はこう書きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">set_blank = set()
+</code></pre>
+
+<code>{}</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>set_blank = {}</code> と書くと辞書型になってしまうので注意！</p>
+</li>
+</ul>
+
+<ul>
+  <li class="look">
+    <ol>
+      <p class="text-center"><strong class="b">リストとセットの相違点</strong></p>
+
+      <li><p><strong>順序の保持：</strong> リストは要素の順序を保持しますが、セットは要素の順序を保証しません。</p></li>
+
+      <li><p><strong>インデックスの利用：</strong> リストは要素に対してインデックスを使用してアクセスできますが、セットは順序がないため、インデックスを用いたアクセスができません。</p></li>
+
+      <li><p><strong>重複する要素：</strong> リストは同じ要素を複数回持つことができますが、セットは重複を許容しません。セット内の要素は一意である必要があります。</p></li>
+
+      <li><p><strong>可変性：</strong> リストは可変（mutable）であり、要素の追加、変更、削除が可能です。一方で、セットも可変ですが、一度作成したセット内の要素は変更できません。セットに新しい要素を追加することはできます。</p></li>
+
+      <li><p><strong>リテラル表現の違い：</strong> リストは角括弧 [] を使用して表現されますが、セットは波括弧 {} を使用します。</p></li>
+    </ol>
+    <p class="text-right"><em>&lt; ChatGPT の回答を一部加筆修正 &gt;</em></p>
+  </li>
+<p>セットの特徴をまとめると、</p>
+
+<dl>
+  <dt><strong>リストの [ ] が { } になる。</strong></dt>
+    <dd>見た目はリストに似ています。</dd>
+  <br>
+
+  <dt><strong>辞書のキーにあたるものが、セットの値になる。</strong></dt>
+    <dd>辞書のキーと同じく、セットの値も重複を絶対に許しません。絶対にだ。<br>
+      キーが無いので添字も無く、要素に特殊な方法でアクセスして利用します。</dd>
+  <br>
+
+  <dt><strong>辞書のキーと同じように、セットの値も変更できない。</strong></dt>
+          <dd>不変(イミュータブル)の型を使う必要があります。</dd>
+
+  <p style="display: grid; grid-template-columns: min-content auto;"><small>※&nbsp;</small>
+      <span><small>現在の Python3 では、値の順序がある程度整列されて表示されます。<br>
+          セット型には順序が無いので、ソートされているわけではありません。<br>
+          ちょっと見やすくしてくれているだけです。・・・イイ！😸</small></span></p>
+  <br>
+</dl>
+
+<li>
+  <p>セットの使いどころの１つとして手短に言うと、<br>
+    <strong>「順序を必要としない」「重複する値は不要。１つあればいい」</strong></p>
+  <p>こういうリストを作ろうとしたら、そこは代わってセットの出番です。</p>
+</li>
+</ul>
+        
+<ul>
+<li>
+  <p>既に存在する値を追加するとこうなります。</p>
+            
+            
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = {1, 2, 3, 4, 5}
+nums.add(1)   # セットは.add() で追加
+print(nums)
+</code></pre>
+
+<code>{1, 2, 3, 4, 5}</code><br>
+
+<details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>何も変化がありません。<br>
+  値の重複を許さないので無視されたのです。ひどい...。</p>
+</li>
+<br>
+
+<li>
+  <p>重複する値があるセットは、こうなります。</p>
+
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = {1, 2, 3, 4, 5, 3, 2}
+print(nums)
+</code></pre>
+
+<code>{1, 2, 3, 4, 5}</code><br>
+
+<details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>やはり値が一意にまとめられてしまいました。</p>
+</li>
+<br>
+
+<li>
+  <p>重複する値があるリストをセットにすると、こうなります。</p>
+
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5, 3, 2]
+set_nums = set(nums)    # set() を使ってセットに変換
+print(set_nums)
+</code></pre>
+
+<code>{1, 2, 3, 4, 5}</code><br>
+
+<details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これもやはり値が一意にまとめられてしまいました。</p>
+</li>
+<br>
+
+<li><p>まとめられちゃダメみたいな言い方しましたけど、この特性を活かした使い途があるからこそ存在する機能なのです。</p></li>
+<li><p>それはもう無限の可能性を秘めたすごい機能です。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">セット型とは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - 一意だョ！全員集合</summary>
+
+    <header>
+      <h2>セットの使い方</h2>
+    </header>
+
+
+
+  <article>
+
+    <details id="c2-1"><summary>セットの使いどころ</summary>
+
+      <header>
+        <h3>セットの使いどころ</h3>
+      </header>
+
+
+<ul>
+  <li><p>多くの可能性を秘めているセット型ですが、大きく分けて２つの使い方があります。</p></li>
+  <li><p>１つ目は「<strong>値が一意である特性</strong>」を活かした使い方です。</p></li>
+  <li><p>簡単なところで、こんな問題があったとします。</p></li>
+  <br>
+  <li><p>次の数列の中から、二番目に大きな数を求めて下さい。</p>
+      <p>[7, 4, 7, 3, 9, 1, 9, 8]</p></li>
+  <br>
+  <li><p><strong class="func">max()</strong> 関数では一番大きな数しか求められません。</p></li>
+  <li><p>リストのまま求めようとすると・・・想像しただけで面倒です。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>そんな時、 <strong class="func">set()</strong> が役に立ちます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+set_nums = set(nums)
+sorted_nums = sorted(set_nums, reverse=True)
+print(sorted_nums[1])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+
+set_nums = set([7, 4, 7, 3, 9, 1, 9, 8])
+
+sorted_nums = sorted(set_nums, reverse=True)
+print(sorted_nums[1])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <strong class="func">set()</strong> で重複を削除する
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+
+set_nums = {7, 4, 3, 9, 1, 8}
+
+sorted_nums = sorted(set_nums, reverse=True)
+print(sorted_nums[1])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+set_nums = {7, 4, 3, 9, 1, 8}
+
+sorted_nums = sorted({7, 4, 3, 9, 1, 8}, reverse=True)
+
+print(sorted_nums[1])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ソートの結果がリストになって返る
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+set_nums = {7, 4, 3, 9, 1, 8}
+
+sorted_nums = [9, 8, 7, 4, 3, 1]
+
+print(sorted_nums[1])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+set_nums = {7, 4, 3, 9, 1, 8}
+sorted_nums = [9, 8, 7, 4, 3, 1]
+
+print([9, 8, 7, 4, 3, 1][1])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+set_nums = {7, 4, 3, 9, 1, 8}
+sorted_nums = [9, 8, 7, 4, 3, 1]
+
+print(8)
+</code></pre>
+
+<code>8</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/FSCSTL-EwXNwCK6qZy_dGg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p>次に紹介する２つ目は、数学の「集合」を使った演算です。</p></li>
+  <li><p>集合や集合演算はちょっと難しいので、この後新しく説明します。</p></li>
+</ul>
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">セットの使いどころ</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-2"><summary>集合と集合演算</summary>
+
+      <header>
+        <h3>集合と集合演算</h3>
+      </header>
+
+<ul>
+  <li><p>「集合」は、一意の値をグループにしたもので、セットの { } そのものです。</p></li>
+  <li><p><math class="inlook"><mo>集合 = セット</mo></math>です。</p></li>
+  <li><p>「〇種類で１セット」のセットです。</p></li>
+  <li><p>まともに説明すると説明量が多すぎるので、集合について学びたい方は数学の集合か、情報処理の集合を別途学んでみてください。<s>数学は苦手</s>割愛します。😎</p></li>
+  <li><p>でも全然わからなくても、集合の事というよりは<strong class="func">set()</strong> でこんなことができるよ～くらいの情報分だけ簡単に扱いますので、どうぞ肩の力を抜いて気楽に読んでいってください。</p></li>
+</ul>
+
+<ul>
+  <li><p>使えるようになると捗る<strong class="func">set()</strong>で扱う「<ruby><strong class="special">集合演算</strong><rt>しゅうごうえんざん</rt></ruby>」は、まずこの３つです。</p></li>
+  <br>
+  <table>
+  <tbody>
+  <tr>
+    <td class="text-center">和集合</td>
+    <td class="text-center"><math><mo>&verbar;</mo></math></td>
+    <td class="text-left">２つの集合をあわせる</td>
+  </tr>
+  <tr>
+    <td class="text-center">差集合</td>
+    <td class="text-center"><math><mo>&minus;</mo></math></td>
+    <td class="text-left">集合2に含まれる値を集合1から取り除く</td>
+  </tr>
+  <tr>
+    <td class="text-center">積集合</td>
+    <td class="text-center"><math><mo>&amp;</mo></math></td>
+    <td class="text-left">２つの集合のどちらにもある値だけにする</td>
+  </tr>
+  </tbody>
+  </table>
+  <br>
+
+  <li><p>とりあえずなんのこっちゃですけど、それぞれをプログラムで説明します。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>和集合</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+union_nums = set(nums1) | set(nums2)
+
+print(union_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+union_nums = set([1, 2, 2, 3]) | set([2, 3, 4, 5])
+
+print(union_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+union_nums = {1, 2, 3} | {2, 3, 4, 5}
+
+print(union_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ セットとセットを <code>|</code> で繋ぐと、
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+union_nums = {1, 2, 3, 4, 5}
+
+print(union_nums)
+</code></pre>
+
+<code>{1, 2, 3, 4, 5}</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/Xr6LPQgf24J7qWkpo4yBkQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>１つのセットになって重複した値が削除されます。</p>
+</li>
+
+<li><p>「<strong>複数のセットを１つのセットにまとめた</strong>」のが和集合の結果になります。</p></li>
+<br>
+
+<li><p><code>|</code> は「バーティカル・バー」と言って、<code>[Shift]</code> + <code>\</code> で打ち込めます。<br>
+<code>\</code> は、<code>Backspace←</code>キーの左にあるほう(&yen;)です。</p></li>
+<br>
+<li><p>セットも辞書と同じように <code>+</code> で繋ぐことはできません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">union_nums = {1, 2, 3} + {2, 3, 4, 5}
+print(union_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 1, in &lt;module&gt;
+    union_nums = {1, 2, 3} + {2, 3, 4, 5}
+TypeError: unsupported operand type(s) for +: 'set' and 'set'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p>じゃあ辞書も <code>|</code> で繋げられるんじゃね？</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sisters1 = {'一穂': 24, 'れんげ': 7}
+sisters2 = {'ひかげ': 16}
+print(sisters1 | sisters2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 3, in &lt;module&gt;
+    print(sisters1 | sisters2)
+TypeError: unsupported operand type(s) for |: 'dict' and 'dict'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>ダメでした。😓</p>
+<p>辞書は辞書型であって「集合 (set型)」ではないからです。😽</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>差集合</p>
+
+                    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+difference_nums = set(nums1) - set(nums2)
+
+print(difference_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+difference_nums = set([1, 2, 2, 3]) - set([2, 3, 4, 5])
+
+print(difference_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+difference_nums = {1, 2, 3} - {2, 3, 4, 5}
+
+print(difference_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+difference_nums = {1}
+
+print(difference_nums)
+</code></pre>
+
+<code>{1}</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/AHvaJodS5_dMqYV8FVf63Q?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p>わかると結構便利な差集合演算です。</p></li>
+<li>
+  <p>「元のリストからセットにして重複を消し、差集合でさらに不要な値を消してからリストに戻して使う」</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+del_nums = {1, 4, 6, 9}
+
+new_nums = list(set(nums) - del_nums)
+
+print(new_nums)    # 案外簡単！
+</code></pre>
+
+  <div class="grid-output">
+    <code>[8, 3, 7]</code><span>← セットの特性で順序が変わることがあります</span>
+  </div>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/5mHIIQq5ypd4pB7pvNtnvA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+  
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>この場合、セットを<strong class="func">print()</strong>で見ると昇順に並んでいるように見えたりしますけど、リストにすると順番が変わりますので、ソートが必要な時は <strong class="func">list()</strong> を <strong class="func">sorted()</strong> にするか、 <strong class="func">.sort()</strong> を使ってソートしてください。</p></li>
+<li><p>「元の順番どおりじゃないと困る！」という場合もありますけど、その時は思いっきり悩んで自力で解決してください。😸<br>
+        IQを上げるチャンス！！</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>積集合</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+intersection_nums = set(nums1) & set(nums2)
+
+print(intersection_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+intersection_nums = set([1, 2, 2, 3]) & set([2, 3, 4, 5])
+
+print(intersection_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+intersection_nums = {1, 2, 3} & {2, 3, 4, 5}
+
+print(intersection_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 2, 3]
+nums2 = [2, 3, 4, 5]
+intersection_nums = {2, 3}
+
+print(intersection_nums)
+</code></pre>
+
+<code>{2, 3}</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/jXqw0INaCWVOlwHAsNQUhA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p>どの集合演算も、セットの特性を理解すれば自ずと使いどころに気付くと思います。</p></li>
+<li><p>その為にも、値の重複が無く、順番も気にすることが無いリストを扱うことがあったら、無理してでもセットに置き換えて使ってみてください。</p></li>
+<li><p>本当に意味がわかると、セットの便利さもわかってくると思いますし、リストの使用頻度も減り、<strong>なんかいい感じ💖</strong>感が上昇します。</p></li>
+<li><p>集合演算は、要素が空でもエラーは出ません。</p></li>
+<li><p>たとえ両方が空でもエラーは出ません。</p></li>
+<li><p>不安要素があるならば<strong class="func">print()</strong>で値を確認しながら慎重に操作してください。</p></li>
+</ul>
+
+<ul>
+<li><p>値は <strong>int</strong> だけでなく <strong>str</strong> や <strong>タプル</strong> でも大丈夫です。</p></li>
+<li><p>セットの値は <strong>不変の型(イミュータブル)</strong> であれば、たとえ混在していても使えます。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p><code>+=</code> みたいに <code>|=</code> とか <code>&=</code> とか使えるんじゃね？</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = {1, 2, 3}
+nums |= {2, 3, 4, 5}
+
+print(nums)
+</code></pre>
+
+<code>{1, 2, 3, 4, 5}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = {1, 2, 3}
+nums -= {2, 3, 4, 5}
+
+print(nums)
+</code></pre>
+
+<code>{1}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = {1, 2, 3}
+nums &= {2, 3, 4, 5}
+
+print(nums)
+</code></pre>
+
+<code>{2, 3}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>やるじゃないの。(; ﾟДﾟ) ｯﾃｶﾀﾞﾚｮｱﾝﾀ</p>
+
+<details class="sample-code"><summary></summary>３種類とも試してみてください！
+  <iframe src="https://paiza.io/projects/e/JGMivbF8e7Zt_TMs7S81fg?theme=twiligh" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">集合と集合演算</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+    
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">一意だョ！全員集合</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - ぼくたちは代入ができない ３期</summary>
+
+    <header>
+      <h2>セットも可変なんだからね！</h2>
+    </header>
+
+
+<ul>
+  <li><p>今<s>期</s>回で修了するこのコピー。</p></li>
+  
+    <li class="look">
+      <p class="text-center"><code>変数2 = 変数1</code></p>
+      <p>このやり方を「<strong>コピー</strong><em>(copy)</em>」または「<strong>値のコピー</strong>」と言います。</p>
+    </li>
+
+  <li><p>変数のまま <code>変数2</code> に <code>変数1</code> を代入する(コピーする)ことが、</p>
+
+      <table>
+      <thead>
+      <tr>
+        <th class="text-center">出来る！</th>
+        <th class="text-center">出来ない！</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="text-center"><strong>str</strong></td>
+        <td class="text-center"><strong>list</strong></td>
+      </tr>
+      <tr>
+        <td class="text-center"><strong>int</strong></td>
+        <td class="text-center"><strong>dict</strong></td>
+      </tr>
+      <tr>
+        <td class="text-center"><strong>tuple</strong></td>
+        <td class="text-center"><strong class="blink-text">set</strong></td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p><small>米 まだ満腹でない子は細型になっています。🍚</small>🐈</p>
+  </li>
+  <li><p>セットも、リストや辞書と挙動はまったく一緒です。</p></li>
+  <li><p>セットでも<strong class="func">set()</strong>関数を使うとコピーできます。</p></li>
+</ul>
+
+<ul>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">titles = {'セットの花嫁', 'セット会の一存'}
+new_titles = set(titles)
+print(new_titles)
+
+new_titles -= {'セット会の一存'}
+print(new_titles)
+print(titles)
+</code></pre>
+
+    <div class="grid-output">
+        <code>{'セットの花嫁', 'セット会の一存'}</code>← コピー直後 の new_titles<br>
+        <code>{'セットの花嫁'}</code>← 書き換えた方の new_titles<br>
+        <code>{'セットの花嫁', 'セット会の一存'}</code>← コピー元の titles<br>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">ぼくたちは代入ができない ３期</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 -  リストをセットに手動で変換してみた</summary>
+
+    <header>
+      <h2>手動で値を一意にする</h2>
+    </header>
+
+
+<ul>
+  <li>
+    <p>セットがどれだけ楽な機能なのか、目で見て確認してみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+
+new_nums = []
+for num in nums:
+    if num not in new_nums:
+        new_nums.append(num)
+
+print(new_nums)
+</code></pre>
+
+<code>[7, 4, 3, 9, 1, 8]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong class="if"></strong>文で「new_nums の中に num がなかったら new_nums に num を加える」ことをしています。😵‍💫</p>
+</li>
+
+<li>
+  <p>これをセットで書くと、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [7, 4, 7, 3, 9, 1, 9, 8]
+new_nums = set(nums)
+print(new_nums)
+</code></pre>
+
+<code>{1, 3, 4, 7, 8, 9}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong class="for"></strong> と<strong class="if"></strong> の部分を、全て<strong class="func">set()</strong>関数がやっています。</p>
+</li>
+</ul>
+
+<ul>
+  <li><p>楽して書けるならどんどん楽をするべきです。</p></li>
+  <li><p>プログラムが簡潔になればそれだけバグも避けられますし、読みやすくもなります。</p></li>
+  <li><p>読みやすくなれば、バグがあった時に見つけやすくもなります。</p></li>
+  <li><p>仕組みを知ることも大切ですが、それは後からでもできることです。</p></li>
+  <br>
+  <li><p>プログラムはまず「正しく動く」ことが大切です。</p></li>
+  <li><p>それから無駄を削ぎ落していくと「速く動く」ことに繋がります。</p></li>
+  <li><p>無駄が少なくなると、今度は修正や改変がしやすくなります。</p></li>
+  <li><p>仕事やスポーツと同じですね。</p></li>
+  <br>
+  <li><p>プログラミングは<strong>哲学</strong>です。</p></li>
+  <li><p>プログラムの数だけ哲学があるから、プログラミングは面白いよ。😻</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">リストをセットに手動で変換してみた</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>セットさんは重複を許さない</p>
+</footer>
+</body>
+</html>

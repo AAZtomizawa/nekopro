@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/prism_coy.css">
+	<script type="text/javascript" src='../js/prism.js'></script>
+	<script type="text/javascript" src='../js/custom.js'></script>
+	<title>print()</title>
+	<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+	<h1>print()</h1>
+	<p>文字を画面に自分で映せるようになります👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+	<details id="c1"><summary>Chatpter.1 - print()とは？</summary>
+
+		<header>
+			<h2>print()とは？</h2>
+		</header>
+
+
+
+			<ul>
+				<li><p>難しい言い方をしますけど、正しくは『 <strong class="b">プリント<ruby>関数<rt>かんすう</rt></ruby></strong> 』と言います。</p></li>
+				<li><p>最後に () が付いていたらたいてい「〇〇関数」と呼びます。</p></li>
+				<li><p>関数の意味はまた今度に。今は「とにかくそう呼ぶもの」ということだけでOK！</p></li>
+				<li><p>でも「プリント」と略しても全然平気だったりします。</p></li>
+				<li><p>繰り返し文、条件文みたいに、昔は「プリント文」とか言っていたこともありました。</p></li>
+				<li><p><strong class="func">print()</strong>の機能は、() の中身を<ruby>画面<rt>がめん</rt></ruby>に<ruby>出力<rt>しゅつりょく</rt></ruby>すること。</p></li>
+				<li><p>どんなにすごいプログラムを作っても、画面に何も映らなかったら面白くありません。</p></li>
+				<li><p>どういう仕組みなのかなんにもわからなくても、画面に出力することは全部<wbr><strong class="func">print()</strong>がやってくれます。</p></li>
+				<li><p>いろんな出力の仕方があるので、まずは目で見てみてくださいね。</p></li>
+			</ul>
+
+		
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c1')">print()とは？</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+
+
+
+<section>
+		
+	<details id="c2"><summary>Chatpter.2 - print()を使って画面に出力してみる</summary>
+
+		<header>
+			<h2>print()を使って画面に出力してみる</h2>
+		</header>
+
+
+
+	<article>
+
+		<details id="c2-1"><summary>2.1 - 文字列を出力する</summary>
+
+			<header>
+				<h3>文字列を出力する</h3>
+			</header>
+
+
+<ul>
+	<li>
+		<p><code>()</code> の中に出力したい値を書くだけです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print('Hello world!')   # 直接書く時</code></pre>
+
+<code>Hello world!</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/Zr0c4Iwzu5pt0-uL7x2KTA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">text = 'Hello world!'   # text の中身を 'Hello world!' にする
+print(text)     # text の中身を画面に出力する
+</code></pre>
+
+<code>Hello world!</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/CETidtvlAnjqffWv_9r3mw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">hello = 'Hello'
+world = 'world!'
+print(hello + world)    # + で繋ぐと文字列と文字列が繋がる
+</code></pre>
+
+<code>Helloworld!</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/EkPtZdaBX4XPWYelc7p1uw?theme=tighwilt" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+	<p><code>=</code> や <code>+</code> の両側に空白を入れているのは、ちょっと見やすくしている為です。</p>
+	<p><code>hello+world</code> よりも <code>hello + world</code> のほうがちょっと見やすいでしょう？それだけなんです。😽</p>
+</li>
+</ul>
+
+<ul>
+	<li><p>カンマ <code>,</code> で区切ると空白ができます。いくつでも区切れます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">hello = 'Hello'
+world = 'world!'
+print(hello, world)
+print(hello, hello, 'Kitty', 'こんにちは')
+</code></pre>
+
+<code>Hello world!</code><br>
+<code>Hello Hello Kitty こんにちは</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/Dx-qGGpZpnlW8z_5sk89-A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+	<li><p>二列別々にしたい時は、<strong class="func">print()</strong>を２つ書きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">hello = 'Hello'
+world = 'world!'
+print(hello)
+print(world)
+</code></pre>
+
+<code>Hello</code><br>
+<code>world!</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/psEPkQF-kOkrGVTklM-3EA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+	<li><p>こんなこともできちゃいます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+
+<pre><code class="language-python">hello = 'Hello'
+print(hello * 5)
+print('+' * 15)
+</code></pre>
+
+<code>HelloHelloHelloHelloHello</code><br>
+<code>+++++++++++++++</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/U4iu_u67qjEmek6mwsT-GA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>基本は以上です。</p></li>
+</ul>
+
+
+			<footer>
+					<a class="backto" href="#c2" onclick="closeAccordion('c2-1')">文字列を出力する</a>
+			</footer>
+					
+		</details>
+
+	</article>
+
+
+
+	<article>
+
+		<details id="c2-2"><summary>2.2 - 数値を出力する</summary>
+
+			<header>
+				<h3>数値を出力する</h3>
+			</header>
+
+
+<ul>
+	<li><p>「<ruby>数値<rt>すうち</bt></ruby>」とは、整数型 <em>(<strong>int</strong>)</em> や浮動小数型 <em>(float)</em> の値です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(222)
+</code></pre>
+
+<code>222</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/iP-ikiTLzPtBL2uscI2Z8Q?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">pi = 3.14159265
+print(pi)
+</code></pre>
+
+<code>3.14159265</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/WlWEFZVE1VR3xe8YMj3LVw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(float('inf'))
+</code></pre>
+
+		<div class="grid-output">
+				<code>'inf'</code> <p>※ 無限 <em>(infinity)</em> の意味。まだ覚えなくていいです。</p>
+		</div>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/O76NFcYl5iAjnC1_tzdjXw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+	<li><p>数値なので、計算結果を出力することだってできます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(12 + 13)
+print(12 - 13)
+print(12 * 13)
+print(10 // 3)  # 小数はすべて切り捨てて整数になる
+print(10 ** 3)  # 10 の 3乗
+print(10 % 3)   # 10 を 3 で割った余り
+</code></pre>
+
+<code>25</code><br>
+<code>-1</code><br>
+<code>156</code><br>
+<code>3</code><br>
+<code>1000</code><br>
+<code>1</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/X5hfp_3Y8xEdWx4WfP6r6g?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = 6
+y = 7
+print(x * y)    # 変数を使っても計算できる
+</code></pre>
+
+<code>42</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/GfEfidWUXK1CyQEAfliGZg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+	<li><p>カンマ <code>,</code> で区切ると空白ができます。いくつでも区切れます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(3, 1, 4, 1, 5, 9, 2)
+</code></pre>
+
+<code>3 1 4 1 5 9 2</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/422FICvrqqHkADRmViLc2A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>数値の出力は以上です。</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c2" onclick="closeAccordion('c2-2')">数値を出力する</a>
+			</footer>
+
+		</details>
+
+	</article>
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c2')">print()を使って画面に出力してみる</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+
+
+
+<article>
+
+	<details id="c3"><summary>Chatpter.3 - print()は、使いこなせると楽しい</summary>
+
+		<header>
+			<h2>print()は、使いこなせると楽しい</h2>
+		</header>
+
+
+		<ul>
+				<li><p><strong class="func">print()</strong>は<strong>値を画面に出力するだけ</strong>なので、何も考えなくても大丈夫！</p></li>
+				<li><p>ただ、この他にもいろんな出力のやり方があります。</p></li>
+				<li><p>けど難しくはありません。むしろ目から鱗な機能満載で面白いので、期待しててください！</p></li>
+		</ul>
+
+
+		<footer>
+				<a class="backto" href="#" onclick="closeAccordion('c3')">print()は、使いこなせると楽しい</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+	<p>print()</p>
+</footer>
+</body>
+</html

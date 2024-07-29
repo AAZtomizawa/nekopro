@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>アホとイヌ</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>アホとイヌ</h1>
+  <p>これが理解できたら100点満点です👍<br>
+    <small>※ Fizz Buzz問題の事前知識があるとちょっと楽</small><br>
+  <a class="linked" href="https://ja.wikipedia.org/wiki/Fizz_Buzz"><em>Wikipedia: Fizz Buzz</em></a> <small>むずかしくないよ</small></p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - Fizz Buzzとは</summary>
+
+    <header>
+      <h2>Fizz Buzzとは</h2>
+    </header>
+
+
+<ul>
+<li><p>「<strong>3</strong> の倍数の時には <code>Fizz</code>、<strong>5</strong> の倍数の時には <code>Buzz</code>、<strong>3</strong> と <strong>5</strong> の倍数の時には <code>Fizz Buzz</code> と画面に出力する」</p></li>
+<li><p>その筋では有名な「<strong class="b"><ruby>Fizz<rt>フィズ</rt></ruby> <ruby>Buzz<rt>バズ</rt>問題<rt>もんだい</rt></ruby></strong>」というアルゴリズムです。</p>
+<p><small>※ 3 の倍数とは、３でかけ算(３をかけ算)した数のことです。<br>
+    　かけ算の九九の ３の段 です。<br>
+※ 3 と 5 の倍数は、「15の倍数」と同じです。</small></p>
+</li>
+</ul>
+
+
+<ul>
+
+<li><p>Fizz Buzz問題の一般的なプログラムを見てみてください。</p></li>
+<li><p>その前に <code>Fizz</code> <code>Buzz</code> <code>Fizz Buzz</code> だと読みにくいので、<br>
+それぞれ <code>アホ</code> <code>イヌ</code> <code>アホイヌ</code> と言葉を変えますね。🐱</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(1, 101):
+    if i % 3 == 0 and i % 5 == 0:
+        print('アホイヌ')
+    elif i % 3 == 0:
+        print('アホ')
+    elif i % 5 == 0:
+        print('イヌ')
+    else:
+        print(i)
+</code></pre>
+
+    <div class="grid-output">
+        <code>1</code><br>
+        <code>2</code><br>
+        <code>アホ</code> 3 の倍数<br>
+        <code>4</code><br>
+        <code>イヌ</code> 5 の倍数<br>
+        <code>アホ</code> 3 の倍数<br>
+        <code>7</code><br>
+        <code>8</code><br>
+        <code>アホ</code> 3 の倍数<br>
+        <code>イヌ</code> 5 の倍数<br>
+        <code>11</code><br>
+        <code>アホ</code> 3 の倍数<br>
+        <code>13</code><br>
+        <code>14</code><br>
+        <code>アホイヌ</code> 3 と 5 の倍数(15の倍数)ではこうなる<br>
+        <code>16</code><br>
+    </div>
+<p>（以下 100まで続く...）</p>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/RapdHHSELWiHFAb1FAulGg?theme=twilight" width="100%" height="500px" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+            </li>
+        </ul>
+
+
+        <footer>
+            <a class="backto" href="#" onclick="closeAccordion('c1')"><span class="backto">Fizz Buzzとは</a>
+        </footer>
+
+    </details>
+
+</article>
+
+
+
+
+
+<article>
+
+  <details id="c2"><summary>Chatpter.2 - Fizz Buzz問題の問題</summary>
+
+    <header>
+      <h2>Fizz Buzz問題の問題</h2>
+    </header>
+
+
+<ul>
+<li><p>これがなぜ問題と言われるのか。この問題にはワナがひそんでいるからです。</p></li>
+<li>
+  <p><strong class="b">問題文の順番どおり</strong>に <strong class="if"></strong>文を書いていくと、こうなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(1, 101):
+    if i % 3 == 0:      # 3 の倍数の時には
+        print('アホ')
+    elif i % 5 == 0:    # 5 の倍数の時には
+        print('イヌ')
+    elif i % 3 == 0 and i % 5 == 0: # 3 と 5 の倍数の時には
+        print('アホイヌ')
+    else:               # それ以外の時には
+        print(i)          # そのままその数を画面に出力する
+</code></pre>
+
+<p>(略)</p>
+
+    <div class="grid-output">
+        <code>11</code><br>
+        <code>アホ</code><br>
+        <code>13</code><br>
+        <code>14</code><br>
+        <code>アホ</code> ← ここがおかしくなる。アホイヌどこ行った！！<br>
+        <code>16</code><br>
+    </div>
+
+<p>(略)</p>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/CmU80j6U3WDH4Q8Tmrwybg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+
+<li><p><code>i % 3</code> とは「 <strong>i</strong> を <strong>3</strong> で割った余り」の計算式です。</p></li>
+<li><p><code>i % 3 == 0</code> で、「<strong>i</strong> を <strong>3</strong> で割った余りが <strong>0</strong> の時」。</p></li>
+<li><p><strong>３</strong>で<strong class="b">割り切れる</strong>ということは「<strong>３の倍数</strong>」ということになります。<code>i % 5</code> も同じです。</p></li>
+
+<ul>
+<li class="inlook" style="display: block;">３で割り切れるものたち
+  <p><math>
+    <mi style="color:blueviolet">15</mi>
+    <mo>&divide;</mo>
+    <mi style="color:tomato">3</mi>
+    <mo>=</mo>
+    <mi style="color:lightseagreen">5</mi>
+    <mo>余り</mo>
+    <mi style="color:darkslategray">0</mi>
+  </math></p>
+  <p><math><mi style="color:blueviolet">15</mi>
+    <mo>&percnt;</mo>
+    <mi style="color:tomato">3</mi>
+    <mo>=</mo>
+    <mi style="color:darkslategray">0</mi>
+    <mo>商</mo>
+    <mi style="color:lightseagreen">5</mi>
+  </math></p>
+</li>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;↑ ↓</p>
+
+<li class="inlook" style="display: block;">３の倍数たち
+  <p><math>
+    <mi style="color:tomato">3</mi>
+    <mo>&times;</mo>
+    <mi style="color:lightseagreen">5</mi>
+    <mo>+</mo>
+    <mi style="color:darkslategray">0</mi>
+    <mo>=</mo>
+    <mi style="color:blueviolet">15</mi>
+  </math></p>
+  <p><math>
+    <mi style="color:lightseagreen">5</mi>
+    <mo>&times;</mo>
+    <mi style="color:tomato">3</mi>
+    <mo>+</mo>
+    <mi style="color:darkslategray">0</mi>
+    <mo>=</mo>
+    <mi style="color:blueviolet">15</mi>
+  </math></p>
+</li>
+</ul>
+<br>
+
+<li><p>プログラムは上から順番に動いていきます。</p></li>
+<li class="look"><p><strong>15</strong> は本来 <strong>3 と 5 の倍数</strong>なので<br><br><code>elif i % 3 == 0 and i % 5 == 0:</code> で <strong class="b">True</strong> になって <code>アホイヌ</code> と出力されるべきなのですが、<br><br>
+    <strong>３の倍数でもある</strong>ので、先に <code>if i % 3 == 0:</code> で <strong>True</strong> になってしまったから正しく動かなかったのです。</p></li>
+<p>運のいいイヌめ。</p>
+</ul>
+
+
+<ul>
+  <li><p>この他にも<strong class="if"></strong>文には様々なワナがひそんでいます。</p></li>
+  <li><p>プログラミングは、こういったワナを回避しつつプログラムを正しく動くように組み上げていくというゲーム性があります。</p></li>
+  <li><p>ゲームなのでいくらでもやり直しがききますから、何度でも挑戦して楽しみましょう！</p></li>
+</ul>
+
+
+<ul>
+  <li><p>ところで、だいぶプログラムが読めるようになってきていることに気付きましたか？🤭</p></li>
+  <li><p>これで「最初にしるべき４つのこと」は完全にクリアしました。😄</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')"><span class="backto">Fizz Buzz問題の問題</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>アホとイヌ</p>
+</footer>
+
+
+
+</body>
+</html>

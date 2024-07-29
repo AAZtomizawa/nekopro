@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>タプル</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>タプル (tuple)</h1>
+    <p>これがわかるようになればひと皮むけます👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - タプルとは</summary>
+
+    <header>
+      <h2>タプルとは</h2>
+    </header>
+
+
+<ul>
+<li><p>簡単に言うと、リストの「<strong>書き換え禁止版</strong>」です。</p></li>
+<li><p>一度タプルを作ったら、何があっても値を書き換えたり、要素を追加したり、要素を削除したりすることは一切できなくなります。</p></li>
+<li>
+  <p>見た目はすでに何度か見たと思いますが、こんな感じです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = (1, 2)
+</code></pre>
+
+<pre><code class="language-python">titles = ('To TUPる', '魔法少女猫たぷる')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>( ) で囲います。リストの [ ] が ( ) になっただけです。</p>
+</li>
+<br>
+
+<li>
+  <p>値を参照することはできます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">titles = ('To TUPる', '魔法少女猫たぷる')
+print(titles[0])
+</code></pre>
+
+<code>To TUPる</code><br>
+
+<details class="sample-code"><summary></summary>タプルを作ってみよう！
+  <iframe src="https://paiza.io/projects/e/nyNzA2S_LbC92Y0hoZDY0w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+</ul>
+
+<ul>
+<li>
+  <p>値を書き換えようとするとこうなります。</p>
+            
+            
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">titles = ('To TUPる', '魔法少女猫たぷる')
+titles[0] = 'Rewrite'
+print(titles)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    titles[0] = 'Rewrite'
+TypeError: 'tuple' object does not support item assignment
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>要素を削除しようとするとこうなります。</p>
+
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">titles = ('To TUPる', '魔法少女猫たぷる')
+del titles[0]
+print(titles)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    del titles[0]
+TypeError: 'tuple' object doesn't support item deletion
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p>要素を追加したり挿入したりする方法は用意されてませんので、試しようがありません。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>また、こうするとエラーになります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = (1)
+print(nums[0])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    print(nums[0])
+TypeError: 'int' object is not subscriptable
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>( ) が省略されて、<strong>int</strong> の <code>1</code> になってしまうのです。</p>
+</li>
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = (1)
+print(nums)
+</code></pre>
+
+<code>1</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<li>
+  <p>要素が１つのタプルを作る場合はこうします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">titles = ('To TUPる',)
+print(titles)
+</code></pre>
+
+<code>('To TUPる',)</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/ucS_B4CoM_nlz9T7CAEiSg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>変なの～。😹</p>
+</ul>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">タプルとは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - クセの強いタプルの扱い方</summary>
+
+    <header>
+      <h2>クセの強いタプルの扱い方</h2>
+    </header>
+
+  <article>
+
+
+
+    <details id="c2-1"><summary>タプルの使いどころ</summary>
+
+      <header>
+        <h3>タプルの使いどころ</h3>
+      </header>
+
+
+<ul>
+  <li><p>初めのうちはリストを使えば不都合はほとんどありません。</p></li>
+  <li><p>しかし <strong class="func">zip()</strong> の戻り値のように、タプルになって返ってくることがあります。</p></li>
+  <li><p>それを扱うためにも、多少はタプルの特性を知っておいた方が、余計なストレスを作らずに済むかもしれません。</p></li>
+  <li><p>タプルにはタプルの良さがあるのですが、とりあえずは積極的に使っていくことはしないで、やむをえずタプルを使わざるを得ない場面に遇った時の対処として簡単に学んでおきましょう。</p></li>
+  <br>
+  <li><p>初めのうちでも使うかもしれない使いどころを２つだけ紹介します。</p></li>
+</ul>
+
+<ul>
+<li><p>戻り値がタプルになる</p>
+  <p><strong class="func">zip()</strong> を例に見てみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">beasts = ['ケルベロス', 'インキュベーター']
+calleds = ['ケロちゃん', 'キュゥべえ']
+
+print(list(zip(beasts, calleds)))
+</code></pre>
+
+<code>[('ケルベロス', 'ケロちゃん'), ('インキュベーター', 'キュゥべえ')]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>辞書のキーに使う</p>
+  <p>「Fizz Buzz」を例に見てみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fizzbuzz = {
+    (True, True): 'アホイヌ',
+    (True, False): 'アホ',
+    (False, True): 'イヌ',
+}
+
+for i in range(1, 101):
+    aho = (i % 3 == 0)
+    inu = (i % 5 == 0)
+    fizzbuzz[(False, False)] = i
+    
+    print(fizzbuzz[(aho, inu)])
+</code></pre>
+
+(略)<br>
+<code>8</code><br>
+<code>アホ</code><br>
+<code>イヌ</code><br>
+<code>11</code><br>
+<code>アホ</code><br>
+<code>13</code><br>
+<code>14</code><br>
+<code>アホイヌ</code><br>
+<code>16</code><br>
+(略)
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+            
+</li>
+</ul>
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">タプルの使いどころ</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-2"><summary>戻り値がタプルの時の扱い方</summary>
+
+      <header>
+        <h3>戻り値がタプルの時の扱い方</h3>
+      </header>
+
+<ul>
+<li>
+  <p>再び <strong class="func">zip()</strong> で書いてみます。</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+
+for ziped_nums in zip(num1, num2):
+    print(ziped_nums)
+</code></pre>
+
+<code>(1, 4)</code><br>
+<code>(2, 5)</code><br>
+<code>(3, 6)</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/tBVFtWwHixh0zn9jrzeWHA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br><br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+
+for a, b in zip(num1, num2):
+    print(a, b)
+</code></pre>
+
+<code>1 4</code><br>
+<code>2 5</code><br>
+<code>3 6</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/MKem4pjhy3MnV1KXmRdCow?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これらのように、<strong class="for"></strong>文で使うととても便利です。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><strong class="func">zip()</strong> は、そのまま <strong class="func">print()</strong> で出力するとこうなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+print(zip(num1, num2))
+</code></pre>
+
+<code>&lt;zip object at 0x145f54e4cb40&gt;</code><br>
+
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>この状態では、値を直接見ることはできません。</p>
+
+            
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+ziped_nums = zip(num1, num2)
+print(ziped_nums[0])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 4, in &lt;module&gt;
+    print(ziped_nums[0])
+TypeError: 'zip' object is not subscriptable
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>これを <strong class="func">list()</strong> を使って見える化します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+ziped_nums = list(zip(num1, num2))
+print(ziped_nums)
+</code></pre>
+
+<code>[(1, 4), (2, 5), (3, 6)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>今度は値を見ることができます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+ziped_nums = list(zip(num1, num2))
+print(ziped_nums[0])
+</code></pre>
+
+<code>(1, 4)</code><br>
+
+<details class="sample-code"><summary></summary>コピペして全部試してみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p>さてここからが問題です。</p></li>
+<li><p>タプルの中の値を書き換えたい時にはどうしたらよいでしょうか？</p></li>
+<li><p>書き換えを前提として nums1 と nums2 をリストにしたのに、<strong class="func">zip()</strong> にしたら、書き換え不可能なタプルになって返ってきてしまいました。</p></li>
+<li><p><strong>zip</strong> してからも書き換えるつもりだったのに・・・という場面はわりとあります。</p></li>
+<br>
+<li><p>この解決方法として簡単にリストに直せる関数やメソッドが、実は<strong>用意されていない</strong>のです。</p></li>
+<li>
+  <p>無いものねだりしても始まらないので、次の方法で完全リスト化します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+
+ziped_nums = []
+for z in zip(num1, num2):
+    ziped_nums.append([*z])
+print(ziped_nums)
+</code></pre>
+
+<code>[[1, 4], [2, 5], [3, 6]]</code><br>
+
+<details class="sample-code"><summary></summary>実際に見てみてください！
+  <iframe src="https://paiza.io/projects/e/ip762iTQQ0yl2ekAriSsqw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>内包表記というものを使って一息で書くとこうなります。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+
+ziped_nums = [[*z] for z in zip(num1, num2)]
+print(ziped_nums)
+</code></pre>
+
+<code>[[1, 4], [2, 5], [3, 6]]</code><br>
+
+<details class="sample-code"><summary></summary>試しに内包表記で書いてみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これで要素や値を自由にいじくりまわすことが可能になります。</p>
+</li>
+<br>
+<li><p>面倒な作業ですね。😅</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>ちなみに先ほどの見える化したプログラム、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">num1 = [1, 2, 3]
+num2 = [4, 5, 6]
+ziped_nums = list(zip(num1, num2))
+print(ziped_nums)
+</code></pre>
+
+<code>[(1, 4), (2, 5), (3, 6)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これは外側がリストなので、要素として<strong class="b">タプルまるごと</strong>ならばいろいろと操作することはできます。</p>
+</li>
+<br>
+
+<li>
+  <p>値の変更</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [(1, 4), (2, 5), (3, 6)]
+nums[0] = (7, 8)
+print(nums)
+</code></pre>
+
+<code>[(7, 8), (2, 5), (3, 6)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+
+<li>
+  <p>要素の追加</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [(1, 4), (2, 5), (3, 6)]
+nums.append((7, 8))
+print(nums)
+</code></pre>
+
+<code>[(1, 4), (2, 5), (3, 6), (7, 8)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>要素の削除</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [(1, 4), (2, 5), (3, 6)]
+del nums[0]
+print(nums)
+</code></pre>
+
+<code>[(2, 5), (3, 6)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>値交換 (スワップ)</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [(1, 4), (2, 5), (3, 6)]
+nums[0], nums[1] = nums[1], nums[0]
+print(nums)
+</code></pre>
+
+<code>[(2, 5), (1, 4), (3, 6)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+<br>
+
+<li><p>もういいかな？😅</p></li>
+<li><p>要するにリストの中のタプルは「<strong class="b">リストの要素</strong>」なので、リストの操作ができるわけです。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">戻り値がタプルの時の扱い方</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-3"><summary>辞書のキーとしてタプルを使う</summary>
+
+      <header>
+        <h3>辞書のキーとしてタプルを使う</h3>
+      </header>
+
+<ul>
+  <li><p>辞書のキーは、<strong>値の変更が不可能な型</strong>(不変の型)でなければなりません。</p></li>
+  <li><p>タプルも不変の型(イミュータブル)の１つです。</p></li>
+  <li><p>なので、リストはダメでも<strong>タプルにすれば使えるようになります。</strong></p></li>
+</ul>
+
+<ul>
+<li>
+  <p>もう一度「Fizz Buzz」のプログラムを書いてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fizzbuzz = {
+    (True, True): 'アホイヌ',
+    (True, False): 'アホ',
+    (False, True): 'イヌ'
+    }
+
+for i in range(1, 101):
+    aho = (i % 3 == 0)  # 3 の倍数で True
+    inu = (i % 5 == 0)  # 5 の倍数で True
+    fizzbuzz[(False, False)] = i
+    
+    print(fizzbuzz[(aho, inu)])
+</code></pre>
+
+(結果は👇👇👇にて)<br>
+
+<details class="sample-code"><summary></summary>右上の Open in New Window を押して試してください！
+  <iframe src="https://paiza.io/projects/e/6tQQKMJEeWvfaX8FLVMtmQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p>今回は<strong class="if"></strong>文を使った条件分岐ではなく、辞書を使った書き方をしました。</p></li>
+<li><p>この書き方にすると判定が辞書の中のキーによって行なわれる上に、順不同にもなります。</p></li>
+<li><p>もうアホイヌに逃げられる心配もなくなります。</p></li>
+<li><p><strong>注目すべきは、辞書のキーです。</strong></p></li>
+<li><p>ここにタプルが使われています。</p></li>
+<li>
+  <p>タプルの部分をリストに変えて動かしてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fizzbuzz = {[True, True]: 'アホイヌ',
+    [True, False]: 'アホ',
+    [False, True]: 'イヌ'
+    }
+
+for i in range(1, 101):
+    aho = (i % 3 == 0)  # 3 の倍数で True
+    inu = (i % 5 == 0)  # 5 の倍数で True
+    fizzbuzz[[False, False]] = i
+    
+    print(fizzbuzz[[aho, inu]])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><small>※ エラー表示をわかりやすくするために一行目と二行目を繋げました。</small></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 1, in &lt;module&gt;
+    fizzbuzz = &lbrace;[True, True]: 'アホイヌ',
+TypeError: unhashable type: 'list'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>エラーメッセージから説明をするのは今はまだ難しいのですが、要するに「<strong>キーにリスト型は使えません</strong>」ということです。</p></li>
+<li><p>「アンハッシャブル・タイプ」→「ハッシュに使えない(一意ではない)型」→「不変の型ではない」→「キーに使う型として不適切」といった感じでしょうか。</p></li>
+<li><p>「じゃあ具体的にどの型なら使えるの？」の説明をこの次の Chatpter.3 でします。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-3')">辞書のキーとしてタプルを使う</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+    
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">クセの強いタプルの扱い方</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - 可変(mutable)と不変(immutable)</summary>
+
+    <header>
+      <h2>可変(mutable)と不変(immutable)</h2>
+    </header>
+
+
+<ul>
+  <li><p>もうなんとなく大体の意味はわかってきていると思われます。😅</p></li>
+  <li><p><strong>可変</strong>・・・値が<strong>変更できる</strong><br>
+          <strong>不変</strong>・・・値が<strong>変更できない</strong></p></li>
+  <li><p>ここで言う<strong>値</strong>とは、「<strong>タプル</strong>」そのもののことです。</p></li>
+  <li><p><strong>タプル</strong>は、そのものが不変なので、その中の要素を操作することもできません。</p></li>
+  <li><p>絶対に開かない箱の中身をどうすることもできないのと同じです。(透明の箱なので中身は見える)</p></li>
+</ul>
+
+<ul>
+  <li><p>可変のことを「<strong>ミュータブル</strong> <em>(mutable)</em>」、<br>
+          不変のことを「<strong>イミュータブル</strong> <em>(immutable)</em>」と言います。</p></li>
+  <li><p>実は可変と不変は<strong>コピー</strong>のところですでに触れています。</p></li>
+  
+    <li class="look">
+        <p class="text-center"><code>変数2 = 変数1</code></p>
+        <p>このやり方を「<strong>コピー</strong><em>(copy)</em>」または「<strong>値のコピー</strong>」と言います。(三度目)</p>
+    </li>
+
+  <li><p>変数のまま <code>変数2</code> に <code>変数1</code> を代入する(コピーする)ことが、</p>
+
+    <table>
+    <thead>
+    <tr>
+      <th class="text-center">出来る！</th>
+      <th class="text-center">出来ない！</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="text-center"><strong>str</strong></td>
+      <td class="text-center"><strong>list</strong></td>
+    </tr>
+    <tr>
+      <td class="text-center"><strong>int</strong></td>
+      <td class="text-center"><strong>dict</strong></td>
+    </tr>
+    <tr>
+      <td class="text-center"><strong class="blink-text">tuple</strong></td>
+      <td class="text-center">set</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <p><small>※ まだ学んでいない型は細字になっていますって残りあと１つ！</small></p>
+  </li>
+  <li><p>この「<strong class="b">出来る！</strong>」がすべて「<strong>不変 (イミュータブル)</strong>」となっているのです。</p></li>
+  <li><p>「<strong class="b">出来る！</strong>」ほうは、辞書のキーとして使えます。</p></li>
+</ul>
+
+<ul>
+<li><p>「え・・・<strong>str</strong> と <strong>int</strong> は書き換えられるじゃん？」<br>
+        → 書き換えられません。上書きして値を更新してるだけです。</p></li>
+<li>
+  <p>文字列は一部を直接書き換えることはできませんでしたよね？</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">name = '天使のぼる'
+name[3] = 'え'  # 'ぼ' を 'え' に書き換える
+print(name)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    name[3] = 'え'  # 'ぼ' を 'え' に書き換える
+TypeError: 'str' object does not support item assignment
+</code></pre>    
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong>str</strong> はしっかり <strong>不変 (イミュータブル)</strong> となっています。</p>
+</li>
+
+<li><p><strong>int</strong> のほうも数値の一部を書き換え・・・一部を書き換え・・・数値の一部を書き換える！？なにそれ意味わからん。<ruby>改竄<rt>かいざん</rt></ruby>か！？</p></li>
+<li><p><strong>int</strong> も値を更新する以外できないですね。</p></li>
+<li><p>なので <strong>int</strong> もしっかり <strong>不変 (イミュータブル)</strong> です。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">可変(mutable)と不変(immutable)</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 -  tuple()とその他機能</summary>
+
+    <header>
+      <h2>tuple()</h2>
+    </header>
+
+
+<ul>
+  <li><p><strong>tuple()</strong> も <strong class="func">list()</strong> と同じ使い方です。</p></li>
+  <li><p>リストがタプルになっただけです。</p></li>
+  <li><p>意識してタプルに変換したい時にはこの <strong class="func">tuple()</strong> を使って変換します。</p></li>
+  <li><p>他に特筆すべき点はありません。</p></li>
+  <li><p>今はただ、<strong>辞書のキーに使いたい時</strong>にリストからタプルに変換する為に使うくらいでしょう。</p></li>
+  <li><p>なので、この場での説明はこれにて終了！</p></li>
+</ul>
+
+
+    <header>
+      <h3>タプルで使えるメソッド</h3>
+    </header>
+
+
+<ul>
+  <li><p>主に使えるのは <strong class="func">.index()</strong> と <strong class="func">.count()</strong> の２つだけです。</p></li>
+  <li><p>使い方はリストと全く同じです。</p></li>
+</ul>
+
+
+    <header>
+      <h3>タプルで使える関数</h3>
+    </header>
+
+
+<ul>
+  <li><p>関数は引数がタプルの場合でも、引数がリストの場合と同じように処理できるよう関数の中で巧いことやってくれているので、<strong class="b">リストで使える関数はタプルでも使えます。</strong></p></li>
+  <li><p>たとえ引数の型が何であろうと、戻り値は決まった型で返ってきます。</p></li>
+  <li><p>例えば <strong class="func">sorted()</strong> は戻り値が<strong>リスト</strong>で返ってきますし、<strong class="func">sum()</strong> は戻り値が <strong>int</strong> で返ってきます。</p></li>
+  <li><p>使い方もリストと全く同じです。</p></li>
+</ul>
+
+
+    <header>
+      <h3>in と not in</h3>
+    </header>
+
+
+<ul>
+  <li><p><strong>in</strong> も <strong>not in</strong> も、リストとまったく同じ使い方です。</p></li>
+  <li><p>タプルならではの制限とかもありません。</p></li>
+  <li><p><strong>in</strong> も <strong>not in</strong> も、値があるかどうかを調べるだけの機能なので可変不変は不問です。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">tuple()とその他機能</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>タプル (tuple)</p>
+</footer>
+</body>
+</html>

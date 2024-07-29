@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title class="site_name">条件分岐・条件文・条件式・インデント </title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>条件分岐・条件文・条件式・インデント</h1>
+  <p>ロボットのセンサーみたいな機能が作れるようになります👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 条件分岐とは</summary>
+
+    <header>
+      <h2>条件分岐とは</h2>
+    </header>
+
+
+    <ul>
+      <li><p>主に条件文の <strong class="if"></strong> を使って「もし〇〇なら右、××なら左」みたいなことをします。</p></li>
+      <li><p>分かれ道に立てる立て札のようなものです。</p></li>
+      <li><p>使い方はとても簡単なのですが、使いこなすのが難しいです。</p></li>
+      <li><p>エラーが出てないのにうまく動かないときは、たいていの場合、条件文に間違いがあります。</p></li>
+      <li><p>条件文は魔物です。</p></li>
+      <li><p>でも、手懐けるととても頼りになります。</p></li>
+      <li><p>「条件分岐」「条件文」「条件式」。条件だらけでややこしいです。</p></li>
+      <li><p>コンピュータの世界も現代社会同様、世知辛いのです。</p></li>
+    </ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">条件分岐とは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - 条件文</summary>
+
+    <header>
+      <h2>条件文</h2>
+    </header>
+
+
+  <article>
+
+    <details id="c2-1"><summary>2.1 - if</summary>
+
+      <header>
+          <h3>if</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>まずはこれを見てください。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True または False:
+    if が True の時に、これを実行する。
+else:
+    if が False の時に、これを実行する。
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+<p><code>a = 1</code> の時、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 1
+if a == 1:  # a が 1 の時
+    print('1 です。')
+else:
+    print('1 ではありません。')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 1
+if True:    # a が 1 なので True に化けた
+    print('1 です。')   # ← これが実行される
+else:
+    print('1 ではありません。')
+</code></pre>
+
+<code>1 です。</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/9kYJvBcJTe1iYeelEvGsLg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+
+<li><p><code>a = 1</code> は代入式。<code>a == 1</code> は条件式です。<code>=</code> の数に注意！</p></li>
+<li><p><code>a</code> は <code>1</code> なので、この場合 <code>a == 1</code> が <code>True</code> に化けます。</p></li>
+<li>
+  <p><strong class="if"></strong>文で、<code>a</code> が <code>1</code> の時 (<strong>True</strong>) は、すぐ下の <code class="output">print('1 です。')</code> だけが動きます。<br>
+  <code>else:</code> 以降の部分は飛ばされます。</p>
+</li>
+
+</ul>
+
+<ul>
+
+<li><p>逆に <code>a</code> が <code>1</code> ではない時 (<strong>False</strong>) は <code>else:</code> まで飛んで、<br>
+  そのすぐ下の <code class="output">print('1 ではありません。')</code> が動きます。</p>
+</li>
+
+<li>
+  <p>例えば <code>a = 0</code> の時は、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 0
+if a == 1:  # a が 1 の時
+    print('1 です。')
+else:
+    print('1 ではありません。')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 0
+if False:    # a が 1 ではないので False に化けた
+    print('1 です。')
+else:                        # ← ここに飛んで、
+    print('1 ではありません。')  # ← これが実行される
+</code></pre>
+<code>1 ではありません。</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/VRRXUsF8yIK3NjUYa6cMuA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>と画面に出力されます。</p>
+</li>
+<br>
+
+<li>
+<p><code>else:</code> 以降を省略した場合、<strong class="if"></strong> が <strong class="bb">False</strong> の時は <strong>何もしない</strong> ということになります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 0
+if False:    # a が 1 ではないので False に化けた
+    print('1 です。')
+</code></pre>
+
+<p>〔 <code>else:</code> が無いので、何も起こらない 〕</p>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/sJM-jjzHOlgRpQzltai9Fg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p><strong class="if"></strong>文の一番うしろに <code>:</code> を付けるのを忘れないでくださいね。<br>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">if</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+    <article>
+
+      <details id="c2-2"><summary>2.2 - elif</summary>
+
+        <header>
+          <h3>elif</h3>
+        </header>
+
+
+<ul>
+<li>
+  <p>簡単です。まずはこれを見てください。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True または False:
+    if が True の時に、これを実行する。
+elif True または False:
+    elif が True の時に、これを実行する。
+else:
+    全部 False の時は、これを実行する。
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p><code>a</code> が <code>2</code> の時</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 2
+if a == 1:
+    print('1 です。')
+elif a == 2:
+    print('2 です。')
+else:
+    print('1 でも 2 でもありません。')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 2
+if False:   # &lt;-- a が 1 ではないので 次の elif へ
+    print('1 です。')
+elif a == 2:
+    print('2 です。')
+else:
+    print('1 でも 2 でもありません。')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 2
+if False:
+    print('1 です。')
+elif True:   # &lt;------  ここが True になった
+    print('2 です。')
+else:
+    print('1 でも 2 でもありません。')
+</code></pre>
+    
+<code>2 です。</code>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/sXVoYrF7mSvVSTKlhiiNxw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p><code>if</code> が <code>False</code> の時、次の <strong class="elif"></strong>文に飛びます。</p></li>
+<li><p>このように、<code>if</code> が１つでは足りないときに、<code>if</code> の次に <code>elif</code> を使うと条件文が増やせます。</p></li>
+<li><p><strong class="elif"></strong> を使えば、100個でも100万個でもいくらでも増やせます。</p></li>
+<li><p>けど、できる限り少なくした方が、プログラムが読みやすくなってモテます。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">elif</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">条件文</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - and と or</summary>
+
+    <header>
+      <h2>and と or</h2>
+    </header>
+
+
+<ul>
+<li>
+  <p>これを見てください。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+if a &gt;= 1 and a &lt;= 5:   # and
+    print('a は、1 以上 5 以下の数です。')
+else:
+    print('a は、1 以上 5 以下の数ではありません。')
+</code></pre>
+
+<code>a は、1 以上 5 以下の数です。</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+if a == 1 or a == 5:    # or
+    print('a は、1 か 5 です。')
+else:
+    print('a は、1 でも 5 でもありません。')
+</code></pre>
+
+<code>a は、1 でも 5 でもありません。</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/5N8lcVQvKgNIcvefr7lELw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>このように、条件式を繋げて書くことができます。</p>
+</li>
+
+
+  <li class="look">
+    <p><strong class="special">and</strong> は、１つでも <strong>False</strong> があると、その条件式は <strong>False</strong> になります。<br>
+      全てが <strong>True</strong> でなければ <strong>True</strong> になりません。</p>
+  </li>
+
+  <li class="look">
+    <p><strong class="special">or</strong> は、１つでも <strong>True</strong> があると、その条件式は <strong>True</strong> になります。<br>
+      全てが <strong>False</strong> の時のみ、 <strong>False</strong> になります。</p>
+  </li>
+</ul>
+
+
+<ul>
+<li>
+  <p>ちなみに <strong>and</strong> のほうは、こんな風にも書けます</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 1 &lt;= a &lt;= 5:   # こっちのほうが一般的でわかりやすい。オススメ！
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>場合によって ( ) で囲って見やすくすることもあります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if (1 &lt;= a &lt;= 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>しかし場合によって ( ) で囲う必要があるときもあります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 1 &lt;= a &lt;= 5 and (a == 1 or a == 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>a が 1 以上 5 以下</code> 且つ ( <code>a が 1</code> または <code>a が 5</code> ) の時。</p>
+
+<p><br>これは <code>1 &lt;= a &lt;= 5</code> を先に評価してから次に <code>(a == 1 or a == 5)</code> 評価して、最後に両方の結果の値(<strong> True </strong>か<strong> False </strong>)を評価にかける順番になっています。</p>
+<p>ややこしすぎて、ちょっと何言ってるかわからないですよね。</p>
+</li>
+</ul>
+
+
+<ul>
+
+<li>
+  <p>以下がそれを見える化したものです。<br>
+    じっくりと、目で追っていってみてください。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 5
+if 1 &lt;= a &lt;= 5 and (a == 1 or a == 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 5
+if True and (a == 1 or a == 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 5
+if True and True:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 5
+if True:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p><code>a</code> の値を変えてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+if 1 &lt;= a &lt;= 5 and (a == 1 or a == 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+if True and (a == 1 or a == 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+if True and False:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+if False:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p><code>a</code> の値をさらに変えてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 10
+if 1 &lt;= a &lt;= 5 and (a == 1 or a == 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 10
+if False and (a == 1 or a == 5):
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 10
+if False:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p>途中で <code>False</code> になった時点で、条件式の結果が <code>False</code> になります。</p></li>
+<li><p><code>False</code> になったら、それより後の条件式はすべて評価されません。</p></li>
+<li><p>どんなに複雑で長い条件式であっても、一番最初で『<code>False</code> (and)』 『<code>True</code> (or)』になったら、そこで評価は終了です。</p></li>
+<li><p>ですので、評価にかける条件式の順番は、わりと重要だったりします。慣れたら自然にわかる！</p></li>
+</ul>
+
+<br>
+<p class="text-center">だんだん複雑になってきましたね。🥴</p>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">and と or</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - インデント</summary>
+
+    <header>
+      <h2>インデント</h2>
+    </header>
+
+
+<ul>
+
+<li><p>『<strong class="special">インデント</strong>』は、「字下げ」ともいいます。</p></li>
+<li>
+  <p>例えば「<strong class="if"></strong>文はここからここまでです 」という意味でインデントが使われます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 1
+if a == 1:    # a が 1 の時、インデントした範囲が実行される
+    print(a)  # print の前の空白が『インデント』
+    print(a + 1)
+    print(a + a)  # if文はここまで
+
+print(a)  # ← ここは if文ではないので ふつうに実行される
+</code></pre>
+
+<code>1</code><br>
+<code>2</code><br>
+<code>2</code><br>
+<code>1</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/BHCzdmm9uvflsS2fmQ21PA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong class="if"></strong> が <strong>False</strong> のとき。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 0
+if a == 1:
+    print(a)
+    print(a + 1)
+    print(a + a)
+
+print(a)  # ← ここは if文ではないので ふつうに実行される
+</code></pre>
+
+<code>0</code>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/Vot2pNQzQgbs_IBEHUudfg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+<ul>
+  <li><p>インデントは一回につき、<strong>半角スペース４つ分です。</strong>決まり事！</p></li>
+  <li><p>半角スペースの代わりに、<code>[Tab]</code>キー１回押してもOK！</p></li>
+  <li><p>でも半角スペース４つ分になったりならなかったり。</p></li>
+  <li><p>最後に <code>:</code> を付けると、<code>[Enter]</code>キーを押したときに自動でインデントがつく場合もあります。</p></li>
+  <li><p>逆につけ忘れるとインデントが付かないので、そこで <code>:</code> の付け忘れに気付いたりします。😓</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">インデント</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>条件分岐・条件文・条件式・インデント</p>
+</footer>
+</body>
+</html>

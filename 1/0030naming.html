@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/prism_coy.css">
+		<script type="text/javascript" src='../js/prism.js'></script>
+		<script type="text/javascript" src='../js/custom.js'></script>
+		<title>変数の名前の付け方</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+	<h1>変数の名前の付け方</h1>
+	<p>自分で変数を作れるようになります👍</p>
+</header>
+
+
+
+<main>
+
+		
+
+<article>
+
+	<details id="c1"><summary>Chatpter.1 - 実はめんどくさいルールがてんこ盛り</summary>
+
+		<header>
+				<h2>実はめんどくさいルールがてんこ盛り</h2>
+		</header>
+
+			<ul>
+				<li><p>変数に使えない言葉がある！「変数禁止用語」とは言いませんけど。</p></li>
+				<li><p><ruby>変数名<rt>へんすうめい</rt></ruby>は、基本的に「英語」で付けます。</p></li>
+				<li><p>英語がわからんくてネットで調べまくりです。</p></li>
+				<li><p>ChatGPT様(無料版)に「〇〇に適した変数名を、いくつか提案してください」とお願いしまくりです。</p></li>
+				<li><p>名付けに時間をかけると、さっきまで何を考えていたのかを綺麗サッパリと忘れること請け合いです。</p></li>
+				<li><p>名付けには結構苦労します。命名規則さえ守れば、最初はテキトーでいいです。</p></li>
+			</ul>
+
+
+		<footer>
+				<a class="backto" href="#" onclick="closeAccordion('c1')">実はめんどくさいルールがてんこ盛り</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+		
+	<details id="c2"><summary>Chatpter.2 - 命名規則</summary>
+
+		<header>
+			<h2>命名規則</h2>
+		</header>
+
+
+			<ul>
+				<li><p>変数に限りませんが、名前を付けることを「<ruby>命名<rt>めいめい</rt></ruby>」と言います。</p></li>
+				<li><p></p>命名に最低限決まったルールがあるので「<ruby>命名規則<rt>めいめいきそく</rt></ruby>」と言うのです。</p></li>
+				<li><p></p>最低限、守らなければならないルールは以下のとおりです。</p></li>
+
+
+					<li class="warning">
+							最初の一文字目は、必ずアルファベットにしなければならない。<br>
+							記号を使うことはできない。<br>
+							予約語を変数名にすることはできない。(「予約語」は後述 )<br>
+					</li>
+
+
+				<li><p>最初の文字をアルファベット(小文字)にさえすれば、大抵はクリアできてしまいます。</p></li>
+				<li><p>二文字目からはアルファベットだけでなく、数字も自由に使えます。</p></li>
+				<li><p>逆にこのルールに引っかかるとエラーになります。</p></li>
+				<li><p>記号で、<code>_</code> (アンダースコア) だけは例外で使えます。</p></li>
+				<li><p>他にも命名規則はあるのですが、今はこの３つだけで全然OK！</p></li>
+			</ul>
+
+
+		<footer>
+				<a class="backto" href="#" onclick="closeAccordion('c2')">命名規則</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<section>
+
+	<details id="c3"><summary>Chatpter.3 - 変数名にふさわしくない言葉</summary>
+
+		<header>
+				<h2>変数名にふさわしくない言葉</h2>
+		</header>
+
+
+	<article>
+				
+		<details id="c3-1"><summary>3.1 - 予約語</summary>
+
+			<header>
+				<h3>予約語</h3>
+			</header>
+
+
+				<ul>
+					<li><p>変数に使えない言葉の代表に「<ruby>予約語<rt>よやくご</rt></ruby>」というのがあります。</p></li>
+					<li><p>予約語とは次のようなものです。</p>
+
+						<table><tbody>
+						<tr>
+								<td class="text-center">for</td>
+								<td class="text-center">if</td>
+								<td class="text-center">in</td>
+								<td class="text-center">import</td>
+								<td class="text-center">while</td>
+						</tr>
+						<tr>
+								<td class="text-center">from</td>
+								<td class="text-center">return</td>
+								<td class="text-center">break</td>
+								<td class="text-center">continue</td>
+								<td class="text-center">class</td>
+						</tr>
+						</tbody></table>
+
+						<p>※ この他にもあります。</p>
+					</li>
+					
+					<li><p>繰り返し文で出てきた <strong class="for"></strong>や、条件文で出てきた<strong class="if"></strong>も予約語となっています。</p></li>
+					<li><p><strong class="if"></strong>を変数名に使ったら、条件文が使えなくなって困っちゃいますからね！</p></li>
+					<li><p>もしこれらの言葉を使いたい場合、他の文字を加えれば回避することができます。<br>
+						例）<code>breaktime</code>, <code>in_my_class</code>, <code>in_</code></p></li>
+				</ul>
+
+
+			<footer>
+					<a class="backto" href="#c3" onclick="closeAccordion('c3-1')">予約語</a>
+			</footer>
+				
+		</details>
+		
+	</article>
+
+
+
+
+
+	<article>
+				
+		<details id="c3-2"><summary>3.2 - 関数名</summary>
+
+			<header>
+				<h3>関数名</h3>
+			</header>
+
+
+				<ul>
+					<li><p>「<strong class="b"><ruby>関数名<rt>かんすうめい</rt></ruby></strong>」とは<strong class="func">print()</strong>で出てきた () の前までの言葉です。</p></li>
+					<li><p>これを変数名にしてしまうと、その関数の機能が使えなくなってしまいます。</p></li>
+					<li><p><code>print = 0</code> なんてしたら、もう画面に出力できません。</p></li>
+					<li><p>でも変数名に使ってもエラーは出ません。これがやっかい！</p></li>
+					<li><p>ちなみに、その種類がすんごくたくさんあります。</p></li>
+
+					<li><p>以下はそのほんの一例です。</p>
+						<table>
+						<tbody>
+						<thead>
+						<tr>
+								<td class="text-center">int</td>
+								<td class="text-center">str</td>
+								<td class="text-center">print</td>
+								<td class="text-center">input</td>
+								<td class="text-center">list</td>
+						</tr>
+						</thead>
+
+						<tr>
+								<td class="text-center">len</td>
+								<td class="text-center">max</td>
+								<td class="text-center">min</td>
+								<td class="text-center">all</td>
+								<td class="text-center">any</td>
+						</tr>
+
+						<tr>
+								<td class="text-center">float</td>
+								<td class="text-center">range</td>
+								<td class="text-center">map</td>
+								<td class="text-center">set</td>
+								<td class="text-center">sum</td>
+						</tr>
+						</tbody>
+						</table>
+					</li>
+
+					<li><p>どれもよく使います。</p></li>
+					<li><p>よく使うからこそ勝手に憶えていきますので大丈夫です。すでに忘れてもOK！</p></li>
+					<br>
+					<li></p>次行きましょう！</p></li>
+				</ul>
+
+
+			<footer>
+					<a class="backto" href="#c3" onclick="closeAccordion('c3-2')">関数名</a>
+			</footer>
+
+		</details>
+
+	</article>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c3')">変数名にふさわしくない言葉</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+
+
+<article>
+
+	<details id="c4"><summary>Chatpter.4 - たかが変数名、されど変数名</summary>
+
+		<header>
+				<h2>たかが変数名、されど変数名</h2>
+		</header>
+
+
+			<ul>
+				<li>
+					<p>命名は、値が持つ意味に沿った言葉を選ぶことが推奨されています。</p>
+					<table>
+					<tbody>
+					<tr>
+							<td class="text-left"><code>name = 'ミケ'</code></td>
+							<td class="text-left"><code>ミケ</code> が名前のこととわかる</td>
+					</tr>
+					<tr>
+							<td class="text-left"><code>age = 2</code></td>
+							<td class="text-left"><code>2</code> という値が年齢のこととわかる</td>
+					</tr>
+					<tr>
+							<td class="text-left"><code>person = 'nyapanese'</code></td>
+							<td class="text-left">日本の猫ということがわかる(?)</td>
+					</tr>
+					</tbody>
+					</table>
+					<br>
+				</li>
+			</ul>
+
+			<ul>
+				<li>
+					<p>略された言葉を使うこともあります。</p>
+					<table>
+					<tbody>
+					<tr>
+							<td class="text-left"><code>cnt</code></td>
+							<td class="text-left">countの略</td>
+					</tr>
+					<tr>
+							<td class="text-left"><code>n</code> <code>num</code> <code>nums</code></td>
+							<td class="text-left">number(s)の略</td>
+					</tr>
+					<tr>
+							<td class="text-left"><code>st</code> <code>ed</code></td>
+							<td class="text-left">それぞれ start, end の略</td>
+					</tr>
+					</tbody>
+					</table>
+					<br>
+				</li>
+			</ul>
+
+			<ul>
+				<li>
+					<p>変数名だけでは何の値なのかがわかりにくい場合はコメントで補足することもあります。</p>
+					<table>
+					<thead>
+					<tr>
+							<th class="text-left"><code>#</code> 以降はコメント</th>
+							<th class="text-left">推奨</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+							<td class="text-left"><code>p # ポイント</code></td>
+							<td class="text-left"><code>point</code></td>
+					</tr>
+					<tr>
+							<td class="text-left"><code>plyr_p # プレイヤーのポイント</code></td>
+							<td class="text-left"><code>player_point</code> (player's point)</td>
+					</tr>
+					<tr>
+							<td class="text-left"><code>p_pts # 各プレイヤーのポイント</code></td>
+							<td class="text-left"><code>players_points</code> (ptsのsの意味はまた今度説明します)</td>
+					</tr>
+					</tbody>
+					</table>
+					<br>
+				</li>
+			</ul>
+
+
+			<ul>
+				<li><p>あまり変数名が長いとプログラムがごちゃごちゃしてわかりにくくなることもあります。</p></li>
+				<li><p>初めのうちは変数名が一文字のものばかりになってもいいので、何でも使ってみてください。</p></li>
+			</ul>
+
+
+		<footer>
+				<a class="backto" href="#" onclick="closeAccordion('c4')">たかが変数名、されど変数名</span></a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+	<p>変数の名前の付け方</p>
+</footer>
+</body>
+</html>

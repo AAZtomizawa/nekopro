@@ -1,0 +1,512 @@
+@charset "utf-8";
+
+html {
+    max-width: 100%;
+
+    background-color: #000000;
+}
+
+
+header {
+    font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+    word-wrap: break-word
+}
+
+footer {
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+
+body {
+
+
+    font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+
+    border-style: double;
+    border-width: 25px;
+    border-radius: 10px;
+    border-color: #0accbc;
+
+    padding-top: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+
+    background-color: #e8ffe8;
+}
+
+
+
+/* ---------- アコーディオン ---------- */
+
+details {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    }
+
+    details[open] {
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        padding-bottom: 1px;
+
+        margin-bottom: 40px;
+
+        box-shadow: 3px 3px 4px rgb(182, 182, 182);
+
+        background-color: #fdfde0;
+
+    }
+
+    details[open] summary {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding-bottom: 1px;
+
+        box-shadow: 3px 3px 4px rgb(182, 182, 182);
+
+        background-color: #c2f5ab;
+    }
+
+    details[open] summary:hover {
+        border-radius: 15px;
+        padding-bottom: 1px;
+
+        box-shadow: 3px 3px 4px rgb(182, 182, 182);
+
+        background-color: #95ec6c;
+
+}
+
+
+summary {
+        display: block;
+        font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+        font-weight: Bold;
+
+        padding: 5px;
+
+        background-color: #98f1c0;
+    }
+
+    summary:hover {
+        cursor: pointer;
+        background-color: #4ef097;
+        border-radius: 50px;
+        padding: 5px;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+        background-color: #c7ffe0;
+    }
+
+    summary::before {
+        content: "🌼";
+        margin-inline-end: 14px;
+    }
+
+    summary.sub::before {
+        content: "🐍";
+        margin-inline-end: 14px;
+        padding-left: 20px;
+}
+
+
+
+/* ---------- 文章枠 ---------- */
+
+ul {
+    padding-top: 20px;
+    padding-bottom: 25px;
+    padding-right: 20px;
+    
+    border-radius: 15px;
+
+    background-color: antiquewhite;
+}
+
+
+
+/* ---------- リスト ---------- */
+
+li.look {
+        display:inline-block ;
+        position: relative;
+        
+        padding: 25px;
+        padding-right: 50px;
+
+        border-style: ridge;
+        border-color: #d1660e;
+        border-width: 10px;
+        border-radius: 5px;
+
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        box-shadow: 5px 5px 5px rgb(116, 116, 116);
+
+        background-color: rgba(248, 216, 148, 0.616);
+    }
+
+        li.look::before {
+            content: "😼 Moi, je suis un chat.";
+            
+            font-family: 'Segoe Script', 'MV Boli';
+            font-size: 14px;
+            position: absolute;
+
+            top: 0px; /* 上ぴったり */
+            left: 0px; /* 左ぴったり */
+
+            padding-left: 8px;
+            padding-right: 8px;
+
+            /* border-top-left-radius: 15px; */
+            border-bottom-right-radius: 15px;
+
+            background-color:rgb(253, 210, 117);
+        }
+
+        li.look::after {
+            content: "Mais, je n'ai pas mon nom encore. 😼";
+            
+            font-family: 'Segoe Script', 'MV Boli';
+            font-size: 14px;
+            position: absolute;
+
+            bottom: 0px; /* 下ぴったり */
+            right: 0px; /* 右ぴったり */
+            
+            padding-left: 8px;
+            padding-right: 8px;
+            
+            border-top-left-radius: 15px;
+            /* border-bottom-right-radius: 15px; */
+
+            background-color:rgb(253, 210, 117);
+        }
+
+    li.warning {
+        display: inline-block;
+        position: relative;
+        font-family: Serif, 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+        font-weight: bold;
+        
+        border-style: ridge;
+        border-color: #d64f4f;
+        border-width: 12px;
+        border-radius: 4px;        
+        
+        padding: 35px;
+        
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        box-shadow: 5px 5px 5px rgb(116, 116, 116);
+
+        background-color: #fcb9b9;
+    }
+
+        li.warning::before {
+            content: "😼 Zettai!";
+            
+            font-family: 'Segoe Script', 'MV Boli';
+            font-size: 14px;
+            position: absolute;
+
+            top: 0px; /* 上ぴったり */
+            left: 0px; /* 左ぴったり */
+
+            padding-left: 8px;
+            padding-right: 8px;
+
+            /* border-top-left-radius: 15px; */
+            border-bottom-right-radius: 15px;
+
+            background-color:#ff9e9e;
+        }
+
+        li.warning::after {
+            content: "Mamoru! 😼";
+            
+            font-family: 'Segoe Script', 'MV Boli';
+            font-size: 14px;
+            position: absolute;
+
+            bottom: 0px; /* 下ぴったり */
+            right: 0px; /* 右ぴったり */
+            
+            padding-left: 8px;
+            padding-right: 8px;
+            
+            border-top-left-radius: 15px;
+            /* border-bottom-right-radius: 15px; */
+
+            background-color:#ff9e9e;
+}
+
+    
+    
+/* ---------- コード ---------- */
+
+code.cmt {
+        white-space: nowrap; 
+
+        font-family: 'Consolas','Monaco','Andale Mono','Ubuntu Mono',monospace;
+        font-size: 14px;
+        border: 1px solid #818181;
+        border-radius: 5px;
+
+        padding-top: 3px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 1px;
+    
+        background-color: #ddd
+    }
+
+    code.output {
+        white-space: nowrap; 
+
+        font-family: 'Consolas','Monaco','Andale Mono','Ubuntu Mono',monospace;
+        font-size: 14px;
+        border: 1px solid #faa405;
+        border-radius: 5px;
+        
+        padding-top: 3px;
+        padding-left: 7px;
+        padding-right: 6px;
+        padding-bottom: 2px;
+
+        background-color: #cfffd3
+    }
+
+    code.plaintext {
+        display: inline-block;
+
+        font-family: 'Consolas','Monaco','Andale Mono','Ubuntu Mono',monospace;
+        display:block;
+        box-sizing:border-box;
+        overflow:auto;
+
+        font-size: 14px;
+        color: #ffffff;
+
+        padding: 5px;
+
+        background-color: #000000
+}
+
+
+
+/* ---------- テーブル ---------- */
+
+table {
+        border-collapse: collapse; /* セルの境界線を結合して1つの線にする */
+        border: 8px double #89bb75;
+
+        background-color: rgb(255, 243, 226);
+
+    }
+
+    th, td {
+        border: 1px solid #0a8106;
+        padding: 8px;
+}
+
+
+
+/* ---------- 強調文字 ---------- */
+
+strong {
+    white-space: nowrap; 
+
+    font-weight: bold;
+    text-shadow: none;
+    color: #cc0000;
+    }
+
+    strong.special {
+        font-weight: bold; /* 既存の強調スタイルを維持 */
+        text-shadow: 2px 2px 4px rgba(145, 67, 67, 0.5); /* 影の追加 */
+        color: #ff0000;
+    }
+
+    strong.b {
+        white-space: normal;
+
+        font-weight: bold; /* 既存の強調スタイルを維持 */
+        text-shadow: none;
+        color: #000000;
+}
+
+
+
+/* ---------- リンク ----------*/
+
+a {
+    font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+    text-decoration: none;
+    color: #000000;
+    display: inline-block;
+    border-bottom: 12px double yellowgreen;
+    font-size: small;
+    }
+
+    a.linked {
+        display: inline-block;
+        white-space: nowrap; 
+
+        text-decoration: none;
+        color: blue;
+        border-bottom: 2px solid blueviolet;
+    }
+
+    a:hover, a:visited {
+        color: #76d7f5;
+    }
+
+    a > span.backto::before {
+        content: "✅";
+        background-color: #71ecdc9f;
+        border-radius: 50%;
+        padding: 10px;
+
+        margin-left: 10px;
+        margin-right: 10px;    
+    }
+
+    a > span.backto::after {
+        content: "<終>";
+        margin-inline-start: 14px;
+        margin-inline-end: 10px;
+}
+    
+
+
+/* ---------- 段落 ---------- */
+
+p.inlook {
+    background-color: rgba(248, 180, 148, 0.616);
+    padding: 5px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    }
+    
+    p > span.site_name {
+        content: "ネコにしかわからない プログラミング入門";
+    }
+
+    p > span.copyright::before {
+        content: "© 2024 富沢エアズ";
+        font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+}
+
+
+
+/* ---------- 数学文字 ---------- */
+
+math {
+    font-family: 'Cambria Math', 'Arial', sans-serif;
+    font-size: 20px;
+}
+
+
+
+/* ---------- 水平線 ---------- */
+
+hr {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    }
+
+    hr {
+        border-top: 1px solid #ccc;
+        border-color: orange;
+}
+
+
+
+/* ---------- 見出し ---------- */
+
+h1 {
+    font-family: 'BIZ UDゴシック';
+}
+
+
+h2 {
+    display: inline-block;
+    font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+
+    border-bottom: 4px solid #00dd00;
+
+    padding-left: 15px;
+    margin-bottom: 0.2rem;
+}
+
+
+h3 {
+    display: inline-block;
+    font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+
+    border-bottom: 4px solid #00dddd;
+
+    padding-left: 15px;
+    margin-bottom: 0.2rem;
+
+}
+
+
+
+/* ---------- class ---------- */
+
+.site_name::after {
+    content: "ネコにしかわからない プログラミング入門";
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+
+/* ---------- id ---------- */
+
+#topBtn {
+    display: none; /* 最初は非表示にする */
+    position:fixed;
+
+    top: 3%;
+    right: 20px;
+
+    content: "";
+    color: #ffffff;
+    font-size: 150%;
+
+    /* writing-mode: vertical-rl; /* 縦書きにするプロパティ */
+    text-orientation: upright; /* テキストの向きを指定 */
+    white-space: nowrap; /* 文字を折り返さないように指定 */
+
+    padding: 2%;
+    border-radius: 50%;
+
+    border-bottom: none;
+    cursor: pointer;
+
+    background-color: #5dabff7f;
+}

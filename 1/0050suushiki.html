@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title class="site_name">数式と比較式と代入式 </title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+    <h1>数式と比較式と代入式</h1>
+    <p>式がどういうものなのかがわかるようになります👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+    <details id="c1"><summary>Chatpter.1 - 数式とは</summary>
+
+        <header>
+            <h2>数式とは</h2>
+        </header>
+
+
+        <ul>
+            <li><p><math><mn>10</mn><mo>+</mo><mn>20</mn></math> とか <math><mn>3</mn><mo>&times;</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></math> とか、そういうのです。</p></li>
+            <li><p>「計算式」と言い換えてもいいです。つまり算数や数学で使ってたアレです。</p></li>
+            <li><p>Excel経験者なら言うまでもなかったですね。そんな方はこのページ全部読み飛ばしていいです。</p></li>
+            <li><p>数学とかニガテでも全然へいき。「最初にしるべき４つのこと」でやった「演算子」がわかれば大丈夫。</p></li>
+            <li><p>でもわからなくても大丈夫。</p></li>
+            <li><p>算数や数学がわからないとプログラミングできないのではなく、プログラミングすることによって自然に算数や数学が身に付いていきますから。</p></li>
+            <li><p>ちなみに数式の説明は、一行目のアレで済んでます。以上。</p></li>
+        </ul>
+
+
+        <footer>
+            <a class="backto" href="#" onclick="closeAccordion('c1')">数式とは</a>
+        </footer>
+
+    </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+    <details id="c2"><summary>Chatpter.2 - 比較式とは</summary>
+
+        <header>
+            <h2>比較式とは</h2>
+        </header>
+
+
+        <ul>
+            <li>
+                <p><math><mi>x</mi><mo>&gt;</mo><mi>y</mi></math> とか <math><mi>x</mi><mo>≦</mo><mi>y</mi></math> とか、左と右を比べて評価することです。</p>
+
+                <table>
+                <thead>
+                <tr>
+                    <th class="text-center">比較式</th>
+                    <th class="text-left">意味</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">A == B</td>
+                    <td class="text-left">A と B は 等しい</td>
+                </tr>
+                <tr>
+                    <td class="text-center">A &gt;= B</td>
+                    <td class="text-left">A は B 以上</td>
+                </tr>
+                <tr>
+                    <td class="text-center">A &gt; B</td>
+                    <td class="text-left">A は B より大きい</td>
+                </tr>
+                <tr>
+                    <td class="text-center">A &lt;= B</td>
+                    <td class="text-left">A は B 以下</td>
+                </tr>
+                <tr>
+                    <td class="text-center">A &lt; B</td>
+                    <td class="text-left">A は B 未満</td>
+                </tr>
+                <tr>
+                    <td class="text-center">A != B</td>
+                    <td class="text-left">A と B は 等しくない</td>
+                </tr>
+                </tbody>
+                </table>
+                <p><strong class="b">左</strong>と<strong class="b">右</strong>を比較したとき、</p>
+            </li>
+
+            <li class="look">
+                <p>式のとおりなら ---&gt; 真 <em>(<strong>True</strong>)</em><br>
+                違うなら ---------&gt; 偽 <em>(<strong>False</strong>)</em>
+            </li>
+            <p>これが『<ruby><strong>評価</strong><rt><strong class="b">ひょうか</strong></rt></ruby>』です。<small>私、気になります！</small></p>
+        </ul>
+
+
+        <ul>
+            <li>
+                <p>この <code>True</code> と <code>False</code> が、最終的な「<strong>値</strong>」となります。<br>
+            (まだ意味がわからないかもしれませんが、重要です😓)</p>
+            </li>
+
+
+            <li><p><strong>True</strong> と <strong>False</strong> は、それぞれ「トゥルー」「フォールス」と一般的に読まれています。</p></li>
+            <li><p>ちなみに <strong>True</strong> と <strong>False</strong> も「<strong>bool型</strong>」の値です。</p></li>
+            <li><p>boolは「ブール」と読みます。</p></li>
+            <li><p><code>True</code> と <code>False</code> は値なので、変数に入れることもできます。</p></li>
+            <li><p><code>True</code> と <code>False</code> は、<strong class="if"></strong>文とかの条件式で必要になります。</p></li>
+            <li><p>けど今は  <strong>True</strong> と <strong>False</strong> の単語だけ憶えておいてくださいね。すぐにわかるようになります。</p></li>
+        </ul>
+
+
+        <footer>
+            <a class="backto" href="#" onclick="closeAccordion('c2')">比較式とは</a>
+        </footer>
+
+    </details>
+
+</article>
+
+
+
+
+
+<article>
+
+    <details id="c3"><summary>Chatpter.3 - 代入式とは</summary>
+
+        <header>
+            <h2>代入式とは</h2>
+        </header>
+
+
+<ul>
+<li><p>その名のとおり、値を「代入する式」のことです。</p></li>
+<li><p><code>x = 1</code> とか <code>y = 5</code> とかです。すでに何度も使ってきましたね。</p></li>
+<li>
+  <p>代入する時、数式を使って計算してから、その値を代入することもできます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = 3
+y = 5
+
+a = x + y       # 3 + 5 = 8
+b = x * y       # 3 x 5 = 15
+c = x * (y + a) # 3 x (5 + 8) = 39
+
+print(a)
+print(b)
+print(c)
+</code></pre>
+
+<code>8</code><br>
+<code>15</code><br>
+<code>39</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/ocxc4GSOrTIg9_EgxHucvA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p>変数の値を直接増やしたり減らしたりすることもできます。</p></li>
+<li>
+  <p>こういうことです</p>
+            
+            
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = 0
+x += 1
+print(x)
+</code></pre>
+
+<code>1</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/fgSnds_a0ZKZTzsbE5eAJw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">y = 3
+y -= 1
+print(y)
+</code></pre>
+
+<code>2</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/Ia2maWXc7zjyj41fUTBdqA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><code>x += 1</code> <code>y -= 1</code> というのはもともと、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = x + 1    # x に 1 を足して x に入れなおす
+y = y - 1    # y から 1 を引いて y に入れなおす
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+      <p>と書いていた形を簡単にしたものです。</p>
+  </li>
+
+  <li><p>どちらの書き方でも同じく計算できます。</p></li>
+</ul>
+
+<ul>
+  <li><p>簡単にしたこの書き方は他にもあります。</p></li>
+
+  <table>
+    <thead>
+    <tr>
+      <th class="text-center">記号</th>
+      <th class="text-left">-</th>
+      <th class="text-left">例</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="text-center"><code>+=</code></td>
+      <td class="text-left">足し算など (<math><mi>+</mi></math>)</td>
+      <td class="text-left"><code>x += 1</code> <code>y += 5</code></td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>-=</code></td>
+      <td class="text-left">引き算など (<math><mi>-</mi></math>)</td>
+      <td class="text-left"><code>x -= 1</code> <code>y -= 5</code></td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>*=</code></td>
+      <td class="text-left">かけ算など (<math><mi>&times;</mi></math>)</td>
+      <td class="text-left"><code>x *= 3</code> <code>bar *= 15</code></td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>//=</code></td>
+      <td class="text-left">割り算の商 (<math><mi>÷</mi></math>)</td>
+      <td class="text-left"><code>x //= 3</code> <code>y //= 10</code></td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>%=</code></td>
+      <td class="text-left">割り算の余り (<math><mi>mod</mi></math>)</td>
+      <td class="text-left"><code>x %= 2</code> <code>y %= 10</code></td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>**=</code></td>
+      <td class="text-left"><ruby>累乗<rt>るいじょう</rt></ruby>・べき乗 (<math><msup><mi>2</mi><mn>n</mn></msup></math>)</td>
+      <td class="text-left"><code>x **= 2</code> <code>y **= n</code></td>
+    </tr>
+    </tbody>
+    </table>
+  <br>
+  <li><p>他にもありますが、「この記号のもこの書き方できるんじゃないかな？」と思ったものはたいていできたりします。</p></li>
+</ul>
+
+<ul>
+  <li>
+    <p>文字列でも使えます。</p>
+            
+            
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = 'サザンが' + 'クロス伝'
+</code></pre>
+
+<pre><code class="language-python">s = 'サザンが'
+s += 'クロス伝'
+print(s)
+</code></pre>
+
+<code>サザンがクロス伝</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/n2eARJg3H6m8CascfpPCjQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">s = '逃げちゃだめだ' * 3
+</code></pre>
+
+<pre><code class="language-python">s = '逃げちゃだめだ'
+s *= 3
+print(s)
+</code></pre>
+
+<code>逃げちゃだめだ逃げちゃだめだ逃げちゃだめだ</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/RmQehc1ZlhCnyB-cJ2ocqw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p>いずれも <strong class="for"></strong>文とあわせて使うと真価を発揮します。</p></li>
+<li><p>非常によく使う手法なので、この後も頻繁に使っていきます。</p></li>
+<li><p>なので、意味さえわかれば問題なし！</p></li>
+
+</ul>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">代入式とは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<article>
+    
+    <details id="c4"><summary>Chatpter.4 - 式が化ける</summary>
+
+        <header>
+            <h2>式が化ける</h2>
+        </header>
+
+
+        <ul>
+            <li><p>「<strong>化ける</strong>」って雑な言い方に聞こえますが、普通に使われる言葉です。<br><br></p></li>
+            <li><p>説明するより、流れを見たほうが早いです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+c = a + b
+print(c)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+c = 3 + 5
+print(c)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+c = 8     # 3 + 5 が 8 に化けて c に代入
+print(c)
+</code></pre>
+
+<code>8</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+            </li>
+
+                <li><p><code>3 + 5</code> が <code>8</code> という値に化けて(変化して)います。</p></li>
+                <li><p>プログラムはこういうことを、見えないところでたくさん行なっています。</p></li>
+        </ul>
+
+
+        <ul>
+            <li>
+                <p>さきほどやった比較式も同じように化けます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+
+if a &lt; b:
+    print(str(a) + 'は '  + str(b) + ' より小さいです。')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+    
+if 3 &lt; 5:    # 3 は 5 より小さい？
+    print(str(a) + 'は '  + str(b) + ' より小さいです。')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+
+if True:    # 条件式のとおりなので True に化けた
+    print('3' + ' は ' + '5' + ' より小さいです。')
+</code></pre>
+
+<code>3 は 5 より小さいです。</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+            </li>
+            <br>
+
+            <li><p><code>str(a)</code> や <code>str(b)</code> の部分も化けてこうなります。</p></li>
+            <li><p>「<code>a</code> は <em><strong class="b">int</strong></em> だから、それを <em><strong class="b">str</strong></em> に変換して・・・」という考え方をします。</p></li>
+            <li><p>こういった見えていないところの実際の動作を想像する力があると捗ります。</p></li>
+        </ul>
+
+
+        <ul>
+            <li><p>なぜ <strong>True</strong> と <strong>False</strong> がだいじなのか。そして <strong class="if"></strong>文の詳しい使い方は、この後すぐに説明します！</p></li>
+        </ul>
+
+
+        <footer>
+            <a class="backto" href="#" onclick="closeAccordion('c4')">式が化ける</a>
+        </footer>
+
+    </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>数式と比較式と代入式</p>
+</footer>
+
+
+
+</body>
+</html>

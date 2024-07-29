@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/prism_coy.css">
+	<script type="text/javascript" src='../js/prism.js'></script>
+	<script type="text/javascript" src='../js/custom.js'></script>
+	<title>型が違うとエラーになる！ </title>
+	<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+	<h1>型が違うとエラーになる！</h1>
+	<p>1 と '1' の違いがわかるようになります👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+	<details id="c1"><summary>Chatpter.1 - そんなあなたに「型変換」</summary>
+
+		<header>
+				<h2>そんなあなたに「型変換」</h2>
+		</header>
+
+
+			<ul>
+					<li><p>「型とかなんで気にしないといけないの？」という疑問は捨ててください。</p></li>
+					<li><p>そういうものなので、文句を言っても始まりません。</p></li>
+					<li><p>でも、「型変換」は超簡単！</p></li>
+					<li><p>でも、ベテランがよく言う「超簡単」は、言うほど簡単ではない気がする。</p></li>
+					<li><p>でも、ネコの世界にはベテランプログラマーはいないので大丈夫です。</p></li>
+			</ul>
+
+
+		<footer>
+				<a class="backto" href="#" onclick="closeAccordion('c1')">そんなあなたに「型変換」</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+
+	<details id="c2"><summary>Chatpter.2 - 型のおさらい</summary>
+
+		<header>
+				<h2>型のおさらい</h2>
+		</header>
+
+
+			<ul>
+				<li>
+					<p>種類は次のとおりです。(憶えてる?)</p>
+					<table>
+					<thead>
+					<tr>
+							<th class="text-center">型</th>
+							<th class="text-left">通り名</th>
+							<th class="text-left">値の例</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+							<td class="text-center"><em><strong class="b">str</strong></em></td>
+							<td class="text-left">エスティーアール</td>
+							<td class="text-left"><code>text</code> <code>name</code> <code>日本語とかも◎</code></td>
+					</tr>
+					<tr>
+							<td class="text-center"><em><strong class="b">int</strong></em></td>
+							<td class="text-left">イント</td>
+							<td class="text-left"><code>12</code> <code>365</code> <code>65535</code> <code>-1</code></td>
+					</tr>
+					<tr>
+							<td class="text-center"><em>float</em></td>
+							<td class="text-left">フロート</td>
+							<td class="text-left"><code>3.14</code> <code>2.2360679</code> <code>∞ 無限</code></td>
+					</tr>
+					</tbody>
+					</table>
+
+					<p>ひとまず３種類だけピックアップしました。</p>
+				</li>
+			</ul>
+
+
+		<footer>
+				<a class="backto" href="#" onclick="closeAccordion('c2')">型のおさらい</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+
+	<details id="c3"><summary>Chatpter.3 - 型変換しないとこうなるよ</summary>
+
+		<header>
+			<h2>型変換しないとこうなるよ</h2>
+		</header>
+
+
+<ul>
+	<li>
+		<p>これは正しく動きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = 3   # 整数型(int)
+y = 5   # 整数型(int)
+print(x + y)
+</code></pre>
+
+		<div class="grid-output">
+			<code class="output">8</code><span>整数型 <em>(<strong class="b">int</strong>)</em></span>
+		</div>
+
+		<details class="sample-code"><summary></summary>
+			<iframe src="https://paiza.io/projects/e/lTJgWFcApQmGL5JAQfM_Zw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+		</details>
+		
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+	<p><code>3</code> と <code>5</code> を文字列型 <em>(<strong class="b">str</strong>)</em> にしてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = '3'   # 文字列型(str)
+y = '5'   # 文字列型(str)
+print(x + y)
+</code></pre>
+
+		<div class="grid-output">
+			<code class="output">35</code><span>文字列型 <em>(<strong class="b">str</strong>)</em></span>
+		</div>
+
+		<details class="sample-code"><summary></summary>
+			<iframe src="https://paiza.io/projects/e/QvqATWcUFBRqSPbGIqw7kw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+		</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p><code>3</code> と <code>5</code> が繋がって <code class="output">35</code> になりました。</p></li>
+</ul>
+
+
+<ul>
+<li>
+	<p>結果の <code>35</code> は文字列型なので、計算には使えません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = '3'   # 文字列型(str)
+y = '5'   # 文字列型(str)
+answer = x + y    # answer に、文字列型(str)の '35' を代入する
+print(answer * 3)   # answer に 3 をかける
+</code></pre>
+
+<code class="output">353535</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/wX-Dzt8SXwrbG2Ya8VHDjw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p><math><mn>35</mn><mo>&times;</mo><mn>3</mn></math> で <code class="output">105</code> と出力したかったのですが、思ってたのと違う結果になってしまいました。</p></li>
+<li>
+	<p>数ではないので「さんじゅう ごまん さんぜん ごひゃく さんじゅう ご」ではありません。<br>
+	文字なので「さんごーさんごーさんごー」と読むことになります。</p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+	<p>しかしこれは文字列なので、この前後に文字を繋げることができちゃいます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">x = '3'   # 文字列型(str)
+y = '5'   # 文字列型(str)
+answer = x + y    # answer に、文字列型(str)の '35' を代入する
+str_353535 = answer * <span class="hljs-number">3
+print('これは、文字列の' + str_353535 + 'なのです。')
+</code></pre>
+
+<code class="output">これは、文字列の353535なのです。</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/6fH87VX6au8dTR7w_RQQZw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+	<p><code>353535</code> のところを整数型 <em>(<strong class="b">int</strong>)</em> するとどうなるのか、見てみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">str_353535 = 353535    # 整数型(int)
+print('これは、整数の' + str_353535 + 'なのです。')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>↓ <strong class="b">こんなメッセージが出て止まっちゃいました。</strong>↓</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    print('これは、整数の' + str_353535 + 'なのです。')
+TypeError: can only concatenate str (not "int") to str
+</code></pre>
+<pre><code class="plaintext">(4行目の訳) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+型エラー  : 連結できるのは str + str の時だけです。(intはダメ💢)
+</code></pre>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/lUNeH4UMGlTiscyFXnEklA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>これが『<strong>エラーメッセージ</strong>』というものです。</p></li>
+<li><p>言い換えると、全部文字列型じゃないと <code>+</code> で繋げられませんよということです。</p></li>
+<li><p>初めてエラーを見ちゃいましたね。親父にもぶたれたことないのにね。</p></li>
+<li><p>なので、どんな時も <strong class="b">型</strong> を合わせたほうがよさそうです。</p></li>
+
+</ul>
+
+
+<br><p class="text-center">目が疲れましたね。😿<br>ちょっと休憩しましょう。🏄</p>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c3')">型変換しないとこうなるよ</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+
+	<details id="c4"><summary><b>Chatpter.4 - 型変換してみよう</b></summary>
+
+	<header>
+		<h2>型変換してみよう</h2>
+	</header>
+
+
+<ul>
+
+<li><p>ではここで、<strong>型変換</strong>をやってみましょう！</p></li>
+<li><p>わかれば簡単！</p></li>
+<li>
+	<p>ここからは <em><strong class="b">str</strong></em> とか <em><strong class="b">int</strong></em> という言い方に略します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># int -&gt; str の例
+num = 353535  # int の 353535
+str_353535 = str(num)    # str()の ()の中に、変数の num を入れる
+print('これは、文字列の' + str_353535 + 'なのです。')
+</code></pre>
+
+<code class="output">これは、文字列の353535なのです。</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/ZJBDHPjqH5JdDyBQGI3vlQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>今度はエラーが出ずに、きちんと出力してくれました。</p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+	<p>次はさっき <code>3</code> と <code>5</code> を足したら <code>35</code> になってしまっていたのを正しく計算して出力してみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># str -&gt; int の例
+x = '3'   # str
+y = '5'   # str
+print(int(x) + int(y))  # x と y の両方を整数型に変換！
+</code></pre>
+
+<code class="output">8</code>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/lIpfb9KgskVOCXZ4puZjhw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+	<p><strong class="func">str()</strong> の時と同じように、今度は <strong class="func">int()</strong> を使うと <strong class="b"><em>int</em></strong> になります。</p>
+</li>
+</ul>
+
+
+<ul>
+	<li>
+		<p><strong class="func">str()</strong> も <strong class="func">int()</strong> も<strong class="b">関数</strong>というものです。</p>
+
+			<table>
+			<thead>
+			<tr>
+					<th class="text-center">これから</th>
+					<th class="text-center">これに</th>
+					<th class="text-left">変換する時に使う関数</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+					<td class="text-center">str</td>
+					<td class="text-center">int</td>
+					<td class="text-left"><strong>int('35')</strong>  -&gt; <code>35</code></td>
+			</tr>
+			<tr>
+					<td class="text-center">int</td>
+					<td class="text-center">str</td>
+					<td class="text-left"><strong>str(353535)</strong> -&gt; <code>'353535'</code></td>
+			</tr>
+			<tr>
+					<td class="text-center">float</td>
+					<td class="text-center">int</td>
+					<td class="text-left"><strong>int(3.14159265)</strong> -&gt; <code>3</code></td>
+			</tr>
+			<tr>
+					<td class="text-center"></td>
+					<td class="text-center"></td>
+					<td class="text-left"></td>
+			</tr>
+			<tr>
+					<td class="text-center">float</td>
+					<td class="text-center">str</td>
+					<td class="text-left">str(3.14) -&gt; <code>'3.14'</code></td>
+			</tr>
+			<tr>
+					<td class="text-center">str</td>
+					<td class="text-center">float</td>
+					<td class="text-left">float('3.14') -&gt; <code>3.14</code></td>
+			</tr>
+			<tr>
+					<td class="text-center">int</td>
+					<td class="text-center">float</td>
+					<td class="text-left">float(3) -&gt; <code>3.0</code></td>
+			</tr>
+			</tbody>
+			</table>
+
+			<p>上の３つはよく使います。<br><br></p>
+	</li>
+
+<li><p>今憶える必要はありません。何度も使うので自然と憶えてしまいます。</p></li>
+<li><p>でも単純に、<em><strong class="b">int</strong></em> にしたい時は <strong class="func">int()</strong>、<em><strong class="b">str</strong></em> にしたい時は <strong class="func">str()</strong> を使うとよいということです。</p></li>
+<li><p><strong class="b">関数</strong>は () の中に、変数や値を入れるという使い方だけ憶えておいてください。</p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c4')">型変換してみよう</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+	<p>型が違うとエラーになる！</p>
+</footer>
+</body>
+</html>

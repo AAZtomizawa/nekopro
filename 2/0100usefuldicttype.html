@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/prism_coy.css">
+  <script type="text/javascript" src='../js/prism.js'></script>
+  <script type="text/javascript" src='../js/custom.js'></script>
+  <title>辞書型を使いこなす機能一覧</title>
+  <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>辞書を使いこなす機能一覧</h1>
+    <p>教え方が下手で理解できないかもしれません🙏🙏🙏</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 辞書の操作は難しい</summary>
+
+    <header>
+      <h2>辞書の操作は難しい</h2>
+    </header>
+
+
+<ul>
+  <li><p>いきなり大きな壁を作るようなことを言ってしまいました。</p></li>
+  <li><p>しかし控えめに言ったとしてもやっぱり難しいんです。</p></li>
+  <li><p>ここだけ別世界です。</p></li>
+  <li><p>リストや文字列では単純に要素番号や位置番号でアクセスできました。</p></li>
+  <li><p>しかし辞書には<strong>キー</strong>と<strong>値</strong>の２つがあり、さらにその２つをペアとした「<strong>要素</strong>」があります。</trong></p></li>
+  <li><p>要素とキーを扱うのは比較的簡単です。リストと似ています。</p></li>
+  <li><p>キーが持つ値にアクセスするのも簡単です。添字にキーを使えばアクセスできます。</p></li>
+
+    <li class="look">
+      <p>&nbsp;&nbsp;しかし値だけを使って辞書をどうこうしようとするとこれが一筋縄ではいかず、方法を知らずに操作しようとするとエラーメッセージのオンパレードとなること間違いなしです。いやホントに。</p>
+    </li>
+
+  <li><p>ネットで探しまくってもなかなか良質な情報が見つけられずに苦労した点なども含めて解説していきます。</p></li>
+  <li><p>のっけから沈んだ雰囲気になってしまって申し訳なし！！🤸</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">辞書の操作は難しい</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - メソッド</summary>
+
+    <header>
+      <h2>辞書特有のメソッド</h2>
+    </header>
+
+
+<ul>
+  <li><p>キーと値の２種類がある為に、それぞれ分別されたメソッドもあります。</p>
+
+    <table id="table_method">
+    <thead>
+    <tr>
+      <th class="center-text">メソッド</th>
+      <th class="center-text">( ) の中身</th>
+      <th class="left-text">機能</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr style="background-color: rgb(168, 255, 226);">
+      <td class="link center-text"><a class="td" href="#-items" onclick="openAccordion('-items')">items()</a></td>
+      <td class="center-text">なし</td>
+      <td class="left-text"><strong>キー</strong>と<strong>値</strong>のペアを<strong>タプル</strong>にしてリストで返す</td>
+    </tr>
+    <tr style="background-color: rgb(168, 255, 226);">
+      <td class="link center-text"><a class="td" href="#-keys" onclick="openAccordion('-keys')">keys()</a></td>
+      <td class="center-text">なし</td>
+      <td class="left-text"><strong>キー</strong>だけの<strong>リスト</strong>を返す</td>
+    </tr>
+    <tr style="background-color: rgb(168, 255, 226);">
+      <td class="link center-text"><a class="td" href="#-values" onclick="openAccordion('-values')">values()</a></td>
+      <td class="center-text">なし</td>
+      <td class="left-text"><strong>値</strong>だけの<strong>リスト</strong>を返す</td>
+    </tr>
+    <tr style="background-color: rgba(249, 74, 255, 0.250);">
+      <td class="link center-text"><a class="td" href="#-get" onclick="openAccordion('-get')">get()</a></td>
+      <td class="center-text">キー, 初期値</td>
+      <td class="left-text">辞書にキーがあればキーの値を返し、無ければ初期値を返す</td>
+    </tr>
+    <tr style="background-color: rgba(249, 74, 255, 0.250);">
+      <td class="link center-text"><a class="td" href="#-setdefault" onclick="openAccordion('-setdefault')">setdefault()</a></td>
+      <td class="center-text">キー, 初期値</td>
+      <td class="left-text">辞書にキーがあればキーの値を返し、無ければ初期値を値に新しく要素を作って初期値を返す</td>
+    </tr>
+    </tbody>
+    </table>
+    <br>
+    ※ 大きく分けて、色分けした２種類に厳選しました。<strong class="func">.update()</strong>など他にもまだいくつかあります。
+  </li>
+</ul>
+
+
+
+
+
+  <article>
+
+    <details id="-items"><summary>.items()</summary>
+
+      <header>
+        <h3>.items()</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p><strong>キー</strong>と<strong>値</strong>のペアを<strong>タプル</strong>にしてリストで返します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
+sisters = minna_mike.items()
+print(sisters)
+</code></pre>
+
+<code>dict_items([('ハルカ', '高校生'), ('カナ', '中学生'), ('チアキ', '小学生')])</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+  <br>
+  <p><strong class="func">print()</strong>で見ると <code>dict_items()</code> と表示されますが、</p>
+  <p><code class="output">[('ハルカ', '高校生'), ('カナ', '中学生'), ('チアキ', '小学生')]</code><br></code></p>
+  <p>として使えます。</p>
+  <p>初め見た時は「何これ？何でこうなるの？これどうやって消すの？」と混乱しました。😅</p>
+</li>
+<li><p>すでにリストとなっているので、あたらめて <strong class="func">list()</strong>を使う必要はありません。</p></li>
+<br>
+
+<li><p><strong class="func">.items()</strong>は、👇こういった場面で使われます。👇</p></li>
+</ul>
+
+<ul>
+<li>
+  <p><strong class="for"></strong>文で使う</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
+for name, school_level in minna_mike.items():
+	print(name, ':', school_level)
+</code></pre>
+
+<code>ハルカ : 高校生</code><br>
+<code>カナ : 中学生</code><br>
+<code>チアキ : 小学生</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/ZN2IxKatDhLLDn2Tih7WAg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>各タプルの 要素0 が <code>name</code>、要素1 が <code>school_level</code> に振り分けられます。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><strong class="func">sorted()</strong>で使う</p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">samples = {2: 8, 1: 9, 3: 7}
+sorted_items = sorted(samples.items(), key=lambda x:(x[1], x[0]))
+print(sorted_items)
+</code></pre>
+
+<code>[(3, 7), (2, 8), (1, 9)]</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/tHuhgwLflOQsCqMjJG569w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>とんでもなく難しそうなのが見えてますけど、これはソートの優先順位を「値」→「キー」にして、どちらも昇順でソートするように指示したものです。<br>
+  使い方は Chatpter.3 の<strong class="func">sorted()</strong>で詳しく説明します。
+</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-items')">.items()</a>
+      </footer>
+      
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-keys"><summary>.keys()</summary>
+
+      <header>
+        <h3>.keys()</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>辞書の<strong>キー</strong>のみを、リストにして返します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
+sisters = minna_mike.keys()
+print(sisters)
+</code></pre>
+
+<code>dict_keys(['ハルカ', 'カナ', 'チアキ'])</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+  <p>タプルにもなっていないので、普通にリストとして使えます。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><strong class="for"></strong>文で使う</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
+for name in minna_mike.keys():
+	print(name)
+</code></pre>
+
+<code>ハルカ</code><br>
+<code>カナ</code><br>
+<code>チアキ</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/DQ-5BVJYs591LoLw1CmP-A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>一応<strong class="func">.keys()</strong>は省略できます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
+for name in minna_mike:
+	print(name)
+</code></pre>
+
+<code>ハルカ</code><br>
+<code>カナ</code><br>
+<code>チアキ</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+  <p>しかし、辞書のどこの部分を使っているのかを明示するためにも <strong class="func">.keys()</strong> は付けたほうが無難です。</p>
+  <p><strong class="func">.items()</strong><strong class="func">.keys()</strong><strong class="func">.values()</strong>を付ければ、
+    前に付いている変数も<strong>辞書</strong>ということがわかるようにもなります。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><strong>キー</strong>を用いて関数で使う</p>
+  <p><strong class="func">sorted()</strong>で使うとか？</p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">samples = {2: 8, 1: 9, 3: 7}
+sorted_items = sorted(samples.keys())
+print(sorted_items)
+</code></pre>
+
+<code>[1, 2, 3]</code><br>
+
+<details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>キーしか使っていないので、実質リストと同じ使い方になります。<br>
+  このメソッドを使えば、リストで使える関数がそのまま使えます。
+</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-keys')">.keys()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-values"><summary>.values()</summary>
+
+      <header>
+        <h3>.values()</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>辞書の<strong>値</strong>のみを、リストにして返します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
+sisters = minna_mike.values()
+print(sisters)
+</code></pre>
+
+<code>dict_values(['高校生', '中学生', '小学生'])</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+  <p><strong class="func">.keys()</strong>のキーが、<strong class="func">.values()</strong>では<strong>値</strong>になっただけです。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><strong class="for"></strong>文で使う</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
+for school_level in minna_mike.values():
+	print(school_level)
+</code></pre>
+
+<code>高校生</code><br>
+<code>中学生</code><br>
+<code>小学生</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/36RKCB537Y2cJuRjHNORzA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+  <p>キーは不要で値のみが欲しい時に使われます。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><strong>値</strong>を用いて関数で使う</p>
+  <p>やっぱり<strong class="func">sorted()</strong>で使うとか？</p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">samples = {2: 8, 1: 9, 3: 7}
+sorted_samples = sorted(samples.values())
+print(sorted_samples)
+</code></pre>
+
+<code>[7, 8, 9]</code><br>
+
+<details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>キーが値に変わっただけです。</p>
+</li>
+
+<li><p>しかし辞書の場合は「値を使って<strong>要素</strong>を並び替える」ことを必要とすることが多いです。</p></li>
+<li><p>キーだけ拾ってソートする、値だけ拾ってソートするということはあまりしないかも？</p></li>
+<li><p>その場合はやはり<strong class="func">.items()</strong>を使って並び替えることになりますが、あのlambdaなんたらの使い方がわからないとできません。</p></li>
+<li><p>この続きは<strong class="func">sorted()</strong>でまた。👋</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-values')">.values()</a>
+      </footer>
+    
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-get"><summary>.get()</summary>
+
+      <header>
+        <h3>.get()</h3>
+      </header>
+
+
+<ul>
+<li>
+<p>辞書にキーがある時はキーの値を返します。<strong>ない時は初期値を返します。</strong></p>
+
+  <li class="look">
+    <p class="text-center">基本スタイル</p>
+    <p class="inlook">辞書[キー] = <strong>辞書.get(キー, 初期値)</strong> + 値</p>
+  </li>
+
+<p>『辞書の中に目的のキーがあれば<strong>キーの値</strong>を返し、<mark>無ければ<strong>初期値</strong>を返す</mark>』。最後に『<strong>化けた値</strong>に値を足して要素を上書き(追加)する』ということをする文です。</p>
+<p>赤い部分が最終的に<strong>キーの値、または初期値</strong>に化けます。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>流れはこんな感じです。</p></li>
+<li>
+  <p>辞書内に<strong>キーがある時</strong></p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats[key] = cats.get(key, 0) + 1
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats['ミケ'] = cats.get('ミケ', 0) + 1
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats['ミケ'] = 2 + 1  # 'ミケ' の値に化けた
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats['ミケ'] = 3  # ← 値を 3 に要素を上書き
+print(cats)
+</code></pre>
+
+<code>{'ミケ': 3}</code><br>
+
+<details class="sample-code"><summary></summary>値を変更してみよう！
+  <iframe src="https://paiza.io/projects/e/ZrLE_tbPY9c3vHef8Crh1g?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>辞書内に<strong>キーがない時</strong></p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats[key] = cats.get(key, 0) + 1
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats['トラ'] = cats.get('トラ', 0) + 1  # 辞書内に'トラ'がない
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>cats = {'ミケ': 2}</code>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats['トラ'] = 0 + 1  # 初期値の 0 に化けた
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>cats = {'ミケ': 2}</code>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats['トラ'] = 1  # ← 値を 1 に要素を追加
+print(cats)
+</code></pre>
+
+<code>{'ミケ': 2, 'トラ': 1}</code><br>
+
+<details class="sample-code"><summary></summary>追加するキーを変更してみよう！
+  <iframe src="https://paiza.io/projects/e/dT-aGFv08XbtzZk3zCJj2w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>リストの中の<strong>値の出現回数</strong>をカウントする時に使えます。</p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [3, 0, 6, 2, 3, 0, 2, 3]
+
+cnts = {}
+for i in nums:
+  cnts[i] = cnts.get(i, 0) + 1
+
+print(cnts)
+</code></pre>
+
+<code>{3: 3, 0: 2, 6: 1, 2: 2}</code><br>
+
+<details class="sample-code"><summary></summary>いろいろ変更してみよう！
+  <iframe src="https://paiza.io/projects/e/1SmvAy2fqHnDTiIgt2wnsg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+<li><p>単に値を増やしたり減らしたりするだけでなく、「初期値」と「値」のところをリストにして繋げるなど工夫して使うこともあったりします。</p></li>
+<li><p>どんな時でも「辞書内にキーがある時、ない時」の場面に遇ったら<strong class="func">.get()</strong>先生の出番です。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-get')">.get()</a>
+      </footer>
+ 
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="-setdefault"><summary>.setdefault()</summary>
+
+      <header>
+        <h3>.setdefault()</h3>
+      </header>
+
+
+<ul>
+<li>
+<p>辞書にキーがある時はキーの値を返します。<strong>無い時は <mark>{キー: 初期値}</mark> を辞書に追加し、初期値を返します。</strong></p>
+
+  <li class="look">
+    <p class="text-center">基本スタイル</p>
+    <p class="inlook">辞書[キー] = <strong>辞書.setdefault(キー, 初期値)</strong> + 値</p>
+  </li>
+
+<p>『辞書の中に目的のキーがあれば<strong>キーの値</strong>を返し、無ければ <mark>{キー: 初期値}</mark> で新しく要素を作って<strong>初期値</strong>を返す』。最後に『<strong>化けた値</strong>に値を足して要素を上書きする』ということをする文です。</p>
+<p><mark>辞書[キー] =</mark> の代入に使うと<strong class="func">.get()</strong>と同じ結果になります。</p>
+</li>
+
+<li><p><strong class="func">.get()</strong>と異なる点は、「キーが無かったら 『<strong>その場で！</strong>』<mark>{キー: 初期値}</mark> を<strong>辞書に追加する</strong>」ことを、このメソッドがすることです。<br>
+  (<strong class="func">.get()</strong>は、ただ初期値を返すだけ)</p></li>
+</ul>
+
+<ul>
+<li><p>流れはこんな感じです。</p></li>
+<li>
+  <p>辞書内に<strong>キーがある時</strong></p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats[key] = cats.setdefault(key, 0) + 1
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats['ミケ'] = cats.setdefault('ミケ', 0) + 1
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats['ミケ'] = 2 + 1  # 'ミケ' の値に化けた
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'ミケ'
+cats['ミケ'] = 3  # ← 値を 3 に要素を上書き
+print(cats)
+</code></pre>
+
+<code>{'ミケ': 3}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>辞書内に<strong>キーがない時</strong></p>
+        
+        
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats[key] = cats.setdefault(key, 0) + 1
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats['トラ'] = cats.setdefault('トラ', 0) + 1  # 辞書内に'トラ'がない
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>cats = {'ミケ': 2}</code>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats['トラ'] = cats.setdefault('トラ', 0) + 1  # {'トラ': 0} を辞書に作った
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>cats = {'ミケ': 2, 'トラ': 0}</code>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats['トラ'] = 0 + 1  # 初期値 0 に化ける
+print(cats)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ <code>cats = {'ミケ': 2, 'トラ': 0}</code>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cats = {'ミケ': 2}
+key = 'トラ'
+cats['トラ'] = 1  # ← 値を 1 に要素を上書き
+print(cats)
+</code></pre>
+
+<code>{'ミケ': 2, 'トラ': 1}</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+<li><p>具体的にどう使い分ければよいかというと、微妙な差なのですが、キーが辞書に無かった時、 <strong class="func">.setdefault()</strong>は<strong>このメソッドだけで新しく <mark>{キー: 値}</mark> を追加します。</strong></p></li>
+<p><strong class="func">.get()</strong>は初期値を返すのみです。</p>
+<li><p>繰り返し説明になりましたが、要素をその場で作ってしまうかどうかの違いだけなのです。</p></li>
+<li><p>結局のところ、要素を新しく作っても、既存の要素を使っても、値に化けたら代入処理をしないといけませんので<strong class="func">.get()</strong>と同じ使い方になってしまいます。</p></li>
+<br>
+
+<li><p>以下のプログラムは<strong class="func">.get()</strong>でも紹介した、リストの中の値の出現回数をカウントするプログラムです。</p></li>
+<li>
+  <p><strong class="func">.get()</strong>の場合</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [3, 0, 6, 2, 3, 0, 2, 3]
+
+cnts = {}
+for n in nums:
+    cnts[n] = cnts.get(n, 0) + 1
+
+print(cnts)
+</code></pre>
+
+<code>{3: 3, 0: 2, 6: 1, 2: 2}</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><strong class="func">.setdefault()</strong>の場合</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [3, 0, 6, 2, 3, 0, 2, 3]
+
+cnts = {}
+for n in nums:
+    cnts.setdefault(n, 0)  # 代入しなくても要素が追加される
+    cnts[n] += 1  # キーの値に 1 を足す
+
+print(cnts)
+</code></pre>
+
+<code>{3: 3, 0: 2, 6: 1, 2: 2}</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>無理矢理分けて書いただけであまり良い例ではありませんでしたが、あとは、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {'ミケ': 2, 'トラ': 1, 'タマ': 0}
+names = ['ミケ', 'タマ', 'うめ', 'もも']
+
+for name in names:
+    if dic.setdefault(name, 0) == 0:
+        dic[name] += 1
+
+print(dic)
+</code></pre>
+
+<code>{'ミケ': 2, 'トラ': 1, 'タマ': 1, 'うめ': 1, 'もも': 1}</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>辞書にキーがあり、値が 0 の時は「値に 1 を足す」。<br>
+辞書にキーがない時は、初期値 0 でキーを作り、値が 0 なので「1 を足す」。</p>
+</li>
+
+<li><p>結果、「タマ」の 0 だった値が 1 になり、<br>
+  「うめ」「もも」の 初期値 0 も 1 になりました。</p></li>
+</ul>
+
+<ul>
+<li><p>「その場ですぐに要素を作る」というのが特徴なので、そういったことが必要な場面に遇ったら使ってみてください。無くても困らないんだけどね～。ホントに微妙。😽</p></li>
+<li><p>あとは名前からして「初期値を使って要素を新しく作る」ということがわかるので、<strong class="func">.get()</strong>よりも明示的な意味で使うというのもアリでしょう。このメソッドを紹介したのはこの理由の為です。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-setdefault')">.setdefault()</a>
+      </footer>
+ 
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">メソッド</a>
+    </footer>
+    
+  </details>
+
+</section>
+
+
+
+
+<section>
+
+  <details id="c3"><summary>Chatpter.3 - 関数</summary>
+
+    <header>
+      <h2>辞書で関数を使う</h2>
+    </header>
+
+
+<ul>
+<li>ここが最もハードルが高い所です。</li>
+<li>
+  <p>( ) の中身は、今回は<strong>辞書型変数.items()</strong>を入れていきます。</p>
+
+  <table id="table_function">
+  <thead>
+  <tr>
+    <th class="center-text">関数</th>
+    <th class="left-text">機能</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="link center-text"><a class="td" href="#sorted" onclick="openAccordion('sorted')">sorted()</a></td>
+    <td class="left-text">ターゲットの値を並び替える</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#max" onclick="openAccordion('-max')">max(), min()</a></td>
+    <td class="left-text">ターゲットの一番大きな(小さな)値を返す</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#sum" onclick="openAccordion('sum')">sum()</a></td>
+    <td class="left-text">ターゲットの数値を合計する</td>
+  </tr>
+  </tbody>
+  </table>
+</li>
+
+<p><small>※ 脳内混雑を避けるため、絞りに絞っています。</small></p>
+<li><p>ターゲットというのは、キーなら「キー」、値なら「値」を指します。</p></li>
+<li><p>一度で理解しようとしないで、休み休み繰り返し読んでみてください。</p></li>
+</ul>
+
+
+
+  <article>
+
+    <details id="sorted"><summary>sorted()</summary>
+
+      <h3>sorted(引数, key=lambda・・, reverse=True)</h3>
+
+
+<ul>
+<li><p><mark>辞書.items()</mark> で <mark>(キー, 値)</mark>をペアとしたタプルのリストを作成し、<mark>key=関数</mark> に従ってソートします。</p>
+<p><code>[(キー, 値), (キー, 値), (キー, 値), ・・]</code></p></li>
+
+  <li class="look">
+    <p class="text-center">無名関数 <strong>lambda</strong> (ラムダ) でソートする</p>
+    <p class="text-center inlook">lambda x:(x[1], x[0])<br>
+    lambda x:(-x[1], -x[0])</p>
+
+    <p>( ) 内の優先順に、昇順でソートします。</p>
+    <p>x[0] はキー、x[1] は値。<br>
+      ( ) 内の x を -x にすると降順になります。(数値のみ)</p>
+    <p>最初の表に記した『ターゲット』というのが、この添字部分の要素です。</p>
+    <br>
+  </li>
+
+<li><p>細かいことを言うと、<code>key=</code> の部分も引数です。( ) の中身は全て引数。<br>
+  <small>※ これについては、この先の関数を学ぶところですべてがわかるようになります。もうしばらくお待ちください。まだ知らなくても、使わなくても困らないものは全部後回し！</small></p></li>
+<li><p><code>key=</code> はオプションで、省略できます。</p></li>
+<p class="inlook"><code>key=</code> を省略した場合は、キーで昇順ソートした<strong class="b">要素をタプルでまとめて</strong>、リストで返します。</p></li>
+
+<li><p><code>x</code> は、仮の変数です。<strong class="for"></strong>でいう <strong>i</strong> や <strong>j</strong> みたいなものです。</p>
+<p>今は何でもいいので、とりあえず <code>x</code> を使っておきます。</p></li>
+</ul>
+
+<ul>
+<li><p>もし <strong class="b">x[1]</strong> が同じ値だった時には、次に <strong class="b">x[0]</strong> でソートします。</p>
+<li><p>これは「<strong>もし同点(値)だったら名前順(キー)で順位を決める</strong>」という場面などで使えます。<small>なんて理不尽な・・・。</small></p></li>
+<p><code>'name': point</code> の場合、</p>
+  <p>点が高い順なので降順でソート -x[1]<br>
+    ↓ 同点ならば<br>
+  名前順なので昇順でソート x[0]</p>
+  <p><strong>lambda x:(-x[1], x[0])</strong></p>
+</li>
+<br>
+
+<li><p>書かれている添字は何かというと、<strong class="func">.items()</strong> が化けた形が</p>
+<p>例）<code>[('ハルカ', 90), ('カナ', 20), ('チアキ', 80)]</code></p>
+<p>となっていて、タプル内のそれぞれの要素番号を示しているものです。</p></li>
+<li><p><code>('ハルカ', 90)</code> では、</p>
+<p><code>x[0] = 'ハルカ'</code><br>
+  <code>x[1] = 90</code></p>
+<p>と、なります。</p>
+</li>
+
+<li><p><strong>-x[1] が先</strong>に書かれているので、全ての要素を、<strong>値から優先</strong>して降順ソートをするということになります。</p></li>
+<br>
+<li><p>なぜ「-」が使われるのか。<br>
+  単純に関数の中だけ数値をマイナスに変換してから、昇順ソートしているのです。</p>
+  <p><mark>[-90, -80, -20]</mark> ← ソートの条件を -x[1] にして昇順ソート<br>
+    ↓<br>
+    <mark>[90, 80, 20]</mark> ← ソート結果の出力は x[1] のまま変わらない</p>
+</li>
+<li><p>昇順ソートになるのは、引数に <code>reverse=True</code> が付いていないからです。</p></li>
+</ul>
+
+
+<ul>
+<li><p><strong>sorted(引数, key=lambda・・)</strong> の使い方</p>
+<p>戻り値は、ソートされた後の <strong>リスト</strong> となります。</p></li>
+<br>
+<li>
+  <p>値(点数)を<strong>降順</strong>、キー(名前)を<strong>昇順</strong>でソートする</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(-x[1], x[0]))
+print(sorted_kisaragi)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 経過を書くのは困難なので、参考程度に😓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = sorted([('snow', 6), ('alice', 100), ('rokugou', 6)], key=lambda x:(-x[1], x[0]))
+print(sorted_kisaragi)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ まずは値から降順ソート
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = sorted([('alice', 100), ('snow', 6), ('rokugou', 6)], key=lambda x:(-x[1], x[0]))
+print(sorted_kisaragi)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 次にキーで昇順ソート
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = sorted([('alice', 100), ('rokugou', 6), ('snow', 6)], key=lambda x:(-x[1], x[0]))
+print(sorted_kisaragi)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = [('alice', 100), ('rokugou', 6), ('snow', 6)]
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('alice', 100), ('rokugou', 6), ('snow', 6)]</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/c2Am3yoyn-U9Y1bblxpAwQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+  <p>点数が高い順、同点の時はアルファベット順でソートされました。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>アルファベットの降順でソートしたい場合</p>
+  <p>残念ながら文字列は -x が使えません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(x[1], -x[0]))
+print(sorted_kisaragi)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(x[1], -x[0]))
+  File "Main.py", line 2, in &lt;lambda&gt;
+    sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(x[1], -x[0]))
+TypeError: bad operand type for unary -: 'str'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>いつもより怒られました。😫</p>
+</li>
+<br>
+
+<li>
+  <p>キーが文字列の場合は <code>reverse=True</code> を使うだけです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = sorted(kisaragi.items(), reverse=True)
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('snow', 6), ('rokugou', 6), ('alice', 100)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>どちらも降順にしたい場合は <code>lambda</code> を使います。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 6, 'alice': 100, 'rokugou': 6}
+sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(x[1], x[0]), reverse=True)
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('alice', 100), ('snow', 6), ('rokugou', 6)]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>値が文字列の時は、降順の部分だけ指定します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {0: 'snow', 1: 'alice', 2: 'rokugou'}
+sorted_kisaragi = sorted(kisaragi.items(), key=lambda x: x[1], reverse=True)
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[(0, 'snow'), (2, 'rokugou'), (1, 'alice')]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>どちらも昇順でソートしたものを <code>reverse=True</code> で逆順にしているのです。</p>
+</li>
+
+<details class="sample-code"><summary></summary>コピペで構いませんので、いろいろ試してみてください！👍
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</ul>
+
+<ul>
+<li>
+  <p>値が<strong>リスト</strong>の場合</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(-x[1][0], x[1][1], x[0]))
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code><br>
+
+<details class="sample-code"><summary></summary>刮目せよ・・・💤
+  <iframe src="https://paiza.io/projects/e/aOKpRQHQFDn4o-iWVRT-4g?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>ほら、ややこしい・・・。😓</p>
+<p>それでも結果と比べてよく見ると x[0] は<strong>キー</strong>、x[1] は<strong>リスト</strong>、x[1] のリストの<strong>各要素の添字</strong>が続いて付いているというのがわかると思います。</p>
+</li>
+<li><p>ソートの優先順や昇順・降順、値によって組み合わせ方を変えて書いていくと、思い通りの結果になるはずです。</p></li>
+<br>
+<li><p><code>sorted&lpar;<small>辞書の変数</small>.items(), key=lambda x:</code> はお約束の定型文として書いて、その後のみ注目すればOKということですね。</p></li>
+<li><p>あとは上のサンプルプログラムを自身で実際にいろいろ書き変えてみて、どんな風にソートされるのかを確認して慣れていってください。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>キーが<strong>タプル</strong>の場合</p>
+      
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {('snow', 6): 19, ('alice', 100): 200, ('rokugou', 6): 100}
+sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(-x[1], -x[0][1], x[0][0]))
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[(('alice', 100), 200), (('rokugou', 6), 100), (('snow', 6), 19)]</code><br>
+
+<details class="sample-code"><summary></summary>刮目せよ・・・💤
+  <iframe src="https://paiza.io/projects/e/TY8WXdnOncl30tVvvC6s2A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>「そっちもか！！」と思ったかもしれませんけど、要素番号が 値の [1] → キーの [0] になっただけで特筆すべきことはありません。</p>
+</li>
+<br>
+<li><p>あとはもうホントに慣れるしかないのです。😫</p></li>
+<li><p>あまりに複雑なソートが求められた場合は、辞書の構造から見直した方が良いと思います。</p></li>
+<li><p><strong class="func">sorted()</strong>関数自体、他にも様々な使い方ができます。</p></li>
+<li><p>今回はここまでになりますが、興味がある方はネットで調べてみてください。</p></li>
+</ul>
+
+<ul>
+<p>(ソートのちょっとしたコツ)</p>
+<li><p>読んでもよくわからなかった！という場合、こうすればOK！</p></li>
+<br>
+<li><p>A が同じときは B、B も同じときは C、の条件順にソートする時は、</p>
+  <p>C → B → A</p>
+  <p>の順に、<strong class="func">sorted()</strong>や<strong class="func">.sort()</strong>を使って１つずつソートしていきます。</p>
+</li>
+<li><p>流れはこうなります。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = sorted(dic, C)
+lst.sort(B)
+lst.sort(A)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<li><p>値がリストの場合の例の結果と比較してみます。</p>
+<p><code class="output">[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code></p>
+<p>A : 値のリストの <strong>要素 0</strong> で降順ソート <code>-x[1][0]</code><br>
+  B : 値のリストの <strong>要素 1</strong> で昇順ソート <code>x[1][1]</code><br>
+  C : キーで昇順ソート <code>x[0]</code></p>
+
+<p><strong class="b">使うデータ</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+１回目 C (キーで昇順ソート)
+<pre><code class="language-python">sorted_kisaragi = sorted(kisaragi.items())
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('alice', [100, 200]), ('rokugou', [6, 100]), ('snow', [6, 19])]</code><br>
+<br>
+
+２回目 B (値のリストの <strong>要素 1</strong> で昇順ソート)
+<pre><code class="language-python">sorted_kisaragi.sort(key=lambda x:x[1][1])
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('snow', [6, 19]), ('rokugou', [6, 100]), ('alice', [100, 200])]</code><br>
+<br>
+
+３回目 A (値のリストの <strong>要素 0</strong> で降順ソート)
+<pre><code class="language-python">sorted_kisaragi.sort(key=lambda x:x[1][0], reverse=True)
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code><br>
+
+<br>
+<p>まとめると</p>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+
+sorted_kisaragi = sorted(kisaragi.items())
+sorted_kisaragi.sort(key=lambda x:x[1][1])
+sorted_kisaragi.sort(key=lambda x:x[1][0], reverse=True)
+
+print(sorted_kisaragi)
+</code></pre>
+
+<code>[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code><br>
+
+<details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！コピペでもOK！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+<li><p>このやり方にすると文字列の昇順・降順が混ざっていても、降順には <code>-x</code> の代わりに <code>reverse=True</code> を使って１項目ずつソートしていくので問題は起こりません。</p></li>
+<li><p>データが少なすぎてこの例ではよくわかりませんけど😅、機会があったら試してみてください。</p></li>
+<li><p>うまくいくはず・・・。(急に自信なくなってきた)</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('sorted')">sorted()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="max"><summary>max(), min()</summary>
+
+      <header>
+        <h3>max(引数, key=lambda・・)</h3>
+      </header>
+
+<ul>
+<li>
+  <p><strong class="func">min()</strong>も<strong class="func">max()</strong>と使い方は同じです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<p><mark>kisaragi.items()</mark> の中身</p>
+<p><code>[('snow', [6, 19]), ('alice', [100, 200]), ('rokugou', [6, 100])]</code></p>
+<br>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">max_elem = max(kisaragi.items(), key=lambda x:x[1][1])
+print(max_elem)
+
+min_elem = min(kisaragi.items(), key=lambda x:x[1][1])
+print(min_elem)
+</code></pre>
+
+	<div class="grid-output">
+		<code>('alice', [100, 200])</code><span>最大値は 200</span>
+		<code>('snow', [6, 19])</code><sapn>最小値は 19</span>
+	</div>
+  
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<br>
+<p>「名前しかいらないよ～」という時は、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">max_name = max(kisaragi.items(), key=lambda x:x[1][0])[0]
+print(max_name)
+
+min_name = min(kisaragi.items(), key=lambda x:x[1][0])[0]
+print(min_name)
+</code></pre>
+
+	<div class="grid-output">
+		<code>alice</code><span>最大値は 100</span>
+		<code>snow</code><sapn>最小値が 6 で最初に見つかった要素が選ばれる</span>
+	</div>
+
+<details class="sample-code"><summary></summary>遠慮せず、好きなようにいじくりまわしてみてください！
+  <iframe src="https://paiza.io/projects/e/wuvxcSJPYLNo0rUfiPUyRg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+  
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('max')">max(), min()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="sum"><summary>sum()</summary>
+
+      <header>
+        <h3>sum(内包表記)</h3>
+      </header>
+
+
+<ul>
+<li><p>辞書の各ターゲットとなる要素の数値を合計します。</p>
+<p><mark>kisaragi.values()</mark> の中身</p>
+<p><code>[[6, 19], [100, 200], [6, 100]]</code></p>
+<br>
+<p>まずはふつうに書いてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+
+elem_sum = 0
+for x in kisaragi.values():
+	elem_sum += x[0]
+
+print(elem_sum)
+</code></pre>
+
+<code>112</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>次に<strong>内包表記</strong>で書いてみます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+elem_sum = sum(x[1] for x in kisaragi.values())
+print(elem_sum)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+elem_sum = sum(x[1] for x in [[6, 19], [100, 200], [6, 100]])
+print(elem_sum)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+elem_sum = sum(19, 200, 100)  # 要素1 のみ抽出
+print(elem_sum)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': [6, 19], 'alice': [100, 200], 'rokugou': [6, 100]}
+elem_sum = 319
+print(elem_sum)
+</code></pre>
+
+<code>319</code>
+
+<details class="sample-code"><summary></summary>添字を <code>0</code> にすると結果が <code class="output">112</code> になります。きっと・・・。
+  <iframe src="https://paiza.io/projects/e/Q_JP4qAN8L1O6ncE5oyH-A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><mark>kisaragi.values()</mark> の中身は、リストの要素がリストになっていて「<strong class="special"><ruby>二次元<rt>にじげん</rt></ruby>リスト</strong>」と言うのですが、タプルの時と使い方は全く同じです。</p>
+</li>
+<li><p><strong class="func">.keys()</strong>や<strong class="func">.values()</strong>を使ってリストだけにした場合は、他の関数などでも容易に扱えます。👍<br>
+	<strong class="func">.items()</strong>ですね、問題なのは・・・。</p></li>
+</ul>
+
+<ul>
+<li><p>ここまで値をリストの場合として扱ってきましたが、値が数値１つの場合はいたって単純で扱いも簡単です。</p></li>
+<li><p>どれだけ簡単かというと、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 19, 'alice': 200, 'rokugou': 100}
+elem_sum = sum(kisaragi.values())
+print(elem_sum)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 19, 'alice': 200, 'rokugou': 100}
+elem_sum = sum([19, 200, 100])
+print(elem_sum)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 19, 'alice': 200, 'rokugou': 100}
+elem_sum = 319
+print(elem_sum)
+</code></pre>
+
+<code>319</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>だけでいいわけですから、ゆきえちゃんらくちんらくちんです。</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('sum')">sum()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">関数</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - in と not in も使えます</summary>
+
+    <header>
+      <h2>in と not in</h2>
+    </header>
+
+
+<ul>
+<li><p>リスト・タプル同様、辞書も <strong>in</strong> が使えます。</p></li>
+<li><p>ただし、辞書を直接 <strong>in</strong> で探すのではなく<strong class="func">.keys()</strong><strong class="func">.values()</strong>を使います。</p></li>
+<li><p>つまり、<strong>キーや値がリストに変換されて</strong>から、そのリストの中から目標の値を探す流れになります。</p>
+  <p><code>['snow', 'alice', 'rokugou']</code> <strong class="func">.keys()</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 19, 'alice': 200, 'rokugou': 100}
+name = 'alice'
+if name in kisaragi.keys():
+    print(name, 'の IQ は', kisaragi[name], 'です。')
+else:
+    print(name, 'は、メンバーにいません。')
+</code></pre>
+
+<code>alice の IQ は 200 です。</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><code>[19, 200, 100]</code> <strong class="func">.values()</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 19, 'alice': 200, 'rokugou': 100}
+IQ = 19
+if IQ in kisaragi.values():
+    print('メンバーの中にサルがいます。')
+else:
+    print('メンバーは皆、戦闘員です。')
+</code></pre>
+
+<code>メンバーの中にサルがいます。</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+	<p><strong class="func">.items()</strong>で要素ごと探す時は ( ) でタプルにします。</p>
+	<p><code>[('snow', 19), ('alice', 200), ('rokugou', 100)]</code> <strong class="func">.items()</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">kisaragi = {'snow': 19, 'alice': 200, 'rokugou': 100}
+name = 'rokugou'
+IQ = 100
+if (name, IQ) in kisaragi.items():
+	print(name, 'の IQ は', kisaragi[name], 'です。')
+else:
+	print(name, 'は、メンバーにいません。')
+</code></pre>
+
+<code>rokugou の IQ は 100 です。</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p><strong>not in</strong> も同様の書き方をして使います。</p></li>
+</ul>
+
+<ul>
+<p>全部試してみよう！</p>
+<details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#c4" onclick="closeAccordion('c4')">in と not in も使えます</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>辞書を使いこなす機能一覧</p>
+</footer>
+</body>
+</html>

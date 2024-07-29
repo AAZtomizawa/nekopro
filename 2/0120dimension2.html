@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/prism_coy.css">
+		<script type="text/javascript" src='../js/prism.js'></script>
+		<script type="text/javascript" src='../js/custom.js'></script>
+		<script type="text/javascript" src='../js/cellcomment.js'></script>
+		<title>二次元リスト</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+	<h1>二次元リスト</h1>
+		<p>二次元データの取り扱いができるようになります👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+	<details id="c1"><summary>Chatpter.1 - そもそも次元とは？</summary>
+
+		<header>
+				<h2>コンピュータは低次元</h2>
+		</header>
+
+
+<ul>
+	<li><p>「空間を表す単位」とされていますが、コンピュータに空間はありません。</p></li>
+	<li><p>コンピュータの世界で指す「次元」の定義は別物と考えてください。</p></li>
+
+	<li><p>コンピュータに存在する次元は、簡単に言うと次のようなものです。</p></li>
+	<dl>
+		<dt>一次元</dt>
+			<dd>0 と 1。デジタル。<br>
+				この一桁の単位を「<strong class="special">ビット</strong><em>(bit)</em>」と言います。<br>
+				一次元は１ビットです。<br>
+				プログラムでは、「<strong class="b">１つの値</strong>」が一次元です。<br>
+				<code>0</code><br>
+				<code>123</code><br>
+				<code>'次元大介'</code>
+			</dd>
+		<br>
+
+		<dt>一次元<ruby>配列<rt>はいれつ</rt></ruby> (添字が１つ)</dt>
+			<dd>一次元が連なったもの。一次元リストなど。<br>
+				<code>[0, 1, 1, 0, 1]</code><br>
+				<code>[1]</code>
+			</dd>
+		<br>
+
+		<dt>二次元配列 (添字が２つ)</dt>
+			<dd>一次元配列の配列。<br>
+				<code>[[0, 1], [1, 0, 1], [1, 0]]</code><br>
+				<code>[[0], [1]]</code><br>
+				<code>[[0]]</code>
+			</dd>
+		<br>
+
+		<dt>三次元配列 (添字が３つ)</dt>
+			<dd><code>[[[0, 1], [1, 0]], [[1, 0], [0, 1]]]</code></dd>
+	</dl>
+
+<p><small>※ 実質、四次元・・・五次元・・・と続けられなくもないですが、まず使わないと思います。😅</small><br>
+	<small>※ 「配列」とは、１つ１つの場所が隣接して列になっているものです。リストの要素みたいに。<br>
+		&nbsp;&nbsp;ただし厳密には配列<em>(array)</em>とリスト<em>(list)</em>は異なるものです。</small></p>
+
+<li><p>この 0 か 1 のところを数値や文字列に置き換えたものが、今まで扱ってきたリストの形になります。</p></li>
+<li><p>リアルでは三次元になって初めて「立体」と呼ばれますが、コンピュータは一次元の「粒」も立体と考えてください。</p></li>
+<li><p>この一次元の「粒」の集合体がコンピュータの世界なのです。</p></li>
+<li><p>黒い粒(0)も白い粒(1)も粒は粒です。</p></li>
+<li><p>スモモもモモもモモはモモです。</p></li>
+<li><p>箱を並べたり積み重ねたりする感じに似てますね。😺</p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c1')">そもそも次元とは？</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+
+	<details id="c2"><summary>Chatpter.2 - コンピュータとの付き合い方</summary>
+
+		<header>
+			<h2>脳内とコンピュータをリンクする</h2>
+		</header>
+
+
+<ul>
+<li><p>コンピュータの形と、自分が想像する形を相互変換しなくてはいけません。</p></li>
+<li><p>これが案外、人間として賢い人ほど苦手と感じる作業なんです。</p></li>
+<li><p>人間(アナログ)←→コンピュータ(デジタル)の変換作業を人間がやらなければならないわけですから、それはもう大変な労力となります。</p></li>
+<li><p>コンピュータはアナログ思考ができません。</p></li>
+<li><p>ならば<strong>人間がデジタル思考でコンピュータを理解する</strong>一択となります。</p></li>
+<li><p>今、そのためにプログラムを学んでいるわけです。</p></li>
+<li><p>デジタル思考とは論理思考です。</p></li>
+<li><p>0 と 1 の考えしかできない相手に自由な思考を求めても無理な話です。</p></li>
+<li><p>コンピュータはマニュアル通りにしか働きません。</p></li>
+<li><p>ならばこちらが<s>バカになって</s>次元を下げ、論理を以ってプログラム言語を通してコンピュータと対話しましょう。🧐</p></li>
+<li><p>論理は二次元、コンピュータも二次元。</p></li>
+<li><p>同じ次元にいる者同士でないとわかり合えないのです。</p></li>
+<li><p>もし「うまくイメージできない・・・」と苦悩しても、それは貴方が賢いからかもしれません。👍</p></li>
+<br>
+<li><p>私も苦悩しましたのでよくわかります。</p> 
+		<p><code class="output">False</code></p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c2')">コンピュータとの付き合い方</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<article>
+
+	<details id="c3"><summary>Chatpter.3 - 配列の読み方</summary>
+
+		<header>
+			<h2>コツさえ掴めばあとは簡単！</h2>
+		</header>
+
+
+<ul>
+<li><p>二次元リストの構造を詳しくのぞいてみましょう！</p>
+	<p>５行５列の二次元リスト</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<table id="tableList">
+	<thead>
+		<tr>
+			<th colspan="6">nums_list[<span style="color:blue">y</span>][<span style="color:red">x</span>]</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="color:red">
+			<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+			<th class="text-center">0</th>
+			<th class="text-center">1</th>
+			<th class="text-center">2</th>
+			<th class="text-center">3</th>
+			<th class="text-center">4</th>
+		</tr>
+
+		<tr>
+				<th class="text-center" style="color:blue">0</th>
+				<td class="text-center">'00'</td>
+				<td class="text-center">'01'</td>
+				<td class="text-center">'02'</td>
+				<td class="text-center">'03'</td>
+				<td class="text-center">'04'</td>
+		</tr>
+		<tr>
+				<th class="text-center" style="color:blue">1</th>
+				<td class="text-center">'10'</td>
+				<td class="text-center">'11'</td>
+				<td class="text-center">'12'</td>
+				<td class="text-center">'13'</td>
+				<td class="text-center">'14'</td>
+		</tr>
+		<tr>
+				<th class="text-center" style="color:blue">2</th>
+				<td class="text-center">'20'</td>
+				<td class="text-center">'21'</td>
+				<td class="text-center">'22'</td>
+				<td class="text-center">'23'</td>
+				<td class="text-center">'24'</td>
+		</tr>
+		<tr>
+			<th class="text-center" style="color:blue">3</th>
+			<td class="text-center">'30'</td>
+			<td class="text-center">'31'</td>
+			<td class="text-center">'32'</td>
+			<td class="text-center">'33'</td>
+			<td class="text-center">'34'</td>
+		</tr>
+		<tr>
+			<th class="text-center" style="color:blue">4</th>
+			<td class="text-center">'40'</td>
+			<td class="text-center">'41'</td>
+			<td class="text-center">'42'</td>
+			<td class="text-center">'43'</td>
+			<td class="text-center">'44'</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+
+<div id="display" style="z-index: 9;"></div>
+
+
+<p><code>'01'</code> にアクセスする場合は <code>nums_list[0][1]</code> と書きます。</p>
+<p><code>'43'</code> にアクセスする場合は <code>nums_list[4][3]</code> と書きます。</p>
+<li><p><span style="color:blue">リスト(行)を選んで</span>から、<span style="color:red">要素(列)を選ぶ</span>順になります。</p></li>
+<br>
+<li><p>数学の座標は<mark><math><mo>(</mo><mi>x</mi><mo>,</mo> <mi>y</mi><mo>)</mo></math></mark>と書きますが、<br>
+	プログラムでは [縦][横] で <mark>[y][x]</mark> と反対の書き方になります。</p></li>
+<li><p>数学慣れしている方は間違えやすいので注意してください。</p></li>
+</ul>
+
+<ul>
+<li><p>上の表の形をイメージすることはとても重要です。</p></li>
+<li><p>この形はこの先、いろいろな場面で使われます。</p></li>
+<li><p>二次元リストは「面」になっていますので、中身を<strong class="func">print()</strong>で見てみる際も、中をリストごとに改行して面にして出力するとわかりやすくなります。</p></li>
+<br>
+<li><p>余談になりますが、三次元リストを平面の画面に立体として映し出すことは当然できません。</p></li>
+<li><p>三次元リストも面ごとに映し出して読むことになります。</p></li>
+<li><p>その時はこちらの思考を三次元に上げてイメージするしかありません。</p></li>
+<li><p>「三次元←→二次元」を往来することになりますので、頭がとても疲れます。</p></li>
+<li><p>ここでは<s>めんどくさい</s>めんどくさいので、三次元は扱いません。</p></li>
+<li><p>あとはがんばって！👋</p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c3')">配列の読み方</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+
+
+<section>
+
+	<details id="c4"><summary>Chatpter.4 - 二次元リストの操作</summary>
+
+		<header>
+			<h2>二次元リストの操作</h2>
+		</header>
+
+
+	<article>
+
+		<details id="c4-1"><summary>一部の値を書き換える</summary>
+
+			<header>
+				<h3>一部の値を書き換える</h3>
+			</header>
+
+
+<ul>
+<li><p>添字を使って要素をピンポイントで指定し、あとは値を代入するのみです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+nums_list[1][2] = '99'	 # ↓要素1 の →要素2 を 99 にする
+print(*nums_list, sep='\n')
+</code></pre>
+
+<div class="grid-output">
+	<code>['00', '01', '02', '03', '04']</code><span></span>
+	<code>['10', '11', '99', '13', '14']</code><span>← ここの要素2 を 99 にした</span>
+	<code>['20', '21', '22', '23', '24']</code><span></span>
+	<code>['30', '31', '32', '33', '34']</code><span></span>
+	<code>['40', '41', '42', '43', '44']</code><span></span>
+</div>
+
+<details class="sample-code"><summary></summary>添字を変えて試してみよう！
+	<iframe src="https://paiza.io/projects/e/i3yhec875MKpTfRvcH1PLw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>最後の<strong class="func">print()</strong>で「リストの中身を<strong>『面』にして出力</strong>」しています。</p></li>
+
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-1')">一部の値を書き換える</a>
+			</footer>
+
+		</details>
+	
+	</article>
+		
+
+
+	<article>
+
+		<details id="c4-2"><summary>一部のリストを書き換える</summary>
+
+			<header>
+				<h3>一部のリストを書き換える</h3>
+			</header>
+
+
+<ul>
+<li><p>一次元の添字を使ってリストを指定し、あとはリスト(要素)を代入するのみです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+nums_list[2] = ['99', '99', '99', '99', '99']	 # ↓要素2
+print(*nums_list, sep='\n')
+</code></pre>
+
+<div class="grid-output">
+	<code>['00', '01', '02', '03', '04']</code><span></span>
+	<code>['10', '11', '12', '13', '14']</code><span></span>
+	<code>['99', '99', '99', '99', '99']</code><span></span>
+	<code>['30', '31', '32', '33', '34']</code><span></span>
+	<code>['40', '41', '42', '43', '44']</code><span></span>
+</div>
+
+<details class="sample-code"><summary></summary>添字を変えて試してみよう！
+	<iframe src="https://paiza.io/projects/e/uW2xlddmlPAje7BEAXRpmQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<p>リストを上書き代入しているので、コピーにはあたりません。</p>
+<br>
+<li><p>添字がどの部分を指しているのかがわかるようになれば、あとは今まで学んできたやり方がすべて使えます。</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-2')">一部のリストを書き換える</a>
+			</footer>
+
+		</details>
+	
+	</article>
+
+
+
+	<article>
+
+		<details id="c4-3"><summary>リストの値を出力する</summary>
+
+			<header>
+				<h3>リストをアンパックして出力する</h3>
+			</header>
+
+
+<ul>
+<li><p>確認の時はともかく、リストのままでは見栄えがよくありません。</p></li>
+<li><p>値のみの出力を求められることがほとんどです。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+for nums in nums_list:
+    print(*nums)
+</code></pre>
+
+<code>00 01 02 03 04</code><br>
+<code>10 11 12 13 14</code><br>
+<code>20 21 22 23 24</code><br>
+<code>30 31 32 33 34</code><br>
+<code>40 41 42 43 44</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/sMeSq0z0DAMOn9JjfA-WBw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p>間のスペースが要らない時は、<strong class="func">print()</strong>の所を、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(*nums, sep='')  # 値が数値でもOK
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>または</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(''.join(nums))  # 値が全て文字列の時のみOK
+</code></pre>
+
+<code>0001020304</code><br>
+<code>1011121314</code><br>
+<code>2021222324</code><br>
+<code>3031323334</code><br>
+<code>4041424344</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>と書くと良いでしょう。</p>
+
+<details class="sample-code"><summary></summary><strong class="func">print()</strong>に書き足してみよう！
+	<iframe src="https://paiza.io/projects/e/sMeSq0z0DAMOn9JjfA-WBw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</li>
+
+<br>
+
+<li>
+	<p>もちろん区切り文字を入れることもできます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(*nums, sep=',')  # 値が数値でもOK
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(','.join(nums))  # 値が全て文字列の時のみOK
+</code></pre>
+
+<code>00,01,02,03,04</code><br>
+<code>10,11,12,13,14</code><br>
+<code>20,21,22,23,24</code><br>
+<code>30,31,32,33,34</code><br>
+<code>40,41,42,43,44</code><br>
+
+<details class="sample-code"><summary></summary><strong class="func">print()</strong>に書き足してみよう！
+	<iframe src="https://paiza.io/projects/e/sMeSq0z0DAMOn9JjfA-WBw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+</ul>
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-3')">リストの値を出力する</a>
+			</footer>
+
+		</details>
+	
+	</article>
+
+
+
+
+	<article>
+
+		<details id="c4-4"><summary>転置有用！</summary>
+
+			<header>
+				<h3>二次元リストの行と列を入れ替える</h3>
+			</header>
+
+
+<ul>
+<li>
+	<p>転置とは、行と列を入れ替える作業です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+transposed_list = list(zip(*nums_list))  # ← ココ
+for nums in transposed_list:
+    print(*nums)
+</code></pre>
+
+<code>00 10 20 30 40</code><br>
+<code>01 11 21 31 41</code><br>
+<code>02 12 22 32 42</code><br>
+<code>03 13 23 33 43</code><br>
+<code>04 14 24 34 44</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/YdmXKPBQCROumK8v_KygWQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これが行と列を入れ替える『転置』です。</p>
+<p>解説は次の 「行列の右回転」 の中でやります。</p>
+</li>
+<br>
+<li><p>『転置』という言葉や意味は忘れても、「<strong>簡単に行と列を入れ替えるやり方がある</strong>」ことだけでも軽く憶えておいてください。</p></li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-4')">転置有用！</a>
+			</footer>
+
+		</details>
+	
+	</article>
+
+
+
+	<article>
+
+		<details id="c4-5"><summary>行列の右回転</summary>
+
+			<header>
+				<h3>二次元リストの面(行列)を右90度回転する。</h3>
+			</header>
+
+
+<ul>
+<li><p>ここからは今まで『面』と呼んでいたのを『<ruby><strong>行列</strong><rt>ぎょうれつ</rt></ruby>』という言葉に差し替えます。</p></li>
+<li><p>『<strong>行列</strong>』とは、下のプログラムの <code>nums_list</code> の形状そのものです。</p></li>
+
+<math>
+  <mtable>
+		    <!-- 行1 -->
+    <mtr>
+      <mtd>00</mtd>
+      <mtd>01</mtd>
+      <mtd>02</mtd>
+      <mtd>03</mtd>
+      <mtd>04</mtd>
+    </mtr>
+    <!-- 行2 -->
+    <mtr>
+      <mtd>10</mtd>
+      <mtd>11</mtd>
+      <mtd>12</mtd>
+      <mtd>13</mtd>
+      <mtd>14</mtd>
+    </mtr>
+    <!-- 行3 -->
+    <mtr>
+      <mtd>20</mtd>
+      <mtd>21</mtd>
+      <mtd>22</mtd>
+      <mtd>23</mtd>
+      <mtd>24</mtd>
+    </mtr>
+    <!-- 行4 -->
+    <mtr>
+      <mtd>30</mtd>
+      <mtd>31</mtd>
+      <mtd>32</mtd>
+      <mtd>33</mtd>
+      <mtd>34</mtd>
+    </mtr>
+    <!-- 行5 -->
+    <mtr>
+      <mtd>40</mtd>
+      <mtd>41</mtd>
+      <mtd>42</mtd>
+      <mtd>43</mtd>
+      <mtd>44</mtd>
+    </mtr>
+  </mtable>
+</math>
+
+<p>『行』と『列』だから行列です。😸</p>
+<br>
+
+<li>
+	<p><strong>行列</strong>を<strong>90度時計回りに回転</strong>させる作業をします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+r_rotated_list = list(zip(*nums_list[::-1]))  # ← ココ
+for nums in r_rotated_list:
+    print(*nums)
+</code></pre>
+
+<code>40 30 20 10 00</code><br>
+<code>41 31 21 11 01</code><br>
+<code>42 32 22 12 02</code><br>
+<code>43 33 23 13 03</code><br>
+<code>44 34 24 14 04</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/jAaqUPWs77uZw7R_ief54A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p>あの短い一文で、なぜこんなことができるのでしょうか？🧐❓</p>
+<p>👇 解説します。👇</p></li>
+</ul>
+
+<ul>
+<li><p>初めの形。</p>
+<p><code>list(zip(*nums_list[::-1]))</code></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">r_rotated_list = list(zip(*[
+	['00', '01', '02', '03', '04'], 
+	['10', '11', '12', '13', '14'],	
+	['20', '21', '22', '23', '24'],	
+	['30', '31', '32', '33', '34'],	
+	['40', '41', '42', '43', '44']
+	][::-1]))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">[
+['00', '01', '02', '03', '04'],
+['10', '11', '12', '13', '14'],
+['20', '21', '22', '23', '24'],
+['30', '31', '32', '33', '34'],
+['40', '41', '42', '43', '44']
+]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><code>[::-1]</code> でリストが反転する。</p>
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">r_rotated_list = list(zip(*[
+	['40', '41', '42', '43', '44'],
+	['30', '31', '32', '33', '34'],
+	['20', '21', '22', '23', '24'],
+	['10', '11', '12', '13', '14'],
+	['00', '01', '02', '03', '04']
+	]))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">[
+['40', '41', '42', '43', '44'],
+['30', '31', '32', '33', '34'],
+['20', '21', '22', '23', '24'],
+['10', '11', '12', '13', '14'],
+['00', '01', '02', '03', '04']
+]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><code>*</code> でリストをアンパック。</p>
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">r_rotated_list = list(zip(
+	['40', '41', '42', '43', '44'],
+	['30', '31', '32', '33', '34'],
+	['20', '21', '22', '23', '24'],
+	['10', '11', '12', '13', '14'],
+	['00', '01', '02', '03', '04']
+	))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">['40', '41', '42', '43', '44'] ← zip() の 引数１
+['30', '31', '32', '33', '34'] ← zip() の 引数２
+['20', '21', '22', '23', '24'] ← zip() の 引数３
+['10', '11', '12', '13', '14'] ← zip() の 引数４
+['00', '01', '02', '03', '04'] ← zip() の 引数５
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><strong class="func">zip()</strong>で <code>(引数1, 引数2, 引数3, 引数4, 引数5), ・・・</code> とジップしていく。</p>
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">r_rotated_list = list(
+	('40', '30', '20', '10', '00'),
+	('41', '31', '21', '11', '01'),
+	('42', '32', '22', '12', '02'),
+	('43', '33', '23', '13', '03'),
+	('44', '34', '24', '14', '04')
+	)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">('40', '30', '20', '10', '00'),
+('41', '31', '21', '11', '01'),
+('42', '32', '22', '12', '02'),
+('43', '33', '23', '13', '03'),
+('44', '34', '24', '14', '04')
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>回転成功！</p>
+<br>
+</li>
+
+<li><p>このままでは <code>&lt;zip object at 0x1539b1dd4400&gt;</code> なので、<strong class="func">list()</strong>で見える化する。</p>
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">r_rotated_list = [
+	('40', '30', '20', '10', '00'),
+	('41', '31', '21', '11', '01'),
+	('42', '32', '22', '12', '02'),
+	('43', '33', '23', '13', '03'),
+	('44', '34', '24', '14', '04')
+	]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">[
+('40', '30', '20', '10', '00'),
+('41', '31', '21', '11', '01'),
+('42', '32', '22', '12', '02'),
+('43', '33', '23', '13', '03'),
+('44', '34', '24', '14', '04')
+]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p>これを<strong class="func">print()</strong>で出力すると、</p>
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for nums in r_rotated_list:
+	print(*nums)
+</code></pre>
+
+<code>40 30 20 10 00</code><br>
+<code>41 31 21 11 01</code><br>
+<code>42 32 22 12 02</code><br>
+<code>43 33 23 13 03</code><br>
+<code>44 34 24 14 04</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p>「確認したり、書き換えたりしないから見えなくてもいいよ」という場合は<strong class="func">list()</strong>化は不要です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">r_rotated_list = zip(*nums_list[::-1])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>&lt;zip object at 0x1539b1dd4400&gt;</code></p>
+</li>
+<br>
+
+<li><p>全てリスト化したいときは、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">r_rotated_list = [[*tpl] for tpl in zip(*nums_list[::-1])]
+print(*r_rotated_list, sep='\n')
+</code></pre>
+
+<code>['40', '30', '20', '10', '00']</code><br>
+<code>['41', '31', '21', '11', '01']</code><br>
+<code>['42', '32', '22', '12', '02']</code><br>
+<code>['43', '33', '23', '13', '03']</code><br>
+<code>['44', '34', '24', '14', '04']</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/IfM3EJgFY7pIPTAU0romUA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p>誰だ、こんなやり方見つけたのは。頭いいね。</p></li>
+
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-5')">行列の右回転</a>
+			</footer>
+
+		</details>
+	
+	</article>
+
+
+
+	
+	<article>
+
+		<details id="c4-6"><summary>線対称</summary>
+
+			<header>
+				<h3>線対称も簡単に</h3>
+			</header>
+
+
+<ul>
+<li><p>線対称というのは上下反転・左右反転です。</p></li>
+<li><p>行だけ、列だけをリバースすると線対称になります。</p>
+
+<p><strong>左右対称</strong> (各リストの値だけ反転)</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+mrr_symmetry = [nums[::-1] for nums in nums_list]  # ← ココ
+for nums in mrr_symmetry:
+    print(*nums)
+</code></pre>
+
+<code>04 03 02 01 00</code><br>
+<code>14 13 12 11 10</code><br>
+<code>24 23 22 21 20</code><br>
+<code>34 33 32 31 30</code><br>
+<code>44 43 42 41 40</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/fVekJPdUiWNiUxmiZGrpXA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<p><strong>上下対称</strong> (各リストの順番だけ反転)</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+line_symmetry = nums_list[::-1]  # ← ココ
+for nums in line_symmetry:
+    print(*nums)
+</code></pre>
+
+<code>40 41 42 43 44</code><br>
+<code>30 31 32 33 34</code><br>
+<code>20 21 22 23 24</code><br>
+<code>10 11 12 13 14</code><br>
+<code>00 01 02 03 04</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/pVxvtdBIWarzA_1I4QK0FA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>上下対称は、さっきの右回転で途中に出てきましたね。</p>
+</li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-6')">線対称</a>
+			</footer>
+
+		</details>
+	
+	</article>
+
+
+
+	<article>
+
+		<details id="c4-7"><summary>点対称</summary>
+
+			<header>
+				<h3>点対称すらも簡単に</h3>
+			</header>
+
+
+<ul>
+<li><p>点対称というのは、行列を180度回転させたものです。</p></li>
+<li><p>行と列を、両方とも１回ずつリバースすると点対称になります。</p>
+
+<p><strong>点対称</strong>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums_list = [
+	['00', '01', '02', '03', '04'],
+	['10', '11', '12', '13', '14'],
+	['20', '21', '22', '23', '24'],
+	['30', '31', '32', '33', '34'],
+	['40', '41', '42', '43', '44']
+	]
+
+point_symmetry = [nums[::-1] for nums in nums_list[::-1]]  # ← ココ
+for nums in point_symmetry:
+    print(*nums)
+</code></pre>
+
+<code>44 43 42 41 40</code><br>
+<code>34 33 32 31 30</code><br>
+<code>24 23 22 21 20</code><br>
+<code>14 13 12 11 10</code><br>
+<code>04 03 02 01 00</code><br>
+
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/nOmvQICXaBO1l_NxFg2MdA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>90度右回転を２回繰り返しても同じ結果が得られます。</p>
+</li>
+</ul>
+
+
+			<footer>
+				<a class="backto" href="#c4" onclick="closeAccordion('c4-7')">点対称</a>
+			</footer>
+
+		</details>
+	
+	</article>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c4')">二次元リストの操作</a>
+		</footer>
+
+	</details>
+
+</section>
+
+
+
+<article>
+
+	<details id="c5"><summary>二次元リストはよく使う 【駄文】</summary>
+
+		<header>
+			<h3>慣れるとほとんど意識すらしなくなる</h3>
+		</header>
+
+
+<ul>
+<li><p>「二次元リスト」は今までも使い方を少しずつ見てきていましたので、正直こんなに難しい話とは思わなかったという方もいるでしょう。</p></li>
+<li><p>その通り、もう話すこともあまり無いので、哲学的な内容を含めてちょっと語ってみました。</p></li>
+<li><p>「二次元リスト」からさりげなく数学に繋がって行きましたけど、逆に考えれば数学的なことを知らず知らずにプログラムでやってきているのです。</p></li>
+<li><p>数学が全然わからなくても例えば、</p>
+
+<table style="border: 0px solid antiquewhite; background-color: antiquewhite;">
+<tr>
+<td style="border: 0px solid antiquewhite;">
+	<math display="block">
+    <mrow>
+      <munderover>
+        <mo>∑</mo>
+        <mrow>
+          <mi>i</mi>
+          <mo>=</mo>
+          <mn>1</mn>
+        </mrow>
+        <mrow>
+          <mn>10</mn>
+        </mrow>
+      </munderover>
+			<mo>i</mo>
+    </mrow>
+  </math>
+</td>
+</tr>
+</table>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sum(i for i in range(1, 11))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これがプログラムを見ただけで何なのかがもうわかるかと思います。</p>
+<li><p>この先も学習を続けていくと、数学知識がなくてもプログラムでそれらが自然に身に付いていきます。</p></li>
+<li><p>さんざん使ってきた『関数』というのも数学です。私は数学の関数はよくわかりませんし興味もありません。😽</p></li>
+<li><p>でもプログラムの関数は使えます。</p></li>
+<li><p>関数は英語で <em>function</em> と書きます。</p></li>
+<li><p><em>function</em> とは「機能」という意味もあります。キーボードのファンクションキーの <em>function</em> ですね。</p></li>
+<br>
+<li><p>「行列」というのも行列ではなく「二次元リスト」と捉えるだけで途端にわかりやすくなると思います。逆も然りです。</p></li>
+<li><p>二次元リストは競技プログラミングや学習サイトの問題でよく使われます。</p></li>
+<li><p>問題をこなしているうちに、いつの間にか二次元リストの操作を無意識にやれるようになっています。</p></li>
+<li><p>このレベルに達するのも、実はそんなに時間はかかりません。プログラミングが面白いと感じたら１か月くらい？そんなにかからないかな？</p></li>
+<br>
+<li><p>ここまで読んで来たということは、それなりにプログラミングの楽しさを感じていることと思われます。</p></li>
+<li><p>数学がわからないとどうしても越えられない壁というのもありますが、そういうのはあっさり避けて通りましょう。体当たりし続けていても今は時間の無駄でしかありませんから。</p></li>
+<br>
+<li><p>数学(数の世界)もコンピュータと同じ「二次元」です。なのでとても相性が良いです。<br>
+<small>※ 十進数の小数と二進数はあまり相性はよくありませんが。😓</small></p></li>
+<li><p>論理は二次元、科学も二次元、言語も二次元。これら二次元は必ず「再現性」を持ちます。</p></li>
+<li><p>一方、現実(高次元)は「覆水盆に還らず」です。過ぎ去った事象は二度と戻りません。</p></li>
+<li><p>低次元で考えた結論を高次元にぴったり当てはめようとしても、それは無理な話なのは明白です。机上の空論でしかありません。</p>
+<li><p>なので、人間が機械オンチなのはごくふつうのことなんです。劣等感を抱かないでください。</p></li>
+<li><p>人間には人間の、コンピュータにはコンピュータの得手不得手があります。適材適所、役割分担は大切です。</p></li>
+<li><p>しかし学習は重要です。AIが人間の見るもの聞くもの触れるものを学習して人間を学んでいくように、人間もコンピュータに多く触れて学習していけば、思考が違っても次元を合わせて(歩み寄って)お互いを程よく理解しあえる関係となるでしょう。</p></li>
+<li><p>それは人間同士でも同じことが言えますね。</p></li>
+</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c5')">二次元リストはよく使う</a>
+		</footer>
+
+	</details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+	<p>二次元リスト</p>
+</footer>
+</body>
+</html>

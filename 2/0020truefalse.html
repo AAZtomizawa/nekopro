@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/prism_coy.css">
+  <script type="text/javascript" src='../js/prism.js'></script>
+  <script type="text/javascript" src='../js/custom.js'></script>
+  <title>bool型 True と False</title>
+  <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>bool型 True と False</h1>
+  <p>論理に強くなれるかもしれません</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - True と False</summary>
+
+      <header>
+        <h2>True と False</h2>
+      </header>
+
+
+<ul>
+<li>
+  <p>これらは、条件文の <strong class="if"></strong> や 繰り返し文の <strong class="while"></strong> で見ましたね。</p>
+
+  <table>
+  <thead>
+  <tr>
+    <th class="text-center">要するに</th>
+    <th class="text-center">こういうこと</th>
+    <th class="text-center" colspan="3">他の考え方</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="text-center">True</td>
+    <td class="text-center">正しい</td>
+    <td class="text-center">はい</td>
+    <td class="text-center">オン</td>
+    <td class="text-center">ある</td>
+  </tr>
+  <tr>
+    <td class="text-center">False</td>
+    <td class="text-center">正しくない</td>
+    <td class="text-center">いいえ</td>
+    <td class="text-center">オフ</td>
+    <td class="text-center">ない</td>
+  </tr>
+  </tbody>
+  </table>
+</li>
+<li><p><strong>True</strong> と <strong>False</strong> の２つの値の型は <ruby><strong class="special">bool</strong><rt>ブール</rt></ruby><strong class="special">型</strong> と言います。</p></li>
+<li><p>「〔 条件式 〕が<strong>正しい</strong>とき・・・」という条件式の評価の結果で使われます。</p></li>
+<li><p>小難しい言い方をしてしまいました。</p></li>
+<li><p>どんな時も、条件式が正しい時は <code>True</code> 、正しくない時は <code>False</code> に、<strong>式が化けます</strong>。</p></li>
+<li><p>そして、<strong>化けた</strong>この <code>True</code> や <code>False</code> が、評価の結果として使われる<strong>値</strong>になります。</p></li>
+<li>
+  <p><code>True</code> も <code>False</code> も<strong>値</strong>なので、変数に代入できます。</p>
+
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">is_adult = True   # 大人
+is_adult = False  # 大人ではない
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong class="if"></strong>文で使うと、こんな感じになります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">if is_adult:    # すでに True または False という↵
+    osake += 1  # 値が入っているので、変数だけでよい
+else:
+    okashi += 1
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>いつも条件式が化けた後の <code>True</code> や <code>False</code> は見ることが出来ませんが、条件式が評価された後は、必ず <code>True</code> や <code>False</code> になっているということを想像しながらプログラムを組んでみてください。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">if 〔条件式〕 が:
+    True の時はこっち。
+else:
+    False の時はこっち。
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">True と False</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+<article>
+
+  <details id="c2"><summary>Chatpter.2 - 1 と 0</summary>
+
+    <header>
+      <h2 id="1-と-0">1 と 0</h2>
+    </header>
+
+
+<ul>
+<li><p>コンピュータは二進数で、0 と 1 の二つの数字だけで構成されています。</p></li>
+<li><p>1 が <code>True</code>、0 が <code>False</code> でもあります。</p></li>
+<li><p><strong>Python3</strong> の場合、0 が <code>False</code>、0 以外が <code>True</code> になっています。</p></li>
+<li><p>-1 も <code>True</code> です。<br>
+<small>※ これらについては Chatpter.4 の 「『ある』か『ない』か」 の冒頭で表にしています。<br>
+先にのぞいてみてもOK！</small></p></li>
+<li><p>そして、<code>True</code> が 1 、<code>False</code> が 0 でもあります。</p></li>
+<li>
+  <p>こういう意味です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">print(True)   # ← 文字列ではない
+print(False)  # ← 文字列ではない
+print(int(True))
+print(int(False))
+</code></pre>
+
+<code>True</code><br>
+<code>False</code><br>
+<code>1</code><br>
+<code>0</code><br>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<p><code>True</code> と <code>False</code> を <strong class="func">int()</strong> で整数型に変換すると、その姿を現します。</p></li>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/J9zxtZj-KEFpXa0gxW6VKw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+<br>
+<li>
+  <p>この性質を利用して、こんなハイパースゴイコトもできちゃいます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">cnt += (i % 2 == 0)   # 条件式が偶数の時、True
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>i</code> が偶数の時、<code>cnt</code> に <code>1</code> (True) を足す。</p>
+</li>
+<br>
+
+<li><p><code>True</code> は、演算(計算)にかけると自動で <code>1</code> に変換してくれます。<br>
+  <code>False</code> も同じく、<code>0</code> になって 0 を足します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = 0
+print(cnt)
+
+cnt = True
+print(cnt)
+
+cnt += True   # True + True = 2
+print(cnt)
+
+cnt += False  # 2 + False = 2
+print(cnt)
+</code></pre>
+
+<code>0</code><br>
+<code>True</code><br>
+<code>2</code><br>
+<code>2</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/oKpTIJymJCGUql_Uu_3ILg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li>
+  <p><code>True</code> が 1 、<code>False</code> が 0 という性質を利用して、こんな書き方も出来ます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">while 1:    # 0 じゃなければいくつでも True
+    print('無限ちゅ～る天国')
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">cnt = 5
+while cnt:    # 0 になったらループを抜けて止まる
+    cnt -= 1
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p><strong>True</strong> と <strong>False</strong>、<strong>0</strong> と <strong>1</strong> だけなのに意外に複雑ですね。</p></li>
+  <li><p>でもこれで終わりではないのです。まだ続きます。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">1 と 0</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - True or not True</summary>
+
+    <header>
+      <h2>True or not True</h2>
+    </header>
+
+
+<ul>
+<li>
+  <p>簡単に言うと、<code>True</code> と <code>False</code> を「反対にしたい」ときに <ruby><strong>not</strong><rt>ノット</rt></ruby> を使います。（<ruby><strong>否定</strong><rt>ひてい</rt></ruby>）</p>
+
+    <table>
+    <thead>
+    <tr>
+      <th class="text-center">これを</th>
+      <th class="text-center">否定すると</th>
+      <th class="text-center">こう化ける</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="text-center">True</td>
+      <td class="text-center">not True</td>
+      <td class="text-center"><strong>False</strong></td>
+    </tr>
+    <tr>
+      <td class="text-center">False</td>
+      <td class="text-center">not False</td>
+      <td class="text-center"><strong>True</strong></td>
+    </tr>
+    </tbody>
+    </table>
+
+  <p>この表を見て意味がわかったら、以降の説明は飛ばして構いません。<br>
+      無理に読むと頭が疲れますよ。<br>
+
+</li>
+</ul>
+
+
+
+  <details id="c3-1"><summary>【 以降の説明とやらに挑戦する！ 】</summary>
+
+<ul>
+<li>
+  <p>この２つは同じ事をしています。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+1️⃣<pre><code class="language-python">if a != 0:      # a が 0 ではない時 True
+</code></pre>
+
+2️⃣<pre><code class="language-python">if not a == 0:  # a が 0 の時 ではない時 True
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><code>a</code> が <code>0</code> の時、2️⃣のプログラムの流れは、こうなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">if not True:  # a == 0 の結果の True を not する
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">if False:     # 0 を否定して False に化ける
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<p>上の表に記した形になります。😵<br>
+  優先順位は 条件式 &gt; not です。</p>
+</li>
+
+<li>
+  <p><strong>not</strong> の位置や ( ) をつけたりして範囲を変えたりできます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python"># a が (10未満)『ではなく』、偶数の時、
+if not a &lt; 10 and a % 2 == 0:
+   ^^^^^^^^^^
+# a が (10未満で、偶数)『ではない』時、
+if not (a &lt; 10 and a % 2 == 0):
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# a が 10未満で、(偶数)『ではない』時、
+if a &lt; 10 and not a % 2 == 0:
+              ^^^^^^^^^^^^^^
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong>not</strong> を混ぜて使うと、とても混乱しますね。気を付けてください。</p>
+</li>
+<br>
+
+<li>
+  <p><strong class="while"></strong>文でも <strong>not</strong> を使うことが出来ます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">cnt = 100
+
+# cnt が 50 未満の時ではない時 (つまり50以上の時)
+while not (cnt &lt; 50):   # cnt &gt;= 50 と同じ
+    print(cnt)
+    cnt -= 1
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<p>この例ではただまわりくどいだけの書き方ですが・・・。</p>
+</li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">以降の説明とやらに挑戦する！</a>
+    </footer>
+
+  </details>
+
+    <footer>
+        <a class="backto" href="#" onclick="closeAccordion('c3')">True or not True</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - 『ある』か『ない』か</summary>
+
+    <header>
+        <h2>『ある』か『ない』か</h2>
+    </header>
+
+
+<ul>
+<li><p>値があるときは <code>True</code> 、ないときは <code>False</code> になります。</p>
+
+  <table>
+  <thead>
+  <tr>
+    <th class="text-center">型</th>
+    <th class="text-center">値があるとき</th>
+    <th class="text-center">値の例</th>
+    <th class="text-center">値がないとき</th>
+    <th class="text-center">値の例</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="text-center"><strong>int</strong></td>
+    <td class="text-center">0 以外</td>
+    <td class="text-center"><code>1</code> <code>100</code> <code>-3</code></td>
+    <td class="text-center">0</td>
+    <td class="text-center"><code>0</code></td>
+  </tr>
+  <tr>
+    <td class="text-center"><strong>str</strong></td>
+    <td class="text-center">文字がある</td>
+    <td class="text-center"><code>'ネコ'</code> <code>"chat"</code> <code>' '</code></td>
+    <td class="text-center">文字列が空 <em>(empty)</em></td>
+    <td class="text-center"><code>''</code> <code>""</code></td>
+  </tr>
+  <tr>
+    <td class="text-center"><strong>list</strong></td>
+    <td class="text-center"><strong>要素</strong>がある</td>
+    <td class="text-center"><code>[1, 'ネコ']</code> <code>['', ""]</code></td>
+    <td class="text-center"><strong>要素</strong>がない</td>
+    <td class="text-center"><code>[]</code></td>
+  </tr>
+  <tr>
+    <td class="text-center"><small style="white-space: nowrap;">まんま</small></td>
+    <td class="text-center">値がある</td>
+    <td class="text-center"><code>1</code> <code>'ネコ'</code> <code>['']</code></td>
+    <td class="text-center">値がない</td>
+    <td class="text-center"><code>None</code></td>
+  </tr>
+  </tbody>
+  </table>
+
+<p>相変わらずややこしいですね・・・。</p>
+</li>
+<br>
+
+<li>
+  <p><code>None</code> とは「値がない」という<strong>値</strong>です。(またややこしい・・・😓)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">value = None    # 'value' は「値」という意味の英語です
+print(value)
+
+if value:       # None は値がないので False に化ける
+    print('おさかなうまいにゃ')
+else:
+    print('ごはんまだ？')
+</code></pre>
+
+<code>None</code><br>
+<code>ごはんまだ？</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/InWlUXCCEEiF6w0dyT_19w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>「ノーン」と読みます。</p>
+
+</li>
+</ul>
+
+<ul>
+<li><p><code>None</code> はこちらが特に意識して使うものではなく、関数の戻り値で <code>None</code> が返ってきて化けた時に見るくらいです。</p></li>
+<li><p>関数が「引数渡してくれたけど、何も返せる値が無かったよ。ゴメン...。」という言葉が <code>None</code> なのです。</p></li>
+<br>
+<li><p><code>None</code> はそのまま <code>False</code> ですので、値が<strong class="b">ある</strong>か<strong class="b">ない</strong>かの「<strong>ない</strong>」として使えます。</p></li>
+<li><p>ただし、<code>None</code> は <strong>Bool型ではない</strong>ので、演算(計算)に使うことはできません。</p></li>
+<li>
+  <p>こうなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(None + None)
+</code></pre>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 1, in <module>
+    print(None + None)
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<p>しっかり <strong>NoneType (None型)</strong> って書いてありますね。💦</p>
+
+<li><p>実際に打ち込んで試してみてください。</p></li>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</li>
+
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">『ある』か『ない』か</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c5"><summary>Chatpter.5 - フラグを立てる</summary>
+
+    <header>
+      <h2>フラグを立てる目的</h2>
+    </header>
+
+
+
+  <article>
+
+    <details id="c5-1"><summary>既読</summary>
+
+      <header>
+        <h3>一度読んだら既読にする</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>「既読」と「未読」を <strong>True</strong> と <strong>False</strong> に割り当てれば簡単に管理できます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">messages = [False, '読んだら既読']
+
+for i in range(3):
+    if messages[0]:
+        print(messages[1], '[既読]')
+    else:
+        print(messages[1])
+        messages[0] = True
+</code></pre>
+
+<div class="grid-output">
+  <code>読んだら既読</code><span>← 「未読」から「既読」に切り替わる</span>
+  <code>読んだら既読 [既読]</code><span>← 一度読んでいるので「既読」になっている</span>
+  <code>読んだら既読 [既読]</code><span>← 何度読んでも「既読」のまま</span>
+</div>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/sT-eRk-KY9vpfUv54w7SJA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c5" onclick="closeAccordion('c5-1')">既読</a>
+      </footer>
+    
+    </details>
+    
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="c5-2"><summary>多重ループの脱出</summary>
+
+      <header>
+        <h3>多重ループの脱出</h3>
+      </header>
+
+
+<ul>
+<li><p><strong>ループを抜ける</strong>時に使う <code>break</code> は、<strong>今のループを１つだけしか抜けることができません。</strong></p></li>
+<li>
+  <p>プログラムで説明します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">cnt = 0
+while True:
+    print('ループ１')
+    while True:
+        print('ループ２')
+        if cnt == 2:
+            break
+        else:
+            cnt += 1
+</code></pre>
+
+<code>ループ１</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループ１</code><br>
+<code>ループ２</code><br>
+<code>ループ１</code><br>
+※ 以下無限ループ<br>    
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>ループ２は <code>cnt == 2</code> になったら <code>break</code> で抜けられますが、ループ１から抜けられず、無限ループとなってしまいます。</p></li>
+<li>
+  <p>こんな時にはループを抜けるように、<strong>フラグ</strong>を立てて誘導します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">cnt = 0
+flg = False
+while True:
+    print('ループ１')
+    while True:
+        print('ループ２')
+        if cnt == 2:      # cnt == 2 になったら
+            flg = True    # flg = True にする(フラグを立てる)
+            break   # ループ２を抜ける
+        else:
+            cnt += 1
+
+    if flg:     # flg = True の時、
+        break   # ループ１を抜ける
+
+print('ループおわり')
+</code></pre>
+
+<code>ループ１</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループおわり</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/Usy8avq44HOgz-OiJMC5_A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong class="while"></strong>文の場合は、こんな風にも書けます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">cnt = 0
+flg = True
+while flg:    # flg = True の間、ループ１は繰り返す
+    print('ループ１')
+    while True:
+        print('ループ２')
+        if cnt == 2:
+            flg = False   # flg = False にする(フラグを立てる)
+            break
+        else:
+            cnt += 1
+
+# ↑ flg = False の場合は ループ１のwhileを脱出する
+
+print('ループおわり')
+</code></pre>
+
+<code>ループ１</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループおわり</code><br>
+    
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>ループ２の <code>while True:</code> のところもフラグにすると <code>break</code> が要らなくなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+
+<div>
+<pre><code class="language-python">cnt = 0
+flg1 = True   # ループ１のフラグ
+flg2 = True   # ループ２のフラグ
+while flg1:
+    print('ループ１')
+    while flg2:
+        print('ループ２')
+        if cnt == 2:
+            flg1 = False
+            flg2 = False
+        else:
+            cnt += 1
+
+# ↑ flg = False の場合は ループ１のwhileを脱出する
+
+print('ループおわり')
+</code></pre>
+
+<code>ループ１</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループ２</code><br>
+<code>ループおわり</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p>どうでしょう？わかりましたか？というか、ちゃんと読んでませんよね。🙄</p></li>
+  <li><p>実はフラグを立てるこのようなやり方はあまりおすすめしません。</p></li>
+  <li><p>複雑でわかりにくいですよね。</p></li>
+  <li><p>今回は <strong>True</strong> と <strong>False</strong> の使い方の１つとして紹介しましたが、複雑なことはなるべく避けたいものです。</p></li>
+  <li><p>でも、これからいろいろたくさん学んでプログラミングに慣れるまでは仕方がありません。</p></li>
+  <li><p>これを回避する方法があるのですが、まだ難しいので、それはまたいつか。😿</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c5" onclick="closeAccordion('c5-2')">多重ループの脱出</a>
+      </footer>
+    
+    </details>
+    
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c5')">フラグを立てる</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>bool型 True と False</p>
+</footer>
+</body>
+</html>

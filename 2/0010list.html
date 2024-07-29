@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>リスト型</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>リスト型</h1>
+  <p>「データ配列」のしくみがわかるようになります</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - リストとは</summary>
+
+    <header>
+      <h2>リストとは</h2>
+    </header>
+
+
+<ul>
+<li><p>値が列になっているデータです。😺❓</p></li>
+
+<li>
+  <p>こんな風に書きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst_num = [0, 1, 2, 3, 4]
+lst_str = ['あ', 'い', 'う', 'え', 'お']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>「<strong class="for"></strong>文 」のところで <strong class="func">range()</strong> が化けた時に見た形がこんなのでした。</p></li>
+<li><p>１つの変数にたくさんの値をしまっておけるおもちゃ箱のようなものです。</p></li>
+<li><p><code>[ ]</code> の中に、値をカンマ <code>,</code> で区切って入れていきます。</p></li>
+</ul>
+
+
+<ul>
+
+<li><p>このリストには、見えていないけど前から順番に整理番号が付いています。</p></li>
+<li><p>番号は、前から順番に 0, 1, 2, 3, 4, ・・・ と付いています。</p></li>
+<li><p>この整理番号のことを「<ruby><strong class="special">要素番号</strong><rt><strong>ようそばんごう</strong></rt></ruby>」と言います。</p></li>
+<li><p>このリスト型のデータ全体 <code>[ ]</code> のことを「<strong class="special">リスト</strong>」と言います。</p></li>
+<li><p>リストの中のそれぞれの<strong>値がある場所</strong>のことを「<ruby><strong class="special">要素</strong><rt><strong>ようそ</strong></rt></ruby>」と言います。</p></li>
+<li><p>リストの中に入っている要素の数のことを「<ruby><strong class="special">要素数</strong><rt><strong>ようそすう</strong></rt></ruby>」と言います。</p></li>
+</ul>
+
+
+<ul>
+<li>
+  <p>表にすると以下の通りです。</p>
+
+  <table>
+  <thead>
+  <tr>
+    <th class="text-center">データ</th>
+    <th class="text-center">lst_str = ['あ', 'い', 'う', 'え', 'お']</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="text-center"><strong>要素番号</strong></td>
+    <td class="text-center">左から順に 0 1 2 3 4</td>
+  </tr>
+  <tr>
+    <td class="text-center">または</td>
+    <td class="text-center">左('あ')から順に -5 -4 -3 -2 -1</td>
+  </tr>
+  <tr>
+    <td class="text-center"><strong>リスト</strong></td>
+    <td class="text-center">['あ', 'い', 'う', 'え', 'お']</td>
+  </tr>
+  <tr>
+    <td class="text-center"><strong>要素</strong></td>
+    <td class="text-center">[要素, 要素, 要素, 要素, 要素]</td>
+  </tr>
+  <tr>
+    <td class="text-center"><strong>要素数</strong></td>
+    <td class="text-center">5</td>
+  </tr>
+  </tbody>
+  </table>
+
+  ※ <strong>要素</strong>は、<strong>要素の中の値も含めて要素</strong>と言います。
+</li>
+<br>
+
+
+
+  <li class="look">
+      <p>要素番号は <strong>必ず０番から始まります。</strong> １番からではありません。<br>
+          よって一番最初ではなく、「<strong>ゼロ番最初</strong>」になります。（混乱しやすい所）</p>
+  </li>
+</ul>
+
+
+<ul>
+<li>
+  <p>予備知識として、リスト型変数は<strong>複数形名詞</strong>を命名する慣習があります。</p>
+
+    <table>
+    <thead>
+    <tr>
+      <th class="text-center">型</th>
+      <th class="text-center">単数形</th>
+      <th class="text-center">複数形 <em>(list)</em></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="text-center">int</td>
+      <td class="text-center">num</td>
+      <td class="text-center">nums</td>
+    </tr>
+    <tr>
+      <td class="text-center">str</td>
+      <td class="text-center">country</td>
+      <td class="text-center">countries</td>
+    </tr>
+    <tr>
+      <td class="text-center">str</td>
+      <td class="text-center">member</td>
+      <td class="text-center">members</td>
+    </tr>
+    <tr>
+      <td class="text-center">str</td>
+      <td class="text-center">word</td>
+      <td class="text-center">words, words_list</td>
+    </tr>
+    </tbody>
+    </table>
+</li>
+
+
+<li><p>気にしすぎて命名に時間をかけるのはよくありません。</p></li>
+<li><p>慣れてきてから少しずつ気にして命名してみてください。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">リストとは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+  <details id="c2"><summary>Chatpter.2 - なんでリスト使うの？</summary>
+
+    <header>
+      <h2>なんでリスト使うの？</h2>
+    </header>
+
+
+<ul>
+<li>
+  <p>こんな風に使えて便利だから！！！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+
+for moji in a_gyou:   # range()の時の形と同じです
+    print(moji)
+</code></pre>
+
+<code>あ</code><br>
+<code>い</code><br>
+<code>う</code><br>
+<code>え</code><br>
+<code>お</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-mqHoB2FJDRhcfRcAimraQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>一部分だけ利用できる！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+print(a_gyou[3])
+</code></pre>
+
+<code>え</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-mqHoB2FJDRhcfRcAimraQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>a_gyou[3]</code> の数字を 0 ～ 4 の間の数字に書き換えてみましょう！</p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>一部分だけの書き換えもできる！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+a_gyou[2] = 'ウ'
+print(a_gyou)
+</code></pre>
+
+<code>['あ', 'い', 'ウ', 'え', 'お']</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-mqHoB2FJDRhcfRcAimraQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>好きな範囲だけの利用も自在にできる！！！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+
+print(a_gyou[1:3])    # range()と同じで 3 でストップします
+print(a_gyou[:2])
+print(a_gyou[2:])
+</code></pre>
+
+<code>['い', 'う']</code><br>
+<code>['あ', 'い']</code><br>
+<code>['う', 'え', 'お']</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-mqHoB2FJDRhcfRcAimraQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>一部分を取り除いたりすることもできる！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+del a_gyou[1]       # 'い' を削除
+print(a_gyou)
+
+a_gyou.pop(2)       # a_gyou.pop(2) が 'え' に化ける
+print(a_gyou)
+
+a_gyou.remove('あ') # 最初の 'あ' が削除される
+print(a_gyou)
+</code></pre>
+
+<div class="grid-output">
+<code>['あ', 'う', 'え', 'お']</code><span>← 消したら前に詰めて、要素番号 <strong>0 1 2 3</strong> になる</span>
+<code>['あ', 'う', 'お']</code><span>← 消したら前に詰めて、要素番号 <strong>0 1 2</strong> になる</span>
+<code>['う', 'お']</code><span>← 消したら前に詰めて、要素番号 <strong>0 1</strong> になる</span>
+</div>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-mqHoB2FJDRhcfRcAimraQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>a_gyou.pop(2)</code> が <code>'え'</code> に化けても、<code>'え'</code>を変数に入れないとそのまま消えてしまう為、結果「削除」しただけになります。
+  <strong class="func">.pop()</strong> の説明はまた今度！</p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>もちろん好きな所にも挿入できる！</p>
+
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'う', 'え', 'お']
+a_gyou.insert(2, 'い')
+print(a_gyou)
+</code></pre>
+
+<code>['あ', 'う', 'い', 'え', 'お']</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/R6Cyx8IXeMzbg5Pac7ePvw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>リストとリストをくっつける！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = ['か', 'わ', 'し', 'た']
+b = ['や', 'く', 'そ', 'く']  
+
+connect = a + b
+print(connect)
+</code></pre>
+
+<code>['か', 'わ', 'し', 'た', 'や', 'く', 'そ', 'く']</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/jZoBc0Hzb9pwRx7pUCsPWw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>とにかく一番うしろに追加したい！！(よく使います)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え']
+a_gyou.append('お')
+print(a_gyou)
+</code></pre>
+
+<code>['あ', 'い', 'う', 'え', 'お']</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/yNQkiKMiy9lThVkSEyIEIw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>順番を逆にするのも簡単です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a_gyou = ['あ', 'い', 'う', 'え', 'お']
+print(a_gyou[::-1])
+
+ka_gyou = ['か', 'き', 'く', 'け', 'こ']
+ka_gyou.reverse()
+print(ka_gyou)
+</code></pre>
+
+<code>['お', 'え', 'う', 'い', 'あ']</code><br>
+<code>['こ', 'け', 'く', 'き', 'か']</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-mqHoB2FJDRhcfRcAimraQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>小さい順や、あいうえお順に整列することもできます。(<strong>ソート</strong>と言います)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [3, 11, 5, 7, 2]
+nums.sort()   # 昇順 (小さいほうから順に)
+print(nums)
+
+words = ['ね', 'こ', 'ぱ', 'ん', 'ち']
+words.sort()
+print(words)
+
+words.sort(reverse = True)  # 降順 (大きいほうから順に)
+print(words)
+
+nums.sort(reverse = True)
+print(nums)
+</code></pre>
+
+<code>[2, 3, 5, 7, 11]</code><br>
+<code>['こ', 'ち', 'ね', 'ぱ', 'ん']</code><br>
+<code>['ん', 'ぱ', 'ね', 'ち', 'こ']</code><br>
+<code>[11, 7, 5, 3, 2]</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/uikPR9RjlAaoxQrw6Gr3Dw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>「え・・・めんどくさい・・・」という時はコピペしてラクをしてみよう！</p>
+</li>
+</ul>
+
+
+<ul>
+  <li><p>こんな風にリストにすると、各要素の値を自在に操作することができるようになります。</p></li>
+</ul>
+
+
+
+
+
+  <h3>【 わりと難しい話 】</h3>
+
+
+<ul>
+  <li><p>上に出てきた <code>.pop()</code> や <code>.sort()</code> というのは、変数の後ろに付けると、リストをいろいろ簡単に操作することができる<strong>指示</strong>にあたります。</p></li>
+  <li><p>関数みたいなものですが、ほんの少し違います。『<strong class="special">メソッド</strong> <em>(method)</em>』と言います。</p></li>
+  <li><p>関数と違って、リスト型の変数の後ろに <code>.</code> をつけてからメソッド名を書きます。上のプログラムみたいに。</p></li>
+  <li><p>( ) の中に値や追加指示(<code>reverse=True</code>とか)を与えたりします。</p></li>
+
+  <br>
+
+  <li><p>わりと難しい話なのに頑張って読んでくれたお礼に、ひと足先にリストでよく使うメソッドを紹介します。</p>
+
+    <table>
+    <thead>
+    <tr>
+      <th class="text-center">メソッド名</th>
+      <th class="text-center">( ) の中身</th>
+      <th class="left-text">機能</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="text-center"><strong>append()</strong></td>
+      <td class="text-center">値</td>
+      <td class="left-text">値をリストの末尾に追加する</td>
+    </tr>
+    <tr>
+      <td class="text-center">pop()</td>
+      <td class="text-center">要素番号</td>
+      <td class="left-text">要素の値を取り出す (取り出した値に化けます)</td>
+    </tr>
+    <tr>
+      <td class="text-center">sort()</td>
+      <td class="text-center">reverse</td>
+      <td class="left-text">ソートする。<code>reverse=True</code>で降順</td>
+    </tr>
+    <tr>
+      <td class="text-center">remove()</td>
+      <td class="text-center">値</td>
+      <td class="left-text">( ) 内の値を1つ取り除く</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <p><strong class="func">append()</strong> はとてもとてもよく使います。<br>
+      ※ 他にもいろいろあります。</p>
+  </li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">なんでリスト使うの？</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c3"><summary>Chatpter.3 - 添字とスライス</summary>
+
+    <header>
+      <h2>添字とスライス</h2>
+    </header>
+
+
+  <article>
+
+    <details id="c3-1"><summary>3.1 - 添字</summary>
+
+      <header>
+          <h3>添字</h3>
+      </header>
+
+<ul>
+<li>
+  <p>まず<strong>リスト</strong>をそのまま出力してみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(['あ', 'い', 'う', 'え', 'お'])
+</code></pre>
+
+<code>['あ', 'い', 'う', 'え', 'お']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst_str = ['あ', 'い', 'う', 'え', 'お']
+print(lst_str)
+</code></pre>
+
+<code>['あ', 'い', 'う', 'え', 'お']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p><strong>要素番号</strong>を使って、リストの一部分の要素だけ利用することもできます。</p>
+  <p><em><strong>str</strong></em> の書き方と比べてみてください。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># str型の場合
+s0 = 'あ'
+s1 = 'い'
+s2 = 'う'
+s3 = 'え'
+s4 = 'お'
+
+print(s0)
+print(s1)
+print(s2)
+print(s3)
+print(s4)
+</code></pre>
+
+<code>あ</code><br>
+<code>い</code><br>
+<code>う</code><br>
+<code>え</code><br>
+<code>お</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># list型の場合
+s = ['あ', 'い', 'う', 'え', 'お']
+
+print(s[0])
+print(s[1])
+print(s[2])
+print(s[3])
+print(s[4])
+</code></pre>
+
+<code>あ</code><br>
+<code>い</code><br>
+<code>う</code><br>
+<code>え</code><br>
+<code>お</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p><ruby><strong>添字</strong><rt>そえじ</rt></ruby>とは、変数の右側の <code>[ ]</code> の中に書く数のことです。</p></li>
+  <li><p>でも、<code>[ ]</code> も含めて <code>[数]</code> で添字と言ったりもします。</p></li>
+  <li><p>１つの変数で済む利便さより、添字を変えるだけでリストの値を自由に利用できる利便さの為に使われます。😺❓</p></li>
+  <li><p>その代わり要素番号がどこにも記されていないので、前から順番に 0 1 2... と番号が割り振られているという想像力が必要になります。</p></li>
+</ul>
+
+
+      <footer>
+          <a class="backto" href="#c3" onclick="closeAccordion('c3-1')">添字</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+
+  <article>
+
+    <details id="c3-2"><summary>3.2 - スライス</summary>
+
+      <header>
+        <h3>スライス</h3>
+      </header>
+
+
+<ul>
+  <li><p><strong>リストの値を範囲で扱うため</strong>の便利機能です。 </p></li>
+  <li><p>便利すぎて超使う！</p></li>
+  <li><p>料理でいうところの<strong class="b">包丁</strong>にあたります。</p></li>
+  <li><p>リストの値を好きな所から好きな長さに切り取ったり、それぞれを変数に切り分けたり、とにかくいろいろできます。</p></li>
+</ul>
+
+
+<ul>
+<li>
+  <p>スライスは、添字をこんな風に書いて使えます。</p>
+
+    <table>
+    <thead>
+    <tr>
+      <th class="text-center">[start:stop:step]</th>
+      <th class="text-center">['<ruby><ruby class="pos-ud">あ<rp>(</rp><rt>-5</rt><rp>)</rp></ruby><rp>(</rp><rt>0</rt><rp>)</rp></ruby>', 
+                                '<ruby><ruby class="pos-ud">い<rp>(</rp><rt>-4</rt><rp>)</rp></ruby><rp>(</rp><rt>1</rt><rp>)</rp></ruby>',
+                                '<ruby><ruby class="pos-ud">う<rp>(</rp><rt>-3</rt><rp>)</rp></ruby><rp>(</rp><rt>2</rt><rp>)</rp></ruby>',
+                                '<ruby><ruby class="pos-ud">え<rp>(</rp><rt>-2</rt><rp>)</rp></ruby><rp>(</rp><rt>3</rt><rp>)</rp></ruby>',
+                                '<ruby><ruby class="pos-ud">お<rp>(</rp><rt>-1</rt><rp>)</rp></ruby><rp>(</rp><rt>4</rt><rp>)</rp></ruby>']</th>
+      <th class="text-center">要素番号</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="text-center"><code>[1:4]</code></td>
+      <td class="text-center">['い', 'う', 'え']</td>
+      <td class="text-center">1 2 3</td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>[:4]</code></td>
+      <td class="text-center">['あ', 'い', 'う', 'え']</td>
+      <td class="text-center">0 1 2 3</td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>[2:]</code></td>
+      <td class="text-center">['う', 'え', 'お']</td>
+      <td class="text-center">2 3 4</td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>[:]</code></td>
+      <td class="text-center">['あ', 'い', 'う', 'え', 'お']</td>
+      <td class="text-center">0 1 2 3 4</td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>[::2]</code></td>
+      <td class="text-center">['あ', 'う', 'お']</td>
+      <td class="text-center">0 2 4</td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>[1::2]</code></td>
+      <td class="text-center">['い', 'え']</td>
+      <td class="text-center">1 3</td>
+    </tr>
+    <tr>
+      <td class="text-center"><code>[::-1]</code></td>
+      <td class="text-center">['お', 'え', 'う', 'い', 'あ']</td>
+      <td class="text-center">-1 -2 -3 -4 -5</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <br>
+</li>
+
+
+<li><p><strong class="func">range()</strong> とほとんど同じです。</p></li>
+<li><p><strong class="func">range()</strong> と違うのは、<strong>start:stop:step</strong> それぞれ数を省略できるところです。</p></li>
+<li><p><strong class="func">range()</strong> は <strong class="b">stop</strong> だけ省略できませんでした。<strong>スライスはどこでも省略できます。</strong></p></li>
+<li><p><strong class="b">start</strong> を省略すると <code>0</code> から。</p></li>
+<li><p><strong class="b">stop</strong> を省略すると、<strong class="b">start</strong> から後ろ全部。</p></li>
+<li><p><strong class="b">step</strong> を省略すると <code>1</code> で、１つずつ。(普通)</p></li>
+<li><p><code>[:]</code> または <code>[::]</code> と書くと全部。</p></li>
+</ul>
+
+
+<ul>
+  <br>
+  <p class="inlook text-center">実はこの<strong>スライス、文字列にも使えるんです</strong>❗❗❗</p></li>
+  <br>
+</ul>
+
+
+<ul>
+<li>
+  <p>文字列でスライスを使ってみるとこんな感じです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">string = '【新番組】点々つけたらスライスになった件'
+print(string[5:])
+</code></pre>
+
+<code>点々つけたらスライスになった件</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">string = '【新番組】点々つけたらスライスになった件'
+s1 = string[5:6]
+s2 = string[10:12]
+print(s1 + s2)
+</code></pre>
+
+<code>点スラ</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">string = 'ねるねるねるねるね'
+print(string[::2])
+print(string[1::2])
+</code></pre>
+
+<code>ねねねねね</code><br>
+<code>るるるる</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">string = 'こいくのにふせしくかゅを'
+for i in range(3):
+    print(string[i::3])
+</code></pre>
+
+<code>このせか</code><br>
+<code>いにしゅ</code><br>
+<code>くふくを</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+  <li><p>リストや文字列の<strong>一部分を切り出したい時</strong>は、すぐに『<strong>スライス</strong>』を思い出してください。</p></li>
+  <li><p><strong>step</strong> もかなり使えますよ！！</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-2')">スライス</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">添字とスライス</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - ぼくたちは代入ができない</summary>
+
+    <header>
+      <h2>変数をそのまま代入するときは要注意</h2>
+    </header>
+
+
+<ul>
+  <li><p>ここから、かなりややこしくなります。難しいです。</p></li>
+  <li><p><strong class="b">すぐに必要な知識ではありませんので、よくわからなかったら飛ばして全然OKです。</strong></p></li>
+</ul>
+
+
+<ul>
+<li><p>どんな型の<strong>値</strong>でも、<strong>値を変数に代入することはできます。</strong></p></li>
+<li><p>でも<strong>変数から変数に</strong>、値をそのまま代入できない場合もあります。<br></p></li>
+
+
+  <li class="look">
+      <p class="text-center"><code>変数2 = 変数1</code></p>
+      <p>このやり方を「<strong>コピー</strong><em>(copy)</em>」または「<strong>値のコピー</strong>」と言います。</p>
+  </li>
+
+
+<li><p>変数のまま <code>変数2</code> に <code>変数1</code> を代入する(コピーする)ことが、</p>
+
+  <table>
+  <thead>
+  <tr>
+    <th class="text-center">できる！</th>
+    <th class="text-center">できない！</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="text-center"><strong>str</strong></td>
+    <td class="text-center"><strong class="blink-text">list</strong></td>
+  </tr>
+  <tr>
+    <td class="text-center"><strong>int</strong></td>
+    <td class="text-center">dict</td>
+  </tr>
+  <tr>
+    <td class="text-center">tuple</td>
+    <td class="text-center">set</td>
+  </tr>
+  </tbody>
+  </table>
+
+  <p><small>※ まだ学んでいない型は細字になっています。</small></p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p><em><strong>str</strong></em> と <em><strong>int</strong></em> は今までどおり、何も気にしないでコピーできます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comic1 = 'こめといものふつうの暮らし ２巻'
+comic2 = comic1
+print(comic1)
+print(comic2)
+</code></pre>
+
+    <div class="grid-output">
+        <code>こめといものふつうの暮らし ２巻</code><span>comic1</span>
+        <code>こめといものふつうの暮らし ２巻</code><span>comic2</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+
+<li>
+  <p><code>comic1</code> の <strong class="b">２巻</strong> を <strong>１巻</strong> に書き換えてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comic1 = 'こめといものふつうの暮らし ２巻'
+comic2 = comic1
+comic1 = 'こめといものふつうの暮らし １巻'
+print(comic1)
+print(comic2)
+</code></pre>
+
+<div class="grid-output">
+<code>こめといものふつうの暮らし １巻</code><span>← <strong>１巻</strong>に書き換わる</span>
+<code>こめといものふつうの暮らし ２巻</code><br>
+</div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<p>とくに問題はありません。ふつうですね。</p>
+</li>
+</ul>
+
+
+<ul>
+<li>
+  <p>次に<strong>リスト型変数</strong> (<em><strong>list</strong></em>) を、<strong class="b">別の変数</strong>にコピーしてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comics1 = ['こめと', 'いもの', 'ふつうの', '暮らし', '２巻']
+comics2 = comics1
+print(comics1)
+print(comics2)
+</code></pre>
+
+    <div class="grid-output">
+        <code>['こめと', 'いもの', 'ふつうの', '暮らし', '２巻']</code><span>comics1</span>
+        <code>['こめと', 'いもの', 'ふつうの', '暮らし', '２巻']</code><span>comics2</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+
+<li>
+  <p><code>comics1</code> の <strong class="b">２巻</strong> を <strong>１巻</strong> に書き換えてみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">comics1 = ['こめと', 'いもの', 'ふつうの', '暮らし', '２巻']
+comics2 = comics1
+comics1[4] = '１巻'   # comics1 のみ '１巻' に書き換える
+print(comics1)
+print(comics2)
+</code></pre>
+
+<div class="grid-output">
+    <code>['こめと', 'いもの', 'ふつうの', '暮らし', '１巻']</code><span>comics1</span>
+    <code>['こめと', 'いもの', 'ふつうの', '暮らし', '１巻']</code><span>comics2</span>
+</div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<p><strong class="b">両方とも「</strong><strong>１巻</strong><strong class="b">」になってしまいました・・・。</strong></p>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-b-7jdDqg4a1ZaCoL_kbpQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+<br>
+
+<li>
+  <p><code>comics2</code> には全く触っていないのに、勝手に「<strong class="b">１巻</strong>」にされてしまいました。<br>
+      <strong>これは大問題ですね。</strong></p>
+</li>
+
+  <li class="look">
+      <p><strong>リスト型変数</strong>は、そのままでは<strong>リストに化けてくれない</strong>のです。</p>
+  </li>
+</ul>
+
+
+<ul>
+  <li><p>こうなってしまう原因を説明するのは、とても難しいです。</p></li>
+  <li><p><strong class="b">コピー</strong>のことをきちんと説明すると、余計にどんどん難しくなっていきます。</p></li>
+  <li><p>今はただ <strong>リスト型変数</strong> は<strong>コピーできない</strong>ことだけ憶えておいてください。<br></p></li>
+  <li><p>けど、大雑把に例えを使って説明してみます。</p></li>
+</ul>
+
+<ul>
+  <li><p>ケーキが１つあります。🍰</p></li>
+  <li><p>このケーキを😾が食べると、ケーキは無くなります。</p>
+  <p>😾の分のケーキなので、どう食べようと自由です。</p></li>
+  <br>
+  <li><p>ケーキが１つあります。🍰</p></li>
+  <li><p>この１つのケーキを、今度は😾と😺のふたりで一緒に食べます。</p>
+  <p>😾 🍰<br>
+    😺</p></li>
+  <li><p>１つのケーキをふたりで食べるわけですから、ひとりが食べるとふたり分のケーキが減っていきます。</p>
+  <p>😼 💥<br>
+    🙀</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>でも以下の方法ならリストに化けてくれますので、問題なく<strong>代入</strong>することができます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 3, 4, 5]
+nums2 = nums1[:]  # nums1 の全ての要素を スライスを使って選択
+nums1[2] = 6
+print(nums1)
+print(nums2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ コピーではなく、リストの要素すべてを代入する
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 3, 4, 5]
+nums2 = [1, 2, 3, 4, 5]  # nums1 のリストに化けてから代入される
+nums1[2] = 6
+print(nums1)
+print(nums2)
+</code></pre>
+
+<code>[1, 2, 6, 4, 5]</code><br>
+<code>[1, 2, 3, 4, 5]</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/YaCKvZIVMdsir_69ISnZgA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>スライスの代わりに <strong class="func">list()</strong> 関数を使うやり方もあります。</p>
+
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 3, 4, 5]
+nums2 = list(nums1)  # リストをリストに変換する
+nums1[2] = 6
+print(nums1)
+print(nums2)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 元のリストの値を、新しいリストに移し替えている感じ
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums1 = [1, 2, 3, 4, 5]
+nums2 = [1, 2, 3, 4, 5]  # 移し替えたリストが化けてから代入される
+nums1[2] = 6
+print(nums1)
+print(nums2)
+</code></pre>
+
+<code>[1, 2, 6, 4, 5]</code><br>
+<code>[1, 2, 3, 4, 5]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+  <li><p>😾の分のケーキが１つあります。🍰</p></li>
+  <li><p>😺がやってきたので、もう１つ同じケーキ🍰を用意します。(コピー)</p>
+  <p>😾 🍰<br>
+    😺 🍰</p></li>
+  <br>
+  <li><p>😾がケーキを食べます。</p>
+  <p>🙀 💥<br>
+    😸 🍰</p></li>
+  <br>
+
+  <li><p>別に用意された😺の分のケーキ🍰は無事(?)です。</p></li>
+</ul>
+
+<ul>
+  <li><p>「あれ？リストの値が勝手に変わる・・・」と思ったら、このことを思い出してください。</p></li>
+  <li><p>もしどーーーしても詳しく知りたい方は、<a class="linked" href="https://www.google.co.jp/search?q=シャローコピー+ディープコピー+python" target="_blank">「シャローコピー」「ディープコピー」</a>でネット検索してみてください。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">ぼくたちは代入ができない</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>リスト型</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2761 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>リスト型データを使いこなす機能一覧</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>リスト型データを使いこなす機能一覧</h1>
+  <p>ここがわかるようになったらあとはラクです👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 引数</summary>
+
+    <header>
+      <h2>引数とは</h2>
+    </header>
+
+
+<ul>
+<li><p>関数やメソッドの ( ) の中に入れる値のことを『 <ruby><strong class="special">引数</strong><rt><strong>ひきすう</strong></rt></ruby> 』といいます。</p></li>
+<li><p><strong>int(引数)</strong> や <strong>str(引数)</strong> だけでなく、<strong>print(引数)</strong> もそうです。</p></li>
+<li><p>( ) だけの場合は『引数なし』と言ったりします。</p></li>
+<li><p>馴染みのない言葉なので初めはインスウと呼んでしまうかもしれませんが、『<strong>ひきすう</strong>』です。</p></li>
+<li><p>そして、( ) の中に引数を入れて関数に見せることを『<strong class="special">引数を渡す</strong>』と言います。</p></li>
+<li><p>渡すと言っても、値を渡したら元の値が無くなるわけではありません。</p></li>
+
+  <li class="look">
+    <p><strong>引数</strong>は、関数にその値を<strong>見せるだけ</strong>です。</p>
+    <p>関数はその引数の値を写し取ってから関数の中だけで使います。<br>
+      関数が戻り値を返したら、写し取った値は、破棄されます。</p>
+  </li>
+  <br>
+  
+<li><p>関数の仕組みがわからないと意味がよくわからないかも知れませんね。💦</p></li>
+<li><p>「関数」は３章で扱いますので、もう少し待っててください。🙏</p></li>
+</ul>
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">引数</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - メソッド</summary>
+
+    <header>
+        <h2>メソッドとは</h2>
+    </header>
+
+
+<ul>
+<li><p><strong class="func">int()</strong> や <strong class="func">print()</strong> みたいな関数の「<strong>リスト型専用版</strong>」です。</p></li>
+
+<li>
+  <p><code>変数.メソッド</code> のような書き方をして使います。</p>
+
+  <table id="table_method">
+  <thead>
+  <tr>
+    <th class="center-text">メソッド</th>
+    <th class="center-text">( ) の中身</th>
+    <th class="left-text">機能</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-sort" onclick="openAccordion('-sort')">sort()</a></td>
+    <td class="center-text">reverse</td>
+    <td class="left-text">ソートする。reverse=Trueで降順</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-append" onclick="openAccordion('-append')">append()</a></td>
+    <td class="center-text">値</td>
+    <td class="left-text">値をリストの末尾に追加する</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-pop" onclick="openAccordion('-pop')">pop()</a></td>
+    <td class="center-text">要素番号</td>
+    <td class="left-text">リストの末尾、もしくは要素番号の要素の値を取り出す</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-reverse" onclick="openAccordion('-reverse')">reverse()</a></td>
+    <td class="center-text">なし</td>
+    <td class="left-text">リストの要素の値を逆順にする</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-remove" onclick="openAccordion('-remove')">remove()</a></td>
+    <td class="center-text">値</td>
+    <td class="left-text">( ) 内の値をリストから1つ取り除く</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-index" onclick="openAccordion('-index')">index()</a></td>
+    <td class="center-text">値</td>
+    <td class="left-text">( ) 内の値がある要素の要素番号を取得する</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-count" onclick="openAccordion('-count')">count()</a></td>
+    <td class="center-text">値</td>
+    <td class="left-text">( ) 内の値がいくつあるかを数える</td>
+  </tr>
+  <tr>
+    <td class="link center-text"><a class="td" href="#-insert" onclick="openAccordion('-insert')">insert()</a></td>
+    <td class="center-text">要素番号, 値</td>
+    <td class="left-text">指定した要素に値を挿入する</td>
+  </tr>
+  </tbody>
+  </table>
+  &nbsp;&nbsp;&nbsp;&nbsp;↑ メソッド名をクリックしても飛べます。
+</li>
+</ul>
+
+
+
+
+
+  <article>
+
+    <details id="-sort"><summary>.sort()</summary>
+
+      <header>
+        <h3>.sort()</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p><strong>昇順</strong>でソートします。(小さい順)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums.sort()
+print(nums)
+</code></pre>
+
+<code>[1, 2, 3, 4, 5, 6]</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong>降順</strong>でソートします。(大きい順)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums.sort(reverse=True)   # 逆順にする場合
+print(nums)
+</code></pre>
+
+<code>[6, 5, 4, 3, 2, 1]</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+<p>nums はコピペ、それ以外は打ち込んで動かしてみてください！</p>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+  <li class="look">
+    <p><strong>.sort()</strong> はリストの順番を直接書き換えてしまいます。</p>
+    <p>元のリストを残しておきたい場合は、この後 <strong class="b">Chatpter.3</strong> の <strong>sorted()</strong> を使います。</p>
+  </li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-sort')">.sort()</a>
+      </footer>
+            
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-append"><summary>.append()</summary>
+
+      <header>
+        <h3>.append()</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リストの末尾に、値を<strong>追加</strong>します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = []  # 先に空のリストを作って用意しておく
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums.append(1)
+print(nums)
+</code></pre>
+
+    <div class="grid-output">
+        <code>[1]</code><span>← 空のリストに <code class="cmt">1</code> が追加される</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums.append('ネコ')
+print(nums)
+</code></pre>
+
+    <div class="grid-output">
+        <code>[1, 'ネコ']</code><span>← <code class="cmt">[1]</code> に <code class="cmt">'ネコ'</code> が追加される</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums.append(3 * 5)
+print(nums)
+</code></pre>
+
+  <div class="grid-output">
+      <code>[1, 'ネコ', 15]</code><span>← さらに <code class="cmt">15</code> が追加される</span>
+  </div>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+<p>上から順に、続けて打ち込んでください！</p>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+  <li class="look">
+    <p><strong class="b">append</strong> は「<strong>追加する</strong>」という意味です。<br>
+      このメソッドは、とてもよく使われる重要な機能です。</p>
+  </li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-append')">.append()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-pop"><summary>.pop()</summary>
+
+      <header>
+        <h3>.pop()</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リストの末尾の値を<strong>取り出し</strong>て、全体がその値に<strong>化けます。</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+num = nums.pop()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4]  # ← 末尾の 5 が取り出された
+num = 5       # 5 に化ける。化けた値を使うので 変数が必要です
+print(nums)
+print(num)
+</code></pre>
+
+  <div class="grid-output">
+    <code>[1, 2, 3, 4]</code><span>← nums</span>
+    <code>5</code><span>← num</span>
+  </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><strong>引数</strong>を要素番号にすると、その要素の値が取り出せます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+num = nums.pop(1) # 要素番号１の値の 2 を取り出す
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 3, 4, 5]
+num = 2       # 2 に化ける
+print(nums)
+print(num)
+</code></pre>
+
+  <div class="grid-output">
+    <code>[1, 3, 4, 5]</code><span>← <code class="cmt">2</code> が <code class="cmt">nums</code> から <code class="cmt">num</code> に移る</span>
+    <code>2</code><span>← num</span>
+  </div>
+
+<details class="sample-code"><summary></summary>引数を 0 ～ 4 に変えて試してみてください！
+  <iframe src="https://paiza.io/projects/e/DOadRsYo3eNMJnHBGL3VIQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+
+  <li class="look">
+    <p><strong class="func">.pop()</strong> の便利さがわかるのは、もっと後になってからかもしれません。</p>
+  </li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-pop')">.pop()</a>
+      </footer>
+        
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-reverse"><summary>.reverse()</summary>
+
+      <header>
+        <h3>.reverse()</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リストの並びを<strong>逆順</strong>にします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5, 6]
+nums.reverse()
+print(nums)
+</code></pre>
+
+<code>[6, 5, 4, 3, 2, 1]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+  <li class="look">
+    <p>[::-1] と違うのは、リストを書き換えるかどうかです。</p>
+    <p><strong class="func">.reverse()</strong> は、元のリストを書き換えて新しくします。<br>
+      [::-1]は逆順にした後のリストに化けるだけなので、元のリストは変わらずに残ります。</p>
+  </li>
+
+<li>
+  <p><strong class="func">.reverse()</strong> と <strong class="b"><mark>[::-1]</mark></strong> との結果を、直接 <strong class="func">print()</strong> で見て比較してみましょう。</p>
+  <p><strong class="func">.reverse()</strong> の場合</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5, 6]
+print(nums.reverse())
+print(nums)
+</code></pre>
+
+<code>[6, 5, 4, 3, 2, 1]</code><br>
+    <div class="grid-output">
+        <code>[6, 5, 4, 3, 2, 1]</code><span>← <code class="cmt">nums</code> が書き換わる</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong class="b"><mark>[::-1]</mark></strong> の場合</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5, 6]
+print(nums[::-1])
+print(nums)
+</code></pre>
+
+<code>[6, 5, 4, 3, 2, 1]</code><br>
+  <div class="grid-output">
+    <code>[1, 2, 3, 4, 5, 6]</code><span>← <code class="cmt">nums</code> は元のまま</span>
+  </div>
+
+<details class="sample-code"><summary></summary>リストの要素の値を自由に変えてみてください！
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-reverse')">.reverse()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-remove"><summary>.remove()</summary>
+
+      <header>
+        <h3>.remove(引数)</h3>
+      </header>
+
+
+<ul>
+<li><p>引数に指定した値をリストの中から１つ取り除きます。</p></li>
+<li><p>同じ値が複数ある時は、左から順に見て最初に見つけたものを取り除きます。</p>
+
+  <li class="look">
+    <p>値が見つからなかったときは、エラーになりますので注意してください。</p>
+  </li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fingers = ['爺', '婆', '殿', '姫', '爺', '婆', '殿', '姫']
+fingers.remove('殿')  # ↑ これ
+print(fingers)
+</code></pre>
+
+<code>['爺', '婆', '姫', '爺', '婆', '殿', '姫']</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/f7OIWr1dqxcfqhWVRngb8w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+<p>要素の値を数値にしたので、サクサク試してみてください！<br>
+リストに存在しない値を指定して怒られてみてください！</p>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+
+  <li class="look">
+    <p><strong class="b">要素番号</strong>で取り除くのが <strong class="func">.pop()</strong><br>
+      <strong class="b">値</strong>で取り除くのが <strong class="func">.remove()</strong></p>
+    <p><strong class="func">.remove()</strong> は値のある要素を取り除くだけの機能なので、化けたりしません。</p>
+  </li>
+<br>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-remove')">.remove()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-index"><summary>.index()</summary>
+
+      <header>
+        <h3>.index(引数)</h3>
+      </header>
+
+
+<ul>
+<li><p>引数に指定した値をリストの中から見つけて、その場所の<strong>要素番号に化けます。</strong></p></li>
+<li>
+  <p>同じ値が複数ある時は、左から順に見て最初に見つけたものが選ばれます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fingers = ['爺', '婆', '殿', '姫', '爺', '婆', '殿', '姫']
+idx = fingers.index('殿')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fingers = ['爺', '婆', '殿', '姫', '爺', '婆', '殿', '姫']
+idx = 2     # 化けた値を使うので 変数が必要です
+print(idx)
+</code></pre>
+
+<code>2</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+
+  <li class="look">
+    <p>値が見つからなかったときは、エラーになりますので注意してください。</p>
+  </li>
+
+<li>
+  <p>値が見つからなかったとき</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fingers = ['爺', '婆', '殿', '姫', '爺', '婆', '殿', '姫']
+idx = fingers.index('猫神様')
+print(idx)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 2, in &lt;module&gt;
+    idx = fingers.index('猫神様')
+ValueError: '猫神様' is not in list
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/Hcu-6DW0vHLYf2I5i87gZw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+<p>要素の値を数値にしたので、サクサク試してみてください！<br>
+リストに存在しない値を指定して怒られてみてください！</p>
+
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-index')">.index()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-count"><summary>.count()</summary>
+
+      <header>
+        <h3>.count(引数)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>引数に指定した値がリストの中にいくつ含まれているかを数えます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fingers = ['爺', '婆', '殿', '姫', '爺', '婆', '殿', '姫']
+cnt = fingers.count('殿')
+print(cnt)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">fingers = ['爺', '婆', '殿', '姫', '爺', '婆', '殿', '姫']
+cnt = 2     # 化けた値を使うので 変数が必要です
+print(cnt)
+</code></pre>
+
+  <div class="grid-output">
+      <code>2</code><span>← ２個あった</span>
+  </div>
+
+<details class="sample-code"><summary></summary>何度も実行して、動きを確認してみてください！
+  <iframe src="https://paiza.io/projects/e/jRqjPch3a8d0tZ5pXcEx0w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+  <li class="look">
+    <p>プログラミングでは<strong class="b">値や要素の数を数える</strong>ことがよくあります。<br>
+      「<strong>値や要素の数を数える機能がある</strong>」ということだけでも憶えておきましょう。</p>
+  </li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-count')">.count()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="-insert"><summary>.insert()</summary>
+
+      <header>
+        <h3>.insert(引数1, 引数2)</h3>
+      </header>
+
+
+<ul>
+  <li><p><strong>引数1の要素番号</strong>に、<strong>引数2の値</strong>を挿入します。</p></li>
+  <li><p>要素番号は <strong>int</strong> 限定です。</p></li>
+  <li>
+    <p>こんな感じです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">titles = ['う', 'た', 'わ', 'れ', 'る', 'も', 'の']
+titles.insert(2, 'が')
+print(titles)
+</code></pre>
+
+<code>['う', 'た', 'が', 'わ', 'れ', 'る', 'も', 'の']</code>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/d7-dP53x-k59dfe6XFKdbA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>もう一例。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['A', 'R']
+lst.insert(1, 'I')
+print(lst)
+</code></pre>
+
+<code>['A', 'I', 'R']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓ 先頭にも挿入できます
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['A', 'I', 'R']
+lst.insert(0, 'P')
+print(lst)
+</code></pre>
+
+<code>['P', 'A', 'I', 'R']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓ <strong class="func">.append()</strong> みたいに末尾にも挿入できます
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['P', 'A', 'I', 'R']
+lst.insert(4, 'S')
+print(lst)
+</code></pre>
+
+<code>['P', 'A', 'I', 'R', 'S']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>結果は同じでも insert なので、追加ではなく挿入と言います。(ただの理屈)</p>
+<br>
+</li>
+
+<li>
+  <p>要素数より大きな数にしても末尾に挿入されます。100万多くても！</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['P', 'A', 'I', 'R']
+lst.insert(4 + 10**6, 'S')  # 10**6 は 100万
+print(lst)
+</code></pre>
+
+<code>['P', 'A', 'I', 'R', 'S']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><strong class="func">.insert()</strong> は他のメソッドに比べるとそんなに使う機会は無いかもしれません。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-insert')">.insert()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">メソッド</a>
+    </footer>
+      
+  </details>
+
+</section>
+
+
+
+
+<section>
+
+  <details id="c3"><summary>Chatpter.3 - 関数</summary>
+
+    <header>
+      <h2>関数とは</h2>
+    </header>
+
+
+<ul>
+  <li>引数を与えると、機能に応じて決まった値になって返ってくる機能です。😺❓</li>
+  <li><p>お金を入れると商品が出てくる自動販売機のような感じです。</p></li>
+  <li><p>特定の値になって返ってくる値の事を『 <ruby><strong class="special">戻り値</strong><rt><strong>もどりち</strong></rt></ruby> 』または 『 <ruby><strong class="b">返り値</strong><rt><strong class="b">かえりち</strong></rt></ruby> 』と言います。</p></li>
+  <li><p><strong>戻り値</strong>は、関数ごと化けます。</p></li>
+  <li><p>メソッドと違って、リスト型以外にも使えるものもあります。</p></li>
+  <li><p><strong>関数(引数)</strong> と書いて使います。</p></li>
+  <li>
+    <p>( ) の中身は、今回は<strong>リスト型変数</strong>が入ります。</p>
+
+      <table id="table_function">
+      <thead>
+      <tr>
+        <th class="center-text">関数</th>
+        <th class="left-text">機能</th>
+        <th class="center-text">戻り値の型</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="link center-text"><a class="td" href="#sorted" onclick="openAccordion('sorted')">sorted()</a></td>
+        <td class="left-text">リスト内の値を並び替える</td>
+        <td class="center-text"><strong>list</strong></td>
+      </tr>
+      <tr>
+        <td class="link center-text"><a class="td" href="#len" onclick="openAccordion('len')">len()</a></td>
+        <td class="left-text">リストの要素数を数える</td>
+        <td class="center-text"><strong>int</strong></td>
+      </tr>
+      <tr>
+        <td class="link center-text"><a class="td" href="#max" onclick="openAccordion('max')">max()</a></td>
+        <td class="left-text">リスト内の一番大きな値を返す</td>
+        <td class="center-text"><strong>int</strong>, str</td>
+      </tr>
+      <tr>
+        <td class="link center-text"><a class="td" href="#min" onclick="openAccordion('min')">min()</a></td>
+        <td class="left-text">リスト内の一番小さな値を返す</td>
+        <td class="center-text"><strong>int</strong>, str</td>
+      </tr>
+      <tr>
+        <td class="link center-text"><a class="td" href="#sum" onclick="openAccordion('sum')">sum()</a></td>
+        <td class="left-text">リスト内の数値を合計する</td>
+        <td class="center-text"><strong>int</strong></td>
+      </tr>
+      <tr>
+        <td class="link center-text"><a class="td" href="#enumerate" onclick="openAccordion('enumerate')">enumerate()</a></td>
+        <td class="left-text">リストの値に番号(数値)を振り、タプルで返す</td>
+        <td class="center-text"><strong>(int, 値)</strong></td>
+      </tr>
+
+      </tbody>
+      </table>
+      &nbsp;&nbsp;&nbsp;&nbsp;↑ 関数名をクリックしても飛べます。
+  </li>
+  <br>
+
+<li><p>まだピンとこないかも知れません。</p></li>
+<li>ここはではまだ<strong>関数</strong>というものを学ぶわけではありませんので、以下の便利な関数の使い方だけでも軽く知っておいてください。</li>
+</ul>
+
+
+
+  <article>
+
+    <details id="sorted"><summary>sorted()</summary>
+
+      <h3>sorted(引数)</h3>
+
+
+<ul>
+  <li class="look">
+    <p><strong>sorted()</strong> は引数のリストを基にソートして、ソートした後の<strong>戻り値のリストに関数が化けます。</strong></p>
+    <p>引数にした元のリストは書き換わりません。</p>
+  </li>
+</ul>
+
+
+<ul>
+<li><p><strong>昇順</strong>でソートします。(小さい順)</p></li>
+<li>
+  <p>戻り値は ソートされた後の <strong>リスト</strong> となります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sorted_nums = sorted(nums)
+print(nums)
+print(sorted_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sorted_nums = sorted([2, 1, 4, 3, 6, 5])
+print(nums)
+print(sorted_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ソート後のリストに化けてから変数に代入
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sorted_nums = [1, 2, 3, 4, 5, 6]
+print(nums)
+print(sorted_nums)
+</code></pre>
+
+    <div class="grid-output">
+        <code>[2, 1, 4, 3, 6, 5]</code><span>← <code class="cmt">nums</code> の中身は変わらない</span>
+    </div>
+<code>[1, 2, 3, 4, 5, 6]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><strong>降順</strong>でソートします。(大きい順)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sorted_nums = sorted(nums, reversed=True)
+print(nums)
+print(sorted_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sorted_nums = sorted([2, 1, 4, 3, 6, 5], reversed=True)
+print(nums)
+print(sorted_nums)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ ソート後のリストに化けてから変数に代入
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sorted_nums = [6, 5, 4, 3, 2, 1]
+print(nums)
+print(sorted_nums)
+</code></pre>
+
+<div class="grid-output">
+    <code>[2, 1, 4, 3, 6, 5]</code><span>← <code class="cmt">nums</code> の中身は変わらない</span>
+</div>
+<code>[6, 5, 4, 3, 2, 1]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  <p>実際に打ち込んで試してみてください。</p>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+
+</ul>
+
+      <footer>
+          <a class="backto" href="#table_function" onclick="closeAccordion('sorted')">sorted()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="len"><summary>len()</summary>
+
+      <header>
+        <h3>len(引数)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リストの要素数を数えます。<em>(length)</em></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = ['ラーメン', '大好き', '小沼', 'さん']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words_len = len(words)
+print(words_len)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words_len = len(['ラーメン', '大好き', '小沼', 'さん'])
+print(words_len)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words_len = 4    # 要素数は 4個
+print(words_len)
+</code></pre>
+
+<code>4</code><br>
+
+<details class="sample-code"><summary></summary>何度も実行して、動きを確認してみてください！
+  <iframe src="https://paiza.io/projects/e/C0vT_2HtNmAVBiBwZFsloA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+
+  <li class="look">
+    <p>「要素数なんて数えてどうすんの？」</p>
+    <p>と思ったりするこの機能。<br>
+      <strong class="func">.count()</strong> 同様「<strong>数える</strong>」機能は本当によく使います。</p>
+    <p></p>
+  </li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('len')">len()</a>
+      </footer>
+
+    </details>
+  
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="max"><summary>max()</summary>
+
+      <header>
+        <h3>max(引数{, 引数, ・・・})</h3>
+      </header>
+
+<ul>
+<li>
+  <p>リストの中の値で、一番大きな値を見つけます。<em>(maximum)</em></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">max_num = max(nums)
+print(max_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<pre><code class="language-python">max_num = max([2, 1, 4, 3, 6, 5])
+print(max_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">max_num = 6    # 最大値の 6 に化ける
+print(max_num)
+</code></pre>
+
+<code>6</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong class="func">max()</strong> 関数は、どちらが大きいかの比較にもよく使われます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+max_num = max(a, b)   # ３つ以上の値を比較することもできます
+print(max_num)
+</code></pre>
+
+<code>5</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>この性質を利用して、<strong>最大値を更新</strong>する時にも使えます。</p>
+
+  <p><strong class="if"></strong>文を使った書き方</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+max_num = 0
+for i in nums:
+    if i &gt; max_num:   # i のほうが 今の最大値より大きかったら
+      max_num = i     # max_num を i に更新する
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong class="func">max()</strong> のみの書き方</p>
+
+                    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+max_num = 0
+for i in nums:
+    max_num = max(max_num, i)   # (今の最大値 と i) の大きい方を max_num に代入
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li><p>最大値の<ruby><strong class="b">初期値</strong><rt><strong class="b">しょきち</strong></rt></ruby>（<ruby>予<rt>あらかじ</rt></ruby>め設定しておく値）を「できるだけ小さな数」にする時は、こんな書き方をします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">max_num = -float('inf')   # -∞ (マイナス無限)にする
+print(max_num)
+</code></pre>
+<code>-inf</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+  <li class="look">
+    <p>初期値を 0 にすると、最大値が 0 より小さな数になる時に正しく最大値が取れません。</p>
+    <p>その為に初期値をできるだけ小さな値に設定する必要があるのです。<br>
+      それが「マイナス無限 <code>-float('inf')</code>」なのです。</p>
+  </li>
+</ul>
+
+<ul>
+<li>
+  <p>これらを整頓すると、こういう書き方になります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># やっていることは max(nums) と同じです。
+nums = [2, 1, 4, 3, 6, 5]
+max_num = -float('inf')
+for i in nums:
+    max_num = max(max_num, i)
+print(max_num)
+</code></pre>
+
+<code>6</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>この書き方を簡単にすると、以下になるわけです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+print(max(nums))
+</code></pre>
+
+<code>6</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  <p>コピペで構いませんので、いろいろ試してみてください！👍</p>
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('max')">max()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="min"><summary>min()</summary>
+
+      <header>
+        <h3>min(引数{, 引数, ・・・})</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リストの中の値で、一番小さな数を見つけます。<em>(minimum)</em></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">min_num = min(nums)
+print(min_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">min_num = min([2, 1, 4, 3, 6, 5])
+print(min_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">min_num = 1    # 最小値の 1 に化ける
+print(min_num)
+</code></pre>
+
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong class="func">min()</strong> 関数は、どちらが小さいかの比較にもよく使われます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = 3
+b = 5
+min_num = min(a, b)   # ３つ以上でもOK
+print(min_num)
+</code></pre>
+
+<code>3</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>この性質を利用して、<strong>最小値を更新</strong>する時にも使えます。</p>
+
+  <p><strong class="if"></strong>文を使った書き方</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+min_num = 99999999    # 十分に大きな数に設定する
+for i in nums:
+    if i &lt; min_num:   # i のほうが 今の最小値より小さかったら
+      min_num = i     # min_num を i に更新する
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong class="func">min()</strong> のみの書き方</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+min_num = 99999999
+for i in nums:
+    min_num = min(min_num, i)   # (今の最小値と i) の小さい方を min_num に代入
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>最小値の<ruby><strong class="b">初期値</strong><rt><strong class="b">しょきち</strong></rt></ruby>（<ruby>予<rt>あらかじ</rt></ruby>め設定しておく値）を「できるだけ大きな数」にする時は、こんな書き方をします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">min_num = float('inf')   # ∞ (無限)にする
+print(min_num)
+</code></pre>
+
+<code>inf</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+  <li class="look">
+    <p>初期値を「できるだけ大きな数」というのを簡単に書いたものが<span style="white-space: nowrap;">「無限 <code>float('inf')</code>」</span>です。</p>
+    <p>「できるだけ大きな数・・・いくつにしようかな？」と、いちいち考える必要がなくなります。😸</p>
+  </li>
+</ul>
+
+<ul>
+<li>
+  <p>これらを整頓すると、こういう書き方になります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># やっていることは min(nums) と同じです。
+nums = [2, 1, 4, 3, 6, 5]
+min_num = float('inf')
+for i in nums:
+    min_num = min(min_num, i)
+print(min_num)
+</code></pre>
+
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>この書き方を簡単にすると、以下になるわけです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+print(min(nums))
+</code></pre>
+
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  <p>コピペで構いませんので、いろいろ試してみてください！👍</p>
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('min')">min()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="sum"><summary>sum()</summary>
+
+      <header>
+          <h3>sum(引数)</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リスト内の数値を合計します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sum_num = sum(nums)
+print(sum_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sum_num = sum([2, 1, 4, 3, 6, 5])
+print(sum_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sum_num = 21   # 合計して 21 に化ける
+print(sum_num)
+</code></pre>
+
+<code>21</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>スライスも使えます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 4, 3, 6, 5]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sum_num = sum(nums[2:5])
+print(sum_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sum_num = sum([4, 3, 6])
+print(sum_num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">sum_num = 13   # 合計して 13 に化ける
+print(sum_num)
+</code></pre>
+
+<code>13</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<br>
+</li>
+</ul>
+
+<ul>
+  <p>👇このプログラム👇を読むのは、まだむずかしいかもしれません。😓</p>
+  <details class="sample-code"><summary></summary>何度も実行して、動きを確認してみてください！
+    <iframe src="https://paiza.io/projects/e/1YfHpHztvWzBFwH3mmBt8A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('sum')">sum()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="enumerate"><summary>enumerate()</summary>
+
+      <h3>enumerate(引数)</h3>
+
+
+<ul>
+<li><p>まずはこのプログラムを見てください。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['a', 'b', 'c']
+result = list(zip(range(len(lst)), lst))
+print(result)  # result は「結果」という意味です
+</code></pre>
+
+<code>[(0, 'a'), (1, 'b'), (2, 'c')]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+↓ 最初に <code>len(lst)</code> で <code>lst</code> の要素数 <code>3</code> を取得します。
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">result = list(zip(range(3), lst))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">result = list(zip([0, 1, 2], ['a', 'b', 'c']))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ それぞれの要素をジップしていきます
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">result = list((0, 'a'), (1, 'b'), (2, 'c'))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">result = [(0, 'a'), (1, 'b'), (2, 'c')]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p><strong class="func">enumerate()</strong>関数はこれと同じ結果を求める機能です。</p></li>
+  
+  <li class="look">
+    <p class="text-center">enumerate() 関数</p>
+    <p class="text-center"><strong>enumerate(リスト型変数)</strong><br>
+      <strong>enumerate(リスト型変数, start=0)</strong></p>
+    <p>「<strong class="b">イニューメレイト</strong>」と読むそうです。<br>
+      スペルが憶えにくいので、いつも言葉を分割して<strong>「イーナム イーレイト」</strong>と唱えながら打ち込んでいます。😸</p>
+  </li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['a', 'b', 'c']
+result = list(enumerate(lst))
+print(result)
+</code></pre>
+
+<code>[(0, 'a'), (1, 'b'), (2, 'c')]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+
+<li>
+  <p>この関数はほとんどの場合、<strong class="for"></strong>文で使われます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['a', 'b', 'c']
+for i, char in enumerate(lst):
+    print(i, char)
+</code></pre>
+
+<code>0 a</code><br>
+<code>1 b</code><br>
+<code>2 c</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p>この関数を使うと、リストの要素番号と値が同時に得られるので添字を書かなくてよくなり、リストの値にも名前が付けられて読みやすくなります。</p>
+  <p><strong class="func">range()</strong> 関数で書いた場合</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['a', 'b', 'c']
+for i in range(len(lst)):
+    print(i, lst[i])
+</code></pre>
+
+<code>0 a</code><br>
+<code>1 b</code><br>
+<code>2 c</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p><code>start=</code> を使うと 0 以外からスタートすることができます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['a', 'b', 'c']
+for i, char in enumerate(lst, start=1):
+    print(i, char)
+</code></pre>
+
+<code>1 a</code><br>
+<code>2 b</code><br>
+<code>3 c</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p><strong class="for"></strong>文に<strong class="func">range()</strong>を使って <mark><strong class="b">lst[i]</strong></mark> みたいな書き方をしていたら <strong>enumerate()</strong> を思い出してください。😸</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_function" onclick="closeAccordion('enumerate')">enumerate()</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">関数</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - in</summary>
+
+    <header>
+      <h2>in</h2>
+    </header>
+
+
+<ul>
+<li><p>リストの中身に特定の値が含まれているかを判定する <strong>in</strong> という機能があります。</p></li>
+<li>
+  <p>含まれていたら <strong>True</strong> 、含まれていなかったら <strong>False</strong> に化けます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5, 6]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong class="b">含まれる時</strong></p>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 3 in nums:   
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True:    # 3 が見つかったので True に化けた
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong class="b">含まれない時</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 9 in nums:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if False:    # 9 が見つからなかったので False に化けた
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p><code>or</code> と <code>and</code> を使えば、欲張っていくつもの数をいっぺんに探せます。</p>
+  <p><strong>or</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 3 or 9 in nums:    # 3 か 9 のどちらかある？
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True:     # 9 は無いけど 3 は見つかったので True に化けた
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>and</strong></p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if 3 and 9 in nums:   # 3 と 9 の両方ある？
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if False:    # 3 はあったけど 9 はなかったよ
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>文字列も探せます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = ['魔法', 'の', '天使']
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if '天使' in words:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if True:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>基本は変数を使って探します。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">race = '妖精'
+if race in words:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">race = '妖精'
+if False:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+<ul>
+  <li><p>基本、値は変数に入れてから使います。</p></li>
+  <li><p>その値がどんな値なのか、変数名を<strong>見ればわかる</strong>ようにするためです。</p></li>
+  <li><p>今はまだ構いませんけど、慣れてきたらいったん変数にしてから使うようにしてみましょう！</p></li>
+</ul>
+
+
+    <header>
+        <h2>not in</h2>
+    </header>
+
+
+<ul>
+<li>
+  <p><strong>in</strong> とは反対に、<strong>not in</strong> は「〇〇が<strong>含まれていない時</strong>」を調べるのに使います。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">if '天使' not in words:
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>と書きます。</p>
+</li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#c4" onclick="closeAccordion('c4')">リストで使えるその他機能</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+<section>
+
+  <details id="c5"><summary>Chatpter.5 - 使いそうで使わないちょっと使うテクニック</summary>
+
+    <header>
+      <h2>使いそうで使わないちょっと使うテクニック</h2>
+    </header>
+
+
+
+  <article>
+
+    <details id="c5-1"><summary>リストとリストを繋げる</summary>
+
+      <header>
+        <h3>リストとリストを繋げる</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>リスト型同士であれば、<code>+</code> を使ってリストとリストを繋げることが出来ます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0] + [1, 2, 3] + [4]
+print(nums)
+</code></pre>
+
+<code>[0, 1, 2, 3, 4]</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>文字列だったり、いろんな型が混在してたりしていても問題ありません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">titles = ['まじ'] + ['キャン', '△'] + ['SEASON', 'OFF']
+print(titles)
+</code></pre>
+
+<code>['まじ', 'キャン', '△', 'SEASON', 'OFF']</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">profiles = ['月野', 'うさぎ'] + [14, '才'] + ['中二']
+print(profiles)
+</code></pre>
+
+<code>['月野', 'うさぎ', 14, '才', '中二']</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p><strong class="func">list()</strong> も大丈夫です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = '友人帳'
+titles = ['猫目'] + list(words)
+print(titles)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = '友人帳'
+titles = ['猫目'] + list('友人帳')
+print(titles)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = '友人帳'
+titles = ['猫目'] + ['友', '人', '帳']
+print(titles)
+</code></pre>
+
+<code>['猫目', '友', '人', '帳']</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+                    <br><br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words1 = '猫目'
+words2 = '友人帳'
+titles = list(words1) + list(words2)
+print(titles)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words1 = '猫目'
+words2 = '友人帳'
+titles = list('猫目') + list('友人帳')
+print(titles)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words1 = '猫目'
+words2 = '友人帳'
+titles = ['猫', '目'] + ['友', '人', '帳']
+print(titles)
+</code></pre>
+
+<code>['猫', '目', '友', '人', '帳']</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+  <p>コピペして、いろいろ書き換えてみてください！👍</p>
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c5" onclick="closeAccordion('c5-1')">リストとリストを繋げる</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c5-2"><summary>リストの順番を入れ替える</summary>
+
+      <header>
+        <h3>リストの順番を入れ替える</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>要素の値を交換する場合。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 1, 2, 3, 4, 5]
+nums[1], nums[4] = nums[4], nums[1]
+print(nums)
+</code></pre>
+
+    <div class="grid-output">
+        <code>[0, 4, 2, 3, 1, 5]</code><span>← 要素1 と 要素4 の値が入れ替わる</span>
+    </div>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>この方法を 『<strong>値交換</strong>』または『<strong>スワップ</strong><em>(swap)</em>』と言います。</p>
+</li>
+<br>
+
+<li>
+  <p>リストの範囲を入れ替える場合。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 1, 2, 3, 4, 5]
+nums[:2], nums[3:5] = nums[3:5], nums[:2]
+print(nums)
+</code></pre>
+
+<code>[3, 4, 2, 0, 1, 5]</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<p>必ず同じ要素数の範囲同士でなければいけません。</p>
+</li>
+<br>
+
+<li>
+  <p>ずれるとこうなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 1, 2, 3, 4, 5]
+nums[:2], nums[3:6] = nums[3:5], nums[:2]
+print(nums)
+</code></pre>
+
+<code>[3, 4, 2, 0, 1]</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<p><code>[3:6]</code> だと 要素3～5 の範囲になり、<code>[3, 4, 5]</code> の所が <code>[0, 1]</code> に書き換わって値(要素)が１つ減ってしまいます。</p>
+</li>
+
+<li><p>データの一部が失われてしまう(または消えるべきデータが残ってしまう)という危険がありますので、要素の操作は慎重に。💥💻🙀</p></li>
+</ul>
+
+<ul>
+  <p>コピペして、恐れずにいろいろ書き換えてみてください！👍</p>
+  <details class="sample-code"><summary></summary>
+    <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+  </details>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c5" onclick="closeAccordion('c5-2')">リストの順番を入れ替える</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c5-3"><summary>その他の添字の書き方</summary>
+
+      <header>
+        <h3>添字の書き方</h3>
+      </header>
+
+
+<ul>
+<li>
+  <p>これまで添字は<strong>変数</strong>の右隣に書いてきました。(基本)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 1, 2, 3, 4, 5]
+num = nums[0]
+print(num)
+</code></pre>
+
+<code>0</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>リストの要素の文字列の一部を参照する時はこんな書き方をします。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">words = ['絶対', '運命', '黙示録']
+letter = words[0][0]
+print(letter)
+
+letter = words[2][1]
+print(letter)
+</code></pre>
+
+<code>絶</code><br>
+<code>示</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<p>『 <mark>変数</mark><strong>[リストの要素番号][左から何文字目]</strong> 』 という順番です。<br>
+  どちらも ０から始まります。</p>
+<br>
+</li>
+
+<li>
+  <p>しかし変数じゃなくてもわりとイケるクチなんです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(['絶対', '運命', '黙示録'][0])
+</code></pre>
+
+<code>絶対</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<p>というように、変数ではなく、リストに直接添字が書けます。</p>
+</li>
+<br>
+
+<li>
+  <p>さらにリスト型であれば、どんな形でもイケるクチ。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = list(range(5))[2]
+print(num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [0, 1, 2, 3, 4][2]
+print(num)
+</code></pre>
+
+<code>2</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+      
+<br>
+</li>
+
+<li>
+  <p>こういうのは時々使うことがあります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [4, 1, 5, 3, 2]
+num = sorted(nums, reverse=True)[1]
+print(num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [4, 1, 5, 3, 2]
+num = sorted([4, 1, 5, 3, 2], reverse=True)[1]
+print(num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [4, 1, 5, 3, 2]
+num = [5, 4, 3, 2, 1][1]  # 降順で２番目の数
+print(num)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [4, 1, 5, 3, 2]
+num = 4
+print(num)
+</code></pre>
+
+<code>4</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+      
+<br>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>推奨されませんが、こんなやり方も出来てしまいます。</p>
+
+                    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 10
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(['奇数', '偶数'][n % 2 == 0])
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(['奇数', '偶数'][True])  # 10 は 偶数
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ 添字は <strong>int</strong> でなければならないので、
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(['奇数', '偶数'][1])  # 自動で 1 に変化
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print('偶数')
+</code></pre>
+
+<code>偶数</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<p>なぜ推奨されないかというと、</p>
+</li>
+
+  <li class="warning">
+    <p>条件式はなるべく <strong>if</strong>文で書くべき。</p>
+  </li>
+
+  <p><strong>Python的</strong>にはこういう理念があるからだそうです。</p>
+<br>
+
+<li><p>このほうがわかりやすいということです。</p>
+                
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 10
+if n % 2 == 0:
+    print('偶数')
+else:
+    print('奇数')
+</code></pre>
+
+<code>偶数</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>「んなもん、慣れだよ慣れ！(´∀｀#)」</strong><br>
+  と思わずに、世界共通の考えなのでここは素直に従っておきましょう。</p>
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>まだやってませんが、「<ruby><strong class="special">内包表記</strong><rt>ないほうひょうき</rt></ruby>」という書き方で書くと、こんな感じになります。</p>
+                
+                
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">n = 10
+print('偶数' if n % 2 == 0 else '奇数')
+</code></pre>
+
+<code>偶数</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li><p>この書き方は「Pythonらしい」とされて一般的に好まれる書き方です。</p></li>
+<li><p>これは「<ruby><strong>三項演算子</strong><rt>さんこうえんざんし</rt></ruby>」または「条件演算子」などと言われています。</p></li>
+<li><p>書き方にコツがいりますし、推奨まではされてませんので無理して内包表記にする必要はありません。</p></li>
+<li><p>けど、これが書けるようになると <strong class="b">なんかいい感じ</strong>💖 になります。</p></li>
+<li><p>ここでの内包表記の学習はまだ先になりますが、知識欲旺盛で「興味が先走って止まらない！」という方はこの先の <a class="linked" href="0110list_comprehension.html">内包表記</a> を先に覗いてみてください。</p></li>
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c5" onclick="closeAccordion('c5-2')">その他の添字の書き方</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+    
+    <footer>
+        <a class="backto" href="#" onclick="closeAccordion('c5')">使いそうで使わないちょっと使うテクニック</a>
+    </footer>
+    
+  </details>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>リスト型データを使いこなす機能一覧</p>
+</footer>
+</body>
+</html>

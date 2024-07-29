@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>繰り返し文</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+    <h1>繰り返し文</h1>
+    <p>手抜きのスペシャリストになれます👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 繰り返し文の役割</summary>
+
+    <header>
+      <h2>繰り返し文の役割</h2>
+    </header>
+
+
+    <ul>
+      <li><p><strong class="for"></strong>文 - プログラムの一部を、<strong>希望の回数分だけ</strong>繰り返してくれます。</p></li>
+      <li><p><strong class="while"></strong>文 - 「もういいよ」と言われるまで、<strong>ずっと</strong>繰り返します。</p></li>
+      <li><p><strong class="if"></strong>文と同じで、インデントを使います。</p></li>
+      <li><p><strong class="for"></strong>文は、色々な使い方が出来てとても便利です。</p></li>
+      <li><p><strong class="while"></strong>文は、とくに繰り返してほしい回数が決まっていない場合に威力を発揮します。</p></li>
+      <li>繰り返しのことを「<strong style="color: blue;">ループ</strong>」とも言います。</p></li>
+    </ul>
+
+
+    <footer>
+      <a class="backto" href="#c1" onclick="closeAccordion('c1')">繰り返し文の役割</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - for と while</summary>
+
+    <header>
+      <h2>for と while</h2>
+    </header>
+
+
+  <article>
+
+      <details id="c2-1"><summary>2.1 - for</summary>
+
+        <header>
+          <h3>for</h3>
+        </header>
+
+
+<ul>
+<li>
+  <p><strong class="for"></strong>文は、使い方はとても簡単なのですが、その仕組みは少し難しいです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for 変数 in 繰り返してほしい回数:
+    繰り返してほしいプログラム
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(5):
+    print(i)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+<code>2</code><br>
+<code>3</code><br>
+<code>4</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/Loy3nphtmBgx97whKK7iDw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li>
+  <p>言葉で説明するより、実際の流れを見ていただいた方が早いかと。(ちょっと長いです)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(5):
+    print(i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in [0, 1, 2, 3, 4]:   # range(5)がこんな風に化ける
+    print(i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for 0 in [0, 1, 2, 3, 4]:   # 最初の 0 が i に代入される
+    print(0)  # '0' が出力される
+</code></pre>
+
+<code>0</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for 1 in [0, 1, 2, 3, 4]:   # 次に 1 が i に代入される
+    print(1)  # '1' が出力される
+</code></pre>
+
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for 2 in [0, 1, 2, 3, 4]:   # 次に 2 が i に代入される
+    print(2)  # '2' が出力される
+</code></pre>
+
+<code>2</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for 3 in [0, 1, 2, 3, 4]:   # 次に 3 が i に代入される
+    print(3)  # '3' が出力される
+</code></pre>
+
+<code>3</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for 4 in [0, 1, 2, 3, 4]:   # 次に 4 が i に代入される
+    print(4)  # '4' が出力される
+</code></pre>
+
+<code>4</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+</ul>
+
+<ul>
+<li><p>「なんで range(5) なのに 5 で終わらないの？」・・・説明しよう！</p>
+
+
+  <li class="look">
+    <p class="inlook">range({スタートの数,} <stronng>ストップする数</stronng>{, ステップする数})</p>
+
+    <p>{} の部分は省略できる。<br>
+    スタートの数を省略すると 0 になる。<br>
+    ステップする数を省略すると 1 になる。<br>
+    ステップは「いくつ跳びにする」ということです。<br></p>
+  </li>
+                    
+
+<p>つまり</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">range(ストップする数)</code></pre>
+<pre><code class="language-python">range(5)    # ストップする数は 5</code></pre>
+↓
+<pre><code class="language-python">[0, 1, 2, 3, 4]</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>0 ～ 4 まで数えて、 5 になったからストップして、代入するのをやめたのです。</p>
+</li>
+
+<li><p>「<strong>代入するのをやめた</strong>」ということは、そこで「<strong>繰り返すのをやめた</strong>」ということです。</p></li>
+<li><p>「<strong>繰り返すのをやめた</strong>」ということで、この時点でこの <strong class="for"></strong>文は終了します。<br>おつかれさまでした。💤🛌</p></li>
+</ul>
+
+
+<ul>
+  <li><p><strong>range</strong> は「<ruby><strong>範囲</strong><rt><strong>はんい</strong></rt></ruby>」という意味です。</p></li>
+  <li><p>スタートの数は、通常 <code>0</code> から 始まります。</p></li>
+  <li><p><code>[ ]</code> の中の数がいくつあるか数えてみてください。全部で５個ありますね。</p></li>
+  <li><p>なので、単純に５回繰り返したい場合は <code>range(5)</code> とすればよいのです。それだけなのです。</p></li>
+  <li><p><code>1</code> から <code>5</code> にしたいときは <code>range(1, 6)</code> と書きます。ややこしいですね。</p></li>
+  <li><p><strong class="for"></strong>文の説明より <strong class="func">range()</strong> の説明のほうが長かったですね。</p></li>
+</ul>
+
+
+<ul>
+  <li><p><code>i</code> という変数は、<strong class="for"></strong>文でよく使われるお決まりの変数です。</p></li>
+  <li><p>かれこれ50年以上 <strong class="for"></strong>家に仕える、ベテラン変数です。</p></li>
+  <li><p><code>j</code> もそうです。<code>i</code> と <code>j</code> は <strong class="for"></strong>文専用の変数と考えてもいいくらいです。</p></li>
+</ul>
+
+
+<ul>
+  <li><p><code>i</code> の変数は、無理に使わなくても大丈夫です。</p></li>
+  <li><p>「最初にしるべき４つのこと」の時に紹介した繰り返し文のプログラム、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(5):
+    print('Hello world!')
+</code></pre>
+
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>こんな感じで <code>i</code> をスルーしても全く問題ありません。</p></li>
+<li><p>むしろ必要無くて使わないということも、しょっちゅうありますから。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">for</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+    <details id="c2-2"><summary>2.2 - while</summary>
+
+      <header>
+        <h3>while</h3>
+      </header>
+
+
+<ul>
+<li><p><strong class="while"></strong>文は <strong>for</strong>文とは反対に、仕組みはシンプルなのですが、取扱注意な構文です。</p></li>
+<li>
+  <p><strong class="while"></strong>文の仕組みは、こんな感じです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">while 値 または 条件式:
+    繰り返してほしいプログラム
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>値とは <code>True</code> のことです。</p></li>
+<li><p>条件式とは、<strong class="if"></strong>文で使った <code>a == 3</code> みたいなアレです。</p></li>
+<li><p>もし <code>a = 3</code> の時、<code>a == 3</code> が化けて、<code>True</code> になりますね。</p></li>
+
+
+  <li class="look">
+    <p>『条件式の結果が <strong>True の間</strong>、繰り返してほしいプログラムを<strong>ずっと繰り返す</strong>』のが <strong class="while"></strong>文の特徴となります。</p>
+  </li>
+
+<li>
+  <p>なので、安易にこんなことをしてはいけません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">while True:
+    繰り返してほしいプログラム
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>やめたくてもやめられなくなり、猫生詰みます。🙀</p>
+</li>
+
+<li><p>これを「<strong><ruby>無限<rt>むげん</rt></ruby>ループ</strong>」と言います。</p></li>
+</ul>
+
+
+<ul>
+<li>
+  <p><strong class="while"></strong>文は、こんな感じの見た目になります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-Python">cnt = 0         # 最初 cnt の値を 0 にする
+while cnt &lt; 5:
+    print(cnt)
+    cnt += 1    # cnt の値に 1 を足す。(重要！)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+<code>2</code><br>
+<code>3</code><br>
+<code>4</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/-AnXC0SdHl92GrJSs2hGgA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p><code>cnt &lt; 5</code> の所がとても重要です。ここで <code>while</code> をコントロールしています。</p></li>
+<li><p><code>cnt</code> の値が <code>5</code> 未満の間、ずっと繰り返すという意味になります。</p></li>
+</ul>
+
+<ul>
+<li>
+  <p><strong>for</strong>文と違う点は次のとおりです。</p>
+
+
+  <li class="look">
+      <p><strong>for</strong>文は、繰り返す回数が決まっているので勝手に止まってくれます。<br>
+      <strong class="while"></strong>文の繰り返しは、意識して止めなければなりません。</p>
+  </li>
+
+<p>なので、</p>
+
+  <li class="look">
+      <p>中で <code>cnt += 1</code> を書いて <code>cnt</code> を <code>1</code> ずつ足していかないと、いつまでも <code>cnt</code> が <code>0</code> のままで<strong>止まらなくなってしまいます。</strong></p>
+  </li>
+</li>
+
+<p>そういう意味で「<strong class="b">取扱注意</strong>」なのです。</p>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">while</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">for と while</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - 多重ループ</summary>
+
+    <header>
+      <h2>多重ループ</h2>
+    </header>
+
+
+<ul>
+  <li><p>繰り返し文の中に繰り返し文を書くというウルトラテクニックです。トラもネコ科。</p></li>
+  <li><p>銀の〇プーンにCIA〇ちゅ～〇がのっかってる感じ。幸せの相乗効果！</p></li>
+  <li><p>簡単なようで意外に悩ましい。これが使えるようになったら<ruby>大人猫<rt>いちにんまえ</rt></ruby>！</p></li>
+</ul>
+
+<ul>
+<li>
+  <p>これが多重ループです。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># 二重ループ
+for i in range(3):
+    for j in range(3):
+        print('i =', i, 'j =', j)   # カンマで区切ると strに変換しなくて済む
+</code></pre>
+
+<code>i = 0 j = 0</code><br>
+<code>i = 0 j = 1</code><br>
+<code>i = 0 j = 2</code><br>
+<code>i = 1 j = 0</code><br>
+<code>i = 1 j = 1</code><br>
+<code>i = 1 j = 2</code><br>
+<code>i = 2 j = 0</code><br>
+<code>i = 2 j = 1</code><br>
+<code>i = 2 j = 2</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/blhf2oAmg9yHL9Ttua6mXg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+
+<li><p>よ～～く見てみると、説明無しでもわかると思います。</p></li>
+<li><p>最初の <code>for i in range(3):</code> の繰り返しの中に <code>for j in range(3):</code>が入っています。</p></li>
+<li><p><strong>j</strong> のほうを先に繰り返して、それが終わったら <strong>i</strong> に戻って、また <strong>j</strong> を繰り返してという流れになります。</p></li>
+<li><p>簡単にいうと、<strong class="for"></strong> <strong>j</strong> を <strong>i</strong> 回繰り返します。</p></li>
+<li><p><strong>j</strong> × <strong>i</strong> = 3 × 3 = 9 。つまり、<strong class="func">print()</strong> が合計９回繰り返されました。</p></li>
+<li><p>気を付けてくださいね。100万回を100万回繰り返したら、とんでもないことになります。🙀</p></li>
+
+</ul>
+
+
+<ul>
+<li>
+  <p>他にこんな使い方もできます。いつか使うかもしれません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># 三重ループ
+n = 0
+for i in range(3):
+    for j in range(5):
+        for k in range(10):
+            n += i + j + k
+print(n)
+</code></pre>
+
+<code>1125</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/oHbeI6h9CSC8rJhoR2CcVA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># while文の中にfor文
+n = 0
+while n &lt;= 100:
+    for i in range(8):
+        n += i
+    print(n)
+</code></pre>
+
+<code>28</code><br>
+<code>56</code><br>
+<code>84</code><br>
+<code>112</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/mC4daAquaXRA_5DpaA5nMg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">多重ループ</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - break</summary>
+
+    <header>
+        <h2>break</h2>
+    </header>
+
+
+<ul>
+  <li><p>「ブレイク」と読みます。</p></li>
+  <li><p>無条件で強制的に、今の繰り返しをやめさせる絶対権限を持っています。狂暴です。😾</p></li>
+  <li><p>繰り返しを止めたいところに <strong><code>break</code></strong> と書くだけで止まります。ブレーキです。<em>(breaking)</em></p></li>
+  <li><p>お友達に <code>continue</code>(気が利く) がいますが、この子の紹介はまたいずれ。</p></li>
+</ul>
+
+
+<ul>
+<li>
+  <p>こんな感じで使われます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = 0
+while True:
+    if cnt == 100:  # ♪ 100 になったら
+        break       # ♪ スグ 抜ける～
+    cnt += 1
+print(cnt)
+</code></pre>
+
+<code>100</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/thbkSZ8wSG4QEhQhxw2-Ig?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>cnt</code> の値が <code>100</code> になったら <code>break</code> して <strong class="while"></strong>文を強制終了します。</p>
+</li>
+<br>
+
+<li><p>一般的に繰り返し文を終えることを「<strong class="special">ループを抜ける</strong>」といいます。</p></li>
+<li><p><code>break</code> しなくても、<strong class="for"></strong> や <strong class="while"></strong> で正しく終了した場合でも「ループを抜ける」と言います。</p></li>
+</ul>
+
+
+<ul>
+<li>
+  <p>ちなみに <code>break</code> を使わないで書くとこうなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = 0
+while cnt &lt; 100:
+    cnt += 1
+print(cnt)
+</code></pre>
+
+<code>100</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/am9QqJqT94z7oxkq8dk1BA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>シンプルになりましたね。</p>
+</li>
+
+<li><p>プログラムの読みやすさのことを「<ruby>可読性<rt>かどくせい</rt></ruby>」と言います。</p></li>
+<li><p>プログラムの世界も Simple is best. なんです。</p></li>
+</ul>
+
+
+<ul>
+<li>
+  <p>ついでに <strong class="for"></strong>文で書くとこうなります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = 0
+for i in range(100):
+    cnt += 1
+print(cnt)
+</code></pre>
+
+<code>100</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/u6vYhKLz4MTTrZC5XJbIKg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong class="b">100 まで！</strong>って決まっているなら <strong class="for"></strong>文のほうがいいですね。😽</p>
+</li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')">break</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+    <p>繰り返し文</p>
+</footer>
+</body>
+</html>

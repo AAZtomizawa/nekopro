@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/prism_coy.css">
+  <script type="text/javascript" src='../js/prism.js'></script>
+  <script type="text/javascript" src='../js/custom.js'></script>
+  <title>最初にしるべき４つのこと</title>
+	<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+  
+
+<header id="top">
+  <h1>最初にしるべき４つのこと</h1>
+	<p>いつの時代も変わらない基礎を学びます👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="daiji"><summary>だいじなこと</summary>
+
+	<header>
+	  <h2>だいじなこと</h2>
+	</header>
+
+
+	  <ul>
+		<p><li>いきなり専門用語が出てきて難しいかもしれないけど基礎はだいじ。流し読みでもいいので、このページは最後まで読んでみてください。</li></p>
+		<p><li>基礎はだいじだけど、根を詰めて本気で学ぼうとしないでください。始まる前に疲れてしまいます。</li></p>
+		<p><li>ここは何度も読まなくていいです。やっていくうちに無意識に身に付いていきますから。</li><br></p>
+		
+		<li><p>本当だよ。</p></li>
+	  </ul>
+
+
+	<footer>
+	  <a class="backto" href="#" onclick="closeAccordion('daiji')">だいじなこと</a>
+	</footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 演算子</summary>
+
+
+	<header>
+	  <h2>演算子</h2>
+	</header>
+
+
+	<ul>
+	  <p><li>「<ruby>演算子<rt>えんざんし</rt></ruby>」とは、算数や数学で計算などをする時に使われる『記号』の事です。</li></p>
+	  <p><li>コンピュータは電子計算機です。</li></p>
+	  <p><li>電卓と同じく  <math display="inline"><mi>1+1</mi></math> とか <math display="inline"><mi>10&divide;3</mi></math> とか計算してくれます。</li></p>
+	</ul>
+
+
+	<ul>
+	  <li>
+		<p>まずは「算術演算子」の種類は次のとおりです。</p>
+		<table>
+		<thead>
+		<tr>
+		  <th class="text-center">記号</th>
+		  <th class="text-left">-</th>
+		  <th class="text-left">[日本語]キーボード入力</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		  <td class="text-center"><code>+</code></td>
+		  <td class="text-left">足し算 (<math><mi>+</mi></math>)</td>
+		  <td class="text-left"><code>Shift</code> + <code>；</code> または テンキーの <code>+</code></td>
+		</tr>
+		<tr>
+		  <td class="text-center"><code>-</code></td>
+		  <td class="text-left">引き算 (<math><mi>&minus;</mi></math>)</td>
+		  <td class="text-left"><code>-</code> または テンキーの <code>-</code></td>
+		</tr>
+		<tr>
+		  <td class="text-center"><code>*</code></td>
+		  <td class="text-left">かけ算 (<math><mi>&times;</mi></math>)</td>
+		  <td class="text-left"><code>Shift</code> + <code>：</code> または テンキーの <code>*</code></td>
+		</tr>
+		<tr>
+		  <td class="text-center"><code>//</code></td>
+		  <td class="text-left">割り算の商 (<math><mi>&divide;</mi></math>)</td>
+		  <td class="text-left"><code>/</code> ２つ または テンキーの <code>/</code> ２つ</td>
+		</tr>
+		<tr>
+		  <td class="text-center"><code>&percnt;</code></td>
+		  <td class="text-left">割り算の余り(<math><mi>mod</mi></math>)</td>
+		  <td class="text-left"><code>Shift</code> + <code>5</code></td>
+		</tr>
+		<tr>
+		  <td class="text-center"><code>**</code></td>
+		  <td class="text-left"><ruby>累乗<rt>るいじょう</rt></ruby>・べき乗 (<math><msup><mi>2</mi><mn>n</mn></msup></math>)</td>
+		  <td class="text-left"><math><msup><mi>2</mi><mn>3</mn></msup></math>は <code>2**3</code> と書く</td>
+		</tr>
+		</tbody>
+		</table>
+		<p>※ 他にもあります</p>
+	  </li>
+	</ul>
+
+
+	<ul>
+	  <li>
+		<p>「<ruby>比較<rt>ひかく</rt></ruby>演算子」というのもあります。その名の通り、左右の値を比較するものです。</p>
+		  <table>
+		  <tr>
+			<th class="text-center">比較演算</th>
+			<th class="text-left">意味</th>
+		  </tr>
+		  <tr>
+			<td class="text-center">A == B</td>
+			<td class="text-left">A と B は 等しい</td>
+		  </tr>
+		  <tr>
+			<td class="text-center">A &gt;= B</td>
+			<td class="text-left">A は B 以上</td>
+		  </tr>
+		  <tr>
+			<td class="text-center">A &gt; B</td>
+			<td class="text-left">A は B より大きい</td>
+		  </tr>
+		  <tr>
+			<td class="text-center">A &lt;= B</td>
+			<td class="text-left">A は B 以下</td>
+		  </tr>
+		  <tr>
+			<td class="text-center">A &lt; B</td>
+			<td class="text-left">A は B 未満</td>
+		  </tr>
+		  <tr>
+			<td class="text-center">A != B</td>
+			<td class="text-left">A と B は 等しくない</td>
+		  </tr>
+		  </table>
+		<p>これらは「<strong class="b">4. 条件文</strong>」で、使います。</p>
+		<br>
+	  </li>
+
+	  <p><li>勝手に憶えちゃうので、今すぐに憶えなくていいですよ。</li></p>
+	</ul>
+
+
+	<footer>
+	  <a class="backto" href="#" onclick="closeAccordion('c1')">演算子</a>
+	</footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - 変数・代入・型</summary>
+
+	<header>
+	  <h2>変数・代入・型</h2>
+	</header>
+
+
+
+
+
+  <article>
+
+	<details id="c2-1"><summary>2.1 - 変数</summary>
+
+	  <header>
+		<h3>変数</h3>
+	  </header>
+
+
+	  <ul>
+		<li><p>数学でいう <math><mi>x</mi></math> とか <math><mi>y</mi></math> とかです。</p></li>
+		<li><p>いろいろなものを入れる<strong class="b">箱</strong>みたいなものです。</p></li>
+		<li><p><math><mi>x</mi><mo>=</mo><mn>1</mn><mtext>のとき、</mtext><mi>y</mi><mo>=</mo><mn>5</mn><mtext>のとき</mtext></math> とかいう様に、変数が持つ値を自由に変えられます。</p></li>
+		<li><p>「<ruby><strong>値</strong><rt><strong class="b">あたい</strong></rt></ruby>」とは上の 1 とか 5 の様に、変数に入れる数とかのことです。(数以外もあります)</p></li>
+		<li><p>ちなみに「数の値」のことを『<ruby>数値<rt>すうち</rt></ruby>』と言います。</p></li>
+		<br>
+		<li><p><var>x</var> とか <var>y</var> とかの文字の名前を『<ruby><strong>変数名</strong><rt><strong class="b">へんすうめい</strong></rt></ruby>』といいます。</p></li>
+		<li><p>変数名は、１文字以上ならだいたい自由につけられます。</p></li>
+		<li><p>変数名に使えない文字や言葉もありますが、その説明はまた今度。</p></li>
+		<li><p>基本的に変数名は英語でつけます。(例:name)</p></li>
+		<li><p>あくまでも基本的になので日本語ローマ字(例:namae)でも構いません。</p></li>
+	  </ul>
+
+
+	  <footer>
+		<a class="backto" href="#c2" onclick="closeAccordion('c2-1')">変数</a>
+	  </footer>
+
+	</details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+	<details id="c2-2"><summary>2.2 - 代入</summary>
+
+	  <header>
+		<h3>代入</h3>
+	  </header>
+
+	  <ul>
+		<li><p>「<math><mi>x</mi><mo>=</mo><mn>1</mn><mtext>のとき</mtext></math>」とは「 <strong class="b">1</strong> を <strong class="b">x</strong> に<ruby><strong>代入</strong><rt><strong class="b">だいにゅう</strong></rt></ruby>する」ということ。</p></li>
+		<li><p>言い換えると『 <strong class="b">x</strong> の箱の中に <strong class="b">1</strong> を入れる』ということ。</p></li>
+		<li><p>さらに言い換えると『 <strong class="b">x</strong> を <strong class="b">1</strong> にする』ということ。<br><br></p></li>
+
+		<li><p><var>x</var> を 1 にする。<var>y</var> を 5 にする。こんな風に書きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x = 1   # x を 1 にする
+y = 5   # y を 5 にする
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+		</li>
+	  </ul>
+
+
+	  <ul>
+		<p>【 コラム 】</p>
+		<li><p>ちなみに <code>#</code> は『コメントアウト記号』と言います。</p></li>
+		<li><p><code>#</code> は「ハッシュ」と読みますが、ハッシュタグではありません。</p></li>
+		<li><p>コメントにしたい部分の先頭に <code>#</code> をつけることを『<strong>コメントアウト</strong>』と言います。</p></li>
+		<li><p>コメントアウトすると <code>#</code> から後ろは、プログラムではなくなります。(行末まで)</p></li>
+		<li><p><strong>コメント</strong>は、一般的にはプログラムの補足説明を書く為のものです。(↑みたいに)<br><br></p></li>
+
+		<li><p>他に「コメントアウト」はプログラムの頭に付けて、その行のプログラムを動かさなくするという目的にも使われます。いきなり難しかったですね。</p></li>
+		<li><p>要するに、「ここちょっと保留にしたいからコメントにしちゃえ。」ということです。<br><br></p></li>
+
+		<li><p>こんな風に。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">#x = 1
+y = 5
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+		<p>これで <code>x = 1</code> は、動かなくなりました。</p></li>
+		<li><p>また動かしたくなったら <code>#</code> を外すだけでよいので、いちいち消して書き直して～ということをしなくて済みます。</p></li>
+		<li><p>もともとはこちらのほうが『コメントアウト』の意味です。</p></li>
+	  </ul>
+
+
+	  <footer>
+		<a class="backto" href="#c2" onclick="closeAccordion('c2-2')">代入</a>
+	  </footer>
+
+	</details>
+
+  </article>
+
+
+
+
+
+  <article>
+
+	<details id="c2-3"><summary>2.3 - 型</summary>
+
+	  <header>
+		<h3>型</h3>
+	  </header>
+
+	  <ul>
+		<li><p>ここ、ちょっと難しいです。</p></li>
+		<li><p>型とは『値の種類』のことです。<br><br></p></li>
+		<li>
+		  <p>種類は次のとおりです。(<strong>太字</strong>の3つはめっさ使う型)</p>
+
+		  <table>
+		  <thead>
+		  <tr>
+			<th class="text-center">型</th>
+			<th class="text-left">通称</th>
+			<th class="text-left">値の例</th>
+		  </tr>
+		  </thead>
+		  <tbody>
+		  <tr>
+			<td class="text-center"><em><strong>str</strong></em></td>
+			<td class="text-left">文字列型</td>
+			<td class="text-left"><code>text</code> <code>name</code> <code>日本語とかも◎</code></td>
+		  </tr>
+		  <tr>
+			<td class="text-center"><em><strong>int</strong></em></td>
+			<td class="text-left">整数型</td>
+			<td class="text-left"><code>12</code> <code>365</code> <code>65535</code> <code>-1</code></td>
+		  </tr>
+		  <tr>
+			<td class="text-center"><em>float</em></td>
+			<td class="text-left"><ruby>浮動小数<rt>ふどうしょうすう</rt></ruby>型</td>
+			<td class="text-left"><code>3.14</code> <code>2.2360679</code> <code>∞ 無限</code></td>
+		  </tr>
+		  <tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		  </tr>
+		  <tr>
+			<td class="text-center"><em><strong>list</strong></em></td>
+			<td class="text-left">リスト型</td>
+			<td class="text-left"><code>[1, 2, 4, 8]</code> <code>['りんご', 'ゴリラ', 'ラッコ']</code></td>
+		  </tr>
+		  <tr>
+			<td class="text-center"><em>dict</em></td>
+			<td class="text-left">辞書型</td>
+			<td class="text-left">まだ知らなくていいです。大丈夫！</td>
+		  </tr>
+		  <tr>
+			<td class="text-center"><em>set</em></td>
+			<td class="text-left">セット または 集合型</td>
+			<td class="text-left">まだ知らなくていいです。大丈夫！</td>
+		  </tr>
+		  </tbody>
+		  </table>
+
+		  <p>他にもまだまだたくさんありますけど、これから主に使っていくのはこの6つです。</p>
+		</li>
+
+	  </ul>
+
+
+	  <ul>
+		<li>
+		  <p>ここで、実際に値を変数に代入してみます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">name = '月野うさぎ'
+</code></pre>
+
+<pre><code class="language-python">age = 14
+</code></pre>
+
+<pre><code class="language-python">jobs = ['中二', "Moon princess"]
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+		  <p>こんな感じで値を変数に代入します。<br>
+		  文字列の時は、文字の前後を <code>'</code> か <code>"</code> で囲います。(どちらでもOK)</p>
+
+		  <table>
+		  <thead>
+		  <tr>
+			<th class="text-center">記号</th>
+			<th class="text-left">キーボード入力</th>
+			<th class="text-left">読み方</th>
+		  </tr>
+		  </thead>
+		  <tbody>
+		  <tr>
+			<td class="text-center"><code>'</code></td>
+			<td class="text-left"><code>Shift</code> + <code>7</code></td>
+			<td class="text-left">シングルクォート</td>
+		  </tr>
+		  <tr>
+			<td class="text-center"><code>"</code></td>
+			<td class="text-left"><code>Shift</code> + <code>2</code></td>
+			<td class="text-left">ダブルクォート</td>
+		  </tr>
+		  </tbody>
+		  </table>
+		</li>
+	  </ul>
+
+
+	  <footer>
+		<a class="backto" href="#c2" onclick="closeAccordion('c2-3')">型</a>
+	  </footer>
+
+	</details>
+
+  </article>
+
+
+
+
+  <article>
+
+	<details id="c2-4"><summary>実際に簡単なプログラムを書いてみる</summary>
+
+	  <header>
+		<h3>実際に簡単なプログラムを書いてみる</h3>
+	  </header>
+
+
+	  <ul>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">name = '月野うさぎ'   # 文字列型(str)
+age = 14             # 整数型(int)
+jobs = ['中二', 'Moon princess']   # リスト型(list)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+		  <br>
+		<li>
+		  <p>これらのプログラムをどのように活用するか。次を見てみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(name)</code></pre>
+
+  <div class="grid-output">
+		<code>月野うさぎ</code><span>← 画面にコレが映ります。</span>
+  </div>
+  
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(age)</code></pre>
+
+<code>14</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(jobs)</code></pre>
+
+<code>['中二', 'Moon princess']</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+		  <p><strong class="func">print()</strong>というのは、( ) 内の値を、画面に、しかも超簡単に映し出してくれる（「<ruby><strong>出力</strong><rt><strong class="b">しゅつりょく</strong></rt></ruby>する」と言います）ありがたい機能です。</p>
+		</li>
+
+
+		<li><p><strong class="func">print()</strong>の詳しい使い方は、また後で学びます。</p></li>
+		<br>
+		<li><p><strong class="b">ようやくプログラミングの世界の幕が上がりましたよ！</strong></p></li>
+	  </ul>
+
+
+	  <footer>
+		<a class="backto" href="#c2" onclick="closeAccordion('c2-4')">実際に簡単なプログラムを書いてみる</a>
+	  </footer>
+
+	</details>
+
+  </article>
+
+
+
+
+  <article>
+
+		<details id="c2-5"><summary>エラーとは</summary>
+
+			<header>
+			<h3>エラーとは</h3>
+			</header>
+
+
+			<ul>
+			<li><p>動いているプログラムが途中間違っていて「ちょっと何言ってるかわからない...」とコンピュータがプログラムを強制的に止めてしまうこと。</p></li>
+			<li><p>ただし、何がわからなかったのかは言ってくれます。これを「<strong>エラーメッセージ</strong>」と言います。</p></li>
+			<li><p>でも、それくらい直してくれてもいいじゃないと言えるような些細なミスでも、容赦なく怒鳴り散らしてきます。←わりと本当</p></li>
+			<li><p><s>ダメ夫</s> <s>ダメ上司</s> コンピュータは一切融通が利かないので、こっちが諦めて手直しするしかありません。社会主義なんです。</p></li>
+			<li><p>「ここが違うんじゃないかな?」とか、<wbr>「もしかしたらこうしたかったんじゃない?」<wbr>と親切に指摘してくれたりもします。英語でね。</p></li>
+			</ul>
+
+		
+			<footer>
+			<a class="backto" href="#c2" onclick="closeAccordion('c2-5')">エラーとは</a>
+			</footer>
+
+		</details>
+
+  </article>
+
+
+	<footer>
+	  <a class="backto" href="#" onclick="closeAccordion('c2')">変数・代入・型</a>
+	</footer>
+
+  </details>
+
+</section>
+
+
+
+
+
+<article>
+
+  <details id="c3"><summary>Chatpter.3 - 繰り返し文</summary>
+
+		<header>
+			<h2>繰り返し文</h2>
+		</header>
+
+
+		<ul>
+			<li><p>コンピュータは、とにかく同じ作業を淡々と繰り返すのが好き。</p></li>
+			<li><p>宇宙が消滅するその時まででも延々繰り返しちゃう。</p></li>
+			<li><p>ヒト「こんなこと続けてて何の意味があるんだろう？」<br>
+			ヒト「こんなことする為に生まれてきたんじゃないんだけど！！！」<br>
+			コンピュータはそんな仕事ほど大好物。ごま粒の数だって数えちゃう！</p></li>
+			<li><p>他人に頼むと嫌がられるけど、コンピュータに頼むと喜ばれます。</p></li>
+		</ul>
+
+
+		<ul>
+			<li>
+			<p>繰り返し文はこんな風に書きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(5):
+    print('Hello world!')
+</code></pre>
+
+  <code>Hello world!</code><br>
+  <code>Hello world!</code><br>
+  <code>Hello world!</code><br>
+  <code>Hello world!</code><br>
+  <code>Hello world!</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<iframe src="https://paiza.io/projects/e/UJV0vZXtIyGFGD2rUvR_pQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+			<p><code>Hello world!</code>という文字列の出力を5回繰り返しています。<br>
+			<br>
+			<code>5</code> のところを1000000(100万)にしたって、100万回ちゃんと繰り返してくれます。意味無さそうなこれが、かなり重要！！<br>
+			</li>
+			<br>
+
+			<li><p><strong class="for"></strong>文を使ってみるのはまた今度！</p></li>
+
+		</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c3')">繰り返し文</a>
+		</footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<article>
+
+  <details id="c4"><summary>Chatpter.4 - 条件文</summary>
+
+		<header>
+			<h2>条件文</h2>
+		</header>
+
+
+		<ul>
+
+			<li><p><strong class="if"></strong>は「もし〇〇だったら」の「もし」です。</p></li>
+			<li><p>「もしお金あったらオレの分も買っといて。お金は後で払うから。」</p></li>
+			<li><p>コンピュータはこんな信用ならない依頼も素直に聞いてくれます。</p></li>
+			<li><p>だから悪い人たちにいいように利用されちゃうんです。</p></li>
+		</ul>
+
+
+		<ul>
+			<li>
+				<p>100円持って自転車を買いに行ってみましょう。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">money = 100   # 所持金
+bicycle = 25000   # 自転車の値段
+
+if money &gt;= bicycle:
+    print('カッコイイ自転車が買えるよ！')
+else:
+    print('お金が足りない！！')
+</code></pre>
+
+<code>お金が足りない！！</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+				<ul>
+					<li><code>money</code> の値を <code>100</code> にします。</li>
+					<li><code>bicycle</code> の値を <code>25000</code> にします。</li>
+					<br>
+					<li>次の <code>if</code> が条件文です。ここで比較演算子が出てきました。
+
+					<ul style="padding-bottom: 0px;">
+					<li><code>if もし</code> 所持金が 自転車の値段『以上 <code>&gt;=</code>』だったら、</li>
+					<ul>
+					<li><code class="output">カッコイイ自転車が買えるよ！</code> を画面に出力してください。</li>
+					</ul>
+					<li><code>else: それ以外の時</code> は、</li>
+					<ul style="padding-bottom: 0px;">
+					<li><code class="output">お金が足りない！！</code> を画面に出力してください。</li>
+					</ul></li></ul></li>
+				</ul>
+			</li>
+
+
+			<li><p><strong class="b">結果、</strong><code class="output">お金が足りない！！</code><strong class="b"> が画面に出力されました。</strong><br>
+			100円だけでは25000円の自転車は買えないからです。</p></li>
+			<li><p>お友達(?)の分どころか、自分の分も買えませんでした。</p></li>
+		</ul>
+
+<ul>
+
+<p>実行ボタンを押して試してみてください。</p>
+
+<iframe src="https://paiza.io/projects/e/nV03IgAtFG6fujALOAH7Rg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+
+<p><code>money = 100</code> の <code>100</code> を <code>30000</code> とかに変えて実行してみてください。</p>
+<p><code>bicycle = 25000</code> の <code>25000</code> を <code>100</code> にすれば、自転車の値段が100円になります。🤣</p>
+</li>
+</ul>
+
+		<ul>
+			<li><p><strong class="b">条件文</strong>は初心者が一番最初につまづくところです。</p></li>
+			<li><p>しかし初心者でなくてもつまづくことが多々ありますので<strong class="b">安心してください。</strong></p></li>
+		</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('c4')">条件文</a>
+		</footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+
+<article>
+
+  <details id="merit"><summary>プログラミングのメリット</summary>
+
+		<header>
+			<h2>プログラミングのメリット</h2>
+		</header>
+
+
+		<ul>
+			<li><p>プログラミングは脳トレに最適です。</p></li>
+			<li><p>目的実現の為にひたすら考えるので、IQ爆上がりします。</p></li>
+			<li><p>いつしかIQ120が低く感じる時が来ちゃうんじゃないかな？ｼﾗﾝｹﾄﾞ</p></li>
+			<li><p>書店などに入門書がたくさんありますけど、買わなくていいですよ。</p></li>
+		</ul>
+
+
+		<footer>
+			<a class="backto" href="#" onclick="closeAccordion('merit')">プログラミングのメリット</a>
+		</footer>
+
+  </details>
+
+</article>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>最初にしるべき４つのこと</p>
+</footer>
+
+
+
+</body>
+</html>

@@ -590,25 +590,6 @@ print(output_screen(key=True))
 </ul>
 
 <ul>
-<li><p>引数を渡す側と受け取る側の引数の位置が合っている場合は、キーワードを省略して値だけ書くこともできます。<strong>(非推奨)</strong></p></li>
-
-
-<!-- ------------------------- code ------------------------- -->
-<div>
-
-<pre><code class="language-python">def output_screen(key=False):
-	if key:
-		return 'Kanon'
-	else:
-		return 'One'
-
-print(output_screen(True))
-</code></pre>
-
-<code>Kanon</code><br>
-</div>
-<!-- ----------------------- code end ----------------------- -->
-
 <li><p>キーワードを作ってキーワードで引数を渡すと、引数を渡す順番が不問となります。辞書のキーと値の関係と同じです。</p></li>
 
 <!-- ------------------------- code ------------------------- -->
@@ -635,11 +616,11 @@ print(output_screen(key2=True, key3=True, key1=True))
 <pre><code class="language-python">def output_screen(key1=False, key2=False, key3=False):
 	return key1, key2, key3  # ← 最後はこの順番で出力される
 
-print('key1=省略,', 'key2=True,', 'key3=False')
-print(output_screen(key3=False, key2=True))
+print('key1=省略,', 'key2=True,', 'key3=省略')
+print(output_screen(key2=True))
 </code></pre>
 
-<code>key1=省略, key2=True, key3=False</code><br>
+<code>key1=省略, key2=True, key3=省略</code><br>
 <code>(False, True, False)</code><br>
 
 </div>

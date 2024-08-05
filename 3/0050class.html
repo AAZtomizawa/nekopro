@@ -804,7 +804,7 @@ akari = Student('あかり')
 
 <ul>
 <li><p>なぜ <strong>self</strong> が必要なのか。簡単に考えると、「個人(インスタンス)」の持ち物の他に「クラスの共有物」というものがあります。<p></li>
-<li><p>本来個々のインスタンスの所有物は各インスタンスのものであり、他のインスタンスが直接扱うことができません。</p></li>
+<li><p>本来個々のインスタンスの所有物(<strong>主に「値」</strong>)は各インスタンスのものであり、他のインスタンスが直接扱うことができません。</p></li>
 <li><p>クラスの共有物というのは、どのインスタンスからもアクセスでき、すべてのインスタンスで値などが共有されるものです。</p></li>
 <li><p>掲示物や黒板など、個人の物ではなく誰の物でもなくクラスの誰もが見たり使ったりできる物である。これを <strong>cls</strong> と書いて示します。(今回は <strong>cls</strong> は扱いません)</p></li>
 <li><p>「個人の所有物 (<strong>self</strong>)」か「クラスの共有物 (<strong>cls</strong>)」かという事を区別する為のものと考えてください。</p></li>
@@ -837,7 +837,7 @@ akari = Student('あかり')
 
 <p>引数として渡された <code>'あかり'</code> はコンストラクタの <code>name</code> に入ります。</p>
 <p>この時点での <code>name</code> は引数として渡された、ただの変数です。</p>
-<p>この <code>name</code> を、インスタンスが持つ変数に代入して受け渡しをします。</p>
+<p>この <code>name</code> を、インスタンスが持つ変数 <code>self.name</code> に代入して受け渡しをします。</p>
 <p><code>self.name</code> の様に <code>self.</code> が付いた変数の事を「<strong class="special">インスタンス変数</strong>」と言います。</p>
 </li>
 <li><p>インスタンスが持つ変数だから<strong>インスタンス変数</strong>です。</p></li>
@@ -992,6 +992,7 @@ akari.presentation()
 <li><p>このメソッドを呼び出しているのが最後の行の <code>akari.presentation()</code> です。</p></li>
 <li><p>インスタンス変数を参照する時の様に、メソッド名の前にインスタンス名を書き記すだけで呼び出せます。</p></li>
 <li><p>引数を与える時は、この () 内に書きます。<strong>self</strong> の存在は無視して、書き方は関数と全く同じで大丈夫です。</p></li>
+<br>
 <li><p>インスタンス(クラス)内でメソッドを呼び出すときは、インスタンス変数と同じように <code>self.presentation()</code> と、メソッド名の前に <strong>self</strong> を付けます。</p></li>
 <li><p>自分自身のメソッドを呼び出すという意味です。</p></li>
 </ul>
@@ -1111,9 +1112,14 @@ if __name__ == '__main__':
 <code>私の名前は 吉川ちなつ です。</code><br>
 <code>誕生日は 11月 6日です。</code><br>
 
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/qdnJtcssg8hVFw6qqnfhlg?theme=twilight" width="100%" height="780" loading="lazy"></iframe>
+</details>
+
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
+<br>
 </li>
 <li><p>このようにインスタンス名を付けるだけで、指定した生徒のインスタンスメソッドが呼び出されて自己紹介をしてくれるようになります。</p></li>
 </ul>
@@ -1192,11 +1198,16 @@ if __name__ == '__main__':
 <code>私の名前は 吉川ちなつ です。</code><br>
 <code>誕生日は 11月 6日です。</code><br>
 
+<details class="sample-code"><summary></summary>
+	<iframe src="https://paiza.io/projects/e/pBoupn_Kpl6PvZ5f7nqUfA?theme=twilight" width="100%" height="780" loading="lazy"></iframe>
+</details>
+
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
+<br>
 <p>自己紹介のメソッドを実行する際、リストにまとめることによって <strong class="for"></strong>文で記述を２行に収めることが出来ました。</p>
-<p>その代わり、誰がどこにいるのかがわかりにくくなりましたので、別途把握できる方法が必要になります。(要素番号=出席番号順など)</p>
+<p>その代わり、誰がどこにいるのかがわかりにくくなりましたので、別途把握できる方法が必要になります。(要素番号 = 出席番号順など)</p>
 </li>
 <br>
 <li><p>そして学年の各クラスをリストにまとめると学年の名簿に、さらに各学年をリストにまとめると全校生徒の名簿になります。</p>

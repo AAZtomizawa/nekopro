@@ -881,7 +881,7 @@ None  # ← 戻り値 None に化ける
 
 
 <ul>
-<li><p>先ほどの解説では流れが見づらいので、ざっくりとまとめました。</p></li>
+<li><p>ざっくりとまとめました。</p></li>
 
 <p>↓ スタート</p>
 <!-- ------------------------- code ------------------------- -->
@@ -901,7 +901,7 @@ kansuu(0)
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(x):
+<pre><code class="plaintext">def kansuu(x): # 新しいコピー
     if x == 2:
         return
     print(x)
@@ -911,27 +911,27 @@ kansuu(0)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
-↓
+↓ <code>kankuu(0)</code> を実行
 
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(0):
+<pre><code class="plaintext">def kansuu(0): # 実行中
     if False:
         return
-    print(0)
+    print(0)  # ← 0 を画面に出力
     return kansuu(0 + 1)
 </code></pre>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
-↓
+↓ <code>kankuu(1)</code> を実行
 
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(0):
+<pre><code class="plaintext">def kansuu(0): # 待機中
     if False:
         return
     print(0)
@@ -943,22 +943,22 @@ kansuu(0)
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(1):
+<pre><code class="plaintext">def kansuu(1): # 実行中
     if False:
         return
-    print(1)
+    print(1)  # ← 1 を画面に出力
     return kansuu(1 + 1)
 </code></pre>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
-↓
+↓ <code>kankuu(2)</code> を実行
 
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(0):
+<pre><code class="plaintext">def kansuu(0): # 待機中
     if False:
         return
     print(0)
@@ -970,11 +970,11 @@ kansuu(0)
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(1):
+<pre><code class="plaintext">def kansuu(1): # 実行中
     if False:
         return
     print(1)
-    return kansuu(2)
+    return kansuu(2)  # ③ ここに戻る
 </code></pre>
 
 </div>
@@ -982,9 +982,9 @@ kansuu(0)
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(2):
-    if True:
-        return
+<pre><code class="plaintext">def kansuu(2): # 実行中
+    if True:  # ① 終了条件になる
+        return  # ② 戻り値 None で戻る
     print(x)
     return kansuu(x + 1)
 </code></pre>
@@ -997,11 +997,11 @@ kansuu(0)
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(0):
+<pre><code class="plaintext">def kansuu(0): # 待機中
     if False:
         return
     print(0)
-    return kansuu(1)
+    return kansuu(1)  # ② ここに戻る
 </code></pre>
 
 </div>
@@ -1009,11 +1009,11 @@ kansuu(0)
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(1):
+<pre><code class="plaintext">def kansuu(1): # 実行中
     if False:
         return
     print(1)
-    return None
+    return None   # ① 戻り値 None で戻る
 </code></pre>
 
 </div>
@@ -1024,11 +1024,11 @@ kansuu(0)
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="plaintext">def kansuu(0):
+<pre><code class="plaintext">def kansuu(0): # 実行中
     if False:
         return
     print(0)
-    return None
+    return None   # 戻り値 None で最初に呼び出した所に戻る
 </code></pre>
 
 </div>
@@ -1045,7 +1045,7 @@ kansuu(0)
   print(x)
   return kansuu(x + 1)
 
-None
+None  # ← 最初に呼び出した所
 </code></pre>
 
 </div>

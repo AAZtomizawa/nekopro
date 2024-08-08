@@ -2,7 +2,7 @@
 
 これは、HTMLを学びながら作成している個人のサイトです。<br>
 URL:<br>
-https://aaztomizawa.github.io/nekopro/index.html
+https://aaztomizawa.github.io/nekopro/
 
 今のところPC専用で、スマホで見るとレイアウトが崩れるなど、まだまだ作り途中なので使いにくいかもしれません。<br>
 戻るリンクも作っていないので、ブラウザの「戻る」を使って戻ってください。(作らないかも)<br>

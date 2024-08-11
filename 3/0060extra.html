@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>補足</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+    <h1>補足</h1>
+      <p>「むむ、<ruby>此奴<rt>こやつ</rt></ruby>・・・できる！！」と思わせられるようになります。👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>小休止</summary>
+
+    <header>
+      <h2>小休止</h2>
+    </header>
+
+
+<ul>
+<li><p>今回は難易度を下げて、今まで扱ってこなかったちょっといいネタをここで紹介します。</p></li>
+<li><p>無くても困らなかったけど、知ってしまったらもう無いと困るというくらい、それはそれはもう依存性の高いものです。</p></li>
+<li><p>ここまで理解半分だったとしても、なんとか読めてこれた方なら超簡単なので、ここを読んで今のうちに頭を休めておいてください。</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">小休止</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.1 - 知っておくと良いもの</summary>
+
+    <header>
+      <h2>知っておくと良いもの</h2>
+    </header>
+
+
+  <article>
+
+    <details id="c2-1"><summary>スコープ</summary>
+
+      <header>
+        <h3>スコープ</h3>
+      </header>
+  
+  
+<ul>
+<li><p>スコープとは、「値の有効範囲」をいいます。</p></li>
+<li><p>スコープという言葉自体はプログラミングには必須ではないのですが、プログラムを組む上では必須といえる概念です。</p></li>
+<li><p>これまでもスコープを考慮しながら正しく動くようにサンプルプログラムを紹介してきました。</p></li>
+<li><p>例えば関数に引数を渡すのがそうです。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(a, b):
+    c = a + b
+    return c
+
+a, b = 1, 2
+print(add(a, b))
+</code></pre>
+
+<code>3</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<ul>
+<li><p>これをメインプログラムと関数に分けてみます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(a, b): # 関数
+    c = a + b
+    return c
+</code></pre>
+
+<pre><code class="language-python">a, b = 1, 2    # メインプログラム
+print(add(a, b))
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>メインプログラムで作成した <code>a</code> と <code>b</code> の変数に代入されたそれぞれ <code>1</code> と <code>2</code> を<strong class="func">add()</strong>の引数として関数内で使えるように渡しています。</p></li>
+<br>
+<li><p>これを試しに引数を渡さずにプログラムを実行するとどうなるか、見てみましょう。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(): # ← 引数を受け取らない
+    c = a + b  # ← メインプログラム中の a, b を使おうと考える
+    return c
+
+a, b = 1, 2
+print(add())  # ← 引数を渡さない
+</code></pre>
+
+<iframe src="https://paiza.io/projects/e/rNL0JZATpHZocAkkHjDA6g?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p>エラーが出ると思いました？🤭 ｶｼｺｲ!</p>
+</li>
+<li><p>メインプログラムが書かれている、この地べたに書かれたプログラム部分は『<strong>グローバルスコープ</strong> <em>(global scope)</em>』といって、このスコープ内で作られた値は、プログラムの上から下までの全域において有効となるのです。</p></li>
+</ul>
+
+<ul>
+<li><p>一方、関数の領域は『<strong>ローカルスコープ</strong> <em>(local scope)</em>』といって、この中で作られた値は別のスコープでは使えません。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(): # ← 引数を受け取らない
+    c = a + b  # ← main()中の a, b を使おうと考える
+    return c
+
+def main():
+    a, b = 1, 2
+    print(add())  # ← 引数を渡さない
+
+main()
+</code></pre>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/U54kyn6-YdR-fFNbAEPbQg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+<li><p>関数の <strong class="func">main()</strong> と <strong class="func">add()</strong> はそれぞれ異なるローカルスコープなので、この場合は引数をきちんと渡さないと正しく動かないのです。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(a, b): # ← 引数を受け取る
+    c = a + b
+    return c
+
+def main():
+    a, b = 1, 2
+    print(add(a, b))  # ← 引数を渡す
+
+main()
+</code></pre>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/L8r8frXmv4IkEKPQyzu8aA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li class="look">
+  <p><strong class="b">グローバルスコープ</strong>で作られた変数を<strong>『グローバル変数』</strong><br>
+    <strong class="b">ローカルスコープ</strong>で作られた変数を<strong>『ローカル変数』</strong>といいます。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>逆にローカル変数をグローバルスコープで使おうとするとどうなるでしょうか？</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def add(a, b):
+    c = a + b
+    return     # ← 戻り値を None で返す
+
+a, b = 1, 2
+add(a, b)   # ← ここは None になるだけ
+print(c)    # ← 関数内で作られた変数 c の値を出力する
+</code></pre>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/zpgM0hEBQDOZSQMMS-0Cwg?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>ローカル変数はそのローカルスコープ内でしか使えないので、エラーになってしまいます。</p>
+</li>
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">###### グローバルスコープ ######
+# ***** ローカルスコープ ***** #
+# * def add():              * #
+# *     c = a + b           * #
+# *     return c            * #
+# *************************** #
+#                             #
+#   a, b = 1, 2               #
+#   c = add()                 #
+#   print(c)                  #
+###############################
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<ul>
+<li><p>関数型でプログラムを組むと、引数だらけになってごちごちゃしてわけわからなくなるのがイヤで、私は関数型のプログラムは倦厭しています。こういう場合はオブジェクト指向のほうが断然(・∀・)ｲｲ!!</p></li>
+<li><p>ちなみにオブジェクト指向のクラスにもスコープの概念があります。ですので関数からメソッドにアクセスする際は、メソッドに引数を渡す必要があります。</p></li>
+<li><p>わかるようになるまでは混乱するかもしれませんが、わかるようになったら呼吸をするように自然と組めるようになります。断言！</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">スコープ</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+  <article>
+
+    <details id="c2-2"><summary>continue</summary>
+
+      <header>
+        <h3>continue</h3>
+      </header>
+  
+    
+<ul>
+<li><p>１章の繰り返し文 chatpter.4 - <strong>break</strong> を紹介したときに、<strong>continue</strong> というのもあるよとチラッと紹介していました。</p></li>
+<li><p><strong>break</strong> は、<strong>break</strong> の時点で今のループを１つだけ強制的に抜けるものでした。</p></li>
+<li><p><strong>continue</strong> は、<strong>continue</strong> 以降のプログラムを実行せずに、<strong class="for"></strong>に戻って次のループに移ります。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(10):
+    if i % 2 == 0:
+        continue
+
+    print(i)
+</code></pre>
+
+<code>1</code><br>
+<code>3</code><br>
+<code>5</code><br>
+<code>7</code><br>
+<code>9</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/DE1F8fcm0BUoF4mhGBwF1Q?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>i</code> が偶数の時は、<strong>continue</strong> の時点で<strong class="for"></strong>文に戻り、次のループを実行します。<br>
+  結果、奇数のみが出力されることとなります。</p>
+</li>
+<li><p>ただ、<strong class="if"></strong> 〜 <strong>else</strong>文でも同じことができますし、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(10):
+    if i % 2 == 1:
+        print(i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>という様にしても同じ結果になりますし、むしろこのほうが完結でわかりやすくなってしまったりします。</p>
+</ul>
+<ul>
+<li><p>ではどんな時に使ったらよいか。</p></li>
+<li><p>それは、<strong>本当にここで使うべきというとき</strong>に使います。ってこれじゃわかりませんね。😓</p></li>
+<li><p>まずは「これ以降のプログラムを実行しないで、ここで <strong>continue</strong> します。」と明示的に使います。</p></li>
+<li><p>上の <strong>continue</strong> を使わないプログラムのほうで、もし条件文の中身が長くなってしまうと条件文の管轄が大きすぎて扱いにくくなってしまいます。</p></li>
+<li><p>その場合、「条件式が <strong>True</strong> の時に、以下を実行する」のではなくて、「条件式が <strong>True</strong> の時に、以降を実行しないでここで <strong>continue</strong> する」とすれば、再帰関数の終了条件みたいに、<strong>continue</strong> の条件を書くだけで過剰なインデントでガタガタとならずに読みやすくなる・・・かもしれません。</p></li>
+<li><p>もちろんただ <strong>continue</strong> するだけでなく、なにかをしてから <strong>continue</strong> することも可能です。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(10):
+    if i % 2 == 0:
+        print('even')
+        continue
+
+    print(i)
+</code></pre>
+
+<code>even</code><br>
+<code>1</code><br>
+<code>even</code><br>
+<code>3</code><br>
+<code>even</code><br>
+<code>5</code><br>
+<code>even</code><br>
+<code>7</code><br>
+<code>even</code><br>
+<code>9</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/F3ncsZxHBmnOAHydJeu_bQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>関数では <strong>return</strong> となった所で <strong>return</strong> するように、こちらも <strong>continue</strong> となった所で <strong>continue</strong> となります。 <strong>break</strong> も同様です。</p>
+</li>
+
+</ul>
+
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">continue</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-3"><summary>pass</summary>
+
+      <header>
+        <h3>pass</h3>
+      </header>
+  
+  
+<ul>
+<li><p><strong>pass</strong> は、言葉通り何もしないでパスします。</p></li>
+<li><p>通常ならこの様にこれだけ書くとエラーになりますが、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def main():
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext">  File "Main.py", line 2
+      
+               ^
+SyntaxError: unexpected EOF while parsing
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>関数の中身に<strong>pass</strong> だけを書くとエラーが起こりません。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">def main():
+    pass
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>エラーだけでなく、他に何も起こりませんが。😅</p>
+</li>
+</ul>
+
+<ul>
+<li><p>以下のプログラムの様な書き方をしてみます。</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Calc:
+    def __init__(self):
+        pass
+    def calc(self):
+        pass
+    def addition(self):
+        pass
+    def subtraction(self):
+        pass
+    def multiplication(self):
+        pass
+    def division(self):
+        pass
+
+def main():
+    pass
+
+if __name__ == '__main__':
+  main()
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>まずおおまかな構成を決めてから各関数やメソッドに合った機能のプログラムを書いていくと、全体像を把握しやすくなり、一から順に書いていくよりもプログラムが組みやすくなるかと思います。</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong>pass</strong> は、本当に何もしないだけのものなので、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print(0)
+pass
+print(1)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>という感じになります。不要になったら <strong>pass</strong> はすぐに除去しましょう。</p>
+</li>
+</ul>
+
+<ul>
+<li><p><strong class="for"></strong>文や<strong class="if"></strong>文でも使えます</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># じゃんけんを10回するところ
+for i in range(10):
+    pass
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>とか、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(10):
+    if i % 2 == 0:
+        pass  # 偶数の時の処理
+    else:
+        pass  # 奇数の時の処理
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>とかしておくと、全体を見ながらあとでじっくりプログラムを組んでいけるかなと思います。</p>
+</li>
+
+<li><p>ただし、<strong class="while"></strong>文で使うときには注意してください！</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">while n &lt; 10:
+    pass
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>n</code> が10未満だった場合、値が変化しないので無限ループします。🙀</p>
+</li>
+<br>
+<li><p><strong class="while"></strong>文で使うときには必ず、条件式を <strong>False</strong> にしておきましょう。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">while n &lt; 10 and False:
+    pass
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<ul>
+<li><p><strong>pass</strong> とハサミは使いよう。工夫して使ってみてください。😽</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-3')">pass</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-4"><summary>for 〜 else</summary>
+
+      <header>
+        <h3>for 〜 else 文</h3>
+      </header>
+
+
+<ul>
+<li><p><strong>else</strong> は<strong class="for"></strong>文にも使えます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(0, 10, 2):
+    if i % 2 == 1:
+        print(i, 'は奇数です')
+        break
+else:
+    print('すべて偶数です')
+</code></pre>
+
+<code>すべて偶数です</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+  <li class="look">
+    <p class="text-center"><strong class="for"></strong>文が最後まで<strong>正常に実行された時</strong>にのみ、<br><strong>else</strong> 以降が実行されます。</p>
+  </li>
+
+<li><p>反対に、<strong>break</strong> などでループを途中で抜けたときには無視されます。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(0, 10, 3):  # step を 3 にする
+    if i % 2 == 1:
+        print(i, 'は奇数です')
+        break
+else:
+    print('すべて偶数です')
+</code></pre>
+
+<code>3 は奇数です</code>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/8M9IxFxlBoY70gIdOSAbsw?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<br>
+<li><p>この<strong class="for"></strong> 〜 <strong>else</strong>文は学習段階ではあまり使われないのですが、私はむしろ積極的に使っていって良い構文だと思っています。</p></li>
+<br>
+<li><p>上のプログラムを、<strong>else</strong> を使わないで書くと、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">odd = False
+for i in range(0, 10, 2):
+    if i % 2 == 1:
+        odd = True
+        num = i
+        break
+
+if odd:
+    print(num, 'は奇数です')
+else:
+    print('すべて偶数です')
+</code></pre>
+
+<code>すべて偶数です</code>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>いろいろな書き方ができますが、だいたいこんな書き方になります。<br>
+  <strong class="for"></strong> 〜 <strong>else</strong>文のほうは <strong class="for"></strong>文１つの中にすべてプログラムが収まりましたが、後者のほうはプログラムがバラけてしまいました。</p>
+</li>
+<li><p>どちらがわかりやすいかは慣れもあり、人それぞれなのですが、私は<strong class="for"></strong> 〜 <strong>else</strong>文のほうが断然わかりやすいと思うのですが、いかがでしょうか？</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-4')">for 〜 else</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-5"><summary>:=</summary>
+
+      <header>
+        <h3>代入式</h3>
+      </header>
+
+
+<ul>
+<li><p>まずは次の表を見てください。</p></li>
+<table>
+  <tbody>
+    <tr>
+      <td class="text-center">代入文</td>
+      <td class="text-center"><strong class="b">=</strong></td>
+      <td class="text-left">値を変数に代入する。</td>
+    </tr>
+    <tr>
+      <td class="text-center">代入式</td>
+      <td class="text-center"><strong class="b">:=</strong></td>
+      <td class="text-left">値を変数に代入する。</td>
+    </tr>
+  </tbody>
+</table>
+<p>説明に困るくらい同じことをしているのですが😓、性質は異なります。</p>
+<dl>
+  <dt>代入文</dt>
+    <dd>変数に値を代入して初期化をする目的で使われます。(※)<br>
+  </dd>
+  <dt>代入式</dt>
+    <dd>計算結果を後に再利用する目的で使われます。</dd>
+</dl>
+<li><p>まだなんじゃらほい(死語)ですが、使う所も異なり、しっかり棲み分けもされています。</p></li>
+<br>
+<p><small>※ 初期化された変数に再び代入することを「再代入」または「セルフ・アサインメント」といいます。<br>
+          　<mark>a += 1</mark> や <mark>a = a + 1</mark>、また <mark>a = 1</mark> とした後に <mark>a = 3</mark> とすることも再代入といいます。これらも代入文です。<br>
+          　ただ理屈っぽいだけなので、これは意味がわかればもう忘れて結構です。🤗😺</small></p>
+</ul>
+
+<ul>
+<li><p>次のプログラムを見てください。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = 4
+while cnt &gt; 0:
+    print(cnt)
+    cnt -= 1
+</code></pre>
+
+<code>4</code><br>
+<code>3</code><br>
+<code>2</code><br>
+<code>1</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>4 から始まるカウントを画面に出力してからカウントを 1 減らしてループし、やがてカウントが 0 になったら<strong class="while"></strong> を抜けます。</p>
+</li>
+<br>
+
+<li><p>今度は <mark>:=</mark> を使って書いてみます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">cnt = 5
+while cnt := cnt - 1:
+    print(cnt)
+</code></pre>
+
+<code>4</code><br>
+<code>3</code><br>
+<code>2</code><br>
+<code>1</code><br>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/QtZJXtsJ3mkidbXPmJor_w?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>条件式を書くところに、<strong>代入式</strong>が書かれています。<br>
+<p><code>cnt</code> の初期値を <code>5</code> にして、<strong class="while"></strong>文の条件式を書く所で <code>cnt</code> からまず <code>1</code> を引き、<code>4</code> になった値を <mark>:=</mark> の前の <code>cnt</code> に入れます。</p>
+</li>
+<li><p>最終的に <mark>:=</mark> の前の <code>cnt</code> が条件式の評価にかけられ、<code>cnt</code> の値が <code>4</code> なので <code>True</code> に化けます。</p></li>
+<li><p>条件式を書く所に代入文(<mark>=</mark>)は使えませんが、<strong>代入式(<mark>:=</mark>)なら使えます。</strong></p></li>
+<br>
+<li><p>けど、この使い方では<strong>代入式</strong>の便利さがまだよくわからないと思います。</p></li>
+</ul>
+
+<ul>
+<li><p>内包表記の中では代入文(<mark>=</mark>)が使えないというのは、すでにおわかりかと思います。</p></li>
+<li><p><strong>代入式</strong>を使うと、内包表記の中で代入文のような使い方ができるようになります。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = [1, 2, 3, 4, 5]
+b = [c for i in a if (c:=i*3)%2 == 0]
+print(b)
+</code></pre>
+
+<div class="grid-output">
+  <code>[6, 12]</code><span>← ２✕３ と ４✕３ の偶数のみの結果</span><br>
+</div>
+
+<details class="sample-code"><summary></summary>
+  <iframe src="https://paiza.io/projects/e/cBEJAP4h4wCokUnfM0XSig?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</details>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>これは、<code>a</code> のリストの要素を<strong class="for"></strong>文で順に <code>i</code> に入れ、『 <code>i</code> を３倍した数を <code>c</code> に入れ、<code>c</code> が偶数の時に <code>c</code> の値をリストに作ります。』</p>
+</li>
+<br>
+<li><p>一瞬「なるほどこれは便利！」と思うかもしれませんが、これは<strong>代入式</strong>を使わなくても、実際次のように書くこともできます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = [1, 2, 3, 4, 5]
+b = [i*3 for i in a if i*3 % 2 == 0]
+print(b)
+</code></pre>
+
+<code>[6, 12]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>しかしこの方法だと <code>i*3</code> を２回計算してしまいます。同じ処理を２回して、同じ値を２回作るのは無駄ですね。<br>
+  それを<strong>代入式</strong>を使うことで１回の処理で済ませられるようになります。効率が良いということです。<strong>これが<strong>代入式</strong>の真髄です。</strong></p>
+</li>
+<br>
+<li><p>これは内包表記に限らず、ふつうの書き方をしても同じことが言えます。</p>
+  <p>いつもの書き方</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = [1, 2, 3, 4, 5]
+
+b = []
+for i in a:
+    if i*3 % 2 == 0:
+        b.append(i*3)
+
+print(b)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<p><strong>代入式を使った書き方</strong></p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">a = [1, 2, 3, 4, 5]
+
+b = []
+for i in a:
+    if (c:=i*3) % 2 == 0:
+        b.append(c)
+
+print(b)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>予め <code>c = i*3</code> としてから <code>if c % 2 == 0:</code> とすることもできますが、<strong>代入式</strong>を使うとまとめて書けます。</p>
+</li>
+</ul>
+
+<ul>
+<li><p>仮に<strong>代入式</strong>の部分の処理が丸１日かかるとすると、いつもの書き方の場合は２日かかってしまうことになります。</p></li>
+<br>
+<li><p>上記のプログラムの例の場合でも「ほんの一瞬」と思うなかれ。このほんの一瞬の処理が一日に何十回何百回と繰り返され、それが何ヶ月何年と繰り返されることになる場合、処理をする際に CPU が使われますが、CPU が使われるということはその分の電力が消費されるということです。</p></li>
+<li><p>無駄が１ヶ所だったり一台の PC だけというならともかく、もし無駄が何十ヶ所何百ヶ所あって、これらの処理が何億台の PC でされるとなったら、とんでもない電力の無駄遣いとなってしまいます。</p></li>
+<li><p>いくらPCが省電力になっても、ソフトウェアがこんな状態ではエコでもなんでもありませんね。プログラムにおいても無駄を省くというのは本当に大切なことなんです。🌏</p></li>
+<br>
+<li><p>もし<strong>代入式</strong>を使うべき箇所を見つけたら積極的に使ってみてください。</p></li>
+</ul>
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-5')">:=</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-6"><summary>_</summary>
+
+      <header>
+        <h3>変数に使われるアンダースコア</h3>
+      </header>
+
+<ul>
+<li><p>これまでにも変数にアンダースコア <mark>_</mark> をさりげなく使ってきていましたが、これの意味についてここではっきり説明します。</p></li>
+
+<dl>
+  <dt>「値を使わない」という意味</dt>
+    <dd>値を渡されたけれど、以降で使うことがないということを示すものです。</dd>
+</dl>  
+</ul>
+
+<ul>
+<li><p><strong>「値を使わない」という意味</strong>を具体的に説明します。と言っても難しいものではありません。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for _ in range(5):
+    print('Hello world!')
+</code></pre>
+
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+<code>Hello world!</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><code>'Hello world!'</code> を ５回画面に出力するものですが、<strong class="func">range(5)</strong> から渡される値を以降で使うことがありません。</p>
+<p>アンダースコアの代わりに <code>i</code> を使ってもよいのですが、ここで <code>i</code> と記しておくと、以降のどこかで <code>i</code> が使われていると考えられてしまう恐れがあります。</p>
+</li>
+<li><p>なぜよろしくないのか。<br>デバッグなどであとでプログラムを見返した時に、「この <code>i</code> はどこでどんなことに使われているのだろう？」と、使われてもいない <code>i</code> のための無駄な探索物語が始まってしまいます。</p></li>
+<li><p>そのために <code>for _ in range(5):</code> としておくことで、「ただ単に５回ループする」というだけの<strong class="for"></strong>文ということがすぐにわかるようになります。</p></li>
+<br>
+<li><p>その他にも、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = [(101, 'ヒロ'), (102, '沙英'), (103, '乃莉'), (201, 'ゆの'), (202, '宮子'), (203, 'なずな')]
+for _, name in lst:
+    print(name)
+</code></pre>
+
+<code>ヒロ</code><br>
+<code>沙英</code><br>
+<code>乃莉</code><br>
+<code>ゆの</code><br>
+<code>宮子</code><br>
+<code>なずな</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>という様にタプルの使わない要素をアンダースコアに置くことができます。もちろんどこでも使えて何度でも使いまわすことができます。</p>
+</li>
+<br>
+<li><p>これらはよく使う有効なやり方なので、恥ずかしがらずにどんどん使いましょう！😺</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-6')">_</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c2-7"><summary>tmp</summary>
+
+      <header>
+        <h3>テンポラリ変数</h3>
+      </header>
+
+<ul>
+<li><p><strong>テンポラリ (temporary)</strong> とは「一時的」という意味です。</p></li>
+<li><p>「値に重要な意味は無いんだけど、ちょっと変数に入れておきたい！」という時に <mark>tmp</mark> という変数名が使われます。</p></li>
+<li><p>これも<strong class="for"></strong>文の <code>i</code> のように、大昔から使われている定番の変数です。<br>他に <mark>temp</mark> も使われています。</p></li>
+<li><p>早い話が「使い捨て」の変数です。けど、もちろん再代入して何度でも使えます。</p></li>
+<li><p>アンダースコアもテンポラリ変数として使われたりしますが、Python3 ではおすすめしません。値を使わない意味のアンダースコアと混同してしまうからです。<br>
+  <small>※ この場合のアンダースコアは「どんな値も受け入れる」という意味になります。知らなくていいけど。🐾</small></p></li>
+</ul>
+
+<ul>
+<li><p>最も知られている使い方はおそらくこれでしょう。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 3]
+
+tmp = nums[0]     # 一旦 tmp にnums[0] の 2 を逃がす
+nums[0] = nums[1] # nums[1] の 1 を nums[0] に代入する
+nums[1] = tmp     # tmp に逃がしておいた 2 を nums[1] に代入する
+
+print(nums)
+</code></pre>
+
+<code>[1, 2, 3]</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>これは値をスワップ(値交換)するプログラムなのですが、大昔から使われている一般的な方法です。</p></li>
+<li><p>国家資格の「基本情報技術者」試験で学習するくらいのド定番アルゴリズムです。ミニチュア版 <a href="https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%8E%E3%82%A4%E3%81%AE%E5%A1%94" class="linked" target="_blank">ハノイの塔 <em><small>(Wikipedia)</small></em></a> です。といってもこの程度のもの学ばずとも、誰でもその場で思いつくでしょと思うんですけどね。🤣</p></li>
+</ul>
+
+<ul>
+<li><p><mark>tmp</mark> に慣れると、重要な値でもその場で変数名を考えるのがめんどくさい時につい <mark>tmp</mark> を使いがちになったりします。</p></li>
+<li><p>そのうち <mark>tmp1</mark>, <mark>tmp2</mark>・・・とか、さらに  <mark>temp</mark> まで加わってカオスな状態になってしまいます。😽</p></li>
+<li><p>これは頭の中でつくった流れを忘れてしまう前に早くプログラムにしたいのに、変数名を考えるという余計な作業のせいで忘れてしまいそうになるから、とりあえず今は <mark>tmp</mark> にしといて後でなんとかしようと思いつつ、後になってもなんともしないまま結果、用途不明なテンポラリ変数が散乱してしまうということになるわけです。</p></li>
+<li><p>整理整頓清掃清潔(4S)ができない人の典型的な末路です。</p></li>
+<br>
+<li><p>そうならない為には <strong>pass</strong> を使いつつ、大まかな構成を作ってから細かい部分に取り掛かるというのも１つの手です。(pass の部分の作り忘れに注意！)</p></li>
+</ul>
+
+<ul>
+<li><p>その他、アンダースコアをテンポラリ変数として使うのはおすすめしないと話しましたが、次の様な形で使われることはあります。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">nums = [2, 1, 3]
+max_ = max(nums)
+print(max_)
+</code></pre>
+
+<code>3</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>単純に「最大値」という意味で <mark>max</mark> を変数にしたかったけど、関数の<strong class="func">max()</strong> と名前がかぶってしまうので、それを回避するために <mark>max_</mark> にするという使い方はよく目にしますし、私自身もよく使います。いいのかよくないのかは実のところ、わかりかねますが。😓</p>
+</li>
+<li><p>これも気をつけないと <mark>max__</mark> <mark>max___</mark> <mark>max______________</mark> となりかねないので注意！😸</p></li>
+<br>
+<li><p>ちなみにアンダースコアを名前の先頭に付けるのは<strong>禁止です。</strong>( <mark>_max</mark> とか)</p></li>
+<li><p>ここでは説明しませんが、これにはきちんとした意味があってきちんとした使われ方がありますので避けてください。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-7')">tmp</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">知っておくと良いもの</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>補足</p>
+</footer>
+</body>
+</html>

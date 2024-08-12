@@ -2384,10 +2384,10 @@ lst = [['#', '.', '#', '.', '#'], ['.', '#', '.', '#', '.']]
 
   <article>
 
-    <details id="hard-1"><summary>様々な値を任意の型に変換する - 内包表記</summary>
+    <details id="hard-1"><summary>様々な値を任意の型に変換する - リスト内包表記</summary>
 
       <header>
-        <h3>様々な値を任意の型に変換する</h3>
+        <h3>様々な値を任意の型に変換する - リスト内包表記</h3>
       </header>
     
 
@@ -2518,7 +2518,7 @@ lst = <code class="cmt">[14, '才']</code><br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 
-<pre><code class="language-python">lst = [[int('14'), '才']][0]
+<pre><code class="language-python">lst = [[14, '才'] for x='14', s='才' in [['14', '才']]][0]
 </code></pre>
 
 </div>
@@ -2556,7 +2556,7 @@ lst = <code class="cmt">[14, '才']</code><br>
 
 
       <footer>
-        <a class="backto" href="#hard" onclick="closeAccordion('hard-1')">様々な値を任意の型に変換する - １行</a>
+        <a class="backto" href="#hard" onclick="closeAccordion('hard-1')">様々な値を任意の型に変換する - リスト内包表記</a>
       </footer>
 
     </details>
@@ -2568,10 +2568,10 @@ lst = <code class="cmt">[14, '才']</code><br>
 
   <article>
 
-    <details id="hard-2"><summary>様々な値を任意の型に変換する - 複数行</summary>
+    <details id="hard-2"><summary>様々な値を任意の型に変換する - リスト内包表記 複数行</summary>
 
       <header>
-        <h3>複数行にわたる様々な値を任意の型に変換する</h3>
+        <h3>複数行にわたる様々な値を任意の型に変換する - リスト内包表記 複数行</h3>
       </header>
     
 
@@ -2744,7 +2744,366 @@ lst = [[1, 's'], [2, 't']]
               
 
       <footer>
-        <a class="backto" href="#hard" onclick="closeAccordion('hard-2')">様々な値を任意の型に変換する - 複数行</a>
+        <a class="backto" href="#hard" onclick="closeAccordion('hard-2')">様々な値を任意の型に変換する - リスト内包表記 複数行</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="hard-3"><summary>様々な値を任意の型に変換する - 辞書内包表記</summary>
+
+      <header>
+        <h3>様々な値を任意の型に変換する - 辞書内包表記</h3>
+      </header>
+    
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {int(x): s for x, s in [input().split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    1 kotetsu
+</code></pre>
+
+dic = <code class="cmt">{1: 'kotetsu'}</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    2000 g
+</code></pre>
+
+dic = <code class="cmt">{2000: 'g'}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    14 才
+</code></pre>
+
+dic = <code class="cmt">{14: '才'}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    14 才
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {int(x), s for x, s in [input().split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {int(x): s for x, s in ['14 才'.split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {int(x): s for x, s in [['14', '才']]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {int(x): s for x='14', s='才' in [['14', '才']]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {int('14'): '才' for x='14', s='才' in [['14', '才']]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {14: '才' for x='14', s='才' in [['14', '才']]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">dic = {14, '才'}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+<li><p><code>[input().split()]</code> の [ ] は必要です。</p></li>
+<li><p><code>[['14', '才']]</code> の中の <code>['14', '才']</code> を、<code>x, s</code> にアンパック代入しているからです。</p></li>
+<li><p>[ ] が無いと <code>['14', '才']</code> を左から順に１つずつ渡すことになり、
+  変数と値の個数が合わずに<strong>エラー</strong>となります。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#hard" onclick="closeAccordion('hard-3')">様々な値を任意の型に変換する - 辞書内包表記</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+
+  <article>
+
+    <details id="hard-4"><summary>様々な値を任意の型に変換する - 辞書内包表記 複数行</summary>
+
+      <header>
+        <h3>複数行にわたる様々な値を任意の型に変換する - 辞書内包表記 複数行</h3>
+      </header>
+    
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+dic = {int(x): s for _ in range(N) for x, s in [input().split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    1 s
+    2 t
+</code></pre>
+
+dic = <code class="cmt">{1: 's', 2: 't'}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">2
+    3
+    3 か月
+    1 才
+    8 才
+</code></pre>
+
+dic = <code class="cmt">{3: 'か月', 1: '才', 8: '才'}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+    
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">3
+    4
+    1 Gold
+    2 Silver
+    3 Bronze
+    4 Stone
+    
+</code></pre>
+
+dic = <code class="cmt">{1: 'Gold', 2: 'Silver', 3: 'Bronze', 4: 'Stone'}</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</ul>
+
+<ul>
+【 解説 】
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="plaintext sample-input">1
+    2
+    1 s
+    2 t
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+    
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = int(input())
+dic = {int(x): s for _ in range(N) for x, s in [input().split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓ N の入力は省略
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+dic = {int(x): s for _ in range(2) for x, s in [input().split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+dic = {int(x): s for _ in range(2) for x, s in ['1 s'.split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓ (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+dic = {1: 's' int(x): s for _ in range(2) for x='1', s='s' in [['1', 's']]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓ ３行目の読み取り (ループ２回目)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+dic = {1: 's' int(x): s for _ in range(2) for x, s in ['2 t'.split()]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓ (途中省略)
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+dic = {1: 's', 2: 't' int(x): s for _ in range(2) for x='2', s='t' in [['2', 't']]}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+  
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">N = 2
+dic = {1: 's', 2: 't'}
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+              
+
+      <footer>
+        <a class="backto" href="#hard" onclick="closeAccordion('hard-4')">様々な値を任意の型に変換する - 辞書内包表記 複数行</a>
       </footer>
 
     </details>

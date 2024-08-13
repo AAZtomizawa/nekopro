@@ -203,6 +203,11 @@ print(name)
       <td class="text-left">( ) 内の文字の所で<strong>右から</strong>区切って、リストに変換する</td>
       <td class="text-center"><code>['']</code></td>
     </tr>
+    <tr>
+      <td class="link text-center"><a class="td" href="#-join" onclick="openAccordion('-join')">.join()</a></td>
+      <td class="text-center">リスト</td>
+      <td class="text-left">リストの要素を区切り文字を使って接続し、文字列型に変換する。</td>
+    </tr>
     </tbody>
     </table>
 
@@ -1090,6 +1095,126 @@ print(texts)
 
       <footer>
         <a class="backto" href="#table_method" onclick="closeAccordion('-split')">.split() .rsplit()</a>
+      </footer>
+            
+    </details>
+
+  </article>
+
+
+  <article>
+
+    <details id="-join"><summary>.join()</summary>
+
+      <header>
+        <h3>'区切り文字'.join(引数)</h3>
+      </header>
+
+
+<ul>
+<li><p>区切り文字を使って、リストの要素を接続し、文字列に変換します。</p></li>
+<li><p>要素と要素の間に区切り文字が付きます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
+text = ','.join(lst)
+print(text)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
+text = 'mouse,cow,cat,rabbit,dragon,snake'
+print(texts)
+</code></pre>
+
+<code>mouse,cow,cat,rabbit,dragon,snake</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>区切り文字は文字列なので、何文字でも区切り文字に使えます。</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
+text = '-+-'.join(lst)
+print(text)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
+text = 'mouse-+-cow-+-cat-+-rabbit-+-dragon-+-snake'
+print(text)
+</code></pre>
+
+<code>mouse-+-cow-+-cat-+-rabbit-+-dragon-+-snake</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+</li>
+
+<li>
+  <p>区切り文字を <code>''</code> にすると、要素が連結します。(結構使います)</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['こめと', 'いもの', 'ふつうの', '暮らし']
+text = ''.join(lst)
+print(text)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">lst = ['こめと', 'いもの', 'ふつうの', '暮らし']
+text = 'こめといものふつうの暮らし'
+print(text)
+</code></pre>
+
+<code>こめといものふつうの暮らし</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>リスト型で紹介しましたが、これは <strong>文字列型のメソッド</strong> です。気にすることはほとんど無いと思いますが。😅</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#table_method" onclick="closeAccordion('-join')">.join()</a>
       </footer>
             
     </details>

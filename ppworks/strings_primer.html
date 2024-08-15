@@ -699,7 +699,7 @@ print(*password, sep='')
 </section>
 
 <section>
-<details id="c25"><summary>表記の訂正</summary>
+<!-- <details id="c25"><summary>表記の訂正</summary> -->
 <header><h2>表記の訂正</h2></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -708,18 +708,19 @@ print(*password, sep='')
 
 str_zero = '0'
 dot = '.'
-dot_count = s.count(dot)
+dot_count = s.count(dot)    # '.' の個数
 if s[0] == str_zero:
-    num = int(s[:s.find(dot)])
-    s = str(num) + s[s.find(dot):]
+    dot_idx = s.find(dot)
+    num = int(s[:dot_idx])
+    s = str(num) + s[dot_idx:]
 
 if dot_count >= 1:
     s = s.rstrip(str_zero)
 
 if dot_count >= 2:
-    idx = s.find(dot)
+    dot_idx = s.find(dot)
     s = s.replace(dot, '')
-    s = s[:idx] + dot + s[idx:]
+    s = s[:dot_idx] + dot + s[dot_idx:]
 
 print(s)
 </code></pre>
@@ -731,7 +732,7 @@ print(s)
 2. 小数部分の後ろの余分な 0 を除去する<br>
 3. 小数点が複数ある場合、一番左の小数点以外を除去する
 </p>
-<p>まず１番からですが、これは簡単に整数部分だけ整数型にすると頭の 0 部分が消えますので、それを文字列型に戻します。浮動小数の場合は小数点以下すべてを整数部分に繋げます。<br>小数点が無い場合(整数)は <code>s[s.find(dot):]</code> が <mark>s[-1:]</mark> と無効なスライスになり、<code>''</code> に化けます。結果、エラー無く整数部分のみとなります。</p>
+<p>まず１番からですが、これは簡単に整数部分だけ整数型にすると頭の 0 部分が消えますので、それを文字列型に戻します。浮動小数の場合は小数点以下すべてを整数部分に繋げます。<br>小数点が無い場合(整数)は <code>s[dot_idx:]</code> が <mark>s[-1:]</mark> と無効なスライスになり、<code>''</code> に化けます。結果、エラー無く整数部分のみとなります。</p>
 <p>２番は浮動小数の場合、後ろの余分な 0 を消す為に<strong class="func">.rstrip()</strong>メソッドを使います。</p>
 <table>
 <tbody>
@@ -750,7 +751,7 @@ print(s)
 </tbody>
 </table>
 <p><small>ほとんど使った試しがないので当サイトの学習内容に載せていません。😅<br>詳しく知りたい方はお手数ですが、他のサイトを探してそちらで学んでください。</small><br>要するに<strong class="func">.rstrip()</strong>メソッドを使って末尾の 0 を一気に取り除いています。</p>
-<p>３番は一番左の小数点の位置を <code>idx</code> で憶えておき、<strong class="func">.replace()</strong>メソッドを使って <mark>.</mark> を全て消してから、<code>idx</code> の位置に小数点を付け直すことをしています。</p>
+<p>３番は一番左の小数点の位置を <code>dot_idx</code> で憶えておき、<strong class="func">.replace()</strong>メソッドを使って <mark>.</mark> を全て消してから、<code>dot_idx</code> の位置に小数点を付け直すことをしています。</p>
 <p>いろいろなやり方が出来ますので、余力がありましたら是非、他の方法でも書いてみてください。😺</p>
 </ul>
 <footer><a class="backto" href="#c25" onclick="closeAccordion('c25')">表記の訂正</a></footer>
@@ -862,7 +863,7 @@ print(total)
 </tr>
 </tbody>
 </table>
-<p>初めは上の表の様になっています。<br>最初のループ <code>while l < S_len:</code> は、<code>l</code> が文字列の末尾の文字を越えたらループを終了するという意味です。<br>次のループ <code>while r < S_len and S[r].isdigit():</code> は <code>l</code>と同じく、<code>r</code> が文字列の末尾の文字を越えたらループを終了するという意味に加えて <code>r</code> の位置の文字が数字だった場合、<code>r</code> に 1 を足して次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
+<p>初めは上の表の様になっています。<br>最初のループ <code>while l < S_len:</code> は、<code>l</code> が文字列の末尾の文字を越えたらループを終了するという意味です。<br>次のループ <code>while r < S_len and S[r].isdigit():</code> は <code>l</code> と同じく、<strong class="b"> <code>r</code> が文字列の末尾の文字を越えたらループを終了する</strong>という意味に加えて <strong class="b"><code>r</code> の位置の文字が数字だった場合、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
 <table>
 <tbody>
 <tr>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prism_coy.css">
+    <script type="text/javascript" src='../js/prism.js'></script>
+    <script type="text/javascript" src='../js/custom.js'></script>
+    <title>正規表現</title>
+    <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+
+
+
+<body>
+
+
+
+<header id="top">
+  <h1>正規表現</h1>
+  <p>「正規表現」というものがわかるようになります。👍</p>
+</header>
+
+
+
+<main>
+
+
+
+<article>
+
+  <details id="c1"><summary>Chatpter.1 - 正規表現とは</summary>
+
+    <header>
+      <h2>世界共通の文字列操作法</h2>
+    </header>
+
+
+<ul>
+<li><p>今までにＰＣ業務に携わった経験がある方なら一度は聞いたことがあると思われる「<strong>正規表現</strong>」という言葉。</p></li>
+<li><p>暗号のような文字を見ただけで拒絶した方から、学んでみようとしたけれど結局躓いたままの状態になっているという方も、この学習で理解のきっかけくらいにはなるかもしれません。</p></li>
+<li><p>確かに<strong>正規表現</strong>は学びにくいものです。</p></li>
+
+<li><p>その理由が、</p>
+<ol>
+  <li>今まで無くても、とくに困ることはなかったので興味が持てない。</li>
+  <li>わざわざ正規表現を使う意味(目的)がわからない。</li>
+  <li>逆に可読性を下げてしまいそう。</li>
+  <li>正規表現を駆使する機会がほとんど無い。</li>
+  <li>駆使どころか、必要性を感じたことが１度も無い。</li>
+  <li>正規表現は万能ではなく、案外痒いところにこそ手が届かないので、重要性は低いと感じた。</li>
+</ol>
+
+</li>
+
+<li><p>(3) と (6) のように欠点とも言えなくもない性質も否めませんが、これらは正規表現の不便さを知っているのではなく、「正規表現の便利さを知らない」だけなのです。</p></li>
+</ul>
+
+<ul>
+<li><p>正規表現は「<strong>検索条件に合う文字列を見つける</strong>」機能です。</p></li>
+<li><p>通常の検索では、検索文字が<strong>一致する(「マッチする」と言います)</strong>文字列を見つける程度です。</p></li>
+<li><p>正規表現では、検索条件を広げたり、より細かく複雑にして検索条件を絞ったりすることができるようになります。</p></li>
+<li><p>サ〇ウェイの常連さんくらいの注文がつけられます。</p></li>
+<li><p>その注文の意味がわかるようになる為には、正規表現の記号や書き方を知る必要があります。</p></li>
+<li><p>一筋縄では習得できないのはもうわかっていると思います。</p></li>
+<li><p>学ぶべきことはたくさんありますので、焦らずゆっくり理解していきましょう。</p></li>
+<li><p>どうせ今のところ、正規表現なんて無くても困ってませんしね。😽</p></li>
+</ul>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c1')">正規表現とは</a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+
+
+
+<section>
+
+  <details id="c2"><summary>Chatpter.2 - 正規表現の怪奇文</summary>
+
+    <header>
+      <h2>ある意味、正規表現も一つの言語</h2>
+    </header>
+
+
+
+
+  <article>
+
+    <details id="c2-1"><summary>2.1 - 基本記号</summary>
+
+      <header>
+        <h3>結局全部わからないとわからない 😹</h3>
+      </header>
+
+
+<ul>
+<li><p>基本記号を紹介します。</p></li>
+
+<table>
+  <tbody>
+    <tr>
+      <th class="text-center">記号</th>
+      <th class="text-center">ESC</th>
+      <th class="text-center">機能</th>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">\</td>
+      <td class="text-left" style="font-family: 'Consolas';">\\</td>
+      <td class="text-left">メタ文字をエスケープする。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">.</td>
+      <td class="text-left" style="font-family: 'Consolas';">\.</td>
+      <td class="text-left">１文字とマッチ。ワイルドカード。<span style="font-family: 'Consolas';">\n</span> のみ例外で不一致。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">^</td>
+      <td class="text-left" style="font-family: 'Consolas';">\^</td>
+      <td class="text-left">文字列の先頭にマッチ。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">$</td>
+      <td class="text-left" style="font-family: 'Consolas';">\$</td>
+      <td class="text-left">文字列の末尾にマッチ。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">[]</td>
+      <td class="text-left" style="font-family: 'Consolas';">\[ \]</td>
+      <td class="text-left">文字の集合。[ABC]は'A', 'B', 'C'のいずれかにマッチ。<br>
+        []内はメタ文字が <span style="font-family: 'Consolas';">\]^-</span> の４文字に限定される。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">[^]</td>
+      <td class="text-left" style="font-family: 'Consolas';"></td>
+      <td class="text-left">否定。[<span style="font-family: 'Consolas';">^A</span>]で'A'以外の１文字にマッチする。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">-</td>
+      <td class="text-left" style="font-family: 'Consolas';">\-</td>
+      <td class="text-left">文字の範囲指定。[A-Za-z0-9]で英数字の１文字とマッチする。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">?</td>
+      <td class="text-left" style="font-family: 'Consolas';">\?</td>
+      <td class="text-left">直前の文字が 0～1回出現でマッチする。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">*</td>
+      <td class="text-left" style="font-family: 'Consolas';">\*</td>
+      <td class="text-left">直前の文字が 0回出現でマッチする。</td>
+    </tr>
+    <tr>
+      <td class="text-left" style="font-family: 'Consolas';">+</td>
+      <td class="text-left" style="font-family: 'Consolas';">\+</td>
+      <td class="text-left">直前の文字が 1回出現でマッチする。</td>
+    </tr>
+  </tbody>
+</table>
+<p>まだあるのですが、基本記号としてはとりあえずこんなところです。</p>
+<li><p>これら記号を組み合わせて作った暗号みたいな検索条件を「<strong class="special">正規表現パターン</strong>」と言います。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-1')">基本記号</a>
+      </footer>
+
+    </details>
+  
+  </article>
+    
+
+
+
+
+  <article>
+
+    <details id="c2-2"><summary>2.2 - 正規表現メソッド</summary>
+
+      <header>
+        <h3>マッチした文字列を様々な方法で扱う</h3>
+      </header>
+
+
+<ul>
+<li><p>検索文字列を見つけたら、今度はその文字列を用意されたメソッドを使って扱います。</p></li>
+
+<table>
+  <tbody>
+    <tr>
+      <th class="text-center">メソッド</th>
+      <th class="text-center">機能</th>
+    </tr>
+    <tr>
+      <td class="text-left">re.search(pattern, str)</td>
+      <td class="text-left">str文字列から正規表現patternを使って最初に見つかった文字列を取得する。</td>
+    </tr>
+    <tr>
+      <td class="text-left">re.findall(pattern, str)</td>
+      <td class="text-left">マッチしたすべての文字列をリストで返す。</td>
+    </tr>
+    <tr>
+      <td class="text-left">re.match(pattern, str)</td>
+      <td class="text-left">strの先頭でのみマッチした文字列を返す。</td>
+    </tr>
+    <tr>
+      <td class="text-left">re.fullmatch(pattern, str)</td>
+      <td class="text-left">str文字列すべてにマッチしたら(strと同じ)文字列を返す。</td>
+    </tr>
+    <tr>
+      <td class="text-left">re.sub(pattern, repl, str)</td>
+      <td class="text-left">正規表現パターンにマッチした文字列をreplに置き換える。</td>
+    </tr>
+    <tr>
+      <td class="text-left">re.split(pattern, str, maxsplit=0)</td>
+      <td class="text-left">正規表現パターンにマッチした文字列で分割する。</td>
+    </tr>
+  </tbody>
+</table>
+
+<li><p>第一引数の pattern に正規表現パターンを書くか、正規表現パターンの変数を置きます。</p></li>
+<li><p>str は、検索にかける文字列です。</p></li>
+<li><p><strong>「str の中から pattern にマッチする文字列を探す」</strong>という使い方になります。</p></li>
+<li><p>その後マッチする文字列が見つかったら、上記のメソッドを使って加工して使う流れになります。</p></li>
+<li><p>たいていは、
+  
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">re_mathced = re.search(pattern, s)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>というように変数に格納してから使います。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c2" onclick="closeAccordion('c2-2')">正規表現メソッド</a>
+      </footer>
+
+    </details>
+  
+  </article>
+    
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c2')">正規表現の怪奇文</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+<section>
+
+  <details id="c3"><summary>Chatpter.3 - 正規表現を使う</summary>
+
+    <header>
+      <h2>マッチしたデータにアクセスする</h2>
+    </header>
+
+  <article>
+
+    <details id="c3-1"><summary>3.1 - 基本形態</summary>
+
+      <header>
+        <h3>基本形態</h3>
+      </header>
+
+
+<ul>
+<li><p>紹介したメソッドの中の re.search(pattern, str) を使って説明していきます。</p></li>
+<li><p>まずは正規表現パターンの <code>.</code> を使い、検索結果を変数に格納します。</p></li>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">import re
+
+s = 'abcdefg'
+pattern = r'.'  # 正規表現パターンの最初に r を付ける
+re_matched = re.search(pattern, s)
+
+print(re_matched)
+</code></pre>
+
+<code>&lt;re.Match object; span=(0, 1), match='a'&gt;</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<li><p>ちょっと難しい説明になりますが、
+  <ol>
+    <li>re モジュールの、</li>
+    <li>Match クラスから生まれた、</li>
+    <li>インスタンス (object) が持つ、</li>
+    <li>インスタンス変数 <mark>span=(0,1)</mark> と、<mark>match='a'</mark></li>
+  </ol>
+<p>と、考えてください。<br>
+イメージとしては 👇 な感じです。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python"># re.py
+class Match:
+    def __init__(self):
+        self.span = (0, 1)
+        self.match = 'a'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<li><p>また、各変数の <mark>span</mark>, <mark>match</mark> については、</p>
+<p><mark>span=(0,1)</mark> は、<mark>文字列 s</mark> のマッチした範囲、<strong>要素 0</strong> を表しています。<br>
+これは <strong class="func">range(0, 1)</strong>や、スライスの [0:1] と同じ範囲です。</p>
+<p><mark>match='a'</mark> は、「<mark>'a'</mark> がマッチしました (見つかりました)」ということです。</p></li>
+<li><p>これらによって re_matched は「<mark>文字列 s</mark> の先頭から探索し、正規表現パターンの <code>.</code> にマッチした <code>a</code> を見つけることが出来ました。場所は<strong>要素 0 から 0</strong> にあります。」という意味を持つ変数となります。</p></li>
+</ul>
+
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-1')">基本形態</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c3-2"><summary>3.2 - マッチした値を使う</summary>
+
+      <header>
+        <h3>専用のメソッドを使って値を見る</h3>
+      </header>
+
+
+<ul>
+<li><p>マッチした文字列にアクセスするには、次のように書きます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">import re
+
+s = 'abcdefg'
+pattern = r'.'
+re_matched = re.search(pattern, s)
+
+print(re_matched.group())  # ← ココ
+</code></pre>
+
+<code>a</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p><strong class="func">.group()</strong>メソッドを付けて値にアクセスします。</p>
+</li>
+
+<li><p><strong class="func">.group()</strong>メソッドのイメージとしては 👇 な感じです。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">class Match:
+    def __init__(self):
+        self.span = (0, 1)
+        self.match = 'a'
+    
+    def group(self):
+        return self.match
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>実際にこういうプログラムになっているというわけではなく、あくまでもイメージですのでご注意ください。</p>
+</li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-2')">マッチした値を使う</a>
+      </footer>
+
+    </details>
+  
+  </article>
+
+
+
+  <article>
+
+    <details id="c3-2"><summary>3.2 - マッチした span を使う</summary>
+
+      <header>
+        <h3>.span()</h3>
+      </header>
+
+
+<ul>
+<li><p>span を利用する方法の１つに<strong class="func">.span()</strong>メソッドがあります。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">import re
+
+s = 'abcdefg'
+pattern = r'...'
+re_matched = re.search(pattern, s)
+
+print(re_matched)
+</code></pre>
+
+<code>&lt;re.Match object; span=(0, 3), match='abc'&gt;</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>今度は、要素 0 から 2 の <code>abc</code> がマッチしています。</p>
+</li>
+
+<li><p>これを<strong class="func">.span()</strong>メソッドを使って、マッチした <code>abc</code> を出力してみます。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(*re_matched.span()):
+    print(i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(*(0, 3)):
+    print(i)
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+↓
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(0, 3):
+    print(i)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+<code>2</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(*re_matched.span()):
+    print(re_matched.group()[i])
+</code></pre>
+
+<code>a</code><br>
+<code>b</code><br>
+<code>c</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>または</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for c in re_matched.group():
+    print(c)
+</code></pre>
+
+<code>a</code><br>
+<code>b</code><br>
+<code>c</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>または</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">print('\n'.join(re_matched.group()))
+</code></pre>
+
+<code>a</code><br>
+<code>b</code><br>
+<code>c</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+</ul>
+
+<header>
+  <h3>.start() . end()</h3>
+</header>
+
+
+<ul>
+<li><p>もう１つ、<strong class="func">.start()</strong> <strong class="func">.end()</strong>メソッドがあります。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(re_matched.start(), re_matched.end()):
+    print(i)
+</code></pre>
+
+<code>0</code><br>
+<code>1</code><br>
+<code>2</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<br>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">for i in range(re_matched.start(), re_matched.end()):
+    print(re_matched.group()[i])
+</code></pre>
+
+<code>a</code><br>
+<code>b</code><br>
+<code>c</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</li>
+<p><code>re_matched.start()</code> が <mark>re_matched.span()[0]</mark><br>
+<code>re_matched.end()</code> が <mark>re_matched.span()[3]</mark></p>
+<p>と、同等です。</p>
+</ul>
+
+<ul>
+  <li><p>まだ何でこんなことを学んでいるのかわかっていないかもしれません。😅</p></li>
+  <li><p>次からいよいよ正規表現パターンを作ってみましょう。</p></li>
+</ul>
+
+
+
+      <footer>
+        <a class="backto" href="#c3" onclick="closeAccordion('c3-2')">マッチした span を使う</a>
+      </footer>
+
+    </details>
+  
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c3')">正規表現を使う</a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+
+<section>
+
+  <!-- <details id="c4"><summary>Chatpter.4 - 正規表現記号</summary> -->
+
+    <header>
+      <h2>基本記号の紹介</h2>
+    </header>
+
+  <article>
+
+    <details id="c4-1"><summary>4.1 - ワイルドカード</summary>
+
+      <header>
+        <h3>１文字とマッチする</h3>
+      </header>
+
+
+<ul>
+<li><p>どんな文字でも、１文字とマッチする記号に <code>.</code> 『ドット<em>(dot)</em>』 を使います。</p></li>
+<li><p>これを「<strong>ワイルドカード</strong>」と言います。</p></li>
+<li><p>ポーカーゲームのジョーカーのように、どんな文字にもマッチする効力を持ちます。</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">import re
+s = 'abcdefg'
+</code></pre>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">pattern = r'.'
+re_matched = re.search(pattern, s)
+print(re_matched.group())
+</code></pre>
+
+<code>a</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c4" onclick="closeAccordion('c4-1')">１文字とマッチする</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+
+  <article>
+
+    <details id="c4-2"><summary>4.2 - マッチする文字数を指定する</summary>
+
+      <header>
+        <h3>マッチする文字数を指定する</h3>
+      </header>
+
+
+<ul>
+<li><p>連続した複数文字にマッチさせる場合は、</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">pattern = r'.{4}'
+re_matched = re.search(pattern, s)
+print(re_matched.group())
+</code></pre>
+
+<code>abcd</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>という様に、<code>.</code> の直後に文字数を { } で囲みます。また、</p>
+
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+
+<pre><code class="language-python">pattern = r'.....'
+re_matched = re.search(pattern, s)
+print(re_matched.group())
+</code></pre>
+
+<code>abcde</code><br>
+
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>と、<code>.</code> を必要分書くことでも実現します。</p>
+</li>
+<br>
+
+<li><p><strong>{ } で囲む方が一般的</strong>で、２文字にマッチさせる場合でも <code>.{2}</code> と記した方がわかりやすくなります。</p></li>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c4" onclick="closeAccordion('c4-2')">マッチする文字数を指定する</a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+  <article>
+
+    <!-- <details id="c4-3"><summary>4.3 - ｎ回以上出現でマッチする</summary> -->
+
+      <header>
+        <h3>? - 直前の文字が 0～1回出現でマッチする</h3>
+      </header>
+
+
+<ul>
+<li><p></p></li>
+</ul>
+
+      <header>
+        <h3>* - 直前の文字が 0回以上出現でマッチする</h3>
+      </header>
+
+
+<ul>
+<li><p></p></li>
+</ul>
+
+      <header>
+        <h3>+ - 直前の文字が 1回以上出現でマッチする</h3>
+      </header>
+
+
+<ul>
+<li><p></p></li>
+</ul>
+
+    <footer>
+      <a class="backto" href="#c4" onclick="closeAccordion('c4-3')"></a>
+    </footer>
+
+  </details>
+
+</article>
+
+
+<article>
+
+  <!-- <details id="c4-3"><summary>4.3 - </summary> -->
+
+    <header>
+      <h3></h3>
+    </header>
+
+
+<ul>
+</ul>
+
+
+      <footer>
+        <a class="backto" href="#c4" onclick="closeAccordion('c4-3')"></a>
+      </footer>
+
+    </details>
+
+  </article>
+
+
+    <footer>
+      <a class="backto" href="#" onclick="closeAccordion('c4')"></a>
+    </footer>
+
+  </details>
+
+</section>
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>正規表現</p>
+</footer>
+</body>
+</html>

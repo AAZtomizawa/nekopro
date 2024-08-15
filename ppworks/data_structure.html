@@ -674,7 +674,7 @@ print('Yes' if B in A else 'No')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
- <p>「集合の探索」なので、言葉通りセット(集合)を使います。と言っても、プログラムの一部がいつもの<strong class="func">list()</strong>から<strong class="func">set()</strong>に変わっただけです。</p>
+ <p>「集合の探索」なので、言葉通り集合(セット)を使います。と言っても、プログラムの一部がいつもの<strong class="func">list()</strong>から<strong class="func">set()</strong>に変わっただけです。</p>
  <p>ただし<strong class="if"></strong>文の探索方法は<strong>ハッシュ探索</strong>なので、リストの線形探索よりはるかに高速です。</p>
 </ul>
 <footer><a class="backto" href="#c4" onclick="closeAccordion('c4-1')">STEP: 1 集合の探索</a></footer>
@@ -829,6 +829,19 @@ for i in range(1, N):
 <td>10</td>
 <td></td>
 </tr>
+<tr>
+<td>判定</td>
+<td></td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td class="text-center">N</td>
+<td>Y</td>
+</tr>
+
 </tbody>
 </table>
 <p>数列の二番目から開始しますので、その時点では <code>memo</code> の中身は数列の先頭の <code>1</code> のみです。これを <code>memo</code> に初期値として入れておきます。<mark>memo = {A[0]}</mark><br>二番目の 2 はそれより前、つまり <code>memo</code> の中にありませんので、<code>memo</code> に <code>2</code> を追加して <code class="output">No</code> を出力します。次の 3 も同様の処理です。<br>四番目の 2 は <code>memo</code> の中にあります。なので <code class="output">Yes</code> を画面に出力して次のループに移ります。</p>

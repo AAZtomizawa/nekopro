@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/prism_coy.css">
+<script type="text/javascript" src='../js/prism.js'></script>
+<script type="text/javascript" src='../js/custom.js'></script>
+<title>【paiza問題集 解説】文字列処理メニュー</title>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>文字列処理メニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>文字列の出力</summary>
+<header><h2>文字列の出力</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print('paiza')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">文字列の出力</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>文字列の受け取り</summary>
+<header><h2>文字列の受け取り</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(S)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">文字列の受け取り</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>i 文字目の出力</summary>
+<header><h2>i 文字目の出力</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+i = int(input())
+print(S[i-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題文に直接は書かれていませんが、i 文字目というのは 1 文字目から数えます。<br>文字列の位置は 0 から始まりますので、i から 1 を引く必要があります。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">i 文字目の出力</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>文字列の条件判定</summary>
+<header><h2>文字列の条件判定</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+if S == 'paiza':
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print('YES' if S == 'paiza' else 'NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>YES と NO はどちらもすべて大文字ですので、そこだけ注意してください。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">文字列の条件判定</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>文字列の文字数</summary>
+<header><h2>文字列の文字数</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(len(S))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字数を数える<strong class="func">len()</strong>関数を使います。<br>全角半角関係無く一文字として数えられます。絵文字や記号も一文字として数えられます。</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">文字列の文字数</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>文字の検索</summary>
+<header><h2>文字の検索</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+c = int(input())
+print(S.find(c) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>引数に与えられた文字の位置を調べる<strong class="func">.find()</strong>メソッドを使います。<br>問題文には書かれていませんが、何文字目というのは一文字目から数えられます。文字列は 0 文字目から数えられるので、<code>S.find(c)</code> の結果に 1 を足す必要があります。<br>この問題は<strong class="func">.index()</strong>メソッドを使っても同様の結果が得られます。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">文字の検索</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>文字列の連結</summary>
+<header><h2>文字列の連結</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+s = ''
+for _ in range(N):
+    S = input()
+    s += S
+
+print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+s = [input() for _ in range(N)]
+print(''.join(s))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１が文字列のみの操作、例２はどちらかというとリストの操作と言えなくもないです。<br>例１は予め空の文字列 s を作ってから、そこに入力した文字を追加していき、最後に s を画面に出力して完了です。<br>例２はリストを文字列に変換する<strong class="func">.join()</strong>メソッドを使って画面に出力しています。</p>
+<p><strong class="func">.join()</strong>は「<a href="../2/0040usefullisttype.html#-join-h" class="linked" target="_blank">２章 リストの操作を使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">文字列の連結</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c8"><summary>部分文字列</summary>
+<header><h2>部分文字列</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+i, j = map(int, input().split())
+print(S[i-1: j])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>スライスを使うと便利です。<br>問題文に直接は書かれていませんが、i j 文字目というのは 1 文字目から数えます。文字列の位置は 0 から始まりますので、i から 1 を引く必要があります。j はそのままで大丈夫です。</p>
+<p>スライスは「<a href="../2/0010list.html#c3-2h" class="linked" target="_blank">２章 リスト型</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">部分文字列</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c9"><summary>文字列の挿入</summary>
+<header><h2>文字列の挿入</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+N = int(input())
+
+text = S[:N] + T + S[N:]
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+N = int(input())
+
+text = f"{S[:N]}{T}{S[N:]}"
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１と例２のどちらもスライスを使って文字列 S を前半と後半に分割し、その間に挿入する文字列 T をはさみ込むと出力する文字列が完成します。</p>
+<!-- <p>例２の書き方は「<a href="../3/0070fstrings.html" class="linked" target="_blank">３章 f文字列</a>」で学習できます。</p> -->
+ <p>例２の <mark>f"{S[:N]}{T}{S[N:]}"</mark>の書き方については、現在作成中ですので、もうしばらくお待ちください。🙏</p>
+</ul>
+<footer><a class="backto" href="#c9" onclick="closeAccordion('c9')">文字列の挿入</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c10"><summary>文字列の書き換え</summary>
+<header><h2>文字列の書き換え</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+i, c = [[int(i), c] for i, c in [input().split()]][0]
+
+text = S[:i-1] + c + S[i:]
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+i, c = [[int(i), c] for i, c in [input().split()]][0]
+
+text = f"{S[:i-1]}{c}{S[i:]}"
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = list(input())
+i, c = [[int(i), c] for i, c in [input().split()]][0]
+
+S[i-1] = c
+print(''.join(S))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>２行目の標準入力は「<a href="../3/0020input.html#hard-1h" class="linked" target="_blank">３章 標準入力 - 様々な値を任意の型に変換する - リスト内包表記</a>」で学習できます。</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td class="text-center">0</td>
+<td class="text-center">1</td>
+<td class="text-center">2</td>
+<td class="text-center">3</td>
+<td class="text-center">4</td>
+</tr>
+<tr>
+<td class="text-center">文字列</td>
+<td class="text-center">p</td>
+<td class="text-center">a</td>
+<td class="text-center">i</td>
+<td class="text-center">z</td>
+<td class="text-center">a</td>
+</tr>
+<tr>
+<td class="text-center">スライス</td>
+<td class="text-center">:0</td>
+<td class="text-center" colspan="4">1:</td>
+</tr>
+</tbody>
+</table>
+<p>i が 1 の時がわかりにくいのですが、<mark>[:i-1]</mark> は 1-1=0 で <mark>[0:0]</mark> となりますが、このスライスは 0 〜 -1 になって範囲としてはありえず無効になるので、結果、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">text = c + S[i:]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と同等になります。<code>c</code> が位置番号 0 です。</p>
+<p>例３は S の入力をリストに変換して、要素番号 i-1 を直接書き換えています。これでも正解ですし、わかりやすくてよいのですが、この問題は文字列のスライスを使っての書き換えを求めているようですので、スライスでも書けるようになっておきましょう。</p>
+<p>スライスは「<a href="../2/0010list.html#c3-2h" class="linked" target="_blank">２章 リスト型</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c10" onclick="closeAccordion('c10')">文字列の書き換え</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c11"><summary>文字列から数値への変換</summary>
+<header><h2>文字列から数値への変換</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+n = int(S) - 813
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今まで散々入力を整数に変換して受け取っておきながら今さらな問題ですが、せっかくなので入力を文字列で受け取った場合の書き方で書いてみました。<br>と言っても数値に変換可能な文字列を整数に変換する<strong class="func">int()</strong>関数を S に使うだけです。</p>
+</ul>
+<footer><a class="backto" href="#c11" onclick="closeAccordion('c11')">文字列から数値への変換</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c12"><summary>数値から文字列への変換</summary>
+<header><h2>数値から文字列への変換</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">X = int(input())
+Y = int(input())
+N = int(input())
+
+s = str(X + Y)
+print(s[N-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数値から文字列へ変換する<strong class="func">str()</strong>関数を使います。<br><strong class="func">str()</strong>関数は、浮動小数<em>(float)</em> からも文字列に変換できます。
+</p>
+</ul>
+<footer><a class="backto" href="#c12" onclick="closeAccordion('c12')">数値から文字列への変換</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c13"><summary>大文字から小文字への変換</summary>
+<header><h2>大文字から小文字への変換</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(S.lower())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字列全体を大文字から小文字に変換する時は<strong class="func">.lower()</strong>メソッドを使います。</p>
+</ul>
+<footer><a class="backto" href="#c13" onclick="closeAccordion('c13')">大文字から小文字への変換</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c14"><summary>小文字から大文字への変換</summary>
+<header><h2>小文字から大文字への変換</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(S.upper())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字列全体を小文字から大文字に変換する時は<strong class="func">.upper()</strong>メソッドを使います。</p>
+
+</ul>
+<footer><a class="backto" href="#c14" onclick="closeAccordion('c14')">小文字から大文字への変換</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c15"><summary>大文字小文字の反転</summary>
+<header><h2>大文字小文字の反転</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+
+text = ''
+for s in S:
+    if s.islower():
+        text += s.upper()
+    else:
+        text += s.lower()
+        
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+lst = [s.upper() if s.islower() else s.lower() for s in S]
+print(*lst, sep='')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>.islower()</strong>は、文字列が小文字かどうかを判定するメソッドです。小文字の時に <strong>True</strong> を返します。<br>反対に、文字列が大文字かどうかを判定する<strong class="func">.isupper()</strong>メソッドもあります。<br>滅多に使うことは無いかもしれませんが、頭の片隅に残しておくといつか役に立つかもしれません。</p>
+</ul>
+<footer><a class="backto" href="#c15" onclick="closeAccordion('c15')">大文字小文字の反転</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c16"><summary>文字列の検索</summary>
+<header><h2>文字列の検索</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+
+if T in S:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「部分文字列」なんて難しい言葉が使われていますが、要は T の文字列が S の中に含まれているかどうかを判定するということです。<br><strong class="if"></strong> 〜 <strong>in</strong> 〜 を使って調べましょう。</p>
+<p><strong>in</strong> については「<a href="../2/0050usefulstrtype.html#c4-in" class="linked" target="_blank">２章 文字列の操作を使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c16" onclick="closeAccordion('c16')">文字列の検索</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c17"><summary>文字列の反転</summary>
+<header><h2>文字列の反転</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(S[::-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(''.join(reversed(S)))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１の様なスライスを使うと<strong>文字列が反転</strong>します。これはリストにも全く同じ書き方で使えますので便利です。</p>
+<p>例２は<strong class="func">reversed()</strong>関数を使って文字列を反転させているのですが、そのまま<strong class="func">print()</strong>で画面に出力すると次のようになります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(reversed(S))
+</code></pre>
+<code>&lt;reversed object at 0x1456702a9130&gt;</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>それを<strong class="func">.join()</strong>メソッドで文字列にして見える化しているのですが、面倒ですね。😓</p>
+<p><mark>[::-1]</mark> という書き方は意味を知らない人にはわかりにくいかもしれませんが、市民権を得た書き方なので気後れせずにどんどん使って構わないと思います。</p>
+<p><mark>[::-1]</mark> や<strong class="func">reversed()</strong>については「<a href="../2/0060mieruka2.html#c1h" class="linked" target="_blank">２章 見える化ちゃん ２期 - 見えない値の映し方</a>」で<small>それなりに</small>学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c17" onclick="closeAccordion('c17')">文字列の反転</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c18"><summary>回文判定</summary>
+<header><h2>回文判定</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+if S == S[::-1]:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print('YES' if S == S[::-1] else 'NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>元の文字列と、反転した文字列が一致するかを評価にかけるだけです。</p>
+</ul>
+<footer><a class="backto" href="#c18" onclick="closeAccordion('c18')">回文判定</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c19"><summary>文字列の分割</summary>
+<header><h2>文字列の分割</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+for s in S.split(','):
+    print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input().split(',')
+print(*S, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>注目すべきは<strong class="func">.split()</strong>メソッドです。<br>引数に与えた文字列を区切り文字として分割し、リストとなって返ります。</p>
+<p><strong class="func">.split()</strong>については「<a href="../2/0050usefulstrtype.html#-split-h" class="linked" target="_blank">２章 文字列の操作を使いこなす機能一覧</a>」で学習できます。</p>
+<p>例２の<strong class="func">print()</strong>の書き方については「<a href="../2/0030mieruka.html#c1-3h" class="linked" target="_blank">２章 見える化ちゃん</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c19" onclick="closeAccordion('c19')">文字列の分割</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c20"><summary>日時データの変換その１</summary>
+<header><h2>日時データの変換その１</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s1 = input().split('/')
+s2 = s1[3].split(':')
+print(*s1[:3], *s2, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+S = input()
+re_matched = re.split('[/:]', S)
+print(*re_matched, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>残念ながら<strong class="func">.split()</strong>メソッドの区切り文字は１つしか指定できません。１つだけなら何文字でも区切り文字に書けますが、今回の様に <mark>/</mark> と <mark>:</mark> の2つを区切り文字にする方法はありません。</p>
+<p>仕方がないので先に <mark>/</mark> から分割し、次に <mark>:</mark> で分割して、<strong class="func">print()</strong>で調整して出力します。(例１)</p>
+<p>例２は <strong>正規表現</strong> を使って書いたものです。文字列の操作を学んでいる段階ではまだ難しいものと思われますが、この方法を使うと区切り文字が複数使えて便利です。</p>
+<p>現時点では <strong>正規表現</strong> の学習はまだここではできませんが、作成中ですので今しばらくお待ちください。</p>
+</ul>
+<footer><a class="backto" href="#c20" onclick="closeAccordion('c20')">日時データの変換その１</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c21"><summary>日時データの変換その２</summary>
+<header><h2>日時データの変換その２</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s1, s2 = input().split()
+ymd = s1.split('/')
+hm = s2.split(':')
+print(*ymd, *hm, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+S = input()
+re_matched = re.split('[/: ]', S)
+print(*re_matched, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">.split()</strong>の区切り文字は複数個指定できませんので、まず半角スペース <mark>' '</mark> (引数省略) で分割してから前半を <mark>/</mark> で、後半を <mark>:</mark> で分割したものを画面に出力します。</p>
+<p>例２は「日時データの変換その１」の例２の区切り文字に半角スペースを１つ追加しただけです。ラクチンです。</p>
+</ul>
+<footer><a class="backto" href="#c21" onclick="closeAccordion('c21')">日時データの変換その２</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c22"><summary>数値判定</summary>
+<header><h2>数値判定</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+if S.isdigit():
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>○○かどうかを判定する<strong class="func">.is○○</strong>という形のメソッドがいくつか用意されています。<br><a href="https://docs.python.org/ja/3/library/stdtypes.html#str.isalnum" class="linked" target="_blank">【 Python 標準ライブラリ - 文字列メソッド 】</a><br>難しい書き方をしているので読みにくいかもしれませんが、理解できる範囲で一読しておくと良いでしょう。</p>
+<p><mark>S.isdigit()</mark> は、文字列全体が数字で構成されているかどうかを判定します。数字以外が入っている状態で<strong class="func">str()</strong>を使ったらエラーになってしまうので、その前にチェックしておくという時などに適しているメソッドです。</p>
+</ul>
+<footer><a class="backto" href="#c22" onclick="closeAccordion('c22')">数値判定</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c23"><summary>重複の削除</summary>
+<header><h2>重複の削除</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+
+result = ''
+for s in S:
+    if s not in result:
+        result += s
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>重複なしの数字を <code>result</code> に作っていきます。<code>result</code> になかったら <code>result</code> に追加、あれば何もしないというのを文字列の先頭から全てを調べて、<code>result</code> を完成させていきます。</p>
+</ul>
+<footer><a class="backto" href="#c23" onclick="closeAccordion('c23')">重複の削除</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c24"><summary>パスワード作成</summary>
+<header><h2>パスワード作成</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+Q = int(input())
+rules = [[int(n), c] for _ in range(Q) for n, c in [input().split()]]
+C = input()
+
+tmp = 0
+password = ''
+for n, c in rules:
+    password += C*(n-1-tmp) + c
+    tmp = n
+
+password += C*(N - tmp)
+print(password)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>n 文字目より前を C で埋め、N文字目に c を追加する流れです。そして最後に N 文字目まで C を埋めれば完了です。</p>
+<p>n = 2<br>c = 'T'<br>C = 'K'　の場合</p>
+<p>真ん中辺りの <mark>C*(n-1-tmp) + c</mark> では、<mark>'K'*(2-1-0)</mark> → <mark>'K'* 1</mark> → 'K' を１つ、それから 'T' を <code>password</code> に追加します。(現在 <code>password = 'KT'</code>) <code>tmp</code> には直前の n を記憶させています。これは「(現在の n) - (直前の n [tmp])」で埋めるべき C の個数を割り出す為です。<br>最後までループを終えたら N 文字目まで C で埋める為、下の <mark>password += C*(N - tmp)</mark> で、<mark>'K'*(5 - 2)</mark> → <mark>'K'* 3</mark> → 'KKK' を <code>password</code> に追加します。(現在 <code>password = 'KTKKK'</code>)<br>これを画面に出力して完了です。</p>
+<p>リストを使うとめちゃくちゃ簡単です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+Q = int(input())
+rules = [[int(n), c] for _ in range(Q) for n, c in [input().split()]]
+C = input()
+
+password = [C] * N 
+for n, c in rules:
+    password[n-1] = c
+
+print(*password, sep='')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>初めに C で埋めたリストを作ってから、n-1 の箇所を c に書き換えるだけです。</p>
+</ul>
+<footer><a class="backto" href="#c24" onclick="closeAccordion('c24')">パスワード作成</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c25"><summary>表記の訂正</summary>
+<header><h2>表記の訂正</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+
+str_zero = '0'
+dot = '.'
+dot_count = s.count(dot)
+if s[0] == str_zero:
+    dot_idx = s.find(dot)
+    num = int(s[:dot_idx])
+    s = str(num) + s[dot_idx:]
+
+if dot_count >= 1:
+    s = s.rstrip(str_zero)
+
+if dot_count >= 2:
+    dot_idx = s.find(dot)
+    s = s.replace(dot, '')
+    s = s[:dot_idx] + dot + s[dot_idx:]
+
+print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>急に複雑で面倒な問題が登場しましたので、落ち着いてやるべき処理をまとめてみます。</p>
+<p>
+1. 整数部分の頭の余分な 0 を除去する<br>
+2. 小数部分の後ろの余分な 0 を除去する<br>
+3. 小数点が複数ある場合、一番左の小数点以外を除去する
+</p>
+<p>まず１番からですが、これは簡単に整数部分だけ整数型にすると頭の 0 部分が消えますので、それを文字列型に戻します。浮動小数の場合は小数点以下すべてを整数部分に繋げます。<br>小数点が無い場合(整数)は <code>s[dot_idx:]</code> が <mark>s[-1:]</mark> と無効なスライスになり、<code>''</code> に化けます。結果、エラー無く整数部分のみとなります。</p>
+<p>２番は浮動小数の場合、後ろの余分な 0 を消す為に<strong class="func">.rstrip()</strong>メソッドを使います。</p>
+<table>
+<tbody>
+<tr>
+<td><strong class="func">.strip(引数)</strong></td>
+<td>引数に指定した文字を、文字列の先頭と末尾から複数取り除く</td>
+</tr>
+<tr>
+<td><strong class="func">.lstrip(引数)</strong></td>
+<td>引数に指定した文字を、文字列の先頭から複数取り除く</td>
+</tr>
+<tr>
+<td><strong class="func">.rstrip(引数)</strong></td>
+<td>引数に指定した文字を、文字列の末尾から複数取り除く</td>
+</tr>
+</tbody>
+</table>
+<p><small>ほとんど使った試しがないので当サイトの学習内容に載せていません。😅<br>詳しく知りたい方はお手数ですが、他のサイトを探してそちらで学んでください。</small><br>要するに<strong class="func">.rstrip()</strong>メソッドを使って末尾の 0 を一気に取り除いています。</p>
+<p>３番は一番左の小数点の位置を <code>dot_idx</code> で憶えておき、<strong class="func">.replace()</strong>メソッドを使って <mark>.</mark> を全て消してから、<code>dot_idx</code> の位置に小数点を付け直すことをしています。<br>一度 <code>dot_idx = s.find(dot)</code> を実行しているのにもう一度ここで実行するのは、先頭の 0 が消された場合に小数点の位置がずれるからです。</p>
+<p>いろいろなやり方が出来ますので、余力がありましたら是非、他の方法でも書いてみてください。😺</p>
+</ul>
+<footer><a class="backto" href="#c25" onclick="closeAccordion('c25')">表記の訂正</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c26"><summary>数式の計算（ 1 桁）</summary>
+<header><h2>数式の計算（ 1 桁）</h2></header>
+
+<ul>
+<li><p>例１ (非推奨)</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(eval(S))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+
+total = int(S[0])
+for i in range(1, len(S), 2):
+    total += int(S[i:i+2])
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１はチートを通り越してもはやチキンなやり方です。😅<br>引数として与えられた数式になっている文字列を、<strong class="func">eval()</strong>関数を使ってそのまま計算させています。<br>ただ<strong class="func">eval()</strong>関数は面白い機能ではあるものの、セキュリティ的にかなり取り扱い注意な関数ですので、使用する場合はよく学び、よく理解した上で使用してください。何かあっても自己責任では済まされなくなる恐れも十分ありえますから。🙀</p>
+<p>例２は、但し書きをすべて考慮した上で簡単に書いたものです。<br>まず先頭の数を、計算結果を出力する為の <code>total</code> として初期化し、以降は<strong class="for"></strong>文で二文字ずつ整数化して <code>total</code> に足していく、という処理をしています。</p>
+</ul>
+<footer><a class="backto" href="#c26" onclick="closeAccordion('c26')">数式の計算（ 1 桁）</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c27"><summary>数式の計算</summary>
+<header><h2>数式の計算</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+
+S_len = len(S)
+total = 0
+l, r = 0, 1
+while l < S_len:
+    while r < S_len and S[r].isdigit():
+        r += 1
+        
+    total += int(S[l:r])
+    l = r
+    r += 1
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ちょっとしたアルゴリズムを使って解いてみます。<br>符号を含めた頭から数となる文字列を区切りながら足し算をしていきます。「数式の計算（ 1 桁）」と同じ様に、マイナスの符号がある場合はマイナスの数を足す、つまり引き算をするということになります。</p>
+<p>S = 123+456+789 の時、</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td class="text-center">l,r の現在地</td>
+<td>l</td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-center">S</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>+</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>+</td>
+<td>7</td>
+<td>8</td>
+<td class="text-center">9</td>
+</tr>
+</tbody>
+</table>
+<p>初めは上の表の様になっています。<br>最初のループ <code>while l < S_len:</code> は、<code>l</code> が文字列の末尾の文字を越えたらループを終了するという意味です。<br>次のループ <code>while r < S_len and S[r].isdigit():</code> は <code>l</code> と同じく、<strong class="b"> <code>r</code> が文字列の末尾の文字を越えたらループを終了する</strong>という意味に加えて <strong class="b"><code>r</code> の位置の文字が数字だった場合、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td class="text-center">l,r の現在地</td>
+<td>l</td>
+<td></td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-center">S</td>
+<td><strong>1</strong></td>
+<td><strong>2</strong></td>
+<td><strong>3</strong></td>
+<td>+</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>+</td>
+<td>7</td>
+<td>8</td>
+<td class="text-center">9</td>
+</tr>
+</tbody>
+</table>
+<p><code>r</code> の位置で符号が見つかった時、その ループを抜けて <mark>S[l:r]</mark> の範囲の文字列 <code>'123'</code> を数値 <code>123</code> に変換し、<code>total</code> にその数を足します。<mark>total = 0 + (123)</mark></p>
+<p>それから <code>l</code> を <code>r</code> の位置に(<mark>l = r</mark>)、<code>r</code> は <code>r</code> に 1 を足した位置に(<mark>r += 1</mark>)、再び初期化します。</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td class="text-center">l,r の現在地</td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-center">S</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>+</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>+</td>
+<td>7</td>
+<td>8</td>
+<td class="text-center">9</td>
+</tr>
+</tbody>
+</table>
+<p>これを繰り返していきます。</p>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td class="text-center">l,r の現在地</td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td></td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-center">S</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td><strong>+</strong></td>
+<td><strong>4</strong></td>
+<td><strong>5</strong></td>
+<td><strong>6</strong></td>
+<td>+</td>
+<td>7</td>
+<td>8</td>
+<td class="text-center">9</td>
+</tr>
+</tbody>
+</table>
+<p><mark>S[l:r] = '+456'</mark><br><mark>total = 123 + (+456) = 579</mark></p>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td class="text-center">l,r の現在地</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td>r</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-center">S</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>+</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>+</td>
+<td>7</td>
+<td>8</td>
+<td class="text-center">9</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td class="text-center">l,r の現在地</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td></td>
+<td></td>
+<td>r</td>
+</tr>
+<tr>
+<td class="text-center">S</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>+</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td><strong>+</strong></td>
+<td><strong>7</strong></td>
+<td><strong>8</strong></td>
+<td class="text-center"><strong>9</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>r</code> は文字数を越えた(<code>while r &lt; S_len</code>)ので、ループを抜けます。<br><mark>S[l:r] = '+789'</mark><br><mark>total = 579 + (+789) = 1368</mark></p>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">位置番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+</tr>
+<tr>
+<td class="text-center">l,r の現在地</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="text-center">l</td>
+<td class="text-center">r</td>
+</tr>
+<tr>
+<td class="text-center">S</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>+</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>+</td>
+<td>7</td>
+<td>8</td>
+<td class="text-center">9</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>l</code> が <code> S_len = 11</code> 未満ではなくなった(<code>while l &lt; S_len</code>)ので、ここで１つめのループも抜け、<code>total</code> を画面に出力して完了となります。</p>
+<p>長い解説となってしまいましたが、どうでしょ？<br>今後この方法は形を変えながら様々な場面で活躍します。理解するだけでなく、すばやくイメージして感覚として会得できると、今回のような問題に出くわした時に「あ、これはアレが使えそうだ」というひらめきが出来るようになります・・・きっと。😽<br>l と r のように、見えない所でこれらがどう動いているか、その変動をイメージするのはまず理解してからでないと難しいのですが、こういうのに限らず、何度も頑張って書いているうちに、いつの間にか出来るようになっています。いつ、何で急にわかるようになったのかがわからないくらいに、いつの間にか出来るようになっています。</p>
+<p>上の例を見ながらで構いませんので、すべて手打ちしながら今どんなことをしている所を書いているのか考えながら何度も書いてみてください。</p>
+<p>この問題でももちろん、例のチキン行為が使えます。😸</p>
+</ul>
+<footer><a class="backto" href="#c27" onclick="closeAccordion('c27')">数式の計算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c28"><summary>巨大な数の足し算(繰り上がりなし)</summary>
+<header><h2>巨大な数の足し算(繰り上がりなし)</h2></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+print(int(S) + int(T))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+
+total = ''
+for i in range(len(S)):
+    total += str(int(S[i]) + int(T[i]))
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+
+total = ''
+for s, t in zip(S, T):
+    total += str(int(s) + int(t))
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Python3 は整数の範囲に制限はありませんので、そのまま<strong class="func">int()</strong>で整数化して足し算をすれば解答が求められます。</p>
+<p>しかしここは「文字列処理メニュー」なので文字列を処理して解答を求めたいと思います。<br>例２は <code>S</code> と <code>T</code> 共に先頭から一文字ずつ足し算して <code>total</code> に格納していく流れだけで解答が得られます。条件にある <mark>|S| = |T|</mark> のとおり、必ず同じ文字数で与えられますので、同じ <code>i</code> を添字にできます。</p>
+<p>例３は <code>S</code> と <code>T</code> を<strong class="func">zip()</strong>関数を使って先頭から一文字ずつ１セットにして取り出しています。<br><strong class="func">zip()</strong>関数は「<a href="../2/0060mieruka2.html#zip-h" class="linked" target="_blank">２章 見える化ちゃん ２期</a>」で簡単な使い方が学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c28" onclick="closeAccordion('c28')">巨大な数の足し算(繰り上がりなし)</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c29"><summary>巨大な数の足し算</summary>
+<header><h2>巨大な数の足し算</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+
+d = 0
+total = ''
+for i in range(len(S)-1, -1, -1):
+    tmp = int(S[i]) + int(T[i]) + d
+    d, m = divmod(tmp, 10)
+    total = str(m) + total
+
+if d:
+    total = str(d) + total
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>筆算と同じ様に、末尾から計算していく方法です。<br>今度は繰り上がりがあります。繰り上がった数の分を <code>d</code> とし、足し算の結果が例えば <code>15</code> の時には <code>d = 1</code> になります。</p>
+<p>この繰り上がり計算を <code>d, m = divmod(tmp, 10)</code> の所で行なっています。</p>
+<li class="look text-center"><p><strong>divmod() 関数</strong></p><hr><br>(tmp // 10, tmp % 10)<br>||<br><strong class="func">divmod(tmp, 10)</strong><br><br></li>
+<p>足し算した結果を一時的に <code>tmp</code> に入れ、これを<strong class="func">divmod()</strong>にかけると以下のようになります。</p>
+<p><mark>tmp = 15</mark> の時</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">d, m = divmod(tmp, 10)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>↓</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">d, m = divmod(15, 10)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>↓ <mark>(15 // 10, 15 % 10)</mark> 1 余り 5</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">d, m = (1, 5)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<p>余りの <code>m</code> とそれまでの結果の <code>total</code> を繋ぎます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">total = str(m) + total
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この処理を文字列の先頭まで繰り返します。</p>
+<p>最後に忘れてはならないのが、先頭の数同士で足し算した時の繰り上がり分です。ループが終了した時に繰り上がりがある、つまり <code>d</code> が <code>1</code> 以上の時にはこれをさらに <code>total</code> の前に付けます。これで正しい解答が得られます。</p>
+<p><strong class="if"></strong>文以降は次の様にも書けます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(str(d) + total if d else total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>または</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print((str(d) if d else '') + total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>または</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(int(str(d) + total))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>以上、お好みのトッピングでお召し上がりください。🐈</p>
+</ul>
+<footer><a class="backto" href="#c29" onclick="closeAccordion('c29')">巨大な数の足し算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c30"><summary>巨大な数のかけ算</summary>
+<header><h2>巨大な数のかけ算</h2></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = int(input())
+
+d = 0
+total = ''
+for i in range(len(S)-1, -1, -1):
+    tmp = int(S[i]) * T + d
+    d, m = divmod(tmp, 10)
+    total = str(m) + total
+
+print(int(str(d) + total))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の足し算がわかれば、こちらのほうが少し簡単です。😸<br><code>T</code> を入力時に整数型に変換しておきます。あとは掛け算すること以外はほとんど変わりません。</p>
+<p>次のように書くこともできます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = int(input())
+
+d = 0
+total = ''
+for s in S[::-1]:
+    tmp = int(s) * T + d
+    d, m = divmod(tmp, 10)
+    total += str(m)
+
+print(int(str(d) + total[::-1]))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<p>長らくお疲れ様でした。💤🛏</p>
+</ul>
+<footer><a class="backto" href="#c30" onclick="closeAccordion('c30')">巨大な数のかけ算</a></footer>
+</details>
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>文字列処理メニュー</p>
+</footer>
+</body>
+</html>

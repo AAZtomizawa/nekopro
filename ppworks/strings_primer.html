@@ -866,12 +866,10 @@ print(total)
 <p>初めは上の表の様になっています。<br>最初のループ <code>while l < S_len:</code> は、<code>l</code> が文字列の末尾の文字を越えたらループを終了するという意味です。</p>
 <p>次のループ <code>while r < S_len and S[r].isdigit():</code> は、<code>r</code> の位置が
 <ul>
-<div class="grid-output">
-<strong class="b" style="white-space: nowrap;">文字数の範囲内</strong><span>…… <code>r &lt; S_len</code></span>
-<strong class="b" style="white-space: nowrap;">数字</strong><span>…… <code>S[r].isdigit()</code></span>
-</div>
+<li><strong class="b">文字数の範囲内</strong> …… <code>r &lt; S_len</code></li>
+<li><strong class="b">数字</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; …… <code>S[r].isdigit()</code></li>
 </ul>
-の時には、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
+    の時には、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
 <table>
 <tbody>
 <tr>

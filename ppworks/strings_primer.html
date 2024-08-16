@@ -699,7 +699,7 @@ print(*password, sep='')
 </section>
 
 <section>
-<!-- <details id="c25"><summary>表記の訂正</summary> -->
+<details id="c25"><summary>表記の訂正</summary>
 <header><h2>表記の訂正</h2></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -708,7 +708,7 @@ print(*password, sep='')
 
 str_zero = '0'
 dot = '.'
-dot_count = s.count(dot)    # '.' の個数
+dot_count = s.count(dot)
 if s[0] == str_zero:
     dot_idx = s.find(dot)
     num = int(s[:dot_idx])
@@ -751,7 +751,7 @@ print(s)
 </tbody>
 </table>
 <p><small>ほとんど使った試しがないので当サイトの学習内容に載せていません。😅<br>詳しく知りたい方はお手数ですが、他のサイトを探してそちらで学んでください。</small><br>要するに<strong class="func">.rstrip()</strong>メソッドを使って末尾の 0 を一気に取り除いています。</p>
-<p>３番は一番左の小数点の位置を <code>dot_idx</code> で憶えておき、<strong class="func">.replace()</strong>メソッドを使って <mark>.</mark> を全て消してから、<code>dot_idx</code> の位置に小数点を付け直すことをしています。</p>
+<p>３番は一番左の小数点の位置を <code>dot_idx</code> で憶えておき、<strong class="func">.replace()</strong>メソッドを使って <mark>.</mark> を全て消してから、<code>dot_idx</code> の位置に小数点を付け直すことをしています。<br>一度 <code>dot_idx = s.find(dot)</code> を実行しているのにもう一度ここで実行するのは、先頭の 0 が消された場合に小数点の位置がずれるからです。</p>
 <p>いろいろなやり方が出来ますので、余力がありましたら是非、他の方法でも書いてみてください。😺</p>
 </ul>
 <footer><a class="backto" href="#c25" onclick="closeAccordion('c25')">表記の訂正</a></footer>

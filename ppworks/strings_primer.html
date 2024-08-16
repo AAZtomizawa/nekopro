@@ -709,15 +709,15 @@ print(*password, sep='')
 str_zero = '0'
 dot = '.'
 dot_count = s.count(dot)
-if s[0] == str_zero:
+if s[0] == str_zero:        # １番
     dot_idx = s.find(dot)
     num = int(s[:dot_idx])
     s = str(num) + s[dot_idx:]
 
-if dot_count >= 1:
+if dot_count >= 1:          # ２番
     s = s.rstrip(str_zero)
 
-if dot_count >= 2:
+if dot_count >= 2:          # ３番
     dot_idx = s.find(dot)
     s = s.replace(dot, '')
     s = s[:dot_idx] + dot + s[dot_idx:]
@@ -1104,7 +1104,7 @@ print(total)
 </tr>
 </tbody>
 </table>
-<p><code>r</code> は文字数を越えた(<code>while r &lt; S_len</code>)ので、ループを抜けます。<br><mark>S[l:r] = '+789'</mark><br><mark>total = 579 + (+789) = 1368</mark></p>
+<p><code>r</code> は文字数を越えたので、ループを抜けます。(<code>while r &lt; S_len</code>)<br><mark>S[l:r] = '+789'</mark><br><mark>total = 579 + (+789) = 1368</mark></p>
 <p>↓</p>
 <table>
 <tbody>

@@ -792,7 +792,7 @@ print(total)
 </section>
 
 <section>
-<details id="c27"><summary>数式の計算</summary>
+<!-- <details id="c27"><summary>数式の計算</summary> -->
 <header><h2>数式の計算</h2></header>
 
 <ul>
@@ -863,7 +863,15 @@ print(total)
 </tr>
 </tbody>
 </table>
-<p>初めは上の表の様になっています。<br>最初のループ <code>while l < S_len:</code> は、<code>l</code> が文字列の末尾の文字を越えたらループを終了するという意味です。<br>次のループ <code>while r < S_len and S[r].isdigit():</code> は <code>l</code> と同じく、<strong class="b"> <code>r</code> が文字列の末尾の文字を越えたらループを終了する</strong>という意味に加えて <strong class="b"><code>r</code> の位置の文字が数字だった場合、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
+<p>初めは上の表の様になっています。<br>最初のループ <code>while l < S_len:</code> は、<code>l</code> が文字列の末尾の文字を越えたらループを終了するという意味です。</p>
+<p>次のループ <code>while r < S_len and S[r].isdigit():</code> は、<code>r</code> の位置が
+<ul>
+<div class="grid-output">
+<strong class="b" style="white-space: nowrap;">文字数の範囲内</strong><span>…… <code>r &lt; S_len</code></span>
+<strong class="b" style="white-space: nowrap;">数字</strong><span>…… <code>S[r].isdigit()</code></span>
+</div>
+</ul>
+の時には、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
 <table>
 <tbody>
 <tr>
@@ -910,7 +918,7 @@ print(total)
 </tr>
 </tbody>
 </table>
-<p><code>r</code> の位置で符号が見つかった時、その ループを抜けて <mark>S[l:r]</mark> の範囲の文字列 <code>'123'</code> を数値 <code>123</code> に変換し、<code>total</code> にその数を足します。<mark>total = 0 + (123)</mark></p>
+<p><code>r</code> の位置で符号が見つかった時、そのループを抜けて <mark>S[l:r]</mark> の範囲の文字列 <code>'123'</code> を数値 <code>123</code> に変換し、<code>total</code> にその数を足します。<mark>total = 0 + (123)</mark></p>
 <p>それから <code>l</code> を <code>r</code> の位置に(<mark>l = r</mark>)、<code>r</code> は <code>r</code> に 1 を足した位置に(<mark>r += 1</mark>)、再び初期化します。</p>
 <table>
 <tbody>

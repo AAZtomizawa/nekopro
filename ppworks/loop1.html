@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/prism_coy.css">
+<script type="text/javascript" src='../js/prism.js'></script>
+<script type="text/javascript" src='../js/custom.js'></script>
+<title>【paiza問題集 解説】ループメニュー1</title>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>ループメニュー1</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>a ~ z までを表示</summary>
+<header><h2>a ~ z までを表示</h2></header>
+
+<article>
+<details id="c1-1"><summary>STEP: 1 ある数字までの出力 1</summary>
+<header><h3>ある数字までの出力 1</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(10):
+    print(i+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(1, 11):
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="for"></strong> や<strong class="func">range()</strong>関数については「<a href="../1/0070forwhile.html#c2-1h" class="linked" target="_blank">１章 繰り返し文</a>」で学習できます。</p>
+<p>例１は、<code>range(10)</code> で 0 〜 9 の範囲のリストをつくります。その先頭の <code>0</code> から順にループし、その数 <code>i</code> に 1 を足して 1 〜 10 を画面に出力しています。</p>
+<p>例２は、<strong class="func">range()</strong>関数の <em>start</em> と <em>stop</em> の値を直接指定して 1 〜 10 の範囲のリストをつくり、<code>i</code> をそのまま画面に出力しています。</p>
+<p>また、「ループメニュー」の趣旨とは異なりますが、こんな書き方も出来ます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(*range(1, 11), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここでは説明しませんが、興味がある方は「<a href="../2/0030mieruka.html#c1-3h" class="linked" target="_blank">２章 見える化ちゃん</a>」を読んでみてください。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-1')">STEP: 1 ある数字までの出力 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 ある数字までの出力 2</summary>
+<header><h3>ある数字までの出力 2</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for i in range(N):
+    print(i+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for i in range(1, N+1):
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>標準入力で N を受け取り、<strong class="func">range()</strong>関数の <em>stop</em> の所に <code>N</code> を指定します。</p>
+<p>例２では <code>N</code> に 1 を足さないと 1 〜 9 までしか範囲が作られませんので、忘れないように気をつけてください。ちょくちょく忘れますけどね。😅</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-2')">STEP: 2 ある数字までの出力 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 数字の受け取り 1</summary>
+<header><h3>数字の受け取り 1</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">K = list(map(int, input().split()))
+for i in range(10):
+    print(K[i])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">K = list(map(int, input().split()))
+for i in K:
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>一行目の書き方で与えられた数列を一気にリスト化できます。(<a href="../3/0020input.html#easy-2h" class="linked" target="_blank">３章 input()</a> を参照。しゃれｲｴﾅﾝﾃﾞﾓﾅｲﾃﾞｽ)</p>
+<p>受け取った数列 <code>K</code> を例２の様に書くこともできます。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-3')">STEP: 3 数字の受け取り 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>STEP: 4 数字の受け取り 2</summary>
+<header><h3>数字の受け取り 2</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+K = list(map(int, input().split()))
+for i in range(N):
+    print(K[i])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+K = list(map(int, input().split()))
+for i in K:
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これまでの解答の合わせ技です。<br>例２では一行目で N を受け取りますが、以降 N を使うことがありません。そんなときは、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と、<code>N</code> を <code>_</code> にしておくと「この入力は以降使うことはありません」、つまりダミーということがわかるようになります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">input()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>としても正しく動きますが、ゴミと勘違いされかねないので気をつけてください。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-4')">STEP: 4 数字の受け取り 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>STEP: 5 ある数をある回数表示 1</summary>
+<header><h3>ある数をある回数表示 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for _ in range(8):
+    print(3)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>_</code> ではなく <code>i</code> でもよいのですが、<code>i</code> は以降使いませんので、ここは <code>_</code> としておきます。</p>
+<p><mark>_</mark> (アンダースコア) の意味については「<a href="../3/0060extra.html#c2-6h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-5')">STEP: 5 ある数をある回数表示 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-6"><summary>STEP: 6 ある数をある回数表示 2</summary>
+<header><h3>ある数をある回数表示 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+for _ in range(K):
+    print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>単純に「K 回ループする」という場合は二行目の書き方にするとよいです。</p>
+<p><mark>_</mark> (アンダースコア) の意味については「<a href="../3/0060extra.html#c2-6h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-6')">STEP: 6 ある数をある回数表示 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-7"><summary>FINAL問題 a ~ z までを表示</summary>
+<header><h3>a ~ z までを表示</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = 'abcdefghijklmnopqrstuvwxyz'
+for c in s:
+    print(c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>リストだけでなく、文字列でもループに使えます。ただこの書き方では、処理に使うアルファベットを準備する為に a から z まで順に手打ちしていかなければなりません。</p>
+<p>便利な関数があります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = [chr(i+97) for i in range(26)]
+for c in lst:
+    print(c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>unicode と呼ばれる文字コード表があるのですが、<strong class="func">chr()</strong>関数は、文字コードを対応する文字に変換してくれる機能です。<code>97</code> というのは、文字 <mark>a</mark> に対応する文字コードです。<br><code>range(26)</code> の <code>26</code> はアルファベットの文字数、0 〜 25 に 97 を順に足していくことで a 〜 z を一気に作り出しています。</p>
+<p>反対に、文字を文字コードに変換する<strong class="func">ord()</strong>関数というものもあります。これを使うと文字コードがわからなくても、<mark>ord('a')</mark> と書けば <mark>97</mark> に変換してくれます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = [chr(i + ord('a')) for i in range(26)]
+for c in lst:
+    print(c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>こちらのほうがわかりやすいですね。もちろん <code>ord('A')</code> とすれば、<mark>A</mark> の文字コードがわからなくても A 〜 Z を作り出してくれます。便利！</p>
+</ul>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-7')">FINAL問題 a ~ z までを表示</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c1')">a ~ z までを表示</a></footer>
+</details>
+</article>
+</section>
+
+<section>
+<details id="c2"><summary>数列同士の引き算</summary>
+<header><h2>数列同士の引き算</h2></header>
+
+<article>
+<details id="c2-1"><summary>STEP: 1 数列の和</summary>
+<header><h3>数列の和</h3></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+print(sum(a))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+sum_ = 0
+for i in range(N):
+    sum_ += a[i]
+
+    print(sum_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+sum_ = 0
+for i in a:
+    sum_ += a
+
+    print(sum_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１の<strong class="func">sum()</strong>関数は、引数に与えた数値を合計して返す機能です。この引数に数値のデータを与えると一気に合計してくれます。</p>
+<p>ただ、ここは「ループメニュー」なので繰り返し文を使って解きます。</p>
+<p>例２と例３は、<mark>リスト a</mark> の先頭の数から１つずつ順に <code>sum_</code> と足していきます。全ての処理を終えた時の <code>sum_</code> の値が合計値となるので、それを画面に出力して完了です。</p>
+<p>a = [8, 1, 3, 8, 1, 3] の時</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">a</td>
+<td></td>
+<td>8</td>
+<td>1</td>
+<td class="text-center">3</td>
+<td class="text-center">8</td>
+<td class="text-center">1</td>
+<td class="text-center">3</td>
+</tr>
+<tr>
+<td class="text-center"><mark>sum_ += a</mark></td>
+<td>0</td>
+<td>8</td>
+<td>9</td>
+<td class="text-center">12</td>
+<td class="text-center">20</td>
+<td class="text-center">21</td>
+<td><code class="output">24</code></td>
+</tr>
+</tbody>
+</table>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-1')">STEP: 1 数列の和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 数列の A 番目から B 番目までの和</summary>
+<header><h3>数列の A 番目から B 番目までの和</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, A, B = map(int, input().split())
+a = list(map(int, input().split()))
+
+sum_ = 0
+for i in range(A-1, B):
+    sum_ += a[i]
+    
+print(sum_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">range()</strong>関数に範囲を指定するだけです。<br>１番目とは要素番号 0 のことですので、<code>A</code> から 1 を引く必要があります。<code>B</code> はそのままで大丈夫です。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-2')">STEP: 2 数列の A 番目から B 番目までの和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 数列の値を全部 * 2 して出力</summary>
+<header><h3>STEP: 3 数列の値を全部 * 2 して出力</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+for i in range(N):
+    print(a[i] * 2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+for i in a:
+    print(i*2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = [int(i) * 2 for i in input().split()]
+print(*a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>お好みでどうぞ！😸</p>
+</ul>
+<p></p>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-3')">STEP: 3 数列の値を全部 * 2 して出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>FINAL問題 数列同士の引き算</summary>
+<header><h3>FINAL問題 数列同士の引き算</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+for i in range(N):
+    print(a[i] - b[i])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+for i, j in zip(a, b):
+    print(i - j)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数列が１つ増えただけで、<strong class="func">range()</strong>関数を使えばもう楽勝ですね。😽</p>
+<p>例２の<strong class="func">zip()</strong>の使い方は「<a href="../2/0060mieruka2.html#zip-h" class="linked" target="_blank">２章 見える化ちゃん ２期</a>」で軽く説明しています。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-4')">FINAL問題 数列同士の引き算</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c2')">数列同士の引き算</a></footer>
+</details>
+</article>
+</section>
+
+<section>
+<details id="c3"><summary>FizzBuzz</summary>
+<header><h2>FizzBuzz</h2></header>
+
+<article>
+<details id="c3-1"><summary>STEP: 1 数列の反転</summary>
+<header><h3>数列の反転</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i in reversed(a):
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i in a[::-1]:
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>リストの反転方法は２つあります。<br>１つは例１の<strong class="func">reversed()</strong>関数を使う方法です。<strong class="func">reversed()</strong>の引数に反転したいリストを与えるだけですが、この関数は<strong class="func">print()</strong>で中身を見ると、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(reversed(a))
+</code></pre>
+<code>&lt;list_reverseiterator object at 0x153c4ccb40d0&gt;</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と、ワケのわからないことを言ってきます。放っておいたらヤバそうです。<br>これは「<a href="../2/0060mieruka2.html#c1h" class="linked" target="_blank">２章 見える化ちゃん ２期</a>」で説明しています。</p>
+<p>例２はスライスで <mark>[::-1]</mark> と書くとリストが反転します。こちらは<strong class="func">print()</strong>で中身を見ることが出来ます。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-1')">STEP: 1 数列の反転</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 九九の表示 1</summary>
+<header><h3>STEP: 2 九九の表示 1</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = []
+for i in range(1, 10):
+    a.append(i*8)
+
+print(*a, sep=' ')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = [i*8 for i in range(1, 10)]
+print(*a, sep=' ')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この出力方法を知らないとフツーにめんどくさいので、この<strong class="func">print()</strong>の書き方と、ついでに例２の内包表記もわかるとラクです。</p>
+<p><strong class="func">print()</strong>の書き方は「<a href="../2/0030mieruka.html#c1-3h" class="linked" target="_blank">２章 見える化ちゃん</a>」で学べます。<br>内包表記は「<a href="../2/0110list_comprehension.html" class="linked" target="_blank">２章 内包表記</a>」で学べますが、難しくてよくわからない場合はとりあえず例２がわかるくらいでも構いませんし、わからなくてもまだ大丈夫です。👍</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-2')">STEP: 2 九九の表示 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 九九の表示 2</summary>
+<header><h3>九九の表示 2</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+a = []
+for i in range(1, 10):
+    a.append(N * i)
+
+print(*a, sep=' ')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = [N * i for i in range(1, 10)]
+print(*a, sep=' ')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>8 が N になっただけですので、解説は１つ前の「STEP: 2 九九の表示 1」を見て参考にしてください。</p>
+</ul>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-3')">STEP: 3 九九の表示 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>STEP: 4 2 の累乗を表示</summary>
+<header><h3>2 の累乗を表示</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for i in range(1, N+1):
+    print(2**i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for i in range(N):
+    print(2**(i+1))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for i in range(1, N+1):
+    print(pow(2, i))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>累乗(べき乗)は ** という記号を使います。例１はそのままの書き方なのですが、例２は計算時に <code>i</code> に 1 を足しています。<code>i+1</code> に () を付けるのは、足し算よりも累乗のほうが優先順位が高いので、先に <code>i+1</code> を計算しないと誤った答えになってしまうからです。</p>
+<p>例３では累乗を求める<strong class="func">pow()</strong>という関数を使っています。これは第一引数 <code>2</code> の 第二引数 <code>i</code>乗という意味です。</p>
+</ul>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-4')">STEP: 4 2 の累乗を表示</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>FINAL問題 FizzBuzz</summary>
+<header><h3>FizzBuzz</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(1, 101):
+    if i % 3 == 0 and i % 5 == 0:
+        print('FizzBuzz')
+    elif i % 3 == 0:
+        print('Fizz')
+    elif i % 5 == 0:
+        print('Buzz')
+    else:
+        print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この問題は<strong class="for"></strong> と <strong class="if"></strong> の両方がわからないと解けません。<br>解説はすべて「<a href="../1/0080fizzbuzz.html" class="linked" target="_blank">１章 アホとイヌ</a>」に<s>丸投げ</s>同じことが書かれています。</p>
+<P>この問題の書き方がとても親切ですね。😺</P>
+</ul>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-5')">FizzBuzz</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c3')">FizzBuzz</a></footer>
+</details>
+</article>
+</section>
+
+<section>
+<details id="c4"><summary>数列の中に何個ある?</summary>
+<header><h2>数列の中に何個ある?</h2></header>
+
+<article>
+<details id="c4-1"><summary>STEP: 1 数列の最大値</summary>
+<header><h3>数列の最大値</h3></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+print(max(a))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+max_ = -float('inf')
+for i in a:
+    if i > max_:
+        max_ = i
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１が最も簡単な書き方ですが、ここは「ループメニュー」なので繰り返し文を使って解いてみます。</p>
+<p>a = [1, 5, 4, 3, 2] の時</p>
+<table>
+<tbody>
+<tr>
+<td class="text-center">a</td>
+<td></td>
+<td>1</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td class="text-center">2</td>
+</tr>
+<tr>
+<td>max_</td>
+<td>-∞</td>
+<td>1</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td><code class="output">5</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>i</code> と <code>max_</code> を比較し、<code>i</code> が <code>max_</code> より大きかったら <code>max_</code> を <code>i</code> に更新します。最後に <code>max_</code> を画面に出力したら完了です。</p>
+<p><code>max_</code> の初期値を、最小値の <code>-float('inf')</code> −∞ (マイナス無限) にしてあります。条件を見ると 0 〜 100 となっているので <mark>max_ = 0</mark> としてもよいのですが、<code>max_ = -float('inf')</code> とすれば −∞ より小さな値が登場することは有り得ませんので、このほうが確実でなによりどんな条件でも使えてラクです。ついでに憶えてしまいましょう。</p>
+<p>もひとつついでにこんな書き方も出来ます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+max_ = -float('inf')
+for i in a:
+    max_ = max(max_, i)   # ← ココ
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">max()</strong>関数の引数をカンマで区切ると、複数の値から最大値を取得します。<br>この例では、<code>max_</code> と <code>i</code> を比較して、大きい方を <code>max_</code> に代入します。</p>
+<p>この書き方のほうが一般的なので、どんどん使っていきましょう！👍</p>
+<p><strong class="func">max()</strong>関数は「<a href="../2/0040usefullisttype.html#max-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-1')">STEP: 1 数列の最大値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>STEP: 2 数列の最小値</summary>
+<header><h3>数列の最小値</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+print(min(a))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+min_ = float('inf')
+for i in a:
+    if i < max_:
+        max_ = i
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の「数列の最大値」と比較し、例１では今度は<strong class="func">min()</strong>関数を使います。</p>
+<p>例２では、それぞれ「最大値」と「最小値」が逆になります。最小値の初期値が <code>float('int')</code> ∞ (無限) となり、<strong class="if"></strong>文の <code>i</code> と <code>max_</code> を比較する不等号も逆になります。</p>
+<p>これもまた、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">min_ = min(min_, i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>という書き方が出来ます。<strong class="func">max()</strong> と <strong class="func">min()</strong> はセットで憶えてしまいましょう！😼</p>
+<p><strong class="func">min()</strong>関数は「<a href="../2/0040usefullisttype.html#min-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-2')">STEP: 2 数列の最小値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>STEP: 3 数列の何番目にある?</summary>
+<header><h3>数列の何番目にある?</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+a = list(map(int, input().split()))
+print(a.index(1) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+
+for i in range(N):
+    if a[i] == 1:
+        print(i+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１の書き方も出来ますが、ここは「ループメニュー」なので繰り返し文を使って解いてみます。</p>
+<p>例２は <mark>数列a</mark> の先頭から１つずつ <mark>1</mark> を探し、見つけたらその要素 <code>i+1</code> を出力します。問題文に、数列の１つ目の要素が１番目とありますので、<code>i</code> に 1 を足します。</p>
+<p>もう２つ、プログラム例を紹介します。</p>
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+i = 0
+while a[i] != 1:
+    i += 1
+
+print(i+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="if"></strong> の条件式を<strong class="while"></strong> に移しました。その代わり <code>i</code> のカウントを自分で回さないといけなくなります。</p>
+<li><p>例４</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i, n in enumerate(a):
+    if n == 1:
+        print(i+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">enumerate()</strong>関数は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学べます。</p>
+</ul>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-3')">STEP: 3 数列の何番目にある?</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>FINAL問題 数列の中に何個ある?</summary>
+<header><h3>数列の中に何個ある?</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+a = list(map(int, input().split()))
+print(a.count(1))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+
+cnt = 0
+for i in range(N):
+    if a[i] == 1:
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１の書き方も出来ますが、ここは「ループメニュー」なので繰り返し文を使って解いてみます。</p>
+<p>例２ではまず <code>cnt</code> の値を 0 に初期化します。その後、<mark>数列a</mark> の先頭から <mark>1</mark> を探し、見つけたら <code>cnt</code> に 1 を足します。最後まで調べ終えてループを抜けたら、 <code>cnt</code> の値を画面に出力して完了となります。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-4')">FINAL問題 数列の中に何個ある?</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c4')">数列の中に何個ある?</a></footer>
+</details>
+</article>
+</section>
+
+
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>ループメニュー1</p>
+</footer>
+</body>
+</html>

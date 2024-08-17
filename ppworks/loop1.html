@@ -419,7 +419,7 @@ for i, j in zip(a, b):
 </section>
 
 <section>
-<details id="c3"><summary>FizzBuzz</summary>
+<!-- <details id="c3"><summary>FizzBuzz</summary> -->
 <header><h2>FizzBuzz</h2></header>
 
 <article>
@@ -527,7 +527,7 @@ print(*a)
 </article>
 
 <article>
-<details id="c3-4"><summary>STEP: 4 2 の累乗を表示</summary>
+<!-- <details id="c3-4"><summary>STEP: 4 2 の累乗を表示</summary> -->
 <header><h3>2 の累乗を表示</h3></header>
 <ul>
 <li><p>例１</p></li>
@@ -558,7 +558,10 @@ for i in range(1, N+1):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>累乗(べき乗)は ** という記号を使います。例１はそのままの書き方なのですが、例２は計算時に <code>i</code> に 1 を足しています。<code>i+1</code> に () を付けるのは、足し算よりも累乗のほうが優先順位が高いので、先に <code>i+1</code> を計算しないと誤った答えになってしまうからです。</p>
-<p>例３では累乗を求める<strong class="func">pow()</strong>という関数を使っています。これは第一引数 <code>2</code> の 第二引数 <code>i</code>乗という意味です。</p>
+<p>i = 2 の時<br>
+2**(i+1) = <math><msup><mi>2</mi><mn>i+1</mn></msup></math> = <math><msup><mi>2</mi><mn>2+1</mn></msup></math> = <math><msup><mi>2</mi><mn>3</mn></msup></math> = <math><mn>8</mn></math><br>
+2**i+1 = <math><msup><mi>2</mi><mn>i</mn></msup><mi>+1</mi></math> = <math><msup><mi>2</mi><mn>2</mn></msup><mi>+1</mi></math> = <math><mn>4</mn><mi>+</mi><mn>1</mn></math> = <math><mn>5</mn></math></p>
+<p>例３では累乗を求める<strong class="func">pow()</strong>という関数を使っています。これで <code>2</code> の <code>i</code>乗という意味です。</p>
 </ul>
 
 <footer><a class="backto" href="#c3" onclick="closeAccordion('c3-4')">STEP: 4 2 の累乗を表示</a></footer>

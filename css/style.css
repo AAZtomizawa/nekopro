@@ -317,6 +317,8 @@ li.look {
         display:inline-block ;
         position: relative;
 
+        overflow-x: auto;
+
         padding: 25px;
         padding-right: 50px;
 
@@ -550,22 +552,22 @@ li.look {
 
 /* ---------- テーブル ---------- */
 
-table {
-        border-collapse: collapse; /* セルの境界線を結合して1つの線にする */
-        border: 8px double #89bb75;
+div.x-fit {
+    overflow-x: auto;
+}
 
-        background-color: rgb(255, 243, 226);
+table {
+    border-collapse: collapse; /* セルの境界線を結合して1つの線にする */
+    border: 8px double #89bb75;
+    background-color: rgb(255, 243, 226);
 
     }
 
     th, td {
+        white-space: nowrap;
         border: 1px solid #0a8106;
         padding: 8px;
     }
-
-    /* #tableList td:hover {
-        background-color: #00dd007e;
-    } */
 
     th.line {
         background-image: linear-gradient(to right top, transparent calc(50% - 1.0px), #0a8106 50%, #0a8106 calc(50%), transparent calc(50% + 1px))
@@ -733,6 +735,8 @@ a, a:visited {
         margin-inline-start: 14px;
         margin-inline-end: 10px;
 }
+
+
     
     td a.td {
         border: 0;

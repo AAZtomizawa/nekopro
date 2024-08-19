@@ -35,7 +35,7 @@ while True:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>ループする回数が定まっていません。そんな時、<strong class="while"></strong>の出番となります。<br><strong class="while"></strong>は条件式が <strong>True</strong> の時にループします。今回は「-1 が入力されるまで」ということなので「無条件」に <strong>True</strong> としておきます。</p>
+<p>ループする回数が定まっていません。そんな時は<strong class="while"></strong>の出番となります。<br><strong class="while"></strong>は条件式が <strong>True</strong> の時にループします。今回は「-1 が入力されるまで」ということなので「無条件」に <strong>True</strong> としておきます。</p>
 <p>まず数値を画面に出力します。これは <mark>-1</mark> であった場合にも画面に出力しなければならない為、優先して出力します。<br>次にその数が <code>-1</code> の時、ループを抜けてプログラムを終了します。それ以外の時は <code>i</code> に 1 を足してループを続けます。</p>
 <p><code>i += 1</code> を書かないと無限ループしますので注意してください。</p>
 </ul>
@@ -103,7 +103,7 @@ for i in a:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>割り切れる場合は <mark>== 0</mark> となります。i を 3 で割り切れるかどうかの判定の書き方は <code>i % 3 == 0</code> となります。「 <mark>i</mark> を <mark>3</mark> で<mark>割った余り</mark>が <mark>0</mark> の時」です。</p>
+<p>割り切れる場合は <mark>== 0</mark> となります。i を 3 で割り切れるかどうかの条件式の書き方は <code>i % 3 == 0</code> となります。「 <mark>i</mark> を <mark>3</mark> で<mark>割った余り</mark>が <mark>0</mark> の時」です。</p>
 </ul>
 <footer><a class="backto" href="#c1" onclick="closeAccordion('c1-4')">STEP: 4 割り切れる数だけ出力</a></footer>
 </details>
@@ -141,7 +141,7 @@ for i in a:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>奇数(odd オッド)と偶数(even イーブン)の判定を、例１が「奇数の時」、例２が「偶数の時」で行なっています。どちらでも構いませんので、どっちにしようか迷った時は、多用する「 0 の時」(例２)にしておくとよいでしょう。</p>
+<p>奇数(odd オッド)と偶数(even イーブン)の判定を、例１が「奇数の時」、例２が「偶数の時」で行なっています。どちらでも構いませんが、どっちにしようか迷った時は、多用する「 0 の時」(例２)にしておくとよいでしょう。</p>
 </ul>
 <footer><a class="backto" href="#c1" onclick="closeAccordion('c1-5')">FINAL問題 偶奇の判定</a></footer>
 </details>
@@ -399,7 +399,7 @@ print(N_bin)
 <p>これを商が 0 になるまで繰り返し、商が 0 になったらループを抜け、最後に <code>N_bin</code> を画面に出力して完了となります。</p>
 </ul>
 <ul>
-<p>余談ですが、2進数は手でも数えられます。右手のひらを自分に向け、各指を立てた時に 1、折り曲げた時に 0 とすると、親指から順に片手で10進数の 31 まで数えることができます。2進数の数え方を学ぶのに丁度いいので練習してみてください。</p>
+<p>余談ですが、2進数は手でも数えられます。右手のひらを自分に向け、各指を立てた時を 1、折り曲げた時を 0 とすると、親指から順に片手で10進数の 31 まで数えることができます。2進数の数え方を学ぶのに丁度いいので練習してみてください。</p>
 <p>ただこの数え方、人前でやる時は注意してください。4 がヤバい。😅</p>
 </ul>
 <footer><a class="backto" href="#c2" onclick="closeAccordion('c2-5')">STEP: 5 10 進数から 2 進数に変換</a></footer>
@@ -554,7 +554,7 @@ print(n)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>階乗がわからないという場合、まずは「<a href="https://ja.wikipedia.org/wiki/%E9%9A%8E%E4%B9%97" class="linked" target="_blank">階乗 <em>(Wikipedia)</em></a>」を読んでください。と言っても、２行読めばもうわかります。😂</p>
-<p>まず変数 <code>n</code> に入力した <code>N</code> を初期値として代入しておきます。<br>次に N-1 から 2 までを 1 ずつ減らしながら順にループしていきます。1 を掛け算する意味はありませんので、2 まで( <mark>i が 1</mark> になったらストップして直ちにループを抜ける)としています。こうして <code>n</code> と <code>i</code> を掛け算していくと階乗が求められます。</p>
+<p>まず変数 <code>n</code> に、入力した <code>N</code> を初期値として代入しておきます。<br>次に N-1 から 2 までを 1 ずつ減らしながら順にループしていきます。1 で掛け算する意味はありませんので、2 まで( <mark>i が 1</mark> になったらストップして直ちにループを抜ける)としています。こうして <code>n</code> と <code>i</code> を掛け算していくと階乗が求められます。</p>
 <p>N = 5 の時</p>
 <math><mn>5</mn><mo>&#x2715;</mo><mn>4</mn><mo>=</mo><mn>20</mn></math><br>
 <math><mn>20</mn><mo>&#x2715;</mo><mn>3</mn><mo>=</mo><mn>60</mn></math><br>
@@ -598,7 +598,7 @@ print(cnt)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>paiza の解答コード例では前触れ無くいきなり数学的処理を持ち出されてきましたが、この流れで急にそれは無いでしょ！とツッコまれた方も多いことでしょう。Python3 では使用できる数の範囲に制限はありませんが、制限がある言語では巨大な数になる階乗をマトモに計算して扱うことができません。なので必然的に素因数分解とかワケわかめ(死語)なことをして解いているわけです。</p>
-<p>しかしここは「ループメニュー」の趣旨に沿い、使用できる数の範囲に制限の無い Python3 の強みを活かした真っ当なやり方で解いてみましょう。🐍もなかなかやるもんです。それとも🥊のほうかな？</p>
+<p>しかしここは「ループメニュー」の趣旨に沿い、使用できる数の範囲に制限の無い Python3 の強みを活かした真っ当なやり方で解いてみましょう。🐍もなかなかやるもんです。それともヒトのほうかな？</p>
 <p>まず初めに N の階乗を求めます。1つ前の「階乗の計算」と全く同じコードです。</p>
 <p>次に、求めた階乗の計算結果 <code>n</code> の末尾の 0 の個数を数えます。<br><code>n</code> を文字列型に変換し、末尾から 0 の個数をカウント <code>cnt += 1</code> していきます。0 でない数字が見つかったらそこでカウントを終了し、画面に <code>cnt</code> を出力して完了です。</p>
 <p>末尾の 0 の個数を数える方法としてもう１つ、「10 で何回割れるか」をカウントすることでも解けます。</p>
@@ -657,7 +657,7 @@ print(max_)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>i を足した時の i とは、i 番目の i です。１番目から数えるので数列の先頭の数から i(番目) ずつ足していきます。</p>
+<p>「i を足したとき」の i とは、i 番目の i です。１番目から数えるので数列の先頭の数から i(番目) ずつ足していきます。</p>
 <p>a = [8, 9, 3, 8, 3] の時</p>
 <table>
 <tbody>
@@ -670,7 +670,7 @@ print(max_)
 <td class="text-center">5</td>
 </tr>
 <tr>
-<td class="text-center">a</td>
+<td class="text-center">n</td>
 <td>8</td>
 <td class="text-center">9</td>
 <td class="text-center">3</td>
@@ -745,7 +745,7 @@ print(min_)
 <td class="text-center">5</td>
 </tr>
 <tr>
-<td class="text-center">a</td>
+<td class="text-center">n</td>
 <td>8</td>
 <td class="text-center">9</td>
 <td class="text-center">3</td>
@@ -764,9 +764,9 @@ print(min_)
 <td class="text-center">min_</td>
 <td>9</td>
 <td class="text-center">9</td>
-<td class="text-center">9</td>
-<td class="text-center">9</td>
-<td><code class="output">9</code></td>
+<td class="text-center">6</td>
+<td class="text-center">6</td>
+<td><code class="output">6</code></td>
 </tr>
 </tbody>
 </table>
@@ -896,9 +896,9 @@ print(len(nums) + 1)
 <math><mn>10</mn><mo>÷</mo><mn><strong>8</strong></mn><mo>=</mo><mi>1.25</mi></math><br>
 <math><mn>10</mn><mo>÷</mo><mn><strong>9</strong></mn><mo>=</mo><mi>1.11111....</mi></math><br>
 <math><mn>10</mn><mo>÷</mo><mn><strong>10</strong></mn><mo>=</mo><mi>1</mi></math><br>
-<p>6 〜 9 には割り切る整数は存在しません。これが <mark>N = 1000</mark> の時で、<mark>N // 2 = 500</mark> であっても i が 501 〜 999 の間に割り切る整数は存在しないのです。</p>
-<p>その代わりループが半分で止まりますので、N % N = 0 となる N の分を 1 追加します。<code>print(cnt + 1)</code> の <code>+ 1</code> は、この N の分です。</p>
-<p>例３は内包表記で書いてありますが、ただ内包表記で書いたわけではなく、<code>if N % i == 0</code> が <strong>True</strong> の時に要素を <code>1</code> にして、<mark>要素数 = カウント数</mark>としています。<br>また、要素の値が全て 1 なので、これを合計しても求められます。さらに <code>1</code> の数を数えることでも求められますし、<code>1</code> ではなく <code>True</code> でも求められます。</p>
+<p>6 〜 9 には 10 を割り切る整数は存在しません。これが <mark>N = 1000</mark> の時で、<mark>N // 2 = 500</mark> であっても i が 501 〜 999 の間に 1000 を割り切る整数は存在しないのです。</p>
+<p>その代わりループが半分で止まりますので、N % N = 0 となる N の分を 1 加算します。<code>print(cnt + 1)</code> の <code>+ 1</code> は、この N の分です。</p>
+<p>例３は内包表記で書いてありますが、ただ内包表記で書いたわけではなく、<code>if N % i == 0</code> が <strong>True</strong> の時に要素を <code>1</code> にして、<mark>要素数 = カウント回数</mark>としています。<br>また、要素の値が全て 1 なので、これを合計しても求められます。さらに <code>1</code> の数を数えることでも求められますし、<code>1</code> ではなく <code>True</code> にしても求められます。</p>
 </ul>
 <footer><a class="backto" href="#c2" onclick="closeAccordion('c2-14')">STEP: 14 約数の個数</a></footer>
 </details>
@@ -920,7 +920,7 @@ print(N)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>１つ前の問題「約数の個数」の個数を「約数」つまり i を見つけ次第その場で画面に出力していくだけです。</p>
+<p>１つ前の問題「約数の個数」の個数を「約数」、つまり i を見つけ次第その場で画面に出力していくだけです。</p>
 <p>余力があったら他の書き方もしてみてください。いろいろな書き方をしてみることも学習する上で有効な手段です。</p>
 </ul>
 <footer><a class="backto" href="#c2" onclick="closeAccordion('c2-15')">FINAL問題 約数の列挙</a></footer>

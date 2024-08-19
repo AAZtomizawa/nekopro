@@ -263,6 +263,7 @@ print(''.join(S))
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>２行目の標準入力は「<a href="../3/0020input.html#hard-1h" class="linked" target="_blank">３章 標準入力 - 様々な値を任意の型に変換する - リスト内包表記</a>」で学習できます。</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -288,6 +289,7 @@ print(''.join(S))
 </tr>
 </tbody>
 </table>
+</div>
 <p>i が 1 の時がわかりにくいのですが、<mark>[:i-1]</mark> は 1-1=0 で <mark>[0:0]</mark> となりますが、このスライスは 0 〜 -1 になって範囲としてはありえず無効になるので、結果、</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
@@ -734,6 +736,7 @@ print(s)
 </p>
 <p>まず１番からですが、これは簡単に整数部分だけ整数型にすると頭の 0 部分が消えますので、それを文字列型に戻します。浮動小数の場合は小数点以下すべてを整数部分に繋げます。<br>小数点が無い場合(整数)は <code>s[dot_idx:]</code> が <mark>s[-1:]</mark> と無効なスライスになり、<code>''</code> に化けます。結果、エラー無く整数部分のみとなります。</p>
 <p>２番は浮動小数の場合、後ろの余分な 0 を消す為に<strong class="func">.rstrip()</strong>メソッドを使います。</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -750,6 +753,7 @@ print(s)
 </tr>
 </tbody>
 </table>
+</div>
 <p><small>ほとんど使った試しがないので当サイトの学習内容に載せていません。😅<br>詳しく知りたい方はお手数ですが、他のサイトを探してそちらで学んでください。</small><br>要するに<strong class="func">.rstrip()</strong>メソッドを使って末尾の 0 を一気に取り除いています。</p>
 <p>３番は一番左の小数点の位置を <code>dot_idx</code> で憶えておき、<strong class="func">.replace()</strong>メソッドを使って <mark>.</mark> を全て消してから、<code>dot_idx</code> の位置に小数点を付け直すことをしています。<br>一度 <code>dot_idx = s.find(dot)</code> を実行しているのにもう一度ここで実行するのは、先頭の 0 が消された場合に小数点の位置がずれるからです。３番の処理を１番の処理より前に置くと、１番の <code>dot_idx = S.find(dot)</code> が不要になります。</p>
 <p>いろいろなやり方が出来ますので、余力がありましたら是非、他の方法でも書いてみてください。😺</p>
@@ -817,6 +821,7 @@ print(total)
 <!-- ----------------------- code end ----------------------- -->
 <p>ちょっとしたアルゴリズムを使って解いてみます。<br>符号を含めた頭から数となる文字列を区切りながら足し算をしていきます。「数式の計算（ 1 桁）」と同じ様に、マイナスの符号がある場合はマイナスの数を足す、つまり引き算をするということになります。</p>
 <p>S = 123+456+789 の時、</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -863,13 +868,15 @@ print(total)
 </tr>
 </tbody>
 </table>
+</div>
 <p>初めは上の表の様になっています。<br>最初のループ <code>while l < S_len:</code> は、<code>l</code> が文字列の末尾の文字を越えたらループを終了するという意味です。</p>
 <p>次のループ <code>while r < S_len and S[r].isdigit():</code> は、<code>r</code> の位置が
 <ul>
 <li><strong class="b">文字数の範囲内</strong> …… <code>r &lt; S_len</code></li>
 <li><strong class="b">数字</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; …… <code>S[r].isdigit()</code></li>
 </ul>
-    の時には、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
+の時には、<code>r</code> に 1 を足し</strong>て次の文字を調べます。要するに、<code>r</code> は<strong>符号を探している</strong>わけです。</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -916,8 +923,10 @@ print(total)
 </tr>
 </tbody>
 </table>
+</div>
 <p><code>r</code> の位置で符号が見つかった時、そのループを抜けて <mark>S[l:r]</mark> の範囲の文字列 <code>'123'</code> を数値 <code>123</code> に変換し、<code>total</code> にその数を足します。<mark>total = 0 + (123)</mark></p>
 <p>それから <code>l</code> を <code>r</code> の位置に(<mark>l = r</mark>)、<code>r</code> は <code>r</code> に 1 を足した位置に(<mark>r += 1</mark>)、再び初期化します。</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -964,8 +973,10 @@ print(total)
 </tr>
 </tbody>
 </table>
+</div>
 <p>これを繰り返していきます。</p>
 <p>↓</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -1012,8 +1023,10 @@ print(total)
 </tr>
 </tbody>
 </table>
+</div>
 <p><mark>S[l:r] = '+456'</mark><br><mark>total = 123 + (+456) = 579</mark></p>
 <p>↓</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -1060,7 +1073,9 @@ print(total)
 </tr>
 </tbody>
 </table>
+</div>
 <p>↓</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -1110,8 +1125,10 @@ print(total)
 </tr>
 </tbody>
 </table>
+</div>
 <p><code>r</code> は文字数を越えたので、ループを抜けます。(<code>while r &lt; S_len</code>)<br><mark>S[l:r] = '+789'</mark><br><mark>total = 579 + (+789) = 1368</mark></p>
 <p>↓</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -1164,6 +1181,7 @@ print(total)
 </tr>
 </tbody>
 </table>
+</div>
 <p><code>l</code> が <code> S_len = 11</code> 未満ではなくなった(<code>while l &lt; S_len</code>)ので、ここで１つめのループも抜け、<code>total</code> を画面に出力して完了となります。</p>
 <p>長い解説となってしまいましたが、どうでしょ？<br>今後この方法は形を変えながら様々な場面で活躍します。理解するだけでなく、すばやくイメージして感覚として会得できると、今回のような問題に出くわした時に「あ、これはアレが使えそうだ」というひらめきが出来るようになります・・・きっと。😽<br>l と r のように、見えない所でこれらがどう動いているか、その変動をイメージするのはまず理解してからでないと難しいのですが、こういうのに限らず、何度も頑張って書いているうちに、いつの間にか出来るようになっています。いつ、何で急にわかるようになったのかがわからないくらいに、いつの間にか出来るようになっています。</p>
 <p>上の例を見ながらで構いませんので、すべて手打ちしながら今どんなことをしている所を書いているのか考えながら何度も書いてみてください。</p>

@@ -219,6 +219,7 @@ for i, m in enumerate(M, start=1):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>M = [8, 1, 3, 3, 1, 8] の時</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -250,6 +251,7 @@ for i, m in enumerate(M, start=1):
 </tr>
 </tbody>
 </table>
+</div>
 <p>M の １番目は 8 。<mark>8 ✕ 1 =</mark> <code class="output">8</code><br>M の ２番目は 1 。<mark>1 ✕ 2 =</mark> <code class="output">2</code><br>M の ３番目は 3 。<mark>3 ✕ 3 =</mark> <code class="output">9</code><br>M の ４番目は 3 。<mark>3 ✕ 4 =</mark> <code class="output">12</code><br>M の ５番目は 1 。<mark>1 ✕ 5 =</mark> <code class="output">5</code><br>M の ６番目は 8 。<mark>8 ✕ 6 =</mark> <code class="output">48</code><br></p>
 <p><strong class="func">enumerate()</strong>関数を使うとプログラムがすっきりします。<br><strong class="func">enumerate()</strong>関数の使い方は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
 </ul>
@@ -328,6 +330,7 @@ print(N_bin)
 <ul>
 <p>まず「２進数」の説明からします。わかる方は飛ばしてください。</p>
 <p>10進数は一桁の数字が 0 〜 9 で 10個あるので 10進数。<br>2進数は一桁の数字が 0 〜 1 で 2個あるので 2進数。<br>それぞれ最後の数に 1 を足すと 1 繰り上がり、10 となります。この時、10進数では「じゅう」、2進数では「いちぜろ」と読みます。</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -368,6 +371,7 @@ print(N_bin)
 </tr>
 </tbody>
 </table>
+</div>
 <p>この10進数を2進数に手動で変換してくださいということになります。やり方を知らないとわかりませんよね。😅</p>
 </ul>
 <ul>
@@ -462,6 +466,7 @@ print(cnt)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>N = 1 または n = 1<br>M = 3<br>K = 8 の時の <code>cnt</code></p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -505,6 +510,7 @@ print(cnt)
 </tr>
 </tbody>
 </table>
+</div>
 <p>上の表はループ実行時の <code>cnt</code> の値なのですが、<strong class="while"></strong> と <strong class="for"></strong> ではカウントのしかたが異なります。<br><strong class="while"></strong> は M 増えてからカウントし、K を超えた時にループを抜けます。純粋に問題のとおりのプログラムになっています。<br><strong class="for"></strong> は単純に <strong class="func">range()</strong>に指定した引数に応じた<strong>ループの回数</strong>分だけカウントしています。<br>問題文のとおりに捉えると<strong class="while"></strong> のほうがわかりやすいと思われますが、「K を超えるまでのループの回数」と捉えると<strong class="for"></strong> のほうがわかりやすくなると思われます。</p>
 <p>どちらが正しいということはありませんので、その場の流れやお好きなほうでどうぞ。🐱</p>
 </ul>
@@ -659,6 +665,7 @@ print(max_)
 <!-- ----------------------- code end ----------------------- -->
 <p>「i を足したとき」の i とは、i 番目の i です。１番目から数えるので数列の先頭の数から i(番目) ずつ足していきます。</p>
 <p>a = [8, 9, 3, 8, 3] の時</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -695,6 +702,7 @@ print(max_)
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong class="func">enumerate()</strong>関数の使い方は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c2" onclick="closeAccordion('c2-11')">STEP: 11 加算された数列の最大値</a></footer>
@@ -734,6 +742,7 @@ print(min_)
 <!-- ----------------------- code end ----------------------- -->
 <p>i を足した時の i とは、i 番目の i です。１番目から数えるので数列の先頭の数から i(番目) ずつ足していきます。</p>
 <p>a = [8, 9, 3, 8, 3] の時</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -770,6 +779,7 @@ print(min_)
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong class="func">enumerate()</strong>関数の使い方は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c2" onclick="closeAccordion('c2-12')">STEP: 12 加算された数列の最小値</a></footer>
@@ -846,6 +856,7 @@ print(len(nums) + 1)
 <p>例１は、1 〜 N まで順に <mark>N % i</mark> を計算して求めています。言葉どおり順当なやり方です。</p>
 <p>例２は、1 〜 N // 2 までしかループさせていません。これでも正しい結果が求められます。</p>
 <p>N = 10 の時</p>
+<div class="x-fit">
 <table>
 <tbody>
 <tr>
@@ -889,6 +900,7 @@ print(len(nums) + 1)
 </tr>
 </tbody>
 </table>
+</div>
 <p>上の表を見ると、6 〜 9 は ✕ になっています。</p>
 <math><mn>10</mn><mo>÷</mo><mn><strong>5</strong></mn><mo>=</mo><mi>2</mi></math><br>
 <math><mn>10</mn><mo>÷</mo><mn><strong>6</strong></mn><mo>=</mo><mi>1.66666....</mi></math><br>

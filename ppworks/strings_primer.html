@@ -262,7 +262,7 @@ print(''.join(S))
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>２行目の標準入力は「<a href="../3/0020input.html#hard-1h" class="linked" target="_blank">３章 標準入力 - 様々な値を任意の型に変換する - リスト内包表記</a>」で学習できます。</p>
+<p>２行目の標準入力は「<a href="../3/0020input.html#hard-1h" class="linked" target="_blank">３章 標準入力</a>」で学習できます。</p>
 <div class="x-fit">
 <table>
 <tbody>
@@ -1267,7 +1267,9 @@ print(total)
 <!-- ----------------------- code end ----------------------- -->
 <p>筆算と同じ様に、末尾から計算していく方法です。<br>今度は繰り上がりがあります。繰り上がった数の分を <code>d</code> とし、足し算の結果が例えば <code>15</code> の時には <code>d = 1</code> になります。</p>
 <p>この繰り上がり計算を <code>d, m = divmod(tmp, 10)</code> の所で行なっています。</p>
+<div class="x-fit">
 <li class="look text-center"><p><strong>divmod() 関数</strong></p><hr><br>(tmp // 10, tmp % 10)<br>||<br><strong class="func">divmod(tmp, 10)</strong><br><br></li>
+</div>
 <p>足し算した結果を一時的に <code>tmp</code> に入れ、これを<strong class="func">divmod()</strong>にかけると以下のようになります。</p>
 <p><mark>tmp = 15</mark> の時</p>
 <!-- ------------------------- code ------------------------- -->

@@ -43,7 +43,7 @@
 <ul>
 <li><p>文字列は <code>'</code> や <code>"</code> で囲われた文字列が<strong>１つの値</strong>になります。</p></li>
 <li><p>リストのほうは「要素」が０個以上の集まりになっていて、「要素の値」を書き換えることが出来ます。</p></li>
-<li><p>文字列は、<strong>値の一部分だけを指定して書き換えることはできません。</strong></p></li>
+<li><p>文字列は、<strong>値の一部分だけを<wbr>指定して<wbr>書き換えることは<wbr>できません。</strong></p></li>
 <br>
 
 <li>
@@ -188,26 +188,26 @@ print(name)
     </tr>
     <tr>
       <td class="link text-center"><a class="td" href="#-replace-h" onclick="openAccordion('-replace')">.replace()</a></td>
-      <td class="text-center">現文字, 新文字</td>
+      <td class="text-center">現文字, <wbr>新文字</td>
       <td class="text-left">現文字を新文字に全て置き換える</td>
       <td class="text-center">変化なし</td>
     </tr>
     <tr>
       <td class="link text-center"><a class="td" href="#-split-h" onclick="openAccordion('-split')">.split()</a></td>
       <td class="text-center">文字</td>
-      <td class="text-left">( ) 内の文字の所で<strong>左から</strong>区切って、リストに変換する</td>
+      <td class="text-left">( ) 内の文字の所で<strong>左から</strong>区切って、<wbr>リストに変換する</td>
       <td class="text-center"><code>['']</code></td>
     </tr>
     <tr>
       <td class="link text-center"><a class="td" href="#-split-h" onclick="openAccordion('-split')">.rsplit()</a></td>
       <td class="text-center">文字</td>
-      <td class="text-left">( ) 内の文字の所で<strong>右から</strong>区切って、リストに変換する</td>
+      <td class="text-left">( ) 内の文字の所で<strong>右から</strong>区切って、<wbr>リストに変換する</td>
       <td class="text-center"><code>['']</code></td>
     </tr>
     <tr>
       <td class="link text-center"><a class="td" href="#-join-h" onclick="openAccordion('-join')">.join()</a></td>
       <td class="text-center">リスト</td>
-      <td class="text-left">リストの要素を区切り文字を使って接続し、文字列型に変換する。</td>
+      <td class="text-left">リストの要素を区切り文字を使って接続し、<wbr>文字列型に変換する。</td>
     </tr>
     </tbody>
     </table>
@@ -230,12 +230,18 @@ print(name)
 <ul>
 <li>
   <p>要素の場合は、その中の値がどんなに大きな数であっても、どんなに長い文字列であっても「１つの要素」です。<br>
-  <code>[0, float('inf'), '黒猫', '俺の美コードがこんなに見にくいわけがない']</code><br>
+  <div class="x-fit">
+    <code>[0, float('inf'), '黒猫', '俺の美コードがこんなに見にくいわけがない']</code>
+  </div>
+  <br>
   → 要素(値)は４つ</p>
   <p>リストの「要素」は、そのリストの中の「左から何要素目」と１要素(値)ずつ数えます。</p>
 </li>
 <li><p>文字列の場合は、どんなに長い文字列であっても「１つの値」です。<br>
-  <code>'寿限無寿限無五劫の擦り切れ回砂利水魚の・・・'</code><br>
+  <div class="x-fit">
+  <code>'寿限無寿限無五劫の擦り切れ回砂利水魚の・・・'</code>
+  </div>
+  <br>
   → 22文字だけど、値は１つ</p>
   <p>文字列の「位置」は、その値の中の「左から何文字目」と、0文字目から１文字ずつ数えます。</p>
 </li>
@@ -645,7 +651,7 @@ print(idx)
 
 <ul>
 <li>
-  <p>引数の文字が文字列から見つからなかった時、</p>
+  <p>引数の文字が文字列から見つからなかった時、</p></li>
 
   <div class="x-fit">
   <li class="look">
@@ -654,7 +660,6 @@ print(idx)
   </li>
   </div>
 <p>となること以外は同じです。</p>
-</li>
 
 <li>
   <p>エラーメッセージはこんな感じで出てきます。</p>
@@ -895,7 +900,9 @@ text_replaced = 'The government of the cats, by the cats, for the cats.'
 print(text_replaced)
 </code></pre>
 
+<div class="x-fit">
 <code>The government of the cats, by the cats, for the cats.</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -961,7 +968,9 @@ texts = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
 print(texts)
 </code></pre>
 
+<div class="x-fit">
 <code>['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -994,7 +1003,9 @@ texts = ['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']
 print(texts)
 </code></pre>
 
+<div class="x-fit">
 <code>['mouse', 'cow', 'cat', 'rabbit', 'dragon', 'snake']</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1027,7 +1038,9 @@ texts = ['mouse', 'cow', 'cat,rabbit,dragon,snake']
 print(texts)
 </code></pre>
 
+<div class="x-fit">
 <code>['mouse', 'cow', 'cat,rabbit,dragon,snake']</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1075,7 +1088,9 @@ texts = ['mouse cow cat rabbit', 'dragon', 'snake']
 print(texts)
 </code></pre>
 
+<div class="x-fit">
 <code>['mouse cow cat rabbit', 'dragon', 'snake']</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1171,7 +1186,9 @@ text = 'mouse-+-cow-+-cat-+-rabbit-+-dragon-+-snake'
 print(text)
 </code></pre>
 
+<div class="x-fit">
 <code>mouse-+-cow-+-cat-+-rabbit-+-dragon-+-snake</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->

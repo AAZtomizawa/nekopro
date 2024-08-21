@@ -8,13 +8,16 @@
     scrollToTop();
   };
 
-  // トップに戻るボタンの表示・非表示を切り替える関数
+  // ホームに戻るボタン・トップに戻るボタンの表示・非表示を切り替える関数
   function toggleTopButton() {
     let topBtn = document.getElementById("topBtn");
+    let homeBtn = document.getElementById("homeBtn");
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       topBtn.style.display = "block";
+      homeBtn.style.display = "none";
     } else {
       topBtn.style.display = "none";
+      homeBtn.style.display = "block";
     }
   }
 

@@ -52,7 +52,9 @@
 print(nums)
 </code></pre>
 
+<div class="x-fit">
 <code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -120,7 +122,9 @@ for i in range(10):
 print(nums)
 </code></pre>
 
+<div class="x-fit">
 <code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -135,7 +139,9 @@ print(nums)
 print(nums)
 </code></pre>
 
+<div class="x-fit">
 <code>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -217,7 +223,7 @@ print('偶数' if n % 2 == 0 else '奇数')
 
 
 <ul>
-
+	<div class="x-fit">
 	<li class="look">
 		<p class="text-center"><strong class="b">リスト内包表記の書き方</strong></p>
 		<p class="inlook text-center">[<strong>値</strong> for i in <strong>イテラブル</strong>]</p>
@@ -225,6 +231,7 @@ print('偶数' if n % 2 == 0 else '奇数')
 		<p class="inlook text-center">[<strong>値</strong> for i in <strong>イテラブル</strong> if 〔条件式〕]</p>
 		<p><strong>イテラブル</strong><em>(Iterable)</em>を使って、新しいリストを作成します。</p>
 	</li>
+	</div>
 	<p><strong class="for"></strong> や<strong class="if"></strong> の末尾に <code>:</code> は<strong>不要です。</strong></p>
 
 <br>
@@ -271,12 +278,13 @@ print('偶数' if n % 2 == 0 else '奇数')
 
 
 <ul>
+<div class="x-fit">
 <li class="look">
 	<p class="inlook text-center">[<strong>値</strong> for i in <strong>イテラブル</strong>]</p>
 	<p class="inlook text-center">(<strong>値</strong> for i in <strong>イテラブル</strong>)</p>
 	<p class="inlook text-center">{<strong>値</strong> for i in <strong>イテラブル</strong>}</p>
 </li>
-
+</div>
 <li>
 	<p>↓これは <code>nums = list(range(10))</code> と同等です。</p>
 
@@ -288,7 +296,9 @@ print('偶数' if n % 2 == 0 else '奇数')
 print(nums)
 </code></pre>
 
+<div class="x-fit">
 <code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -306,7 +316,9 @@ print(nums)
 print(nums)
 </code></pre>
 
+<div class="x-fit">
 <code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -325,7 +337,9 @@ new_lst = [s + '!' for s in lst]
 print(new_lst)
 </code></pre>
 
+<div class="x-fit">
 <code>['旋風乱舞!', '風の太刀!', '烈風!']</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -394,12 +408,14 @@ print(ziped_lst)
 
 
 <ul>
+<div class="x-fit">
 <li class="look">
 	<p class="inlook text-center">[<strong>値1</strong> <strong style="color:magenta">if 〔条件式〕 else</strong> <strong>値2</strong> <strong style="color:blue">for i in イテラブル</strong>]</p>
 	<p><strong>値1</strong>は〔条件式〕が <strong>True</strong> の時、<br>
 		<strong>値2</strong>は〔条件式〕が <strong>False</strong> の時に選ばれます。</p>
 	<p>それを<strong class="for"></strong> の分だけ繰り返します。</p>
 </li>
+</div>
 <p><strong class="if"></strong>文は、<strong class="for"></strong>文の<strong>前</strong>に置きます。</p>
 
 <li><p>従来の書き方と比較してみます。</p>
@@ -421,8 +437,9 @@ for i in nums:
 print(odd_even)
 </code></pre>
 
-
+<div class="x-fit">
 <code>['偶数', '奇数', '偶数', '奇数', '偶数', '奇数']</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -438,7 +455,9 @@ odd_even = ['偶数' if i % 2 == 0 else '奇数' for i in nums]
 print(odd_even)
 </code></pre>
 
+<div class="x-fit">
 <code>['偶数', '奇数', '偶数', '奇数', '偶数', '奇数']</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -478,6 +497,7 @@ print(odd_even)
 
 
 <ul>
+<div class="x-fit">
 <li class="look">
 	<p class="inlook text-center">[<strong>値1</strong><strong class="if"></strong><strong style="color:darkmagenta">〔条件式&alpha;〕</strong>else <strong>値2</strong><strong class="if"></strong><strong style="color:darkolivegreen">〔条件式&beta;〕</strong>else <strong>値3</strong><br>
 		<strong class="for"></strong> i in イテラブル]</p>
@@ -486,6 +506,7 @@ print(odd_even)
 		<strong>値3</strong>は<strong class="b" style="color:darkolivegreen">〔条件式&beta;〕</strong>が <strong>False</strong> の時に選ばれます。</p>
 	<p>それを<strong class="for"></strong> の分だけ繰り返します。</p>
 </li>
+</div>
 <p><strong class="if"></strong>文は、<strong class="for"></strong>文の<strong>前</strong>に置きます。<br>
 	elif ではなく、<mark>else 〔値〕<strong class="if"></strong></mark> になります。</p>
 <br>
@@ -511,8 +532,9 @@ for i in range(1, 101):
 print(fizzbuzz)
 </code></pre>
 
-
+<div class="x-fit">
 <code>[・・(略) 11, 'アホ', 13, 14, 'アホイヌ', 16 ・・(略)]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -557,7 +579,9 @@ print(fizzbuzz)
 print(fizzbuzz)
 </code></pre>
 
+<div class="x-fit">
 <code>[・・(略) 11, 'アホ', 13, 14, 'アホイヌ', 16 ・・(略)]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -598,11 +622,13 @@ print(fizzbuzz)
 
 
 <ul>
+	<div class="x-fit">
 	<li class="look">
 		<p class="inlook text-center">[<strong>値</strong><strong class="for" style="color:blue"> i in イテラブル</strong> <strong class="if" style="color:magenta">〔条件式〕</strong>]</p>
 		<p><strong class="if"></strong> の条件式が <strong>True</strong> の時だけ値を作ります。</p>
 		<p>条件式が <strong>False</strong> の時の値は無視されます。</p>
 	</li>
+	</div>
 <p>今度は<strong class="for"></strong>文の<strong>後ろ</strong>に、<strong class="if"></strong>文を置きます。</p>
 <p>「<strong style="color:blue">i</strong> をリストの値として作るでしょう。そう、<strong class="if" style="color:magenta"> True</strong>ならね。」</p>
 <br>
@@ -701,11 +727,12 @@ print(even_nums)
 
 
 <ul>
+<div class="x-fit">
 <li class="look">
 	<p class="inlook text-center">{<strong>キー: 値</strong> <strong class="for"></strong> i in <strong>イテラブル</strong>}</p>
 	<p class="inlook text-center">{<strong>キー: 値</strong> <strong class="for"></strong> key, value in <strong>二次元リスト等</strong>}</p>
 </li>
-
+</div>
 <li><p>辞書は内包表記よりも <strong class="func">dict()</strong> を使うほうが便利です。</p></li>
 <li><p>ただし、まったく内包表記は使わないかというとそうでもありません。</p></li>
 <br>
@@ -721,7 +748,9 @@ swapped_dic = {v: k for k, v in dic.items()}
 print(swapped_dic)
 </code></pre>
 
+<div class="x-fit">
 <code>{97: 'a', 98: 'b', 99: 'c'}</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -740,7 +769,9 @@ names_money = {name: 0 for name in names}
 print(names_money)
 </code></pre>
 
+<div class="x-fit">
 <code>{'ゆるめ': 0, 'サエ': 0, 'くみ': 0, '松吉': 0}</code><br>
+</div>
 
 <details class="sample-code"><summary></summary>それぞれをコピペして試してみよう！
   <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
@@ -776,6 +807,7 @@ print(names_money)
 
 
 <ul>
+<div class="x-fit">
 <li class="look">
 	<p class="text-center"><strong>dict(イテラブル)</strong></p>
 	<p class="inlook text-center">dict(<strong>[</strong><strong style="color:blue">[</strong>キー1, 値1<strong style="color:blue">]</strong>, <strong style="color:blue">[</strong>キー2, 値2<strong style="color:blue">]</strong>, ・・<strong>]</strong>)</p>
@@ -783,7 +815,7 @@ print(names_money)
 	<p class="inlook text-center">dict(<strong>{</strong>キー1: 値1, キー2: 値2, ・・<strong>}</strong>)</p>
 	<p>キーと値のペアが１つの要素になっていれば辞書に変換できます。</p>
 </li>
-
+</div>
 <li><p><strong class="func">dict()</strong>は既存のイテラブルを使って辞書を作るのに役立ちます。</p></li>
 <li><p><strong class="func">zip()</strong>の感じに似ていて、<strong class="func">dict()</strong>では<mark>(要素1, 要素2)</mark>のペアで辞書を作ります。</p></li>
 </ul>
@@ -821,7 +853,9 @@ dic = dict(regions)
 print(dic)
 </code></pre>
 
+<div class="x-fit">
 <code>{'北海道': 1, '四国': 4, '九州': 7}</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -889,7 +923,9 @@ dic = {'北海道': 1, '四国': 4, '九州': 7}
 print(dic)
 </code></pre>
 
+<div class="x-fit">
 <code>{'北海道': 1, '四国': 4, '九州': 7}</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -913,8 +949,10 @@ print(dic)
 print(regions)
 </code></pre>
 
+<div class="x-fit">
 <code>{'北海道': 1, '四国': 4, '九州': 7, '東北': 6}</code><br>
 <code>{'北海道': 1, '四国': 4, '九州': 7}</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -990,12 +1028,13 @@ print(regions)
 
 <ul>
 	<li><p><strong class="func">any()</strong> と <strong class="func">all()</strong> の ( ) の中でも<strong>内包表記</strong>がよく使われます。</p></li>
+	<div class="x-fit">
 	<li class="look">
 		<p class="inlook text-center"><strong>any(イテラブル)</strong></p>
 		<p>( ) 内に <strong>True</strong> がある時、<strong>True</strong> を返します。<br>
 			全ての要素を <strong>or</strong> で繋げて評価にかけるのと同じ考え方です。</p>
 	</li>
-
+	</div>
 <li><p>どういう事かと言うと、</p>
 
 	
@@ -1093,13 +1132,14 @@ else:
 
 
 <ul>
+<div class="x-fit">
 <li class="look">
 	<p class="inlook text-center"><strong>all(イテラブル)</strong></p>
 	<p>( ) 内のイテラブルの要素全てが <strong>True</strong> の時、<strong>True</strong> を返します。</p>
 	<p>１つでも <strong>False</strong> がある場合は <strong>False</strong> を返します。<br>
 	全ての要素を <strong>and</strong> で繋げて評価にかけるのと同じ考え方です。</p>
 </li>
-
+</div>
 <li><p>これもどういう事かと言うと、</p>
 
 
@@ -1256,8 +1296,9 @@ print('偶数' if n % 2 == 0 else '奇数')  # ← これ
 <pre><code class="language-python">names = ['ゆるめ', 'サエ', 'くみ', '松吉']
 print(name for name in names)
 </code></pre>
-
+<div class="x-fit">
 <code>&lt;generator object &lt;genexpr&gt; at 0x154e7876dac0&gt;</code><br>
+</div>
 </div>
 <!-- ----------------------- code end ----------------------- -->
 

@@ -47,11 +47,11 @@
   <li><p>しかし辞書には<strong>キー</strong>と<strong>値</strong>の２つがあり、さらにその２つをペアとした「<strong>要素</strong>」があります。</trong></p></li>
   <li><p>要素とキーを扱うのは比較的簡単です。リストと似ています。</p></li>
   <li><p>キーが持つ値にアクセスするのも簡単です。添字にキーを使えばアクセスできます。</p></li>
-
+    <div class="x-fit">
     <li class="look">
       <p>&nbsp;&nbsp;しかし値だけを使って辞書をどうこうしようとするとこれが一筋縄ではいかず、<br>方法を知らずに操作しようとするとエラーメッセージのオンパレードとなること<br>間違いなしです。いやホントに。</p>
     </li>
-
+    </div>
   <li><p>ネットで探しまくってもなかなか良質な情報が見つけられずに苦労した点なども含めて解説していきます。</p></li>
   <li><p>のっけから沈んだ雰囲気になってしまって申し訳なし！！🤸</p></li>
 </ul>
@@ -470,12 +470,12 @@ print(sorted_samples)
 <ul>
 <li>
 <p>辞書にキーがある時はキーの値を返します。<strong>ない時は初期値を返します。</strong></p>
-
+  <div class="x-fit">
   <li class="look">
     <p class="text-center">基本スタイル</p>
     <p class="inlook">辞書[キー] = <strong>辞書.get(キー, 初期値)</strong> + 値</p>
   </li>
-
+  </div>
 <p>『辞書の中に目的のキーがあれば<strong>キーの値</strong>を返し、<mark>無ければ<strong>初期値</strong>を返す</mark>』。最後に『<strong>化けた値</strong>に値を足して要素を上書き(追加)する』ということをする文です。</p>
 <p>赤い部分が最終的に<strong>キーの値、または初期値</strong>に化けます。</p>
 </li>
@@ -677,12 +677,12 @@ print(cnts)
 <ul>
 <li>
 <p>辞書にキーがある時はキーの値を返します。<strong>無い時は <mark>{キー: 初期値}</mark> を辞書に追加し、初期値を返します。</strong></p>
-
+  <div class="x-fit">
   <li class="look">
     <p class="text-center">基本スタイル</p>
     <p class="inlook">辞書[キー] = <strong>辞書.setdefault(キー, 初期値)</strong> + 値</p>
   </li>
-
+  </div>
 <p>『辞書の中に目的のキーがあれば<strong>キーの値</strong>を返し、無ければ <mark>{キー: 初期値}</mark> で新しく要素を作って<strong>初期値</strong>を返す』。最後に『<strong>化けた値</strong>に値を足して要素を上書きする』ということをする文です。</p>
 <p><mark>辞書[キー] =</mark> の代入に使うと<strong class="func">.get()</strong>と同じ結果になります。</p>
 </li>
@@ -996,7 +996,7 @@ print(dic)
 <ul>
 <li><p><mark>辞書.items()</mark> で <mark>(キー, 値)</mark>をペアとしたタプルのリストを作成し、<mark>key=関数</mark> に従ってソートします。</p>
 <p><code>[(キー, 値), (キー, 値), (キー, 値), ・・]</code></p></li>
-
+  <div class="x-fit">
   <li class="look">
     <p class="text-center">無名関数 <strong>lambda</strong> (ラムダ) でソートする</p>
     <p class="text-center inlook">lambda x:(x[1], x[0])<br>
@@ -1008,7 +1008,7 @@ print(dic)
     <p>最初の表に記した『ターゲット』というのが、この添字部分の要素です。</p>
     <br>
   </li>
-
+  </div>
 <li><p>細かいことを言うと、<code>key=</code> の部分も引数です。( ) の中身は全て引数。<br>
   <small>※ これについては、この先の関数を学ぶところですべてがわかるようになります。もうしばらくお待ちください。まだ知らなくても、使わなくても困らないものは全部後回し！</small></p></li>
 <li><p><code>key=</code> はオプションで、省略できます。</p></li>

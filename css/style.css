@@ -483,6 +483,7 @@ li.look {
 
 :not(pre) > code, .cmt {
     white-space: nowrap; 
+    overflow-x: auto;
 
     font-family: 'Consolas','Monaco','Andale Mono','Ubuntu Mono',monospace;
     font-size: 14px;
@@ -501,6 +502,7 @@ li.look {
         display:inline-block;
         max-width: fit-content;
         white-space: nowrap; 
+        overflow-x: auto; 
 
         font-family: 'Consolas','Monaco','Andale Mono','Ubuntu Mono',monospace;
         font-size: 14px;
@@ -517,6 +519,7 @@ li.look {
 
     div.grid-output {
         display: grid;
+        overflow-x: auto; 
         grid-template-columns: min-content auto;
         /* grid-template-rows: repeat(1, 1fr); */
     
@@ -524,6 +527,9 @@ li.look {
     
         grid-column-gap: 16px;
         grid-row: 2px;
+    }
+    div.grid-output > span {
+        white-space: nowrap;
     }
 
 

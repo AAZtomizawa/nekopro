@@ -149,13 +149,18 @@ sisters = minna_mike.items()
 print(sisters)
 </code></pre>
 
+<div class="x-fit">
 <code>dict_items([('ハルカ', '高校生'), ('カナ', '中学生'), ('チアキ', '小学生')])</code><br>
+</div>
+
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
   <br>
   <p><strong class="func">print()</strong>で見ると <code>dict_items()</code> と表示されますが、</p>
+  <div class="x-fit">
   <p><code class="output">[('ハルカ', '高校生'), ('カナ', '中学生'), ('チアキ', '小学生')]</code><br></code></p>
+  </div>
   <p>として使えます。</p>
   <p>初め見た時は「何これ？何でこうなるの？これどうやって消すの？」と混乱しました。😅</p>
 </li>
@@ -256,7 +261,9 @@ sisters = minna_mike.keys()
 print(sisters)
 </code></pre>
 
+<div class="x-fit">
 <code>dict_keys(['ハルカ', 'カナ', 'チアキ'])</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -377,7 +384,10 @@ sisters = minna_mike.values()
 print(sisters)
 </code></pre>
 
+<div class="x-fit">
 <code>dict_values(['高校生', '中学生', '小学生'])</code><br>
+</div>
+
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
@@ -469,7 +479,7 @@ print(sorted_samples)
 
 <ul>
 <li>
-<p>辞書にキーがある時はキーの値を返します。<strong>ない時は初期値を返します。</strong></p>
+<p>辞書にキーがある時はキーの値を返します。<strong>ない時は初期値を返します。</strong></p></li>
   <div class="x-fit">
   <li class="look">
     <p class="text-center">基本スタイル</p>
@@ -478,7 +488,6 @@ print(sorted_samples)
   </div>
 <p>『辞書の中に目的のキーがあれば<strong>キーの値</strong>を返し、<mark>無ければ<strong>初期値</strong>を返す</mark>』。最後に『<strong>化けた値</strong>に値を足して要素を上書き(追加)する』ということをする文です。</p>
 <p>赤い部分が最終的に<strong>キーの値、または初期値</strong>に化けます。</p>
-</li>
 </ul>
 
 <ul>
@@ -676,7 +685,7 @@ print(cnts)
 
 <ul>
 <li>
-<p>辞書にキーがある時はキーの値を返します。<strong>無い時は <mark>{キー: 初期値}</mark> を辞書に追加し、初期値を返します。</strong></p>
+<p>辞書にキーがある時はキーの値を返します。<strong>無い時は <mark>{キー: 初期値}</mark> を辞書に追加し、初期値を返します。</strong></p></li>
   <div class="x-fit">
   <li class="look">
     <p class="text-center">基本スタイル</p>
@@ -685,7 +694,6 @@ print(cnts)
   </div>
 <p>『辞書の中に目的のキーがあれば<strong>キーの値</strong>を返し、無ければ <mark>{キー: 初期値}</mark> で新しく要素を作って<strong>初期値</strong>を返す』。最後に『<strong>化けた値</strong>に値を足して要素を上書きする』ということをする文です。</p>
 <p><mark>辞書[キー] =</mark> の代入に使うと<strong class="func">.get()</strong>と同じ結果になります。</p>
-</li>
 
 <li><p><strong class="func">.get()</strong>と異なる点は、「キーが無かったら 『<strong>その場で！</strong>』<mark>{キー: 初期値}</mark> を<strong>辞書に追加する</strong>」ことを、このメソッドがすることです。<br>
   (<strong class="func">.get()</strong>は、ただ初期値を返すだけ)</p></li>
@@ -834,7 +842,7 @@ print(cats)
 </ul>
 
 <ul>
-<li><p>具体的にどう使い分ければよいかというと、微妙な差なのですが、キーが辞書に無かった時、 <strong class="func">.setdefault()</strong>は<strong>このメソッドだけで新しく <mark>{キー: 値}</mark> を追加します。</strong></p></li>
+<li><p>具体的にどう使い分ければよいかというと、微妙な差なのですが、キーが辞書に無かった時、 <strong class="func">.setdefault()</strong>は<strong>このメソッドだけで新しく <wbr><mark>{キー: 値}</mark> を追加します。</strong></p></li>
 <p><strong class="func">.get()</strong>は初期値を返すのみです。</p>
 <li><p>繰り返し説明になりましたが、要素をその場で作ってしまうかどうかの違いだけなのです。</p></li>
 <li><p>結局のところ、要素を新しく作っても、既存の要素を使っても、値に化けたら代入処理をしないといけませんので<strong class="func">.get()</strong>と同じ使い方になってしまいます。</p></li>
@@ -902,7 +910,10 @@ for name in names:
 print(dic)
 </code></pre>
 
+<div class="x-fit">
 <code>{'ミケ': 2, 'トラ': 1, 'タマ': 1, 'うめ': 1, 'もも': 1}</code><br>
+</div>
+
 </div>
 <!-- ----------------------- code end ----------------------- -->
 
@@ -994,9 +1005,12 @@ print(dic)
 
 
 <ul>
-<li><p><mark>辞書.items()</mark> で <mark>(キー, 値)</mark>をペアとしたタプルのリストを作成し、<mark>key=関数</mark> に従ってソートします。</p>
-<p><code>[(キー, 値), (キー, 値), (キー, 値), ・・]</code></p></li>
-  <div class="x-fit">
+<li><p><mark>辞書.items()</mark> で <mark>(キー, 値)</mark>をペアとしたタプルのリストを作成し、<mark>key=関数</mark> に従ってソートします。</p></li>
+<div class="x-fit">
+<p><code>[(キー, 値), (キー, 値), (キー, 値), ・・]</code></p>
+</div>
+
+<div class="x-fit">
   <li class="look">
     <p class="text-center">無名関数 <strong>lambda</strong> (ラムダ) でソートする</p>
     <p class="text-center inlook">lambda x:(x[1], x[0])<br>
@@ -1020,7 +1034,7 @@ print(dic)
 
 <ul>
 <li><p>もし <strong class="b">x[1]</strong> が同じ値だった時には、次に <strong class="b">x[0]</strong> でソートします。</p>
-<li><p>これは「<strong>もし同点(値)だったら名前順(キー)で順位を決める</strong>」という場面などで使えます。<small>なんて理不尽な・・・。</small></p></li>
+<li><p>これは「<strong>もし同点(値)だったら<wbr>名前順(キー)で順位を決める</strong>」という場面などで使えます。<small>なんて理不尽な・・・。</small></p></li>
 <p><code>'name': point</code> の場合、</p>
   <p>点が高い順なので降順でソート -x[1]<br>
     ↓ 同点ならば<br>
@@ -1030,7 +1044,9 @@ print(dic)
 <br>
 
 <li><p>書かれている添字は何かというと、<strong class="func">.items()</strong> が化けた形が</p>
+<div class="x-fit">
 <p>例）<code>[('ハルカ', 90), ('カナ', 20), ('チアキ', 80)]</code></p>
+</div>
 <p>となっていて、タプル内のそれぞれの要素番号を示しているものです。</p></li>
 <li><p><code>('ハルカ', 90)</code> では、</p>
 <p><code>x[0] = 'ハルカ'</code><br>
@@ -1118,7 +1134,9 @@ sorted_kisaragi = [('alice', 100), ('rokugou', 6), ('snow', 6)]
 print(sorted_kisaragi)
 </code></pre>
 
+<div class="x-fit">
 <code>[('alice', 100), ('rokugou', 6), ('snow', 6)]</code><br>
+</div>
 
 <details class="sample-code"><summary></summary>
   <iframe src="https://paiza.io/projects/e/c2Am3yoyn-U9Y1bblxpAwQ?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
@@ -1179,7 +1197,9 @@ sorted_kisaragi = sorted(kisaragi.items(), reverse=True)
 print(sorted_kisaragi)
 </code></pre>
 
+<div class="x-fit">
 <code>[('snow', 6), ('rokugou', 6), ('alice', 100)]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1199,7 +1219,9 @@ sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(x[1], x[0]), reverse=Tr
 print(sorted_kisaragi)
 </code></pre>
 
+<div class="x-fit">
 <code>[('alice', 100), ('snow', 6), ('rokugou', 6)]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1219,7 +1241,9 @@ sorted_kisaragi = sorted(kisaragi.items(), key=lambda x: x[1], reverse=True)
 print(sorted_kisaragi)
 </code></pre>
 
+<div class="x-fit">
 <code>[(0, 'snow'), (2, 'rokugou'), (1, 'alice')]</code><br>
+</div>
 
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1246,7 +1270,9 @@ sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(-x[1][0], x[1][1], x[0]
 print(sorted_kisaragi)
 </code></pre>
 
+<div class="x-fit">
 <code>[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code><br>
+</div>
 
 <details class="sample-code"><summary></summary>刮目せよ・・・💤
   <iframe src="https://paiza.io/projects/e/aOKpRQHQFDn4o-iWVRT-4g?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
@@ -1277,7 +1303,9 @@ sorted_kisaragi = sorted(kisaragi.items(), key=lambda x:(-x[1], -x[0][1], x[0][0
 print(sorted_kisaragi)
 </code></pre>
 
+<div class="x-fit">
 <code>[(('alice', 100), 200), (('rokugou', 6), 100), (('snow', 6), 19)]</code><br>
+</div>
 
 <details class="sample-code"><summary></summary>刮目せよ・・・💤
   <iframe src="https://paiza.io/projects/e/TY8WXdnOncl30tVvvC6s2A?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
@@ -1376,7 +1404,9 @@ sorted_kisaragi.sort(key=lambda x:x[1][0], reverse=True)
 print(sorted_kisaragi)
 </code></pre>
 
+<div class="x-fit">
 <code>[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code><br>
+</div>
 
 <details class="sample-code"><summary></summary>慣れる為にも自分で打ち込んでみよう！コピペでもOK！
   <iframe src="https://paiza.io/projects/e/qd1ewnZ_TCUCOKxRBzOceA?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
@@ -1429,7 +1459,9 @@ print(sorted_kisaragi)
 
 
 <p><mark>kisaragi.items()</mark> の中身</p>
+<div class="x-fit">
 <p><code>[('snow', [6, 19]), ('alice', [100, 200]), ('rokugou', [6, 100])]</code></p>
+</div>
 <br>
 
 
@@ -1679,8 +1711,9 @@ print(elem_sum)
 <li><p>リスト・タプル同様、辞書も <strong>in</strong> が使えます。</p></li>
 <li><p>ただし、辞書を直接 <strong>in</strong> で探すのではなく<strong class="func">.keys()</strong><strong class="func">.values()</strong>を使います。</p></li>
 <li><p>つまり、<strong>キーや値がリストに変換されて</strong>から、そのリストの中から目標の値を探す流れになります。</p>
-  <p><code>['snow', 'alice', 'rokugou']</code> <strong class="func">.keys()</strong></p>
-
+  <div class="x-fit">
+  <p style="white-space: nowrap;"><code>['snow', 'alice', 'rokugou']</code> <strong class="func">.keys()</strong></p>
+  </div>
 
 <!-- ------------------------- code ------------------------- -->
 <div>
@@ -1722,7 +1755,7 @@ else:
 
 <li>
 	<p><strong class="func">.items()</strong>で要素ごと探す時は ( ) でタプルにします。</p>
-	<p><code>[('snow', 19), ('alice', 200), ('rokugou', 100)]</code> <strong class="func">.items()</strong></p>
+	<p style="white-space: nowrap;"><code>[('snow', 19), ('alice', 200), ('rokugou', 100)]</code> <strong class="func">.items()</strong></p>
 
 
 <!-- ------------------------- code ------------------------- -->

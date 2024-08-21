@@ -222,7 +222,7 @@
 <ul>
 <li><p>「なんで range(5) なのに 5 で終わらないの？」・・・説明しよう！</p>
 
-
+  <div class="x-fit">
   <li class="look">
     <p class="inlook">range({スタートの数,} <stronng>ストップする数</stronng>{, ステップする数})</p>
 
@@ -231,6 +231,7 @@
     ステップする数を省略すると 1 になる。<br>
     ステップは「いくつ跳びにする」ということです。<br></p>
   </li>
+  </div>
                     
 
 <p>つまり</p>
@@ -343,10 +344,11 @@
 <li><p>条件式とは、<strong class="if"></strong>文で使った <code>a == 3</code> みたいなアレです。</p></li>
 <li><p>もし <code>a = 3</code> の時、<code>a == 3</code> が化けて、<code>True</code> になりますね。</p></li>
 
-
+  <div class="x-fit">
   <li class="look">
     <p>『条件式の結果が <strong>True の間</strong>、<br>繰り返してほしいプログラムを<strong>ずっと繰り返す</strong>』のが<br><strong class="while"></strong>文の特徴となります。</p>
   </li>
+  </div>
 
 <li>
   <p>なので、安易にこんなことをしてはいけません。</p>
@@ -406,17 +408,20 @@ while cnt &lt; 5:
 <li>
   <p><strong>for</strong>文と違う点は次のとおりです。</p>
 
-
+  <div class="x-fit">
   <li class="look">
       <p><strong>for</strong>文は、繰り返す回数が決まっているので勝手に止まってくれます。<br>
       <strong class="while"></strong>文の繰り返しは、意識して止めなければなりません。</p>
   </li>
+  </div>
 
 <p>なので、</p>
 
+  <div class="x-fit">
   <li class="look">
       <p>中で <code>cnt += 1</code> を書いて <code>cnt</code> を <code>1</code> ずつ足していかないと、<br>いつまでも <code>cnt</code> が <code>0</code> のままで<strong>止まらなくなってしまいます。</strong></p>
   </li>
+  </div>
 </li>
 
 <p>そういう意味で「<strong class="b">取扱注意</strong>」なのです。</p>

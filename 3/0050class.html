@@ -659,10 +659,11 @@ akari = Student('あかり', '赤座', 7, 24)
 <p>で、「赤座あかり」という生徒をクラスに迎い入れます。</p>
 </li>
 <li><p><code>Student</code> クラスの<strong>コンストラクタ(__init__)</strong>に、生徒のそれぞれの情報を引数として渡します。</p></li>
-
+  <div class="x-fit">
   <li class="look">
     <p><strong>コンストラクタ</strong>は、インスタンスを新しく作る際に<strong>一番最初に、<wbr>一度だけ、<wbr>必ず実行される</strong>メソッドです。</p>
   </li>
+  </div>
 <li><p> <code>self</code> というのが、インスタンス「自身」を指しています。<br>
     インスタンス自身というのが、<strong>あかりちゃん自身</strong>です。(以降あかり)</p>
 </li>
@@ -794,10 +795,12 @@ akari = Student('あかり')
 <li><p><code>Student('あかり')</code> の第一引数 <code>'あかり'</code> は、そのまま <code>__init__(self, name)</code> の第二引数 <code>name</code> に直結しています。</p>
 </li>
 <br>
+<div class="x-fit">
 <li class="look">
   <p>厳密に言うと、第一引数の <strong>self</strong> は、<strong class="b">引数ではありません。</strong><br>
     よって、第二引数と呼んでいた <code>name</code> が本当の第一引数となります。</p>
 </li>
+</div>
   <p>だから <strong>self</strong> のせいでずれていても正しく動くのです。</p>
   <p><small>※ ただし便宜上、今後も self の位置を第一引数と呼ばせていただきます。</small></p>
 </ul>

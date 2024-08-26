@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/prism_coy.css">
+<script type="text/javascript" src='../js/prism.js'></script>
+<script type="text/javascript" src='../js/custom.js'></script>
+<title>【paiza問題集 解説】ループメニュー2</title>
+<div class="homebtn"><a href="./" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>ループメニュー2</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>偶奇の判定</summary>
+<header><h2>偶奇の判定</h2></header>
+
+<article>
+<details id="c1-1"><summary>STEP: 1 未知数個の数の受け取り</summary>
+<header><h3>未知数個の数の受け取り</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = list(map(int, input().split()))
+
+i = 0
+while True:
+    print(a[i])
+    if a[i] == -1:
+        break
+    i += 1  # ← これを忘れずに！
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ループする回数が定まっていません。そんな時は<strong class="while"></strong>の出番となります。<br><strong class="while"></strong>は条件式が <strong>True</strong> の時にループします。今回は「-1 が入力されるまで」ということなので「無条件」に <strong>True</strong> としておきます。</p>
+<p>まず数値を画面に出力します。これは <mark>-1</mark> であった場合にも画面に出力しなければならない為、優先して出力します。<br>次にその数が <code>-1</code> の時、ループを抜けてプログラムを終了します。それ以外の時は <code>i</code> に 1 を足してループを続けます。</p>
+<p><code>i += 1</code> を書かないと無限ループしますので注意してください。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-1')">STEP: 1 未知数個の数の受け取り</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 未知数個の文字列の受け取り</summary>
+<header><h3>未知数個の文字列の受け取り</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input().split()
+
+i = 0
+while True:
+    print(s[i])
+    if s[i] == 'EOF':
+        break
+    i += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の「未知数個の数の受け取り」の数が文字列になっただけで、ほとんど同じです。一応見比べてみて納得したら次の問題に移りましょう。😸</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-2')">STEP: 2 未知数個の文字列の受け取り</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 奇数だけ出力</summary>
+<header><h3>奇数だけ出力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i in a:
+    if i % 2 == 1:
+        print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>奇数の判定は <code>i % 2 == 1</code> で出来ます。憶えておきましょう。<br>偶数の判定は <code>i % 2 == 0</code> で出来ます。これも憶えておきましょう。</p>
+<p>日常では「余りの計算」を必要とすることはそうあるものではありませんが、プログラミングではかなり使います。特に「余りが 0 の時」という判定を使います。算数でも特に割り算が苦手という方は、割り算の商と余りを同時に計算してくれる<strong class="func">divmod()</strong>関数が便利ですので、これを使えるようになると理解の助けとなる上にラクでオススメです。👍</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-3')">STEP: 3 奇数だけ出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>STEP: 4 割り切れる数だけ出力</summary>
+<header><h3>割り切れる数だけ出力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i in a:
+    if i % 3 == 0:
+        print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>割り切れる場合は <mark>== 0</mark> となります。i を 3 で割り切れるかどうかの条件式の書き方は <code>i % 3 == 0</code> となります。「 <mark>i</mark> を <mark>3</mark> で<mark>割った余り</mark>が <mark>0</mark> の時」です。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-4')">STEP: 4 割り切れる数だけ出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>FINAL問題 偶奇の判定</summary>
+<header><h3>偶奇の判定</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i in a:
+    if i % 2 == 1:
+        print('odd')
+    else:
+        print('even')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i in a:
+    if i % 2 == 0:
+        print('even')
+    else:
+        print('odd')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>奇数(odd オッド)と偶数(even イーブン)の判定を、例１が「奇数の時」、例２が「偶数の時」で行なっています。どちらでも構いませんが、どっちにしようか迷った時は、多用する「 0 の時」(例２)にしておくとよいでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-5')">FINAL問題 偶奇の判定</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c1')">偶奇の判定</a></footer>
+</details>
+</article>
+</section>
+
+<section>
+<details id="c2"><summary>約数の列挙</summary>
+<header><h2>約数の列挙</h2></header>
+
+<article>
+<details id="c2-1"><summary>STEP: 1 各桁の和</summary>
+<header><h3>各桁の和</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = input()
+
+sum_ = 0
+for i in N:
+    sum_ += int(i)
+
+print(sum_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>早い話が一桁ずつ数を足していってその合計を求めなさいということです。<br><mark>12345</mark> の時は <mark>1 + 2 + 3 + 4 + 5</mark> の合計をプログラムで書いて求めます。<br><code>N</code> を<strong class="for"></strong>文にかけて１つずつ足していくだけです。その際、<code>N</code> は文字列となっていますので、<strong class="func">int()</strong>で数値に変換してから計算にかけます。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-1')">STEP: 1 各桁の和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 カウント変数を使った計算</summary>
+<header><h3>カウント変数を使った計算</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+M = list(map(int, input().split()))
+
+i = 1
+while i <= N:
+    print(M[i-1] * i)
+    i += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+M = list(map(int, input().split()))
+
+for i in range(N):
+    print(M[i] * (i+1))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+M = list(map(int, input().split()))
+
+for i, m in enumerate(M, start=1):
+    print(m * i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>M = [8, 1, 3, 3, 1, 8] の時</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td class="text-center">M</td>
+<td class="text-center">8</td>
+<td class="text-center">1</td>
+<td class="text-center">3</td>
+<td class="text-center">3</td>
+<td class="text-center">1</td>
+<td class="text-center">8</td>
+</tr>
+<tr>
+<td class="text-center">i</td>
+<td class="text-center">1</td>
+<td class="text-center">2</td>
+<td class="text-center">3</td>
+<td class="text-center">4</td>
+<td class="text-center">5</td>
+<td class="text-center">6</td>
+</tr>
+<tr>
+<td>M_i * i</td>
+<td><code class="output">8</code></td>
+<td><code class="output">2</code></td>
+<td><code class="output">9</code></td>
+<td><code class="output">12</code></td>
+<td><code class="output">5</code></td>
+<td><code class="output">48</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>M の １番目は 8 。<mark>8 ✕ 1 =</mark> <code class="output">8</code><br>M の ２番目は 1 。<mark>1 ✕ 2 =</mark> <code class="output">2</code><br>M の ３番目は 3 。<mark>3 ✕ 3 =</mark> <code class="output">9</code><br>M の ４番目は 3 。<mark>3 ✕ 4 =</mark> <code class="output">12</code><br>M の ５番目は 1 。<mark>1 ✕ 5 =</mark> <code class="output">5</code><br>M の ６番目は 8 。<mark>8 ✕ 6 =</mark> <code class="output">48</code><br></p>
+<p><strong class="func">enumerate()</strong>関数を使うとプログラムがすっきりします。<br><strong class="func">enumerate()</strong>関数の使い方は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-2')">STEP: 2 カウント変数を使った計算</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 2 で何回割れる？</summary>
+<header><h3>2 で何回割れる？</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+cnt = 0
+while n % 2 == 0:
+    n //= 2
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ループする回数が定まっていませんので、<strong class="while"></strong>文を使います。<br>ループを終了する条件を <mark>2 で割り切れなくなった時</mark> に設定します。逆に言うと 2 で割れる間はループしますので、<code>n</code> を <code>2</code> で割り、<code>cnt</code> を 1 増やします。</p>
+<p>2 で割り切れなくなった所でループを抜け、<code>cnt</code> の値を画面に出力して完了です。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-3')">STEP: 3 2 で何回割れる？</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>STEP: 4 任意の数で何回割れる?</summary>
+<header><h3>任意の数で何回割れる?</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, M = map(int, input().split())
+
+cnt = 0
+while n % M == 0:
+    n //= M
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の問題「2 で何回割れる？」の 2 が任意の数 <code>M</code> になっただけです。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-4')">STEP: 4 任意の数で何回割れる?</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-5"><summary>STEP: 5 10 進数から 2 進数に変換</summary>
+<header><h3>10 進数から 2 進数に変換</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = input()
+
+N_bin = ''
+d = int(N)
+while d > 0:
+    d, m = divmod(d, 2)
+    N_bin = str(m) + N_bin
+
+print(N_bin)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>突然、難易度が跳ね上がりました。10進数から 2進数への変換方法がわからないと詰んでしまう難問です。😅</p>
+</ul>
+<ul>
+<p>まず「２進数」の説明からします。わかる方は飛ばしてください。</p>
+<p>10進数は一桁の数字が 0 〜 9 で 10個あるので 10進数。<br>2進数は一桁の数字が 0 〜 1 で 2個あるので 2進数。<br>それぞれ最後の数に 1 を足すと 1 繰り上がり、10 となります。この時、10進数では「じゅう」、2進数では「いちぜろ」と読みます。</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td class="text-center">10進数</td>
+<td class="text-center">2進数</td>
+</tr>
+<tr>
+<td class="text-center">0</td>
+<td class="text-center">0</td>
+</tr>
+<tr>
+<td class="text-center">1</td>
+<td class="text-center">1</td>
+</tr>
+<tr>
+<td class="text-center">2</td>
+<td class="text-center">10</td>
+</tr>
+<tr>
+<td class="text-center">3</td>
+<td class="text-center">11</td>
+</tr>
+<tr>
+<td class="text-center">4</td>
+<td class="text-center">100</td>
+</tr>
+<tr>
+<td class="text-center">5</td>
+<td class="text-center">101</td>
+</tr>
+<tr>
+<td class="text-center">6</td>
+<td class="text-center">110</td>
+</tr>
+<tr>
+<td class="text-center">7</td>
+<td class="text-center">111</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>この10進数を2進数に手動で変換してくださいということになります。やり方を知らないとわかりませんよね。😅</p>
+</ul>
+<ul>
+<p>10進数の 4 を 2進数に変換してみます。初めに 4 を 2 で割ります。</p>
+<p>4 // 2 = <span style="background-color:chartreuse;">2</span> 余り <mark>0</mark><br><span style="background-color:chartreuse;">2</span> // 2 = <span style="background-color:cyan;">1</span> 余り <mark>0</mark><br><span style="background-color:cyan;">1</span> // 2 = <span style="background-color:aliceblue;">0</span> 余り <mark>1</mark><br></p>
+<p>商が <span style="background-color:aliceblue;">0</span> になったら終了です。この時の余りが 2進数となります。<br>余りを上から見ていくと、2進数の一桁目から現れています。これを横にすると <mark>100</mark> (いちぜろぜろ)となります。</p>
+</ul>
+<ul>
+<p>本題に入ります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = input()
+
+N_bin = ''
+d = int(N)
+while d > 0:
+    d, m = divmod(d, 2)
+    N_bin = str(m) + N_bin
+
+print(N_bin)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>このプログラム例は 2進数の一桁目から順に計算しています。<code>d</code> が商、<code>m</code> が余りです。<br>まず入力した文字列を整数型に変換して <code>d</code> に代入して初期化します。<br>それから、<code>d</code> が 0 になったら計算終了なので、<strong class="while"></strong>の条件式は <code>d > 0</code> にします。<code>d</code> が 0 より大きい間( 0 にならない間)、ループし続けます。</p>
+<p><code>d, m = divmod(d, 2)</code> の<strong class="func">divmod(d, 2)</strong>は、<code>d</code> を <code>2</code> で割った<strong>商(d // 2)</strong>と<strong>余り(d % 2)</strong>をそれぞれ計算し、<strong>(商, 余り)</strong>となって返ります。<br>商は <code>d</code> に、余りは <code>m</code> に、つまり</p>
+<p>d = <strong>商</strong><br>m = <strong>余り</strong></p>
+<p>とそれぞれ代入されます。<br><small>※ この代入の仕方を「アンパック代入」といいますが、今は憶えなくて構いません。</small></p>
+<p>この余りの <code>m</code> を <code>N_bin</code> に格納します。一桁目から計算しているので、<code>str(m) + N_bin</code> の順番で繋げます。</p>
+<p>これを商が 0 になるまで繰り返し、商が 0 になったらループを抜け、最後に <code>N_bin</code> を画面に出力して完了となります。</p>
+</ul>
+<ul>
+<p>余談ですが、2進数は手でも数えられます。右手のひらを自分に向け、各指を立てた時を 1、折り曲げた時を 0 とすると、親指から順に片手で10進数の 31 まで数えることができます。2進数の数え方を学ぶのに丁度いいので練習してみてください。</p>
+<p>ただこの数え方、人前でやる時は注意してください。4 がヤバい。😅</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-5')">STEP: 5 10 進数から 2 進数に変換</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-6"><summary>STEP: 6 10 進数から M 進数に変換</summary>
+<header><h3>10 進数から M 進数に変換</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M = map(int, input().split())
+
+N_bin = ''
+d = int(N)
+while d > 0:
+    d, m = divmod(d, M)
+    N_bin = str(m) + N_bin
+
+print(N_bin)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の「10 進数から 2 進数に変換」の 2進数が M 進数になったものです。<br>変換方法は全く同じで、2 を M に変えるだけです。以上！</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-6')">STEP: 6 10 進数から M 進数に変換</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-7"><summary>STEP: 7 N が M ずつ増えたときにいつ K を越える？</summary>
+<header><h3>N が M ずつ増えたときにいつ K を越える？</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, M, K = map(int, input().split())
+
+cnt = 0
+while n <= K:
+    n += M
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M, K = map(int, input().split())
+
+cnt = 0
+for n in range(N, K+1, M):
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>N = 1 または n = 1<br>M = 3<br>K = 8 の時の <code>cnt</code></p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<th class="line text-center"><span style="vertical-align: -0.9em; color:blue;">cnt</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">n</span></th>
+<th style="background-color: lightpink;">1</th>
+<th style="background-color: lightpink;">2</th>
+<th style="background-color: lightpink;">3</th>
+<th style="background-color: lightpink;">4</th>
+<th style="background-color: lightpink;">5</th>
+<th style="background-color: lightpink;">6</th>
+<th style="background-color: lightpink;">7</th>
+<th style="background-color: lightpink;">8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+<tr>
+<td><strong class="while"></strong></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td class="text-center">2</td>
+<td></td>
+<td></td>
+<td class="text-center"><code class="output">3</code></td>
+</tr>
+<tr>
+<td><strong class="for"></strong></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>2</td>
+<td></td>
+<td></td>
+<td><code class="output">3</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>上の表はループ実行時の <code>cnt</code> の値なのですが、<strong class="while"></strong> と <strong class="for"></strong> ではカウントのしかたが異なります。<br><strong class="while"></strong> は M 増えてからカウントし、K を超えた時にループを抜けます。純粋に問題のとおりのプログラムになっています。<br><strong class="for"></strong> は単純に <strong class="func">range()</strong>に指定した引数に応じた<strong>ループの回数</strong>分だけカウントしています。<br>問題文のとおりに捉えると<strong class="while"></strong> のほうがわかりやすいと思われますが、「K を超えるまでのループの回数」と捉えると<strong class="for"></strong> のほうがわかりやすくなると思われます。</p>
+<p>どちらが正しいということはありませんので、その場の流れやお好きなほうでどうぞ。🐱</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-7')">STEP: 7 N が M ずつ増えたときにいつ K を越える？</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-8"><summary>STEP: 8 毎日増加するお金</summary>
+<header><h3>毎日増加するお金</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, B = map(int, input().split())
+
+cnt = 0
+while a <= B:
+    a = int(a * 1.1)
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の問題「N が M ずつ増えたときにいつ K を越える？」と考え方は同じです。その為、プログラムもほぼ同じ書き方になっています。</p>
+<p>注意点は、問題文にある「増加するお金は小数点以下切り捨てで考えることとします。」とありますので、<code>a = int(a * 1.1)</code> で計算後ごとに小数点以下を切り捨てて整数化しなければいけないところです。</p>
+<p>10% ずつ増えるということは、お金が 100% → 110% になるということです。110% = 1.1 なので、1.1 で掛け算しています。<br><code>110%</code> という書き方はできません。% は割り算した余りを計算する算術演算子ですので「110 ÷ ・・・何？」と解釈されて文法エラーになります。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-8')">STEP: 8 毎日増加するお金</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-9"><summary>STEP: 9 階乗の計算</summary>
+<header><h3>階乗の計算</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+n = N
+for i in range(N-1, 1, -1):
+    n *= i
+
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>階乗がわからないという場合、まずは「<a href="https://ja.wikipedia.org/wiki/%E9%9A%8E%E4%B9%97" class="linked" target="_blank">階乗 <em>(Wikipedia)</em></a>」を読んでください。と言っても、２行読めばもうわかります。😂</p>
+<p>まず変数 <code>n</code> に、入力した <code>N</code> を初期値として代入しておきます。<br>次に N-1 から 2 までを 1 ずつ減らしながら順にループしていきます。1 で掛け算する意味はありませんので、2 まで( <mark>i が 1</mark> になったらストップして直ちにループを抜ける)としています。こうして <code>n</code> と <code>i</code> を掛け算していくと階乗が求められます。</p>
+<p>N = 5 の時</p>
+<math><mn>5</mn><mo>&#x2715;</mo><mn>4</mn><mo>=</mo><mn>20</mn></math><br>
+<math><mn>20</mn><mo>&#x2715;</mo><mn>3</mn><mo>=</mo><mn>60</mn></math><br>
+<math><mn>60</mn><mo>&#x2715;</mo><mn>2</mn><mo>=</mo><mn>120</mn></math><br>
+<math><mn>120</mn><mo>&#x2715;</mo><mn>1</mn><mo>=</mo><mn>120</mn></math> ← 意味ない<br>
+</math>
+<div class="x-fit">
+<li class="look">
+<p class="inlook">range({スタートの数,} <strong>ストップする数</strong>{, ステップする数})</p>
+
+<p>{} の部分は省略できる。<br>
+スタートの数を省略すると 0 になる。<br>
+ステップする数を省略すると 1 になる。<br>
+ステップは「いくつ跳びにする(増分)」ということです。<br></p>
+</li>
+</div>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-9')">STEP: 9 階乗の計算</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-10"><summary>STEP: 10 階乗の末尾に 0 はいくつ付く？</summary>
+<header><h3>階乗の末尾に 0 はいくつ付く？</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+n = N
+for i in range(N-1, 1, -1):
+    n *= i
+
+n = str(n)
+i = len(n) - 1
+cnt = 0
+while n[i] == '0':
+    cnt += 1
+    i -= 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>paiza の解答コード例では前触れ無くいきなり数学的処理を持ち出されてきましたが、この流れで急にそれは無いでしょ！とツッコまれた方も多いことでしょう。Python3 では使用できる数の範囲に制限はありませんが、制限がある言語では巨大な数になる階乗をマトモに計算して扱うことができません。なので必然的に素因数分解とかワケわかめ(死語)なことをして解いているわけです。</p>
+<p>しかしここは「ループメニュー」の趣旨に沿い、使用できる数の範囲に制限の無い Python3 の強みを活かした真っ当なやり方で解いてみましょう。🐍もなかなかやるもんです。それともヒトのほうかな？</p>
+<p>まず初めに N の階乗を求めます。1つ前の「階乗の計算」と全く同じコードです。</p>
+<p>次に、求めた階乗の計算結果 <code>n</code> の末尾の 0 の個数を数えます。<br><code>n</code> を文字列型に変換し、末尾から 0 の個数をカウント <code>cnt += 1</code> していきます。0 でない数字が見つかったらそこでカウントを終了し、画面に <code>cnt</code> を出力して完了です。</p>
+<p>末尾の 0 の個数を数える方法としてもう１つ、「10 で何回割れるか」をカウントすることでも解けます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+n = N
+for i in range(N-1, 1, -1):
+    n *= i
+
+cnt = 0
+while n % 10 == 0:
+    n //= 10
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この問題集の流れからみて、こちらのほうがよりよい解答でしょう。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-10')">STEP: 10 階乗の末尾に 0 はいくつ付く？</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-11"><summary>STEP: 11 加算された数列の最大値</summary>
+<header><h3>加算された数列の最大値</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+
+max_ = -float('inf')
+for i in range(N):
+    max_ = max(max_, a[i] + i+1)
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+max_ = -float('inf')
+for i, n in enumerate(a, start=1):
+    max_ = max(max_, n + i)
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「i を足したとき」の i とは、i 番目の i です。１番目から数えるので数列の先頭の数から i(番目) ずつ足していきます。</p>
+<p>a = [8, 9, 3, 8, 3] の時</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td>i(番目)</td>
+<td class="text-center">1</td>
+<td class="text-center">2</td>
+<td class="text-center">3</td>
+<td class="text-center">4</td>
+<td class="text-center">5</td>
+</tr>
+<tr>
+<td class="text-center">n</td>
+<td>8</td>
+<td class="text-center">9</td>
+<td class="text-center">3</td>
+<td class="text-center">8</td>
+<td class="text-center">3</td>
+</tr>
+<tr>
+<td class="text-center">n + i</td>
+<td>9</td>
+<td>11</td>
+<td class="text-center">6</td>
+<td>12</td>
+<td class="text-center">8</td>
+</tr>
+<tr>
+<td class="text-center">max_</td>
+<td>9</td>
+<td>11</td>
+<td>11</td>
+<td>12</td>
+<td><code class="output">12</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong class="func">enumerate()</strong>関数の使い方は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-11')">STEP: 11 加算された数列の最大値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-12"><summary>STEP: 12 加算された数列の最小値</summary>
+<header><h3>加算された数列の最小値</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a = list(map(int, input().split()))
+
+min_ = float('inf')
+for i in range(N):
+    min_ = min(min_, a[i] + i+1)
+
+print(min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+min_ = float('inf')
+for i, n in enumerate(a, start=1):
+    min_ = min(min_, n + i)
+
+print(min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>i を足した時の i とは、i 番目の i です。１番目から数えるので数列の先頭の数から i(番目) ずつ足していきます。</p>
+<p>a = [8, 9, 3, 8, 3] の時</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td>i(番目)</td>
+<td class="text-center">1</td>
+<td class="text-center">2</td>
+<td class="text-center">3</td>
+<td class="text-center">4</td>
+<td class="text-center">5</td>
+</tr>
+<tr>
+<td class="text-center">n</td>
+<td>8</td>
+<td class="text-center">9</td>
+<td class="text-center">3</td>
+<td class="text-center">8</td>
+<td class="text-center">3</td>
+</tr>
+<tr>
+<td class="text-center">n + i</td>
+<td>9</td>
+<td>11</td>
+<td class="text-center">6</td>
+<td>12</td>
+<td class="text-center">8</td>
+</tr>
+<tr>
+<td class="text-center">min_</td>
+<td>9</td>
+<td class="text-center">9</td>
+<td class="text-center">6</td>
+<td class="text-center">6</td>
+<td><code class="output">6</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong class="func">enumerate()</strong>関数の使い方は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-12')">STEP: 12 加算された数列の最小値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-13"><summary>STEP: 13 1 はどこにある？</summary>
+<header><h3>1 はどこにある？</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+for i, n in enumerate(a, start=1):
+    if n == 1:
+        print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数列の先頭から 1 を探していき、見つけたらそれが何番目の 1 かを画面に出力していく流れです。１番目から数えるので、<code>start=1</code> にします。</p>
+<p><strong class="func">enumerate()</strong>関数の使い方は「<a href="../2/0040usefullisttype.html#enumerate-h" class="linked" target="_blank">２章 リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-13')">STEP: 13 1 はどこにある？</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-14"><summary>STEP: 14 約数の個数</summary>
+<header><h3>約数の個数</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+cnt = 0
+for i in range(1, N+1):
+    if N % i == 0:
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+cnt = 0
+for i in range(1, N//2 + 1):
+    if N % i == 0:
+        cnt += 1
+
+print(cnt + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+nums = [1 for i in range(1, N//2 + 1) if N % i == 0]
+
+print(len(nums) + 1)
+#print(sum(nums) + 1)
+#print(nums.count(1) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「 N を割り切る整数」とは、<mark>N % i == 0</mark> が <strong>True</strong> になる i のことです。1 〜 N の中に <strong>True</strong> になる i がいくつあるかを求めるプログラムを書きましょうというのがこの問題です。</p>
+<p>例１は、1 〜 N まで順に <mark>N % i</mark> を計算して求めています。言葉どおり順当なやり方です。</p>
+<p>例２は、1 〜 N // 2 までしかループさせていません。これでも正しい結果が求められます。</p>
+<p>N = 10 の時</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td class="text-center">i</td>
+<td class="text-center">1</td>
+<td class="text-center">2</td>
+<td class="text-center">3</td>
+<td class="text-center">4</td>
+<td class="text-center">5</td>
+<td class="text-center">6</td>
+<td class="text-center">7</td>
+<td class="text-center">8</td>
+<td class="text-center">9</td>
+<td class="text-center">10</td>
+</tr>
+<tr>
+<td class="text-center">N % i</td>
+<td class="text-center">0</td>
+<td class="text-center">0</td>
+<td class="text-center">1</td>
+<td class="text-center">2</td>
+<td class="text-center">0</td>
+<td class="text-center">4</td>
+<td class="text-center">3</td>
+<td class="text-center">2</td>
+<td class="text-center">1</td>
+<td class="text-center">0</td>
+</tr>
+<tr>
+<td class="text-center"><strong>True?</strong></td>
+<td>○</td>
+<td>○</td>
+<td>✕</td>
+<td>✕</td>
+<td>○</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>○</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>上の表を見ると、6 〜 9 は ✕ になっています。</p>
+<math><mn>10</mn><mo>÷</mo><mn><strong>5</strong></mn><mo>=</mo><mi>2</mi></math><br>
+<math><mn>10</mn><mo>÷</mo><mn><strong>6</strong></mn><mo>=</mo><mi>1.66666....</mi></math><br>
+<math><mn>10</mn><mo>÷</mo><mn><strong>7</strong></mn><mo>=</mo><mi>1.42857142857....</mi></math><br>
+<math><mn>10</mn><mo>÷</mo><mn><strong>8</strong></mn><mo>=</mo><mi>1.25</mi></math><br>
+<math><mn>10</mn><mo>÷</mo><mn><strong>9</strong></mn><mo>=</mo><mi>1.11111....</mi></math><br>
+<math><mn>10</mn><mo>÷</mo><mn><strong>10</strong></mn><mo>=</mo><mi>1</mi></math><br>
+<p>6 〜 9 には 10 を割り切る整数は存在しません。これが <mark>N = 1000</mark> の時で、<mark>N // 2 = 500</mark> であっても i が 501 〜 999 の間に 1000 を割り切る整数は存在しないのです。</p>
+<p>その代わりループが半分で止まりますので、N % N = 0 となる N の分を 1 加算します。<code>print(cnt + 1)</code> の <code>+ 1</code> は、この N の分です。</p>
+<p>例３は内包表記で書いてありますが、ただ内包表記で書いたわけではなく、<code>if N % i == 0</code> が <strong>True</strong> の時に要素を <code>1</code> にして、<mark>要素数 = カウント回数</mark>としています。<br>また、要素の値が全て 1 なので、これを合計しても求められます。さらに <code>1</code> の数を数えることでも求められますし、<code>1</code> ではなく <code>True</code> にしても求められます。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-14')">STEP: 14 約数の個数</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-15"><summary>FINAL問題 約数の列挙</summary>
+<header><h3>約数の列挙</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+for i in range(1, N//2 + 1):
+    if N % i == 0:
+        print(i)
+
+print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の問題「約数の個数」の個数を「約数」、つまり i を見つけ次第その場で画面に出力していくだけです。</p>
+<p>余力があったら他の書き方もしてみてください。いろいろな書き方をしてみることも学習する上で有効な手段です。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-15')">FINAL問題 約数の列挙</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c2')">約数の列挙</a></footer>
+</details>
+</article>
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>ループメニュー2</p>
+</footer>
+</body>
+</html>

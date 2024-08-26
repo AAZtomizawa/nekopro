@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/prism_coy.css">
+<script type="text/javascript" src='../js/prism.js'></script>
+<script type="text/javascript" src='../js/custom.js'></script>
+<title>【paiza問題集 解説】データセット選択メニュー</title>
+<div class="homebtn"><a href="./" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>データセット選択メニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>動的配列</summary>
+<header><h2>動的配列</h2></header>
+
+<article>
+<details id="c1-1"><summary>STEP: 1 ランダムアクセス</summary>
+<header><h3>ランダムアクセス</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, M = map(int, input().split())
+A = list(map(int, input().split()))
+print(A[M-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>M番目というのは、1 から数えて M番目ということです。リストの要素番号は 0 から数える為、M から 1 を引かなければなりません。</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td class="text-center">M番目</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="text-center">要素番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-1')">STEP: 1 ランダムアクセス</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 複数回のランダムアクセス</summary>
+<header><h3>複数回のランダムアクセス</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = list(map(int, input().split()))
+_ = input()
+B = list(map(int, input().split()))
+
+for i in B:
+    print(A[i-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>B をイテラブルとして<strong class="for"></strong>にかけると B_i番目が順に得られるようになります。</p>
+<p>B_i番目というのは、1 から数えて i番目ということです。リストの要素番号は 0 から数える為、i から 1 を引かなければなりません。</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td class="text-center">M番目</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="text-center">要素番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-2')">STEP: 2 複数回のランダムアクセス</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 最大値と最小値</summary>
+<header><h3>最大値と最小値</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A, B, C = map(int, input().split())
+print(max(A, B, C) - min(A, B, C))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = list(map(int, input().split()))
+print(max(nums) - min(nums))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>便利な関数を使います。</p>
+<dl>
+<dt>max(データ)</dt><dd>データの中から最大値を取得します。</dd>
+<dt>min(データ)</dt><dd>データの中から最小値を取得します。</dd>
+</dl>
+<p><strong>(A, B, C の最大値) - (A, B, C の最小値)</strong> が、例１のプログラムで求められます。</p>
+<p>max(A, B, C) を max([A, B, C]) とリスト化しても同様の結果が得られます。(例２)</p>
+<p>単に最大値と最小値を求めて計算するだけなので、tuple() や set() を使ってもかまいません。</p>
+<li><p>タプル</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = tuple(map(int, input().split()))
+print(max(nums) - min(nums))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>セット</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = set(map(int, input().split()))
+print(max(nums) - min(nums))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-3')">STEP: 3 最大値と最小値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>FINAL問題 動的配列</summary>
+<header><h3>動的配列</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, Q = map(int, input().split())
+A = list(map(int, input().split()))
+
+for _ in range(Q):
+    query = list(map(int, input().split()))
+
+    if query[0] == 0:
+        A.append(query[1])
+    elif query[0] == 1:
+        A.pop()
+    else:
+        print(*A)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>query = list(map(int, input().split()))</code> の所で、要素数が不規則(動的配列)でも、とりあえずまるごとリスト化して変数(query)に収めます。</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td>query[0]</td>
+<td>0 (push_back)<br>1 (pop_back)<br>2 (print)<br>の、いずれかの数値が入っている</td>
+</tr>
+<tr>
+<td>query[1]</td>
+<td>push_back の時<strong>だけ</strong>、x が入っている</td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl>
+<dt><mark>query[0]</mark> が 0 の時</dt>
+<dd>リストA の末尾に値を追加する <strong class="func">.append()</strong>メソッドを使います。<br>ここで <code>query[1]</code> の値 x を、リストA の末尾に追加します。</dd>
+<dt><mark>query[0]</mark> が 1 の時</dt>
+<dd>リストA の末尾の要素を削除する為に、リストの末尾の要素を取り出す <strong class="func">.pop()</strong>メソッドを使います。<code>del A[-1]</code> でも末尾の要素を削除できます。</dd>
+<dt><mark>query[0]</mark> が 2 の時</dt>
+<dd>リストA のリストをアンパック(展開)して画面に出力します。<br><br>例）A = [1, 2, 3, 10, 12] の時<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(*A)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(*[1, 2, 3, 10, 12])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(1, 2, 3, 10, 12)
+</code></pre>
+<code>1 2 3 10 12</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</dd>
+</dl>
+<p>以上を与えられた操作回数(Q)分を<strong class="for"></strong>で繰り返します。</p>
+</ul>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1-4')">FINAL問題 動的配列</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c1')">動的配列</a></footer>
+</details>
+</article>
+</section>
+
+<section>
+<details id="c2"><summary>文字列の配列</summary>
+<header><h2>文字列の配列</h2></header>
+
+<article>
+<details id="c2-1"><summary>STEP: 1 とても大きな数値の入力</summary>
+<header><h3>とても大きな数値の入力</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = input()
+print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>「とても大きな数値 N が与えられます。」と言いつつ、<strong class="func">print()</strong>の出力は文字列となるので、標準入力を文字列で受け取り、<strong>そのまま文字列で出力</strong>すればOKのようです。</p>
+<p>Python3 で数を扱う場合、実質 -∞ 〜 ∞ の範囲で扱えるため、<strong class="func">int(input())</strong> としても問題ありませんが、<strong class="func">print()</strong> で文字列に変換されて出力されるので無駄となってしまいます。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-1')">STEP: 1 とても大きな数値の入力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 とても小さな数値の入力</summary>
+<header><h3>とても小さな数値の入力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = input()
+print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「とても小さな数値 N が与えられます。」と言いつつ、<strong class="func">print()</strong>の出力は文字列となるので、標準入力を文字列で受け取り、<strong>そのまま文字列で出力</strong>すればOKのようです。</p>
+<br>
+<p>整数の場合は扱える値に上限下限はありませんが、小数の場合は注意がいります。</p>
+<p>浮動小数は、<strong>扱える桁数に限りがあります。</strong></p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = 1.234567890123456789
+print(N)
+</code></pre>
+<code>1.2345678901234567</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(10 / 3)
+</code></pre>
+<code>3.3333333333333335</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最後の 5 ってなんだよ...。😂</p>
+<p>コンピュータは小数の扱いが苦手なので気をつけてくださいね。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-2')">STEP: 2 とても小さな数値の入力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>FINAL問題 文字列の配列</summary>
+<header><h3>文字列の配列</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">H, _, r, c = map(int, input().split())
+S = [input() for _ in range(H)]
+
+if S[r-1][c-1] == '#':
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">H, _, r, c = map(int, input().split())
+S = [input() for _ in range(H)]
+
+print('Yes' if S[r-1][c-1] == '#' else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題文で説明されていないのですが、r は「Row (行)」、c は「Column (列)」のことで、(縦, 横)、つまり <mark>S[r][c]</mark> となります。</p>
+<p>これも直接問題文には書かれていないのですが、「条件」の所を見ると、r c 共に 1 以上とあります。リストの要素番号も文字列の位置番号も共に 0 から始まりますので、変数 <code>r</code> と <code>c</code> のそれぞれから 1 を引きます。</p>
+<p>その位置が # なら 'Yes'、そうでないなら 'No' を出力するということになります。</p>
+</ul>
+
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2-3')">FINAL問題 文字列の配列</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c2')">文字列の配列</a></footer>
+</details>
+</article>
+</section>
+
+<section>
+<details id="c3"><summary>商品の検索</summary>
+<header><h2>商品の検索</h2></header>
+
+<article>
+<details id="c3-1"><summary>STEP: 1 数値の出現率</summary>
+<header><h3>数値の出現率</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+A = list(map(int, input().split()))
+
+nums = [0] * 10
+for i in A:
+    nums[i] += 1
+
+print(*nums)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>0 以上 9 以下 ということは、要素番号 0 から始まるリストをそのまま使えます。<br>出現した数を要素番号に紐付けて、要素の値を出現回数にするとシンプルなプログラムになります。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-1')">STEP: 1 数値の出現率</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 英小文字の出現率</summary>
+<header><h3>英小文字の出現率</h3></header>
+<ul>
+<li><p>リストを使う場合</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+S = input()
+
+counts = [0] * 26
+for s in S:
+    counts[ord(s)-97] += 1
+
+print(*counts)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<li><p>辞書を使う場合</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+S = input()
+
+alphabets = {chr(i+97): 0 for i in range(26)}
+
+for s in S:
+    alphabets[s] += 1
+
+print(*alphabets.values())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>辞書を使うほうが簡単ですが、まだ辞書が理解出来ていないという場合はリストでも同様の結果を得ることが出来ます。</p>
+<p><strong class="func">chr()</strong>関数は、<strong>unicodeを文字に変換する</strong>という機能です。</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td class="text-right">unicode(10進数)</td>
+<td>97</td>
+<td>98</td>
+<td>99</td>
+<td>100</td>
+<td>101</td>
+<td><small>…</small></td>
+<td>120</td>
+<td>121</td>
+<td>122</td>
+</tr>
+<tr>
+<td class="text-right">unicode文字</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>d</td>
+<td>e</td>
+<td><small>…</small></td>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>変数 <code>alphabets</code> を初期化する際、<strong class="for"></strong>で 0 〜 25 まで順にループさせて、i に文字 <mark>a</mark> のunicode <mark>97</mark> を足していくことで a 〜 z を作っています。順に作ったアルファベットは、順番を書き換えない限り維持されます。</p>
+<p>辞書を使った場合、文字をキーとしているので、出現した文字を添字にしてその値に 1 を足していきます。<br>リストを使った場合、出現した文字を<strong class="func">chr()</strong>関数と反対の<strong class="func">ord()</strong>関数を使って文字を unicode に変換し、その値から 97 を引くとそのまま該当する要素番号になります。<br>また、<code>97</code> を <code>ord('a')</code> にするとよりわかりやすくなります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">code_a = ord('a')
+for s in S:
+    counts[ord(s) - code_a] += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最後にカウントしたリストをアンパックし、出力すれば完了です。辞書の場合は<strong class="func">.values()</strong>で辞書の値のみがリストで返りますので、それをアンパックします。</p>
+<p>paiza の解答コード例は<strong class="func">range()</strong>に直接 <code>ord('a')</code> <code>ord('z')</code> を充てています。このほうが毎回 97 を足す計算をしなくて済みますので効率が良いです。その際 <code>ord('z')</code> に +1 しておかないと、a 〜 y までしか作られなくなってしまいますので気をつけてください。 理解出来たら paiza の解答コード例のほうをお薦めします。</p>
+<br>
+<p><strong class="func">ord()</strong><strong class="func">chr()</strong>共に時々使いますので、覚えておくと便利です。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-2')">STEP: 2 英小文字の出現率</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 文字列の出現率</summary>
+<header><h3>文字列の出現率</h3></header>
+<ul>
+<li><p><strong>if</strong> を使う場合</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+dic = {}
+for _ in range(N):
+    S = input()
+
+    if S in dic:
+        dic[S] += 1
+    else:
+        dic[S] = 1
+
+for k, v in sorted(dic.items()):
+    print(k, v)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">.get()</strong>メソッドを使う場合</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+dic = {}
+for _ in range(N):
+    S = input()
+    dic[S] = dic.get(S, 0) + 1
+
+for k, v in sorted(dic.items()):
+    print(k, v)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>辞書を使います。<br>リストでも出来ることは出来ますが、面倒でわかりにくくなりますので、この際辞書を習得しておきましょう。<br>前半の解説は「<a href="../2/0070dict.html" class="linked" target="_blank">２章 辞書型</a>」のリンク先で学べばわかりますので省略します。</p>
+<p>後半の <code>sorted(dic.items())</code> は、<code>dic.items()</code> を引数にすると<strong>キー</strong>でソートされます。<br><strong class="func">.items()</strong>を付けないと <mark>dic.keys()</mark> と同等になってしまい、値が存在しなくてエラーとなりますので気をつけてください。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for k, v in sorted(dic)
+    print(k, v)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">Traceback (most recent call last):
+  File "Main.py", line 8, in <module>
+    for k, v in sorted(dic):
+ValueError: not enough values to unpack (expected 2, got 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-3')">STEP: 3 文字列の出現率</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>STEP: 4 価格の算出</summary>
+<header><h3>価格の算出</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M = map(int, input().split())
+A = {k: int(v) for _ in range(N) for k, v in [input().split()]}
+
+for _ in range(M):
+    S = input()
+    print(A[S] if S in A else -1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>受け取った商品名をキーとして辞書から価格となる値を取り出して、最後に画面に出力するという流れになります。</p>
+<p>内包表記で書かれた部分を重点的に解説します。<br><code>for k, v in [input().split()]</code> で入力したデータを値にする際、<code>k:int(v)</code> で <code>v</code> だけ整数型に変換します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">
+    eraser 50
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = {k: int(v) for k, v in [input().split()]}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = {k: int(v) for k, v in ['eraser 50'.split()]}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = {k: int(v) for k, v in [['eraser', '50']]}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = {k: int(v) for k='eraser', v='50' in [['eraser', '50']]}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = {'eraser': int('50') for k='eraser', v='50' in [['eraser', '50']]}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = {'eraser': 50 for k='eraser', v='50' in [['eraser', '50']]}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = {'eraser': 50}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+この方法を使って <code>for _ in range(N)</code> で N回繰り返すと、一気に辞書が完成します。<br><code>[input().split()]</code> の [] は必要です。これが無いと <mark>['eraser', '50']</mark> となって <mark>'eraser'</mark> → <mark>'50'</mark> の順でループしてしまい、要素数が合わずにエラーとなってしまいます。<br>この方法は「<a href="../3/0020input.html#hard-4h" class="linked" target="_blank">３章 標準入力</a>」で学習できます。</p>
+<p>最後は「標準入力で受け取った商品名(<code>S</code>)が辞書にあればその商品の価格を、なければ <mark>-1</mark> を画面に出力」します。これを買い物の数、M回繰り返します。</p>
+<p>内包表記は「<a href="../2/0110list_comprehension.html" class="linked" target="_blank">２章 内包表記</a>」で学習できます。</p>
+</ul>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-4')">STEP: 4 価格の算出</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-5"><summary>FINAL問題 商品の検索</summary>
+<header><h3>商品の検索</h3></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, Q = map(int, input().split())
+
+S = {}
+for j in range(N):
+    s = input()
+    if s not in S:
+        S[s] = j + 1
+
+for _ in range(Q):
+    t = input()
+    if t in S:
+        print(S[t])
+    else:
+        print(-1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, Q = map(int, input().split())
+
+S = {}
+for j in range(N):
+    S.setdefault(input(), j+1)
+
+for _ in range(Q):
+    print(S[t] if (t:=input()) in S else -1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, Q = map(int, input().split())
+
+S = [input() for _ in range(N)]
+
+for _ in range(Q):
+    t = input()
+    print(S.index(t)+1 if t in S else -1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は、paiza の解答コード例とほぼ同じです。解説はそちらを参照してください。</p>
+<p>例２は、便利ワザを使って例１を簡潔に書いたものです。<br><strong class="func">.setdefault()</strong>メソッドは「<a href="../2/0100usefuldicttype.html#-setdefault-h" class="linked" target="_blank">２章 辞書を使いこなす機能一覧</a>」で学習でき・・・るかな？😓<br><mark>(t:=input())</mark> については「<a href="../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+<p>例３は文字列(S)をリストに集めてから、後でその中から最小の位置を調べる方法です。<br><strong class="func">.index()</strong>メソッドを使うと引数と同じ値を見つけた時、その要素番号を返します。要素番号は 0 から始まるので、取得した要素番号に 1 を足します。<br>見つからなかった時はそのままだとエラーになりますので、<strong class="if"></strong>文で値を探して見つけてから<strong class="func">.index()</strong>を使って要素番号を取得します。</p>
+<p>ただ、この方法は効率が悪いです。<br><strong class="special">線形探索</strong>といって、先頭から順番に１つずつ値を照合しながら目的の値を探していく探索法なのですが、<strong class="func">.index()</strong>メソッドも同じく<strong>線形探索</strong>です。<strong class="if"></strong>文で<strong>線形探索</strong>して目的の値を見つけてから、<strong class="func">.index()</strong>でもまた先頭から<strong>線形探索</strong>するのは無駄です。</p>
+<p><strong class="func">.index()</strong>で目的の値を見つけてその場で要素番号を取得できれば問題ないのですが、もし目的の値が見つからなかった場合はエラーになってしまいますので<strong class="if"></strong>文を使わざるを得なく、もどかしいところです。</p>
+<br>
+<p>ちなみに例１の様に、辞書型で <code>if s not in S:</code> で値を探すと、線形探索ではなく、目的の値をほぼ一発で探し当てます。こちらは<strong class="special">ハッシュ探索</strong>といいます。セット型も一発です。でもリストだと線形探索になります。<br>おそらく<strong class="func">.setdefault()</strong>も一発のはずです。</p>
+<p>この問題は辞書を使う方法が賢明のようです。辞書の習得がまだの方は頑張ってモノにしてください。😼</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3-5')">FINAL問題 商品の検索</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c3')">商品の検索</a></footer>
+</details>
+</article>
+</section>
+
+<section>
+<details id="c4"><summary>集合の結合</summary>
+<header><h2>集合の結合</h2></header>
+
+<article>
+<details id="c4-1"><summary>STEP: 1 集合の探索</summary>
+<header><h3>集合の探索</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, B = map(int, input().split())
+A = set(map(int, input().split()))
+
+print('Yes' if B in A else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+ <p>「集合の探索」なので、言葉通り集合(セット)を使います。と言っても、プログラムの一部がいつもの<strong class="func">list()</strong>から<strong class="func">set()</strong>に変わっただけです。</p>
+ <p>ただし<strong class="if"></strong>文の探索方法は<strong>ハッシュ探索</strong>なので、リストの線形探索よりはるかに高速です。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-1')">STEP: 1 集合の探索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>STEP: 2 重複の削除</summary>
+<header><h3>重複の削除</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = set(map(int, input().split()))
+
+print(*sorted(A))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = map(int, input().split())   # list() は不要
+
+tmp = 0   # tmp = -float('inf') でも可
+a = []
+for i in A:
+    if i != tmp:
+        a.append(i)
+        tmp = i
+
+print(*a)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は簡単で見れば解ると思いますので、例２のセットもソートも使わずに解く方法を解説します。</p>
+<p>数列は昇順に並んでいることが保証されています。<strong class="for"></strong>文で数列の先頭から順に調べていって、現在チェックしている数と <code>tmp</code> に入っている数が異なる場合、初めて登場する数となるので、これを <mark>リストa</mark> に追加します。<br>その後、<code>tmp</code> の値を現在の値 <code>i</code> に更新してループします。</p>
+<li><p>A = [1, 2, 3, 3, 4, 5] の時</p></li>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td class="text-center">i</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="text-center">tmp</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="text-center">リストa</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td></td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>※ <mark>i != tmp</mark> の時、<mark>リストa</mark> に i が追加される。</p>
+<p>最後まで行くと <mark>リストa</mark> には昇順のまま重複の無い数列が出来上がっています。これをアンパックして画面に出力すれば完了です。</p>
+<p>簡潔に書くと次のようになります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = map(int, input().split())
+
+tmp = 0
+a = [tmp:=i for i in A if i != tmp]
+
+print(*a)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark>tmp:=i</mark> については「<a href="../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-2')">STEP: 2 重複の削除</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>STEP: 3 重複の判定 1</summary>
+<header><h3>重複の判定 1</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+A = list(map(int, input().split()))
+
+for i in range(1, N):
+    print('Yes' if A[i] in A[:i] else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+A = list(map(int, input().split()))
+
+memo = {A[0]}
+for i in range(1, N):
+    if A[i] in memo:
+        print('Yes')
+    else:
+        memo.add(A[i])
+        print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+ <p>例２は、paiza の解答コード例とほぼ同じにしてあります。</p>
+<p>問題文をわかりやすい文章にしてみます。</p>
+<p>『数列A の 二番目から順に見ていき、現在見ている位置の数がそれより前にある場合は Yes、無い場合は No を画面に出力してください。』</p>
+<p>例２では、一度処理して作り出したことがある値がメモした中にある場合は Yes、無い場合は No を画面に出力します。</p>例１では <code>if A[i] in A[:i]</code> の部分をループする度に先頭から線形探索で調べています。何度も何度も同じ所を無駄に調べてしまっています。<br>数を数える時に「いちっ！いちにっ！いちにっさんっ！」と１つ数える度に１からまた数え直していくようなものです。<br>今回はリストの中を何度も線形探索する無駄を省くためにセットを使い、常にメモに値があるかチェックするだけで何度も先頭から調べることをしなくて済むようにします。もちろん例１のプログラムでも問題の解答としては正解です。</p>
+<p>A = [1, 2, 3, 2, 5, 3, 3, 10, 2] の場合</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td>数列A</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>判定</td>
+<td></td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td class="text-center">N</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>数列の二番目から開始しますので、その時点では <code>memo</code> の中身は数列の先頭の <code>1</code> のみです。これを <code>memo</code> に初期値として入れておきます。<mark>memo = {A[0]}</mark><br>二番目の 2 はそれより前、つまり <code>memo</code> の中にありませんので、<code>memo</code> に <code>2</code> を追加して <code class="output">No</code> を出力します。次の 3 も同様の処理です。<br>四番目の 2 は <code>memo</code> の中にあります。なので <code class="output">Yes</code> を画面に出力して次のループに移ります。</p>
+<p>常に <code>memo</code> の中に現在の数があるかないかをチェックするだけで Yes か No かを判定することができるようになります。探索もセットなので<strong>ハッシュ探索</strong>です。ちょっ早です。</p>
+<p>余力があれば paiza 問題集の解答例２も理解してみましょう。</p>
+</ul>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-3')">STEP: 3 重複の判定 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>STEP: 4 重複の判定 2</summary>
+<header><h3>重複の判定 2</h3></header>
+
+<ul>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+A = list(map(int, input().split()))
+
+memo = {A[0]}
+for i in range(1, N):
+    if A[i] in memo:
+        print('Yes')
+    else:
+        memo.add(A[i])
+        print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>【STEP: 3 重複の判定 1】の例１も例２もそのまま使えますが、例１は効率が悪いです。例２(上記)を理解しましょう。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-4')">STEP: 4 重複の判定 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-5"><summary>FINAL問題 集合の結合</summary>
+<header><h3>集合の結合</h3></header>
+
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+set_union = set(A + B)
+print(*sorted(set_union))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = set(map(int, input().split()))
+B = set(map(int, input().split()))
+
+set_union = A | B
+print(*sorted(set_union))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は、リストとリストを連結してからセット型に変換して重複を削除しています。<br>例２は標準入力をセット型にして受け取り、和集合演算で例１と同じ結果を得ています。</p>
+<p>集合演算については「<a href="../2/0090set.html#c2-2h" class="linked" target="_blank">２章 セットさんは重複を許さない</a>」で学習できます。</p>
+<p>セット型は要素の順番が保証されていないので、最後に<strong class="func">sorted()</strong>関数でソートする必要があります。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4-5')">FINAL問題 集合の結合</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#" onclick="closeAccordion('c4')">集合の結合</a></footer>
+</details>
+</article>
+</section>
+
+
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>データセット選択メニュー</p>
+</footer>
+</body>
+</html>

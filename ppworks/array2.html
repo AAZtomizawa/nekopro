@@ -31,7 +31,7 @@ print(a.count(K))
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>リストの中の値の数を数える時は<strong class="func">.count()</strong>メソッドを使います。「配列メニュー」の問題を終えた方なら楽勝でしょう。👍</p>
+<p>リストの中の値の数を数える時は<strong class="func">.count()</strong>メソッドを使います。「配列メニュー」の問題を終えた方なら楽勝だったことでしょう。👍</p>
 </ul>
 <footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 指定の要素のカウント</a></footer>
 </details>
@@ -295,7 +295,7 @@ print(*A, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>要素の追加は<strong class="func">.append()</strong>メソッドを使います。</p>
+<p>リストの末尾への要素の追加は<strong class="func">.append()</strong>メソッドを使います。</p>
 </ul>
 <footer><a class="backto" href="#c2-4" onclick="closeAccordion('c2-4')">STEP: 4 末尾への要素の追加</a></footer>
 </details>
@@ -317,6 +317,28 @@ print(*A, sep='\n')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>要素の<strong>挿入</strong>は<strong class="func">.insert()</strong>メソッドを使います。要素番号 n に B を要素として挿入します。</p>
+<p>問題文には「B を A_n の後ろに追加」とありますが、n は 1 番目から数え、要素番号は 0 番目から数えますので、n に 1 を足さずにそのまま n と書いて大丈夫です。</p>
+<div class="x-fit" >
+<table>
+<tbody class="text-center">
+<tr>
+<td>n 番目</td>
+<td>1</td>
+<td style="color:blue; font-weight: bold;">2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>要素番号</td>
+<td>0</td>
+<td>1</td>
+<td><strong>2</strong></td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><mark>2 番目の後ろ</mark>は、要素番号 1 の後ろの <mark>要素番号 2</mark> のこと。</p>
 </ul>
 <footer><a class="backto" href="#c2-5" onclick="closeAccordion('c2-5')">STEP: 5 指定位置への要素の追加</a></footer>
 </details>
@@ -351,6 +373,27 @@ print(*A, sep='\n')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>削除する要素番号を間違えないように気を付けてくださいね。</p>
+<div class="x-fit" >
+<table>
+<tbody class="text-center">
+<tr>
+<td>n 番目</td>
+<td>1</td>
+<td style="color:blue; font-weight: bold;">2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>要素番号</td>
+<td>0</td>
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><mark>2 番目</mark>は、要素番号 1 のこと。</p>
 </ul>
 <footer><a class="backto" href="#c2-6" onclick="closeAccordion('c2-6')">STEP: 6 指定要素の削除</a></footer>
 </details>
@@ -484,8 +527,55 @@ print(*result, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>難しく書かれていますけど、要するにやることは<strong>ゼロマップ</strong>( 0 で埋め尽された配列)をつくってから所定の要素の値を書き換えるだけです。今回は <mark>リストA</mark> の先頭から n 番目までの要素を、ゼロマップの先頭から n 番目までに書き写すだけです。<br>ゼロマップの要素数より書き写した要素数のほうが少ないと、手を付けられていない 0 がそのまま残ります。それが問題文の最後にある「サイズが合うように 0 を A の要素の末尾に追加してください。」のことです。</p>
-<p><strong>ゼロマップで初期化</strong>することはよくあります。<mark>[0] * n</mark> という書き方は憶えておきましょう。</p>
+<p>難しく書かれていますけど、要するにやることは<strong>ゼロマップ</strong>( 0 で埋め尽された配列)をつくってから所定の要素の値を書き換えるだけです。今回は <mark>リストA</mark> の先頭から n 番目までの要素を、ゼロマップの先頭から n 番目までに書き写すだけです。<br>ゼロマップの要素数より書き写した要素数のほうが少ないと、手を付けられていない 0 がそのまま残ります。それが問題文の最後にある「サイズが合うように 0 を A の要素の末尾に追加してください。」の結果となります。</p>
+<p>N = 3, n = 5, A = [1, 2, 3] の時</p>
+<div class="x-fit" >
+<table>
+<tbody class="text-center">
+<tr>
+<td>n 番目</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>リスト A</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>↓ 3 番目までを 1, 2, 3 で書き換えると・・・</p>
+<div class="x-fit" >
+<table>
+<tbody class="text-center">
+<tr>
+<td>n 番目</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>リスト A</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td><strong>0</strong></td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p><strong>ゼロマップを作る</strong>ことはよくあります。<mark>[0] * n</mark> という書き方は憶えておきましょう。</p>
 </ul>
 <footer><a class="backto" href="#c2-9" onclick="closeAccordion('c2-9')">STEP: 9 配列のサイズの変更</a></footer>
 </details>
@@ -509,7 +599,7 @@ print(*B, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>要するに、要素の順番を変えずに重複した要素を削除していくということです。セットに変換すると順番がめちゃくちゃになりますので、リストのまま地道に作業していきます。</p>
+<p>要するに、<strong class="b">「要素の順番を変えずに重複した要素を削除していく」</strong>ということです。セットに変換すると順番がめちゃくちゃになりますので、リストのまま地道に作業していきます。</p>
 <p>新たに配列 B を作成するということなので、「値が <mark>リストB</mark> にすでにある場合」はなにもせず、初めて登場する値だけを <mark>リストB</mark> に追加していきます。</p>
 </ul>
 <footer><a class="backto" href="#c2-10" onclick="closeAccordion('c2-10')">STEP: 10 重複要素の削除</a></footer>
@@ -591,7 +681,7 @@ print(result)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>極力簡潔な書き方をしましたが、解説します。</p>
+<p>極力簡潔な書き方をしましたが、このプログラム例で解説します。</p>
 <p>二行目の標準入力の所で、入力と同時にいきなり K 点以上の人かどうかを、比較式を使って判定しています。</p>
 <p>N = 5, K = 3974, M = 0<br><mark>A_i</mark> が<br>2049<br>4690<br>6867<br>3414<br>460 の時</p>
 <!-- ------------------------- code ------------------------- -->
@@ -601,7 +691,7 @@ print(result)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>となります。</p>
-<p>次に<strong class="func">sum(A)</strong>についてですが、数値でないのに総和を求めようとしています。これは「<a href="../2/0020truefalse.html#c2-h" class="linked" target="_blank">２章 bool型 True と False</a>」で詳しく説明していますが、<code>True</code> は <code>1</code>、<code>False</code> は <code>0</code> でもあります。この特性がある為に<strong class="func">sum()</strong>関数で総和を求めることが出来るのです。<br>上の <mark>リストA</mark> の場合は、</p>
+<p>次に<strong class="func">sum(A)</strong>についてですが、数値でないのに総和を求めようとしています。これは「<a href="../2/0020truefalse.html#c2-h" class="linked" target="_blank">２章 bool型 True と False</a>」で詳しく説明していますが、<code>True</code> は <code>1</code>、<code>False</code> は <code>0</code> でもあります。この特性があるゆえに<strong class="func">sum()</strong>関数で総和を求めることが出来るのです。<br>上の <mark>リストA</mark> の場合は、</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">A = [0, 1, 1, 0, 0]
@@ -630,14 +720,14 @@ for _ in range(N):
 
     if S[0] == 'in':
         A.append(S[1])
-    elif A and S[0] == 'out':
+    elif S[0] == 'out' and A:
         A.pop(0)
 
 print(*A, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>初期の <mark>リストA</mark> は空の状態で初期化します。</p>
+<p>queue は「<strong class="special">キュー</strong>」と読みます。初期の <mark>リストA</mark> は空の状態で初期化します。</p>
 <p>次に N 個のキューを受け取るのですが、'in' と 'out' で受け取る要素数が異なります。ここは一旦 <code>input().split()</code> で受け取ります。</p>
 <p>受け取ったキュー <code>S</code> の要素番号 0 には 'in' か 'out' が入っていますので、これを使って<strong class="if"></strong>文をつくります。</p>
 <p>'in' の時は、<code>S</code> の要素番号 1 に整数 n が入っています。これを <mark>リストA</mark> の末尾に追加します。<br>'out' の時は、<mark>リストA</mark> の先頭の要素を削除するのですが、<mark>リストA</mark> が空の場合は何もしないことになっています。何もない要素を削除しようとするとエラーになりますので、リストの中身が空かどうかを調べる必要があります。</p>
@@ -657,8 +747,8 @@ IndexError: pop from empty list
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><code>elif A</code> という所で、リストが空かどうかを評価しています。<br>これについては「<a href="../2/0020truefalse.html#c4-h" class="linked" target="_blank">２章 bool型 True と False</a>」で学習できます。</p>
-<p>「<mark>リストA</mark> に要素があり、且つ、<code>S[0]</code> が <code>'out'</code> の時」に、<mark>リストA</mark> の先頭の要素を削除します。</p>
+<p><code>elif ～ and <strong>A</strong></code> という所で、リストが空かどうかをチェックしています。<br>これについては「<a href="../2/0020truefalse.html#c4-h" class="linked" target="_blank">２章 bool型 True と False</a>」で学習できます。</p>
+<p>「<code>S[0]</code> が <code>'out'</code> の時、且つ、<mark>リストA</mark> に要素がある時」に、<mark>リストA</mark> の先頭の要素を削除します。</p>
 <p>それ以外の時は、なにもしません。<code>else:</code> 以降を省略しています。なにもしないから何も書くことないし～。</p>
 <p>最後に <mark>リストA</mark> を画面に出力して完了となります。</p>
 </ul>
@@ -690,7 +780,7 @@ print(*sorted(pairs), sep='\n')
 <!-- ----------------------- code end ----------------------- -->
 <p>これはこの前の<strong class="b">「【配列への副作用を伴う操作】条件を満たす要素のみの配列作成」</strong>の<strong class="b">「STEP: 8 全ての要素を用いた処理」</strong>と同じ方法の組み合わせ問題ですね。</p>
 <p>真ん中あたりにある <mark>:=</mark> については「<a href="../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
-<p><strong class="if"></strong>文は、もし現在の最小値を下回る組み合わせが登場したら、<code>pairs</code> と <code>min_</code> を新しい値に更新します。</p>
+<p><strong class="if"></strong>文は、もし現在の身長差の最小値を下回る組み合わせが登場したら、<code>pairs</code> と <code>min_</code> を新しい値に更新します。</p>
 <p>最後までループし終えたら身長を昇順ソートし、画面に出力して完了です。</p>
 <p><strong class="func">abs(A[i] - A[j])</strong>は、身長が高いほうから低いほうを引いても、またその逆でも、身長差は同じです。173 - 170 でも 170 - 173 でも３差です。どちらから引いてもいいように絶対値をとって正数に補正しています。</p>
 </ul>
@@ -757,6 +847,8 @@ print(pins.count(1))
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>一行目の入力のしかたをすると、４行の入力を一次元リストで並べることができます。<br>この時、ピンの配列が 10 → 1 になっているので、これを反転して 1 → 10 にします。</p>
+<p>ピンの番号<br>
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1][::-1]<br>↓<br>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
 <p>先頭の１番ピンから最初の <code>1</code> を見つけ、その要素番号に 1 を足して画面に出力します。<strong class="func">.index()</strong>は探し物が見つからなかったときにはエラーとなりますが、条件に「少なくとも 1 本のピンが残っていることが保証されています。」とありますので、エラーは起こりません。</p>
 <p>最後に <strong class="func">.count(1)</strong> で <code>1</code> の数を数えたものを画面に出力して完了です。</p>
 </ul>

@@ -162,7 +162,7 @@ print(''.join(s))
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>例１が文字列のみの操作、例２はどちらかというとリストの操作と言えなくもないです。<br>例１は予め空の文字列 s を作ってから、そこに入力した文字を追加していき、最後に s を画面に出力して完了です。<br>例２はリストを文字列に変換する<strong class="func">.join()</strong>メソッドを使って画面に出力しています。</p>
-<p><strong class="func">.join()</strong>は「<a href="../2/0040usefullisttype.html#-join-h" class="linked" target="_blank">２章 リストの操作を使いこなす機能一覧</a>」で学習できます。</p>
+<p><strong class="func">.join()</strong>は「<a href="../../2/0040usefullisttype.html#-join-h" class="linked" target="_blank">２章 リストの操作を使いこなす機能一覧</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">文字列の連結</a></footer>
 </details>
@@ -182,7 +182,7 @@ print(S[i-1: j])
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>スライスを使うと便利です。<br>問題文に直接は書かれていませんが、i j 文字目というのは 1 文字目から数えます。文字列の位置は 0 から始まりますので、i から 1 を引く必要があります。j はそのままで大丈夫です。</p>
-<p>スライスは「<a href="../2/0010list.html#c3-2h" class="linked" target="_blank">２章 リスト型</a>」で学習できます。</p>
+<p>スライスは「<a href="../../2/0010list.html#c3-2h" class="linked" target="_blank">２章 リスト型</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">部分文字列</a></footer>
 </details>
@@ -218,7 +218,7 @@ print(text)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>例１と例２のどちらもスライスを使って文字列 S を前半と後半に分割し、その間に挿入する文字列 T をはさみ込むと出力する文字列が完成します。</p>
-<!-- <p>例２の書き方は「<a href="../3/0070fstrings.html" class="linked" target="_blank">３章 f文字列</a>」で学習できます。</p> -->
+<!-- <p>例２の書き方は「<a href="../../3/0070fstrings.html" class="linked" target="_blank">３章 f文字列</a>」で学習できます。</p> -->
  <p>例２の <mark>f"{S[:N]}{T}{S[N:]}"</mark>の書き方については、現在作成中ですので、もうしばらくお待ちください。🙏</p>
 </ul>
 <footer><a class="backto" href="#c9" onclick="closeAccordion('c9')">文字列の挿入</a></footer>
@@ -263,7 +263,7 @@ print(''.join(S))
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>２行目の標準入力は「<a href="../3/0020input.html#hard-1h" class="linked" target="_blank">３章 標準入力</a>」で学習できます。</p>
+<p>２行目の標準入力は「<a href="../../3/0020input.html#hard-1h" class="linked" target="_blank">３章 標準入力</a>」で学習できます。</p>
 <div class="x-fit">
 <table>
 <tbody>
@@ -300,7 +300,7 @@ print(''.join(S))
 <!-- ----------------------- code end ----------------------- -->
 <p>と同等になります。<code>c</code> が位置番号 0 です。</p>
 <p>例３は S の入力をリストに変換して、要素番号 i-1 を直接書き換えています。これでも正解ですし、わかりやすくてよいのですが、この問題は文字列のスライスを使っての書き換えを求めているようですので、スライスでも書けるようになっておきましょう。</p>
-<p>スライスは「<a href="../2/0010list.html#c3-2h" class="linked" target="_blank">２章 リスト型</a>」で学習できます。</p>
+<p>スライスは「<a href="../../2/0010list.html#c3-2h" class="linked" target="_blank">２章 リスト型</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c10" onclick="closeAccordion('c10')">文字列の書き換え</a></footer>
 </details>
@@ -439,7 +439,7 @@ else:
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>「部分文字列」なんて難しい言葉が使われていますが、要は T の文字列が S の中に含まれているかどうかを判定するということです。<br><strong class="if"></strong> 〜 <strong>in</strong> 〜 を使って調べましょう。</p>
-<p><strong>in</strong> については「<a href="../2/0050usefulstrtype.html#c4-in" class="linked" target="_blank">２章 文字列の操作を使いこなす機能一覧</a>」で学習できます。</p>
+<p><strong>in</strong> については「<a href="../../2/0050usefulstrtype.html#c4-in" class="linked" target="_blank">２章 文字列の操作を使いこなす機能一覧</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c16" onclick="closeAccordion('c16')">文字列の検索</a></footer>
 </details>
@@ -478,8 +478,8 @@ print(reversed(S))
 <!-- ----------------------- code end ----------------------- -->
 <p>それを<strong class="func">.join()</strong>メソッドで文字列にして見える化しているのですが、面倒ですね。😓</p>
 <p><mark>[::-1]</mark> という書き方は意味を知らない人にはわかりにくいかもしれませんが、市民権を得た書き方なので気後れせずにどんどん使って構わないと思います。</p>
-<p><mark>[::-1]</mark> や<strong class="func">reversed()</strong>については「<a href="../2/0060mieruka2.html#c1h" class="linked" target="_blank">２章 見える化ちゃん ２期 - 見えない値の映し方</a>」で<small>それなりに</small>学習できます。</p>
-<p>もう１つ、リストを反転するメソッドがあるのですが、それは「<a href="../2/0040usefullisttype.html#-reverse-h" class="linked" target="_blank">リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
+<p><mark>[::-1]</mark> や<strong class="func">reversed()</strong>については「<a href="../../2/0060mieruka2.html#c1h" class="linked" target="_blank">２章 見える化ちゃん ２期 - 見えない値の映し方</a>」で<small>それなりに</small>学習できます。</p>
+<p>もう１つ、リストを反転するメソッドがあるのですが、それは「<a href="../../2/0040usefullisttype.html#-reverse-h" class="linked" target="_blank">リスト型データを使いこなす機能一覧</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c17" onclick="closeAccordion('c17')">文字列の反転</a></footer>
 </details>
@@ -538,8 +538,8 @@ print(*S, sep='\n')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>注目すべきは<strong class="func">.split()</strong>メソッドです。<br>引数に与えた文字列を区切り文字として分割し、リストとなって返ります。</p>
-<p><strong class="func">.split()</strong>については「<a href="../2/0050usefulstrtype.html#-split-h" class="linked" target="_blank">２章 文字列の操作を使いこなす機能一覧</a>」で学習できます。</p>
-<p>例２の<strong class="func">print()</strong>の書き方については「<a href="../2/0030mieruka.html#c1-3h" class="linked" target="_blank">２章 見える化ちゃん</a>」で学習できます。</p>
+<p><strong class="func">.split()</strong>については「<a href="../../2/0050usefulstrtype.html#-split-h" class="linked" target="_blank">２章 文字列の操作を使いこなす機能一覧</a>」で学習できます。</p>
+<p>例２の<strong class="func">print()</strong>の書き方については「<a href="../../2/0030mieruka.html#c1-3h" class="linked" target="_blank">２章 見える化ちゃん</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c19" onclick="closeAccordion('c19')">文字列の分割</a></footer>
 </details>
@@ -1237,7 +1237,7 @@ print(total)
 <!-- ----------------------- code end ----------------------- -->
 <p>Python3 は整数の範囲に制限はありませんので、そのまま<strong class="func">int()</strong>で整数化して足し算をすれば解答が求められます。</p>
 <p>しかしここは「文字列処理メニュー」なので文字列を処理して解答を求めたいと思います。<br>例２は <code>S</code> と <code>T</code> 共に先頭から一文字ずつ足し算して <code>total</code> に格納していく流れだけで解答が得られます。条件にある <mark>|S| = |T|</mark> のとおり、必ず同じ文字数で与えられますので、同じ <code>i</code> を添字にできます。</p>
-<p>例３は <code>S</code> と <code>T</code> を<strong class="func">zip()</strong>関数を使って先頭から一文字ずつ１セットにして取り出しています。<br><strong class="func">zip()</strong>関数は「<a href="../2/0060mieruka2.html#zip-h" class="linked" target="_blank">２章 見える化ちゃん ２期</a>」で簡単な使い方が学習できます。</p>
+<p>例３は <code>S</code> と <code>T</code> を<strong class="func">zip()</strong>関数を使って先頭から一文字ずつ１セットにして取り出しています。<br><strong class="func">zip()</strong>関数は「<a href="../../2/0060mieruka2.html#zip-h" class="linked" target="_blank">２章 見える化ちゃん ２期</a>」で簡単な使い方が学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c28" onclick="closeAccordion('c28')">巨大な数の足し算(繰り上がりなし)</a></footer>
 </details>

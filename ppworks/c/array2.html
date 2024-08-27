@@ -727,9 +727,9 @@ print(*A, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>queue は「<strong class="special">キュー</strong>」と読みます。初期の <mark>リストA</mark> は空の状態で初期化します。</p>
-<p>次に N 個のキューを受け取るのですが、'in' と 'out' で受け取る要素数が異なります。ここは一旦 <code>input().split()</code> で受け取ります。</p>
-<p>受け取ったキュー <code>S</code> の要素番号 0 には 'in' か 'out' が入っていますので、これを使って<strong class="if"></strong>文をつくります。</p>
+<p>初期の <mark>リストA</mark> は空の状態で初期化します。</p>
+<p>次に N 個の指示を受け取るのですが、'in' と 'out' で受け取る要素数が異なります。ここは一旦 <code>input().split()</code> で受け取ります。</p>
+<p>受け取った指示 <code>S</code> の要素番号 0 には 'in' か 'out' が入っていますので、これを使って<strong class="if"></strong>文をつくります。</p>
 <p>'in' の時は、<code>S</code> の要素番号 1 に整数 n が入っています。これを <mark>リストA</mark> の末尾に追加します。<br>'out' の時は、<mark>リストA</mark> の先頭の要素を削除するのですが、<mark>リストA</mark> が空の場合は何もしないことになっています。何もない要素を削除しようとするとエラーになりますので、リストの中身が空かどうかを調べる必要があります。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
@@ -772,6 +772,10 @@ elif S[0] == 'out':
 <!-- ----------------------- code end ----------------------- -->
 <p>これなら少しは安心です。😽</p>
 <p>最後に <mark>リストA</mark> を画面に出力して完了となります。</p>
+</ul>
+<ul>
+<p>queue は「<strong class="special">キュー</strong>」と読みます。<a href="https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A5%E3%83%BC_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" class="linked" target="_blank">キュー <em>(Wikipedia)</em></a><br>データの出し入れを、リストの後ろから入れて(<strong class="func">.append()</strong>)、前から取り出す(<strong class="func">.pop(0)</strong>)という方式で行ないます。<br>もう１つ、<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF" class="linked" target="_blank">スタック (Wikipedia)</a> というものがあり、こちらはデータの出し入れを、リストの後ろから入れて(<strong class="func">.append()</strong>)、後ろから取り出す(<strong class="func">.pop()</strong>)という方式で行ないます。</p>
+<p>理屈は単純なのですが、プログラミングにおいて重要な要素であり、paiza の問題集 (定番アルゴリズム「スタック・キューメニュー」) にも用意されています。『アルゴリズム』なんて書いてありますけど、数あるアルゴリズムの中でもかなり簡単なほうです。この「配列活用メニュー」が終わったら挑戦できるくらいのものですので、興味がありましたらどうぞ。😜</p>
 </ul>
 <footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">STEP: 3 queue (9) 係</a></footer>
 </details>
@@ -892,7 +896,7 @@ print(pins.count(1))
 <!-- ----------------------- code end ----------------------- -->
 <p>とすると、なぜか</p>
 <p>pins = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</p>
-<p>と、一次元リストになります。ｵｼﾞｻﾝﾋﾞｯｸﾘﾀﾞ<br>数ある方法の中でも処理速度は<strong class="b">最遅</strong>と言われてますが、一番簡単に書ける方法ですので憶えておくといつか役に立つでしょう。</p>
+<p>と、一次元リストになります。ｵｼﾞｻﾝﾋﾞｯｸﾘﾀﾞ<br>二次元リストを一次元リストに変換する方法の１つで、数ある方法の中でも処理速度は<strong class="b">最遅</strong>と言われてますが、一番簡単に書ける方法ですので憶えておくといつか役に立つでしょう。</p>
 </ul>
 <footer><a class="backto" href="#c3-6" onclick="closeAccordion('c3-6')">STEP: 6 ボウリング</a></footer>
 </details>

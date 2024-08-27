@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../css/prism_coy.css">
-<script type="text/javascript" src='../../js/prism.js'></script>
-<script type="text/javascript" src='../../js/custom.js'></script>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/prism_coy.css">
+<script type="text/javascript" src='../js/prism.js'></script>
+<script type="text/javascript" src='../js/custom.js'></script>
 <title>【paiza問題集 解説】配列活用メニュー</title>
-<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="homebtn"><a href="./" id="homeBtn">🔙</a></div>
 <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
 </head>
 <body>
@@ -747,7 +747,7 @@ IndexError: pop from empty list
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><code>elif ～ and <strong>A</strong></code> という所で、リストが空かどうかをチェックしています。<br>これについては「<a href="../../2/0020truefalse.html#c4-h" class="linked" target="_blank">２章 bool型 True と False</a>」で学習できます。</p>
+<p><code>elif ～ and <strong>A</strong></code> という所で、リストが空かどうかをチェックしています。<br>これについては「<a href="../2/0020truefalse.html#c4-h" class="linked" target="_blank">２章 bool型 True と False</a>」で学習できます。</p>
 <p>「<code>S[0]</code> が <code>'out'</code> の時、且つ、<mark>リストA</mark> に要素がある時」に、<mark>リストA</mark> の先頭の要素を削除します。</p>
 <p>それ以外の時は、なにもしません。<code>else:</code> 以降を省略しています。なにもしないから何も書くことないし～。</p>
 <p>また、こういう書き方もできます。</p>
@@ -804,7 +804,7 @@ print(*sorted(pairs), sep='\n')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>これはこの前の<strong class="b">「【配列への副作用を伴う操作】条件を満たす要素のみの配列作成」</strong>の<strong class="b">「STEP: 8 全ての要素を用いた処理」</strong>と同じ方法の組み合わせ問題ですね。</p>
-<p>真ん中あたりにある <mark>:=</mark> については「<a href="../../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+<p>真ん中あたりにある <mark>:=</mark> については「<a href="../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
 <p><strong class="if"></strong>文は、もし現在の身長差の最小値を下回る組み合わせが登場したら、<code>pairs</code> と <code>min_</code> を新しい値に更新します。</p>
 <p>最後までループし終えたら身長を昇順ソートし、画面に出力して完了です。</p>
 <p><strong class="func">abs(A[i] - A[j])</strong>は、身長が高いほうから低いほうを引いても、またその逆でも、身長差は同じです。173 - 170 でも 170 - 173 でも３差です。どちらから引いてもいいように絶対値をとって正数に補正しています。</p>
@@ -931,7 +931,7 @@ print(*nums, sep='\n')
 <p>列の入力は与えられていませんので、自分で作る必要があります。<code>nums = list(range(1, N+1))</code></p>
 <p><strong class="for"></strong>文の中で入力を１つずつ受け取り、都度<strong class="if"></strong>文でキューを処理します。<br>最初の<strong class="elif"></strong> の後半は、問題文の「列が既に C 人以下の場合」にあたります。問題文では「何も行わない」とありますが、逆に何かする場合は「列が C 人より多い」条件で式を書きます。それが <code>len(nums) > (C:=int(S[1]))</code> です。</p>
 <p>キューの問題ではキューの入力の長さが不規則なことがほとんどです。これをどのように受け取り、読みやすく、理解しやすく書いていくかが難しいところだと思います。プログラム例では問題と照らし合わせやすいように A B C の変数(定数)を使いたかったのでちょっとねじ込む形になりましたけど😅。この先学びを進めていく中で、気分転換にぜひ過去の問題を振り返って書き直したりしてみてください。</p>
-<p><code>(C:=int(S[1]))</code> の <mark>:=</mark> については「<a href="../../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+<p><code>(C:=int(S[1]))</code> の <mark>:=</mark> については「<a href="../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
 </ul>
 <footer><a class="backto" href="#c3-7" onclick="closeAccordion('c3-7')">FINAL問題 【配列に対しての複雑な処理】集団行動</a></footer>
 </details>

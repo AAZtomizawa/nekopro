@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../css/prism_coy.css">
   <script type="text/javascript" src='../js/prism.js'></script>
   <script type="text/javascript" src='../js/custom.js'></script>
-  <title>辞書型を使いこなす機能一覧</title>
+  <title>辞書を使いこなす機能一覧</title>
   <div class="homebtn"><a href="../#c2-h" id="homeBtn">🔙</a></div>
   <div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
 </head>
@@ -32,7 +32,7 @@
 
 <article>
 
-  <details id="c1"><summary>Chatpter.1 - 辞書の操作は難しい</summary>
+  <details id="c1"><summary id="c1-h">Chatpter.1 - 辞書の操作は難しい</summary>
 
     <header>
       <h2>辞書の操作は難しい</h2>
@@ -71,7 +71,7 @@
 
 <section>
 
-  <details id="c2"><summary>Chatpter.2 - メソッド</summary>
+  <details id="c2"><summary id="c2-h">Chatpter.2 - メソッド</summary>
 
     <header>
       <h2>辞書特有のメソッド</h2>
@@ -91,27 +91,27 @@
     </thead>
     <tbody>
     <tr style="background-color: rgb(168, 255, 226);">
-      <td class="link center-text"><a class="td" href="#-items" onclick="openAccordion('-items')">items()</a></td>
+      <td class="link center-text"><a class="td" href="#-items-h" onclick="openAccordion('-items')">items()</a></td>
       <td class="center-text">なし</td>
       <td class="left-text"><strong>キー</strong>と<strong>値</strong>のペアを<strong>タプル</strong>にしてリストで返す</td>
     </tr>
     <tr style="background-color: rgb(168, 255, 226);">
-      <td class="link center-text"><a class="td" href="#-keys" onclick="openAccordion('-keys')">keys()</a></td>
+      <td class="link center-text"><a class="td" href="#-keys-h" onclick="openAccordion('-keys')">keys()</a></td>
       <td class="center-text">なし</td>
       <td class="left-text"><strong>キー</strong>だけの<strong>リスト</strong>を返す</td>
     </tr>
     <tr style="background-color: rgb(168, 255, 226);">
-      <td class="link center-text"><a class="td" href="#-values" onclick="openAccordion('-values')">values()</a></td>
+      <td class="link center-text"><a class="td" href="#-values-h" onclick="openAccordion('-values')">values()</a></td>
       <td class="center-text">なし</td>
       <td class="left-text"><strong>値</strong>だけの<strong>リスト</strong>を返す</td>
     </tr>
     <tr style="background-color: rgba(249, 74, 255, 0.250);">
-      <td class="link center-text"><a class="td" href="#-get" onclick="openAccordion('-get')">get()</a></td>
+      <td class="link center-text"><a class="td" href="#-get-h" onclick="openAccordion('-get')">get()</a></td>
       <td class="center-text">キー, 初期値</td>
       <td class="left-text">辞書にキーがあればキーの値を返し、<wbr>無ければ初期値を返す</td>
     </tr>
     <tr style="background-color: rgba(249, 74, 255, 0.250);">
-      <td class="link center-text"><a class="td" href="#-setdefault" onclick="openAccordion('-setdefault')">setdefault()</a></td>
+      <td class="link center-text"><a class="td" href="#-setdefault-h" onclick="openAccordion('-setdefault')">setdefault()</a></td>
       <td class="center-text">キー, 初期値</td>
       <td class="left-text">辞書にキーがあればキーの値を返し、<wbr>無ければ初期値を値に<wbr>新しく要素を作って<wbr>初期値を返す</td>
     </tr>
@@ -129,7 +129,7 @@
 
   <article>
 
-    <details id="-items"><summary>.items()</summary>
+    <details id="-items"><summary id="-items-h">.items()</summary>
 
       <header>
         <h3>.items()</h3>
@@ -241,7 +241,7 @@ print(sorted_items)
 
   <article>
 
-    <details id="-keys"><summary>.keys()</summary>
+    <details id="-keys"><summary id="-keys-h">.keys()</summary>
 
       <header>
         <h3>.keys()</h3>
@@ -364,7 +364,7 @@ print(sorted_items)
 
   <article>
 
-    <details id="-values"><summary>.values()</summary>
+    <details id="-values"><summary id="-values-h">.values()</summary>
 
       <header>
         <h3>.values()</h3>
@@ -470,7 +470,7 @@ print(sorted_samples)
 
   <article>
 
-    <details id="-get"><summary>.get()</summary>
+    <details id="-get"><summary id="-get-h">.get()</summary>
 
       <header>
         <h3>.get()</h3>
@@ -974,15 +974,15 @@ print(dic)
   </thead>
   <tbody>
   <tr>
-    <td class="link center-text"><a class="td" href="#sorted" onclick="openAccordion('sorted')">sorted()</a></td>
+    <td class="link center-text"><a class="td" href="#sorted-h" onclick="openAccordion('sorted')">sorted()</a></td>
     <td class="left-text">ターゲットの値を並び替える</td>
   </tr>
   <tr>
-    <td class="link center-text"><a class="td" href="#max" onclick="openAccordion('-max')">max(), min()</a></td>
+    <td class="link center-text"><a class="td" href="#max-h" onclick="openAccordion('-max')">max(), min()</a></td>
     <td class="left-text">ターゲットの一番大きな(小さな)値を返す</td>
   </tr>
   <tr>
-    <td class="link center-text"><a class="td" href="#sum" onclick="openAccordion('sum')">sum()</a></td>
+    <td class="link center-text"><a class="td" href="#sum-h" onclick="openAccordion('sum')">sum()</a></td>
     <td class="left-text">ターゲットの数値を合計する</td>
   </tr>
   </tbody>
@@ -999,7 +999,7 @@ print(dic)
 
   <article>
 
-    <details id="sorted"><summary>sorted()</summary>
+    <details id="sorted"><summary id="sorted-h">sorted()</summary>
 
       <h3>sorted(引数, key=lambda・・, reverse=True)</h3>
 
@@ -1437,7 +1437,7 @@ print(sorted_kisaragi)
 
   <article>
 
-    <details id="max"><summary>max(), min()</summary>
+    <details id="max"><summary id="max-h">max(), min()</summary>
 
       <header>
         <h3>max(引数, key=lambda・・)</h3>
@@ -1529,7 +1529,7 @@ print(min_name)
 
   <article>
 
-    <details id="sum"><summary>sum()</summary>
+    <details id="sum"><summary id="sum-h">sum()</summary>
 
       <header>
         <h3>sum(内包表記)</h3>
@@ -1700,7 +1700,7 @@ print(elem_sum)
 
 <article>
 
-  <details id="c4"><summary>Chatpter.4 - in と not in も使えます</summary>
+  <details id="c4"><summary id="c4-h">Chatpter.4 - in と not in も使えます</summary>
 
     <header>
       <h2>in と not in</h2>

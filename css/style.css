@@ -590,14 +590,13 @@ table {
 /* ---------- 強調文字 ---------- */
 
 strong {
-    white-space: nowrap; 
-
     font-weight: bold;
     text-shadow: none;
     color: #cc0000;
     }
 
     .special {
+        white-space: nowrap; 
         text-shadow: 2px 2px 4px rgba(145, 67, 67, 0.5); /* 影の追加 */
         color: #ff0000;
     }
@@ -628,6 +627,7 @@ strong {
     }
     
     .func {
+        white-space: nowrap; 
         color: chocolate;
     }
     .func::before {
@@ -635,10 +635,6 @@ strong {
     }
     .func::after {
         content: " ";
-    }
-
-    .nowrap {
-        white-space: initial;
 }
 
 

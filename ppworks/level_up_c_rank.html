@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Cランクレベルアップメニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>Cランクレベルアップメニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>標準入出力</summary>
+<header><h2>標準入出力</h2></header>
+
+<article>
+<details id="c1-1"><summary>STEP: 1 単純な入出力</summary>
+<header><h3>単純な入出力</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(S)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題集をこなしてきた方ならもうここでつまづくことはないでしょう。うっかりミスにだけ注意！ちゃんと動作確認をしてから提出してくださいね。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 単純な入出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 複数行にわたる出力</summary>
+<header><h3>複数行にわたる出力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+s = 'paiza'
+for _ in range(n):
+    print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p></p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 複数行にわたる出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 複数行にわたる入力</summary>
+<header><h3>複数行にわたる入力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+for _ in range(n):
+    a = input()
+    print(a)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p></p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 複数行にわたる入力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>STEP: 4 入力の配列による保持</summary>
+<header><h3>入力の配列による保持</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+print(max(a))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p></p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">STEP: 4 入力の配列による保持</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>STEP: 5 半角スペース区切りでの出力</summary>
+<header><h3>半角スペース区切りでの出力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+s = ['paiza' for _ in range(n)]
+print(*s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Python3 は半角スペース区切りの出力がめんどくさいので、一旦リスト化してから <strong>print(*)</strong> で展開するとよいでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c1-5" onclick="closeAccordion('c1-5')">STEP: 5 半角スペース区切りでの出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-6"><summary>STEP: 6 改行区切りでの出力</summary>
+<header><h3>改行区切りでの出力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+print(*a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p></p>
+</ul>
+<footer><a class="backto" href="#c1-6" onclick="closeAccordion('c1-6')">STEP: 6 改行区切りでの出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-7"><summary>FINAL問題 標準入出力</summary>
+<header><h3>標準入出力</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for _ in range(N):
+    s, a = input().split()
+    print(s, int(a) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+lst = [input().split() for _ in range(N)]
+for s, a in lst:
+    print(s, int(a) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+dic = {s: int(a) for _ in range(N) for s, a in [input().split()]}
+for s, a in dic.items():
+    print(s, a+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>データを作るか作らないか、またどんな型でデータを作るかで書き方が大きく変わってきます。「一覧表を出力してください。」としか記述されてませんので、どのように入力するかは自由かと思います。</p>
+<p>ということで、例１～３が理解できれば FINAL問題 は合格でしょう。ぺーぺーの私が偉そうなこと言えませんけど。😹</p>
+</ul>
+<footer><a class="backto" href="#c1-7" onclick="closeAccordion('c1-7')">FINAL問題 標準入出力</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">標準入出力</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>文字列</summary>
+<header><h2>文字列</h2></header>
+
+<article>
+<details id="c2-1"><summary>STEP: 1 整数と文字列</summary>
+<header><h3>整数と文字列</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [input() for _ in range(n)]
+for s in a:
+    print(len(s))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字列の長さを取得するには<strong class="func">len()</strong>関数を使います。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 整数と文字列</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 部分文字列</summary>
+<header><h3>部分文字列</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = input()
+s = input()
+if a in s:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「<mark>文字(列)a</mark> が、<mark>文字列s</mark> の一部分 <em>(部分文字列)</em>」として含まれているかを <strong class="if"></strong> ～ <strong>in</strong> で調べます。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">STEP: 2 部分文字列</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 数字の文字列操作（基本）</summary>
+<header><h3>数字の文字列操作（基本）</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+a = int(S[0]) + int(S[3])
+b = int(S[1]) + int(S[2])
+print(str(a) + str(b))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = list(map(int, input()))
+a = S[0] + S[3]
+b = S[1] + S[2]
+print(str(a) + str(b))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">int()</strong>と<strong class="func">str()</strong>を駆使します。</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">STEP: 3 数字の文字列操作（基本）</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>STEP: 4 数字の文字列操作（0埋め）</summary>
+<header><h3>数字の文字列操作（0埋め）</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = input()
+print(n.zfill(3))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = input()
+print(f"{n:0>3}")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>0 埋めに便利な文字列型の<strong class="func">.zfill()</strong>というメソッドがあります。引数に桁数(文字数)を与えると、勝手に 0 埋めしてくれます。これを知らないと試行錯誤してしまいます。</p>
+<p>例２の<strong>f文字列</strong>を使うとこんな見た目になります。<code>0</code> は 0埋め、<code>></code> は右寄せ、<code>3</code> は３桁という意味です。(この順で書く必要があります)</p>
+</ul>
+<footer><a class="backto" href="#c2-4" onclick="closeAccordion('c2-4')">STEP: 4 数字の文字列操作（0埋め）</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-5"><summary>STEP: 5 数字の文字列操作（時刻1）</summary>
+<header><h3>数字の文字列操作（時刻1）</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(*S.split(':'), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">.split()</strong>メソッドの引数に <code>:</code> を与えると <code>:</code> の位置で分割されたリストが返ります。</p>
+<p>S = 12:34 の時<br>['12', '34']</p>
+</ul>
+<footer><a class="backto" href="#c2-5" onclick="closeAccordion('c2-5')">STEP: 5 数字の文字列操作（時刻1）</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-6"><summary>STEP: 6 数字の文字列操作（時刻2）</summary>
+<header><h3>数字の文字列操作（時刻2）</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+hour, minute = map(int, S.split(':'))
+d, m = divmod(minute+30, 60)
+print(str(hour + d).zfill(2) + ':' + str(m).zfill(2))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+hour, minute = map(int, S.split(':'))
+d, m = divmod(minute+30, 60)
+print(f"{hour+d:0>2}:{m:0>2}")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>divmod(minute+30, 60)</code> は、<mark>minute+30 // 60</mark> と <mark>minute+30 % 60</mark> を計算してくれます。結果が <mark>(div, mod)</mark> の形で返るので、これを <code>d, m</code> にアンパック代入します。</p>
+<p><code>d</code> は 分 + 60 の繰り上がり分、<code>m</code> はそのまま 分 となります。</p>
+<p><strong class="func">.zfill()</strong>メソッドで 0 埋めできますが、どうしても冗長になってしまいます。そんな時は f文字列が便利です。</p>
+</ul>
+<footer><a class="backto" href="#c2-6" onclick="closeAccordion('c2-6')">STEP: 6 数字の文字列操作（時刻2）</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-7"><summary>FINAL問題 文字列</summary>
+<header><h3>文字列</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+for _ in range(N):
+    t, tmp = input().split(maxsplit=1)
+    th, tm = map(int, t.split(':'))
+    h, m = map(int, tmp.split())
+    
+    time_h, time_m = divmod(tm + m, 60)
+    time_h = (th + h + time_h) % 24
+    
+    print(f'{time_h:0>2}:{time_m:0>2}')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力した文字列を分割していくのが大変です。まずは時刻と時間に分割します。次に時刻を <mark>:</mark> で分割します。次に時間を分割します。</p>
+<p><code>tm</code> は時刻の「分」、<code>m</code> は外出している時間の「分」。これを足して 60 で割ります。</p>
+<p>そして時刻の「時」の部分と外出時間の「時」の部分と <mark>tm + m // 60</mark> の <code>time_h</code> を足すと帰宅時刻の「時」の部分が出るので、これを 24 で割って 24時間制にします。(26時なら <mark>26 % 24</mark> で 2時に)</p>
+<p>あとはこの結果を使って画面に出力するだけです。もちろん<strong class="func">.zfill()</strong>メソッドを使った書き方でもOKです。</p>
+</ul>
+<footer><a class="backto" href="#c2-7" onclick="closeAccordion('c2-7')">FINAL問題 文字列</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">文字列</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>forループ</summary>
+<header><h2>forループ</h2></header>
+
+<article>
+<details id="c3-1"><summary>STEP: 1 3の倍数のカウント</summary>
+<header><h3>3の倍数のカウント</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+cnt = 0
+for a_i in a:
+    if a_i % 3 == 0:
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「３の倍数」とは、３で割り切れる数のことです。それをリストの中から見つけてカウントしていきます。</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 3の倍数のカウント</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 フラグ管理</summary>
+<header><h3>フラグ管理</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+flg = False
+for _ in range(n):
+    a = int(input())
+    
+    if a == 7:
+        flg = True
+        break
+
+if flg:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+for _ in range(n):
+    a = int(input())
+    
+    if a == 7:
+        print('YES')
+        break
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は、<strong>フラグ<em>(flag)</em>を立てる</strong>方法です。初めはフラグを <strong>False</strong> に下した状態にして、ある条件を満たすとフラグを立てる、<strong>True</strong> にし、そしてそのフラグの状態が<ruby>後<rt>のち</rt></ruby>の条件分岐の判定に使われます。<br>昔からゲームでよく使われる手法として知られているので、「フラグが立った」とか「死亡フラグ」とかの意味で使われるフラグは、このプログラミング用語から来ているものと思われます。(後にゲーム用語ともなります)</p>
+<p>Python3 的には<strong class="for"></strong> ～ <strong>else</strong> を使えばフラグは必要なくなります。</p>
+<p><strong class="for"></strong> ～ <strong>else</strong> については「<a href="../../3/0060extra.html" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">STEP: 2 フラグ管理</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 インデックス取得</summary>
+<header><h3>インデックス取得</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+k = int(input())
+
+idx = a.index(k) + 1
+print(idx)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力にひとクセある問題です。<mark>a_i</mark> の中で <mark>k</mark> を見つけるのですが、<mark>k</mark> の入力が <mark>a</mark> の後にあります。その為、<mark>a</mark> はデータとして初めに全取得しておく必要があります。</p>
+<p>それ以外は特筆することもありません。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">STEP: 3 インデックス取得</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>STEP: 4 多重ループ</summary>
+<header><h3>多重ループ</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">m = int(input())
+c = [input() for _ in range(m)]
+n = int(input())
+S = [input() for _ in range(n)]
+
+for s in S:
+    for c_i in c:
+        if c_i in s:
+            print('YES')
+        else:
+            print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">m = int(input())
+c = [input() for _ in range(m)]
+n = int(input())
+S = [input() for _ in range(n)]
+
+for s in S:
+    for c_i in c:
+        print('YES' if c_i in s else 'NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>c</code> と <code>S</code> のどっちが先かでちょっと混乱するところですが、「 <strong>S</strong> のワード中に <strong>c_i</strong> の文字は含まれるか」の順番です。</p>
+<p>どっちが先かで混乱しただけならまだ良いのですが、二重ループの処理がまだうまくイメージ出来ていない場合は、もう一度二重ループを復習しておいたほうが良いと思います。<br>二重ループについてはちょっとだけ「<a href="../../1/0070forwhile.html#c3-h" class="linked" target="_blank">１章 繰り返し文</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">STEP: 4 多重ループ</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-5"><summary>FINAL問題 forループ</summary>
+<header><h3>forループ</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, _, K = map(int, input().split())
+
+for i in range(N):
+    a = list(map(int, input().split()))
+    cnt = 0
+    for a_i in a:
+        if a_i == K:
+            cnt += 1
+
+    print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, _, K = map(int, input().split())
+
+for i in range(N):
+    a = list(map(int, input().split()))
+    print(a.count(K))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, _, K = map(int, input().split())
+a = [list(map(int, input().split())) for _ in range(N)]
+
+for lst in a:
+    print(lst.count(K))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで求められている書き方は恐らく例１です。例１が余裕で読めるようになっているならば、今後は素直に<strong class="func">.count()</strong>メソッドを使いましょう。</p>
+</ul>
+<footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">FINAL問題 forループ</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">forループ</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>ソート</summary>
+<header><h2>ソート</h2></header>
+<article>
+<details id="c4-1"><summary>STEP: 1 昇順ソート</summary>
+<header><h3>昇順ソート</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+sorted_a = sorted(a)
+print(*sorted_a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+a.sort()
+print(*a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+
+for i in range(n-1):
+    for j in range(n-i-1):
+        if a[j] > a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]
+
+print(*a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は関数を使った昇順ソート。例２はメソッドを使った昇順ソートです。</p>
+<p>一見難しそうなソートですが、実は今まで学んだテクニックだけでソートが出来ます。それが例３の<strong>バブルソート</strong>という方法です。</p>
+<ul>
+<li>配列</li>
+<li><strong class="for"></strong>文</li>
+<li><strong class="if"></strong>文</li>
+<li>スワップ (値交換)</li>
+<li>二重ループ</li>
+</ul>
+<p>これらのワードが何かはもうおわかりですよね？<br><strong>バブルソート</strong>は現在の値(<code>a[j]</code>)と右隣りの値(<code>a[j+1]</code>)を比べて、現在の値(<code>a[j]</code>)のほうが大きかったらスワップする。というのを二重ループを使って処理していきます。</p>
+<p>a = [2, 4, 3, 5, 1] の時</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr style="background-color:aliceblue;">
+<td>2</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<table>
+<tbody>
+<tr style="background-color:aliceblue;">
+<td style="background-color: yellow;">2</td>
+<td style="background-color: yellow;">4</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<div style="position: relative; display: inline-block;">
+<table>
+<tbody>
+<tr style="background-color:aliceblue;">
+<td>2</td>
+<td style="background-color:red;">4</td>
+<td style="background-color:cyan;">3</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p style="position: absolute; bottom: 0; right: 0; margin-right: -150px; margin-bottom: -0px;">4 と 3 をスワップ</p>
+</div>
+<p>↓</p>
+<table>
+<tbody>
+<tr style="background-color:aliceblue;">
+<td>2</td>
+<td>3</td>
+<td style="background-color:yellow;">4</td>
+<td style="background-color:yellow;">5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<div style="position: relative; display: inline-block;">
+<table>
+<tbody>
+<tr style="background-color:aliceblue;">
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td style="background-color:red;">5</td>
+<td style="background-color:cyan;">1</td>
+</tr>
+</tbody>
+</table>
+<p style="position: absolute; bottom: 0; right: 0; margin-right: -150px; margin-bottom: -0px;">5 と 1 をスワップ</p>
+</div>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td style="background-color: yellow;">2</td>
+<td style="background-color: yellow;">3</td>
+<td style="background-color:aliceblue;">4</td>
+<td style="background-color:aliceblue;">1</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:yellow;">3</td>
+<td style="background-color:yellow;">4</td>
+<td style="background-color:aliceblue;">1</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<div style="position: relative; display: inline-block;">
+<table>
+<tbody>
+<tr>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:red;">4</td>
+<td style="background-color:cyan;">1</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p style="position: absolute; bottom: 0; right: 0; margin-right: -150px; margin-bottom: -0px;">4 と 1 をスワップ</p>
+</div>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td style="background-color: yellow;">2</td>
+<td style="background-color: yellow;">3</td>
+<td style="background-color:aliceblue;">1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<div style="position: relative; display: inline-block;">
+<table>
+<tbody>
+<tr>
+<td style="background-color: aliceblue;">2</td>
+<td style="background-color: red;">3</td>
+<td style="background-color:cyan;">1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p style="position: absolute; bottom: 0; right: 0; margin-right: -150px; margin-bottom: -0px;">3 と 1 をスワップ</p>
+</div>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<div style="position: relative; display: inline-block;">
+<table>
+<tbody>
+<tr>
+<td style="background-color: red;">2</td>
+<td style="background-color: cyan;">1</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p style="position: absolute; bottom: 0; right: 0; margin-right: -150px; margin-bottom: -0px;">2 と 1 をスワップ</p>
+</div>
+<p>↓</p>
+<table>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>完成！</p>
+<p></p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">STEP: 1 昇順ソート</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>STEP: 2 降順ソート</summary>
+<header><h3>降順ソート</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+sorted_a = sorted(a, reverse=True)
+print(*sorted_a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+a.sort(reverse=True)
+print(*a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+
+for i in range(n-1):
+    for j in range(n-i-1):
+        if a[j] < a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]
+
+print(*a, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>降順ソートでは関数やメソッドの引数に <code>reverse=True</code> を付けます。(例１・例２)</p>
+<p>例３では、<strong class="if"></strong>文の比較式の、不等号の向きを反対にしただけです。それ以外は一切手を付けていません。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">STEP: 2 降順ソート</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>STEP: 3 辞書式ソート</summary>
+<header><h3>辞書式ソート</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+lst = [list(map(int, input().split())) for _ in range(n)]
+lst.sort(reverse=True)
+for a, b in lst:
+    print(a, b)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>バナナのソートをどのようにすればよいかが悩ましいところですが、実は <strong class="func">sorted()</strong> や <strong class="func">.sort()</strong> が、問題の条件通りに勝手に並び替えてくれます。</p>
+<p>数が多いほうが上位になるので、降順ソートに指定するだけです。</p>
+</ul>
+
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">STEP: 3 辞書式ソート</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>FINAL問題 ソート</summary>
+<header><h3>ソート</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+lst = [list(map(int, input().split()))[::-1] for _ in range(N)]
+
+lst.sort(reverse=True)
+for s, g in lst:
+    print(g, s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の「辞書式ソート」と同じ様に見えて、入力の前後が反転されています。この反転された値を反転すれば同じ様に書けます。</p>
+<p>最後は反転したものをもう一度反転して戻した形で画面に出力すれば完了です。</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">FINAL問題 ソート</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">ソート</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>辞書</summary>
+<header><h2>辞書</h2></header>
+
+<article>
+<details id="c5-1"><summary>STEP: 1 辞書の基本</summary>
+<header><h3>辞書の基本</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+dic = {}
+for _ in range(n):
+    s, a = input().split()
+    dic[s] = int(a)
+
+S = input()
+print(dic[S])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+dic = {s: int(a) for _ in range(n) for s, a in [input().split()]}
+S = input()
+
+print(dic[S])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力のほうが難しいですね。😅<br>ちなみに、<code>a</code> は文字列のままでも正解になります。「財産」ということなので数値化したまでです。</p>
+</ul>
+<footer><a class="backto" href="#c5-1" onclick="closeAccordion('c5-1')">STEP: 1 辞書の基本</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-2"><summary>STEP: 2 辞書のデータ更新</summary>
+<header><h3>辞書のデータ更新</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+players = {input(): 0 for _ in range(n)}
+
+m = int(input())
+for _ in range(m):
+    p, a = input().split()
+    players[p] += int(a)
+
+S = input()
+print(players[S])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>辞書は、入力と同時に 0 で初期化しておきます。あとは名前とダメージを受け取りながら辞書に値を足していくだけです。</p>
+<p>最後に入力で受け取った <code>S</code> の値を画面に出力すれば完了です。</p>
+<p>できたら全回復するところまで作ってほしかったですね。このままじゃかわいそうだ。😅</p>
+</ul>
+<footer><a class="backto" href="#c5-2" onclick="closeAccordion('c5-2')">STEP: 2 辞書のデータ更新</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-3"><summary>STEP: 3 辞書データの順序</summary>
+<header><h3>辞書データの順序</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+players = {input(): 0 for _ in range(n)}
+m = int(input())
+
+for _ in range(m):
+    p, a = input().split()
+    players[p] += int(a)
+
+for _, v in sorted(players.items()):
+    print(v)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の「辞書データ更新」の最後の出力が異なるだけです。<br><strong class="func">.items()</strong>メソッドは辞書をリストに変換する機能です。</p>
+<p>辞書型のメソッドは「<a href="../../2/0100usefuldicttype.html#c2-h" class="linked" target="_blank">２章 辞書を使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+
+<footer><a class="backto" href="#c5-3" onclick="closeAccordion('c5-3')">STEP: 3 辞書データの順序</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-4"><summary>FINAL問題 辞書</summary>
+<header><h3>辞書</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p, q, _ = map(int, input().split())
+A = {i: j for _ in range(p) for i, j in [input().split()]}
+B = {j: k for _ in range(q) for j, k in [input().split()]}
+
+A_to_C = {}
+for i, j in A.items():
+    A_to_C[i] = B[j]
+
+for i, k in sorted(A_to_C.items()):
+    print(i, k)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p, q, _ = map(int, input().split())
+A = {i: j for _ in range(p) for i, j in [input().split()]}
+B = {j: k for _ in range(q) for j, k in [input().split()]}
+
+A_to_C = {i: B[j] for i, j in A.items()}
+
+for i, k in sorted(A_to_C.items()):
+    print(i, k)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>頼んだ仕事を勝手に別の人に丸投げされて、そのままその仕事が行方不明になるということはたまにあるものです。再委託は違法にすべし！</p>
+<p>グループA と グループC を繋ぐ グループB の使い方が鍵となります。<br>まず <code>A.items()</code> で <code>i</code> と <code>j</code> を取り出します。この <code>i</code> は グループA の i 番目の人、<code>j</code> は グループB の j 番目の人です。<br>そして <code>B[j]</code> の値が グループC の k 番目の人で、この値を <code>A_to_C[i]</code> の値として辞書に格納します。この <code>A_to_C[i]</code> の <code>i</code> は、最初に仕事を任せた グループA の i 番目の人です。</p>
+<p><mark>A_to_C[i]</mark> … グループA の i 番目の人<br><mark>B[j]</mark> … グループC の k 番目の人</p>
+<p>ループを抜けると <mark>A_to_C</mark> のデータが出来上がっているので、これをソートして順に画面に出力すれば完了となります。内包表記のほうがわかりやすいような気がします。</p>
+<p>入力 <code>r</code> は何に使えばよいのだろう？と考えた蛇使いの方もいらっしゃるかと思います。この <code>r</code> は Python3 では使いません。気にしないでください。</p>
+<p>それと、プログラム例では番号を文字列で処理しましたが、整数型にしても正解になります。『番号』だから文字列でいいと思います。</p>
+</ul>
+<footer><a class="backto" href="#c5-4" onclick="closeAccordion('c5-4')">FINAL問題 辞書</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">辞書</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>シミュレーション</summary>
+<header><h2>シミュレーション</h2></header>
+
+<article>
+<details id="c6-1"><summary>STEP: 1 条件を満たす最小の自然数</summary>
+<header><h3>条件を満たす最小の自然数</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(10013 - 10000 % 13)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 10000
+while n % 13 != 0:
+    n += 1
+
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１の解答はお呼びでなかったようで。😅</p>
+<p>例２は、10000 から 1 ずつ足しながら 13 で割り切れる数を探しているだけです。ループする回数が定まっていないので <strong class="while"></strong>を使います。</p>
+</ul>
+<footer><a class="backto" href="#c6-1" onclick="closeAccordion('c6-1')">STEP: 1 条件を満たす最小の自然数</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c6-2"><summary>STEP: 2 シミュレーションの練習</summary>
+<header><h3>シミュレーションの練習</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a, b = map(int, input().split())
+paiza = kyoko = 1
+
+cnt = 0
+while kyoko <= n:
+    kyoko += paiza * a
+    paiza += kyoko % b
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>paiza = kyoko = 1</code> という書き方をすると、全ての変数が最も右の値でまとめて代入されます。最も右の値は変数でも構いません。</p>
+<p>「霧島京子の数がnより大きくなるまで繰り返します。」とあります。<strong class="while"></strong> を使い、n より大きくなると終了(kyoko > n で False)なので、ループの条件を「 n 以下 <code>kyoko <= n</code>」にします。</p>
+<p>あとは各演算を間違えなければ問題は起こらないはずです。</p>
+</ul>
+<footer><a class="backto" href="#c6-2" onclick="closeAccordion('c6-2')">STEP: 2 シミュレーションの練習</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c6-3"><summary>FINAL問題 シミュレーション</summary>
+<header><h3>シミュレーション</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">H = int(input())
+paiza_hp = H
+
+n = 2
+paiza_damaged = [1, 1]
+monster_damaged = [1, 1]
+paiza_hp -= sum(monster_damaged)
+while paiza_hp > 0:
+    paiza_hits = paiza_damaged[n-1] + paiza_damaged[n-2]
+    monster_damaged.append(paiza_hits)
+    
+    monster_hits = monster_damaged[n-1]*2 + monster_damaged[n-2]
+    paiza_damaged.append(monster_hits)
+    paiza_hp -= monster_hits
+
+    n += 1
+
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>フィボナッチ数のようなダメージ計算式ですね。</p>
+<p>初期設定は１回目と２回目はどちらもダメージ 1 と決まっているので、上記のとおりに初期化しました。<strong class="func">sum()</strong>関数を使わなくて直接 <code>2</code> にしてもOK。<br>そしてダメージ計算は３ターン目から開始します。</p>
+<p>今回は自分で変数名を考えなければならない個数が多くて大変です。私のセンスの無さが露呈しています。😓<br>まずはループ条件を「パイザ君の HP が 0 より大きい」にします。<strong class="while"></strong>文の中身はパイザ君の攻撃ダメージとモンスターの攻撃ダメージを問題文の通りに計算し、それぞれのリストに追加します。この時、ループの条件となっているパイザ君の HP もここで引いておきます。</p>
+<p>ループを抜けたら、最後にターン数の <code>n</code> を画面に出力して完了です。</p>
+</ul>
+<ul>
+<p>この問題が１回でクリアできなかったとしても、解説を読んで修正してクリアできればＣランクのスキルチェックがそれなりに解けるようになっています。基礎を身に付けて慣れることはもちろんですが、カギは<strong>便利な関数やメソッドをたくさん憶える</strong>ことです。これが手っ取り早い。あとは問題をよく読んで理解すること。問題集と違ってスキルチェックの問題は理解しやすいです。けど早まると勘違いもしやすいです。</p>
+<p>スキルチェックは制限時間がありますのでついつい時間を気にして焦ってしまいますが、初めのうちはタイムオーバーも気にせずじっくりと問題を解いていってみてください。力がつけば自然と早く解けるようになってきます。それと同時にＢランクレベルの問題集をこなしていくと、Ｃランクのスキルチェックがだんだんと簡単に解けるようになってきます。</p>
+<p>スキルチェックの問題は難易度の低い順に上から並んでいますので、題名に惹かれたものからやってみてください。</p>
+</ul>
+<footer><a class="backto" href="#c6-3" onclick="closeAccordion('c6-3')">FINAL問題 シミュレーション</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">シミュレーション</a></footer>
+</details>
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>メニュー</p>
+</footer>
+</body>
+</html>

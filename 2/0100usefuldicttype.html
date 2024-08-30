@@ -147,10 +147,12 @@
 <pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
 sisters = minna_mike.items()
 print(sisters)
+print(list(sisters))
 </code></pre>
 
 <div class="x-fit">
 <code>dict_items([('ハルカ', '高校生'), ('カナ', '中学生'), ('チアキ', '小学生')])</code><br>
+<code>[('ハルカ', '高校生'), ('カナ', '中学生'), ('チアキ', '小学生')]</code><br>
 </div>
 
 </div>
@@ -251,10 +253,12 @@ print(sorted_items)
 
 <pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
 sisters = minna_mike.keys()
+print(sisters)
 print(list(sisters))
 </code></pre>
 
 <div class="x-fit">
+<code>dict_keys(['ハルカ', 'カナ', 'チアキ'])</code><br>
 <code>['ハルカ', 'カナ', 'チアキ']</code><br>
 </div>
 
@@ -374,10 +378,12 @@ print(sorted_items)
 
 <pre><code class="language-python">minna_mike = {'ハルカ': '高校生', 'カナ': '中学生', 'チアキ': '小学生'}
 sisters = minna_mike.values()
+print(sisters)
 print(list(sisters))
 </code></pre>
 
 <div class="x-fit">
+<code>dict_values(['高校生', '中学生', '小学生'])</code><br>
 <code>['高校生', '中学生', '小学生']</code><br>
 </div>
 

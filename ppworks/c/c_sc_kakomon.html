@@ -609,9 +609,9 @@ for _ in range(M):
     w = int(input())
     num = w / N
     num_int = int(num)
+
     is_heavy = (num - num_int >= 0.5)
     g = N * num_int + is_heavy * N
-
     if g == 0:
         g = N
 

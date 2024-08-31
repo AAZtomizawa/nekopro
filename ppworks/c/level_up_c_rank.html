@@ -374,8 +374,8 @@ for _ in range(N):
 a = list(map(int, input().split()))
 
 cnt = 0
-for num in a:
-    if num % 3 == 0:
+for a_i in a:
+    if a_i % 3 == 0:
         cnt += 1
 
 print(cnt)
@@ -471,8 +471,8 @@ n = int(input())
 S = [input() for _ in range(n)]
 
 for s in S:
-    for char in c:
-        if char in s:
+    for c_i in c:
+        if c_i in s:
             print('YES')
         else:
             print('NO')
@@ -488,8 +488,8 @@ n = int(input())
 S = [input() for _ in range(n)]
 
 for s in S:
-    for char in c:
-        print('YES' if char in s else 'NO')
+    for c_i in c:
+        print('YES' if c_i in s else 'NO')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -512,8 +512,8 @@ for s in S:
 for i in range(N):
     a = list(map(int, input().split()))
     cnt = 0
-    for num in a:
-        if num == K:
+    for a_i in a:
+        if a_i == K:
             cnt += 1
 
     print(cnt)

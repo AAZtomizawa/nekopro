@@ -595,10 +595,10 @@ for _ in range(N):
 </section>
 
 <section>
-<details id="c5"><summary>みかんの仕分け</summary>
+<!-- <details id="c5"><summary>みかんの仕分け</summary> -->
 <header><h2>みかんの仕分け</h2></header>
 <article>
-<details id="c5-7"><summary>FINAL問題 みかんの仕分け</summary>
+<!-- <details id="c5-7"><summary>FINAL問題 みかんの仕分け</summary> -->
 <header><h3>みかんの仕分け</h3></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -607,27 +607,25 @@ for _ in range(N):
 
 for _ in range(M):
     w = int(input())
-    
-    # N=10の時、(10 + 5) = 15g未満のものは10gの箱へ入れる条件式
-    if w < N - (N//2):
+    num = w / N
+    num_int = int(num)
+    is_heavy = (num - num_int >= 0.5)
+    g = N * num_int + is_heavy * N
+
+    if g == 0:
         g = N
-    else:
-        num = w / N
-        num_int = int(num)
-        is_heavy = (num - num_int >= 0.5)
-        g = N * num_int + is_heavy * N
-    
+
     print(g)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>例として w = 24, N = 10 の時で解説します。</p>
-<p>条件文ですが、まず初めに条件がめんどくさい一番軽い箱のものから処理します。これはコメントに書いたとおりです。<code>w</code> は整数なので「未満」と書いて大丈夫ですが、<code>w <= N - (N//2) - 1</code> と書いてもOK。<br><code>g = N</code> の <code>N</code> は一番軽い N = 10(g) の箱を指します。</p>
-<p>それ以外の場合、重いほうと軽いほうに仕分けます。<br>まず入力 <code>w</code> を N で割ります。<code>num = w / N</code><br>そしてこの <code>num</code> の整数部分の値を取ります。</p>
+<p>重いほうと軽いほうに仕分けます。<br>まず入力 <code>w</code> を N で割ります。<code>num = w / N</code><br>そしてこの <code>num</code> の整数部分の値を取ります。</p>
 <p class="inlook">num = 24 / 10 = <strong>2.4</strong><br>num_int = int(2.4) = <strong>2</strong> ← num の整数部分<br><br>num - num_int = 2.4 - 2 = <strong>0.4</strong> ← num の小数部分</p>
 <p><code>is_heavy</code> は、num の小数部分の値が 0.5 以上の時は <code>1</code>(重いほうの箱に入れる) となり、0.5 未満の時は <code>0</code>(軽いほうの箱に入れる) となります。<br><small>※ この <code>0</code> と <code>1</code> の意味は「<a href="../../2/0020truefalse.html#c2-h" class="linked" target="_blank">２章 bool型 True と False</a>」をご覧ください。</small></p>
 <p class="inlook">g = 10 * 2 + is_heavy * N<br>↓<br>・<code>is_heavy</code> が 1 の時<br>g = 10 * 2 + <strong>1 * 10</strong> = 30<br>・<code>is_heavy</code> が 0 の時<br>g = 10 * 2 + <strong>0 * 10</strong> = 20<br>↓<br>{20, 21, 22, 23, <strong>24</strong>}, {25, 26, 27, 28, 29, 30}<br>結果、20gの箱に入る。</p>
 <p>こうしてみかんを仕分けして入れた箱に表示されている重さを画面に出力していき、ループを抜ければ完了となります。</p>
+<p>もし、<code>g</code> が 0 になった場合は、一番軽い N の箱に入れます。 </p>
 <p>N が 10 でなくてもいくつであっても、<code>w / N</code> の小数部分を使えば四捨五入の要領で仕分けできますし、ループもしなくてイメージしやすく、ラクかなと。😅</p>
 </ul>
 <ul>
@@ -645,6 +643,9 @@ for _ in range(M):
 <p>値を変えて検証します。<br>w = 18, N = 7 の時</p>
 <p class="inlook">num = 18 / 7 = <strong>2.5(71428…)</strong><br>num_int = int(2.5) = <strong>2</strong> ← num の整数部分<br><br>num - num_int = 2.5 - 2 = <strong>0.5</strong> ← num の小数部分</p>
 <p class="inlook">is_heavy = (2.5 - 2 >= 0.5) = <strong>True</strong> = 1<br>g = N * num_int + is_heavy * N<br>↓<br>g = 7 * 2 + is_heavy * N<br>↓<br>・<code>is_heavy</code> が 1 の時<br>g = 7 * 2 + <strong>1 * 7</strong> = 21<br>・<code>is_heavy</code> が 0 の時<br>g = 7 * 2 + <strong>0 * 7</strong> = 14<br>↓<br>{14, 15, 16, 17}, {<strong>18</strong>, 19, 20, 21}<br>結果、21gの箱に入る。ちなみに w = 17 は、<br>num = w / N = 2.4(28571…) だから 14gの箱に入る。</p>
+<p>w = 3, N = 7 の時</p>
+<p class="inlook">num = 3 / 7 = <strong>0.4(28571…)</strong><br>num_int = int(0.4) = <strong>0</strong> ← num の整数部分<br><br>num - num_int = 0.4 - 0 = <strong>0.4</strong> ← num の小数部分</p>
+<p class="inlook">is_heavy = (0.4 - 0 >= 0.5) = <strong>False</strong> = 0<br>g = N * num_int + is_heavy * N<br>↓<br>g = 7 * 0 + is_heavy * N<br>↓<br>・<code>is_heavy</code> が 1 の時<br>g = 7 * 0 + <strong>1 * 7</strong> = 7<br>・<code>is_heavy</code> が 0 の時<br>g = 7 * 0 + <strong>0 * 7</strong> = 0<br>↓<br>{<strong>0</strong>, 1, 2, 3}, {4, 5, 6, 7}<br>0g の時 <code>if g == 0:</code> は最も軽い箱 7g の箱に入れる。<code>g = N</code></p>
 </ul>
 <footer><a class="backto" href="#c5-7" onclick="closeAccordion('c5-7')">FINAL問題 みかんの仕分け</a></footer>
 </details>

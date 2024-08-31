@@ -639,7 +639,7 @@ for _ in range(M):
 <p class="inlook">is_heavy = (2.5 - 2 >= 0.5) = <strong>True</strong> = 1<br>g = N * num_int + is_heavy * N<br>↓<br>g = 7 * 2 + is_heavy * N<br>↓<br>・<code>is_heavy</code> が 1 の時<br>g = 7 * 2 + <strong>1 * 7</strong> = 21<br>・<code>is_heavy</code> が 0 の時<br>g = 7 * 2 + <strong>0 * 7</strong> = 14<br>↓<br>{14, 15, 16, 17}, {<strong>18</strong>, 19, 20, 21}<br>結果、21gの箱に入る。ちなみに w = 17 は、<br>num = w / N = 2.4(28571…) だから 14gの箱に入る。</p>
 <p>w = 3, N = 7 の時</p>
 <p class="inlook">num = 3 / 7 = <strong>0.4(28571…)</strong><br>num_int = int(0.4) = <strong>0</strong> ← num の整数部分<br><br>num - num_int = 0.4 - 0 = <strong>0.4</strong> ← num の小数部分</p>
-<p class="inlook">is_heavy = (0.4 - 0 >= 0.5) = <strong>False</strong> = 0<br>g = N * num_int + is_heavy * N<br>↓<br>g = 7 * 0 + is_heavy * N<br>↓<br>・<code>is_heavy</code> が 1 の時<br>g = 7 * 0 + <strong>1 * 7</strong> = 7<br>・<code>is_heavy</code> が 0 の時<br>g = 7 * 0 + <strong>0 * 7</strong> = 0<br>↓<br>{<strong>0</strong>, 1, 2, 3}, {4, 5, 6, 7}<br>0g の時 <code>if g == 0:</code> は最も軽い箱 7g の箱に入れる。<code>g = N</code></p>
+<p class="inlook">is_heavy = (0.4 - 0 >= 0.5) = <strong>False</strong> = 0<br>g = N * num_int + is_heavy * N<br>↓<br>g = 7 * 0 + is_heavy * N<br>↓<br>・<code>is_heavy</code> が 1 の時<br>g = 7 * 0 + <strong>1 * 7</strong> = 7<br>・<code>is_heavy</code> が 0 の時<br>g = 7 * 0 + <strong>0 * 7</strong> = 0<br>↓<br>{0, 1, 2, <strong>3</strong>}, {4, 5, 6, 7}<br>0g の箱は無いので <code>if g == 0:</code><br>最も軽い箱 7g の箱に入れる。<code>g = N</code></p>
 </ul>
 <footer><a class="backto" href="#c5-7" onclick="closeAccordion('c5-7')">FINAL問題 みかんの仕分け</a></footer>
 </details>

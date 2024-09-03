@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】正規表現メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>正規表現メニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>エスケープシーケンスの検索</summary>
+<header><h2>エスケープシーケンスの検索</h2></header>
+<article>
+<details id="c1-1"><summary>STEP: 1 文字列の検索</summary>
+<header><h3>文字列の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"paiza")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>まず、正規表現を扱えるようにする為に <code>import re</code> を冒頭に書きます。</p>
+<p>次に、正規表現を書きます。正規表現は <strong>raw文字列</strong> というものを使います。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">r""
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>という書き方をします。通常の文字列で使う <code>'</code> <code>"</code> の前に <code>r</code> を書き加えるだけです。<br>ここでは以降、一律して <code>r""</code> と書くこととします。<br>ここに検索したい文字列を記述します。この問題は「'paiza' を見つけてその位置番号返す」ことが求められていますので <code>r"paiza"</code> と記します。正規表現を使って書かれたこの形のものを「<strong>パターン <em>(pattern)</em></strong>」と言います。</p>
+<p>次にこのパターンを使って、入力 <code>S</code> の中にパターンに指定した文字列があるかどうかを調べます。<code>re.search(pattern, S)</code><br>これを試しに画面に出力してみると、</p>
+<p><code class="output">&lt;re.Match object; span=(8, 13), match='paiza'&gt;</code></p>
+<p>と検索結果(オブジェクト)の中身が表示されます。<mark>span=(8, 13), match='paiza'</mark> は「文字列の 8 番目から 12 番目に 'paiza' があります。」という意味です。'paiza' の一文字目の <code>p</code> が 8 番目、五文字目の <code>a</code> が 12 番目です。<strong class="func">range()</strong> と同じ範囲の示し方ですね。<br>正規表現では検索文字列を見つけた場合を、<strong class="special">マッチ</strong>したと表現します。</p>
+<p>最後の <strong class="func">print()</strong> 関数でメソッドが使われています。</p>
+<div class="x-fit">
+<table>
+<thead>
+<th>メソッド</th>
+<th>機能</th>
+</thead>
+<tbody>
+<tr>
+<td><strong class="func">.group()</strong></td>
+<td>マッチした文字列を返す。()内はグループ番号。</td>
+</tr>
+<tr>
+<td><strong class="func">.span()</strong></td>
+<td>マッチした文字列の範囲をタプルで返す。</td>
+</tr>
+<tr>
+<td><strong class="func">.start()</strong></td>
+<td>マッチした文字列の開始位置番号を返す。</td>
+</tr>
+<tr>
+<td><strong class="func">.end()</strong></td>
+<td>マッチした文字列の末尾の位置番号 +1 を返す。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>グループというのはまたこの後の該当する問題で説明されます。これを使ってマッチした文字列を画面に表示させたり、その他、文字列としていろいろ使用したりできます。</p>
+<p>この問題では開始位置を画面に出力するよう求めています。<strong class="func">.start()</strong> メソッドを使えば一丁上がりです。ただこれでは文字列の <strong class="func">.find()</strong> メソッドと変わりありません。次の問題からがいよいよ正規表現らしいパターンの書き方が登場します。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">pattern = re.compile(r"paiza")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">compile()</strong> 関数は、このパターンを何度も使う時に予め変数に入れておき、使うたびにパターンを作らなくて済むようにする為に書かれます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">pattern = r"paiza"
+re_matched = re.search(pattern, S)  # 関数
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と書いたり、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">re_matched = re.search(r"paiza", S)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と単体で書くこともできますが、いずれもその場で都度パターンを作る処理をしています。<br>また、コンパイルしたパターンに限り、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">pattern = re.compile(r"paiza")
+re_matched = pattern.search(S)  # メソッド
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>という書き方ができます。</p>
+<p>以降のプログラム例では一回しか使わなくても、見慣れる為に <strong class="func">compile()</strong> 関数を使ってコンパイルしたものを使っていきます。<br>普段は少ししか使わないときはコンパイルする必要はありません。<br>って、<a href="https://docs.python.org/ja/3/library/re.html#re.compile" class="linked" target="_blank">この人</a>が言ってました。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 文字列の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 メタ文字の検索</summary>
+<header><h3>メタ文字の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\\\(\^ \. \^\)/")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>.*+?^$|(){}[]\</code> の出現文字の前にバックスラッシュ <code>\</code> をつければ文字として認識されるようになります。この一覧に書かれている記号は、以降に正規表現として特別な意味を持つものとなっています。いきなりこれらの記号だけ憶えようとしても憶えられませんが、問題を進めていくことで少しずつ意味がわかるようになっていきます。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 メタ文字の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 任意文字の検索</summary>
+<header><h3>任意文字の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"p..za")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>.</code> はすべての１文字を受け入れます。これを<strong>ワイルドカード</strong>と言います。カードゲームのポーカーが由来の用語です。</p>
+<p>問題に『任意の 1 文字が 2 回続き』とありますので、適所を <code>..</code> とするだけです。こうするとこの２文字は、アルファベットや数字、記号、また日本語文字などのどんな文字も受け入れます。全角文字も半角文字と同様に１文字として数えられます。</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 任意文字の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>STEP: 4 クラス指定文字の検索</summary>
+<header><h3>クラス指定文字の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"Math[123][ABC]")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>[]</code> の中に書かれた文字のいずれか１文字がマッチした時に<strong>マッチ</strong>となります。<br><code>.</code> はすべての文字を受け入れますが、その文字を限定したものが <code>[]</code> となります。複数使うと組み合わせになります。<code>[123][ABC]</code> を例にすると、</p>
+<p><mark>1A</mark>, <mark>1B</mark>, <mark>1C</mark>, <mark>2A</mark>, <mark>2B</mark>, <mark>2C</mark>, <mark>3A</mark>, <mark>3B</mark>, <mark>3C</mark></p>
+<p>のいずれか１つとマッチします。</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">STEP: 4 クラス指定文字の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>STEP: 5 クラスの否定の検索</summary>
+<header><h3>クラスの否定の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"[^0123456789].....")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は受け入れない文字を指定する<strong>否定</strong>です。半角数字なので、0 ～ 9 を羅列すればOKです。<br>また 0 ～ 9 の半角数字は <code>\d</code> で表すこともできますので、<code>r"[^\d]....."</code> と書くこともできます。</p>
+</ul>
+<footer><a class="backto" href="#c1-5" onclick="closeAccordion('c1-5')">STEP: 5 クラスの否定の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-6"><summary>STEP: 6 範囲指定文字の検索</summary>
+<header><h3>範囲指定文字の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"[A-Z]-[0-9][0-9][a-z]")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>[]</code> の中ではハイフン <code>-</code> で文字の範囲を指定することができます。自由に範囲を指定できるので、<code>[C-F]</code> <code>[0-9a-f]</code>という使い方もできます。</p>
+<p>注意点として、この文字は <strong>unicode</strong> のコード番号の「小さい数 → 大きい数」の順に並んでいなくてはいけません。<code>[Z-A]</code> とするとエラーとなります。また、<code>[A-z]</code> とすると、<code>Z</code> と <code>a</code> の間にある記号 <code>[\]^_`</code> まで含まれてしまいます。この場合は [A-Za-z]と分けて書くことで回避できます。</p>
+</ul>
+<footer><a class="backto" href="#c1-6" onclick="closeAccordion('c1-6')">STEP: 6 範囲指定文字の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-7"><summary>STEP: 7 0 回または 1 回の出現の検索</summary>
+<header><h3>0 回または 1 回の出現の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"clang-?format")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>0 回か 1 回かは、その文字が「ある時ない時関わらず」マッチします。<code>clang-?format</code> では、 <code>clang-format</code> <code>clangformat</code> どちらにもマッチしますが、<code>clang--format</code> にはマッチしません。</p>
+</ul>
+<footer><a class="backto" href="#c1-7" onclick="closeAccordion('c1-7')">STEP: 7 0 回または 1 回の出現の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-8"><summary>STEP: 8 0 回以上の繰り返しの検索</summary>
+<header><h3>0 回以上の繰り返しの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"congratulations!*")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>*</code> は <code>?</code> のリミットブレイク版です。0 個でも何個あってもマッチします。よって <code>r".*"</code> とするとどんな文字列にもマッチします。ｲﾐﾅｼ</p>
+</ul>
+<footer><a class="backto" href="#c1-8" onclick="closeAccordion('c1-8')">STEP: 8 0 回以上の繰り返しの検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-9"><summary>STEP: 9 1 回以上の繰り返しの検索</summary>
+<header><h3>1 回以上の繰り返しの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"ID-[0-9]+")  # r"ID-\d+" も可
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この <code>+</code> は、１つも無い時にはマッチしないので、数となりうる数字を探す時に特に便利に使えます。</p>
+</ul>
+<footer><a class="backto" href="#c1-9" onclick="closeAccordion('c1-9')">STEP: 9 1 回以上の繰り返しの検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-10"><summary>STEP: 10 指定回数の繰り返しの検索</summary>
+<header><h3>指定回数の繰り返しの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"CVE-[0-9]{4}-[A-Za-z0-9]+")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>.....</code> と書かなくても、<code>.{5}</code> と数を記すだけでよくなります。たとえ、数字 1024文字に固定したい場合でも <code>[0-9]</code> を 1024個書かなくても <code>[0-9]{1024}</code> と書くだけで済みます。</p>
+</ul>
+<footer><a class="backto" href="#c1-10" onclick="closeAccordion('c1-10')">STEP: 10 指定回数の繰り返しの検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-11"><summary>STEP: 11 下限指定の繰り返しの検索</summary>
+<header><h3>下限指定の繰り返しの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"To be continued\.{3,}")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで注意すべきは <code>.</code> の前にバックスラッシュ <code>\</code> を付けないと異なる結果となる恐れがあります。きちんと <code>\</code> を付けて、文字のピリオド <code>.</code> と認識させましょう。😉</p>
+</ul>
+<footer><a class="backto" href="#c1-11" onclick="closeAccordion('c1-11')">STEP: 11 下限指定の繰り返しの検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-12"><summary>STEP: 12 上限指定の繰り返しの検索</summary>
+<header><h3>上限指定の繰り返しの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"database_.{,5}\.db")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>下限が上限になっただけですので特筆すべきことはありませんし、<code>.</code> の前にバックスラッシュ <code>\</code> を付けるのをまた忘れた方は反省してこれからは気を付けてください。😊</p>
+</ul>
+<footer><a class="backto" href="#c1-12" onclick="closeAccordion('c1-12')">STEP: 12 上限指定の繰り返しの検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-13"><summary>STEP: 13 範囲指定の繰り返しの検索</summary>
+<header><h3>範囲指定の繰り返しの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\$[0-9]{3,5}")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>$</code> はメタ文字ですのでバックスラッシュ <code>\</code> を付ける必要があります。</p>
+</ul>
+<footer><a class="backto" href="#c1-13" onclick="closeAccordion('c1-13')">STEP: 13 範囲指定の繰り返しの検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-14"><summary>STEP: 14 OR の検索</summary>
+<header><h3>OR の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"accept|reject|pending")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>単体で使う場合はこのようにして書きます。他の文字が混ざる時には、次の問題の様な書き方をします。</p>
+</ul>
+<footer><a class="backto" href="#c1-14" onclick="closeAccordion('c1-14')">STEP: 14 OR の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-15"><summary>STEP: 15 グループを利用した OR の検索</summary>
+<header><h3>グループを利用した OR の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"[^ ]*(\.jpg|\.png)")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>複雑になってきましたね。😓<br>グループは <code>()</code>を付けられた順に番号が振られています。このパターンで言うと、</p>
+<p>グループ 0 … <code>[^ ]*(\.jpg|\.png)</code><br>グループ 1 … <code>(\.jpg|\.png)</code></p>
+<p>となっています。グループ 1 以降を作らなくても、常に全体がグループ 0 となっています。また前半も () で囲うと、</p>
+<p><code>r"([^ ]*)(\.jpg|\.png)"</code></p>
+<p>グループ 0 … <code>[^ ]*(\.jpg|\.png)</code><br>グループ 1 … <code>([^ ]*)</code><br>グループ 2 … <code>(\.jpg|\.png)</code></p>
+<p>となります。これは <strong class="func">.group()</strong> メソッドの引数にグループ番号を与えると、マッチしたグループの文字列が抽出されます。</p>
+<p>例）&lt;re.Match object; span=(8, 13), match='paiza'&gt;</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(re_matched.group())
+</code></pre>
+<div class="grid-output">
+<code>paiza</code><span>引数省略時は グループ 0 </span><br>
+</div>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1-15" onclick="closeAccordion('c1-15')">STEP: 15 グループを利用した OR の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-16"><summary>STEP: 16 グループを用いた繰り返しの検索</summary>
+<header><h3>グループを用いた繰り返しの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"(%[A-Za-z0-9]{2}){2,}")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>プログラムの ( ) と同じ様な使い方になりますので、使い方がわかれば特に疑問無く使えるかと思われます。</p>
+</ul>
+<footer><a class="backto" href="#c1-16" onclick="closeAccordion('c1-16')">STEP: 16 グループを用いた繰り返しの検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-17"><summary>STEP: 17 行頭の検索</summary>
+<header><h3>行頭の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"^(Re:)")
+re_matched = re.search(pattern, S)
+
+if re_matched:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>キャレット <code>^</code> は、常に先頭に配置されます。</p>
+<p>今度は位置を示すのではなく、判定結果を画面に出力するよう求められています。<br><code>re.search()</code> でマッチした文字列を見つけると、</p>
+<p><mark>&lt;re.Match object; span=(0, 3), match='Re:'&gt;</mark></p>
+<p>が返りますが、マッチした文字列が見つからなかった場合は <strong>None</strong> が返ります。<br>その性質を利用して、<code>re_matched</code> に値があるかないかで判定できます。</p>
+</ul>
+<footer><a class="backto" href="#c1-17" onclick="closeAccordion('c1-17')">STEP: 17 行頭の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-18"><summary>STEP: 18 行末の検索</summary>
+<header><h3>行末の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\\\(.*\\\)$")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>あれ？これ合ってるよね？😅 ﾜｶﾗﾅｸﾅｯﾃｷﾀ<br><code>$</code> は常に行末に配置されます。</p>
+</ul>
+<footer><a class="backto" href="#c1-18" onclick="closeAccordion('c1-18')">STEP: 18 行末の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-19"><summary>FINAL問題 エスケープシーケンスの検索</summary>
+<header><h3>エスケープシーケンスの検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\w{3}-\d{3,4}")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題内に紹介されているエスケープシーケンス一覧はメモしておいたほうがいいです。私は OneNote にメモして忘れた時に見ています。</p>
+</ul>
+<footer><a class="backto" href="#c1-19" onclick="closeAccordion('c1-19')">FINAL問題 エスケープシーケンスの検索</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">エスケープシーケンスの検索</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>文字列の分割</summary>
+<header><h2>文字列の分割</h2></header>
+<article>
+<details id="c2-1"><summary>STEP: 1 文字列の検索</summary>
+<header><h3>文字列の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"[a-f\d]{64}")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>マッチした文字列を扱う場合は <strong class="func">.group()</strong> メソッドを使います。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 文字列の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 文字列の全検索</summary>
+<header><h3>文字列の全検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\S+@\S+")
+re_matched = re.findall(pattern, S)
+
+print(*re_matched, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>全探索には <strong class="func">.findall()</strong> メソッドを使います。これはマッチした全ての文字列をそれぞれ要素にしてリストで返します。</p>
+<p>半角スペースは <code>\s</code>、半角スペース<strong class="b">以外</strong>は <code>\S</code> と、大文字で書きます。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">STEP: 2 文字列の全検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 文字列の置換</summary>
+<header><h3>文字列の置換</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"(\d{2})(\.)(\d{2})")
+re_match = re.sub(pattern, r"\g<1>/\g<3>", S, count=1)
+
+print(re_match)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>置き換えは <strong class="func">sub()</strong> 関数を使います。第二引数にマッチした文字列から置き換えたい文字を指定します。</p>
+<p>パターンをグループ別にすると、</p>
+<p>グループ 0 … <code>\d{2}\.\d{2}</code><br>グループ 1 … <code>\d{2}</code> (前)<br>グループ 2 … <code>\.</code><br>グループ 3 … <code>\d{2}</code> (後)<br></p>
+<p>となっています。<br>第二引数の置き換え文字の中で、マッチした時にこのグループを指定して扱うことができます。</p>
+<p><code>\g<1></code> … グループ 1 に置き換える<br><code>/</code> ……… <code>/</code> に置き換える<br><code>\g<3></code> … グループ 3 に置き換える</p>
+<p><mark>12.01</mark> にマッチした場合、</p>
+<p>グループ 1 … <code>12</code><br>グループ 2 … <code>.</code> → <code>/</code><br>グループ 3 … <code>01</code></p>
+<p>結果、<code>12/01</code> と置き換えられます。</p>
+<p><code>count=1</code> というのは、複数マッチした場合、先頭から数えて 1 回だけ置き換えるように回数を制限しています。paiza の解答コード例では <code>count=1</code> のキーワードを省略していますが、キーワードは省略しないことをお奨めします。</p>
+<p>グループ番号の指定では <code>\g<1></code> の代わりに <code>\1</code> と書くこともできます。こちらのほうが簡潔に書けてよいのですが、この後に数字、例えば <code>0</code> と続いた場合に <code>\10</code> となり、グループ 10 と認識されてしまいます。そこまでグループ数が多くなることは稀かと思われますが、今回はどちらにも対応できる <code>\g<1></code> という書き方をしました。<code>\1</code> と書くほうが一般的なのですが、お好みでどうぞ。😸</p>
+<br>
+<p>ちなみに <code>\.</code> に ( ) は不要なのですが、説明の為にグループ化しました。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">pattern = re.compile(r"(\d{2})\.(\d{2})")
+re_match = re.sub(pattern, r"\g<1>/\g<2>", s, count=1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>でOK!</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">STEP: 3 文字列の置換</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>STEP: 4 文字列の全置換</summary>
+<header><h3>文字列の全置換</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"raw_input")
+re_matched = re.sub(pattern, r"input", S)
+
+print(re_matched)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>こちらは無条件に全部置き換えます。こちらを先にやるべきではなかったのかと思うのですが。😓<br>'input' のように、文字列のみの場合は raw文字列でなくても問題ありません。</p>
+<p>パターンを <code>raw_</code> とだけして置き換え文字を <code>''</code> としてしまうと <code>input</code> と続かないところまで置き換えてしまいますので、きちんと <code>raw_input</code> と指定しましょう。</p>
+</ul>
+<footer><a class="backto" href="#c2-4" onclick="closeAccordion('c2-4')">STEP: 4 文字列の全置換</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-5"><summary>STEP: 5 文字列の削除</summary>
+<header><h3>文字列の削除</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = r"/\*.*\*/"
+re_match = re.sub(pattern, r"", S)
+
+print(re_match)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>置き換え文字を<strong>ヌルストリング <em>(null string)</em></strong> にするだけで対象の文字列を削除することができます。</p>
+<p><strong>ヌルストリング</strong>は、何も入っていない文字列(空の文字列)を指します。</p>
+<p><code>r""</code> の代わりに <code>''</code> でも可です。</p>
+</ul>
+<footer><a class="backto" href="#c2-5" onclick="closeAccordion('c2-5')">STEP: 5 文字列の削除</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-6"><summary>STEP: 6 文字列の全削除</summary>
+<header><h3>STEP: 6 文字列の全削除</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"import \w+")
+re_matched = re.sub(pattern, r"", S)
+
+print(re_matched)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>\w</code> を使うと半角英数字の他にアンダースコア <code>_</code> も含まれます。アンダースコアが含まれてはいけない場合には <code>\w[^_]+</code> と書きます。</p>
+</ul>
+<footer><a class="backto" href="#c2-6" onclick="closeAccordion('c2-6')">STEP: 6 文字列の全削除</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-7"><summary>FINAL問題 文字列の分割</summary>
+<header><h3>文字列の分割</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"---")
+re_matched = re.split(pattern, S)
+
+print(*re_matched, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">split()</strong> 関数を使うと、パターンを区切り文字として分割し、リストにして返します。</p>
+</ul>
+<footer><a class="backto" href="#c2-7" onclick="closeAccordion('c2-7')">FINAL問題 文字列の分割</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">文字列の分割</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>否定後読み</summary>
+<header><h2>否定後読み</h2></header>
+<article>
+<details id="c3-1"><summary>STEP: 1 最短一致と 0 回または 1 回の繰り返し</summary>
+<header><h3>最短一致と 0 回または 1 回の繰り返し</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"G[A-Z]??C")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>デフォルトでは「最長一致」と言って、<code>?+*{}</code> を指定した時、できる限り長い文字数でマッチしますが、「最短一致」ではできる限り短い文字数でマッチします。</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 最短一致と 0 回または 1 回の繰り返し</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 最短一致と 0 回以上の繰り返し</summary>
+<header><h3>最短一致と 0 回以上の繰り返し</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\{.*?\}")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>デフォルトでは「最長一致」と言って、<code>?+*{}</code> を指定した時、できる限り長い文字数でマッチしますが、「最短一致」ではできる限り短い文字数でマッチします。</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">STEP: 2 最短一致と 0 回以上の繰り返し</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 最短一致と 1 回以上の繰り返し</summary>
+<header><h3>最短一致と 1 回以上の繰り返し</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"#.+?\s")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>デフォルトでは「最長一致」と言って、<code>?+*{}</code> を指定した時、できる限り長い文字数でマッチしますが、「最短一致」ではできる限り短い文字数でマッチします。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">STEP: 3 最短一致と 1 回以上の繰り返し</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>STEP: 4 最短一致と指定回数の繰り返し</summary>
+<header><h3>最短一致と指定回数の繰り返し</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\|.{3,10}?\|")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>デフォルトでは「最長一致」と言って、<code>?+*{}</code> を指定した時、できる限り長い文字数でマッチしますが、「最短一致」ではできる限り短い文字数でマッチします。</p>
+<br>
+<p>手抜き説明はここまで。😉👌</p>
+</ul>
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">STEP: 4 最短一致と指定回数の繰り返し</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-5"><summary>STEP: 5 キャプチャとその回避</summary>
+<header><h3>キャプチャとその回避</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"(?:n|st|vac)ation([A-Za-z0-9]+)")
+re_matched = re.search(pattern, S)
+
+print(re_matched.group())
+print(re_matched.group(1))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>キャプチャ</strong>の意味は問題の中で説明されているとおりです。グループ化目的でない ( ) をグループとして認識させないようにする時に <code>(?:)</code> を使います。単純に「これ、グループじゃないよ」というコメントみたいなものです。</p>
+<p>一応、グループには任意に名前を付けたりすることもできます。</p>
+<p><mark>(?P=&lt;name&gt;)</mark> … name の所に任意の名前を付ける</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">
+    ID=012345
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"ID=(?P&lt;num&gt;\d{6})")
+re_matched = re.search(pattern, S)
+
+print(re_matched.group())
+print(re_matched.group(1))
+print(re_matched.group('num'))
+print(re_matched['num'])
+</code></pre>
+<div class="grid-output">
+<code>ID=012345</code><span>… グループ 0</span>
+<code>012345</code><span>… グループ 1</span>
+<code>012345</code><span>… グループ num</span>
+<code>012345</code><span>… グループ num</span>
+</div>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>グループに名前を付けたからといってグループ番号が使えなくなるということはありません。どちらの方法でも指定のグループにアクセスできます。</p>
+</ul>
+<footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">STEP: 5 キャプチャとその回避</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-6"><summary>STEP: 6 肯定先読み</summary>
+<header><h3>肯定先読み</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"\d+(?=KB|MB|GB|TB)")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>マッチの対象となる単位をマッチ後に除外していますので、グループ 0 で画面に出力しても数字部分のみしか表示されません。</p>
+</ul>
+<footer><a class="backto" href="#c3-6" onclick="closeAccordion('c3-6')">STEP: 6 肯定先読み</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-7"><summary>STEP: 7 否定先読み</summary>
+<header><h3>否定先読み</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"Java(?!Script)")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>マッチした文字列の後ろに <code>(?!)</code> で指定した文字列が続く時、この文字列にはマッチしません。</p>
+<p>問題の入力例では、<code>Java</code> にはマッチしますが、<mark>Java</mark> の後に <mark>Script</mark> が続く <code>JavaScript</code> にはマッチしません。</p>
+</ul>
+<footer><a class="backto" href="#c3-7" onclick="closeAccordion('c3-7')">STEP: 7 否定先読み</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-8"><summary>STEP: 8 肯定後読み</summary>
+<header><h3>肯定後読み</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"(?&lt;=Date: )[\d/]+")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>(?&lt;=)</code> で指定した文字列が直前にある時のみマッチします。<br>「肯定先読み」の前にあるバージョンです。</p>
+<p>ちなみに私はこういった用語や頻繁に使う記号以外はあまり記憶していません。自分なりにまとめたチートシートを見て参照しながらパターンを作っています。使っているとジョジョに憶えていきますが、使わなくなると途端に忘れます。ですので、OneNote様様です。</p>
+</ul>
+<footer><a class="backto" href="#c3-8" onclick="closeAccordion('c3-8')">STEP: 8 肯定後読み</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-9"><summary>FINAL問題 否定後読み</summary>
+<header><h3>否定後読み</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S = input()
+
+pattern = re.compile(r"(?&lt;!\[Feature\] )[A-Z][^[\]]{2,}?\.")
+re_matched = re.search(pattern, S)
+
+print(re_matched.start())
+print(re_matched.group())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="b">┐(´‐`)┌ ｻﾌﾞｳoｲｶｮ...</strong></p>
+</ul>
+<footer><a class="backto" href="#c3-9" onclick="closeAccordion('c3-9')">FINAL問題 否定後読み</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">否定後読み</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>正規表現まとめ</summary>
+<header><h2>正規表現まとめ</h2></header>
+<ul>
+<div class="x-fit">
+<table style="font-family:Verdana, Geneva, Tahoma, sans-serif">
+<tbody>
+<tr>
+<td>メタ文字</td>
+<td>.*+?^$|(){}[]\</td>
+</tr>
+<tr>
+<td>キャプチャ</td>
+<td>((ex)pr)ession　0:expression 1:ex 2:expr</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="x-fit">
+<table style="font-family:Verdana, Geneva, Tahoma, sans-serif">
+<thead>
+<th>記号</th>
+<th>ESC</th>
+<th>機能</th>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>\\</td>
+<td>メタ文字をエスケープ。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>\.</td>
+<td>1文字とマッチ。ワイルドカード。\nのみ例外で不一致。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>\^</td>
+<td>文字列の先頭にマッチ。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>\$</td>
+<td>文字列の末尾にマッチ。</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>\[ \]</td>
+<td>文字の集合。[ABC]は'A', 'B', 'C'のいずれかにマッチ。<br>[]内はメタ文字が <code>\]^-</code> の4文字に限定される。</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>\^</td>
+<td>否定。(not , ! の意) [^A]で'A'以外の1文字にマッチする。</td>
+</tr>
+<tr>
+<td>[-]</td>
+<td>\-</td>
+<td>文字の範囲指定。[A-Za-z0-9]で英数字の1文字とマッチする。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>\?</td>
+<td>直前の文字(列)が 0～1回出現でマッチする。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>\*</td>
+<td>直前の文字(列)が 0回以上出現でマッチする。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>\+</td>
+<td>直前の文字(列)が 1回以上出現でマッチする。</td>
+</tr>
+<tr>
+<td>{}<br>{,}<br>{m,n}</td>
+<td>\{ \}</td>
+<td>直前の文字(列)が {n回}出現でマッチする。<br>直前の文字(列)が {m回以上} {n回以下}出現でマッチする。<br>直前の文字(列)が {m～n回}出現でマッチする。</td>
+</tr>
+<tr>
+<td>??, +?, *?<br>{m,n}?</td>
+<td></td>
+<td>最短一致。非貪欲。(non-greedy)<br>直前の文字(列)で、最短回数の文字(列)にマッチする。</td>
+</tr>
+<tr>
+<td>?*, +*, **<br>{m,n}*</td>
+<td></td>
+<td>最長一致。(デフォルト)<br>上記の最長回数にマッチする。</td>
+</tr>
+<tr>
+<td>|</td>
+<td>\|</td>
+<td>バーティカルバーで区切られた文字列のいずれかとマッチする。</td>
+</tr>
+<tr>
+<td>()</td>
+<td>\( \)</td>
+<td>グループ化。各メタ文字などと組み合わせ可能。</td>
+</tr>
+<tr>
+<td>\1 \2 …<br>\g&lt;1&gt; \g&lt;2&gt;</td>
+<td></td>
+<td>グループ番号。</td>
+</tr>
+<tr>
+<td>(?:)</td>
+<td></td>
+<td>キャプチャ回避。(?:pre|post)fix 0:prefix 1:なし</td>
+</tr>
+<tr>
+<td>(?=)</td>
+<td></td>
+<td>肯定先読み。/d+(?=円) "100円 200ドル 300ユーロ"<br>100円の 100 にマッチ。円以外はマッチしない。<br>(?=)内の文字列に一致しても(?=)内の文字列はマッチさせない。</td>
+</tr>
+<tr>
+<td>(?<=)</td>
+<td></td>
+<td>肯定後読み。(?<=円:)\d+ "円:100 ドル:200 ユーロ:300"<br>円:100 の 100 にマッチ。</td>
+</tr>
+<tr>
+<td>(?!)</td>
+<td></td>
+<td>否定先読み。そろばん(?!ど) "そろばんでそろばんど"<br>そろばんでの そろばん にマッチ。そろばんどはマッチしない。<br>(?!)内の文字に一致しない時だけ直前の文字列にマッチさせる。</td>
+</tr>
+<tr>
+<td>(?&lt;!)</td>
+<td></td>
+<td>否定後読み。(?&lt;!県)..市 "大阪府大阪市 神奈川県横浜市"<br>大阪府大阪市の 大阪市 にマッチ。神奈川県横浜市はマッチしない。</td>
+</tr>
+<tr>
+<td>(?P&lt;'key'&gt;)</td>
+<td></td>
+<td>グループに一意のキーを付ける。<br>re_matched.group('key')<br>re_matched['key']  バージョン3.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="x-fit">
+<table style="font-family:Verdana, Geneva, Tahoma, sans-serif">
+<tbody>
+<tr>
+<td>re.compile(pattern)</td>
+<td>正規表現オブジェクトにコンパイルする。<br>変数に格納してパターンを再利用できるようにする。<br>pattern = re.compile(r"\d+")</td>
+</tr>
+<tr>
+<td>re.search(pattern, str)</td>
+<td>str文字列から正規表現patternを使って<wbr>最初に<wbr>見つかった<wbr>文字列を<wbr>取得する。<br><table style="border: 8px; margin-top: 15px;"><tbody><tr><td style="padding-top: 0px; padding-bottom: 0px;"><small><p style="line-height: 1.5;">re_match = re.search(pattern, str)<br>re_match.group() マッチした文字列を返す。()内はグループ番号。<br>re_match.start() マッチした文字列の開始要素番号。<br>re_match.end() マッチした文字列の末尾の要素番号+1。</p></small></td></tr></tbody></table></td>
+</tr>
+<tr>
+<td>re.findall(pattern, str)</td>
+<td>マッチしたすべての文字列をリストで返す。</td>
+</tr>
+<tr>
+<td>re.match(pattern, str)</td>
+<td>strの先頭でのみマッチした文字列を返す。</td>
+</tr>
+<tr>
+<td>re.fullmatch(pattern, str)</td>
+<td>str文字列すべてにマッチしたら(strと同じ)文字列を返す。</td>
+</tr>
+<tr>
+<td>re.sub(pattern, repl, str)</td>
+<td>正規表現パターンにマッチした文字列をreplに置き換える。</td>
+</tr>
+<tr>
+<td>re.split(pattern, str, maxsplit=0)</td>
+<td>正規表現パターンにマッチした文字列で分割する。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="x-fit">
+<table style="font-family:Verdana, Geneva, Tahoma, sans-serif">
+<tbody>
+<tr>
+<td>\d</td>
+<td>半角数字１文字</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>上記以外の１文字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空白文字１文字。(スペース, タブ, 改行)</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>上記以外の１文字。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>半角英数字記号１文字。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>上記以外の１文字。</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>改行文字。</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>タブ文字。</td>
+</tr>
+<tr>
+<td>\A</td>
+<td>文字列の先頭。</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>文字列の末尾。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">正規表現まとめ</a></footer>
+</details>
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>正規表現メニュー</p>
+</footer>
+</body>
+</html>

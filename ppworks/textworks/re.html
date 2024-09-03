@@ -45,7 +45,9 @@ print(re_matched.start())
 <!-- ----------------------- code end ----------------------- -->
 <p>という書き方をします。通常の文字列で使う <code>'</code> <code>"</code> の前に <code>r</code> を書き加えるだけです。<br>ここでは以降、一律して <code>r""</code> と書くこととします。<br>ここに検索したい文字列を記述します。この問題は「'paiza' を見つけてその位置番号返す」ことが求められていますので <code>r"paiza"</code> と記します。正規表現を使って書かれたこの形のものを「<strong>パターン <em>(pattern)</em></strong>」と言います。</p>
 <p>次にこのパターンを使って、入力 <code>S</code> の中にパターンに指定した文字列があるかどうかを調べます。<code>re.search(pattern, S)</code><br>これを試しに画面に出力してみると、</p>
+<div class="x-fit">
 <p><code class="output">&lt;re.Match object; span=(8, 13), match='paiza'&gt;</code></p>
+</div>
 <p>と検索結果(オブジェクト)の中身が表示されます。<mark>span=(8, 13), match='paiza'</mark> は「文字列の 8 番目から 12 番目に 'paiza' があります。」という意味です。'paiza' の一文字目の <code>p</code> が 8 番目、五文字目の <code>a</code> が 12 番目です。<strong class="func">range()</strong> と同じ範囲の示し方ですね。<br>正規表現では検索文字列を見つけた場合を、<strong class="special">マッチ</strong>したと表現します。</p>
 <p>最後の <strong class="func">print()</strong> 関数でメソッドが使われています。</p>
 <div class="x-fit">
@@ -691,7 +693,7 @@ print(re_match)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>置き換え文字を<strong>ヌルストリング <em>(null string)</em></strong> にするだけで対象の文字列を削除することができます。</p>
-<p><strong>ヌルストリング</strong>は、何も入っていない文字列(空の文字列)を指します。</p>
+<p><strong>ヌルストリング</strong>とは、何も入っていない文字列(空の文字列)のことです。</p>
 <p><code>r""</code> の代わりに <code>''</code> でも可です。</p>
 </ul>
 <footer><a class="backto" href="#c2-5" onclick="closeAccordion('c2-5')">STEP: 5 文字列の削除</a></footer>
@@ -867,7 +869,7 @@ print(re_matched.group(1))
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><strong>キャプチャ</strong>の意味は問題の中で説明されているとおりです。グループ化目的でない ( ) をグループとして認識させないようにする時に <code>(?:)</code> を使います。単純に「これ、グループじゃないよ」というコメントみたいなものです。</p>
+<p><strong>キャプチャ</strong>の意味は問題の中で説明されているとおりです。グループ化目的でない ( ) をグループとして認識させないようにする時に <code>(?:)</code> を使います。「これ、グループじゃないよ」というコメントみたいなものです。</p>
 <p>一応、グループには任意に名前を付けたりすることもできます。</p>
 <p><mark>(?P=&lt;name&gt;)</mark> … name の所に任意の名前を付ける</p>
 <!-- ------------------------- code ------------------------- -->

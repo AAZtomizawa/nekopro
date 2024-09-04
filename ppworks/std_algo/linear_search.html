@@ -37,7 +37,7 @@ print(k)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>メソッドを使わずに値の出現回数をカウントします。ここは「線形探索メニュー」ですから～。</p>
+<p>メソッドを使わずに値の出現回数をカウントします。ここは「線形探索メニュー」ですから～。線形探索はたいてい「<strong class="for"></strong> + <strong class="if"></strong> 」がセットとなります。ここではこの組み合わせでプログラム例を書いていきます。<br>メニューを終えたら、今度はそのプログラムを関数やメソッドを駆使した簡潔な方法に書き換えてみましょう。これでもかというくらいまでにね。</p>
 <p>ただ数えるだけなら<strong class="func">.count()</strong> メソッドでいいですが、なにかを処理した後にカウントを増やしたり減らしたりする場合にこの書き方をします。カウント処理の基本形です。</p>
 </ul>
 <footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 指定された値の個数</a></footer>
@@ -141,7 +141,7 @@ else:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>明らかに <strong class="func">max()</strong> と <strong class="func">min()</strong> を使わせようとしていますが、そうは問屋が卸しません。関数を使わずに比較式を使いましょう。</p>
+<p>以降で明らかに <strong class="func">max()</strong> と <strong class="func">min()</strong> を使わせようとしていますが、そうは問屋が卸しません。関数を使わずに比較式を使いましょう。</p>
 </ul>
 <footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 2変数の最大最小</a></footer>
 </details>
@@ -389,7 +389,7 @@ print(cnt)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>比較する基点となる座標は、座標リストの一番最後 <code>locs[-1]</code> です。これを <code>x_i</code> <code>y_i</code> に振り分けて後に使います。<br>このマンハッタン距離が k 以下の時にカウントアップします。</p>
+<p>比較する基点となる座標は、座標リストの一番最後 <code>locs[-1]</code> です。これを <code>x_i</code> <code>y_i</code> に振り分けて後に使います。<br>マンハッタン距離が k 以下の時にカウントアップします。</p>
 </ul>
 <footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">STEP: 5 点と点の距離</a></footer>
 </details>
@@ -416,7 +416,7 @@ print(cnt)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>問題文と入力値を見て気が遠くなった一人です。(´ω`)ノ</p>
-<p>平面図にしてみるとこうなります。<br>(xs, ys) = (-5, -5)<br>(xt, yt) = (5, 5)</p>
+<p>平面図にしてみるとこうなります。<br>locs = [[-9, 5], [0, 4], [2, -6], [7, -4], [-3, -1]]<br><span style="background-color: aquamarine;">(xs, ys) = (-5, -5)</span><br><span style="background-color: aquamarine;">(xt, yt) = (5, 5)</span></p>
 <div class="x-fit">
 <table class="text-center" style="font-size: 12px;">
 <thead style="background-color:lightcyan;">
@@ -683,7 +683,7 @@ print(cnt)
 </tbody>
 </table>
 </div>
-<p>平面上の 0 ～ 4 は <code>locs</code> の要素番号に対応しています。そして <code>locs</code> の要素 0 から順に、その座標の点が <span style="background-color: aquamarine;">長方形の内部</span> に含まれているかを <strong class="if"></strong>文で調べていきます。</p>
+<p>平面上の 0 ～ 4 は <code>locs</code> の要素番号に対応しています。そして <code>locs</code> の要素番号 0 から順に、その座標の点が <span style="background-color: aquamarine;">長方形の内部</span> に含まれているかを <strong class="if"></strong>文で調べていきます。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">cnt = 0
@@ -693,12 +693,12 @@ for x, y in locs:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>(xs, ys) = (-5, -5)<br>(xt, yt) = (5, 5)<br>locs = [<wbr>[-9, 5], <wbr>[0, 4], <wbr>[2, -6], <wbr>[7, -4], <wbr>[-3, -1]]</p>
-<p>【要素 0】<br>x: -5 &lt;= -9 &lt;= 5 → <strong>False</strong></p>
-<p>【要素 1】<br>x: -5 &lt;= 0 &lt;= 5<br>y: -5 &lt;= 4 &lt;= 5 → <strong>True</strong><br>cnt = 1</p>
-<p>【要素 2】<br>x: -5 &lt;= 2 &lt;= 5<br>y: -5 &lt;= -6 &lt;= 5 → <strong>False</strong></p>
-<p>【要素 3】<br>x: -5 &lt;= 7 &lt;= 5 → <strong>False</strong></p>
-<p>【要素 4】<br>x: -5 &lt;= -3 &lt;= 5<br>y: -5 &lt;= -1 &lt;= 5 → <strong>True</strong><br><mark>cnt = 2</mark> ← 結果</p>
+<p>locs = [[-9, 5], [0, 4], [2, -6], [7, -4], [-3, -1]]<br>(xs, ys) = (-5, -5)<br>(xt, yt) = (5, 5)</p>
+<p>【要素番号 0】<br>x: -5 &lt;= -9 &lt;= 5 → <strong>False</strong></p>
+<p>【要素番号 1】<br>x: -5 &lt;= 0 &lt;= 5<br>y: -5 &lt;= 4 &lt;= 5 → <strong>True</strong><br><mark>cnt = 1</mark></p>
+<p>【要素番号 2】<br>x: -5 &lt;= 2 &lt;= 5<br>y: -5 &lt;= -6 &lt;= 5 → <strong>False</strong></p>
+<p>【要素番号 3】<br>x: -5 &lt;= 7 &lt;= 5 → <strong>False</strong></p>
+<p>【要素番号 4】<br>x: -5 &lt;= -3 &lt;= 5<br>y: -5 &lt;= -1 &lt;= 5 → <strong>True</strong><br><mark>cnt = 2</mark> ← 結果</p>
 <p>となります。</p>
 </ul>
 <footer><a class="backto" href="#c3-6" onclick="closeAccordion('c3-6')">STEP: 6 長方形に含まれる点</a></footer>
@@ -779,7 +779,7 @@ print(ranks[1])
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p><strong class="func">max()</strong> 関数やソートを使えば簡単なのですが、ここは「線形探索メニュー」ってことで、きちんと線形探索して解決していきます。</p>
-<p><code>ranks</code> というのは、最大値から 3 番目まで大きな数を記録しておくリストです。3 番目はダミーです。(後述)</p>
+<p><code>ranks</code> というのは、最大値から 3 番目まで大きな数を記録しておくリストです。<br>3 番目はダミーです。(後述)</p>
 <p>次に初めの<strong class="for"></strong>で数列を先頭から見ていきます。<br>その次の<strong class="for"></strong>で、<code>a_i</code> と <code>ranks</code> の最大値から順に(2 番目まで)比較し、<strong class="if"></strong>文で値の更新が発生した時に、</p>
 <ul>
 <li>その順位の値を一つ下の順位に書き換える</li>
@@ -879,7 +879,7 @@ ranks = [10, 6, -9]
 </table>
 -3 は 最大値と 2 番目よりも小さいので何もしない<br>
 </div>
-<p>以上で、<code>ranks[1]</code> が結果となります。</p>
+<p>以上で、最後に<code>ranks[1]</code> を画面に出力して完了となります。</p>
 <br>
 <p>ダミーは <code>ranks[j+1]</code> で out of range エラーにならないようにするためだけに存在していますので、どのような数値であっても関係ありません。</p>
 </ul>
@@ -912,7 +912,7 @@ print(ranks[k-1])
 </ul>
 <ul>
 <p>線形探索は、わざわざ意識して学ばなくとも、線形探索が使われたプログラムを読んだり書いたりしていくうちに当たり前のようにできるようになるものです。<br>「線形探索メニュー、難しかったなぁ」と感じていても、そのうちいつの間にかできるようになっています。</p>
-<p>線形探索メニューは学習というよりは「力試し」として、今回問題を解くのに苦労した方は、また数か月後にでも再挑戦してどのくらいプログラミングスキルが上がったかを試ししてみてください。一度やったことがある問題をもう一度やることもスキルアップには有効です。</p>
+<p>線形探索メニューは学習というよりは「力試し」として、今回問題を解くのに苦労した方は、また数か月後にでも再挑戦してどのくらいプログラミングスキルが上がったかを試してみてください。一度やったことがある問題をもう一度やることもスキルアップには有効です。一からプログラムを学ぶより、既製のプログラムを自分で打ち込んで写して動かし、さらに改造しまくってエラーを出しまくりながら動かしてみるほうが理解が早いです。爆速で上達します。その為にも他人のプログラムをたくさん読むことが大切です。英語学習の多読と同じです。多読どころか、全てが英語の学習方法と通じています。(英語わからないけどね、私)</p>
 </ul>
 <footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">FINAL問題 【第 k 要素の探索】k番目に大きな値</a></footer>
 </details>

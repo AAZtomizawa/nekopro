@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】線形探索メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>線形探索メニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>【指定された値の探索】指定された値の位置 3</summary>
+<header><h2>【指定された値の探索】指定された値の位置 3</h2></header>
+<article>
+<details id="c1-1"><summary>STEP: 1 指定された値の個数</summary>
+<header><h3>指定された値の個数</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+cnt = 0
+for a_i in a:
+    if a_i == k:
+        cnt += 1
+
+print(k)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>メソッドを使わずに値の出現回数をカウントします。ここは「線形探索メニュー」ですから～。</p>
+<p>ただ数えるだけなら<strong class="func">.count()</strong> メソッドでいいですが、なにかを処理した後にカウントを増やしたり減らしたりする場合にこの書き方をします。カウント処理の基本形です。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 指定された値の個数</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 指定された値の位置 1</summary>
+<header><h3>指定された値の位置 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+for i in range(n):
+    if a[i] == k:
+        print(i+1)
+        break
+else:
+    print(0)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最初に見つけた所で <strong>break</strong> します。目的の値が見つからずにそのままループを抜けると <code class="output">0</code> を出力します。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 指定された値の位置 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 指定された値の位置 2</summary>
+<header><h3>指定された値の位置 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+idx = -1
+for i in range(n):
+    if a[i] == k:
+        idx = i
+
+if idx >= 0:
+    print(idx+1)
+else:
+    print(0)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は <strong>break</strong> しないで最後まで探索します。すると <code>idx</code> は『最後に現れる k』の位置になっています。</p>
+<p><code>idx</code> の初期値が <code>-1</code> なので、<code>idx</code> が 0 以上の時はどこかしら k が見つかっている状態ですので、その位置+1 を画面に出力します。<code>idx</code> が <code>-1</code> のままなら <code class="output">0</code> を出力します。</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 指定された値の位置 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>FINAL問題 【指定された値の探索】指定された値の位置 3</summary>
+<header><h3>【指定された値の探索】指定された値の位置 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+for i in range(n):
+    if a[i] == k:
+        print(i+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>見つかった位置をすべて出力するだけですので、これが一番ラクですね。😸</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">FINAL問題 【指定された値の探索】指定された値の位置 3</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">【指定された値の探索】指定された値の位置 3</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>【最大最小】n 変数の最大最小</summary>
+<header><h2>【最大最小】n 変数の最大最小</h2></header>
+<article>
+<details id="c2-1"><summary>STEP: 1 2変数の最大最小</summary>
+<header><h3>2変数の最大最小</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a_1, a_2 = map(int, input().split())
+
+if a_1 >= a_2:
+    print(a_1, a_2)
+else:
+    print(a_2, a_1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>明らかに <strong class="func">max()</strong> と <strong class="func">min()</strong> を使わせようとしていますが、そうは問屋が卸しません。関数を使わずに比較式を使いましょう。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 2変数の最大最小</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 10変数の最大最小</summary>
+<header><h3>10変数の最大最小</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = list(map(int, input().split()))
+
+max_ = -float('inf')
+min_ = float('inf')
+for a_i in a:
+    if a_i > max_:
+        max_ = a_i
+    if a_i < min_:
+        min_ = a_i
+
+print(max_, min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>線形探索メニューなのに、関数に線形探索をやらせてどうすんだと思える問題です。</p>
+<p>自力で線形探索をして最大値と最小値を見つけていきます。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">STEP: 2 10変数の最大最小</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>FINAL問題 【最大最小】n 変数の最大最小</summary>
+<header><h3>【最大最小】n 変数の最大最小</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+max_ = -float('inf')
+min_ = float('inf')
+for a_i in a:
+    if a_i > max_:
+        max_ = a_i
+    if a_i < min_:
+        min_ = a_i
+
+print(max_, min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力値 n が増えただけで以降は変化ありません。n すら使わないし。<br>n を使うなら <strong class="for"></strong>のところを <strong class="func">range(n)</strong> にした書き方にするとよいです。</p>
+<p>他人のプログラムを改造しまくるのもまた学習においてとても有効な手段です。</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">FINAL問題 【最大最小】n 変数の最大最小</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">【最大最小】n 変数の最大最小</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>【特殊な探索】 成績優秀者の列挙 2</summary>
+<header><h2>【特殊な探索】 成績優秀者の列挙 2</h2></header>
+<article>
+<details id="c3-1"><summary>STEP: 1 偶数の探索</summary>
+<header><h3>偶数の探索</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+
+for i in range(n):
+    if a[i] % 2 == 0:
+        print(i+1)
+        break
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+
+for i, a_i in enumerate(a, start=1):
+    if a_i % 2 == 0:
+        print(i)
+        break
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これまでの問題の k が偶数になっただけですね。</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 偶数の探索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 奇数の探索</summary>
+<header><h3>奇数の探索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+
+idx = 0
+for i in range(n):
+    if a[i] % 2 == 1:
+        idx = i
+
+print(idx+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+
+for i, a_i in enumerate(a, start=1):
+    if a_i % 2 == 1:
+        print(i)
+        break
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>偶数が奇数になっただけですね。😉</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">STEP: 2 奇数の探索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 条件付き最小値</summary>
+<header><h3>条件付き最小値</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+min_ = float('inf')
+for a_i in a:
+    if a_i >= k:
+        if a_i < min_:
+            min_ = a_i
+
+print(min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+min_ = float('inf')
+for a_i in a:
+    if a_i >= k and a_i < min_:
+        min_ = a_i
+    
+print(min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="if"></strong>文が２つ続いた時にはだいたい <strong>and</strong> で繋げて一文で書くことができます。</p>
+<p>不等号の向きにだけ注意すれば、あとは問題文のとおりに書くだけです。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">STEP: 3 条件付き最小値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>STEP: 4 条件付き最大値</summary>
+<header><h3>条件付き最大値</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+max_ = -float('inf')
+for a_i in a:
+    if a_i <= k:
+        if a_i > max_:
+            max_ = a_i
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+
+max_ = -float('inf')
+for a_i in a:
+    if a_i <= k and if a_i > max_:
+        max_ = a_i
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p></p>
+</ul>
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">STEP: 4 条件付き最大値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-5"><summary>STEP: 5 点と点の距離</summary>
+<header><h3>点と点の距離</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+locs = [list(map(int, input().split())) for _ in range(n)]
+k = int(input())
+
+cnt = 0
+x_i, y_i = locs[-1]
+for x_j, y_j in locs:
+    mhtn_dist = abs(x_i - x_j) + abs(y_i - y_j)
+    if mhtn_dist <= k:
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>比較する基点となる座標は、座標リストの一番最後 <code>locs[-1]</code> です。これを <code>x_i</code> <code>y_i</code> に振り分けて後に使います。<br>このマンハッタン距離が k 以下の時にカウントアップします。</p>
+</ul>
+<footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">STEP: 5 点と点の距離</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-6"><summary>STEP: 6 長方形に含まれる点</summary>
+<header><h3>長方形に含まれる点</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+locs = [list(map(int, input().split())) for _ in range(n)]
+xs, xt = map(int, input().split())
+ys, yt = map(int, input().split())
+
+cnt = 0
+for x, y in locs:
+    if (xs <= x <= xt) and (ys <= y <= yt):
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題文と入力値を見て気が遠くなった一人です。(´ω`)ノ</p>
+<p>平面図にしてみるとこうなります。<br>(xs, ys) = (-5, -5)<br>(xt, yt) = (5, 5)</p>
+<div class="x-fit">
+<table class="text-center" style="font-size: 12px;">
+<thead style="background-color:lightcyan;">
+<th></th>
+<th>-9</th>
+<th>-8</th>
+<th>-7</th>
+<th>-6</th>
+<th>-5</th>
+<th>-4</th>
+<th>-3</th>
+<th>-2</th>
+<th>-1</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</thead>
+<tbody>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">-6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong class="b">2</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">-5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">-4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td><strong class="b">3</strong></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">-3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">-2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">-1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"><strong>4</strong></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"><strong>1</strong></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="font-weight: bold; background-color:lightcyan;">5</td>
+<td><strong class="b">0</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td style="background-color: aquamarine;"></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>平面上の 0 ～ 4 は <code>locs</code> の要素番号に対応しています。そして <code>locs</code> の要素 0 から順に、その座標の点が <span style="background-color: aquamarine;">長方形の内部</span> に含まれているかを <strong class="if"></strong>文で調べていきます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cnt = 0
+for x, y in locs:
+    if (xs <= x <= xt) and (ys <= y <= yt):
+        cnt += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>(xs, ys) = (-5, -5)<br>(xt, yt) = (5, 5)<br>locs = [<wbr>[-9, 5], <wbr>[0, 4], <wbr>[2, -6], <wbr>[7, -4], <wbr>[-3, -1]]</p>
+<p>【要素 0】<br>x: -5 &lt;= -9 &lt;= 5 → <strong>False</strong></p>
+<p>【要素 1】<br>x: -5 &lt;= 0 &lt;= 5<br>y: -5 &lt;= 4 &lt;= 5 → <strong>True</strong><br>cnt = 1</p>
+<p>【要素 2】<br>x: -5 &lt;= 2 &lt;= 5<br>y: -5 &lt;= -6 &lt;= 5 → <strong>False</strong></p>
+<p>【要素 3】<br>x: -5 &lt;= 7 &lt;= 5 → <strong>False</strong></p>
+<p>【要素 4】<br>x: -5 &lt;= -3 &lt;= 5<br>y: -5 &lt;= -1 &lt;= 5 → <strong>True</strong><br><mark>cnt = 2</mark> ← 結果</p>
+<p>となります。</p>
+</ul>
+<footer><a class="backto" href="#c3-6" onclick="closeAccordion('c3-6')">STEP: 6 長方形に含まれる点</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-7"><summary>STEP: 7 成績優秀者の列挙 1</summary>
+<header><h3>成績優秀者の列挙 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+points = {s: int(t) for _ in range(n) for s, t in [input().split()]}
+k = int(input())
+
+for s, t in points.items():
+    if t >= k:
+        print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>辞書での線形探索です。リストでもできますが、ここは辞書を使います。</p>
+<p>二行目の入力方法については「<a href="../../3/0020input.html#hard-4h" class="linked" target="_blank">３章 標準入力</a>」を参照してください。</p>
+<p><strong class="func">.items()</strong> メソッドについては「<a href="../../2/0100usefuldicttype.html#-items-h" class="linked" target="_blank">２章 辞書を使いこなす機能一覧</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c3-7" onclick="closeAccordion('c3-7')">STEP: 7 成績優秀者の列挙 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-8"><summary>FINAL問題 【特殊な探索】 成績優秀者の列挙 2</summary>
+<header><h3>【特殊な探索】 成績優秀者の列挙 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+points = {s: int(t) for _ in range(n) for s, t in [input().split()]}
+k, l = map(int, input().split())
+
+for s, t in points.items():
+    if k <= t <= l:
+        print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>条件式が変わっただけで他は同じです。</p>
+</ul>
+<footer><a class="backto" href="#c3-8" onclick="closeAccordion('c3-8')">FINAL問題 【特殊な探索】 成績優秀者の列挙 2</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">【特殊な探索】 成績優秀者の列挙 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>【第 k 要素の探索】k番目に大きな値</summary>
+<header><h2>【第 k 要素の探索】k番目に大きな値</h2></header>
+<article>
+<details id="c4-1"><summary>STEP: 1 2番目に大きな値</summary>
+<header><h3>2番目に大きな値</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+
+ranks = [-float('inf')] * 3
+for a_i in a:
+    for j in range(2):
+        if a_i > ranks[j]:
+            ranks[j], ranks[j+1] = a_i, ranks[j]
+            break
+
+print(ranks[1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">max()</strong> 関数やソートを使えば簡単なのですが、ここは「線形探索メニュー」ってことで、きちんと線形探索して解決していきます。</p>
+<p><code>ranks</code> というのは、最大値から 3 番目まで大きな数を記録しておくリストです。3 番目はダミーです。(後述)</p>
+<p>次に初めの<strong class="for"></strong>で数列を先頭から見ていきます。<br>その次の<strong class="for"></strong>で、<code>a_i</code> と <code>ranks</code> の最大値から順に(2 番目まで)比較し、<strong class="if"></strong>文で値の更新が発生した時に、</p>
+<ul>
+<li>その順位の値を一つ下の順位に書き換える</li>
+<li>その順位の値を <mark>a_i</mark> に書き換える</li>
+</ul>
+<p>ことをします。言葉だけではわかりませんね。😓</p>
+<p>a = [-9, 10, 6, 0, -3] の時</p>
+
+<div class="x-fit">
+ranks = [-∞, -∞, -∞]
+<table class="text-center">
+<tbody>
+<tr>
+<td>リストa</td>
+<td>-9</td>
+<td>10</td>
+<td>6</td>
+<td>0</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+ranks = [-9, -∞, -∞]
+<table class="text-center">
+<tbody>
+<tr>
+<td>リストa</td>
+<td style="background-color: lightpink;">-9</td>
+<td>10</td>
+<td>6</td>
+<td>0</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+-9 を最大値に記録<br>
+↓<br>
+ranks = [10, -9, -∞]
+<table class="text-center">
+<tbody>
+<tr>
+<td>リストa</td>
+<td>-9</td>
+<td style="background-color: lightpink;">10</td>
+<td>6</td>
+<td>0</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+-9 を 2 番目に移し、10 を最大値に記録<br>
+↓<br>
+ranks = [10, 6, -9]
+<table class="text-center">
+<tbody>
+<tr>
+<td>リストa</td>
+<td>-9</td>
+<td>10</td>
+<td style="background-color: lightpink;">6</td>
+<td>0</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+最大値 は変更なし<br>
+-9 を 3 番目に移し、6 を 2 番目に記録<br>
+↓<br>
+ranks = [10, 6, -9]
+<table class="text-center">
+<tbody>
+<tr>
+<td>リストa</td>
+<td>-9</td>
+<td>10</td>
+<td>6</td>
+<td style="background-color: lightpink;">0</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+0 は 最大値と 2 番目よりも小さいので何もしない<br>
+↓<br>
+ranks = [10, 6, -9]
+<table class="text-center">
+<tbody>
+<tr>
+<td>リストa</td>
+<td>-9</td>
+<td>10</td>
+<td>6</td>
+<td>0</td>
+<td style="background-color: lightpink;">-3</td>
+</tr>
+</tbody>
+</table>
+-3 は 最大値と 2 番目よりも小さいので何もしない<br>
+</div>
+<p>以上で、<code>ranks[1]</code> が結果となります。</p>
+<br>
+<p>ダミーは <code>ranks[j+1]</code> で out of range エラーにならないようにするためだけに存在していますので、どのような数値であっても関係ありません。</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">STEP: 1 2番目に大きな値</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>FINAL問題 【第 k 要素の探索】k番目に大きな値</summary>
+<header><h3>【第 k 要素の探索】k番目に大きな値</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+a = list(map(int, input().split()))
+k = int(input())
+
+ranks = [-float('inf')] * (k+1)
+for a_i in a:
+    for j in range(k):
+        if a_i > ranks[j]:
+            ranks[j], ranks[j+1] = a_i, ranks[j]
+            break
+
+print(ranks[k-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>2 番目が k 番目になっただけで、それ以外に変わりはありません。</p>
+</ul>
+<ul>
+<p>線形探索は、わざわざ意識して学ばなくとも、線形探索が使われたプログラムを読んだり書いたりしていくうちに当たり前のようにできるようになるものです。<br>「線形探索メニュー、難しかったなぁ」と感じていても、そのうちいつの間にかできるようになっています。</p>
+<p>線形探索メニューは学習というよりは「力試し」として、今回問題を解くのに苦労した方は、また数か月後にでも再挑戦してどのくらいプログラミングスキルが上がったかを試ししてみてください。一度やったことがある問題をもう一度やることもスキルアップには有効です。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">FINAL問題 【第 k 要素の探索】k番目に大きな値</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">【第 k 要素の探索】k番目に大きな値</a></footer>
+</details>
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>線形探索メニュー</p>
+</footer>
+</body>
+</html>

@@ -495,6 +495,7 @@ li.look {
         max-width: fit-content;
         white-space: nowrap; 
         overflow-x: auto; 
+        overflow-y: hidden;
 
         font-family: 'Consolas','Monaco','Andale Mono','Ubuntu Mono',monospace;
         font-size: 14px;
@@ -513,10 +514,13 @@ li.look {
     div.grid-output {
         display: grid;
         overflow-x: auto; 
+        overflow-y: hidden;
         grid-template-columns: min-content auto;
         /* grid-template-rows: repeat(1, 1fr); */
     
         align-items:baseline;
+
+        padding-bottom: 1px;
     
         grid-column-gap: 16px;
         grid-row: 2px;

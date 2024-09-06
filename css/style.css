@@ -77,17 +77,6 @@ body {
 }
 
 
-div.pr {
-    border-style:dashed;
-    border-width: 1px;
-    border-radius: 0px;
-    border-color: #0accbc;
-
-    margin-top: 50px;
-    margin-bottom: 20px;
-}
-
-
 
 /* ---------- アコーディオン ---------- */
 
@@ -516,6 +505,7 @@ li.look {
         padding-left: 7px;
         padding-right: 6px;
         padding-bottom: 0px;
+        margin-bottom: -5px;
 
         background-color: #cfffd3
     }

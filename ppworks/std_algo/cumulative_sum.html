@@ -1968,7 +1968,7 @@ print(max_)
 <td>0</td>
 <td style="background-color: coral;">-1</td>
 <td style="background-color: aqua;">1</td>
-<td>-1</td>
+<td>0</td>
 <td style="background-color: aqua;">1</td>
 </tr>
 </tbody>
@@ -2708,6 +2708,55 @@ r = 1, len_A = 10
 <p><code>r <= len_A</code> は、<code>r</code> が数列の中にいる間、ループします。<br><code>cum_sum[r] - cum_sum[l-1] <= 15</code> が、累積和で総和を求めている所です。<br><mark>数列A</mark> の先頭は、<code>cum_sum</code> の要素番号 1 なので、初期値は <mark>l = 1</mark>, <mark>r = 1</mark> です。</p>
 <p class="inlook">cum_sum[1] - cum_sum[0] &lt;= 15<br>↓<br>1 - 0 &lt;= 15 … <strong>True</strong></p>
 <p>となり、<strong>True</strong> の間は <code>r += 1</code> だけが実行されます。</p>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td>lr</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>1 - 0 = 1 … <strong>True</strong><br>↓</p>
 <div class="x-fit">
 <table class="text-center" style="table-layout: fixed; width: 30rem;">
 <thead>

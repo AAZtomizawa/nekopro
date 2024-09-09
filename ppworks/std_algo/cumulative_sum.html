@@ -163,7 +163,7 @@ print(sum_range)
 <!-- ----------------------- code end ----------------------- -->
 </ul>
 <ul>
-<p>この累積和が役立つのは、線形で繰り返し区間和を求める時です。例えば 1 ～ 100、2 ～ 101、……の区間和を何百回何百万回と繰り返して求める時、ループごとに毎度 1 ～ 100、2 ～ 101、と足し算をしていくことになります。時間がかかります。これを <wbr><mark style="white-space: nowrap;">ed - st-1</mark> と引き算するだけで一発で区間和を求めてしまいます。サイコーです。<br>これがランダムな数列だったとしても、区間がランダムだったとしても関係なく、一度累積和を作ってしまえば <wbr><mark style="white-space: nowrap;">ed - st-1</mark> でお好きな区間和を何度でも一発で求めてしまいます。めがみ…。</p>
+<p>この累積和が役立つのは、線形で繰り返し区間和を求める時です。例えば 1 ～ 100、2 ～ 101、……の区間和を何百回何百万回と繰り返して求める時、ループごとに毎度 1 ～ 100、2 ～ 101、と足し算をしていくことになります。時間がかかります。これを <wbr><mark style="white-space: nowrap;">ed - st-1</mark> と引き算するだけで一発で区間和を求めてしまいます。サイコーです。<br>これがランダムな数列だったとしても、区間がランダムだったとしても関係なく、一度累積和を作ってしまえば <wbr><mark style="white-space: nowrap;">ed - st-1</mark> でお好きな区間和を何度でも一発で求めてしまいます。めがみ…。<br>これを人の手でやったとしても、どれだけ早く求められるかが容易に想像できるでしょう。</p>
 <p>小学生でも超簡単に扱えるアルゴリズム。ネコにも優しい世界です。</p>
 <br>
 <p>それでは早速、問題の STEP 1 を累積和を使って区間和を求めるプログラムを組んでみましょう！もちろんこのプログラムを参考にしながらでも構いませんよ！</p>
@@ -523,10 +523,12 @@ print(sum_range)
 <!-- ----------------------- code end ----------------------- -->
 <p>数が文字に変わっただけで、これまでと書き方に変わりはありません。ただ、先頭の文字が 1 番目から始まりますので添字の書き方に注意してください。と言ってもこちらのほうがわかりやすいんですけどね。😽</p>
 <div class="x-fit">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;b<br>B = [1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1]</p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;">     b  w  w  b  w  b  b  w  b  w  b  b<br>B = [1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1]</pre></p>
 </div>
 ↓
-<p>B &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;[1, 0, <mark>0, 1, 0, 1, 1, 0</mark>, 1, 0, 1, 1]<br>cum_sum = [0, 1, 1, <mark>1, 2, 2, 3, 4, 4</mark>, 5, 5, 6, 7]</p>
+<div class="x-fit">
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;">B       =    [1, 0, <mark>0, 1, 0, 1, 1, 0</mark>, 1, 0, 1, 1]<br>cum_sum = [0, 1, 1, <mark>1, 2, 2, 3, 4, 4</mark>, 5, 5, 6, 7]</pre></p>
+</div>
 <p class="inlook">cum_sum[8] - cum_sum[2]<br>↓<br>4 - 1<br>↓<br><code class="output">3</code></p>
 
 </ul>
@@ -624,7 +626,7 @@ print(sum_range)
 <p>まずは二次元累積和にするとどんな風になるのかを見てみましょう。</p>
 <p>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1</p>
 <p>この行列を二次元累積和にすると・・・</p>
-<p><pre>1  2  3  4  5  6<br>2  4  6  8 10 12<br>3  6  9 <mark>12</mark> 15 18<br>4  8 12 16 20 24<br>5 10 15 20 25 30</pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;">1  2  3  4  5  6<br>2  4  6  8 10 12<br>3  6  9 <mark>12</mark> 15 18<br>4  8 12 16 20 24<br>5 10 15 20 25 30</pre></p>
 <p>となります。<br>これは例えば <mark>12</mark> は、左上から <mark>12</mark> までの長方形の範囲の中の数がすべて足されたものです。</p>
 <p><mark>1 1 1 1</mark> 1 1<br><mark>1 1 1 1</mark> 1 1<br><mark>1 1 1 1</mark> 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1</p>
 <p>どこの数に注目してもそのようになっています。</p>
@@ -633,20 +635,20 @@ print(sum_range)
 <p>今度はこの範囲に注目します。</p>
 <p>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 <span style="background-color: aqua;">1 1 1</span><br>1 1 1 <span style="background-color: aqua;">1 1 1</span><br>1 1 1 <span style="background-color: aqua;">1 1 1</span></p>
 <p>パッと見てこの範囲の総和が 9 ということがわかりますが、これを二次元累積和で求めてみます。</p>
-<p><pre>1  2  3  4  5  6<br>2  4  6  8 10 12<br>3  6  9 <span style="background-color: aqua;">12 15 18</span><br>4  8 12 <span style="background-color: aqua;">16 20 24</span><br>5 10 15 <span style="background-color: aqua;">20 25 30</span></pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;">1  2  3  4  5  6<br>2  4  6  8 10 12<br>3  6  9 <span style="background-color: aqua;">12 15 18</span><br>4  8 12 <span style="background-color: aqua;">16 20 24</span><br>5 10 15 <span style="background-color: aqua;">20 25 30</span></pre></p>
 <p>まず該当する部分はここです。このうちの右下の <span style="background-color: aqua;">30</span> が、この行列全体の総和です。1 が 6×5 個で <span style="background-color: aqua;">30</span> です。<br>(一次元)累積和ではこの数から不要な数を引いた数が区間和となりました。二次元累積和もここから不要な数を引くと範囲の総和である 9 が求められます。</p>
-<p"><pre><span style="background-color: coral;">1  2  3  4  5  6<br>2  4  6  8 10 12<br>3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></pre></p>
+<p"><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;"><span style="background-color: coral;">1  2  3  4  5  6<br>2  4  6  8 10 12<br>3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></pre></p>
 <p><span style="background-color: coral;">&nbsp;&nbsp;&nbsp;</span> で囲われた範囲が<span style="background-color: coral;">不要な部分</span>です。よって <span style="background-color: aqua;">30</span> から <span style="background-color: coral;">???</span> を引きます。</p>
-<p><pre><span style="background-color: coral;">1  2  3  4  5  6<br>2  4  6  8 10 <mark>12</mark><br>3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 <mark>15</mark></span> <span style="background-color: aqua;">20 25 30</span></pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;"><span style="background-color: coral;">1  2  3  4  5  6<br>2  4  6  8 10 <mark>12</mark><br>3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 <mark>15</mark></span> <span style="background-color: aqua;">20 25 30</span></pre></p>
 <p><mark>12</mark> と <mark>15</mark> に注目します。<br><mark>12</mark> は左上からの長方形の範囲の総和です。<br><mark>15</mark> は左上からの長方形の範囲の総和です。</p>
 <p>まず <span style="background-color: aqua;">30</span> から <mark>12</mark> を引きます。</p>
-<p><pre><span style="background-color:blue;">1  2  3  4  5  6<br>2  4  6  8 10 12</span><br><span style="background-color: coral;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 <mark>15</mark></span> <span style="background-color: aqua;">20 25 30</span></pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;"><span style="background-color:blue;">1  2  3  4  5  6<br>2  4  6  8 10 12</span><br><span style="background-color: coral;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 <mark>15</mark></span> <span style="background-color: aqua;">20 25 30</span></pre></p>
 <p>30 - 12 = 18</p>
 <p>次に 18 から <mark>15</mark> を引きます。</p>
-<p><pre><span style="background-color:blue;">1  2  3  4  5  6</span><br><span style="background-color:blue">2  4  6  8 10 12</span><br><span style="background-color: blue;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: blue;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: blue;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;"><span style="background-color:blue;">1  2  3  4  5  6</span><br><span style="background-color:blue">2  4  6  8 10 12</span><br><span style="background-color: blue;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: blue;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: blue;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></pre></p>
 <p>18 - <mark>15</mark> = 3</p>
 <p>この時、</p>
-<p><pre><span style="background-color:magenta; color: white;">1  2  3</span> <span style="background-color:blue;"> 4  5  6</span><br><span style="background-color:magenta; color: white;">2  4  <mark>6</mark></span> <span style="background-color:blue;"> 8 10 12</span><br><span style="background-color: blue;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: blue;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: blue;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;"><span style="background-color:magenta; color: white;">1  2  3</span> <span style="background-color:blue;"> 4  5  6</span><br><span style="background-color:magenta; color: white;">2  4  <mark>6</mark></span> <span style="background-color:blue;"> 8 10 12</span><br><span style="background-color: blue;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: blue;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: blue;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></pre></p>
 <p><span style="background-color: magenta;">&nbsp;&nbsp;&nbsp;</span> の範囲が<strong>２度引かれてしまっていますので</strong>、１度だけ足して帳尻を合わせます。</strong></p>
 <p>3 + <mark>6</mark> = <code class="output">9</code></p>
 </ul>
@@ -699,7 +701,7 @@ print(sum_range)
 </ol>
 <p>これが <span style="background-color: aquamarine;">cum_sum</span> の <span style="background-color: aqua;">0</span> の所 <code>cum_sum[y+1][x+1] =</code> で、ここが結果、1 になります。<br>数値が 0 ばかりでわかりにくいですが、これを進めていくと二次元累積和が完成します。この手順を繰り返し、完成した二次元累積和を見て確認してみてください。</p>
 <p><mark>リストA</mark><br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1</p>
-<p><pre><span style="background-color: aquamarine;">cum_sum</span><br>0  0  0  0  0  0  0<br>0  1  2  3  4  5  6<br>0  2  4  6  8 10 12<br>0  3  6  9 12 15 18<br>0  4  8 12 16 20 24<br>0  5 10 15 20 25 30</pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;"><span style="background-color: aquamarine;">cum_sum</span><br>0  0  0  0  0  0  0<br>0  1  2  3  4  5  6<br>0  2  4  6  8 10 12<br>0  3  6  9 12 15 18<br>0  4  8 12 16 20 24<br>0  5 10 15 20 25 30</pre></p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
@@ -718,7 +720,7 @@ print(sum_range)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>ここは最終的に、作った二次元累積和を使って求める範囲の総和を計算で割り出しています。これです。👇</p>
-<p><pre>0  0  0  0  0  0  0<br>0  <span style="background-color: coral;">1  2  3  4  5  6</span><br>0  <span style="background-color: coral;">2  4  <mark>6</mark>  8 10 <span style="background-color:cornflowerblue ;">12</span></span><br>0  <span style="background-color: coral;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br>0  <span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br>0  <span style="background-color: coral;">5 10 <span style="background-color:greenyellow ;">15</span></span> <span style="background-color: aqua;">20 25 30</span></pre></p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;">0  0  0  0  0  0  0<br>0  <span style="background-color: coral;">1  2  3  4  5  6</span><br>0  <span style="background-color: coral;">2  4  <mark>6</mark>  8 10 <span style="background-color:cornflowerblue ;">12</span></span><br>0  <span style="background-color: coral;">3  6  9</span> <span style="background-color: aqua;">12 15 18</span><br>0  <span style="background-color: coral;">4  8 12</span> <span style="background-color: aqua;">16 20 24</span><br>0  <span style="background-color: coral;">5 10 <span style="background-color:greenyellow ;">15</span></span> <span style="background-color: aqua;">20 25 30</span></pre></p>
 <p>sum_range = <span style="background-color:aqua ;">30</span> - <span style="background-color:cornflowerblue ;">12</span> - <span style="background-color:greenyellow ;">15</span> + <mark>6</mark><br>↓<br>sum_range = <code class="output">9</code></p>
 <br>
 <p>ちなみに足し算引き算の順番はご自由に。この書き順でわかりにくかったら順番を入れ替えて自分なりにわかりやすくしてみてください。👍</p>
@@ -945,7 +947,7 @@ for l, r in queries:  # いもす法
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>いもす法のプログラムはいたってシンプルで、入力値を添字にあてはめて、それぞれ 1 を増減するだけです。-1 する所は r の次なので <code>r+1</code> となります。これを繰り返していくと、</p>
+<p>いもす法のプログラムはいたってシンプルで、入力値を添字に当てはめて、それぞれ 1 を増減するだけです。-1 する所は r の次なので <code>r+1</code> となります。これを繰り返していくと、</p>
 <div class="x-fit">
 l, r = 1, 3
 <table class="text-center" style="table-layout: fixed; width: 30rem;">
@@ -2610,7 +2612,7 @@ print(max_)
 <p>ここで学習して、もし理解が難しければ私と同じルートを辿ってしまうかもしれません。</p>
 </ul>
 <ul>
-<p>ここでは paiza の解説とは異なり、累積和を使って範囲の総和を求めます。paiza の解説にあるような変数に総和を保存していく方法ではなく、直接累積和で総和を求めながらしゃくとりを進めていく方法ですが、その他の流れはほとんど同じです。</p>
+<p>ここでは paiza の解説とは異なり、累積和を使って範囲の総和を求めます。paiza の解説にあるような変数に総和を保存していく方法ではなく、直接累積和から総和を求めながらしゃくとりを進めていく方法ですが、その他の流れはほとんど同じです。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">A = [1, 5, 9, 1, 20, 5, 3, 6, 5, 4]

@@ -1,0 +1,3867 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】累積和メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>累積和メニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>【区間の和】 区間の和 4</summary>
+<header><h2>【区間の和】 区間の和 4</h2></header>
+<article>
+<details id="c1-1"><summary>STEP: 1 区間の和 1</summary>
+<header><h3>区間の和 1</h3></header>
+<ul>
+<p>ここは問題の解説ではなく、<wbr><strong style="white-space: nowrap;">累積和 <em>(cumulative sum)</em></strong> についての説明です。ここでは視覚的にわかるように累積和の作り方を説明をします。</p>
+<ol>
+<li>数列の『ある区間和を求めなさい』という問題が出る</li>
+<li>数列を使って累積和を作る</li>
+<li>累積和を使って区間和を求める</li>
+</ol>
+<p>というステップで問題を解きます。「累積和」は区間和を求める時などの前準備のもので、『これさえ作っちまえばあとはこっちのもんよ！』というくらい汎用性の高いツールです。そのツールの作り方と使い方をここで学習します。</p>
+<p>例）A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+<p>ちなみにこの数列の数を全て足すと 55 になりますよね。この数列を使って累積和で 55 を導き出してみます。</p>
+<p>まずは新しく <code>cum_sum</code> というリストを作ります。その初期値を <code>[0]</code> にします。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [0]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これと <mark>リストA</mark> を使って累積和を作ります。</p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr>
+<td>要素番号</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td>cum_sum</td>
+<td style="background-color: aquamarine;">0</td>
+<td style="background-color:chartreuse">1</td>
+<td>3</td>
+<td>6</td>
+<td>10</td>
+<td>15</td>
+<td>21</td>
+<td>28</td>
+<td>36</td>
+<td>45</td>
+<td>55</td>
+</tr>
+<tr>
+<td>リストA</td>
+<td style="background-color: aliceblue;">1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span style="background-color: aquamarine;">cum_sum[0]</span> = 0<br><span style="background-color:chartreuse">cum_sum[1]</span> = <span style="background-color:aquamarine">cum_sum[0]</span> + <span style="background-color:aliceblue">A[0]</span><br>cum_sum[2] = cum_sum[1] + A[1]<br>(中略)<br>cum_sum[10] = cum_sum[9] + A[9]</p>
+<p>これをプログラムにすると、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+cum_sum = [0] * 11  # 先にゼロマップを作る方法
+for i in range(10):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+print(cum_sum)
+</code></pre>
+<div class="x-fit">
+<code>[0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55]</code>
+</div>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>という感じになります。<br>この数列を「<strong>累積和</strong>」と言います。１つ１つの数値を指すこともあります。<br>このリストの最後の 55 が、1 から 10 の総和です。45 が、1 から 9 の総和です。</p>
+<p>ここまでが「前準備」と言われるところです。</p>
+</ul>
+<ul>
+<p>今度はこの<strong>累積和</strong>を使って区間和を求めてみます。びっくりするほど簡単です。😊</p>
+<p>数列 1 2 3 4 5 6 7 8 9 10 の、5 番目から 8 番目の総和を求める場合。</p>
+<p>5 番目というのは 5 です。8 番目は 8 です。<br>5 + 6 + 7 + 8 = 26<br>この 26 を累積和を用いて求めます。</p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr>
+<td>リストA</td>
+<td></td>
+<td style="background-color: yellow;">1</td>
+<td style="background-color: yellow;">2</td>
+<td style="background-color: yellow;">3</td>
+<td style="background-color: yellow;">4</td>
+<td style="background-color: yellow;">5</td>
+<td style="background-color: yellow;">6</td>
+<td style="background-color: yellow;">7</td>
+<td style="background-color: yellow;">8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td>cum_sum</td>
+<td>0</td>
+<td style="background-color: coral;">1</td>
+<td style="background-color: coral;">3</td>
+<td style="background-color: coral;">6</td>
+<td style="background-color: coral;">10</td>
+<td style="background-color:aqua">15</td>
+<td style="background-color:aqua">21</td>
+<td style="background-color:aqua">28</td>
+<td style="background-color:aqua"><mark>36</mark></td>
+<td>45</td>
+<td>55</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>1 ～ 8 までを足した数が <span style="background-color: yellow;">36</span> です。<br><span style="background-color:aqua">5 ～ 8</span> までを足した数を求めたいので、<span style="background-color: coral">1 ～ 4</span> までの数は不要です。<br>よって、1 ～ 8 まで足した <span style="background-color: yellow;">36</span> から 1 ～ 4 までを足した <span style="background-color: coral">10</span> を引くと、5 ～ 8 を足した数が求められます。</p>
+<p class="inlook">cum_sum[8] - cum_sum[4]<br>↓<br>36 - 10<br>↓<br>26</p>
+<p>プログラムにすると、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+cum_sum = [0] * 11
+for i in range(10):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+sum_range = cum_sum[8] - cum_sum[4]
+print(sum_range)
+</code></pre>
+<div class="x-fit">
+<code>26</code>
+</div>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<p>この累積和が役立つのは、線形で繰り返し区間和を求める時です。例えば 1 ～ 100、2 ～ 101、……の区間和を何百回何百万回と繰り返して求める時、ループごとに毎度 1 ～ 100、2 ～ 101、と足し算をしていくことになります。時間がかかります。これを <wbr><mark style="white-space: nowrap;">ed - st-1</mark> と引き算するだけで一発で区間和を求めてしまいます。サイコーです。<br>これがランダムな数列だったとしても、区間がランダムだったとしても関係なく、一度累積和を作ってしまえば <wbr><mark style="white-space: nowrap;">ed - st-1</mark> でお好きな区間和を何度でも一発で求めてしまいます。めがみ…。</p>
+<p>小学生でも超簡単に扱えるアルゴリズム。ネコにも優しい世界です。</p>
+<br>
+<p>それでは早速、問題の STEP 1 を累積和を使って区間和を求めるプログラムを組んでみましょう！もちろんこのプログラムを参考にしながらでも構いませんよ！</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 区間の和 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 区間の和 2</summary>
+<header><h3>区間の和 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = list(map(int, input().split()))
+
+len_A = len(A)
+cum_sum = [0] * (len_A + 1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+sum_range = cum_sum[7+1] - cum_sum[2]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>先頭に 0 を追加する累積和は、与えられた数列と比べて要素が１つ後方にずれています。問題では a_0 からと書かれていますので、A[i] の累積和が cum_sum[i+1] となります。<br>よって、a_7 は <mark>cum_sum[8]</mark>、a_2 は <mark>cum_sum[3]</mark> となります。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 区間の和 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 区間の和 3</summary>
+<header><h3>区間の和 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">X, Y = map(int, input().split())
+A = list(map(int, input().split()))
+
+len_A = len(A)
+cum_sum = [0] * (len_A + 1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+sum_range = cum_sum[Y+1] - cum_sum[X]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>範囲が入力で与えられています。直接数を充てていた所をこの入力に置き換えるだけです。</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 区間の和 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>FINAL問題 【区間の和】 区間の和 4</summary>
+<header><h3>【区間の和】 区間の和 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, X, Y = map(int, input().split())
+A = list(map(int, input().split()))
+
+cum_sum = [0] * (N+1)
+for i in range(N):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+sum_range = cum_sum[Y+1] - cum_sum[X]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数列の個数が与えられています。len_A の代わりにこれを使うだけで完成です。</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">FINAL問題 【区間の和】 区間の和 4</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">【区間の和】 区間の和 4</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>【連続する N 個の和の最大値】 連続する N 個の和の最大値 4</summary>
+<header><h2>【連続する N 個の和の最大値】 連続する N 個の和の最大値 4</h2></header>
+<article>
+<details id="c2-1"><summary>STEP: 1 連続する N 個の和の最大値 1</summary>
+<header><h3>連続する N 個の和の最大値 1</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [1, 5, 9, 7, 5, 3, 2, 5, 8, 4]
+
+len_A = len(A)
+cum_sum = [0] * (len_A + 1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+max_ = -float('inf')
+for i in range(3, len(cum_sum)):
+    max_ = max(max_, cum_sum[i] - cum_sum[i-3])
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [1, 5, 9, 7, 5, 3, 2, 5, 8, 4]
+
+len_A = len(A)
+cum_sum = [0] * (len_A + 1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+max_ = -float('inf')
+for i in range(len(cum_sum) - 3):
+    max_ = max(max_, cum_sum[i+3] - cum_sum[i])
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１と例２の違いは範囲の取り方です。ターゲットとしているのが、例１は累積和、例２は不要な累積和です。</p>
+<p>以降は例２の書き方でプログラム例を作っていきます。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 連続する N 個の和の最大値 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 連続する N 個の和の最大値 2</summary>
+<header><h3>連続する N 個の和の最大値 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = list(map(int, input().split()))
+
+len_A = len(A)
+cum_sum = [0] * (len_A + 1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+max_ = -float('inf')
+for i in range(len(cum_sum) - 3):
+    max_ = max(max_, cum_sum[i+3] - cum_sum[i])
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数列が入力として与えられる以外、１つ前の「連続する N 個の和の最大値 1」と変わりありません。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">STEP: 2 連続する N 個の和の最大値 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 連続する N 個の和の最大値 3</summary>
+<header><h3>連続する N 個の和の最大値 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+A = list(map(int, input().split()))
+
+cum_sum = [0] * (N+1)
+for i in range(N):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+max_ = -float('inf')
+for i in range(len(cum_sum) - 3):
+    max_ = max(max_, cum_sum[i+3] - cum_sum[i])
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力値が与えられるほうが楽でいいですが、リアルでは自分で数列の個数を取得しなければいけないので、 <strong class="func">len()</strong> を使う書き方もちょっぴり覚えておいてください。</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">STEP: 3 連続する N 個の和の最大値 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>FINAL問題 【連続する N 個の和の最大値】 連続する N 個の和の最大値 4</summary>
+<header><h3>【連続する N 個の和の最大値】 連続する N 個の和の最大値 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+cum_sum = [0] * (N+1)
+for i in range(N):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+max_ = -float('inf')
+for i in range(len(cum_sum) - 3):
+    max_ = max(max_, cum_sum[i+3] - cum_sum[i])
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>for i in range(len(cum_sum) - 3):</code> の所の <code>len(cum_sum) - 3</code> は、<code>N-2</code> としてもOKです。<br><code>N</code> は <mark>数列A</mark> の個数なので、0 の分、要素数が１つ多い累積和の要素数から 1 を引いて <code>N-2</code> とする必要があります。</p>
+<p>ここでは学習の為にわかりやすい <code>len(cum_sum) - 3</code> の書き方をしていきますが、気兼ねなく <code>N-2</code> で書いていっても構いません。学習段階ですのでお好きなほうでどうぞ。</p>
+</ul>
+<footer><a class="backto" href="#c2-4" onclick="closeAccordion('c2-4')">FINAL問題 【連続する N 個の和の最大値】 連続する N 個の和の最大値 4</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">【連続する N 個の和の最大値】 連続する N 個の和の最大値 4</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>【区間内の個数】区間内の個数 4</summary>
+<header><h2>【区間内の個数】区間内の個数 4</h2></header>
+<article>
+<details id="c3-1"><summary>STEP: 1 区間内の個数 1</summary>
+<header><h3>区間内の個数 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [1, 5, 9, 7, 5, 3, 2, 5, 8, 4]
+B = [i%2 == 0 for i in A]
+
+len_B = len(B)
+cum_sum = [0] * (len_B + 1)
+for i in range(len_B):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[8] - cum_sum[2]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これまでは「数の累積和」で計算してきましたが、今回は「個数の累積和」を求めます。数が個数に変わっただけなのですが、条件である偶数の数に変換する必要があります。それが二行目の文です。</p>
+<p><code>A</code> を <code>B</code> にすると、</p>
+<p>A = [1, 5, 9, 7, 5, 3, 2, 5, 8, 4]<br>B = [0, 0, 0, 0, 0, 0, 1, 0, 1, 1]</p>
+<p>となります。この <mark>数列B</mark> の 0 から数えて 2 番目から 7 番目の範囲にある 1 の個数を累積和を使って求めます。</p>
+<div class="x-fit">
+<p>B &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;[0, 0, <mark>0, 0, 0, 0, 1, 0</mark>, 1, 1]<br>cum_sum = [0, 0, 0, <mark>0, 0, 0, 0, 1, 1</mark>, 2, 3]</p>
+<p>あとはこれまでやってきたような引き算で個数が求められます。</p>
+<p class="inlook">cum_sum[8] - cum_sum[2]<br>↓<br>1 - 0<br>↓<br><code class="output">1</code></p>
+<p>この例では面白くもなんともありませんが、この様に累積和を用いて区間内の個数を求めることができます。</p>
+</div>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 区間内の個数 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 区間内の個数 2</summary>
+<header><h3>区間内の個数 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = list(map(int, input().split()))
+B = [i%2 == 0 for i in A]
+
+len_B = len(B)
+cum_sum = [0] * (len_B + 1)
+for i in range(len_B):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[8] - cum_sum[2]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark>数列A</mark> が入力で与えられた以外は変わりありません。</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">STEP: 2 区間内の個数 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 区間内の個数 3</summary>
+<header><h3>区間内の個数 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">X, Y = map(int, input().split())
+A = list(map(int, input().split()))
+B = [i%2 == 0 for i in A]
+
+len_B = len(B)
+cum_sum = [0] * (len_B + 1)
+for i in range(len_B):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[Y+1] - cum_sum[X]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>範囲が入力で与えられた以外は変わりありません。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">STEP: 3 区間内の個数 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>FINAL問題 【区間内の個数】区間内の個数 4</summary>
+<header><h3>【区間内の個数】区間内の個数 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, X, Y = map(int, input().split())
+A = list(map(int, input().split()))
+B = [i%2 == 0 for i in A]
+
+cum_sum = [0] * (N+1)
+for i in range(N):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[Y+1] - cum_sum[X]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数列の数の個数が入力で与えられた以外は変わりありません。<br>数列や範囲が変わっても累積和の作り方や求め方に変化が無いのが特徴です。</p>
+</ul>
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">FINAL問題 【区間内の個数】区間内の個数 4</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">【区間内の個数】区間内の個数 4</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>【区間内の個数 (文字列) 】 区間内の個数 (文字列) 4</summary>
+<header><h2>【区間内の個数 (文字列) 】 区間内の個数 (文字列) 4</h2></header>
+<article>
+<details id="c4-1"><summary>STEP: 1 区間内の個数 (文字列) 1</summary>
+<header><h3>区間内の個数 (文字列) 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = 'bwwbwbbwbwbb'
+B = [c == 'b' for c in A]
+
+len_B = len(B)
+cum_sum = [0] * (len_B + 1)
+for i in range(len_B):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[8] - cum_sum[2]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数が文字に変わっただけで、これまでと書き方に変わりはありません。ただ、先頭の文字が 1 番目から始まりますので添字の書き方に注意してください。と言ってもこちらのほうがわかりやすいんですけどね。😽</p>
+<div class="x-fit">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;w&nbsp;&nbsp;b&nbsp;&nbsp;b<br>B = [1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1]</p>
+</div>
+↓
+<p>B &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;[1, 0, <mark>0, 1, 0, 1, 1, 0</mark>, 1, 0, 1, 1]<br>cum_sum = [0, 1, 1, <mark>1, 2, 2, 3, 4, 4</mark>, 5, 5, 6, 7]</p>
+<p class="inlook">cum_sum[8] - cum_sum[2]<br>↓<br>4 - 1<br>↓<br><code class="output">3</code></p>
+
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">STEP: 1 区間内の個数 (文字列) 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>STEP: 2 区間内の個数 (文字列) 2</summary>
+<header><h3>区間内の個数 (文字列) 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = input()
+B = [c == 'b' for c in A]
+
+len_B = len(B)
+cum_sum = [0] * (len_B + 1)
+for i in range(len_B):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[8] - cum_sum[2]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前のプログラムのコピペから書き換えても構いません。その場合、どこを書き換える必要があるかを認識しながら書き換えてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">STEP: 2 区間内の個数 (文字列) 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>STEP: 3 区間内の個数 (文字列) 3</summary>
+<header><h3>区間内の個数 (文字列) 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">X, Y = map(int, input().split())
+A = input()
+B = [c == 'b' for c in A]
+
+len_B = len(B)
+cum_sum = [0] * (len_B + 1)
+for i in range(len_B):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[Y] - cum_sum[X-1]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p></p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">STEP: 3 区間内の個数 (文字列) 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>FINAL問題 【区間内の個数 (文字列) 】 区間内の個数 (文字列) 4</summary>
+<header><h3>【区間内の個数 (文字列) 】 区間内の個数 (文字列) 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, X, Y = map(int, input().split())
+A = input()
+B = [c == 'b' for c in A]
+
+cum_sum = [0] * (N+1)
+for i in range(N):
+    cum_sum[i+1] = cum_sum[i] + B[i]
+
+sum_range = cum_sum[Y] - cum_sum[X-1]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>プログラムを書き換えるのも結構勉強になると思いませんか？「書き換える」という行為はある程度、内容を理解していないと出来ないものです。プログラミングにおいてコピペは悪ではないのです。コピペだからこそ、このプログラムで本当に正しいのかどうか、隅々まで内容を精査する必要があるからです。エラーが起これば尚更です。</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">FINAL問題 【区間内の個数 (文字列) 】 区間内の個数 (文字列) 4</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">【区間内の個数 (文字列) 】 区間内の個数 (文字列) 4</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>【二次元累積和】 二次元累積和 7</summary>
+<header><h2>【二次元累積和】 二次元累積和 7</h2></header>
+<article>
+<details id="c5-1"><summary>STEP: 1 二次元累積和 1</summary>
+<header><h3>二次元累積和 1</h3></header>
+<ul>
+<p>二次元になると途端に難易度が上がるのはどんな場合も同じです。<br>今度は<strong>二次元累積和</strong>を学習します。</p>
+<p>まずは二次元累積和にするとどんな風になるのかを見てみましょう。</p>
+<p>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1</p>
+<p>この行列を二次元累積和にすると・・・</p>
+<p>1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6<br>2 &nbsp;4 &nbsp;6 &nbsp;8 10 12<br>3 &nbsp;6 &nbsp;9 <mark>12</mark> 15 18<br>4 &nbsp;8 12 16 20 24<br>5 10 15 20 25 30</p>
+<p>となります。<br>これは例えば <mark>12</mark> は、左上から <mark>12</mark> までの長方形の範囲の中の数がすべて足されたものです。</p>
+<p><mark>1 1 1 1</mark> 1 1<br><mark>1 1 1 1</mark> 1 1<br><mark>1 1 1 1</mark> 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1</p>
+<p>どこの数に注目してもそのようになっています。</p>
+</ul>
+<ul>
+<p>今度はこの範囲に注目します。</p>
+<p>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 <span style="background-color: aqua;">1 1 1</span><br>1 1 1 <span style="background-color: aqua;">1 1 1</span><br>1 1 1 <span style="background-color: aqua;">1 1 1</span></p>
+<p>パッと見てこの範囲の総和が 9 ということがわかりますが、これを二次元累積和で求めてみます。</p>
+<p>1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6<br>2 &nbsp;4 &nbsp;6 &nbsp;8 10 12<br>3 &nbsp;6 &nbsp;9 <span style="background-color: aqua;">12 15 18</span><br>4 &nbsp;8 12 <span style="background-color: aqua;">16 20 24</span><br>5 10 15 <span style="background-color: aqua;">20 25 30</span></p>
+<p>まず該当する部分はここです。このうちの右下の <span style="background-color: aqua;">30</span> が、この行列全体の総和です。1 が 6×5 個で <span style="background-color: aqua;">30</span> です。<br>(一次元)累積和ではこの数から不要な数を引いた数が区間和となりました。二次元累積和もここから不要な数を引くと範囲の総和である 9 が求められます。</p>
+<p><span style="background-color: coral;">1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6<br>2 &nbsp;4 &nbsp;6 &nbsp;8 10 12<br>3 &nbsp;6 &nbsp;9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4 &nbsp;8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></p>
+<p><span style="background-color: coral;">&nbsp;&nbsp;&nbsp;</span> で囲われた範囲が<span style="background-color: coral;">不要な部分</span>です。よって <span style="background-color: aqua;">30</span> から <span style="background-color: coral;">???</span> を引きます。</p>
+<p><span style="background-color: coral;">1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6<br>2 &nbsp;4 &nbsp;6 &nbsp;8 10 <mark>12</mark><br>3 &nbsp;6 &nbsp;9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4 &nbsp;8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 <mark>15</mark></span> <span style="background-color: aqua;">20 25 30</span></p>
+<p><mark>12</mark> と <mark>15</mark> に注目します。<br><mark>12</mark> は左上からの長方形の範囲の総和です。<br><mark>15</mark> は左上からの長方形の範囲の総和です。</p>
+<p>まず <span style="background-color: aqua;">30</span> から <mark>12</mark> を引きます。</p>
+<p><span style="background-color:blue;">1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6<br>2 &nbsp;4 &nbsp;6 &nbsp;8 10 12</span><br><span style="background-color: coral;">3 &nbsp;6 &nbsp;9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: coral;">4 &nbsp;8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: coral;">5 10 <mark>15</mark></span> <span style="background-color: aqua;">20 25 30</span></p>
+<p>30 - 12 = 18</p>
+<p>次に 18 から <mark>15</mark> を引きます。</p>
+<p><span style="background-color:blue;">1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6</span><br><span style="background-color:blue">2 &nbsp;4 &nbsp;6 &nbsp;8 10 12</span><br><span style="background-color: blue;">3 &nbsp;6 &nbsp;9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: blue;">4 &nbsp;8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: blue;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></p>
+<p>18 - <mark>15</mark> = 3</p>
+<p>この時、</p>
+<p><span style="background-color:magenta; color: white;">1 &nbsp;2 &nbsp;3</span> <span style="background-color:blue;">&nbsp;4 &nbsp;5 &nbsp;6</span><br><span style="background-color:magenta; color: white;">2 &nbsp;4 &nbsp;<mark>6</mark></span> <span style="background-color:blue;">&nbsp;8 10 12</span><br><span style="background-color: blue;">3 &nbsp;6 &nbsp;9</span> <span style="background-color: aqua;">12 15 18</span><br><span style="background-color: blue;">4 &nbsp;8 12</span> <span style="background-color: aqua;">16 20 24</span><br><span style="background-color: blue;">5 10 15</span> <span style="background-color: aqua;">20 25 30</span></p>
+<p><span style="background-color: magenta;">&nbsp;&nbsp;&nbsp;</span> の範囲が<strong>２度引かれてしまっていますので</strong>、１度だけ足して帳尻を合わせます。</strong></p>
+<p>3 + <mark>6</mark> = <code class="output">9</code></p>
+</ul>
+<ul>
+<p>これをプログラムにしてみます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [[1] * 6 for _ in range(5)]
+
+cum_sum = [[0] * 7 for _ in range(6)]
+for y in range(5):
+    for x in range(6):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+
+sum_range = cum_sum[5][6] - cum_sum[2][6] - cum_sum[5][3] + cum_sum[2][3]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度はこのプログラムを参考にしながら<strong>二次元累積和</strong>を作ってみます。変数のせいで長く難しそうに見えますが、わかれば大したことありません。むしろこれだけの事をやっているのに数行で済んでしまっています。</p>
+<p>まずは二次元累積和用にゼロマップを作ります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [[0] * 7 for _ in range(6)]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>次の三行の二重ループで二次元累積和を次々作っていきます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for y in range(5):
+    for x in range(6):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark>リストA</mark><br>1 1 1 1 1 1<br>1 1 1 1 1 1</p>
+<p><span style="background-color: aquamarine;">cum_sum</span><br>0 0 0 0 0 0 0<br>0 0 0 0 0 0 0<br>0 0 0 0 0 0 0</p>
+<p>まずは <mark>リストA</mark> の左上のこの部分にだけ注目します。<br>二次元累積和のゼロマップの一番上の一列と、一番左の一列は、計算用のダミーです。これは読み進めると意味が分かります。</p>
+<p><mark>リストA</mark> の左上から右下へ向かって順に計算していきます。</p>
+<p><mark>リストA</mark><br><span style="background-color: aqua;">1</span> 1 1 1 1 1<br>1 1 1 1 1 1</p>
+<p><span style="background-color: aquamarine;">cum_sum</span><br>0 0 0 0 0 0 0<br>0 <span style="background-color: aqua;">0</span> 0 0 0 0 0<br>0 0 0 0 0 0 0</p>
+<p><span style="background-color: aquamarine;">cum_sum</span> の <span style="background-color: aqua;">0</span> の所が、<mark>リストA</mark> の <span style="background-color: aqua;">1</span> の累積和になる場所です。ここの求め方は次のとおりです。</p>
+<ol>
+    y = 0, x = 0
+<li><span style="background-color: aquamarine;">cum_sum</span> の <span style="background-color: aqua;">0</span> の左の数を <strong>足す</strong>。<code>cum_sum[y+1][x]</code></li>
+<li><span style="background-color: aquamarine;">cum_sum</span> の <span style="background-color: aqua;">0</span> の上の数を <strong>足す</strong>。<code>cum_sum[y][x+1]</code></li>
+<li><span style="background-color: aquamarine;">cum_sum</span> の <span style="background-color: aqua;">0</span> の左上の数を <strong>引く</strong>。 <code>cum_sum[y][x]</code></li>
+<li><mark>リストA</mark> の <span style="background-color: aqua;">1</span> を <strong>足す</strong>。<code>A[y][x]</code></li>
+</ol>
+<p>これが <span style="background-color: aquamarine;">cum_sum</span> の <span style="background-color: aqua;">0</span> の所 <code>cum_sum[y+1][x+1] =</code> で、ここが結果、1 になります。<br>数値が 0 ばかりでわかりにくいですが、これを進めていくと二次元累積和が完成します。この手順を繰り返し、完成した二次元累積和を見て確認してみてください。</p>
+<p><mark>リストA</mark><br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1</p>
+<p><span style="background-color: aquamarine;">cum_sum</span><br>0 &nbsp;0 &nbsp;0 &nbsp;0 &nbsp;0 &nbsp;0 &nbsp;0<br>0 &nbsp;1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6<br>0 &nbsp;2 &nbsp;4 &nbsp;6 &nbsp;8 10 12<br>0 &nbsp;3 &nbsp;6 &nbsp;9 12 15 18<br>0 &nbsp;4 &nbsp;8 12 16 20 24<br>0 &nbsp;5 10 15 20 25 30</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>上の 5 のところは、<span style="background-color: aquamarine;">4</span> + <span style="background-color: aquamarine;">0</span> - <span style="background-color: aquamarine;">0</span> + <mark>1</mark> = 5 です。<br>9 のところは、<span style="background-color: aquamarine;">6</span> + <span style="background-color: aquamarine;">6</span> - <span style="background-color: aquamarine;">4</span> + <mark>1</mark> = 9 です。<br>30 のところは、<span style="background-color: aquamarine;">25</span> + <span style="background-color: aquamarine;">24</span> - <span style="background-color: aquamarine;">20</span> + <mark>1</mark> = 30 です。</p>
+<p>y+1 とか x とかどの位置見てるのかなど結構混乱しますので、落ち着いて書いていってくださいね。</p>
+</ul>
+<ul>
+<p>プログラム最後の部分、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">sum_range = cum_sum[5][6] - cum_sum[2][6] - cum_sum[5][3] + cum_sum[2][3]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここは最終的に、作った二次元累積和を使って求める範囲の総和を計算で割り出しています。これです。👇</p>
+<p>0 &nbsp;0 &nbsp;0 &nbsp;0 &nbsp;0 &nbsp;0 &nbsp;0<br>0 &nbsp;<span style="background-color: coral;">1 &nbsp;2 &nbsp;3 &nbsp;4 &nbsp;5 &nbsp;6</span><br>0 &nbsp;<span style="background-color: coral;">2 &nbsp;4 &nbsp;<mark>6</mark> &nbsp;8 10 <span style="background-color:cornflowerblue ;">12</span></span><br>0 &nbsp;<span style="background-color: coral;">3 &nbsp;6 &nbsp;9</span> <span style="background-color: aqua;">12 15 18</span><br>0 &nbsp;<span style="background-color: coral;">4 &nbsp;8 12</span> <span style="background-color: aqua;">16 20 24</span><br>0 &nbsp;<span style="background-color: coral;">5 10 <span style="background-color:greenyellow ;">15</span></span> <span style="background-color: aqua;">20 25 30</span></p>
+<p>sum_range = <span style="background-color:aqua ;">30</span> - <span style="background-color:cornflowerblue ;">12</span> - <span style="background-color:greenyellow ;">15</span> + <mark>6</mark><br>↓<br>sum_range = <code class="output">9</code></p>
+<br>
+<p>ちなみに足し算引き算の順番はご自由に。この書き順でわかりにくかったら順番を入れ替えて自分なりにわかりやすくしてみてください。👍</p>
+<p>大体でもわかったら、問題をやってみましょう。いきなりプログラムを書くにはまだ敷居が高いと思いますので、上のプログラムをコピペして目で追いながら書き換えて組み上げてみてください。<br>そして 100点をとったそのプログラムをどこかにメモしてとっておくと、忘れてしまったときにそのメモをちょいと見返せば思い出す助けになるでしょう。y+1 とか x とかややこしいですからね！</p>
+</ul>
+<footer><a class="backto" href="#c5-1" onclick="closeAccordion('c5-1')">STEP: 1 二次元累積和 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-2"><summary>STEP: 2 二次元累積和 2</summary>
+<header><h3>二次元累積和 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [list(map(int, input().split())) for _ in range(5)]
+
+cum_sum = [[0] * 6 for _ in range(6)]
+for y in range(5):
+    for x in range(5):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+
+sum_range = cum_sum[4][4] - cum_sum[1][4] - cum_sum[4][1] + cum_sum[1][1]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>コピペなら各所数値を書き換えるだけで済むのですが、それでも混乱してしまいますね。</p>
+</ul>
+<footer><a class="backto" href="#c5-2" onclick="closeAccordion('c5-2')">STEP: 2 二次元累積和 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-3"><summary>STEP: 3 二次元累積和 3</summary>
+<header><h3>二次元累積和 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(5)]
+
+cum_sum = [[0] * 6 for _ in range(6)]
+for y in range(5):
+    for x in range(5):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+
+sum_range = cum_sum[b+1][4] - cum_sum[b+1][3] - cum_sum[a][4] + cum_sum[a][3]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>添字と同じ並びの書き方がされています。よって {a, 3} ～ {b, 3} は縦長の長方形になります。</p>
+<p>二次元累積和にすると位置が +1 ずれますので、変数に +1 を付けて調整します。あとは落ち着いて正しく添字を書けばクリアするはずです。</p>
+</ul>
+<footer><a class="backto" href="#c5-3" onclick="closeAccordion('c5-3')">STEP: 3 二次元累積和 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-4"><summary>STEP: 4 二次元累積和 4</summary>
+<header><h3>二次元累積和 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c, d = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(5)]
+
+cum_sum = [[0] * 6 for _ in range(6)]
+for y in range(5):
+    for x in range(5):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+
+sum_range = cum_sum[c+1][d+1] - cum_sum[c+1][b] - cum_sum[a][d+1] + cum_sum[a][b]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は {a, b}, {c, d} なので、添字は [a|c][b|d] となります。<br>これを念頭にまた落ち着いて正しく添字を書いていけばクリアするはずです。</p>
+</ul>
+<footer><a class="backto" href="#c5-4" onclick="closeAccordion('c5-4')">STEP: 4 二次元累積和 4</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-5"><summary>STEP: 5 二次元累積和 5</summary>
+<header><h3>二次元累積和 5</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+a, b, c, d = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(N)]
+
+cum_sum = [[0] * (N+1) for _ in range(N+1)]
+for y in range(N):
+    for x in range(N):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+
+sum_range = cum_sum[c+1][d+1] - cum_sum[c+1][b] - cum_sum[a][d+1] + cum_sum[a][b]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は入力 N が追加されましたが、二次元累積和本体の問題ではありませんので楽勝だったことでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c5-5" onclick="closeAccordion('c5-5')">STEP: 5 二次元累積和 5</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-6"><summary>STEP: 6 【二次元累積和】 二次元累積和 6</summary>
+<header><h3>【二次元累積和】 二次元累積和 6</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M = map(int, input().split())
+a, b, c, d = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(N)]
+
+cum_sum = [[0] * (M+1) for _ in range(N+1)]
+for y in range(N):
+    for x in range(M):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+
+sum_range = cum_sum[c+1][d+1] - cum_sum[c+1][b] - cum_sum[a][d+1] + cum_sum[a][b]
+print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>行と列が任意の数になっただけですので、列の部分の N を M に書き換えるだけですね。😊</p>
+</ul>
+<footer><a class="backto" href="#c5-6" onclick="closeAccordion('c5-6')">STEP: 6 【二次元累積和】 二次元累積和 6</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-7"><summary>FINAL問題 【二次元累積和】 二次元累積和 7</summary>
+<header><h3>【二次元累積和】 二次元累積和 7</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M, Q = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(N)]
+
+cum_sum = [[0] * (M+1) for _ in range(N+1)]
+for y in range(N):
+    for x in range(M):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + A[y][x]
+
+for _ in range(Q):
+    a, b, c, d = map(int, input().split())
+    sum_range = cum_sum[c+1][d+1] - cum_sum[c+1][b] - cum_sum[a][d+1] + cum_sum[a][b]
+    print(sum_range)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今まで１回計算するだけでしたが、今度は Q 回計算するプログラムを書きます。と言っても、少し手を加えるだけで出来上がってしまいます。</p>
+<p>FINAL問題だけあって、この形でプログラムを書く問題が各所ちりばめられています。<br>このプログラムもメモして、もしくはメモした以前のプログラムからこちらに更新してとっておくとよいでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c5-7" onclick="closeAccordion('c5-7')">FINAL問題 【二次元累積和】 二次元累積和 7</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">【二次元累積和】 二次元累積和 7</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>【1 次元上のいもす法】1 次元上のいもす法 4</summary>
+<header><h2>【1 次元上のいもす法】1 次元上のいもす法 4</h2></header>
+<article>
+<details id="c6-1"><summary>STEP: 1 1 次元上のいもす法 1</summary>
+<header><h3>1 次元上のいもす法 1</h3></header>
+<ul>
+<p>「<a href="https://imoz.jp/algorithms/imos_method.html" class="linked" target="_blank">いもす法 <em>(Imos Lab)</em></a>」についてはリンク先をご覧ください。</p>
+<p>問題文に書かれているヒントで、しくみはおおかた掴めたかと思います。ですので、ここは問題のプログラム例を用いながら説明していきます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">queries = [[1, 3], [1, 8], [3, 8], [3, 6], [7, 9]]
+
+cum_sum = [0] * (1+10+1)
+for l, r in queries:  # いもす法
+    cum_sum[l] += 1
+    cum_sum[r+1] += -1
+
+for i in range(11):  # 累積和
+    cum_sum[i+1] += cum_sum[i]
+
+print(max(cum_sum))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力が与えられていないので、手入力で用意します。今後の問題の入力形式を考慮して二次元リストで作りました。<br>問題に『横に並んだ 10 個のマスがあり、最初、マスには全て 0 が書かれています。』とあるので、要素数 10 のゼロマップを作ります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [0] * 10
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここにいもす法で直接増減を書き加えるので、いもす法用に 0 を１つ加えます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [0] * (10+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最後に累積和をとるので、累積和用に 0 を さらに１つ加えます。<br><small>※ 解説最後に注釈あり。</small></p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [0] * (1+10+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>合わせて 0 が 12 個の数列が出来上がります。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">queries = [[1, 3], [1, 8], [3, 8], [3, 6], [7, 9]]
+
+for l, r in queries:  # いもす法
+    cum_sum[l] += 1
+    cum_sum[r+1] += -1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>いもす法のプログラムはいたってシンプルで、入力値を添字にあてはめて、それぞれ 1 を増減するだけです。-1 する所は r の次なので <code>r+1</code> となります。これを繰り返していくと、</p>
+<div class="x-fit">
+l, r = 1, 3
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</thead>
+<tbody>
+<tr>
+    <th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+l, r = 1, 8
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td style="background-color: aqua;">2</td>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+l, r = 3, 8
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+l, r = 3, 6
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td style="background-color: aqua;">2</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>-2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+l, r = 7, 9
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">0</td>
+<td>0</td>
+<td>-2</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</ul>
+<ul>
+<p>いもす法が終了したら、今度はこの数列をこのまま累積和にします。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(11):  # 累積和
+    cum_sum[i+1] += cum_sum[i]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</thead>
+<tbody>
+<tr style=" background-color: aliceblue;">
+<td style="width: 4rem; font-weight: bold; background-color: rgb(255, 243, 226)">cum_sum</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td><code class="output" style="margin-left: -4px;">4</code></td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>いもす法用に用意した要素番号 11 まで累積和が届くように、きちんと 0 ～ 10 までループを回します。</p>
+<p>最後に、最大値を見つけ出して画面に出力したら完了です。</p>
+<br>
+<p>※ <strong>累積和用にと先頭に 0 を加えましたが、今回のプログラムでは必要ではありません。</strong><br>混乱を避ける為にこれまでの流れに合わせて位置合わせをしてわかりやすくする為に 0 を付け足したまでです。この解説を見て完全に理解したならば、paiza の解説の通りにしてもよいですし、今はまだ 0 を付けたほうがわかりやすいというならばこの方法でもいいでしょう。</p>
+<br>
+<p>このプログラム例をそのままコピペ提出しても意味無いので、プログラム例をじっとみつめて内容を把握し、また記憶し、ゼロから自分の手で打ち込んでプログラムを完成させてみてください。しくみと流れが理解できれば難しいことはないでしょう。ちょっと思い出せなくなってしまった時には、その時にまたプログラム例を覗いて思い出しながら組み上げてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c6-1" onclick="closeAccordion('c6-1')">STEP: 1 1 次元上のいもす法 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c6-2"><summary>STEP: 2 1 次元上のいもす法 2</summary>
+<header><h3>1 次元上のいもす法 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [0] * 12
+for _ in range(5):
+    L, R = map(int, input().split())
+    cum_sum[L] += 1
+    cum_sum[R+1] += -1
+
+for i in range(11):
+    cum_sum[i+1] += cum_sum[i]
+
+print(max(cum_sum))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>範囲が入力で与えられましたので、プログラム例の様に書き換えます。</p>
+<p>入力例が簡素だと、合っているのかがわかりにくいですね。😅</p>
+</ul>
+<footer><a class="backto" href="#c6-2" onclick="closeAccordion('c6-2')">STEP: 2 1 次元上のいもす法 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c6-3"><summary>STEP: 3 1 次元上のいもす法 3</summary>
+<header><h3>1 次元上のいもす法 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+cum_sum = [0] * 12
+for _ in range(N):
+    L, R = map(int, input().split())
+    cum_sum[L] += 1
+    cum_sum[R+1] += -1
+
+for i in range(11):
+    cum_sum[i+1] += cum_sum[i]
+
+print(max(cum_sum))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力値 N が追加されましたので、ループに充てます。</p>
+<p>増減分も変わらず、「いい加減わかったよ！」と余裕が出てきたら、異なる書き方も考えてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c6-3" onclick="closeAccordion('c6-3')">STEP: 3 1 次元上のいもす法 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c6-4"><summary>FINAL問題 【1 次元上のいもす法】1 次元上のいもす法 4</summary>
+<header><h3>【1 次元上のいもす法】1 次元上のいもす法 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, Q = map(int, input().split())
+
+cum_sum = [0] * (N+2)
+for _ in range(Q):
+    L, R = map(int, input().split())
+    cum_sum[L] += 1
+    cum_sum[R+1] += -1
+
+for i in range(N+1):
+    cum_sum[i+1] += cum_sum[i]
+
+print(max(cum_sum))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>N が Q になり、N が個数に変わりました。N 個にいもす法用と累積和用として +2 すれば、これまでのプログラムが流用できます。</p>
+<p>また、STEP 1 で先頭の 0 は不要と補足しましたが、その場合のプログラムの書き方は以下の様になります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, Q = map(int, input().split())
+
+cum_sum = [0] * (N+1)  # 変更箇所
+for _ in range(Q):
+    L, R = map(int, input().split())
+    cum_sum[L-1] += 1  # 変更箇所
+    cum_sum[R] += -1  # 変更箇所
+
+for i in range(N):  # 変更箇所
+    cum_sum[i+1] += cum_sum[i]
+
+print(max(cum_sum))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この書き方でもう一度 STEP 1 からやってみてください。😊</p>
+</ul>
+<footer><a class="backto" href="#c6-4" onclick="closeAccordion('c6-4')">FINAL問題 【1 次元上のいもす法】1 次元上のいもす法 4</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">【1 次元上のいもす法】1 次元上のいもす法 4</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>【2 次元上のいもす法】 2 次元上のいもす法 6</summary>
+<header><h2>【2 次元上のいもす法】 2 次元上のいもす法 6</h2></header>
+<article>
+<details id="c7-1"><summary>STEP: 1 2 次元上のいもす法 1</summary>
+<header><h3>2 次元上のいもす法 1</h3></header>
+<ul>
+<p>二次元では少々、いもす法の作り方がわかりにくいかと思います。ただ、やろうとしていることまではわかるでしょう。<br>今回もプログラム例に沿って解説していきます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [[0] * 7 for _ in range(7)]
+locs = [[1, 1, 3, 3], [2, 2, 4, 4], [3, 3, 5, 5], [1, 3, 3, 5], [3, 1, 5, 3]]
+
+# いもす法
+for sx, sy, ex, ey in locs:
+    cum_sum[sy][sx] += 1
+    cum_sum[sy][ex+1] -= 1
+    cum_sum[ey+1][sx] -= 1
+    cum_sum[ey+1][ex+1] += 1
+    
+# 二次元累積和
+for y in range(6):
+    for x in range(6):
+        cum_sum[y+1][x+1] = cum_sum[y][x+1] + cum_sum[y+1][x] - cum_sum[y][x] + cum_sum[y+1][x+1]
+
+max_= -float('inf')
+for row in cum_sum:
+    max_ = max(max_, max(row))
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><small>※ これまでの流れに沿ったプログラムの書き方と解説をする為、paiza のヒントとは異なる方法をとっています。</small></p>
+<p>一行目がゼロマップです。累積和用といもす法用に 0 を追加しています。<br>二行目は 1 を加算する範囲のリストです。以降の問題の入力形式に合わせた書き方をしています。</p>
+</ul>
+<ul>
+<p>次に、いもす法の処理をします。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for sx, sy, ex, ey in locs:
+    cum_sum[sy][sx] += 1
+    cum_sum[sy][ex+1] -= 1
+    cum_sum[ey+1][sx] -= 1
+    cum_sum[ey+1][ex+1] += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<p>sx, sy, ex, ey = 1, 1, 3, 3</p>
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<p>sx, sy, ex, ey = 2, 2, 4, 4</p>
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<p>sx, sy, ex, ey = 3, 3, 5, 5</span></p>
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<p>sx, sy, ex, ey = 1, 3, 3, 5</p>
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>1</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>-1</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>↓</p>
+<p>sx, sy, ex, ey = 3, 1, 5, 3</p>
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>-1</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td>-1</td>
+<td>0</td>
+<td>-1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>↓ いもす法の処理完了</p>
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td style="background-color: aqua;">1</td>
+<td>-1</td>
+<td style="background-color: aqua;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>いもす法の処理はここまでです。わけわかりませんね。😅</p>
+</ul>
+<ul>
+<p>次に、いもす法で処理したものから二次元累積和をとると次のようになります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for y in range(6):
+    for x in range(6):
+        cum_sum[y+1][x+1] = cum_sum[y][x+1] + cum_sum[y+1][x] - cum_sum[y][x] + cum_sum[y+1][x+1]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;"><code class="output">5</code></td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;">2</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>↓ いもす法の処理後に付けた色をそのままに、行と列に分けて累積和をとってみます。問題のヒントにある二次元累積和の処理方法がこのやり方です。<br>変化を目で追って確認してみてください。</p>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+</tr>
+</tbody>
+</table>
+<br>
+行 →→→→→→→→→→→→→→→→→→→→→→→
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>1</td>
+<td style="background-color: aqua;">2</td>
+<td style="background-color: coral;">1</td>
+<td>1</td>
+<td style="background-color: coral;">0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>1</td>
+<td>1</td>
+<td style="background-color: coral;">0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>1</td>
+<td style="background-color: aqua;">2</td>
+<td style="background-color: coral;">1</td>
+<td>1</td>
+<td style="background-color: coral;">0</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>-1</td>
+<td style="background-color: coral;">-2</td>
+<td style="background-color: aqua;">-1</td>
+<td>-1</td>
+<td style="background-color: aqua;">0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>-1</td>
+<td>-1</td>
+<td style="background-color: aqua;">0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td style="background-color: coral;">-1</td>
+<td>-1</td>
+<td style="background-color: coral;">-2</td>
+<td style="background-color: aqua;">-1</td>
+<td>-1</td>
+<td style="background-color: aqua;">0</td>
+</tr>
+</tbody>
+</table>
+<br>
+列 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>1</td>
+<td style="background-color: aqua;">2</td>
+<td style="background-color: coral;">1</td>
+<td>1</td>
+<td style="background-color: coral;">0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td>1</td>
+<td style="background-color: aqua;">2</td>
+<td>3</td>
+<td>2</td>
+<td style="background-color: coral;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td style="background-color: aqua;">2</td>
+<td>3</td>
+<td style="background-color: aqua;">5</td>
+<td style="background-color: coral;">3</td>
+<td>2</td>
+<td style="background-color: coral;">0</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td style="background-color: coral;">1</td>
+<td>2</td>
+<td style="background-color: coral;">3</td>
+<td style="background-color: aqua;">2</td>
+<td>1</td>
+<td style="background-color: aqua;">0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td>1</td>
+<td style="background-color: coral;">1</td>
+<td>2</td>
+<td>1</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td style="background-color: coral;">0</td>
+<td>0</td>
+<td style="background-color: coral;">0</td>
+<td style="background-color: aqua;">0</td>
+<td>0</td>
+<td style="background-color: aqua;">0</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table class="text-center" style="table-layout: fixed; width: 25rem;">
+<tbody>
+<tr style="color:red">
+<th class="line text-center"><span style="vertical-align: -0.5em; color:blue">y</span>&nbsp;&nbsp;<span style="vertical-align: 0.em;">x</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+<tr>
+<th style="color:blue">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">1</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">2</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">3</th>
+<td>0</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;"><code class="output">5</code></td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;">2</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">4</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">3</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">5</th>
+<td>0</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">2</td>
+<td style="background-color:aliceblue;">1</td>
+<td style="background-color:aliceblue;">1</td>
+<td>0</td>
+</tr>
+<tr>
+<th style="color:blue">6</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一致していることを確認してみてください。</p>
+<br>
+<p>いもす法の +1 と -1 の取り方がわかりにくいですよね。<br><span style="background-color:aqua">+1</span> する所と <span style="background-color: coral;">-1</span> する４箇所は対角になっていますので、色の配置で覚えてしまいましょう。あとは添字に当てるだけです。</p>
+</ul>
+<footer><a class="backto" href="#c7-1" onclick="closeAccordion('c7-1')">STEP: 1 2 次元上のいもす法 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-2"><summary>STEP: 2 2 次元上のいもす法 2</summary>
+<header><h3>2 次元上のいもす法 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [[0] * 7 for _ in range(7)]
+
+sy, ey = 3, 3
+for _ in range(5):
+    sx, ex = map(int, input().split())
+    cum_sum[sy][sx] += 1
+    cum_sum[sy][ex+1] -= 1
+    cum_sum[ey+1][sx] -= 1
+    cum_sum[ey+1][ex+1] += 1
+    
+for y in range(6):
+    for x in range(6):
+        cum_sum[y+1][x+1] = cum_sum[y][x+1] + cum_sum[y+1][x] - cum_sum[y][x] + cum_sum[y+1][x+1]
+
+max_= -float('inf')
+for row in cum_sum:
+    max_ = max(max_, max(row))
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>x の位置が入力で与えられます。y は 3 で固定されていますので、<code>sy</code> <code>ey</code> をそれぞれ <code>3</code> で初期化しておけば、変数を書き変えずに済みます。</p>
+</ul>
+<footer><a class="backto" href="#c7-2" onclick="closeAccordion('c7-2')">STEP: 2 2 次元上のいもす法 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-3"><summary>STEP: 3 2 次元上のいもす法 3</summary>
+<header><h3>2 次元上のいもす法 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [[0] * 7 for _ in range(7)]
+
+for _ in range(5):
+    sx, sy, ex, ey = map(int, input().split())
+    cum_sum[sy][sx] += 1
+    cum_sum[sy][ex+1] -= 1
+    cum_sum[ey+1][sx] -= 1
+    cum_sum[ey+1][ex+1] += 1
+    
+for y in range(6):
+    for x in range(6):
+        cum_sum[y+1][x+1] = cum_sum[y][x+1] + cum_sum[y+1][x] - cum_sum[y][x] + cum_sum[y+1][x+1]
+
+max_= -float('inf')
+for row in cum_sum:
+    max_ = max(max_, max(row))
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>位置がすべて入力で与えられるようになりました。それ以外変更はありません。</p>
+</ul>
+<footer><a class="backto" href="#c7-3" onclick="closeAccordion('c7-3')">STEP: 3 2 次元上のいもす法 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-4"><summary>STEP: 4 2 次元上のいもす法 4</summary>
+<header><h3>2 次元上のいもす法 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+cum_sum = [[0] * 7 for _ in range(7)]
+
+for _ in range(N):
+    sx, sy, ex, ey = map(int, input().split())
+    cum_sum[sy][sx] += 1
+    cum_sum[sy][ex+1] -= 1
+    cum_sum[ey+1][sx] -= 1
+    cum_sum[ey+1][ex+1] += 1
+    
+for y in range(6):
+    for x in range(6):
+        cum_sum[y+1][x+1] = cum_sum[y][x+1] + cum_sum[y+1][x] - cum_sum[y][x] + cum_sum[y+1][x+1]
+
+max_= -float('inf')
+for row in cum_sum:
+    max_ = max(max_, max(row))
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は位置の数が N 個として与えられます。それだけです。</p>
+</ul>
+<footer><a class="backto" href="#c7-4" onclick="closeAccordion('c7-4')">STEP: 4 2 次元上のいもす法 4</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-5"><summary>STEP: 5 2 次元上のいもす法 5</summary>
+<header><h3>2 次元上のいもす法 5</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+cum_sum = [[0] * (N+2) for _ in range(N+2)]
+
+for _ in range(K):
+    sx, sy, ex, ey = map(int, input().split())
+    cum_sum[sy][sx] += 1
+    cum_sum[sy][ex+1] -= 1
+    cum_sum[ey+1][sx] -= 1
+    cum_sum[ey+1][ex+1] += 1
+    
+for y in range(N+1):
+    for x in range(N+1):
+        cum_sum[y+1][x+1] = cum_sum[y][x+1] + cum_sum[y+1][x] - cum_sum[y][x] + cum_sum[y+1][x+1]
+
+max_= -float('inf')
+for row in cum_sum:
+    max_ = max(max_, max(row))
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>マスの数が N 行 N 列 となり、位置の数が K 個となっています。書き換えるべき箇所をよく見て書き換えましょう。</p>
+</ul>
+<footer><a class="backto" href="#c7-5" onclick="closeAccordion('c7-5')">STEP: 5 2 次元上のいもす法 5</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-6"><summary>FINAL問題 【2 次元上のいもす法】 2 次元上のいもす法 6</summary>
+<header><h3>【2 次元上のいもす法】 2 次元上のいもす法 6</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M, K = map(int, input().split())
+cum_sum = [[0] * (M+2) for _ in range(N+2)]
+
+for _ in range(K):
+    sx, sy, ex, ey = map(int, input().split())
+    cum_sum[sy][sx] += 1
+    cum_sum[sy][ex+1] -= 1
+    cum_sum[ey+1][sx] -= 1
+    cum_sum[ey+1][ex+1] += 1
+    
+for y in range(N+1):
+    for x in range(M+1):
+        cum_sum[y+1][x+1] = cum_sum[y][x+1] + cum_sum[y+1][x] - cum_sum[y][x] + cum_sum[y+1][x+1]
+
+max_= -float('inf')
+for row in cum_sum:
+    max_ = max(max_, max(row))
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>列(x) に当たる N を M に変えるだけです。</p>
+<p>余力があるようでしたら、今度は上の１行と左の１列の 0 を作らない二次元リストで、行と列を別々にした二次元累積和を作るプログラムに作り変えてみましょう。STEP 1 の問題の説明にあったやり方です。<br>先頭に 0 を付けるのは、区間和を求める時などには有効ですが、今回の最大値を探して求めるだけの時には 0 は必要ありません。どんな場合でも行列やその変化がイメージできるようになるまでは先頭に 0 をつける方法がわかりやすいと思いますが、人それぞれなので自分なりにイメージしやすく組みやすい方法を見つけて取り入れてください。<br>私は後から見てすぐにわかる様、どんな場合もできるだけ「定型文」としたい派なので、この様な形の解説になりました。</p>
+<p>しばらく使わないと忘れちゃいますからね！散々やってた得意なゲームを久しぶりにやったら下手になってるのと同じです。</p>
+</ul>
+<footer><a class="backto" href="#c7-6" onclick="closeAccordion('c7-6')">FINAL問題 【2 次元上のいもす法】 2 次元上のいもす法 6</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">【2 次元上のいもす法】 2 次元上のいもす法 6</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c8"><summary>【区間の数え上げ】 区間の数え上げ 4</summary>
+<header><h2>【区間の数え上げ】 区間の数え上げ 4</h2></header>
+<article>
+<details id="c8-1"><summary>STEP: 1 区間の数え上げ 1</summary>
+<header><h3>区間の数え上げ 1</h3></header>
+<ul>
+<p><strong>しゃくとり法</strong>というアルゴリズムの学習です。これは私が長らく習得に苦戦したアルゴリズムで、あちこち調べたり ChatGPT に質問を変えながら理解しようと頑張って結局挫折し、しばらく放置していたら、その間なにもしていなかったにも関わらず、いつの間にか出来るようになっていたという謎のアルゴリズムです。</p>
+<p>しゃくとり法と言っても多彩な使い方があり、多彩な書き方ができる為に、調べれば調べるほどにどの書き方がわかりやすいのかがわからなくなって混乱に陥った為かと思います。</p>
+<p>ここで学習して、もし理解が難しければ私と同じルートを辿ってしまうかもしれません。</p>
+</ul>
+<ul>
+<p>ここでは paiza の解説とは異なり、累積和を使って範囲の総和を求めます。paiza の解説にあるような変数に総和を保存していく方法ではなく、直接累積和で総和を求めながらしゃくとりを進めていく方法ですが、その他の流れはほとんど同じです。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [1, 5, 9, 1, 20, 5, 3, 6, 5, 4]
+len_A = len(A)
+
+# 累積和をつくる
+cum_sum = [0] * (len_A+1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+# しゃくとり法
+r = 1
+cnt = 0
+for l in range(1, len_A+1):
+    while r <= len_A and cum_sum[r] - cum_sum[l-1] <= 15:
+        r += 1
+    
+    cnt += r - l
+    if l == r:
+        r += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>まずは累積和を前準備として作っておきます。作り方はこれまでと全く同じです。</p>
+<div class="x-fit">
+A = [1, 5, 9, 1, 20, 5, 3, 6, 5, 4]<br>
+cum_sum = [0, 1, 6, 15, 16, 36, 41, 44, 50, 55, 59]
+</div>
+</ul>
+<ul>
+<p>次に<strong>しゃくとり法</strong>です。初期値を含め、探索を以下の状態から開始します。</p>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td>lr</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>l</code> は<strong class="for"></strong>で、<code>r</code> は<strong class="while"></strong>で位置を動かしていきます。この時点では<strong class="for"></strong>を過ぎ、<strong class="while"></strong>の直前の所にいます。<br></p>
+r = 1, len_A = 10
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for l in range(1, len_A+1):
+    # >>> いまココ <<<
+    while r <= len_A and cum_sum[r] - cum_sum[l-1] <= 15:
+        r += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>r <= len_A</code> は、<code>r</code> が数列の中にいる間、ループします。<br><code>cum_sum[r] - cum_sum[l-1] <= 15</code> が、累積和で総和を求めている所です。<br><mark>数列A</mark> の先頭は、<code>cum_sum</code> の要素番号 1 なので、初期値は <mark>l = 1</mark>, <mark>r = 1</mark> です。</p>
+<p class="inlook">cum_sum[1] - cum_sum[0] &lt;= 15<br>↓<br>1 - 0 &lt;= 15 … <strong>True</strong></p>
+<p>となり、<strong>True</strong> の間は <code>r += 1</code> だけが実行されます。</p>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td>l</td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>6 - 0 = 6 … <strong>True</strong><br>↓</p>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td>l</td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>15 - 0 = 15 … ギリ <strong>True</strong><br>↓</p>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td>l</td>
+<td></td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td style="background-color: coral;">0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td style="background-color: aqua;">16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color: aqua;">16</span> - <span style="background-color: coral;">0</span> = 16 … <strong>False</strong></p>
+</div>
+<p>15 以下ではなくなったのでここで <strong>False</strong> となり、<strong class="while"></strong>文を抜けます。</p>
+<p>ここで l と r の範囲が示す <mark>数列A</mark> を見てみます。15 以下ではなくなった所が 要素番号 4 です。ということは、15 以下の範囲は 要素番号 1 ～ 3 です。</p>
+<p>A = [<mark>1, 5, 9</mark>, 1, 20, 5, 3, 6, 5, 4]</p>
+<p>これを踏まえて次は 15 以下の区間の個数を数えます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cnt += r - l
+if l == r:
+    r += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>現在、cnt = 0, l = 1, r = 4 となっています。<br>4 - 1 = 3 なので、<code>cnt</code> には <code>3</code> が加算されます。(現在 cnt = 3)<br>この <code>3</code> は 15 以下の区間の数ですが、その区間というのは次の３つです。</p>
+<p class="inlook">A = [<mark>1, 5, 9</mark>, 1, 20, 5, 3, 6, 5, 4]<br><mark>[1]<br>[1, 5]<br>[1, 5, 9]</mark></p>
+<p><code>l == r</code> ではないので次の<strong class="for"></strong>ループに移ります。</p>
+<p>↓</p>
+<div class="x-fit">
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>16 - 1 = 15 … <strong>True</strong><br>↓</p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td style="background-color: coral;">1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td style="background-color: aqua;">36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p><span  style="background-color: aqua;">36</span> - <span style="background-color: coral;">1</span> = 25 … <strong>False</strong><br>cnt += 5 - 2 = 3 (現在 cnt = 6)</p>
+<p class="inlook">A = [1, <mark>5, 9, 1</mark>, 20, 5, 3, 6, 5, 4]<br><mark>[5]<br>[5, 9]<br>[5, 9, 1]</mark></p>
+<p>↓</p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td style="background-color: coral;">6</td>
+<td>15</td>
+<td>16</td>
+<td style="background-color: aqua;">36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color: aqua;">36</span> - <span style="background-color: coral;">6</span> = 30 … <strong>False</strong><br>cnt += 5 - 3 = 2 (現在 cnt = 8)</p>
+<p class="inlook">A = [1, 5, <mark>9, 1</mark>, 20, 5, 3, 6, 5, 4]<br><mark>[9]<br>[9, 1]</mark></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td style="background-color: coral;">15</td>
+<td>16</td>
+<td style="background-color: aqua;">36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color: aqua;">36</span> - <span style="background-color: coral;">15</span> = 21 … <strong>False</strong><br>cnt += 5 - 4 = 1 (現在 cnt = 9)</p>
+<p class="inlook">A = [1, 5, 9, <mark>1</mark>, 20, 5, 3, 6, 5, 4]<br><mark>[1]</mark></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>lr</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td style="background-color: coral;">16</td>
+<td style="background-color: aqua;">36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color: aqua;">36</span> - <span style="background-color: coral;">16</span> = 20 … <strong>False</strong><br>cnt += 5 - 5 = 0 (現在 cnt = 9)　<small>うまくできてるね…(感心)</small><br><code>l == r</code> なので <code>r += 1</code> する。</p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>lr</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>41 - 36 = 5 … <strong>True</strong></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td>r</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>44 - 36 = 8 … <strong>True</strong></p>
+</div>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td>r</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>50 - 36 = 14 … <strong>True</strong></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td></td>
+<td>r</td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td style="background-color: coral;">36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td style="background-color: aqua;">55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color: aqua;">55</span> - <span style="background-color: coral;">36</span> = 19 … <strong>False</strong><br>cnt += 9 - 6 = 3 (現在 cnt = 12)</p>
+<p class="inlook">A = [1, 5, 9, 1, 20, <mark>5, 3, 6</mark>, 5, 4]<br><mark>[5]<br>[5, 3]<br>[5, 3, 6]</mark></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td>r</td>
+<td></td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>55 - 41 = 13 … <strong>True</strong></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td></td>
+<td>r</td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td style="background-color: coral;">41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td style="background-color: aqua;">59</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color: aqua;">59</span> - <span style="background-color: coral;">41</span> = 18 … <strong>False</strong><br>cnt += 10 - 7 = 3 (現在 cnt = 15)</p>
+<p class="inlook">A = [1, 5, 9, 1, 20, 5, <mark>3, 6, 5</mark>, 4]<br><mark>[3]<br>[3, 6]<br>[3, 6, 5]</mark></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td>r</td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>59 - 44 = 14 … <strong>True</strong></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th style="color:red">11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td></td>
+<td>r</td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>r が数列を超えたので <strong>False</strong><br>cnt += 11 - 8 = 3 (現在 cnt = 18)</p>
+<p class="inlook">A = [1, 5, 9, 1, 20, 5, 3, <mark>6, 5, 4</mark>]<br><mark>[6]<br>[6, 5]<br>[6, 5, 4]</mark></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th style="color:red">11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td></td>
+<td>r</td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>r が数列を超えているので <strong>False</strong><br>cnt += 11 - 9 = 2 (現在 cnt = 20)</p>
+<p class="inlook">A = [1, 5, 9, 1, 20, 5, 3, 6, <mark>5, 4</mark>]<br><mark>[5]<br>[5, 4]</mark></p>
+<table class="text-center" style="table-layout: fixed; width: 30rem;">
+<thead>
+<th style="width: 4rem;">要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th style="color:red">11</th>
+</thead>
+<tbody>
+<tr>
+<th style="width: 4rem;">l, r</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>l</td>
+<td>r</td>
+</tr>
+<tr>
+<th style="width: 4rem;">cum_sum</th>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>36</td>
+<td>41</td>
+<td>44</td>
+<td>50</td>
+<td>55</td>
+<td>59</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>r が数列を超えているので <strong>False</strong><br>cnt += 11 - 10 = 1 (現在 cnt = 21)</p>
+<p class="inlook">A = [1, 5, 9, 1, 20, 5, 3, 6, 5, <mark>4</mark>]<br><mark>[4]</mark></p>
+<p>ここで<strong class="for"></strong>ループが終了し、最後に <code>cnt</code> を画面に出力して完了です。</p>
+<br>
+<p>カウントした分の範囲をかき集めてみると、きちんと 21個あります。</p>
+<p class="inlook">&nbsp;1: [1]<br>&nbsp;2: [1, 5]<br>&nbsp;3: [1, 5, 9]<br>&nbsp;4: [5]<br>&nbsp;5: [5, 9]<br>&nbsp;6: [5, 9, 1]<br>&nbsp;7: [9]<br>&nbsp;8: [9, 1]<br>&nbsp;9: [1]<br>10: [5]<br>11: [5, 3]<br>12: [5, 3, 6]<br>13: [3]<br>14: [3, 6]<br>15: [3, 6, 5]<br>16: [6]<br>17: [6, 5]<br>18: [6, 5, 4]<br>19: [5]<br>20: [5, 4]<br>21: [4]</p>
+</div>
+</ul>
+<ul>
+<p>処理の流れを全部書いてしまったせいで長くなりましたけど、わかりましたでしょうか？と、私自身理解できなかった期間が長かった上に何で急に理解できるようになったのかがわからないせいもあり、これでわかってもらえるかどうかが全然わかりません。😓<br>せめて理解に繋がったきっかけでもあればよかったのですがそれも無く、既に理解して吸収してしまっているのでわからなかった時に何でわからなかったのかももうわかりません。😅 自転車に乗る練習みたいな感じです。</p>
+<p>累積和はほぼ定型文ですが、しゃくとり法はこれがわからないと応用が利きません、使いどころに気付きもしません。ですので今はわからなくても、気持ちだけは諦めずに時々しゃくとり法のことを思い出してみてください。</p>
+<p>わかってもわからなくても、とりあえずこのプログラム例をメモして次の問題へ進んでみてください。わからない場合でも、やらないよりはやったほうがいいですよ。😊</p>
+</ul>
+<footer><a class="backto" href="#c8-1" onclick="closeAccordion('c8-1')">STEP: 1 区間の数え上げ 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-2"><summary>STEP: 2 区間の数え上げ 2</summary>
+<header><h3>STEP: 2 区間の数え上げ 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = list(map(int, input().split()))
+len_A = len(A)
+
+cum_sum = [0] * (len_A+1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+r = 1
+cnt = 0
+for l in range(1, len_A+1):
+    while r <= len_A and cum_sum[r] - cum_sum[l-1] <= 15:
+        r += 1
+    
+    cnt += r - l
+    if l == r:
+        r += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数列が入力値として与えられただけです。</p>
+</ul>
+<footer><a class="backto" href="#c8-2" onclick="closeAccordion('c8-2')">STEP: 2 区間の数え上げ 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-3"><summary>STEP: 3 区間の数え上げ 3</summary>
+<header><h3>区間の数え上げ 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">K = int(input())
+A = list(map(int, input().split()))
+len_A = len(A)
+
+cum_sum = [0] * (len_A+1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+r = 1
+cnt = 0
+for l in range(1, len_A+1):
+    while r <= len_A and cum_sum[r] - cum_sum[l-1] <= K:
+        r += 1
+    
+    cnt += r - l
+    if l == r:
+        r += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>15 以下が 入力値 K として与えられましたので、15 を K に書き換えましょう。</p>
+</ul>
+<footer><a class="backto" href="#c8-3" onclick="closeAccordion('c8-3')">STEP: 3 区間の数え上げ 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-4"><summary>FINAL問題 【区間の数え上げ】 区間の数え上げ 4</summary>
+<header><h3>【区間の数え上げ】 区間の数え上げ 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+cum_sum = [0] * (N+1)
+for i in range(N):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+r = 1
+cnt = 0
+for l in range(1, N+1):
+    while r <= N and cum_sum[r] - cum_sum[l-1] <= K:
+        r += 1
+    
+    cnt += r - l
+    if l == r:
+        r += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>しゃくとり法の書き方としては、どんな時もまず <code>while r <= N</code> と 『 r が数列の中にいるうちは』という一文を書きます。<br><strong>and</strong> で繋ぎ、その後に問題の条件を書きます。条件は様々ですが、ここに与えられた条件を書けば大体オッケーなはずです。</p>
+<p><strong class="while"></strong> のループを抜けた後が様々で、条件次第で書き方が全く変わります。ここと<strong class="while"></strong> の条件式が連動しています。この２つに注目すれば……いずれ理解に繋がるんじゃないかな？😅</p>
+
+</ul>
+<footer><a class="backto" href="#c8-4" onclick="closeAccordion('c8-4')">FINAL問題 【区間の数え上げ】 区間の数え上げ 4</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">【区間の数え上げ】 区間の数え上げ 4</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c9"><summary>【区間の長さ】 区間の長さ 4</summary>
+<header><h2>【区間の長さ】 区間の長さ 4</h2></header>
+<article>
+<details id="c9-1"><summary>STEP: 1 区間の長さ 1</summary>
+<header><h3>区間の長さ 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = [1, 5, 9, 1, 20, 5, 3, 6, 5, 4]
+len_A = len(A)
+
+# 累積和をつくる
+cum_sum = [0] * (len_A+1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+# しゃくとり法
+r = 1
+max_ = -float('inf')
+for l in range(1, len_A+1):
+    while r <= len_A and cum_sum[r] - cum_sum[l-1] <= 15:
+        r += 1
+    
+    max_ = max(max_, r - l)
+    if l == r:
+        r += 1
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の「【区間の数え上げ】 区間の数え上げ 4」の「区間の数え上げ 1」がまだの方は、そちらを先に修了してください。</p>
+<p>今度は区間の個数から「区間の長さ」になりました。ただ、与えられた条件が全く同じですので、前回のプログラムを少し書き換えるだけで問題がクリアできます。<br><strong>最大の</strong>長さというくらいですから <strong class="func">max()</strong> 関数を使うだろうということはピンときたでしょう。それがわかれば自ずと上記のプログラムの通りになるはずです。</p>
+</ul>
+<footer><a class="backto" href="#c9-1" onclick="closeAccordion('c9-1')">STEP: 1 区間の長さ 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c9-2"><summary>STEP: 2 区間の長さ 2</summary>
+<header><h3>区間の長さ 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = list(map(int ,input().split()))
+len_A = len(A)
+
+cum_sum = [0] * (len_A+1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+r = 1
+max_ = -float('inf')
+for l in range(1, len_A+1):
+    while r <= len_A and cum_sum[r] - cum_sum[l-1] <= 15:
+        r += 1
+    
+    max_ = max(max_, r - l)
+    if l == r:
+        r += 1
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数列が入力値として与えられますので、その数列を使います。</p>
+</ul>
+<footer><a class="backto" href="#c9-2" onclick="closeAccordion('c9-2')">STEP: 2 区間の長さ 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c9-3"><summary>STEP: 3 区間の長さ 3</summary>
+<header><h3>区間の長さ 3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">K = int(input())
+A = list(map(int ,input().split()))
+len_A = len(A)
+
+cum_sum = [0] * (len_A+1)
+for i in range(len_A):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+r = 1
+max_ = -float('inf')
+for l in range(1, len_A+1):
+    while r <= len_A and cum_sum[r] - cum_sum[l-1] <= K:
+        r += 1
+    
+    max_ = max(max_, r - l)
+    if l == r:
+        r += 1
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力値 K が与えられましたので、15 を K に書き換えるだけです。👍</p>
+</ul>
+<footer><a class="backto" href="#c9-3" onclick="closeAccordion('c9-3')">STEP: 3 区間の長さ 3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c9-4"><summary>FINAL問題 【区間の長さ】 区間の長さ 4</summary>
+<header><h3>【区間の長さ】 区間の長さ 4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int ,input().split())
+A = list(map(int ,input().split()))
+
+cum_sum = [0] * (N+1)
+for i in range(N):
+    cum_sum[i+1] = cum_sum[i] + A[i]
+
+r = 1
+max_ = -float('inf')
+for l in range(1, N+1):
+    while r <= N and cum_sum[r] - cum_sum[l-1] <= K:
+        r += 1
+    
+    max_ = max(max_, r - l)
+    if l == r:
+        r += 1
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>大変長らくお疲れさまでした。</p>
+</ul>
+<footer><a class="backto" href="#c9-4" onclick="closeAccordion('c9-4')">FINAL問題 【区間の長さ】 区間の長さ 4</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c9" onclick="closeAccordion('c9')">【区間の長さ】 区間の長さ 4</a></footer>
+</details>
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>累積和メニュー</p>
+</footer>
+</body>
+</html>

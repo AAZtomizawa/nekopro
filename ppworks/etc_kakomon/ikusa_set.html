@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】戦セット</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>戦セット</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>【競技1】合格判定</summary>
+<header><h2>合格判定</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+if n >= 80:
+    print('pass')
+else:
+    print('fail')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+print('pass' if n >= 80 else 'fail')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>以上 <mark>>=</mark> と以下 <mark><=</mark> を間違えないように！</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">【競技1】合格判定</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>【競技2】間違い探し</summary>
+<header><h2>間違い探し</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s1 = input()
+s2 = input()
+if s1 == s2:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s1 = input()
+s2 = input()
+print('YES' if s1 == s2 else 'NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>比較 <mark>==</mark> と代入 <mark>=</mark> を間違えないように！</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">【競技2】間違い探し</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>【競技3】深夜時間の表記</summary>
+<header><h2>深夜時間の表記</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+time = n % 12
+if time == 0:
+    time = 12
+
+print(time)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+print(n - 24)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+print(n % 24)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>条件に「25 ≤ n ≤ 36」とあります。例１だと何時間であっても 12時間表記にできますが、遅くとも 36時までですので、単純に 24 を引くか、24 で割った余りで求めることもできます。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">【競技3】深夜時間の表記</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>【競技4】明日天気にな〜れ！</summary>
+<header><h2>明日天気にな〜れ！</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+weathers = {'forward': 'Sunny', 'sideways': 'Cloudy', 'reverse': 'Rainy'}
+
+for _ in range(n):
+    d = input()
+    print(weathers[d])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>リストでも組めますが、辞書を使うと簡単です。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">【競技4】明日天気にな〜れ！</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>【競技5】ゆで卵</summary>
+<header><h2>ゆで卵</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">m = int(input())
+
+if m <= 5:
+    print('raw')
+elif m <= 7:
+    print('soft boiled')
+else:
+    print('hard boiled')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>評価順に注意です。<br>≤ は <mark><=</mark> と書きます。</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">【競技5】ゆで卵</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>【競技6】匿名希望さん</summary>
+<header><h2>匿名希望さん</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s1, s2 = input().split()
+print(s1[0] + '.' + s2[0] + '.')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s1, s2 = input().split()
+print(f'{s1[0]}.{s2[0]}.')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力を空白区切りで分割し、それぞれの要素番号 0 である頭文字を使って加工します。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">【競技6】匿名希望さん</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>【競技7】奇数大好き山田さん</summary>
+<header><h2>奇数大好き山田さん</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+nums = []
+for _ in range(n):
+    a = int(input())
+    
+    if a % 2 == 1:
+        nums.append(a)
+
+print(*sorted(nums), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+nums = [a for _ in range(n) if (a:=int(input())) % 2 == 1]
+print(*sorted(nums), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ソートをしなければいけませんので、一度リストに奇数を格納してから、最後にソートして出力します。</p>
+<p><strong class="func">print()</strong>文の書き方については「<a href="../../2/0030mieruka.html#c1-3h" class="linked" target="_blank">２章 見える化ちゃん</a>」で学習できます。</p>
+<p><mark>:=</mark> については「<a href="../../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">【競技7】奇数大好き山田さん</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c8"><summary>【競技8】お一人様一点限り</summary>
+<header><h2>お一人様一点限り</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+memo = []
+for _ in range(n):
+    c = input()
+    
+    if c not in memo:
+        print('YES')
+        memo.append(c)
+    else:
+        print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+memo = set()
+for _ in range(n):
+    c = input()
+    print('YES' if c not in memo else 'NO')
+    memo.add(c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>一度来店した客をメモして、初回の客かどうかをチェックします。その際、リストでも構わないのですが、重複なし、順不同でよければセットを使うほうが高速処理できておススメです。</p>
+<p>空のセットは <code>set()</code> で作ります。<code>{}</code> にすると辞書型になってしまいますので注意です。</p>
+</ul>
+<footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">【競技8】お一人様一点限り</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c9"><summary>【挑戦9】線対称と点対称</summary>
+<header><h2>線対称と点対称</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def line_symmetry(plane):
+  return ([row[::-1] for row in plane] == plane) or (plane[::-1] == plane)
+
+def point_symmetry(plane):
+  return [row[::-1] for row in plane[::-1]] == plane
+
+def get_result(ls, ps):
+  results = {
+      ( True,  True) : 'line point symmetry',
+      ( True, False) : 'line symmetry',
+      (False,  True) : 'point symmetry',
+      (False, False) : 'none'
+  }
+  return results[ls, ps]
+
+
+n, m = map(int, input().split())
+d = [input() for _ in range(n)]
+ls = line_symmetry(d)
+ps = point_symmetry(d)
+print(get_result(ls, ps))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>線対称のやり方は「２章 二次元リスト」の <a href="../../2/0120dimension2.html#c4-6h" class="linked" target="_blank">線対称</a> をご覧ください。<br>点対称のやり方は「２章 二次元リスト」の <a href="../../2/0120dimension2.html#c4-7h" class="linked" target="_blank">点対称</a> をご覧ください。</p>
+<p><strong class="if"></strong>文の代わりに辞書で判定しています。<br>キーの <strong>True</strong> と <strong>False</strong> は、それぞれ 1 と 0 にしても等しく機能します。</p>
+<p>関数の書き方は「<a href="../../3/0030function.html" class="linked" target="_blank">３章 関数</a>」で学習できます。難しくないよ！</p>
+</ul>
+<footer><a class="backto" href="#c9" onclick="closeAccordion('c9')">【挑戦9】線対称と点対称</a></footer>
+</details>
+</section>
+
+
+
+</main>
+
+
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>戦セット</p>
+</footer>
+</body>
+</html>

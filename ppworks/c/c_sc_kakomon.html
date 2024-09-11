@@ -43,7 +43,7 @@ print(*search_history, sep='\n')
 <p>検索履歴への追加・削除をするだけの問題です。<br>初めは検索履歴は空の状態です。ここから入力ワードを追加・削除していきます。</p>
 <p>「追加」とあるのですが、先頭に追加するので <strong class="func">.insert()</strong> メソッドを使います。<br>削除は「検索ワード」を削除、言い方を変えると<strong>取り除く</strong>ので <strong class="func">.remove()</strong> メソッドを使います。<br><strong>insert</strong> は「<ruby>挿入<rt>そうにゅう</rt></ruby>」、<strong>remove</strong>は「<ruby>除去<rt>じょきょ</rt></ruby>」です。</p>
 <p><strong class="func">.insert()</strong> メソッドの使い方は「２章 リスト型データを使いこなす機能一覧」の <a href="../../2/0040usefullisttype.html#-insert-h" class="linked" target="_blank">こちら</a> をご覧ください。<br><strong class="func">.remove()</strong> メソッドの使い方は「２章 リスト型データを使いこなす機能一覧」の <a href="../../2/0040usefullisttype.html#-remove-h" class="linked" target="_blank">こちら</a> をご覧ください。</p>
-<p>それぞれのメソッドの使い方がわかれば、あとはその通りに使うだけですが、１点だけ注意。<br><strong class="func">.remove()</strong> は除去対象の要素を<strong>先頭から検索していきます。</strong>ですので、 <strong class="func">.insert(0, W)</strong> を実行してから <strong class="func">.remove(W)</strong> を実行してしまうと、<strong class="func">.insert(0, W)</strong> したばかりのものがそのまま <strong class="func">.remove(W)</strong> で除去されてしまいます。それじゃ意味なし！😹 <strong class="func">.remove()</strong> から実行しましょう。</p>
+<p>それぞれのメソッドの使い方がわかれば、あとはその通りに使うだけですが、１点だけ注意。<br><strong class="func">.remove()</strong> は除去対象の要素を<strong>先頭から探索していきます。</strong>ですので、 <strong class="func">.insert(0, W)</strong> を実行してから <strong class="func">.remove(W)</strong> を実行してしまうと、<strong class="func">.insert(0, W)</strong> したばかりのものがそのまま <strong class="func">.remove(W)</strong> で除去されてしまいます。それじゃ意味なし！😹 <strong class="func">.remove()</strong> から実行しましょう。</p>
 </ul>
 <footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">FINAL問題 検索履歴</a></footer>
 </details>
@@ -59,7 +59,6 @@ print(*search_history, sep='\n')
 <details id="c2-1"><summary>STEP: 1 単語のカウント（力試し編）</summary>
 <header><h3>単語のカウント（力試し編）</h3></header>
 <ul>
-<li><p>例１</p></li>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">lst = input().split()
@@ -620,7 +619,7 @@ for _ in range(M):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>例として w = 24, N = 10 の時で解説します。</p>
-<p>重いほうと軽いほうに仕分けます。<br>まず入力 <code>w</code> を N で割ります。<code>num = w / N</code><br>そしてこの <code>num</code> の整数部分の値を取ります。</p>
+<p>重いほうの箱と軽いほうの箱に仕分けます。<br>まず入力 <code>w</code> を N で割ります。<code>num = w / N</code><br>そしてこの <code>num</code> の整数部分の値を取ります。</p>
 <p class="inlook">num = 24 / 10 = <strong>2.4</strong><br>num_int = int(2.4) = <strong>2</strong> ← num の整数部分<br><br>num - num_int = 2.4 - 2 = <strong>0.4</strong> ← num の小数部分</p>
 <p><code>is_heavy</code> は、num の小数部分の値が 0.5 以上の時は <code>1</code>(重いほうの箱に入れる) となり、0.5 未満の時は <code>0</code>(軽いほうの箱に入れる) となります。<br><small>※ この <code>0</code> と <code>1</code> の意味は「<a href="../../2/0020truefalse.html#c2-h" class="linked" target="_blank">２章 bool型 True と False</a>」をご覧ください。</small></p>
 <p class="inlook">g = 10 * 2 + is_heavy * N<br>↓<br>・<code>is_heavy</code> が 1 の時<br>g = 10 * 2 + <strong>1 * 10</strong> = 30<br>・<code>is_heavy</code> が 0 の時<br>g = 10 * 2 + <strong>0 * 10</strong> = 20<br>↓<br>{20, 21, 22, 23, <strong>24</strong>}, {25, 26, 27, 28, 29, 30}<br>結果、20gの箱に入る。</p>

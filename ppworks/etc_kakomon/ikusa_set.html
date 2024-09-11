@@ -284,7 +284,7 @@ def get_result(ls, ps):
   return results[ls, ps]
 
 
-n, m = map(int, input().split())
+n, _ = map(int, input().split())
 d = [input() for _ in range(n)]
 ls = line_symmetry(d)
 ps = point_symmetry(d)

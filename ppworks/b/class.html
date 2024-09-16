@@ -981,10 +981,10 @@ def main(K, players):
         if p_1.is_game() and p_2.is_game():  # 両方とも場に残っているとき
             if f_1 == 0:
                 p_1.powerup()
-                f_1 == float('inf')
+                f_1 = float('inf')
             if f_2 == 0:
                 p_2.powerup()
-                f_2 == float('inf')
+                f_2 = float('inf')
 
             if f_1 < f_2:
                 p_2.damaged(a_1)
@@ -1038,10 +1038,10 @@ def enhance(self):
 <div>
 <pre><code class="language-python">if f_1 == 0:
     p_1.powerup()
-    f_1 == float('inf')
+    f_1 = float('inf')
 if f_2 == 0:
     p_2.powerup()
-    f_2 == float('inf')
+    f_2 = float('inf')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->

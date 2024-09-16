@@ -1125,20 +1125,21 @@ p_2, (f_2, a_2) = players[P2], players[P2].get_status(T2)
         return self.km
 
 class Supersupercar(Supercar):
+    def __init__(self, fuel, f):
+        super().__init__(fuel, f)
+        self.moving_fly = self.f ** 2
+        
     def fly(self):
         if self.fuel >= 5:
             self.fuel -= 5
-            self.km += self.f ** 2
+            self.km += self.moving_fly
         else:
             self.run()
 
 class Supersupersupercar(Supersupercar):
-    def fly(self):
-        if self.fuel >= 5:
-            self.fuel -= 5
-            self.km += 2 * self.f ** 2
-        else:
-            self.run()
+    def __init__(self, fuel, f):
+        super().__init__(fuel, f)
+        self.moving = 2 * self.f ** 2
 
     def teleport(self):
         if self.fuel >= self.f ** 2:
@@ -1151,14 +1152,13 @@ class Supersupersupercar(Supersupercar):
 def setup():
     N, K = map(int, input().split())
     cars = [globals()[k.capitalize()](int(l), int(f)) for _ in range(N) for k, l, f in [input().split()]]
-
     return K, cars
 
 def main(K, cars):
     for _ in range(K):
         n, func = input().split()
         getattr(cars[int(n)-1], func)()
-
+    
     for car in cars:
         print(car.get_km())
 
@@ -1168,8 +1168,16 @@ if __name__ == '__main__':
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>継承してさらに継承していますね。親クラス → 子クラス → 孫クラス となっています。子クラス・孫クラスのコンストラクタは親クラスのものをそのまま継承しているため、改めてコンストラクタを記述していません。</p>
-<p>メソッドの書き方に統一性が無いように見えるかもしれませんが、『未定義の機能が呼び出されることはないことが保証されている』と条件にありますので、問題文に書かれている通りに組んでみるとこんな風になるかと思います。</p>
+<p>継承してさらに継承していますね。親クラス → 子クラス → 孫クラス となっています。</p>
+<p>子クラス・孫クラスのコンストラクタで親クラスのコンストラクタを継承しています。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def __init__(self, fuel, f):
+super().__init__(fuel, f)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>インスタンスを作成する際に受け取った引数を、親クラスのコンストラクタへ引数として渡して初期化しています。</p>
 </ul>
 <ul>
 <p>ここからはプログラムを少しでも短くするために特殊な方法で書いた所を説明します。</p>

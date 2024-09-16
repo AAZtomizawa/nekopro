@@ -960,7 +960,7 @@ if __name__ == '__main__':
     def get_status(self, p):
         return self.f_i[p], self.a_i[p]
     
-    def is_game(self):
+    def is_playing(self):
         return self.hp
 
 
@@ -978,7 +978,7 @@ def main(K, players):
         p_1, (f_1, a_1) = players[P1], players[P1].get_status(T1)
         p_2, (f_2, a_2) = players[P2], players[P2].get_status(T2)
         
-        if p_1.is_game() and p_2.is_game():  # 両方とも場に残っているとき
+        if p_1.is_playing() and p_2.is_playing():  # 両方とも場に残っているとき
             if f_1 == 0:
                 p_1.powerup()
                 f_1 = float('inf')
@@ -1062,14 +1062,14 @@ if f_2 == 0:
 <p>そして HP の値がそのままゲーム続行中かどうかの判定にも使えるようになります。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">def is_game(self):
+<pre><code class="language-python">def is_playing(self):
     return self.hp
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">if p_1.is_game() and p_2.is_game():  # 両方とも場に残っているとき
+<pre><code class="language-python">if p_1.is_playing() and p_2.is_playing():  # 両方とも場に残っているとき
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->

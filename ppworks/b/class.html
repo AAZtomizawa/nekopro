@@ -1143,7 +1143,7 @@ class Supersupercar(Supercar):
 class Supersupersupercar(Supersupercar):
     def __init__(self, fuel, f):
         super().__init__(fuel, f)
-        self.moving = 2 * self.f ** 2
+        self.moving_fly = 2 * self.f ** 2
 
     def teleport(self):
         if self.fuel >= self.f ** 2:
@@ -1181,7 +1181,7 @@ super().__init__(fuel, f)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>親クラスのコンストラクタを継承し、インスタンスを作成する際に受け取った引数を継承したコンストラクタへ渡して初期化しています。</p>
+<p>親クラスのコンストラクタを継承し、インスタンスを作成する際に受け取った引数を、継承したコンストラクタへ渡して初期化しています。</p>
 </ul>
 <ul>
 <p>ここからはプログラムを少しでも短くするために特殊な方法で書いた所を説明します。</p>

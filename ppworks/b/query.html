@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｂランクレベルアップ問題集『クエリメニュー』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】クエリメニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>クエリメニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>ソートと検索 (query)</summary>
+<header><h2>ソートと検索 (query)</h2></header>
+<article>
+<details id="c1-1"><summary>STEP: 1 指定の位置への要素の追加</summary>
+<header><h3>指定の位置への要素の追加</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K, Q = map(int, input().split())
+A = [int(input()) for _ in range(N)]
+A.insert(K, Q)
+print(*A, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark>数列A</mark> は１番目から始まっていますので、１番目の後ろということは要素番号 1 のことです。ですので、K 番目はそのまま要素番号 K となりますので上記プログラム例の書き方のとおりになります。</p>
+<p>ただ、条件を見ると『1 ≦ N ≦ 100,000』と、数が大きいです。<br>これについては後の STEP 4 で説明します。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 指定の位置への要素の追加</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 指定要素の検索</summary>
+<header><h3>指定要素の検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+A = {int(input()) for _ in range(N)}
+print('YES' if K in A else 'NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark>数列A</mark> とありますので、一旦入力をすべて受け取ってから<strong class="if"></strong>文で探しますが、問題文に『重複した要素の無い数列 A』、条件に『1 ≦ N ≦ 100,000』とありますのでセット型を使うと効率が良いです。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 指定要素の検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 指定要素の検索 (query)</summary>
+<header><h3>指定要素の検索 (query)</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, Q = map(int, input().split())
+A = {int(input()) for _ in range(N)}
+K = [int(input()) for _ in range(N)]
+for K_i in K:
+    print('YES' if K_i in A else 'NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『 A に K_i が含まれていれば』なので、K_i を先頭から１つずつ <mark>数列A</mark> から探します。<br>A はセットのほうが良いですが、K はリストでも構いません。</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 指定要素の検索 (query)</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>STEP: 4 先頭の要素の削除</summary>
+<header><h3>先頭の要素の削除</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+A = [int(input()) for _ in range(N)]
+A.pop(0)
+print(*A, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+N = int(input())
+A = deque([int(input()) for _ in range(N)])
+A.popleft()
+print(*A, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１はリストの先頭の要素を削除します。この方法を使うと次の様に処理されます。</p>
+<p>A = [1, 2, 3, 4, 5]</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>↓ 先頭の要素を削除する</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>↓ 後方の要素を１つずつ前にずらしていく</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>2</td>
+<td></td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>2</td>
+<td>3</td>
+<td></td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td></td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>要素数が 5 の時、先頭の要素を削除する度に後方の要素を前に詰めていくという処理が 5 回なされます。これだと100万要素あると100万回処理がされてしまうことになりますし、挿入の場合も同様に後ろに詰めていく処理が発生します。</p>
+</ul>
+<ul>
+<p>例２ではそれを解消する為に <code>deque</code> (デキュー) というモジュールを使います。これは <strong>双方向キュー</strong>(dequeのこと) というリストのようでリストでないデータ構造のもので、これを使う目的は主に<strong>先頭の要素の追加削除</strong>です。</p>
+<p>双方向キューを使うと、先頭の要素の削除の処理が以下の様になります。</p>
+<p>A = deque([1, 2, 3, 4, 5])</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>↓ 先頭の要素を削除する <strong class="func">.popleft()</strong></p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一瞬です。一回の処理で先頭の要素が削除されます。<br>この「先頭の要素を削除する」という処理は<strong class="special">幅優先探索アルゴリズム</strong>などでよく使うことになりますので、こんな場面に出合ったらこのモジュールを使いましょう。<br>欠点としては両端は高速ですが、中央に寄るほど効率が悪くなります。</p>
+<p>deque の機能は以下の通りです。</p>
+<div class="x-fit">
+<table>
+<thead>
+<th>メソッド</th>
+<th>機能</th>
+</thead>
+<tbody>
+<tr>
+<td><strong class="func">.popleft()</strong></td>
+<td>先頭の要素を取り出す</td>
+</tr>
+<tr>
+<td><strong class="func">.appendleft()</strong></td>
+<td>先頭に要素を追加する</td>
+</tr>
+<tr>
+<td><strong class="func">.pop()</strong></td>
+<td>末尾の要素を取り出す</td>
+</tr>
+<tr>
+<td><strong class="func">.append()</strong></td>
+<td>末尾に要素を追加する</td>
+</tr>
+<tr>
+<td><strong class="func">.rotate(n)<br>.rotate(-n)</strong></td>
+<td>双方向リストの要素を n 回回転する</td>
+</tr>
+</tbody>
+</table>
+</div>
+</ul>
+<ul>
+<p>特に <strong class="func">.rotate()</strong> メソッドは面白い機能で、使うと次の様な動作をします。</p>
+<p>A = deque([1, 2, 3, 4, 5])<br><strong class="func">A.rotate(1)</strong></p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>A = deque([1, 2, 3, 4, 5])<br><strong class="func">A.rotate(-1)</strong></p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>A = deque([1, 2, 3, 4, 5])<br><strong class="func">A.rotate(2)</strong></p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>要素番号</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>4</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p><strong class="func">.rotate()</strong> メソッドを使わなくても、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for _ in range(n):
+    A.appendleft(A.pop())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>とすればよいのですが、せっかく deque をインポートしたのですからメソッドを使ってしまいましょう。😊</p>
+<p>それとインポートする際の行頭の一文は憶えましょう。横着して漢字かな変換システムに単語登録して使わないように。(憶えるまではいいけど👍)</p>
+</ul>
+<ul>
+<p>よかったら STEP 1 のプログラムも deque を使ったやり方に書き換えてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">STEP: 4 先頭の要素の削除</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>STEP: 5 先頭の要素の削除(query)</summary>
+<header><h3>先頭の要素の削除(query)</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+N, K = map(int, input().split())
+A = deque([int(input()) for _ in range(N)])
+
+for _ in range(K):
+    S = input()
+    if S == 'pop' and A:
+        A.popleft()
+    elif A:
+        print(*A, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ前の問題のクエリ版です。deque のいい練習台になったのではないでしょうか。😊</p>
+</ul>
+<footer><a class="backto" href="#c1-5" onclick="closeAccordion('c1-5')">STEP: 5 先頭の要素の削除(query)</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-6"><summary>STEP: 6 連想配列</summary>
+<header><h3>連想配列</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+dic = {num: ID for _ in range(N) for num, ID in [input().split()]}
+
+for _ in range(K):
+    Q = input()
+    print(dic[Q])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>連想配列とは、Pythonでいう「辞書」のことです。辞書と呼ぶ Python のほうがレアで、正式には「連想配列」といいます。</p>
+<p>ただの辞書を扱う問題ですので、さらりとクリアしたかと思います。😊</p>
+</ul>
+<footer><a class="backto" href="#c1-6" onclick="closeAccordion('c1-6')">STEP: 6 連想配列</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-7"><summary>STEP: 7 連想配列(query)</summary>
+<header><h3>連想配列(query)</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+dic = {num: ID for _ in range(N) for num, ID in [input().split()]}
+
+for _ in range(K):
+    S = iter(input().split())
+    query, num = next(S), next(S)
+    
+    if query == 'call':
+        print(dic[num])
+    elif query == 'leave':
+        dic.pop(num)
+    else:
+        dic[num] = next(S)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力が不揃いのクエリ問題がめんどくさくて <strong class="func">iter()</strong> 関数を使ってしまいました。<br>これはリストなどのデータをイテレータに変換する機能で、イテレータの先頭から <strong class="func">next(<strong><em>iter</em></strong>)</strong> 関数で要素を１つ呼び出す機能で、仕組みは異なりますが <strong class="func">.popleft()</strong> みたいなものです。イテレータなので呼び出し方は<strong class="for"></strong>文と同じですが、 <strong class="func">next()</strong> 関数を使って好きなところで値を順に呼び出せるメリットがあります。この使い勝手は <strong class="func">.popleft()</strong> と同じです。<br>ただ、イテレータの末尾を超えて呼び出そうとするとエラーになります。その点だけ要注意です。</p>
+<p>N が 100000 と大きいですが、辞書はセットと同じ様な構造していますので、要素の削除は高速です。ですので要素数が多くても気にする必要は無いでしょう。</p>
+<p>辞書の要素の削除は <strong class="func">.pop()</strong> で出来ます。 <strong class="func">.remove()</strong> は存在しません。</p>
+</ul>
+<footer><a class="backto" href="#c1-7" onclick="closeAccordion('c1-7')">STEP: 7 連想配列(query)</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-8"><summary>STEP: 8 ソートと検索</summary>
+<header><h3>ソートと検索</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, X, P = map(int, input().split())
+A = [int(input()) for _ in range(N)]
+
+a = sorted(A + [X, P])
+print(a.index(P) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>X</code> と <code>P</code> は <strong class="func">.append()</strong> で追加しなくとも、<strong class="func">sorted()</strong> 関数内でリストにして <mark>リストA</mark> と繋げることもできます。ただしこの時、<mark>リストA</mark> に <code>X</code> と <code>P</code> は追加されていませんので注意。</p>
+<p>また、直接 <mark>リストA</mark> に追加する場合でも <strong class="func">.extend()</strong> メソッドで複数の要素を一度に追加できます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, X, P = map(int, input().split())
+A = [int(input()) for _ in range(N)]
+
+A.extend([X, P])
+A.sort()
+print(A.index(P) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">.append()</strong> の場合はリストごと追加してしまい、</p>
+<p><code class="output">[181, 177, 113, [188, 174]]</code></p>
+<p>というような変なリストになりますが、 <strong class="func">.extend()</strong> を使うと</p>
+<p><code class="output">[181, 177, 113, 188, 174]</code></p>
+<p>と、要素だけを追加してくれます。要素の追加方法は他にもありますし、使用頻度はそんなに高くないと思いますが、機会があったら使ってみてください。</p>
+</ul>
+<footer><a class="backto" href="#c1-8" onclick="closeAccordion('c1-8')">STEP: 8 ソートと検索</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-9"><summary>FINAL問題 ソートと検索 (query)</summary>
+<header><h3>ソートと検索 (query)</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K, P = map(int, input().split())
+A = [int(input()) for _ in range(N)]
+a = sorted(A + [P])
+paiza = a.index(P) + 1
+
+for _ in range(K):
+    query = iter(input().split())
+    event = next(query)
+    
+    if event == 'sorting':
+        print(paiza)
+    else:
+        num = int(next(query))
+        paiza += (num < P)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>やっぱイテレータ、ラクでいいわぁ。😜</p>
+<p>以前 ChatGPT 3.5 にプログラムの改善を求めて見せたらイテレータがまるごと消されて添字を使った方法に書き直されてしまったのですが、やってることは同じじゃないか！と思って度々使うようになりました。世間様がどうお考えになられようと、わたくしの知ったことではございませんことよ！どうせ生涯独りでプログラムを組んでいくわけだし～。</p>
+<p>でもたまに <strong class="func">iter()</strong> が役立つこともあります。このメニューの最後の問題「点の幅」がその一例です。</p>
+<br>
+<p>最後の一文の</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">paiza += (num < P)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>も、一般的な書き方ではないから推奨しないよと ChatGPT 3.5 に言われたのですが、それじゃあ<strong>私が積極的に使って世界の常識にしてやろうじゃないの！</strong>と、場合に依りますが割と使っています。<br>これがわかりにくいと言う人って、ただ <strong>True</strong> と <strong>False</strong> をよく理解していないだけじゃないかと思いますし。</p>
+<p>もしあなたが将来 IT業界に身を置くことになり、そこでこの様な書き方をしたが為に先輩や上司にこっぴどく叱られたとしたら、その時は<strong>どうぞ私のせいにしてください。</strong></p>
+<p>場合によっちゃ交通費貴方様負担で殴り込みに行きますよ！(これは冗談)</p>
+</ul>
+<footer><a class="backto" href="#c1-9" onclick="closeAccordion('c1-9')">FINAL問題 ソートと検索 (query)</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">ソートと検索 (query)</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>Vtuber</summary>
+<header><h2>Vtuber</h2></header>
+
+<article>
+<details id="c2-1"><summary>STEP: 1 アイドルグループ</summary>
+<header><h3>アイドルグループ</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+names = {input() for _ in range(N)}
+
+for _ in range(K):
+    S = input()
+    
+    if S == 'handshake':
+        print(*sorted(names), sep='\n')
+    else:
+        q, name = S.split()
+        
+        if q == 'join':
+            names.add(name)
+        else:
+            names.remove(name)
+
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ソート回数が最大で 10回までとありますので、 <strong class="func">sorted()</strong> 関数でソートしても処理にそれほど負荷をかけることもないかと思われます。</p>
+<p>リストよりもセットのほうが向いています。追加はともかく、削除の処理速度には差が出ます。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 アイドルグループ</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 歴史を作る時間</summary>
+<header><h3>歴史を作る時間</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+_ = [input() for _ in range(N)]
+writers = [[int(Y), C] for _ in range(K) for Y, C in [input().split()]]
+
+for _, name in sorted(writers):
+    print(name)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題文に<strong class="b">『 1 人の生徒が複数の出来事の記事を担当することがある点に注意してください。』</strong>、期待する出力欄に<strong class="b">『同じ年に複数の出来事があった場合は、名前が辞書順になるように出力してください。』</strong>とあります。辞書で作ろうとするとどちらもキーが重複する場合が生じますので、ここはリストが適しています。</p>
+<p>入力が無事済ませられれば、あとはソートして結果を画面に出力するだけです。</p>
+</ul>
+<ul>
+<p>しかし辞書でも組めないことはありません。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+S = {input(): [] for _ in range(N)}
+
+writers = {}
+for _ in range(K):
+    Y, C = [[int(Y), C] for Y, C in [input().split()]][0]
+    writers[Y] = writers.get(Y, []) + [C]
+
+for _, name in sorted(writers.items(), key=lambda x:(x[0], x[1].sort())):
+    print(*name, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>辞書の中身を見るとこちらのほうが管理されててわかりやすいのですが、プログラムは複雑になります。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+S = {input(): [] for _ in range(N)}
+
+writers = {}
+for _ in range(K):
+    Y, C = [[int(Y), C] for Y, C in [input().split()]][0]
+    writers[Y] = writers.get(Y, []) + [C]
+
+print(writers)
+</code></pre>
+例）
+<div class="x-fit">
+<code>{2058: ['yuki'], 645: ['nao', 'hiro', 'nao'], 374759: ['nao']}</code>
+</div>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>なにごとも場に応じてということで。😊</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">STEP: 2 歴史を作る時間</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 銀行</summary>
+<header><h3>銀行</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+# C = 企業名, P = 暗証番号 , D = 口座額
+co_infos = {C:[P, int(D)] for _ in range(N) for C, P, D in [input().split()]}
+
+for _ in range(K):
+    # G = 企業名 , M = 暗証番号 , W = 出金額
+    G, M, W = input().split()
+
+    if co_infos[G][0] == M:      # [0] は暗証番号
+        co_infos[G][1] -= int(W) # [1] は口座額
+
+for k, v in co_infos.items():
+    print(k, v[1])  # 口座額のみ出力
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>顧客の暗証番号を聞き出すとか、完全アウトな銀行ですね！🙅</p>
+<p>データをどの様な形式に保存するかでプログラムの組み方が大きく変わってきてしまいます。N の値が大きいのでここでは辞書を使い、値をリストにして扱うと上記プログラム例の様になります。</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">STEP: 3 銀行</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>STEP: 4 経理</summary>
+<header><h3>経理</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+receipts = {input():[] for _ in range(N)}
+
+for _ in range(K):
+    # a = 部署名 , p = 注文番号 , m = 購入額
+    a, p, m = input().split()
+    receipts[a].append([p, m])
+
+for key, value in receipts.items():
+    print(key)
+    for v in value:
+        print(*v)
+    
+    print('-' * 5)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>領収書は１つ１つそのまま入力して管理されるようなので、K が大きいのですがリストを使います。</p>
+<p>辞書に各部署をキーとして、値には領収書の情報をリストに保存し、それを部署ごとに分類して出力するという流れです。リストにリストを追加できれば、他は難しくないと思います。</p>
+</ul>
+<footer><a class="backto" href="#c2-4" onclick="closeAccordion('c2-4')">STEP: 4 経理</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-5"><summary>FINAL問題 Vtuber</summary>
+<header><h3>Vtuber</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+super_chats = {}
+memberships = set()
+
+for _ in range(N):
+    name, query, tmp = input().split(maxsplit=2)
+    
+    if query == 'give':
+        money, _ = tmp.split()
+        super_chats[name] = super_chats.get(name, 0) + int(money)
+    else:
+        memberships.add(name)
+
+sorted_chats = sorted(super_chats.items(), key=lambda x:x[1], reverse=True)
+for k, _ in sorted_chats:
+    print(k)
+
+print(*sorted(memberships), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ソートがちょっと難しくないかな？と思って paiza の解答コード例を見てみたら全く同じだったので、これで解説します。</p>
+<p>まずは無名関数 <strong>lambda</strong> で、<s>御捻り</s>superchatの金額を昇順ソートします。<br>それからリスト全体を <code>reverse=True</code> で降順ソートすると、金額が降順ソート、名前も降順ソートされ、問題文の通りの並びになります。これは実際に引数をいじってみればわかると思います。</p>
+<p>条件に『アカウント名に重複はないことが保証されている。』とありますので、リストよりもセットを使うとよいでしょう。最後にソートしますので順番は関係ありませんし。</p>
+<p>真ん中へんにある <strong class="func">.get()</strong> メソッドの使い方は「<a href="../../2/0100usefuldicttype.html#-get-h" class="linked" target="_blank">２章 辞書を使いこなす機能一覧</a>」で学習できます。</p>
+<br>
+<p>安易に野良犬にエサを与えちゃダメだよ！！つけあがるから！！💢</p>
+</ul>
+<footer><a class="backto" href="#c2-5" onclick="closeAccordion('c2-5')">FINAL問題 Vtuber</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">Vtuber</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>平方分割</summary>
+<header><h2>平方分割</h2></header>
+<article>
+<details id="c3-1"><summary>STEP: 1 累積和</summary>
+<header><h3>累積和</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+A = [int(input()) for _ in range(N)]
+
+cum_sum = [0] + A
+for i in range(N):
+    cum_sum[i+1] += cum_sum[i]
+
+for _ in range(K):
+    q = int(input())
+    print(cum_sum[q] - cum_sum[0])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+A = [int(input()) for _ in range(N)]
+
+cum_sum = [0]
+for i in range(N):
+    cum_sum.append(cum_sum[i] + A[i])
+
+for _ in range(K):
+    q = int(input())
+    print(cum_sum[q] - cum_sum[0])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+
+cum_sum = [0]
+for i in range(N):
+    cum_sum.append(cum_sum[i] + int(input()))
+
+for _ in range(K):
+    q = int(input())
+    print(cum_sum[q] - cum_sum[0])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例３よりも、一度内包表記で入力をすべて取り込んでから累積和を作っている例２のほうが高速です。<br><strong class="func">.append()</strong> を使っている例２よりも、累積和用に予めゼロマップを用意してから累積和を作っている例１のほうが高速です。</p>
+<p>「累積和って何？」と疑問に思った方は、問題集「定番アルゴリズム」の「累積和メニュー」を先にやってみてください。<br>「<a href="../std_algo/cumulative_sum.html" class="linked" target="_blank">累積和メニュー</a>」の解説もありますので是非！</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 累積和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 区間和</summary>
+<header><h3>区間和</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+A = [int(input()) for _ in range(N)]
+
+cum_sum = [0] + A
+for i in range(N):
+    cum_sum[i+1] += cum_sum[i]
+
+for _ in range(K):
+    l, r = map(int, input().split())
+    print(cum_sum[r] - cum_sum[l-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>区間和と言っても開始位置が入力で新たに指定されただけなので、最後の二行以外は１つ前の「累積和」と同じです。</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">STEP: 2 区間和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 二次元累積和</summary>
+<header><h3>二次元累積和</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">H, W, N = map(int, input().split())
+cum_sum = [[0] * (W+1) for _ in range(H+1)]
+
+for h in range(H):
+    A = list(map(int, input().split()))
+    for w in range(W):
+        cum_sum[h+1][w+1] = cum_sum[h][w+1] + cum_sum[h+1][w] - cum_sum[h][w] + A[w]
+
+for _ in range(N):
+    y, x = map(int, input().split())
+    print(cum_sum[y][x])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>二次元累積和を作ったら、入力で与えられた <code>y</code> <code>x</code> の位置の値を出力するだけです。二次元累積和を作るだけの問題でした。</p>
+<p>数列の入力を一行ずつ読み込みながら一行ずつ二次元累積和を作っています。こんな方法でも作れるよというだけです。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">STEP: 3 二次元累積和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>STEP: 4 二次元区間和</summary>
+<header><h3>二次元区間和</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">H, W, N = map(int, input().split())
+cum_sum = [[0] * (W+1) for _ in range(H+1)]
+
+for h in range(H):
+    A = list(map(int, input().split()))
+    for w in range(W):
+        cum_sum[h+1][w+1] = cum_sum[h][w+1] + cum_sum[h+1][w] - cum_sum[h][w] + A[w]
+
+for _ in range(N):
+    a, b, c, d = map(int, input().split())
+    ans = cum_sum[c][d] - cum_sum[c][b-1] - cum_sum[a-1][d] + cum_sum[a-1][b-1]
+    print(ans)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>左上と右下の長方形の範囲の総和を求める基本形です。行列さえイメージできれば怖いものはありません。</p>
+<p>『は？』と思ったら「<a href="../std_algo/cumulative_sum.html" class="linked" target="_blank">累積和メニュー</a>」でじっくりと学んでおいてください。このあと使うよ！</p>
+</ul>
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">STEP: 4 二次元区間和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-5"><summary>STEP: 5 平方分割のバケット</summary>
+<header><h3>平方分割のバケット</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = 10000
+nums = [int(input()) for _ in range(N)]
+x = int(pow(N, 0.5))
+
+# ルートN に小数(端数)が出たら要素を 1 足して要素数を調整
+# 今回は √10000 = 100 なので、無くても動く
+x += int(N % x != 0)
+
+srd_maxes = [max(nums[i*x:(i+1)*x]) for i in range(x)]
+
+print(*srd_maxes, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>このプログラムの要は <code>srd_maxes</code> の中の <code>nums[i*x:(i+1)*x]</code> の部分です。この <code>x</code> が <math><msqrt><mi>N</mi></msqrt></math>です。<br><math><msqrt><mn>10000</mn></msqrt></math> = 100 なので、100個のバケット (１バケットはスライスで囲われた値 <code>x</code> 個分の区間) が作られます。そして各バケットの中から最大値を求めます。</p>
+<p>すると最終的に各バケットから求められた 100個分の最大値が入っている一次元リストが出来上がります。</p>
+<p>この問題ではそれら 100個の最大値を改行区切りで画面に出力すれば完了となります。</p>
+<p>ルート(平方根)の求め方は三行目の</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x = int(pow(N, 0.5))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>です。これは <math><msqrt><mi>N</mi></msqrt><mo>=</mo><msup><mi>N</mi><mn>0.5</mn></msup></math> = N**0.5 = <mark>pow(N, 0.5)</mark> です。<strong>pow()</strong> 関数で求める累乗は ** で求める累乗よりずっと高速に計算できます。特に第２引数が大きくなる時は威力を発揮します。しかし今回は 0.5 と小さいので N**0.5 でも問題ありません。</p>
+</ul>
+<ul>
+<p>今回は使わなかった、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python"># ルートN に小数(端数)が出たら要素を 1 足して要素数を調整
+# 今回は √10000 = 100 なので、無くても動く
+x += int(N % x != 0)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ですが、もし N が 9999 だったときは、x が int(99.994999) = 99 となり、100個用意すべきバケットが１つ足りなくなってしまいます。 </p>
+<p class="inlook">N = 10000 の時、x = 100<br>[1, …, 100], …, [9901, …, 10000]<br><br>N = 9999 の時、x = 99<br>[1, …, 100], …, [9901, …, 9999]<br>10000 の時 も 9999 の時も x = 100 個必要。</p>
+<p>その為に必要な一文です。今回は N が 10000 の定数なので不要ですが、<strong>変数の場合は必要</strong>となります。けど如何なる時も付けておいたほうが無難ですし、これを定型文としておけたほうが安心でしょう。</p>
+</ul>
+<footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">STEP: 5 平方分割のバケット</a></footer>
+</details>
+</article>
+<article>
+<details id="c3-6"><summary>FINAL問題 平方分割</summary>
+<header><h3>平方分割</h3></header>
+<ul>
+<p>ﾑｽﾞｲ _(:3」∠)_</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">K = int(input())    # 最大値の検索回数
+N = 10000
+x = int(pow(N, 0.5))
+A = [int(input()) for _ in range(N)]
+
+# ルートN に小数(端数)が出たら要素を 1 足して要素数を調整
+# 今回は √10000 = 100 なので、無くても動く
+x += int(N % x != 0)
+
+srd_maxes = [max(A[i*x:(i+1)*x]) for i in range(x)]
+
+for _ in range(K):
+    left, right = [[int(l_i)-1, int(r_i)-1] for l_i, r_i in [input().split()]][0]
+
+    max_ = A[left]
+    while left <= right:
+        if (left % x == 0) and (left + x-1 <= right):
+            max_ = max(max_, srd_maxes[left // x])
+            left += x  # 次のバケットの先頭へ飛ぶ
+
+        else:  # バケットの範囲外の時は、1つずつ調べていく
+            max_ = max(max_, A[left])
+            left += 1
+
+    print(max_)
+
+# (left % x == 0) ＝ 平方分割して区切ったブロックに到達し、
+# そのブロックの最後の位置が right 以下
+# (ブロック全ての要素を含む場合、平方分割して求めておいた値が使える)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>私はこのメニューの中でこの問題がずっと解けませんでした。最後の問題の「点の幅」も。わかるようになった今でもプログラム化するのは難しいですね。何度も使って書き方を覚えるまではまたすぐに忘れてしまいます。なのでこのプログラムはメモしています。</p>
+<p>前半は１つ前のプログラムと同じです。今回は<strong class="for"></strong>文以下の部分が追加の問題となります。</p>
+<p>入力 <code>l_i</code> <code>r_i</code> は 1 番目から数えていますので、これを要素番号に変換する為にここで 1 を引いておきます。</p>
+<p>最大値を <code>left</code> から順に探していきますので、<code>max_</code> の初期値は <code>A[left]</code> にしておきます。ここから <mark>A[right]</mark> までを調べていきます。<code>while left <= right:</code></p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    else:  # バケットの範囲外の時は、1つずつ調べていく
+        max_ = max(max_, A[left])
+        left += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>申し訳ない。先に <strong>else</strong>文のほうから説明します。</p>
+<p>ここでは平方分割して予め最大値を求めておいたバケットの<strong>範囲外</strong>の所を調べています。単純に最初に取得した <mark>数列A</mark> を使って１つずつ最大値を見つけて更新していきます。</p>
+<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 8, right = 53 の時</p>
+<p class="inlook">8, 9, 10, {20, 30, 40, 50}, 51, 52, 53</p>
+<p>初めは <code>max_</code> には <code>8</code> が入っています。<code>left += 1</code> しながら最大値を更新していきます。<br>10 に到達したら、この次は { } で囲まれている部分 「<strong>平方分割</strong>」 して予め最大値を求めておいた <mark>数列 srd_maxes</mark> を使って最大値を見つけていきます。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">while left <= right:
+        if (left % x == 0) and (left + x-1 <= right):
+            max_ = max(max_, srd_maxes[left // x])
+            left += x  # 次のバケットの先頭へ飛ぶ
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分が平方分割を利用した最大値の探索方法です。</p>
+<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 8, right = 53 の時</p>
+<p class="inlook">8, 9, 10, {20, 30, 40, 50}, 51, 52, 53</p>
+<p>現在 left = 10 (値 10 の次の所)</p>
+<dl>
+<dt>left % x == 0</dt>
+<dd>left は 10、x は 100**0.5 = 10 なので、<br><mark>10 % 10 = 0</mark></dd>
+<dt>left + x-1 <= right</dt>
+<dd><mark>10 + 10 - 1 <= 53</mark></dd>
+</dl>
+<p>どちらも <strong>True</strong> なので、<code>srd_maxes</code> を使って最大値を求めます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[left // x])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>srd_maxes = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[10 // 10])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, 20)
+left += 10
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>条件式が <strong>False</strong> になるまで、これを繰り返していきます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[20 // 10])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[2])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, 30)
+left += 10
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>(´ω`)</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[30 // 10])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[3])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, 40)
+left += 10
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>(ﾟзﾟ)</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[40 // 10])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, srd_maxes[4])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, 50)
+left += 10
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>(*ﾉωﾉ)</p>
+<p>ここで、left = 50 となります。</p>
+<dl>
+<dt>left + x-1 <= right</dt>
+<dd><mark>50 + 10 - 1 <= 53</mark> … <strong>False</strong></dd>
+</dl>
+<br>
+<p>この続きはまた <strong>else</strong>文のほうで処理します。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    else:  # バケットの範囲外の時は、1つずつ調べていく
+        max_ = max(max_, A[left])
+        left += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 8, right = 53 の時</p>
+<p class="inlook">8, 9, 10, {20, 30, 40, 50}, 51, 52, 53</p>
+<p>現在 left = 50 で、A[50] の値は <code>51</code> です。また <code>left += 1</code> しながら最大値を更新していきます。そして <code>while left <= right:</code> の評価が <strong>False</strong> となった時には <code>max_</code> には指定された範囲の最大値が求められています。1 から順に並んでいるので当然 <code>53</code> が入っているわけですけれども。😅</p>
+</ul>
+<ul>
+<p>本来は 11 ～ 50 までも順に調べていくと全部で 46回調べることになります。平方分割を用いると 10回で済みます。<br>この問題の様に N = 10000 となるとさらに差が出ますし、N = 1000000 となるとさらにさらに差が出ますし、検索回数が 10万回ともなるとさらにさらにさらにさらに差が出ます。累積和と同じように予め１回作成しておけば何度でも使えますし、値が更新されたとしても都度書き換えた所の範囲だけ最大値を求めなおせば一瞬です。</p>
+<p>なんて偉そうなことを言いましたが、また少し時間が経てば忘れるでしょう。だからこそソースプログラムのメモは大事！このサイトの説明でわかるようでしたら、必要に応じて利用していただけたら作成した甲斐があり、幸いに思います。</p>
+<br>
+<p>〆っぽい感じになりましたけど、まだ問題は続きます。😅</p>
+</ul>
+<footer><a class="backto" href="#c3-6" onclick="closeAccordion('c3-6')">FINAL問題 平方分割</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">平方分割</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>点の幅</summary>
+<header><h2>点の幅</h2></header>
+<article>
+<details id="c4-1"><summary>STEP: 1 'I' の数</summary>
+<header><h3>'I' の数</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def main(N, K, cum_sum):
+    for _ in range(K):
+        a_l, a_r, b_l, b_r = map(int, input().split())
+        a_point = culc_point(a_l, a_r, N, cum_sum)
+        b_point = culc_point(b_l, b_r, N, cum_sum)
+    
+        print(judge(a_point, b_point))
+
+def culc_point(left, right, N, cum_sum):
+    if (right - left + 1) < N / 3:
+        return cum_sum[right] - cum_sum[left-1]
+    else:
+        return -1
+
+def judge(a, b):
+    return 'A' if a > b else 'B' if a < b else 'DRAW'
+
+def setup():
+    N, K = map(int, input().split())
+
+    return N, K, make_cumulative_sum(N)
+
+def make_cumulative_sum(N):
+    cum_sum = [0] + [int(input()) for _ in range(N)]
+    for i in range(N):
+        cum_sum[i+1] += cum_sum[i]
+
+    return cum_sum
+    
+if __name__ == '__main__':
+    main(*setup())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>関数型で書いて、各機能を分けました。</p>
+<dl>
+<dt>main()</dt>
+<dd>メインプログラム。プレイヤー A と B が掴んだ先頭と末尾のページの入力を受け取り、ゲームを進行する。</dd>
+<dt>culc_point()</dt>
+<dd>掴んだページ数が有効かどうかを判定し、結果を返す。</dd>
+<dt>judge()</dt>
+<dd>A と B の勝敗を判定する。</dd>
+<dt>setup()</dt>
+<dd>入力の受け取りと、作成した累積和の値を返す。</dd>
+<dt>make_cumulative_sum()</dt>
+<dd>記録した各ページの 'I' の数から累積和を作成する。</dd>
+</dl>
+<p>この問題は最大で 100000 / 3 頁の 'I' の数の計算を二人分、そしてこれを 100000回ゲームを行ないますので、累積和を用いて計算量を大幅に削減することがカギとなります。</p>
+</ul>
+<ul>
+<p>プログラムの内容自体は目で追っていけばわかるかと思います。ただ、 <strong class="func">culc_point()</strong> 関数の中にある<strong class="if"></strong>文の条件式が唯一の悩み処かと思われます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def culc_point(left, right, N, cum_sum):
+    if (right - left + 1) < N / 3:
+        return cum_sum[right] - cum_sum[left-1]
+    else:
+        return -1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例えば、１頁から３頁を掴むと計３頁ですが、3 - 1 = 2 になってしまうので 1 を足して帳尻を合わせます。そして、</p>
+<p><strong class="b">『ただし、 N/3 ページ以上掴んだ人は反則負け』</strong></p>
+<p>とありますので、その掴んだページ数が本全体のページ数の３分の１<strong>未満</strong>であれば、累積和から 'I' の数を求め、その数を返します。反則した場合は <strong class="func">judge()</strong> 関数で必ず負けと判定されるように <strong>-1</strong>点として返します。反則していなければ 'I' の数は必ず 0 以上になりますので、0 未満であればいくつでも、 <code>-float('inf')</code> としても反則と判定されます。</p>
+<p>この３分の１の判定は、N // 3 ではなく <code>N / 3</code> と、計算結果を浮動小数にしておくことも大切です。小数を切り捨てると判定にミスが起こる場合が想定されます。</p>
+<p>これがわかれば、ここまで問題を進めてきた方なら、あとはすべて理解できるでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">STEP: 1 'I' の数</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>STEP: 2 ドーナツ</summary>
+<header><h3>ドーナツ</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">H, W, N = map(int, input().split())
+
+cum_sum = [[0] * (W+1) for _ in range(H+1)]
+
+for y in range(H):
+    C = list(map(int, input().split()))
+    for x in range(W):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + C[x]
+
+for _ in range(N):
+    y, x, B, S = map(int, input().split())
+
+    yy = y + B // 2
+    xx = x + B // 2
+    choco = cum_sum[yy][xx] - cum_sum[yy-B][xx] - cum_sum[yy][xx-B] + cum_sum[yy-B][xx-B]
+
+    yy = y + S // 2
+    xx = x + S // 2
+    choco -= cum_sum[yy][xx] - cum_sum[yy-S][xx] - cum_sum[yy][xx-S] + cum_sum[yy-S][xx-S]
+    
+    print(choco)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ざっくり手順。</p>
+<ol>
+<li>二次元累積和をつくる</li>
+<li>ドーナツの型をとる</li>
+<li>ドーナツに穴を空ける</li>
+</ol>
+<p>３つとも二次元累積和で解決できます。</p>
+</ul>
+<ul>
+<p>まずはチョコの数を二次元累積和にします。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cum_sum = [[0] * (W+1) for _ in range(H+1)]
+
+for y in range(H):
+    C = list(map(int, input().split()))
+    for x in range(W):
+        cum_sum[y+1][x+1] = cum_sum[y+1][x] + cum_sum[y][x+1] - cum_sum[y][x] + C[x]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>先の問題「二次元累積和」と同じ方法で作ります。</p>
+<p>問題の 入力例2 を利用します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">2
+5 5 4
+7 8 9 8 5
+4 2 6 2 1
+2 5 3 9 1
+1 3 3 2 3
+2 3 2 6 6
+3 4 3 1  ← 解説にココを使います
+2 3 3 1
+2 4 3 1
+3 3 5 3
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<p>ドーナツの型をとります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for _ in range(N):
+    y, x, B, S = map(int, input().split())
+
+    yy = y + B // 2
+    xx = x + B // 2
+    choco = cum_sum[yy][xx] - cum_sum[yy-B][xx] - cum_sum[yy][xx-B] + cum_sum[yy-B][xx-B]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今までは二次元区間和の範囲が入力で与えられていましたが、今回はドーナツの中心の位置と一辺の長さだけしか与えられていません。その為、計算して各位置を割り出す必要があります。</p>
+<p><code>y</code> と <code>x</code> はドーナツの中心の位置です。<code>B</code> は一辺の長さなので、それを２で割った商を求めて <code>y</code> と <code>x</code> にそれぞれ足すと、ドーナツの右下の位置が求められます。</p>
+<p>条件に『S_i , B_i は奇数』とありますので <code>B // 2</code> で商を求めれば、必ず余りが 1 になります。<strong>この余りの 1 がドーナツの中心</strong>です。<br>「S_i , B_i も奇数」であることで必ず中心ができ、<strong class="b">ドーナツやドーナツの穴の大きさが偶数になる(中心がずれる)せいで、いびつな形のドーナツになったりすることはありません</strong>という保証になっています。</p>
+<p>その位置から <code>y</code> と <code>x</code> 共に <code>B</code> を引くとドーナツの外側の位置が求められます。</p>
+<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: coral;"> 7 <mark>15</mark> 24 32 <span style="background-color: cornflowerblue;">37</span></span><br>0 <span style="background-color: coral;">11 21</span> <span style="background-color: aqua;">36 46 52</span><br>0 <span style="background-color: coral;">13 28</span> <span style="background-color: aqua;">46 <mark>65</mark> 72</span><br>0 <span style="background-color: coral;">14 <span style="background-color:greenyellow ;">32</span></span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
+<p class="inlook">y, x, B, S = 3, 4, 3, 1<br>yy = y + B // 2 = 4<br>xx = x + B // 2 = 5<br>cum_sum[4][5] が型を取ったドーナツ右下の <span style="background-color: aqua;">84</span></p>
+<p class="inlook">cum_sum[yy-B][xx]<br>yy - B = 4 - 3 = 1<br>cum_sum[1][5] の <span style="background-color: cornflowerblue;">37</span><br><br>cum_sum[yy][xx-B]<br>xx - B = 5 - 3 = 2<br>cum_sum[4][2] の <span style="background-color:greenyellow ;">32</span></p>
+<p>これを、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">choco = cum_sum[yy][xx] - cum_sum[yy-B][xx] - cum_sum[yy][xx-B] + cum_sum[yy-B][xx-B]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>で不要な部分を引き、型を取ったドーナツの部分のチョコの数だけを抽出します。</p>
+<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: coral;"> 7 <mark>15</mark> 24 32 <span style="background-color: cornflowerblue;">37</span></span><br>0 <span style="background-color: coral;">11 21</span> <span style="background-color: aqua;">36 46 52</span><br>0 <span style="background-color: coral;">13 28</span> <span style="background-color: aqua;">46 <mark>65</mark> 72</span><br>0 <span style="background-color: coral;">14 <span style="background-color:greenyellow ;">32</span></span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
+<p class="inlook">choco = <span style="background-color: aqua;">84</span> - <span style="background-color: cornflowerblue;">37</span> - <span style="background-color: greenyellow;">32</span> + <mark>15</mark><br>choco = 30</p>
+</ul>
+<ul>
+<p>最後にドーナツに穴を空けます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    yy = y + S // 2
+    xx = x + S // 2
+    choco -= cum_sum[yy][xx] - cum_sum[yy-S][xx] - cum_sum[yy][xx-S] + cum_sum[yy-S][xx-S]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>B</code> が <code>S</code> になっただけで、ドーナツの型をとった時と同様の方法で穴を空けます。穴を空けると穴の分のチョコが減りますので、そのチョコの分を引きます。</p>
+<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: blue;"> 7 15 24 32 37</span><br>0 <span style="background-color: blue;">11 21</span> <span style="background-color: aqua;"><mark>36</mark> <span style="background-color: cornflowerblue;">46</span> 52</span><br>0 <span style="background-color: blue;">13 28</span> <span style="background-color: aqua;"><span style="background-color: greenyellow;">46</span> <mark>65</mark> 72</span><br>0 <span style="background-color: blue;">14 32</span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
+<p class="inlook">choco -= <mark>65</mark> - <span style="background-color: cornflowerblue;">46</span> - <span style="background-color: greenyellow;">46</span> + <mark>36</mark><br>choco -= 9<br>choco = 30 - 9<br>choco = <code class="output">21</code></p>
+<p>無事、出力例2 の結果と同じになりました。<br>二次元累積和だけで求められるので、解れば簡単ですよね。👍</p>
+</ul>
+<ul>
+<p>残りの入力例も目で確認しながら計算して結果を求めてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">STEP: 2 ドーナツ</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>FINAL問題 点の幅</summary>
+<header><h3>点の幅</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">class Player:      # srd = Square Root Decomposition
+    def __init__(self):
+        self.score = -float('inf')
+        
+    def get_score(self):
+        return self.score
+        
+    def game(self, left, right):
+        if right - left + 1 > self.half_N:
+            self.score = -1
+            return
+        
+        max_ = -float('inf')
+        min_ = float('inf')
+        while left <= right:
+            if self.is_within_srd_data(left, right):
+                max_ = max(max_, self.srd_maxes[left // self.x])
+                min_ = min(min_, self.srd_mins[left // self.x])
+                left += self.x
+            else:
+                max_ = max(max_, self.S[left])
+                min_ = min(min_, self.S[left])
+                left += 1
+        self.score = max_ - min_
+
+    def is_within_srd_data(self, left, right):
+        is_top = (left % self.x == 0)
+        is_within_section = (left + self.x - 1 <= right)
+        
+        return is_top and is_within_section
+        
+    @classmethod
+    def initialize(cls, N, S, x, srd_maxes, srd_mins):
+        cls.half_N = N / 2
+        cls.S = S
+        cls.x = x
+        cls.srd_maxes = srd_maxes
+        cls.srd_mins = srd_mins
+        
+        
+def main(K, players):
+    for _ in range(K):
+        lr = map(int, input().split())
+        for player in players:
+            player.game(next(lr)-1, next(lr)-1)
+            
+        print(judge(players[0].get_score(), players[1].get_score()))
+
+def judge(a, b):
+    return 'A' if a > b else 'B' if a < b else 'DRAW'
+
+def setup():
+    N, K = map(int, input().split())
+    S = [int(input()) for _ in range(N)]
+    x = int(pow(N, 0.5))
+    x += int(N % x != 0)
+    srd_maxes = [max(S[i*x:(i+1)*x]) for i in range(x)]
+    srd_mins = [min(S[i*x:(i+1)*x]) for i in range(x)]
+    Player.initialize(N, S, x, srd_maxes, srd_mins)
+    players = [Player() for _ in range(2)]
+    
+    return K, players
+
+
+if __name__ == '__main__':
+    main(*setup())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>クラス型で組んだということもあって長～～～～～くなりましたけど、プログラムの中枢は <strong class="func">.game()</strong> メソッドで、ここに注目すれば全体が繋がって見えるようになると思います。<br>そしてここは先の「平方分割」で見覚えがあるプログラムになっていますね。😊</p>
+<p>順を追って解説していきます。</p>
+</ul>
+<ul>
+<li><p><strong class="func">setup()</strong> 関数</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def setup():
+    N, K = map(int, input().split())
+    S = [int(input()) for _ in range(N)]  # 生徒のテストの得点リスト
+    x = int(pow(N, 0.5))  # 平方分割のバケットの数
+    x += int(N % x != 0)  # バケットの数の調整
+    srd_maxes = [max(S[i*x:(i+1)*x]) for i in range(x)]
+    srd_mins = [min(S[i*x:(i+1)*x]) for i in range(x)]
+    Player.initialize(N, S, x, srd_maxes, srd_mins)  # クラス変数にまとめて代入
+    players = [Player() for _ in range(2)]
+    
+    return K, players
+
+
+if __name__ == '__main__':
+    main(*setup())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>平方分割で用意するリストは「最大値用」「最小値用」の２つです。ここまでは「平方分割」の時と書き方は変わりませんので、それを見本にして書くことができます。</p>
+<p>今回は<strong class="special">クラスメソッド</strong>を使ってクラス変数を初期化しています。</p>
+<p>ほとんどの値をクラスメソッドに送りましたので、<strong func="func">main()</strong> 関数行きの変数は <code>K</code> とインスタンスが入っている <code>players</code> の２つだけになります。</p>
+</ul>
+<ul>
+<li><p>クラスメソッド</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">@classmethod
+def initialize(cls, N, S, x, srd_maxes, srd_mins):
+    cls.half_N = N / 2
+    cls.S = S
+    cls.x = x
+    cls.srd_maxes = srd_maxes
+    cls.srd_mins = srd_mins
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">setup()</strong> 関数からクラス変数へと送られてきた各値をクラス変数に格納します。<br><code>cls.half_N = N / 2</code> は『選べる生徒の数はお互い N/2 人以下』の N/2 です。これは <strong class="func">.game()</strong> メソッドに <code>N</code> を引数として渡したくなかったのでここで作りました。たった一カ所使う為だけに可読性を下げたくなかったのです。ただの私の偏ったこだわりです。</p>
+<p>クラスメソッドを作るときは <code>@classmethod</code> を最初に書きます。メソッドを作るごとに必ず１つ書く必要があります。それと <strong>self</strong> の代わりに <strong>cls</strong> と書きます。</p>
+<p>ここで作られたクラス変数も「クラス変数」なのですが、インスタンスからは値を直接書き換えることができなくなります。値を書き換える場合は<strong>セッター</strong>を用意して、それを通じて書き換えなければなりません。これはオブジェクト指向の概念の重要な要素の１つ「<strong class="special">カプセル化</strong>」の機能の１つだそうです。なるほど～とは思いましたが、それ以上詳しくは知りません。😅<br>ちなみに値を直接書き換えようとしてもエラーも何も起こりません。値に変化もなく、完全に無視されます。この挙動を知らないと、デバッグ時に気付けませんので十分注意してください。</p>
+<p>クラスメソッドにクラス変数を作る理由は他にも「値を引数に与えてまとめて渡せる」のと、「クラス名の代わりに <strong>self.</strong> で参照できるようになる」というメリットがあります。参照時はゲッターは必要ではありません。ゲッターを用意するとしたらクラス外からクラス変数を参照する時の為ですかね？</p>
+<p>これで準備は整いました。次は <strong class="func">main()</strong> 関数です。</p>
+</ul>
+<ul>
+<li><p><strong class="func">main()</strong> 関数</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def main(K, players):
+    for _ in range(K):
+        lr = map(int, input().split())
+        for player in players:
+            player.game(next(lr)-1, next(lr)-1)
+            
+        print(judge(players[0].get_score(), players[1].get_score()))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>イテレータを使って l と r を引数に振り分けています。<strong class="func">map()</strong> 関数の戻り値も <strong class="func">next()</strong> 関数で呼び出せるんだね。おいちゃん知らなかったよ。<br>このおかげで随分とスッキリした見た目になって満足です。🤗</p>
+<p>そしてついにゲームが開始します。</p>
+</ul>
+<ul>
+<li><p><strong class="func">.game()</strong> メソッド</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def game(self, left, right):
+    if right - left + 1 > self.half_N:
+        self.score = -1
+        return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>まずこの部分は『選べる生徒の数はお互い N/2 人以下』の判定を行なう所です。<code>self.half_N</code> には <code>N / 2</code> が入っていて、「N/2 を超えた場合は失格」で、点数を <strong>-1</strong>点にして終了します。</p>
+<p>N/2 以下の場合はゲーム続行です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    max_ = -float('inf')
+    min_ = float('inf')
+    while left <= right:
+        if self.is_within_srd_data(left, right):
+            max_ = max(max_, self.srd_maxes[left // self.x])
+            min_ = min(min_, self.srd_mins[left // self.x])
+            left += self.x
+        else:
+            max_ = max(max_, self.S[left])
+            min_ = min(min_, self.S[left])
+            left += 1
+    self.score = max_ - min_
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>先の問題「平方分割」と比較するとほぼ同じですね。😊<br>ただ、条件式は別のメソッドに移してあります。その条件式が何なのかを言葉にしたかったからです。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def is_within_srd_data(self, left, right):
+    is_top = (left % self.x == 0)
+    is_within_section = (left + self.x - 1 <= right)
+    
+    return is_top and is_within_section
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>それぞれの条件式にも名前をつけて、(未来の自分に)わかるようにしています。クラス内で条件式が長くなったり複雑すぎてわかりにくい時にはこういう書き方をしています。わかりやすい時はこういう書き方は避けます。見てすぐ理解できるものにこんなことをしても意味ありませんから。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">self.score = max_ - min_
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『生徒たちの (最高点 - 最低点) の値が大きい方が勝ち』ということですので、この式でゲームの点数が得られます。目立たないけどここ大事！</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(judge(players[0].get_score(), players[1].get_score()))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def judge(a, b):
+    return 'A' if a > b else 'B' if a < b else 'DRAW'
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最後に両者の得点を比較して勝敗を宣言します。これらを K 回勝負してゲームは終了します。</p>
+</ul>
+<ul>
+<p>クエリ処理は入力を受け取り、その値に従って処理をするのみなのですが、処理量が膨大で時間がかなりかかってしまったり、入力値が常にわかりやすいものとは限りません。「ドーナツ」のように点しか与えられないものや、値の数が不揃いで変数に割り振るのに苦労するのはこのメニューをこなしてきて身に染みたことでしょう。既知のアルゴリズムも必要になります。</p>
+<p>しかしそれを考えまくってうまく処理できると気持ちがいいです。方法は１つではないのでいろいろなやり方を試して経験し、柔軟な思考をもって自分なりの最適解を見つけられるようになると楽になります。あえてニッチなやり方にも挑戦してみるのも全然アリですので、たくさん改造して遊びましょう！魔改造が一番身に付きますよ！</p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">FINAL問題 点の幅</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">点の幅</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>クエリメニュー</p>
+</footer>
+</body>
+</html>

@@ -1352,7 +1352,7 @@ for y in range(H):
 <!-- ----------------------- code end ----------------------- -->
 <p>で不要な部分を引き、型を取ったドーナツの部分のチョコの数だけを抽出します。</p>
 <p><pre>0  0  0  0  0  0<br>0 <span style="background-color: coral;"> 7 <mark>15</mark> 24 32 <span style="background-color: cornflowerblue;">37</span></span><br>0 <span style="background-color: coral;">11 21</span> <span style="background-color: aqua;">36 46 52</span><br>0 <span style="background-color: coral;">13 28</span> <span style="background-color: aqua;">46 <mark>65</mark> 72</span><br>0 <span style="background-color: coral;">14 <span style="background-color:greenyellow ;">32</span></span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
-<p class="inlook">choco = <span style="background-color: aqua;">84</span> - <span style="background-color: cornflowerblue;">37</span> - <span style="background-color: greenyellow;">32</span> + <mark>15</mark><br>choco = 30</p>
+<p class="inlook">choco = <span style="background-color: aqua;">84</span> - <span style="background-color: cornflowerblue;">37</span> - <span style="background-color: greenyellow;">32</span> + <mark>15</mark><br>↓<br>choco = 30</p>
 </ul>
 <ul>
 <p>最後にドーナツに穴を空けます。</p>
@@ -1366,7 +1366,7 @@ for y in range(H):
 <!-- ----------------------- code end ----------------------- -->
 <p><code>B</code> が <code>S</code> になっただけで、ドーナツの型をとった時と同様の方法で穴を空けます。穴を空けると穴の分のチョコが減りますので、そのチョコの分を引きます。</p>
 <p><pre>0  0  0  0  0  0<br>0 <span style="background-color: blue;"> 7 15 24 32 37</span><br>0 <span style="background-color: blue;">11 21</span> <span style="background-color: aqua;"><mark>36</mark> <span style="background-color: cornflowerblue;">46</span> 52</span><br>0 <span style="background-color: blue;">13 28</span> <span style="background-color: aqua;"><span style="background-color: greenyellow;">46</span> <mark>65</mark> 72</span><br>0 <span style="background-color: blue;">14 32</span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
-<p class="inlook">choco -= <mark>65</mark> - <span style="background-color: cornflowerblue;">46</span> - <span style="background-color: greenyellow;">46</span> + <mark>36</mark><br>choco -= 9<br>choco = 30 - 9<br>choco = <code class="output">21</code></p>
+<p class="inlook">choco -= <mark>65</mark> - <span style="background-color: cornflowerblue;">46</span> - <span style="background-color: greenyellow;">46</span> + <mark>36</mark><br>↓<br>choco -= 9<br>↓<br>choco = 30 - 9<br>↓<br>choco = <code class="output">21</code></p>
 <p>無事、出力例2 の結果と同じになりました。<br>二次元累積和だけで求められるので、解れば簡単ですよね。👍</p>
 </ul>
 <ul>

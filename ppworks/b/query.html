@@ -33,7 +33,7 @@ print(*A, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><mark>数列A</mark> は１番目から始まっていますので、１番目の後ろということは要素番号 1 のことです。ですので、K 番目はそのまま要素番号 K となりますので上記プログラム例の書き方のとおりになります。</p>
+<p><mark>数列A</mark> は１番目から始まっていますので、１番目の後ろということは要素番号 1 のことです。K 番目はそのまま要素番号 K となりますので上記プログラム例の書き方のとおりになります。</p>
 <p>ただ、条件を見ると『1 ≦ N ≦ 100,000』と、数が大きいです。<br>これについては後の STEP 4 で説明します。</p>
 </ul>
 <footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 指定の位置への要素の追加</a></footer>
@@ -52,7 +52,7 @@ print('YES' if K in A else 'NO')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><mark>数列A</mark> とありますので、一旦入力をすべて受け取ってから<strong class="if"></strong>文で探しますが、問題文に『重複した要素の無い数列 A』、条件に『1 ≦ N ≦ 100,000』とありますのでセット型を使うと効率が良いです。</p>
+<p><mark>数列A</mark> とありますので、一旦入力をすべて受け取ってから<strong class="if"></strong>文で探しますが、問題文に『重複した要素の無い数列 A』、条件に『1 ≦ N ≦ 100,000』とありますので、データの保存はセット型を使うと効率が良いです。</p>
 </ul>
 <footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 指定要素の検索</a></footer>
 </details>
@@ -72,7 +72,7 @@ for K_i in K:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>『 A に K_i が含まれていれば』なので、K_i を先頭から１つずつ <mark>数列A</mark> から探します。<br>A はセットのほうが良いですが、K はリストでも構いません。</p>
+<p>『 A に K_i が含まれていれば』なので、K_i を先頭から１つずつ <mark>数列A</mark> から探します。<br>A はセットのほうが良いですが、K はリストにします。</p>
 </ul>
 <footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 指定要素の検索 (query)</a></footer>
 </details>
@@ -241,10 +241,10 @@ print(*A, sep='\n')
 </tbody>
 </table>
 </div>
-<p>要素数が 5 の時、先頭の要素を削除する度に後方の要素を前に詰めていくという処理が 5 回なされます。これだと100万要素あると100万回処理がされてしまうことになりますし、挿入の場合も同様に後ろに詰めていく処理が発生します。</p>
+<p>要素数が 5 の時、先頭の要素を削除(処理 1回)して後方の要素を前に詰めていく(処理 4回)という処理をしますので、処理回数が 計 5 回なされます。これだと100万要素あると100万回処理がされてしまうことになりますし、挿入の場合も同様に後ろに詰めていく処理が発生します。</p>
 </ul>
 <ul>
-<p>例２ではそれを解消する為に <code>deque</code> (デキュー) というモジュールを使います。これは <strong>双方向キュー</strong>(dequeのこと) というリストのようでリストでないデータ構造のもので、これを使う目的は主に<strong>先頭の要素の追加削除</strong>です。</p>
+<p>例２ではそれを解消する為に <code>deque</code> (デキュー) というモジュールを使います。これは <strong>双方向キュー</strong>(dequeのこと) という「リストのようでただのリストでないデータ構造」のもので、これを使う目的は主に<strong>先頭の要素の追加削除</strong>です。</p>
 <p>双方向キューを使うと、先頭の要素の削除の処理が以下の様になります。</p>
 <p>A = deque([1, 2, 3, 4, 5])</p>
 <div class="x-fit">
@@ -406,7 +406,7 @@ print(*A, sep='\n')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>とすればよいのですが、せっかく deque をインポートしたのですからメソッドを使ってしまいましょう。😊</p>
-<p>それとインポートする際の行頭の一文は憶えましょう。横着して漢字かな変換システムに単語登録して使わないように。(憶えるまではいいけど👍)</p>
+<p>それとインポートする際の行頭の一文は憶えましょう。横着して漢字かな変換システムに単語登録して使わないように。(覚えるまではいいけど👍)</p>
 </ul>
 <ul>
 <p>よかったら STEP 1 のプログラムも deque を使ったやり方に書き換えてみてください。</p>
@@ -485,7 +485,7 @@ for _ in range(K):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>入力が不揃いのクエリ問題がめんどくさくて <strong class="func">iter()</strong> 関数を使ってしまいました。<br>これはリストなどのデータをイテレータに変換する機能で、イテレータの先頭から <strong class="func">next(<strong><em>iter</em></strong>)</strong> 関数で要素を１つ呼び出す機能で、仕組みは異なりますが <strong class="func">.popleft()</strong> みたいなものです。イテレータなので呼び出し方は<strong class="for"></strong>文と同じですが、 <strong class="func">next()</strong> 関数を使って好きなところで値を順に呼び出せるメリットがあります。この使い勝手は <strong class="func">.popleft()</strong> と同じです。<br>ただ、イテレータの末尾を超えて呼び出そうとするとエラーになります。その点だけ要注意です。</p>
+<p>入力が不揃いのクエリ処理がめんどくさくて <strong class="func">iter()</strong> 関数を使ってしまいました。<br>これはリストなどのデータをイテレータに変換する機能で、イテレータの先頭から <strong class="func">next(<strong><em>iter</em></strong>)</strong> 関数で要素を１つ呼び出す機能で、仕組みは異なりますが <strong class="func">.popleft()</strong> みたいなものです。イテレータなので呼び出し方は<strong class="for"></strong>文と同じですが、 <strong class="func">next()</strong> 関数を使って好きなところで値を順に呼び出せるメリットがあります。この使い勝手は <strong class="func">.popleft()</strong> と同じです。<br>ただ、イテレータの末尾を超えて呼び出そうとするとエラーになります。その点だけ要注意です。</p>
 <p>N が 100000 と大きいですが、辞書はセットと同じ様な構造していますので、要素の削除は高速です。ですので要素数が多くても気にする必要は無いでしょう。</p>
 <p>辞書の要素の削除は <strong class="func">.pop()</strong> で出来ます。 <strong class="func">.remove()</strong> は存在しません。</p>
 </ul>
@@ -553,7 +553,7 @@ for _ in range(K):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>やっぱイテレータ、ラクでいいわぁ。😜</p>
+<p>やっぱイテレータ、ラクでいいわぁ。😆</p>
 <p>以前 ChatGPT 3.5 にプログラムの改善を求めて見せたらイテレータがまるごと消されて添字を使った方法に書き直されてしまったのですが、やってることは同じじゃないか！と思って度々使うようになりました。世間様がどうお考えになられようと、わたくしの知ったことではございませんことよ！どうせ生涯独りでプログラムを組んでいくわけだし～。</p>
 <p>でもたまに <strong class="func">iter()</strong> が役立つこともあります。このメニューの最後の問題「点の幅」がその一例です。</p>
 <br>
@@ -620,7 +620,9 @@ for _ in range(K):
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">N, K = map(int, input().split())
-_ = [input() for _ in range(N)]
+for _ in range(N):  # 入力 S の部分
+    input()
+
 writers = [[int(Y), C] for _ in range(K) for Y, C in [input().split()]]
 
 for _, name in sorted(writers):
@@ -630,13 +632,15 @@ for _, name in sorted(writers):
 <!-- ----------------------- code end ----------------------- -->
 <p>問題文に<strong class="b">『 1 人の生徒が複数の出来事の記事を担当することがある点に注意してください。』</strong>、期待する出力欄に<strong class="b">『同じ年に複数の出来事があった場合は、名前が辞書順になるように出力してください。』</strong>とあります。辞書で作ろうとするとどちらもキーが重複する場合が生じますので、ここはリストが適しています。</p>
 <p>入力が無事済ませられれば、あとはソートして結果を画面に出力するだけです。</p>
+<p>入力S は全く使いませんので、この部分の入力はメモリにも残さず、消し炭にしました。😼</p>
 </ul>
 <ul>
 <p>しかし辞書でも組めないことはありません。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">N, K = map(int, input().split())
-S = {input(): [] for _ in range(N)}
+for _ in range(N):
+    input()
 
 writers = {}
 for _ in range(K):
@@ -653,7 +657,8 @@ for _, name in sorted(writers.items(), key=lambda x:(x[0], x[1].sort())):
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">N, K = map(int, input().split())
-S = {input(): [] for _ in range(N)}
+for _ in range(N):
+    input()
 
 writers = {}
 for _ in range(K):
@@ -761,7 +766,7 @@ print(*sorted(memberships), sep='\n')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>ソートがちょっと難しくないかな？と思って paiza の解答コード例を見てみたら全く同じだったので、これで解説します。</p>
-<p>まずは無名関数 <strong>lambda</strong> で、<s>御捻り</s>superchatの金額を昇順ソートします。<br>それからリスト全体を <code>reverse=True</code> で降順ソートすると、金額が降順ソート、名前も降順ソートされ、問題文の通りの並びになります。これは実際に引数をいじってみればわかると思います。</p>
+<p>まずは無名関数 <strong>lambda</strong> で、<s>御捻り</s>superchatの金額をターゲットにして昇順ソートします。<br>それからリスト全体を <code>reverse=True</code> で降順ソートすると、金額が降順ソート、名前も降順ソートされ、問題文の通りの並びになります。これは実際に引数をいじってみればわかると思います。</p>
 <p>条件に『アカウント名に重複はないことが保証されている。』とありますので、リストよりもセットを使うとよいでしょう。最後にソートしますので順番は関係ありませんし。</p>
 <p>真ん中へんにある <strong class="func">.get()</strong> メソッドの使い方は「<a href="../../2/0100usefuldicttype.html#-get-h" class="linked" target="_blank">２章 辞書を使いこなす機能一覧</a>」で学習できます。</p>
 <br>
@@ -936,7 +941,7 @@ print(*srd_maxes, sep='\n')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>このプログラムの要は <code>srd_maxes</code> の中の <code>nums[i*x:(i+1)*x]</code> の部分です。この <code>x</code> が <math><msqrt><mi>N</mi></msqrt></math>です。<br><math><msqrt><mn>10000</mn></msqrt></math> = 100 なので、100個のバケット (１バケットはスライスで囲われた値 <code>x</code> 個分の区間) が作られます。そして各バケットの中から最大値を求めます。</p>
-<p>すると最終的に各バケットから求められた 100個分の最大値が入っている一次元リストが出来上がります。</p>
+<p>すると最終的に各バケットから求められた 100個の最大値が入っている一次元リストが出来上がります。</p>
 <p>この問題ではそれら 100個の最大値を改行区切りで画面に出力すれば完了となります。</p>
 <p>ルート(平方根)の求め方は三行目の</p>
 <!-- ------------------------- code ------------------------- -->
@@ -960,6 +965,23 @@ x += int(N % x != 0)
 <p>ですが、もし N が 9999 だったときは、x が int(99.994999) = 99 となり、100個用意すべきバケットが１つ足りなくなってしまいます。 </p>
 <p class="inlook">N = 10000 の時、x = 100<br>[1, …, 100], …, [9901, …, 10000]<br><br>N = 9999 の時、x = 99<br>[1, …, 100], …, [9901, …, 9999]<br>10000 の時 も 9999 の時も x = 100 個必要。</p>
 <p>その為に必要な一文です。今回は N が 10000 の定数なので不要ですが、<strong>変数の場合は必要</strong>となります。けど如何なる時も付けておいたほうが無難ですし、これを定型文としておけたほうが安心でしょう。</p>
+<br>
+<p>要するにこれは「小数点以下切り上げ」なのですが、これは <strong>math</strong> モジュールの <strong class="func">ceil()</strong> 関数がその機能を持っています。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from math import ceil, sqrt
+
+N = 10000
+A = [int(input()) for _ in range(N)]
+x = ceil(sqrt(N))  # ← ココ
+mos_A = [max(A[i*x:(i+1)*x]) for i in range(x)]
+
+print(*mos_A, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>平方根を求める <strong class="func">sqrt()</strong> も <strong>math</strong> モジュールの中にある機能の１つなのですが、詳しくは知らないのですが、これが最も正確な平方根を求めてくれるそうです。<br>モジュールにある機能は、使い慣れる為にも積極的に使っていって良いと思います。</p>
+<p>こんな書き方もできますよという紹介でした。お好きな方法でどうぞ。</p>
 </ul>
 <footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">STEP: 5 平方分割のバケット</a></footer>
 </details>
@@ -1019,7 +1041,7 @@ for _ in range(K):
 <!-- ----------------------- code end ----------------------- -->
 <p>申し訳ない。先に <strong>else</strong>文のほうから説明します。</p>
 <p>ここでは平方分割して予め最大値を求めておいたバケットの<strong>範囲外</strong>の所を調べています。単純に最初に取得した <mark>数列A</mark> を使って１つずつ最大値を見つけて更新していきます。</p>
-<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 8, right = 53 の時</p>
+<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 7, right = 52 の時</p>
 <p class="inlook">8, 9, 10, {20, 30, 40, 50}, 51, 52, 53</p>
 <p>初めは <code>max_</code> には <code>8</code> が入っています。<code>left += 1</code> しながら最大値を更新していきます。<br>10 に到達したら、この次は { } で囲まれている部分 「<strong>平方分割</strong>」 して予め最大値を求めておいた <mark>数列 srd_maxes</mark> を使って最大値を見つけていきます。</p>
 </ul>
@@ -1034,7 +1056,7 @@ for _ in range(K):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>この部分が平方分割を利用した最大値の探索方法です。</p>
-<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 8, right = 53 の時</p>
+<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 7, right = 52 の時</p>
 <p class="inlook">8, 9, 10, {20, 30, 40, 50}, 51, 52, 53</p>
 <p>現在 left = 10 (値 10 の次の所)</p>
 <dl>
@@ -1156,7 +1178,7 @@ left += 10
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 8, right = 53 の時</p>
+<p>A = [1, 2, 3, …, 98, 99, 100]<br>srd_maxes = [10, 20, …, 90, 100]<br>left = 7, right = 52 の時</p>
 <p class="inlook">8, 9, 10, {20, 30, 40, 50}, 51, 52, 53</p>
 <p>現在 left = 50 で、A[50] の値は <code>51</code> です。また <code>left += 1</code> しながら最大値を更新していきます。そして <code>while left <= right:</code> の評価が <strong>False</strong> となった時には <code>max_</code> には指定された範囲の最大値が求められています。1 から順に並んでいるので当然 <code>53</code> が入っているわけですけれども。😅</p>
 </ul>
@@ -1340,7 +1362,7 @@ for y in range(H):
 <p><code>y</code> と <code>x</code> はドーナツの中心の位置です。<code>B</code> は一辺の長さなので、それを２で割った商を求めて <code>y</code> と <code>x</code> にそれぞれ足すと、ドーナツの右下の位置が求められます。</p>
 <p>条件に『S_i , B_i は奇数』とありますので <code>B // 2</code> で商を求めれば、必ず余りが 1 になります。<strong>この余りの 1 がドーナツの中心</strong>です。<br>「S_i , B_i も奇数」であることで必ず中心ができ、<strong class="b">ドーナツやドーナツの穴の大きさが偶数になる(中心がずれる)せいで、いびつな形のドーナツになったりすることはありません</strong>という保証になっています。</p>
 <p>その位置から <code>y</code> と <code>x</code> 共に <code>B</code> を引くとドーナツの外側の位置が求められます。</p>
-<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: coral;"> 7 <mark>15</mark> 24 32 <span style="background-color: cornflowerblue;">37</span></span><br>0 <span style="background-color: coral;">11 21</span> <span style="background-color: aqua;">36 46 52</span><br>0 <span style="background-color: coral;">13 28</span> <span style="background-color: aqua;">46 <mark>65</mark> 72</span><br>0 <span style="background-color: coral;">14 <span style="background-color:greenyellow ;">32</span></span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
+<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: coral;"> 7 <mark>15</mark> 24 32 <span style="background-color: cornflowerblue;">37</span></span><br>0 <span style="background-color: coral;">11 21</span> <span style="background-color: aqua;">36 46 52</span><br>0 <span style="background-color: coral;">13 28</span> <span style="background-color: aqua;">46 <span style="background-color: black; color: white;">65</span> 72</span><br>0 <span style="background-color: coral;">14 <span style="background-color:greenyellow ;">32</span></span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
 <p class="inlook">y, x, B, S = 3, 4, 3, 1<br>yy = y + B // 2 = 4<br>xx = x + B // 2 = 5<br>cum_sum[4][5] が型を取ったドーナツ右下の <span style="background-color: aqua;">84</span></p>
 <p class="inlook">cum_sum[yy-B][xx]<br>yy - B = 4 - 3 = 1<br>cum_sum[1][5] の <span style="background-color: cornflowerblue;">37</span><br><br>cum_sum[yy][xx-B]<br>xx - B = 5 - 3 = 2<br>cum_sum[4][2] の <span style="background-color:greenyellow ;">32</span></p>
 <p>これを、</p>
@@ -1351,7 +1373,7 @@ for y in range(H):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>で不要な部分を引き、型を取ったドーナツの部分のチョコの数だけを抽出します。</p>
-<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: coral;"> 7 <mark>15</mark> 24 32 <span style="background-color: cornflowerblue;">37</span></span><br>0 <span style="background-color: coral;">11 21</span> <span style="background-color: aqua;">36 46 52</span><br>0 <span style="background-color: coral;">13 28</span> <span style="background-color: aqua;">46 <mark>65</mark> 72</span><br>0 <span style="background-color: coral;">14 <span style="background-color:greenyellow ;">32</span></span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
+<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: coral;"> 7 <mark>15</mark> 24 32 <span style="background-color: cornflowerblue;">37</span></span><br>0 <span style="background-color: coral;">11 21</span> <span style="background-color: aqua;">36 46 52</span><br>0 <span style="background-color: coral;">13 28</span> <span style="background-color: aqua;">46 <span style="background-color: black; color: white;">65</span> 72</span><br>0 <span style="background-color: coral;">14 <span style="background-color:greenyellow ;">32</span></span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
 <p class="inlook">choco = <span style="background-color: aqua;">84</span> - <span style="background-color: cornflowerblue;">37</span> - <span style="background-color: greenyellow;">32</span> + <mark>15</mark><br>↓<br>choco = 30</p>
 </ul>
 <ul>
@@ -1365,8 +1387,8 @@ for y in range(H):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p><code>B</code> が <code>S</code> になっただけで、ドーナツの型をとった時と同様の方法で穴を空けます。穴を空けると穴の分のチョコが減りますので、そのチョコの分を引きます。</p>
-<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: blue;"> 7 15 24 32 37</span><br>0 <span style="background-color: blue;">11 21</span> <span style="background-color: aqua;"><mark>36</mark> <span style="background-color: cornflowerblue;">46</span> 52</span><br>0 <span style="background-color: blue;">13 28</span> <span style="background-color: aqua;"><span style="background-color: greenyellow;">46</span> <mark>65</mark> 72</span><br>0 <span style="background-color: blue;">14 32</span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
-<p class="inlook">choco -= <mark>65</mark> - <span style="background-color: cornflowerblue;">46</span> - <span style="background-color: greenyellow;">46</span> + <mark>36</mark><br>↓<br>choco -= 9<br>↓<br>choco = 30 - 9<br>↓<br>choco = <code class="output">21</code></p>
+<p><pre>0  0  0  0  0  0<br>0 <span style="background-color: blue;"> 7 15 24 32 37</span><br>0 <span style="background-color: blue;">11 21</span> <span style="background-color: aqua;"><mark>36</mark> <span style="background-color: cornflowerblue;">46</span> 52</span><br>0 <span style="background-color: blue;">13 28</span> <span style="background-color: aqua;"><span style="background-color: greenyellow;">46</span> <span style="background-color: black; color: white;">65</span> 72</span><br>0 <span style="background-color: blue;">14 32</span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
+<p class="inlook">choco -= <span style="background-color: black; color: white;">65</span> - <span style="background-color: cornflowerblue;">46</span> - <span style="background-color: greenyellow;">46</span> + <mark>36</mark><br>↓<br>choco -= 9<br>↓<br>choco = 30 - 9<br>↓<br>choco = <code class="output">21</code></p>
 <p>無事、出力例2 の結果と同じになりました。<br>二次元累積和だけで求められるので、解れば簡単ですよね。👍</p>
 </ul>
 <ul>
@@ -1496,8 +1518,8 @@ def initialize(cls, N, S, x, srd_maxes, srd_mins):
 <!-- ----------------------- code end ----------------------- -->
 <p><strong class="func">setup()</strong> 関数からクラス変数へと送られてきた各値をクラス変数に格納します。<br><code>cls.half_N = N / 2</code> は『選べる生徒の数はお互い N/2 人以下』の N/2 です。これは <strong class="func">.game()</strong> メソッドに <code>N</code> を引数として渡したくなかったのでここで作りました。たった一カ所使う為だけに可読性を下げたくなかったのです。ただの私の偏ったこだわりです。</p>
 <p>クラスメソッドを作るときは <code>@classmethod</code> を最初に書きます。メソッドを作るごとに必ず１つ書く必要があります。それと <strong>self</strong> の代わりに <strong>cls</strong> と書きます。</p>
-<p>ここで作られたクラス変数も「クラス変数」なのですが、インスタンスからは値を直接書き換えることができなくなります。値を書き換える場合は<strong>セッター</strong>を用意して、それを通じて書き換えなければなりません。これはオブジェクト指向の概念の重要な要素の１つ「<strong class="special">カプセル化</strong>」の機能の１つだそうです。なるほど～とは思いましたが、それ以上詳しくは知りません。😅<br>ちなみに値を直接書き換えようとしてもエラーも何も起こりません。値に変化もなく、完全に無視されます。この挙動を知らないと、デバッグ時に気付けませんので十分注意してください。</p>
-<p>クラスメソッドにクラス変数を作る理由は他にも「値を引数に与えてまとめて渡せる」のと、「クラス名の代わりに <strong>self.</strong> で参照できるようになる」というメリットがあります。参照時はゲッターは必要ではありません。ゲッターを用意するとしたらクラス外からクラス変数を参照する時の為ですかね？</p>
+<p>ここで作られたクラス変数も「クラス変数」なのですが、クラスメソッドでクラス変数を作ると、インスタンスからは値を直接書き換えることができなくなります。値を書き換える場合は<strong>セッター</strong>を用意して、それを通じて書き換えなければなりません。これはオブジェクト指向の概念の重要な要素の１つ「<strong class="special">カプセル化</strong>」の機能の１つだそうです。なるほど～とは思いましたが、それ以上詳しくは知りません。😅<br>ちなみに値を直接書き換えようとしてもエラーも何も起こりません。値に変化もなく、完全に無視されます。この挙動を知らないと、デバッグ時に気付けませんので十分注意してください。</p>
+<p>クラスメソッドにクラス変数を作る理由は他にも「値を引数に与えてまとめて渡せる」のと、「クラス名の代わりに <strong>self.</strong> でインスタンス内から参照できるようになる」というメリットがあります。参照時はゲッターは必要ではありません。ゲッターを用意するとしたらクラス外からクラス変数を参照する時の為ですかね？</p>
 <p>これで準備は整いました。次は <strong class="func">main()</strong> 関数です。</p>
 </ul>
 <ul>
@@ -1515,6 +1537,7 @@ def initialize(cls, N, S, x, srd_maxes, srd_mins):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>イテレータを使って l と r を引数に振り分けています。<strong class="func">map()</strong> 関数の戻り値も <strong class="func">next()</strong> 関数で呼び出せるんだね。おいちゃん知らなかったよ。<br>このおかげで随分とスッキリした見た目になって満足です。🤗</p>
+<p>この部分はどのように組んだらよいか少し考えたことでしょう。まずは正しく動けばどのように組んでも構わないのですが、何より自分自身がわかりにくくなってしまっては後々ストレスとなってしまいます。クセのある入力が与えられたときは <strong class="func">iter()</strong> 関数と <strong class="func">next()</strong> 関数を使ってみてください。😉</p>
 <p>そしてついにゲームが開始します。</p>
 </ul>
 <ul>
@@ -1558,7 +1581,7 @@ def initialize(cls, N, S, x, srd_maxes, srd_mins):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>それぞれの条件式にも名前をつけて、(未来の自分に)わかるようにしています。クラス内で条件式が長くなったり複雑すぎてわかりにくい時にはこういう書き方をしています。わかりやすい時はこういう書き方は避けます。見てすぐ理解できるものにこんなことをしても意味ありませんから。</p>
+<p>それぞれの条件式にも名前をつけて、(平方分割を忘れてしまった未来の自分に)わかるようにしています。私はクラス内で条件式が長くなったり複雑すぎてわかりにくい時にはこういう書き方をしています。わかりやすい時はこういう書き方は避けます。見てすぐ理解できるものにこんなことをしても意味ありませんから。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">self.score = max_ - min_
@@ -1584,8 +1607,8 @@ def initialize(cls, N, S, x, srd_maxes, srd_mins):
 <p>最後に両者の得点を比較して勝敗を宣言します。これらを K 回勝負してゲームは終了します。</p>
 </ul>
 <ul>
-<p>クエリ処理は入力を受け取り、その値に従って処理をするのみなのですが、処理量が膨大で時間がかなりかかってしまったり、入力値が常にわかりやすいものとは限りません。「ドーナツ」のように点しか与えられないものや、値の数が不揃いで変数に割り振るのに苦労するのはこのメニューをこなしてきて身に染みたことでしょう。既知のアルゴリズムも必要になります。</p>
-<p>しかしそれを考えまくってうまく処理できると気持ちがいいです。方法は１つではないのでいろいろなやり方を試して経験し、柔軟な思考をもって自分なりの最適解を見つけられるようになると楽になります。あえてニッチなやり方にも挑戦してみるのも全然アリですので、たくさん改造して遊びましょう！魔改造が一番身に付きますよ！</p>
+<p>クエリ処理は入力を受け取り、その値に従って処理をするのみなのですが、処理量が膨大で時間がかなりかかってしまったり、入力値が常にわかりやすいものとは限りません。「ドーナツ」のように点しか与えられないものや、入力が不規則で変数に割り振るのに苦労するのはこのメニューをこなしてきて身に染みたことでしょう。既知のアルゴリズムも必要になります。</p>
+<p>しかしそれを考えまくってうまく処理できるようになると気持ちがいいです。方法は１つではないのでいろいろなやり方を試して経験し、柔軟な思考をもって自分なりの最適解を見つけられるようになると楽になります。あえてニッチなやり方にも挑戦してみるのも全然アリですので、たくさん改造して遊びましょう！魔改造が一番身に付きますよ！</p>
 </ul>
 <footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">FINAL問題 点の幅</a></footer>
 </details>

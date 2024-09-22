@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 問題集『定番アルゴリズム スタック・キューメニュー』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】スタック・キューメニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>スタック・キューメニュー</h1></header>
+
+<main>
+
+<section>
+<details id="c1"><summary>スタック・キュー実装編( 共通問題 ) step 2</summary>
+<header><h2>スタック・キュー実装編( 共通問題 ) step 2</h2></header>
+
+<article>
+<details id="c1-1"><summary>STEP: 1 スタック・キュー実装編( 共通問題 ) step 1</summary>
+<header><h3>スタック・キュー実装編( 共通問題 ) step 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+A = [int(input()) for _ in range(N)]
+print(N, *A, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>スタックやキューは、空の状態を含むリストの両端から値を出し入れするデータの操作法なのですが、これについては後の問題で説明されます。</p>
+<p>ここでは要は、与えられたデータをその為に使うリストに入れるという前知識というか前準備というか……そんなのです。😓</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 スタック・キュー実装編( 共通問題 ) step 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>FINAL問題 スタック・キュー実装編( 共通問題 ) step 2</summary>
+<header><h3>スタック・キュー実装編( 共通問題 ) step 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">Q = int(input())
+
+len_A = 0
+A = []
+for _ in range(Q):
+    query = map(int, input().split())
+    if next(query) == 1:
+        A.append(next(query))
+        len_A += 1
+
+print(len_A, *A, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>PUSH</strong> とは、値をリストの末尾に入れる事で、<strong>スタックの専門用語</strong>です。Python3 では <strong class="func">.append()</strong> メソッドを使って<strong>追加する</strong>事に当たります。</p>
+<p>『最初の数値が 1 のとき PUSH 、 2 のとき STAY を表します。』とありますので、一応数値に変換して処理します。</p>
+<p>受け取る指示は２種類だけですが、受け取る値の数が不揃いですので、値をイテレータとして受け取り、都度 <strong class="func">next()</strong> 関数で呼び出して使っています。よくわからない場合は paiza の解答コード例のほうを参考にして進めていってください。</p>
+<p>STAY の時は「何もしない」なので、<strong>else</strong>文を省略しましたが、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">else:
+    pass
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>を付けて何もしないことを明示してもよいでしょう。今後「何もしない」から何かすることとなった時の為にも変更場所が見つけやすくなります。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">FINAL問題 スタック・キュー実装編( 共通問題 ) step 2</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">スタック・キュー実装編( 共通問題 ) step 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>スタック実装編 step 2</summary>
+<header><h2>スタック実装編 step 2</h2></header>
+<article>
+<details id="c2-1"><summary>STEP: 1 スタック実装編 step 1</summary>
+<header><h3>スタック実装編 step 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">Q = int(input())
+
+A = []
+for _ in range(Q):
+    query = map(int, input().split())
+    if next(query) == 1:
+        A.append(next(query))
+    else:
+        A.pop()
+    
+    print(*A)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>POP</strong>も PUSH 同様に<strong>スタックの専門用語</strong>です。Python3 でも <strong class="func">.pop()</strong> メソッドを使います。</p>
+<p>POP は削除するというより「<strong>値を取りだす</strong>」という意味になります。取り出した値を使わなければそのまま削除したことと同義となりますので、削除するときにも使われます。</p>
+<p>今回は削除する目的で使いますので、単に <code>A.pop()</code> とだけ書きます。この <strong class="func">.pop()</strong> メソッドはリストの末尾から要素を１つ取り出します。メソッド名そのままの機能です。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 スタック実装編 step 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>FINAL問題 スタック実装編 step 2</summary>
+<header><h3>スタック実装編 step 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">Q = int(input())
+
+A = []
+for _ in range(Q):
+    query = iter(input().split())
+    if int(next(query)) == 1:
+        A.append(next(query))
+    else:
+        print(A.pop())
+    
+    print(*A)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は <strong class="func">.pop()</strong> したものを画面に出力します。末尾から取り出した値を使って画面に出力するのです。画面に出力したら取り出した値はそのまま消滅します。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">FINAL問題 スタック実装編 step 2</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">スタック実装編 step 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>キュー実装編 step 2</summary>
+<header><h2>キュー実装編 step 2</h2></header>
+<article>
+<details id="c3-1"><summary>STEP: 1 キュー実装編 step 1</summary>
+<header><h3>キュー実装編 step 1</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+Q = int(input())
+
+A = deque()
+for _ in range(Q):
+    query = iter(input().split())
+    if int(next(query)) == 1:
+        A.append(next(query))
+    else:
+        A.popleft()
+    
+    print(*A)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「PUSH」「POP」とありますが、キューの場合はそれぞれ「<strong>ENQUEUE (エンキュー)</strong>」「<strong>DEQUEUE (デキュー)</strong>」と言います。双方向キューの deque とは読みが同じですが意味は異なります。</p>
+<p>Python では ENQUEUE は <strong class="func">.append()</strong> ですが、DEQUEUE は <strong class="func">.popleft()</strong> になります。 <strong class="func">.popleft()</strong> は <strong>collections</strong> モジュールの <strong>deque</strong> をインポートしないと使えませんので、プログラムの頭に <code>from collections import deque</code> を書き加えておきます。</p>
+<p>キューは向きが特に決められていませんので、ENQUEUE に <strong class="func">.appendleft()</strong> を使い、DEQUEUE に <strong class="func">.pop()</strong> を使うこともできます。リストと同じデータ配列のほうがわかりやすいので前者を使うことがほとんどだと思いますが、左から入れて右から出す問題の時は逆向きでわかりにくくなったりもしますので、その時は後者を使うこともできます。</p>
+<p>空のdequeは <code>deque()</code> で作れます。</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 キュー実装編 step 1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>FINAL問題 キュー実装編 step 2</summary>
+<header><h3>キュー実装編 step 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+Q = int(input())
+
+A = deque()
+for _ in range(Q):
+    query = iter(input().split())
+    if int(next(query)) == 1:
+        A.append(next(query))
+    else:
+        print(A.popleft())
+    
+    print(*A)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>step 1 と同じ様に組み、違いは <code>A.popleft()</code> を画面に出力するところだけです。</p>
+<p>クエリの数が 100未満と少ないので <strong class="func">.pop(0)</strong> でもよいのですが、キューの場合はなるべく <strong>deque</strong> をインポートしてそれを使っていきましょう。</p>
+<p><strong class="func">next()</strong> 関数で呼び出した値を変数に代入せずに横着してそのまま使ってきましたが、できる限り変数に代入して使いましょう。😅</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">FINAL問題 キュー実装編 step 2</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">キュー実装編 step 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>箱とボール</summary>
+<header><h2>箱とボール</h2></header>
+<article>
+<details id="c4-1"><summary>STEP: 1 2 つのキュー</summary>
+<header><h3>2 つのキュー</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+Q = int(input())
+
+A = [deque() for _ in range(2)]
+len_A = [0, 0]
+for _ in range(Q):
+    query = map(int, input().split())
+
+    op = next(query)
+    if op == 1:
+        K, X = next(query) - 1, next(query)
+        A[K].append(X)
+        len_A[K] += 1
+    elif op == 2:
+        K = next(query) - 1
+        print(A[K].popleft())
+        len_A[K] -= 1
+    else:
+        print(*len_A)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>キューを２つ用意するのですが、別々の変数で用意するよりもリストにしたほうが扱いやすいので、空の deque をリスト内に作成します。</p>
+<p>相変わらずクエリの受け取りが面倒ですが、その場その場で必要な分だけ <strong class="func">next()</strong> 関数で呼び出して変数に代入して使っていきます。</p>
+<p><code>len_A</code> という現在の <mark>リストA</mark> の要素数を記録する変数を用意し、値が追加されるごとに +1、削除されるごとに -1 していますが、SIZE の指示のときに <strong class="func">len()</strong> 関数を使って要素数を数えても問題にはならないと思います。<br>もしクエリの処理が断続的であった場合、処理が終わった直後に発生するインターバル(次の指示を受け付けるまでの<ruby>間<rt>ま</rt></ruby>)にカウントしておけば、SIZE の時にカウントしておいた要素数をただ表示するだけで済みますので効率がいいかなと思います。人の手で入出力処理をするとどうしてもコンピュータが何もしない時間が発生しますので、後でまとめて処理するよりはそのインターバル中に処理させたほうが人の待ち時間を短縮できます。「今のうちにトイレ行ってくる！」みたいな感じです。<small>それは逆か。😅</small></p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">STEP: 1 2 つのキュー</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>STEP: 2 最大の区間和</summary>
+<header><h3>最大の区間和</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+N, X = map(int, input().split())
+A = list(map(int, input().split()))
+
+queue = deque(A[:X-1])
+max_sum = -float('inf')
+sum_ = sum(queue)
+
+for i in range(X-1, N):
+    queue.append(A[i])
+    sum_ += A[i]
+
+    if sum_ > max_sum:
+        max_sum = sum_
+        left_num = queue[0]
+    
+    sum_ -= queue.popleft()
+
+print(max_sum, left_num)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>長さが X に固定されています。このプログラムでは例えば X = 5 の時、先頭から４つ目までを予め <mark>deque queue</mark> に格納しておきます。その際、４つ目までの総和も求めておきます。</p>
+<p>次の <strong class="for"></strong>文からが問題文が求めるプログラムになります。やっていることは paiza の解説で説明されていることと同じなのですが、要するに、</p>
+<ol>
+<li><strong class="func">.append()</strong> で追加した数を足す (要素数 X)</li>
+<li>最大値と現在の総和を比較する</li>
+<li><strong class="func">.popleft()</strong> で削除した数を引く (要素数 X-1)</li>
+</ol>
+<p>を <mark>リストA</mark> の最後まで繰り返していくだけです。</p>
+<p>求める最大値の区間は<strong class="b">『ただし、要素の和の最大となる区間が複数ある場合はそのうちもっとも先頭の値を出力してください。』</strong>とありますので、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if sum_ > max_sum:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>とします。逆にもっとも<strong class="b">後方の値</strong>と指示された場合は、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if sum_ >= max_sum:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>とします。</p>
+<p>ループを抜けたら、最後に区間の最大値と、最大値が求められた区間の先頭の値を画面に出力して完了とです。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">STEP: 2 最大の区間和</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>STEP: 3 逆ポーランド記法</summary>
+<header><h3>逆ポーランド記法</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = input().split()
+
+stack = []
+for a in A:
+    if a == '+':
+        r, l = stack.pop(), stack.pop()
+        stack.append(l + r)
+    elif a == '-':
+        r, l = stack.pop(), stack.pop()
+        stack.append(l - r)
+    else:
+        stack.append(int(a))
+
+print(*stack)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = input().split()
+
+stack = []
+for a in A:
+    if a.isdigit():
+        stack.append(int(a))
+    else:
+        r, l = stack.pop(), stack.pop()
+        num = eval(f"l{a}r")
+        stack.append(num)
+
+print(*stack)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>変数 <code>r</code> と <code>l</code> は、スタックの状態ではそれぞれ「上」「下」となっていて、これを横にすると引き算では「下 - 上」の順になります。足し算は順不同なので、引き算と同じ順で表記できます。</p>
+<p>例２は、 <strong class="func">.isdigit()</strong> メソッドで「文字列が数値に変換できるかどうか」をチェックして、数値の時は整数に変換して PUSH 、できない時は <mark>+</mark> か <mark>-</mark> なので、これを使って計算します。</p>
+<p><strong>f文字列</strong>で <code>'l-r'</code> の文字列の形にし、その文字列をそのまま <strong class="func">eval()</strong> 関数を使って計算します。<strong>f文字列</strong>でなくても普通の文字列でも構いません。</p>
+<p>r = 2, l = 1, a = '+' の時</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">num = eval(f"l{a}r")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">num = eval(f"l{'+'}r")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">num = eval("l+r")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">num = l+r
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">num = 3
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>不思議な挙動をしますが、文字列の構文をそのままプログラムとして実行する機能です。ですので、最後の画面出力の処理を、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = 'print(*stack)'
+eval(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>としてもそのとおりに正しく処理されます。 <strong class="func">eval()</strong> 関数の常用乱用はお勧めできかねるのですが、試すだけ試してみてください。😉</p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">STEP: 3 逆ポーランド記法</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>STEP: 4 括弧列</summary>
+<header><h3>括弧列</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+S = input()
+
+num = 0
+for s in S:
+    num += (1 if s == '(' else -1)
+    if num < 0:
+        break
+
+print('Yes' if num == 0 else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+S = input()
+
+stack = []
+for s in S:
+    if s == '(':
+        stack.append(s)
+    elif s == ')' and stack:
+        stack.pop()
+    else:
+        stack.append(-1)
+        break
+
+print('No' if stack else 'Yes')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１はスタックを使わずに <code>(</code> が出現したら 1 を足し、<code>)</code> が出現したら 1 を引くという単純なことをしています。例２はスタックを使っていますが、例１のほうが圧倒的にわかりやすいですね。😅</p>
+<dl>
+<dt>if s == '(':</dt>
+<dd><code>(</code> をスタックに PUSH します。</dd>
+</dl>
+<dl>
+<dt>elif s == ')' and stack:</dt>
+<dd>スタックに <code>(</code> がある時、<code>(</code> を POP します。</dd>
+</dl>
+<dl>
+<dt>else:</dt>
+<dd><code>elif s == ')' and not stack:</code> と同等で、スタックが空なのに <code>(</code> を POP しようとした時は -1 を追加してループを抜けます。</dd>
+</dl>
+<p>ループ終了後に、スタックに <code>(</code> が残っている時は <code>)</code> の数が足りない、スタックが <code>-1</code> の時は <code>)</code> の数が多い、スタックが空になっている時は <code>(</code> と <code>)</code> の数が等しいということになります。<br><code>-1</code> というのは、画面出力する結果の整合性をとる為に何かしらスタックに要素を入れておくためだけのダミーですので、ここは値であれば何でも構いません。値が無いという意味の値 <strong>None</strong> でもイケます。</p>
+<p>例１は <code>(</code> の数を +1, -1 してカウントしていましたが、例２はスタックの中の <code>(</code> の数でカウントしています。</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">STEP: 4 括弧列</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-5"><summary>STEP: 5 エスカレーター</summary>
+<header><h3>エスカレーター</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+def move(x, t, total):
+    queue.append(x)
+    return t+1, total - queue.popleft() + x
+
+
+_, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+queue = deque([0] * K)
+t, total = 0, 0
+for a in A:
+    while t < a:
+        t, total = move(0, t, total)
+
+    t, total = move(1, t, total)
+
+    print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>まるでリアルタイムで仕事をしているエスカレーターそのもののような処理です。</p>
+<p>人が乗る時刻だけが入力で与えられています。それ以外の時刻は人が乗らないのでループで <code>0</code> を追加し続けます。</p>
+<p>人が乗る時刻がやってくるとループを抜け、人が１人乗る処理がされます。<small>ネコはカウントされないのかな？</small></p>
+<p>人が乗っても乗らなくても常に先頭の値が dequeue されます。それが <strong class="func">move()</strong>関数の中にある <strong class="func">.popleft()</strong> です。ついでに <strong>return</strong> の所で乗降人数の足し引きもしています。</p>
+<p>すべて 0 と 1 だけで処理できますのでシンプルなプログラムになりました。😊</p>
+</ul>
+<footer><a class="backto" href="#c4-5" onclick="closeAccordion('c4-5')">STEP: 5 エスカレーター</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-6"><summary>FINAL問題 箱とボール</summary>
+<header><h3>箱とボール</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+_ = input()
+A = deque(map(int, input().split()))
+
+balls = [A.popleft()]
+balls_len = 1
+while A:
+    balls.append(A.popleft())
+    balls_len += 1
+
+    while balls_len > 1 and balls[-1] == balls[-2]:
+        balls[-2] *= 2
+        balls.pop()
+        balls_len -= 1
+
+print(*balls[::-1], sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+A = map(int, input().split())
+
+balls = []
+balls_len = 0
+for ball in A:
+    balls.append(ball)
+    balls_len += 1
+
+    while balls_len > 1 and balls[-1] == balls[-2]:
+        balls[-2] *= 2
+        balls.pop()
+        balls_len -= 1
+
+print(*balls[::-1], sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は、リアルっぽく A にあるボールを取り出して箱の中に移動しています。ボールを取り出すたびに A の要素が減っていきます。そのため、<mark>deque A</mark> が空になるとループを処理を終えます。<br>例２は A を参照しているだけです。<strong class="for"></strong>文を使ってボールを取り出して(はいないけど)います。</p>
+<p>「スタック・キューメニュー」の最終問題に相応しいのは例１でしょう。しかし注目すべきはそこではありません。</p>
+<p>問題文にある絵図では上から入れて上から取り出しています。PUSH & POP です。横にすると後方から入れて後方から取り出しています。<br>ボールを入れるとそこの要素番号は -1 です。１つ前は -2 です。その２つのボールを比較して、数が同じなら要素番号 -2 の数を２倍にして、今入れた要素番号 -1 のボールを削除すると「結合」した形になります。</p>
+<p>しかしこれで終わりではありません。結合した数とその前の数がまた同じになった場合は再び結合します。これを箱の底のボールに到達するまで全て調べていきます。</p>
+<p class="inlook">balls = [4, 2] ← 2 を入れる<br>↓<br>balls = [4, 2, 2]<br>↓<br>balls = [4, 4]<br>↓<br>balls = [8]</p>
+<p>落ちゲーみたいですね。😊</p>
+<br>
+<p>ではここで私から課題を差し上げます。</p>
+<p><strong class="b">プログラム例では後方から入れて後方から取り出す方式ですが、これを前方から入れて前方から取り出す方式に書き換えてください。</strong></p>
+<p>そうすると、最後は逆順にしないでそのまま画面に出力できるようになります。出来上がったらそれも提出してみましょう。</p>
+</ul>
+<footer><a class="backto" href="#c4-6" onclick="closeAccordion('c4-6')">FINAL問題 箱とボール</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">箱とボール</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>スタック・キューメニュー</p>
+</footer>
+</body>
+</html>

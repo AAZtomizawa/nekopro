@@ -940,7 +940,7 @@ print(*srd_maxes, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>このプログラムの要は <code>srd_maxes</code> の中の <code>nums[i*x:(i+1)*x]</code> の部分です。この <code>x</code> が <math><msqrt><mi>N</mi></msqrt></math>です。<br><math><msqrt><mn>10000</mn></msqrt></math> = 100 なので、100個のバケット (１バケットは<code>x</code> 個分の区間) が作られます。そして各バケットの中から最大値を求めます。</p>
+<p>このプログラムの<ruby>要<rt>かなめ</rt></ruby>は <code>srd_maxes</code> の中の <code>nums[i*x:(i+1)*x]</code> の部分です。この <code>x</code> が <math><msqrt><mi>N</mi></msqrt></math>です。<br><math><msqrt><mn>10000</mn></msqrt></math> = 100 なので、100個のバケット (１バケットは<code>x</code> 個分の区間) が作られます。そして各バケットの中から最大値を求めます。</p>
 <p>すると最終的に各バケットから求められた 100個の最大値が入っている一次元リストが出来上がります。</p>
 <p>この問題ではそれら 100個の最大値を改行区切りで画面に出力すれば完了となります。</p>
 <p>ルート(平方根)の求め方は三行目の</p>

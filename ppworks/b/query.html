@@ -940,7 +940,7 @@ print(*srd_maxes, sep='\n')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>このプログラムの要は <code>srd_maxes</code> の中の <code>nums[i*x:(i+1)*x]</code> の部分です。この <code>x</code> が <math><msqrt><mi>N</mi></msqrt></math>です。<br><math><msqrt><mn>10000</mn></msqrt></math> = 100 なので、100個のバケット (１バケットはスライスで囲われた値 <code>x</code> 個分の区間) が作られます。そして各バケットの中から最大値を求めます。</p>
+<p>このプログラムの要は <code>srd_maxes</code> の中の <code>nums[i*x:(i+1)*x]</code> の部分です。この <code>x</code> が <math><msqrt><mi>N</mi></msqrt></math>です。<br><math><msqrt><mn>10000</mn></msqrt></math> = 100 なので、100個のバケット (１バケットは<code>x</code> 個分の区間) が作られます。そして各バケットの中から最大値を求めます。</p>
 <p>すると最終的に各バケットから求められた 100個の最大値が入っている一次元リストが出来上がります。</p>
 <p>この問題ではそれら 100個の最大値を改行区切りで画面に出力すれば完了となります。</p>
 <p>ルート(平方根)の求め方は三行目の</p>
@@ -1207,12 +1207,12 @@ left += 10
 <pre><code class="language-python">def main(N, K, cum_sum):
     for _ in range(K):
         a_l, a_r, b_l, b_r = map(int, input().split())
-        a_point = culc_point(a_l, a_r, N, cum_sum)
-        b_point = culc_point(b_l, b_r, N, cum_sum)
+        a_point = calc_point(a_l, a_r, N, cum_sum)
+        b_point = calc_point(b_l, b_r, N, cum_sum)
     
         print(judge(a_point, b_point))
 
-def culc_point(left, right, N, cum_sum):
+def calc_point(left, right, N, cum_sum):
     if (right - left + 1) < N / 3:
         return cum_sum[right] - cum_sum[left-1]
     else:
@@ -1242,7 +1242,7 @@ if __name__ == '__main__':
 <dl>
 <dt>main()</dt>
 <dd>メインプログラム。プレイヤー A と B が掴んだ先頭と末尾のページの入力を受け取り、ゲームを進行する。</dd>
-<dt>culc_point()</dt>
+<dt>calc_point()</dt>
 <dd>掴んだページ数が有効かどうかを判定し、結果を返す。</dd>
 <dt>judge()</dt>
 <dd>A と B の勝敗を判定する。</dd>
@@ -1254,10 +1254,10 @@ if __name__ == '__main__':
 <p>この問題は最大で 100000 / 3 頁の 'I' の数の計算を二人分、そしてこれを 100000回ゲームを行ないますので、累積和を用いて計算量を大幅に削減することがカギとなります。</p>
 </ul>
 <ul>
-<p>プログラムの内容自体は目で追っていけばわかるかと思います。ただ、 <strong class="func">culc_point()</strong> 関数の中にある<strong class="if"></strong>文の条件式が唯一の悩み処かと思われます。</p>
+<p>プログラムの内容自体は目で追っていけばわかるかと思います。ただ、 <strong class="func">calc_point()</strong> 関数の中にある<strong class="if"></strong>文の条件式が唯一の悩み処かと思われます。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">def culc_point(left, right, N, cum_sum):
+<pre><code class="language-python">def calc_point(left, right, N, cum_sum):
     if (right - left + 1) < N / 3:
         return cum_sum[right] - cum_sum[left-1]
     else:
@@ -1386,7 +1386,7 @@ for y in range(H):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><code>B</code> が <code>S</code> になっただけで、ドーナツの型をとった時と同様の方法で穴を空けます。穴を空けると穴の分のチョコが減りますので、そのチョコの分を引きます。</p>
+<p><code>B</code> が <code>S</code> になっただけで、ドーナツの型をとった時と同様の方法で穴を空けられます。穴を空けると穴の分のチョコが減りますので、そのチョコの分を引きます。</p>
 <p><pre>0  0  0  0  0  0<br>0 <span style="background-color: blue;"> 7 15 24 32 37</span><br>0 <span style="background-color: blue;">11 21</span> <span style="background-color: aqua;"><mark>36</mark> <span style="background-color: cornflowerblue;">46</span> 52</span><br>0 <span style="background-color: blue;">13 28</span> <span style="background-color: aqua;"><span style="background-color: greenyellow;">46</span> <span style="background-color: black; color: white;">65</span> 72</span><br>0 <span style="background-color: blue;">14 32</span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
 <p class="inlook">choco -= <span style="background-color: black; color: white;">65</span> - <span style="background-color: cornflowerblue;">46</span> - <span style="background-color: greenyellow;">46</span> + <mark>36</mark><br>↓<br>choco -= 9<br>↓<br>choco = 30 - 9<br>↓<br>choco = <code class="output">21</code></p>
 <p>無事、出力例2 の結果と同じになりました。<br>二次元累積和だけで求められるので、解れば簡単ですよね。👍</p>

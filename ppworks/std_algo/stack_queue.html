@@ -299,7 +299,7 @@ print(max_sum, left_num)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>とします。</p>
-<p>ループを抜けたら、最後に区間の最大値と、最大値が求められた区間の先頭の値を画面に出力して完了とです。</p>
+<p>ループを抜けたら、最後に区間の最大値と、最大値が求められた区間の先頭の値を画面に出力して完了です。</p>
 </ul>
 <footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">STEP: 2 最大の区間和</a></footer>
 </details>
@@ -475,7 +475,7 @@ def move(x, t, total):
 
 
 _, K = map(int, input().split())
-A = list(map(int, input().split()))
+A = map(int, input().split())
 
 queue = deque([0] * K)
 t, total = 0, 0
@@ -492,7 +492,7 @@ for a in A:
 <p>まるでリアルタイムで仕事をしているエスカレーターそのもののような処理です。</p>
 <p>人が乗る時刻だけが入力で与えられています。それ以外の時刻は人が乗らないのでループで <code>0</code> を追加し続けます。</p>
 <p>人が乗る時刻がやってくるとループを抜け、人が１人乗る処理がされます。<small>ネコはカウントされないのかな？</small></p>
-<p>人が乗っても乗らなくても常に先頭の値が dequeue されます。それが <strong class="func">move()</strong>関数の中にある <strong class="func">.popleft()</strong> です。ついでに <strong>return</strong> の所で乗降人数の足し引きもしています。</p>
+<p>人が乗っても乗らなくても常に先頭の値は DEQUEUE します。それが <strong class="func">move()</strong>関数の中にある <strong class="func">.popleft()</strong> です。人がいない時は <code>0</code>、人が１人降りる時は <code>1</code> が入っています。ついでに <strong>return</strong> の所で乗降人数の足し引きもしています。</p>
 <p>すべて 0 と 1 だけで処理できますのでシンプルなプログラムになりました。😊</p>
 </ul>
 <footer><a class="backto" href="#c4-5" onclick="closeAccordion('c4-5')">STEP: 5 エスカレーター</a></footer>

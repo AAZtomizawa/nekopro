@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 問題集『定番アルゴリズム スタック・キューメニュー』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】スタック・キューメニュー応用編</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>スタック・キューメニュー応用編</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>満員エレベーター</summary>
+<header><h2>満員エレベーター</h2></header>
+<article>
+<details id="c1-1"><summary>STEP: 1 3 つのスタック</summary>
+<header><h3>3 つのスタック</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+stacks = [[] for _ in range(3)]
+for _ in range(N):
+    query = iter(input().split())
+    Q, S = next(query), int(next(query)) - 1
+    
+    if Q == 'push':
+        X = int(next(query))
+        stacks[S].append(X)
+    elif Q == 'pop' and stacks[S]:
+        stacks[S].pop()
+
+for stack in stacks:
+    if stack:
+        print(*stack[::-1], sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>スタックを３つ用意するのですが、３つの変数に用意するよりは１つのリストに３つ用意したほうが扱い易いのでそのようにします。</p>
+<p>クエリはイテレータとして受け取り、 <strong class="func">next()</strong> 関数を使って割り振ります。</p>
+<p>'push' については スタックS に X を追加するだけで済みますが、'pop' は問題文に、</p>
+<p><strong class="b">『スタックの要素が存在しない場合は何もしない。』</strong></p>
+<p>とありますが、条件には、</p>
+<p><strong class="b">『空のスタックから要素を取り出すような pop は与えられないことが保証されている。』</strong></p>
+<p>とあります。プログラム例では問題文のほうに従って書きましたが、条件に書かれているほうも受け入れて書くなら、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    else:
+        stacks[S].pop()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>とだけで正しく動作するはずです。</p>
+<br>
+<p>最後の画面出力ですが、スタックに入っている要素を末尾から取り出していきますので逆順にします。スタックの中身はなくなりますが、単に要素がなくなるまで <strong class="func">.pop()</strong> で取り出しても良いでしょう。</p>
+<p>ただし要素が空の場合は空行が表示されてしまいますので、要素があるかどうかを <strong class="if"></strong>でチェックして表示されないようにする必要があります。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 3 つのスタック</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 レンタルビデオ店</summary>
+<header><h3>レンタルビデオ店</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+X = [int(input()) for _ in range(N)]
+K = int(input())
+
+for _ in range(K):
+    query = iter(input().split())
+    Q = next(query)
+    
+    if Q == 'rent':
+        X.pop()
+    else:
+        X.append(next(query))
+
+print(*X[::-1], sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力される値は<strong class="b">『開店時に棚にあるビデオの管理番号が末尾から順に与えられます。』</strong><br>条件に<strong class="b">『棚が空の状態で rent は与えられないことが保証されている』</strong>と、親切設計です。</p>
+<p>その為にプログラムがとてもシンプルに書き上げられます。注意点も何も無くて解説しようがありません。😅</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 レンタルビデオ店</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 warp</summary>
+<header><h3>warp</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, K = map(int, input().split())
+to = [list(map(int, input().split())) for _ in range(N)]
+
+route = [1]
+for i in range(K):
+    next_to = to[route[-1] - 1][i]
+    if next_to == -1:
+        route.pop()
+    else:
+        route.append(next_to)
+
+    print(route[-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題の意味がわかるまで苦労しました。😓<br>問題の入力例２を利用して解説します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">2
+    5 5
+    2 3 4 5 -1
+    -1 -1 -1 -1 -1
+    3 3 3 3 3
+    1 2 3 4 5
+    5 5 5 5 5
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>N はマスの数 = 入力行数、K はワープ回数です。マス 1 から開始します。</p>
+<p>マス = <mark>1</mark> 2 3 4 5 ← <mark>&nbsp;</mark> は現在地</p>
+<p>1 回目のワープ先のマスは 2 です。</p>
+<div class="inlook">
+<p><pre>  <span style="background-color: aqua;">2</span>  3  4  5 -1
+ -1 -1 -1 -1 -1
+  3  3  3  3  3
+  1  2  3  4  5
+  5  5  5  5  5</pre>
+route = [1] ← <span style="background-color: aqua;">2</span> を PUSH<br>
+route = [1, <mark>2</mark>]<br>
+マス = 1 <mark>2</mark> 3 4 5 ← 2 にワープする</p>
+<p>print(route[-1])<br><code class="output">2</code></p>
+</div>
+<p>2 回目のワープ先は -1 になっていますので、１つ前のマスに戻ります。</p>
+<div class="inlook">
+<p><pre>  2  3  4  5 -1
+ -1 <span style="background-color: coral;">-1</span> -1 -1 -1
+  3  3  3  3  3
+  1  2  3  4  5
+  5  5  5  5  5</pre>
+route = [1, <span style="background-color: coral;">2</span>] ← <span style="background-color: coral;">-1</span> なので POP<br>
+route = [<mark>1</mark>]<br>
+マス = <mark>1</mark> 2 3 4 5 ← １つ前の 1 にワープする</p>
+<p>print(route[-1])<br><code class="output">1</code></p>
+</div>
+<p>3 回目のワープ先のマスは 4 です。</p>
+<div class="inlook">
+<p><pre>  2  3  <span style="background-color: aqua;">4</span>  5 -1
+ -1 -1 -1 -1 -1
+  3  3  3  3  3
+  1  2  3  4  5
+  5  5  5  5  5</pre>
+route = [1] ← <span style="background-color: aqua;">4</span> を PUSH<br>
+route = [1, <mark>4</mark>]<br>
+マス = 1 2 3 <mark>4</mark> 5 ← 4 にワープする</p>
+<p>print(route[-1])<br><code class="output">4</code></p>
+</div>
+<p>4 回目のワープ先のマスは 4 です。</p>
+<div class="inlook">
+<p><pre>  2  3  4  5 -1
+ -1 -1 -1 -1 -1
+  3  3  3  3  3
+  1  2  3  <span style="background-color: aqua;">4</span>  5
+  5  5  5  5  5</pre>
+route = [1, 4] ← <span style="background-color: aqua;">4</span> を PUSH<br>
+route = [1, 4, <mark>4</mark>]<br>
+マス = 1 2 3 <mark>4</mark> 5 ← 4 にワープ(?)する</p>
+<p>print(route[-1])<br><code class="output">4</code></p>
+</div>
+<p>5 回目のワープ先のマスは 5 です。</p>
+<div class="inlook">
+<p><pre>  2  3  4  5 -1
+ -1 -1 -1 -1 -1
+  3  3  3  3  3
+  1  2  3  4  <span style="background-color: aqua;">5</span>
+  5  5  5  5  5</pre>
+route = [1, 4, 4] ← <span style="background-color: aqua;">5</span> を PUSH<br>
+route = [1, 4, 4, <mark>5</mark>]<br>
+マス = 1 2 3 4 <mark>5</mark> ← 5 にワープする</p>
+<p>print(route[-1])<br><code class="output">5</code></p>
+</div>
+<p>【結果】</p>
+<code class="output">2</code><br>
+<code class="output">1</code><br>
+<code class="output">4</code><br>
+<code class="output">4</code><br>
+<code class="output">5</code><br>
+</ul>
+<ul>
+<p>何に苦労してたかって、最後に route の中身を順に出力するものと思い込んで、どうしても出力例のとおりにならなくてずっと考えてました。😅<br>ワープしたらすぐにそのマスを画面に出力すれば良いだけだったことに気付くのに二日かかりましたよ。🤣</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 warp</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>STEP: 4 積読</summary>
+<header><h3>積読</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+stack = []
+for _ in range(N):
+    Q, X = input().split()
+    
+    if Q == 'buy_book':
+        stack.append(int(X))
+        continue
+
+    y = int(X)
+    while y > 0:
+        y -= stack.pop()
+
+    if y:
+        stack.append(abs(y))
+    # 読むべき残りページ数が 0 の時は本を戻さない
+
+print(len(stack))
+print(sum(stack))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>もう一息プログラムを短くできそうな感じがするのですが、今の私の頭ではこれが限界です。これを上回る良いプログラムが書けたなら、このプログラムに向かってドヤ顔したり鼻で嗤ってやったりしてください。👍</p>
+<p><code>y</code> というのは 'read Y' の 'Y' のことです。今回読むべきページ数です。<br>次の <code>stack.pop()</code> は、一番上に積んである本の未読のページ数です。<br>今回読むべきページ数 <code>y</code>、例えば 1000ページとして、本の未読ページ数が 500ページだった場合、</p>
+<p class="inlook">1000 - 500 = 500 ← 残り読むべきページ数は 500ページ</p>
+<p>となり、<strong class="while"></strong>の条件式 <code>y > 0</code> が <strong>True</strong> なので、もう１冊本を取って読みます。<br>次の本の未読ページが 800ページだった場合、</p>
+<p class="inlook">500 - 800 = -300 ← 300ページ読み切れなかった</p>
+<p>となり、<strong class="while"></strong>の条件式 <code>y > 0</code> が <strong>False</strong> なってループを抜けます。</p>
+<p><code>if y:</code> は、本が読み切れなかった場合は<strong>残り300ページ</strong>として本の山に戻………します。😓<br>読み切りなかったときは必ず <code>y</code> が負数になっているので、これを正数にします。<code>abs(y)</code><br>必ず負数になっているので <code>-y</code> でも大丈夫です。</p>
+<p><code>y</code> が <code>0</code>、つまり本一冊をぴったり読み切った時は読み切った本を本の山に返しませんので<strong>何もしません。</strong></p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">STEP: 4 積読</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>FINAL問題 満員エレベーター</summary>
+<header><h3>満員エレベーター</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, X = map(int, input().split())
+
+weights = [0]
+len_weights = 0
+for _ in range(N):
+    query = iter(input().split())
+    Q = next(query)
+    
+    if Q == 'ride':
+        N = int(next(query))
+        for _ in range(N):
+            w = weights[-1] + int(next(query))
+            if w <= X:
+                weights.append(w)
+                len_weights += 1
+    else:
+        K = int(next(query))
+        for _ in range(K):
+            weights.pop()
+            len_weights -= 1
+
+print(len_weights)
+print(weights[-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この問題はスタックを使うとかえって面倒になると思うのですが。😓<br>無理矢理にも思えなくもないプログラムになってしまいました。美しくない・・・。</p>
+<p><code>weights</code> に人数分の総重量が累積和状になって入っています。この最後の要素が現在エレベータに乗っている人たちの総重量です。この要素と次に乗ってくる人の体重を足して、重量オーバーしていないかどうかをチェックします。</p>
+<p>乗員人数は <strong class="func">len()</strong> 関数を使っても良いのですが、一応乗り降りの都度カウントするようにしました。</p>
+</ul>
+<footer><a class="backto" href="#c1-5" onclick="closeAccordion('c1-5')">FINAL問題 満員エレベーター</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">満員エレベーター</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>カードゲーム</summary>
+<header><h2>カードゲーム</h2></header>
+<article>
+<details id="c2-1"><summary>STEP: 1 3 つのキュー</summary>
+<header><h3>3 つのキュー</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+N = int(input())
+
+queues = [deque() for _ in range(3)]
+for _ in range(N):
+    query = iter(input().split())
+
+    Q = next(query)
+    if Q == 'push':
+        S, X = int(next(query)) - 1, int(next(query))
+        queues[S].append(X)
+    else:
+        S = int(next(query)) - 1
+        queues[S].popleft()
+
+for queue in queues:
+    for q in queue:
+        print(q)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「<a href="./stack_queue.html#c4-1h" class="linked" target="_blank">2 つのキュー</a>」の３つ版です。そちらを参考にすればこちらのほうが簡単ですので解けると思います。</p>
+<p>最後、空のリストを画面出力すると空行になりますので、出力のしかたに注意してください。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 3 つのキュー</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 品出し</summary>
+<header><h3>品出し</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+N = int(input())
+
+queue = deque()
+for _ in range(N):
+    query = iter(input().split())
+
+    Q = next(query)
+    if Q == 'add':
+        num = int(next(query))
+        queue.append(num)
+    else:
+        X = int(next(query))
+        for _ in range(X):
+            queue.popleft()
+
+print(*queue, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『 X 個購入する』ところ以外はこれまでと同じ流れでプログラムが組めます。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">STEP: 2 品出し</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 キューじゃんけん</summary>
+<header><h3>キューじゃんけん</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+def judge(p, k):
+    if p == k:
+        return paiza_win, kyoko_win
+    elif janken[p] == k:
+        return paiza_win+1, kyoko_win
+    else:
+        return paiza_win, kyoko_win+1
+
+
+N, K = map(int, input().split())
+Q = zip(*[input().split() for _ in range(N)])
+queue = [deque(tpl) for tpl in Q]
+
+janken = {'R': 'S', 'S': 'P', 'P': 'R'}  # {勝ち: 負け}
+paiza_win, kyoko_win = 0, 0
+for _ in range(K):
+    C = input().split()
+    q = [queue[i].popleft() for i in range(2)]
+    paiza_win, kyoko_win = judge(*q)
+
+    for i in range(2):
+        if C[i] == 'push':
+            queue[i].append(q[i])
+
+if paiza_win == kyoko_win:
+    print('draw')
+elif paiza_win > kyoko_win:
+    print('paiza')
+else:
+    print('kyoko')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>余裕ぶっこいてたら急に難易度が上がりましたね。😓<br>今回は、</p>
+<ol>
+<li>転置</li>
+<li>タプルからリストへの変換</li>
+<li>じゃんけんの手の判定</li>
+<li>キュー</li>
+</ol>
+<p>プログラム例での組み方の場合ですが、この４つを使います。</p>
+<p>１番の転置は、paiza君と kyokoさんのそれぞれのじゃんけんの手が勝負ごとに与えられています。これを転置して、それぞれ paiza君の手の順番と kyokoさんの手の順番にリスト化します。</p>
+<p class="inlook">例）<br>P R<br>S S<br>R P</p><p>これを、<p class="inlook">P S R ← paiza君の手<br>R S P ← kyokoさんの手</p><p>とします。これを後に deque にしてエンキュー・デキューできるようにします。</p>
+<p>転置については「<a href="../../2/0120dimension2.html#c4-4h" class="linked" target="_blank">２章 二次元リスト</a>」で学習できます。</p>
+<p>２番は、<strong class="func">zip()</strong> の戻り値がタプルになって返ってくるのですが、この後にキューで要素を追加したり取り出したりしますので、deque に変換します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">queue = [deque(tpl) for tpl in Q]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+<ul>
+<p>３番の手の判定ですが、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">janken = {'R': 'S', 'S': 'P', 'P': 'R'}  # {勝ち: 負け}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>キーが paiza君が勝つ手、値が kyokoさんの負けの手となっています。これを使って <strong class="func">judge()</strong> 関数内の、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">elif janken[p] == k:
+    return paiza_win+1, kyoko_win
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>に当てはめると「 paiza君が勝つ手 == kyokoさんの負けの手」となった時には <strong>paiza君の勝ち</strong> と判定されるようになります。<br><code>p</code> と <code>k</code> を反対にすれば、 kyokoさんが勝った時の手と paiza君が負けた時の手で判定することができるようになります。</p>
+<p>あいこの判定は最初に済ませていますので、残りは <strong>else</strong>文に kyokoさんが勝ちとなった処理を書くだけです。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def judge(p, k):
+    if p == k:
+        return paiza_win, kyoko_win
+    elif janken[p] == k:
+        return paiza_win+1, kyoko_win
+    else:
+        return paiza_win, kyoko_win+1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(2):
+    if C[i] == 'push':
+        queue[i].append(q[i])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>勝負に使ったブロックをどうするかです。取り出したブロックを「破棄する」はとくに何もしないので書きません。'push' の時は『キューの末尾に挿入する』とありますので、そのようにします。</p>
+<p>最後に結果を画面に出力して完了です。</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">STEP: 3 キューじゃんけん</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>STEP: 4 満員エスカレーター</summary>
+<header><h3>満員エスカレーター</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+N, X = map(int, input().split())
+
+persons = deque()
+weight = 0
+len_persons = 0
+for _ in range(N):
+    query = iter(input().split())
+    Q = next(query)
+    
+    if Q == 'ride':
+        N = int(next(query))
+        for _ in range(N):
+            w = int(next(query))
+            if weight + w <= X:
+                persons.append(w)
+                weight += w
+                len_persons += 1
+    else:
+        K = int(next(query))
+        for _ in range(K):
+            weight -= persons.popleft()
+            len_persons -= 1
+
+print(len_persons)
+print(weight)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここまでくると解説すべきところもありませんね。スタック・キューを使わなくても組めますし、使わないほうが簡単明瞭だったりすることもありましたし。😅<br>応用編とありますが、ほとんどが前メニューの延長でした。</p>
+<p>逆にスタック・キューを使ったほうがラクな場面もあったりします。けど、あまり意識しなくても普段から <strong class="func">.append()</strong> と <strong class="func">.pop()</strong> を使っていれば自然とスタックになっていたりしますし、 <strong class="func">.pop(0)</strong> とか <strong class="func">.insert(0, a)</strong> を多用するところがあったら不自然に感じて deque を思い出すと思います。スタック・キューという言葉すら頭に浮かばない程に。</p>
+<p>クエリが複雑だったせいで難しく感じたり、あまり理解できなかったとしても、この先も <strong class="func">.append()</strong> と <strong class="func">.pop()</strong> を当たり前に使う Python3 でプログラムを組んでいけば、いつか「あ、これがスタックだったのか」と気付く時が来るでしょう。</p>
+<p>スタックがわかればキューもわかる！</p>
+</ul>
+<footer><a class="backto" href="#c2-4" onclick="closeAccordion('c2-4')">STEP: 4 満員エスカレーター</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-5"><summary>FINAL問題 カードゲーム</summary>
+<header><h3>カードゲーム</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+class Game:
+    def __init__(self):
+        self.cards = []
+        self.turn = 0
+
+    def has_keycard(self):
+        self.turn += 1
+        self.run_query()
+        return any(self.cards)
+
+    def run_query(self):
+        query, x = self.input_event()
+        for _ in range(int(x)):
+            getattr(self, query)()
+
+    def input_event(self):
+        event = input().split()
+        if self.turn == 1:
+            event = ['draw', 5]
+        return event
+
+    def draw(self):
+        self.cards.append(self.deck.pop())
+    
+    def discard(self):
+        self.grave_yard.append(self.deck.pop())
+
+    def return_from_the_graveyard(self):
+        self.deck.appendleft(self.grave_yard.pop())
+
+    def exclude(self):
+        self.exclusion.append(self.deck.pop())
+
+    def return_from_the_exclusion(self):
+        self.deck.appendleft(self.exclusion.pop())
+
+    @classmethod
+    def initialize(cls, n):
+        # 下　<--- [ 山札 ] --- >　上
+        cls.deck = deque([False] * 40)
+        cls.deck[-n] = True
+        cls.grave_yard = []
+        cls.exclusion = []
+    
+
+def setup():
+    N, K = map(int, input().split())
+    Game.initialize(N)
+    paiza = Game()
+
+    return K, paiza
+
+
+def main(K, paiza):
+    result = 'Lose'
+    for _ in range(K):
+        if paiza.has_keycard():
+            result = paiza.turn
+            break
+
+    print(result)
+        
+
+if __name__ == '__main__':
+    main(*setup())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Ｂランク問題としてふさわしい複雑さです。順を追って解説します。</p>
+<p>まず <strong class="func">setup()</strong> 関数とクラスメソッドです。クラスメソッドには「山札」「墓地」「除外」の山を用意します。山札以外は空の状態です。<br>山札の上(末尾)から N 番目にキーカードを配置します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">@classmethod
+def initialize(cls, n):
+    # 下　<--- [ 山札 ] --- >　上
+    cls.deck = deque([False] * 40)  # 山札
+    cls.deck[-n] = True  # 末尾から n 番目にキーカードを配置する
+    cls.grave_yard = []  # 墓地
+    cls.exclusion = []  # 除外
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>paiza君のインスタンス変数には paiza君の手札とターン数を持たせています。ターンは <strong class="func">main()</strong> 関数の<strong class="for"></strong> でもカウントできますが、わかりやすくインスタンス内でカウントすることにします。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def __init__(self):
+    self.cards = []
+    self.turn = 0
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<p>次に <strong class="func">main()</strong> 関数を一時飛ばして <strong class="func">has_keycard()</strong> メソッドから説明します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def has_keycard(self):
+    self.turn += 1
+    self.run_query()
+    return any(self.cards)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この関数はクエリ処理をしたあと、paiza君の手札にキーカードがあるかどうかをチェックします。</p>
+<p>まず <strong class="func">run_query()</strong> メソッドを実行します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def run_query(self):
+    query, x = self.input_event()
+    for _ in range(int(x)):
+        getattr(self, query)()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def input_event(self):
+    event = input().split()
+    if self.turn == 1:
+        event = ['draw', 5]
+    return event
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">input_event()</strong> メソッドで入力から得た値を返します。その時、'game_start' の時だけ、山札から５枚カードを取る指示に変えて返します。これは <strong class="func">draw()</strong> メソッドを５回実行することと同等ですので、そのように値を返します。</p>
+<p>再び <strong class="func">run_query()</strong> メソッドに戻り、値を <code>query</code> と <code>x</code> に振り分けて <strong class="for"></strong>文を実行します。この文では <code>getattr(self, query)()</code> を x 回実行します。</p>
+<p><strong class="func">getattr()</strong> は簡単に言えば、ただの文字列 <code>query</code> を関数名(メソッド名も可)として変換する機能です。</p>
+<div class="x-fit">
+<li class="look text-center">
+<p><strong>getattr(オブジェクト, <em>str</em>)</strong></p>
+<p><em>str</em> は<br><strong class="b">「文字列 = 関数名」<br>「文字列 = メソッド名」</strong><br>と、なること。</p>
+</li>
+</div>
+<p>今回の例で言うと、オブジェクトは <code>paiza</code> です。インスタンスをターゲットとしていますので、オブジェクトは <strong>self</strong> です。<br><em>str</em> はそのインスタンスのメソッド名と同じ文字列であること。<br>最後に引数を、無ければ <code>()</code> だけを付ければ正常に処理できるはずです。</p>
+<p>この方法を使えば、どんなにイベントの数が多かろうとこの一文だけで済んでしまいます。イベント名とメソッド名を一致させることだけ注意すれば、<strong class="if"></strong>文よりも簡単に思えてくるでしょう。</p>
+</ul>
+<ul>
+<p>そしてメインデッシュのクエリ処理です。問題にも書かれていますが、各メソッドの機能を言葉にしてみます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def draw(self):
+    self.cards.append(self.deck.pop())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>山札からカードを１枚取って、手札に追加する。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def discard(self):
+    self.grave_yard.append(self.deck.pop())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>山札からカードを１枚取り、そのカードを墓地の山の一番上に置く。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def return_from_the_graveyard(self):
+    self.deck.appendleft(self.grave_yard.pop())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>墓地の山からカードを１枚取り、そのカードを山札の一番下に置く。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def exclude(self):
+    self.exclusion.append(self.deck.pop())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>山札のカードを１枚取り、そのカードを除外の山に置く。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def return_from_the_exclusion(self):
+    self.deck.appendleft(self.exclusion.pop())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>除外の山からカードを１枚取り、そのカードを山札の一番下に置く。</p>
+<br><p>これらメソッドはそれぞれ１枚分の処理しかしていません。それを <strong class="func">run_query()</strong> 内の <strong class="for"></strong>で x 回処理するようにしています。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def run_query(self):
+    query, x = self.input_event()
+    for _ in range(int(x)):
+        getattr(self, query)()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<p>これらの処理をすべて終えると <strong class="func">has_keycard()</strong> メソッドへ戻ります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def has_keycard(self):
+    self.turn += 1
+    self.run_query()
+    return any(self.cards)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">main()</strong> 関数に戻るのですが、戻り値として現在 paiza君の手札にキーカードがあるかをチェックします。<strong class="func">any()</strong> 関数は、引数の中に１つでも <strong>True</strong> がある場合は <strong>True</strong> を返し、全て <strong>False</strong> の場合は <strong>False</strong> を返します。</p>    
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def main(K, paiza):
+    result = 'Lose'
+    for _ in range(K):
+        if paiza.has_keycard():
+            result = paiza.turn
+            break
+
+    print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>結果出力のための <code>result</code> には初め <code>'Lose'</code> を代入して初期化しておきます。</p>
+<p><strong class="func">.has_keycard()</strong> メソッドから返ってきた値を <strong class="if"></strong> の評価にかけ、もしキーカードを持っていたなら現在のターン数を <code>result</code> に再代入し、ループを抜けます。</p>
+<p>そして最終結果を画面に出力して完了となります。お疲れさまでした。🏄</p>
+<p>クラス型がまだよくわからないようでしたら、このプログラム例を参考に手続型で組んでみてください。作っていくうちに意味がわかってくると思います。</p>
+</ul>
+<footer><a class="backto" href="#c2-5" onclick="closeAccordion('c2-5')">FINAL問題 カードゲーム</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">カードゲーム</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>スタック・キューメニュー応用編</p>
+</footer>
+</body>
+</html>

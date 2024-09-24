@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../../css/style.css">
 <link rel="stylesheet" href="../../css/prism_coy.css">
+<link rel="canonical" href="https://aaztomizawa.github.io/nekopro/" />
 <script type="text/javascript" src='../../js/prism.js'></script>
 <script type="text/javascript" src='../../js/custom.js'></script>
 <title>【paiza問題集 解説】クラス・構造体メニュー</title>
@@ -1330,7 +1331,7 @@ if __name__ == '__main__':
 <!-- ----------------------- code end ----------------------- -->
 <p>ここまで苦労してでもなんとかクリアしてきた方ならこの問題がクリアできなかったとしても、解説無しで読めるようになっているはずです。ですので、補足説明だけにさせていただきます。</p>
 <p>標準入力と初期化を <strong class="func">setup()</strong> 関数に集めているのはこれまでと同じです。クラス変数に、ロボットの移動情報 <code>DIRECTIONS</code>、ロボットのレベルに応じた移動マス <code>STEPS</code>、工具箱が置いてある座標 <code>TOOLBOX_LOCS</code> を用意します。この時、<code>TOOLBOX_LOCS</code> は <strong class="func">setup()</strong> 関数で入力された値(リスト)をクラス変数に渡す為、値を <strong>None</strong> にして予めクラス変数に明記しておいています。これは書かなくても動作に支障はありません。</p>
-<p><code>DIRECTIONS</code> は、受け取った方向の情報から移動すべき方向の座標が記してあります。この値にレベルに応じた移動マスを掛け算してロボットが移動します。<br>この <code>DIRECTIONS</code> の書き方や使い方は使う場面が結構あります。何かが四方八方に移動したり、現在地から各方向に障害物があるかどうかをチェックしに行ったりする際には、この辞書の書き方を知っておくと楽にプログラムが書けるようになります。八方向なら８つ書きます。<br>Ｂランクのスキルチェックでも度々出てきますし、問題集でも他のところで出てきますので、スキルチェックで出会う前にせめて使い方だけでも「Ｂランクレベルアップメニュー」の「五目並べ」などで学んでおくことを強くお勧めします。</p>
+<p><code>DIRECTIONS</code> は、受け取った方向の情報から移動すべき方向の座標が記してあります。この値にレベルに応じた移動マスを掛け算してロボットが移動します。<br>この <code>DIRECTIONS</code> の書き方や使い方は使う場面が結構あります。何かが四方八方に移動したり、現在地から各方向に障害物があるかどうかをチェックしに行ったりする際には、この辞書の書き方を知っておくと楽にプログラムが書けるようになります。八方向なら８つ書きます。<br>Ｂランクのスキルチェックでも度々出てきますし、問題集でも他のところで出てきますので、形だけでもほんのり覚えておいてください。</p>
 <p><strong class="func">move()</strong> メソッド内で、 <strong class="func">check_level_up()</strong> メソッドを呼び出しています。同じインスタンスから別のメソッドを呼び出す時は、メソッド名の前に <code>self.</code> を付けると呼び出すことができます。<br>paiza の解答コード例ではメインプログラムから <strong class="func">level_up()</strong> メソッドを呼び出していますが、クラス内でできる事はすべてクラスにやらせてしまえというのがオブジェクト指向の考え方だそうです。<br>材料を <strong class="func">setup()</strong> したら、 <strong class="func">main()</strong> ボタンをポチりと押すだけであとはクラスがすべてやってくれる組み方が望ましいということです。このメニューでは出てきませんでしたが、<strong class="special">クラスメソッド</strong> というのを使うとさらに実現しやすくなります。</p>
 </ul>
 <ul>

@@ -128,7 +128,7 @@
 </url>
 
 <url>
-  <loc>https://aaztomizawa.github.io/nekopro/ppworks/</loc>
+  <loc>https://aaztomizawa.github.io/nekopro/ppworks/index.html</loc>
   <priority>0.9</priority>
 </url>
 <url>
@@ -189,6 +189,10 @@
 </url>
 <url>
   <loc>https://aaztomizawa.github.io/nekopro/ppworks/std_algo/stack_queue.html</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://aaztomizawa.github.io/nekopro/ppworks/std_algo/stack_queue_2.html</loc>
   <priority>0.8</priority>
 </url>
 <url>

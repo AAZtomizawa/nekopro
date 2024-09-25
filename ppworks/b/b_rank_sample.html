@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｂランクレベルアップ問題集『Bランク・スキルチェック見本問題セット』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Bランク・スキルチェック見本問題セット</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>Bランク・スキルチェック見本問題セット</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>長テーブルのうなぎ屋</summary>
+<header><h2>長テーブルのうなぎ屋</h2></header>
+<article>
+<details id="c1-1"><summary>例１） リストを使って解く</summary>
+<header><h3>リストを使って解く</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int,input().split())
+
+seats = [0] * n
+for _ in range(m):
+    a, b = map(int, input().split())
+    b -= 1  # 座席番号を 0 番からにする
+
+    tmps = [seats[(b+i)%n] for i in range(a)]
+    if sum(tmps) == 0:
+        seats[b%n:(b+a)%n] = [1] * a
+
+print(sum(seats))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題の絵図を見て、26 番の席と 1 番の席をどう繋げるかがポイントになります。座席番号を 0 番から始めるようにすると 0 ～ 25 番となり、</p>
+<p class="inlook">座る予定の座席 % 26</p>
+<p>と計算すれば、25 番の次の 26番は、イコール 0 番となります。その座席の要素が 0 の時は空席です。<br><code>if sum(tmps) == 0:</code> で全て空席であればという条件文になり、<strong>True</strong> であれば、その席に１グループ全員座ります。</p>
+<p>スライスの範囲がややこしいですね。😓 ちょっと間違えるととんでもない結果になってしまいます。皆江戸っ子らしいので店内大喧嘩となりそうです。🙀</p>
+<p>ちなみに問題文にある『江戸っ子は<strong class="b">気が早い</strong>んでぃ。』は、「気が短い」が適切かと思います。😅</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">例１） リストを使って解く</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>例２） セットを使って解く</summary>
+<header><h3>セットを使って解く</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int,input().split())
+
+seats = set()
+for _ in range(m):
+    a, b = map(int, input().split())
+    b -= 1  # 座席番号を 0 番からにする
+    
+    tmp = {i%n for i in range(b, b+a)}
+    if seats - tmp == seats:
+        seats |= tmp
+
+print(len(seats))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>こちらは座席が埋まっている座席番号をセット <code>seats</code> に記録していきます。<br>座席番号は 0 ～ n-1 番です。</p>
+<p>まずグループが座席を指定し、そこから人数分指定の座席番号を <code>tmp</code> に書き留めます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tmp = {i%n for i in range(b, b+a)}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>次に、現在埋まっている座席 <code>seats</code> からこれから座る予定の座席 <code>tmp</code> を差集合演算を使って求めた結果が <code>seats</code> のままなら、座席は空いているということになります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if seats - tmp == seats:
+    seats |= tmp
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook">seats = {1, 2, 6, 7}<br>tmp = {3, 4} の時<br><br><mark>{1, 2, 6, 7}</mark> - {3, 4} = <mark>{1, 2, 6, 7}</mark></p>
+<p>一致したら、今度は和集合演算で <code>tmp</code> を <code>seats</code> に加えます。</p>
+<p>もし埋まっている席が１つでもある場合は結果が <code>seats</code> と一致しません。</p>
+<p class="inlook">seats = {1, 2, 6, 7}<br>tmp = {2, 3} の時<br><br><mark>{1, 2, 6, 7}</mark> - {2, 3} = <span style="background-color: coral;">{1, 6, 7}</span><br>2 番の席が埋まっている為</p>
+<br>
+<p> <code>seats</code> には埋まっている座席番号が入っていますので、その要素数が客の総人数になります。</p>
+<p>集合演算については「<a href="../../2/0090set.html#c2-2h" class="linked" target="_blank">２章 セットさんは重複を許さない</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">例２） セットを使って解く</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>例３）.rotate() メソッドを使って解く</summary>
+<header><h3>.rotate() メソッドを使って解く</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+n, m = map(int,input().split())
+
+seats = deque([0] * n)
+for _ in range(m):
+    a, b = map(int, input().split())
+    b -= 1
+
+    seats.rotate(-b)
+
+    tmp = [seats[i] for i in range(a)]
+    if sum(tmp) == 0:
+        for i in range(a):
+            seats[i] = 1
+
+    seats.rotate(b)
+
+print(sum(seats))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>割った余りとかスライスの範囲とかワケわからなくなって挫折してしまった場合、挫折したままにしておいてはいけないのですが😅、こんなやり方もあります。<br>これは単純に双方向キュー deque の機能 <strong>.rotate()</strong> メソッドを使ってリストを回転し、グループが座る席の最初の座席番号を 0 番目に合わせてから処理する方法です。<br>常に 0 番目から始まるようになりますので、リストの要素数を超えてしまうことがありません。その代わり、<strong>deque はスライスが使えません。</strong></p>
+<p>まず、<code>seats.rotate(-b)</code> で指定した席番号を、要素番号 0 の位置まで引っ張ります。それから <code>tmp</code> でグループが座る予定の席が空いているかをチェックします。空いている場合は要素番号 0 から人数分 <code>1</code> で埋めます。<strong class="for"></strong>文で埋めないといけないのがちょい面倒です。</p>
+<p>終わったら、引っ張った座席を <code>seats.rotate(b)</code> で元の位置に戻しておきます。右へ左へと振られて客は落ち着いて食事できなさそうですが、江戸っ子はなぜかこういうのには寛容なんです。落語噺が１つ作れそうだ。🤣</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">例３）.rotate() メソッドを使って解く</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">長テーブルのうなぎ屋</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>Bランク・スキルチェック見本問題セット</p>
+</footer>
+</body>
+</html>

@@ -17,7 +17,7 @@
 <main>
 
 <section>
-<details id="c1"><summary>長テーブルのうなぎ屋</summary>
+<!-- <details id="c1"><summary>長テーブルのうなぎ屋</summary> -->
 <header><h2>長テーブルのうなぎ屋</h2></header>
 <article>
 <details id="c1-1"><summary>例１） リストを使って解く</summary>
@@ -80,6 +80,7 @@ print(len(seats))
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
+<br>
 <p>次に、現在埋まっている座席 <code>seats</code> からこれから座る予定の座席 <code>tmp</code> を差集合演算を使って求めた結果が <code>seats</code> のままなら、座席は空いているということになります。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
@@ -90,6 +91,14 @@ print(len(seats))
 <!-- ----------------------- code end ----------------------- -->
 <p class="inlook">seats = {1, 2, 6, 7}<br>tmp = {3, 4} の時<br><br><mark>{1, 2, 6, 7}</mark> - {3, 4} = <mark>{1, 2, 6, 7}</mark></p>
 <p>一致したら、今度は和集合演算で <code>tmp</code> を <code>seats</code> に加えます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if seats - tmp == seats:
+    seats.update(tmp)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と、 <strong class="func">.update()</strong> メソッドを使っても同じ結果が得られます。</p>
 <p>もし埋まっている席が１つでもある場合は結果が <code>seats</code> と一致しません。</p>
 <p class="inlook">seats = {1, 2, 6, 7}<br>tmp = {2, 3} の時<br><br><mark>{1, 2, 6, 7}</mark> - {2, 3} = <span style="background-color: coral;">{1, 6, 7}</span><br>2 番の席が埋まっている為</p>
 <br>
@@ -110,17 +119,17 @@ print(len(seats))
 
 n, m = map(int,input().split())
 
-seats = deque([0] * n)
+seats = deque([False] * n)
 for _ in range(m):
     a, b = map(int, input().split())
     b -= 1
 
     seats.rotate(-b)
 
-    tmp = [seats[i] for i in range(a)]
-    if sum(tmp) == 0:
+    tmp = [True for i in range(a) if seats[i]]
+    if not tmp:
         for i in range(a):
-            seats[i] = 1
+            seats[i] = True
 
     seats.rotate(b)
 
@@ -130,7 +139,7 @@ print(sum(seats))
 <!-- ----------------------- code end ----------------------- -->
 <p>割った余りとかワケわからなくなって挫折してしまった場合、挫折したままにしておいてはいけないのですが😅、こんなやり方もあります。<br>これは単純に双方向キュー deque の機能 <strong>.rotate()</strong> メソッドを使ってリストを回転し、グループが座る席の最初の座席番号を 0 番目に合わせてから処理する方法です。<br>常に 0 番目から始まるようになりますので、リストの要素数を超えてしまうことがありません。</p>
 <p>まず、<code>seats.rotate(-b)</code> で指定した席番号を、要素番号 0 の位置まで引っ張ります。</p>
-<p class="inlook">a, = 2, b = 3 の時<br>b - 1 … b = 2<br>【座席番号】 0 1 <mark>2</mark> 3 4 5<br>↓<br>【座席番号】 <mark>2</mark> 3 4 5 0 1</p>
+<p class="inlook">a = 2, b = 3 の時<br>b -= 1 … b = 2<br>【座席番号】 0 1 <mark>2</mark> 3 4 5<br>↓<br>【座席番号】 <mark>2</mark> 3 4 5 0 1</p>
 <p>それから <code>tmp</code> でグループが座る予定の席が空いているかをチェックします。空いている場合は要素番号 0 から人数分 <code>1</code> で埋めます。</p>
 <p class="inlook">【座席番号】 <mark>2 3</mark> 4 5 0 1</p>
 <p>終わったら、引っ張った座席を <code>seats.rotate(b)</code> で元の位置に戻しておきます。</p>
@@ -138,6 +147,74 @@ print(sum(seats))
 <p>右へ左へと振られて客は落ち着いて食事できなさそうですが、江戸っ子はなぜかこういうのには寛容なんです。想像すると滑稽ですね。落語噺が１つ作れそうだ。🤣</p>
 </ul>
 <footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">例３）.rotate() メソッドを使って解く</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">長テーブルのうなぎ屋</a></footer>
+</details>
+</section>
+
+<article>
+<!-- <details id="c1-4"><summary>例４）.rotate() メソッドを使わないで解く</summary> -->
+<header><h3>.rotate() メソッドを使わないで解く</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int,input().split())
+
+seats = [False] * n
+for _ in range(m):
+    a, b = map(int, input().split())
+
+    seats = seats[b:] + seats[:b]
+
+    if not any(seats[:a]):
+        seats[:a] = [True] * a
+
+    seats = seats[n-b:] + seats[:n-b]
+
+print(sum(seats))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は <strong class="func">.rotate()</strong> メソッドを使わないで同じ様な操作をして同じ様に解きますが、リストなのでスライスが使えて便利ぃ～♪版です。</p>
+<p>まず、<code>seats = seats[b:] + seats[:b]</code> で指定した席番号「より前」と「以降」を前後交換します。b から 1 を引く必要はありません。</p>
+<p class="inlook">a = 2, b = 2 の時<br>【座席番号】 0 1 <mark>2 3</mark> 4 5<br>↓<br>【座席番号】 <mark>2 3</mark> 4 5 0 1</p>
+<p>先頭から a 人目までの席が空いているかをチェックします。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if not any(seats[:a]):
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>↓</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if not any([0, 0]):
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>↓</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if not False:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>↓</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if True:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>True</strong> の場合、その座席にグループ全員座れます。</p>
+<p class="inlook">seats = [<mark>1, 1</mark>, 0, 0, 0, 0]</p>
+<p>終わったら、前後交換した座席を <code>seats = seats[n-b:] + seats[:n-b]</code> で元の位置に戻します。</p>
+<p class="inlook">【座席番号】 0 1 <mark>2 3</mark> 4 5</p>
+<br>
+<p>この方法はセットの次に簡単でイメージしやすいかと思います。リストを区切って交換する操作は時々使いますので、こんなやり方もアリでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">例４）.rotate() メソッドを使わないで解く</a></footer>
 </details>
 </article>
 <footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">長テーブルのうなぎ屋</a></footer>

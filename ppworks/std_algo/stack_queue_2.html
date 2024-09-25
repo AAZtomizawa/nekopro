@@ -241,7 +241,7 @@ print(sum(stack))
 <p class="inlook">1000 - 500 = 500 ← 残り読むべきページ数は 500ページ</p>
 <p>となり、<strong class="while"></strong>の条件式 <code>y > 0</code> が <strong>True</strong> なので、もう１冊本を取って読みます。<br>次の本の未読ページが 800ページだった場合、</p>
 <p class="inlook">500 - 800 = -300 ← 300ページ読み切れなかった</p>
-<p>となり、<strong class="while"></strong>の条件式 <code>y > 0</code> が <strong>False</strong> なってループを抜けます。</p>
+<p>となり、<strong class="while"></strong>の条件式 <code>y > 0</code> が <strong>False</strong> となってループを抜けます。</p>
 <p><code>if y:</code> は、本が読み切れなかった場合は<strong>残り300ページ</strong>として本の山に戻………します。😓<br>読み切りなかったときは必ず <code>y</code> が負数になっているので、これを正数にします。<code>abs(y)</code><br>必ず負数になっているので <code>-y</code> でも大丈夫です。</p>
 <p><code>y</code> が <code>0</code>、つまり本一冊をぴったり読み切った時は読み切った本を本の山に返しませんので<strong>何もしません。</strong></p>
 </ul>
@@ -606,7 +606,7 @@ def initialize(cls, n):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>paiza君のインスタンス変数には paiza君の手札とターン数を持たせています。ターンは <strong class="func">main()</strong> 関数の<strong class="for"></strong> でもカウントできますが、わかりやすくインスタンス内でカウントすることにします。</p>
+<p>paiza君のインスタンス変数には paiza君の手札とターン数を持たせています。ターン数は <strong class="func">main()</strong> 関数の<strong class="for"></strong> でもカウントできますが、わかりやすくインスタンス内でカウントすることにします。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">def __init__(self):
@@ -696,7 +696,7 @@ def initialize(cls, n):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>山札のカードを１枚取り、そのカードを除外の山に置く。</p>
+<p>山札のカードを１枚取り、そのカードを除外の山の一番上に置く。</p>
 <br>
 <!-- ------------------------- code ------------------------- -->
 <div>

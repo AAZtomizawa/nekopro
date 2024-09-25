@@ -17,7 +17,7 @@
 <main>
 
 <section>
-<details id="c1"><summary>長テーブルのうなぎ屋</summary>
+<!-- <details id="c1"><summary>長テーブルのうなぎ屋</summary> -->
 <header><h2>長テーブルのうなぎ屋</h2></header>
 <article>
 <details id="c1-1"><summary>例１） リストを使って解く</summary>
@@ -102,7 +102,7 @@ print(len(seats))
 </article>
 
 <article>
-<details id="c1-3"><summary>例３）.rotate() メソッドを使って解く</summary>
+<!-- <details id="c1-3"><summary>例３）.rotate() メソッドを使って解く</summary> -->
 <header><h3>.rotate() メソッドを使って解く</h3></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -130,9 +130,13 @@ print(sum(seats))
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>割った余りとかスライスの範囲とかワケわからなくなって挫折してしまった場合、挫折したままにしておいてはいけないのですが😅、こんなやり方もあります。<br>これは単純に双方向キュー deque の機能 <strong>.rotate()</strong> メソッドを使ってリストを回転し、グループが座る席の最初の座席番号を 0 番目に合わせてから処理する方法です。<br>常に 0 番目から始まるようになりますので、リストの要素数を超えてしまうことがありません。その代わり、<strong>deque はスライスが使えません。</strong></p>
-<p>まず、<code>seats.rotate(-b)</code> で指定した席番号を、要素番号 0 の位置まで引っ張ります。それから <code>tmp</code> でグループが座る予定の席が空いているかをチェックします。空いている場合は要素番号 0 から人数分 <code>1</code> で埋めます。</p>
+<p>まず、<code>seats.rotate(-b)</code> で指定した席番号を、要素番号 0 の位置まで引っ張ります。</p>
+<p class="inlook">a, = 2, b = 3 の時<br>b - 1 … b = 2<br>【座席番号】 0 1 <mark>2</mark> 3 4 5<br>↓<br>【座席番号】 <mark>2</mark> 3 4 5 0 1</p>
+<p>それから <code>tmp</code> でグループが座る予定の席が空いているかをチェックします。空いている場合は要素番号 0 から人数分 <code>1</code> で埋めます。</p>
+<p class="inlook">【座席番号】 <mark>2 3</mark> 4 5 0 1</p>
 <p>終わったら、引っ張った座席を <code>seats.rotate(b)</code> で元の位置に戻しておきます。</p>
-<p>右へ左へと振られて客は落ち着いて食事できなさそうですが、江戸っ子はなぜかこういうのには寛容なんです。落語噺が１つ作れそうだ。🤣</p>
+<p class="inlook">【座席番号】 0 1 <mark>2 3</mark> 4 5</p>
+<p>右へ左へと振られて客は落ち着いて食事できなさそうですが、江戸っ子はなぜかこういうのには寛容なんです。想像すると滑稽ですね。落語噺が１つ作れそうだ。🤣</p>
 </ul>
 <footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">例３）.rotate() メソッドを使って解く</a></footer>
 </details>

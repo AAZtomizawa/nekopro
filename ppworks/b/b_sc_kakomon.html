@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｂランクレベルアップ問題集『Bランク・スキルチェック過去問題セット』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Bランク・スキルチェック過去問題セット</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>Bランク・スキルチェック過去問題セット</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>みんなでしりとり</summary>
+<header><h2>みんなでしりとり</h2></header>
+<article>
+<details id="c1-1"><summary>FINAL問題 みんなでしりとり</summary>
+<header><h3>みんなでしりとり</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import deque
+
+class Player:
+    word_set = None
+    num_player = 0
+    already_said = set()
+    last_letter = ''
+
+    def __init__(self):
+        self.num = self.join()
+        self.s = None  # shiritori() で代入
+        
+    def shiritori(self):
+        self.s = input()
+        if any(self.is_rule_violated()):
+            self.leave_game()
+        else:
+            Player.last_letter = self.s[-1]
+
+        self.already_said.add(self.s)
+
+    def is_rule_violated(self):
+        is_already_said = (self.s in self.already_said)
+        is_not_in_word_set = (self.s not in Player.word_set)
+        is_last_z = (self.s[-1] == 'z')
+        is_not_shiritori = self.is_not_shiritori()
+        
+        return is_already_said, is_not_in_word_set, is_last_z, is_not_shiritori
+    
+    def is_not_shiritori(self):
+        is_not_first_say = Player.last_letter
+        is_not_shiritori = (Player.last_letter != self.s[0])
+
+        return all((is_not_first_say, is_not_shiritori))
+
+    def leave_game(self):
+        Player.num_player -= 1
+        Player.last_letter = ''
+
+    def is_gaming(self):
+        return self.last_letter
+
+    def join(self):
+        Player.num_player += 1
+        return Player.num_player
+    
+    def output_winner(self):
+        print(self.num)
+
+
+def output_result(players):
+    print(Player.num_player)
+    for player in sorted(players, key=lambda x:x.num):
+        player.output_winner()
+    
+    return
+
+def main(M, players):
+    for _ in range(M):
+        now_player = players.popleft()
+        now_player.shiritori()
+        
+        if now_player.is_gaming():
+            players.append(now_player)
+
+    output_result(players)
+
+def setup():
+    N, K, M = map(int, input().split())
+    word_set = set(input() for _ in range(K))
+    Player.word_set = word_set
+    players = deque([Player() for _ in range(N)])
+
+    return M, players
+
+
+if __name__ == '__main__':
+    main(*setup())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>複雑でなかなかの難易度だと思います。クラス型で組むと長くなってしまいますが、それぞれの関数やメソッドが何をしているのか見てわかると思います。</p>
+<p>クラス変数には「発言で使える単語リスト」「参加中のプレイヤー人数」「発言済み単語リスト」「前者が発言した単語の最後の文字」を持たせています。<br>インスタンス変数には「ゲームに参加中かどうか」「プレイヤー番号」を持たせています。<code>self.s</code> は、発言中のプレイヤーの発言ワードです。</p>
+<p>インスタンスを作成すると、自動でプレイヤー番号が与えられるようになっています。ゲームから脱落すると脱落者のインスタンスを消すので、残っているプレイヤーが何番のプレイヤーかを最後に出力するのに使います。このインスタンスは双方向キューの deque に格納します。訳については後程説明します。</p>
+</ul>
+<ul>
+<p>セットアップが終わったら <strong class="func">main()</strong> 関数です。まず <code>players</code> の先頭のプレイヤー(インスタンス)を取り出して、変数 <code>now_player</code> に移します。このプレイヤーのターンとなります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def shiritori(self):
+    self.s = input()
+    if any(self.is_rule_violated()):
+        self.leave_game()
+    else:
+        Player.last_letter = self.s[-1]
+
+    self.already_said.add(self.s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ルールは４+１個です。</p>
+<ol>
+<li>発言は、単語リストの単語のみ可</li>
+<li>直前に出た単語の末尾の文字を頭文字とした単語を選ぶこと</li>
+<li>直前のプレイヤーが脱落したら、ルール2 は不履行</li>
+<li>発言済みの単語は使えない</li>
+<li>z で終わる単語は使えない</li>
+</ol>
+<p><code>if any(self.is_rule_violated()):</code> の内容はこちらです。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def is_rule_violated(self):
+    is_already_said = (self.s in self.already_said)
+    is_not_in_word_set = (self.s not in Player.word_set)
+    is_last_z = (self.s[-1] == 'z')
+    is_not_shiritori = self.is_not_shiritori()
+    
+    return is_already_said, is_not_in_word_set, is_last_z, is_not_shiritori
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ルール違反をしている場合は <strong>True</strong> と判定しています。</p>
+<p>次のプログラムではルールを１つでも違反している場合は <strong>True</strong>、違反なく全てパスしている場合は <strong>False</strong> で処理されます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if any(self.is_rule_violated()):
+    self.leave_game()
+else:
+    Player.last_letter = self.s[-1]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<p>ルール2 と ルール3 の判定は、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def is_not_shiritori(self):
+    is_not_first_say = Player.last_letter
+    is_not_shiritori = (Player.last_letter != self.s[0])
+
+    return all((is_not_first_say, is_not_shiritori))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>このメソッドで行なわれています。最後に発言された単語の末尾の文字は、クラス変数の <code>last_letter</code> に入っています。この文字と今回発言した単語の頭文字が<strong>不一致</strong>ならば <strong>True</strong> を返します。(ルール違反をしたということです)<br><code>last_letter</code> の文字列が <code>''</code> ヌルストリング<em>(null string)</em> の時は ルール3 が適用され、頭文字は考慮しなくてよくなります。</p>
+<p>この判定がややこしくて困りますね。評価をルールに違反していない場合で組むよりも、このプログラム例や paiza の解答コード例のように、評価を「ルールに違反した場合」にしたほうが組みやすい気がします。</p>
+<p>これらルールをオールグリーンでパスしたら <code>Player.last_letter</code> に、今回発言した単語の末尾の文字を代入します。</p>
+<p>そして、発言した単語は発言済みリスト(セットだけど)に追加します。</p>
+<p><small>※ ここだけの話、ルール2 の判定をしなくても 100点が取れてしまいます。もはやしりとりではない。😓</small></p>
+</ul>
+<ul>
+<p>次に、失言で脱落したプレイヤーの行く末を処理します。😱</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def leave_game(self):
+    Player.num_player -= 1
+    Player.last_letter = ''
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>Player.num_player</code> から 1 を引いてプレイヤー人数を減らします。<br>
+<code>Player.last_letter</code> を <code>''</code> にするのですが、これは、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def is_gaming(self):
+    return self.last_letter
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで <code>''</code> を脱落者とみなしている為です。<code>''</code> は <strong>False</strong>、文字が入っていれば <strong>True</strong> です。</p>
+<p>この判定については「<a href="../../2/0020truefalse.html#c4-4h" class="linked" target="_blank">２章 bool型 True と False</a>」で学習できます。bool型の学習は重要度大です！</p>
+<p>同時に、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def is_not_shiritori(self):
+    is_not_first_say = Player.last_letter
+    is_not_shiritori = (Player.last_letter != self.s[0])
+
+    return all((is_not_first_say, is_not_shiritori))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分でも ルール3 の履行判定として使っています。<code>''</code> の時は直前のプレイヤーが脱落したので、頭文字は何でもよいということです。</p>
+<br>
+<li><strong class="func">main()</strong> 関数</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if now_player.is_gaming():
+    players.append(now_player)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>脱落者の<s>処分</s>処理はまだ終わりではありません。<br>プレイヤーのインスタンスは <code>players</code> の先頭からポップして <code>now_player</code> に移しています。現在 <code>players</code> にあるインスタンスは待機中のプレイヤーで、<code>now_player</code> は現在のターン中のプレイヤーです。</p>
+<p>オールグリーンでパスした <code>now_player</code> はゲーム続行可能な為、<code>players</code> の末尾(順番の最後)に再び加えるという二行です。<br>しかし脱落者は <code>players</code> に追加されず、そのまま消されます。😱ｺﾜｲ</p>
+<p>こうして <code>players</code> には常にゲームに参加中のプレイヤーのみが残り、順序が回転しながらゲームが継続されていきます。<br></p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def output_result(players):
+    print(Player.num_player)  # 出力 1
+    for player in sorted(players, key=lambda x:x.num):
+        player.output_winner()  # 出力 2
+    
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最後に結果を画面に出力します。１つは勝ち残っているプレイヤーの人数です。これはクラス変数の <code>num_player</code> を出力するだけです。ここから直接クラス変数にアクセスして画面に出力しています。</p>
+<p>もう１つは勝ち残ったプレイヤーの番号です。昇順で出力することになっていますので、昇順ソートして順に画面に出力していきます。lambda で直接 <code>num</code> をターゲットに指定します。<code>num</code> とは、インスタンス変数の <code>self.num</code>、インスタンス作成時に各プレイヤーに与えられた番号です。<br>これだけで <code>num</code> をターゲットにインスタンスを昇順ソートしてくれます。簡単だ。😁</p>
+</ul>
+<ul>
+<p>この問題は「プレイヤー」を複数作成させるということで<strong>クラス型</strong>で作りました。他にも<strong>キュー</strong>を使っています。Ｂランク問題は時々あまりに複雑すぎてクラスで作ったほうがわかりやすくなる問題もあります。特に人や物が持つ値が多い時はインスタンスがものすごく便利です。</p>
+<p>オブジェクト指向をまったく知らなくても、まったく使わなくてもプログラムは組めますが、複雑なプログラムほどクラス型は重宝します。ぜひ頑張って勉強してクラス型で書けるようになっておきましょう。</p>
+<p>わかるようになると全然難しくなかったりするんですよね、これが。😅 あまりに構造が違うために最初に難しく考えすぎてしまうから、実は簡単であることに気付けないでいるだけなんです。またイチからの学び直しと感じて気分が憂鬱になってしまうのもあります。手続型で不便はないと感じていても、クラス型で組めるようになると今度はクラス型でないと不便と感じるようになるのです。</p>
+<p>私がオブジェクト指向を理解したきっかけが、私はとあるメーカーの事務機器の製造や修理に関わる工場勤務をしていたのですが、「あ、アレと同じじゃない？」と気付いたら一気に組めるようになりました。フレーム(本体)にアッセンブリと呼ばれる組み立て済みのユニットを次々嵌めていく様がモジュールと一致します。そのアッセンブリを組み立てる時に使う部品１つ１つがメソッドと一致します。コンストラクタはコネクタで、メソッドの呼び出しは操作ボタンで、スタートボタンを１回押すだけで全てを自動でやってくれるところがオブジェクト指向のしくみや思想と一致します。「カプセル化はカバーじゃね？だったらカプセル化は大事だよ！」とか思ったらなんだか可笑しくなりました。🤣</p>
+<p>スキルチェックＢランク問題は手続型でも組めますが、クラス型を学んだらもう一度そのプログラムをクラス型で組みなおしてみるとメキメキと上達していくと思います。私がそうでした。今は ChatGPT があるからとても学びやすい！</p>
+<p>初歩の部分だけですが「<a href="../../3/0050class.html" class="linked" target="_blank">３章 オブジェクト指向</a>」でクラス型の基本形を学習できます。<br>問題集の「<a href="./class.html" class="linked" target="_blank">クラス・構造体メニュー</a>」もまだの方はぜひ修了しておきましょう！</p>
+<p>オブジェクト指向は面白いよ！</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">FINAL問題 みんなでしりとり</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">みんなでしりとり</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>3Dプリンタ</summary>
+<header><h2>3Dプリンタ</h2></header>
+<article>
+<details id="c2-1"><summary>FINAL問題 3Dプリンタ</summary>
+<header><h3>3Dプリンタ</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">X, Y, Z = map(int, input().split())
+results = [['.'] * Y for _ in range(Z)]
+
+for z in range(Z):
+    for _ in range(X):
+        cells = input()
+        for y in range(Y):
+            if cells[y] == '#':
+                results[z][y] = '#'
+    input()  # 邪魔な -- を無視する
+
+for result in results[::-1]:
+    print(*result, sep='')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>単純に x 軸を無視するとそれが答えになります。<br>入力例はブロックを上から見た図になっています。これを下から順に積み上げていきます。</p>
+<p>この上から見たブロックを正面から見ると、</p>
+<p class="inlook">♯♯<mark>♯</mark><br>♯<mark>♯</mark>・<br><mark>♯</mark>・・<br>↑↑↑　← 正面から見る<br><mark>♯♯♯</mark>　← ①</p>
+<p>という見え方になります。これが問題文にある絵図の一番下の段です。これをすべて見てみると、</p>
+<p class="inlook">♯♯・<br><mark>♯♯</mark>・<br>・・・<br>↑↑↑<br><mark>♯♯</mark>・　← ➁</p>
+<p class="inlook">♯♯・<br><mark>♯♯</mark>・<br>・・・<br>↑↑↑<br><mark>♯♯</mark>・　← ➂</p>
+<p>これを下から積み上げると、</p>
+<p class="inlook">♯♯・　← ➂<br>♯♯・　← ➁<br>♯♯♯　← ①</p>
+<p>と、出力例1 と同じ結果となります。</p>
+</ul>
+<ul>
+<p>これをプログラムにします。</p>
+<p>初めに Y軸と同じ幅、Z軸と同じ高さの <code>.</code> で埋めたマップを作ります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">results = [['.'] * Y for _ in range(Z)]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook">・・・<br>・・・<br>・・・</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for z in range(Z):
+    for _ in range(X):
+        cells = input()
+        for y in range(Y):
+            if cells[y] == '#':
+                results[z][y] = '#'
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Z軸の一番下の段からループします。三重ループともなると、とてもわかりにくくくなりますね。😓 想像力の有無で難易度も上下するでしょう。</p>
+<p>X軸は一番奥からループします。ここで入力を受け取っています。</p>
+<p>Y軸は一番左のセルから順に <code>cells[y]</code> が <code>#</code> の時は、新しく作ったマップ <code>results</code> の <code>results[z][y]</code> に <code>#</code> を書き写します。これは X 軸を無視して正面から見える Y軸の部分を書き写しています。一度書き写された所に <code>#</code> があっても上書きします。</p>
+<p class="inlook">【ループX】<br><mark>♯♯♯</mark> ← １回目<br><mark>♯♯</mark>・ ← ２回目<mark>上書き</mark><br><mark>♯</mark>・・ ← ３回目<mark>上書き</mark><br>↑↑↑<br><mark>♯♯♯</mark> ← ループZ １回目結果<br>y0y1y2</p>
+<p class="inlook">【ループX】<br><mark>♯♯</mark>・ ← １回目<br><mark>♯♯</mark>・ ← ２回目<mark>上書き</mark><br>・・・ ← ３回目<br>↑↑↑<br><mark>♯♯・</mark> ← ループZ ２回目結果<br>y0y1y2</p>
+<p class="inlook">【ループX】<br><mark>♯♯</mark>・ ← １回目<br><mark>♯♯</mark>・ ← ２回目<mark>上書き</mark><br>・・・ ← ３回目<br>↑↑↑<br><mark>♯♯・</mark> ← ループZ ３回目結果<br>y0y1y2</p>
+<br>
+<p>ループZ を終えると、新しく作ったマップには以下の様な形に書き写されています。</p>
+<p class="inlook">♯♯♯　← ①<br>♯♯・　← ➁<br>♯♯・　← ➂<br>result = [['#','#','#'], ['#','#','.'], ['#','#','.']]</p>
+<p>これを線対称に上下反転させて画面に平面出力すれば完了です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for result in results[::-1]:
+    print(*result, sep='')
+</code></pre>
+<code>##.</code><br>
+<code>##.</code><br>
+<code>###</code><br>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook">♯♯・　← ➂<br>♯♯・　← ➁<br>♯♯♯　← ①<br>result = [['#','#','.'], ['#','#','.'], ['#','#','#']]</p>
+<p>テキストだけで立体の解説をするの難しいよ。😅</p>
+</ul>
+<ul>
+<p>【おまけ】</p>
+<p>ループZ の書き方を次の様にすると、最後反転する必要がなくなります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">X, Y, Z = map(int, input().split())
+results = [['.'] * Y for _ in range(Z)]
+
+for z in range(Z-1, -1, -1):  # ← ココ
+    for _ in range(X):
+        cells = input()
+        for y in range(Y):
+            if cells[y] == '#':
+                results[z][y] = '#'
+    input()
+
+for result in results:  # ← 反転不要になる
+    print(*result, sep='')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">FINAL問題 3Dプリンタ</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">3Dプリンタ</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>神経衰弱（オリジナル）</summary>
+<header><h2>神経衰弱（オリジナル）</h2></header>
+<article>
+<details id="c3-1"><summary>STEP: 1 神経衰弱（力試し編）</summary>
+<header><h3>神経衰弱（力試し編）</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def turn_up_cards(turn, a, b, A, B):
+    if t[a-1][b-1] == t[A-1][B-1]:
+        return 2, turn
+    else:
+        return 0, turn + 1
+
+
+H, _, N = map(int, input().split())
+t = [list(map(int, input().split())) for _ in range(H)]
+L = int(input())
+
+points = [0] * N
+turn = 0
+for _ in range(L):
+    a, b, A, B = map(int, input().split())
+    pnt, turn = turn_up_cards(turn, a, b, A, B)
+    points[turn % N] += pnt
+
+print(*points, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>なんだか不完全な問題ですね。😓 入力やテストケースではカードが取り除かれて存在しない場所が与えられていないようなので、カードを取り除く処理を作らなくても 100点が取れてしまいます。そういうところも読み解いてラクをしなさいという意図が込められているのならそうします。😊 正解率が高く、難易度が低すぎるのも、みんなこれに気付いたからでしょうか？😉</p>
+<p>この問題の処理は単純に、</p>
+<ol>
+<li>めくったカードの数が一致していれば２枚ゲット</li>
+<li>一致しなければ次の人へ</li>
+</ol>
+<p>これだけで済みます。１番は関数の通りです。２番はちょっとわかりにくいことをしています。めくったカードが<strong>一致していなければ</strong>、取ったカードの枚数を 0 枚にして、<code>turn + 1</code> で次の人に順番をまわしています。しかしこの後に、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">points[turn % N] += pnt
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>「次のターンの人が持っているカード枚数に 0 を足す」</strong>という処理をしています。自分のに足せよ！😆<br>結果オーライなのでまぁいいかと放置しています。やたらいい加減なプログラム例でした。😁</p>
+<p>なんかやる気しないなこの問題。解説もいい加減になってしまった。😓</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 神経衰弱（力試し編）</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">神経衰弱（オリジナル）</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>名刺バインダー管理</summary>
+<header><h2>名刺バインダー管理</h2></header>
+<article>
+<details id="c4-1"><summary>FINAL問題 名刺バインダー管理</summary>
+<header><h3>名刺バインダー管理</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+p1 = -n * 2
+p2 = m % p1 * 2
+print(p1 - p2 + m + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>自分で考えてプログラムしたものなのに、なぜこれで正しく動くのかよくわかっていません。😓<br>もともと最初に提出した以下のプログラムから改善を重ねていたらこの状態に行き着いたのです。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">pocket, No = map(int, input().split())  # pocket = ポケットの数 , No = 名刺番号
+np2 = No % (pocket * 2)  # np2 = 係数
+
+if 0 < np2 <= pocket:  # 右ページ
+    result = pocket * 2 - (np2 * 2 - 1) + No
+elif pocket < np2 < pocket * 2:  # 左ページ
+    result = pocket * 2 - np2 * 2 + 1 + No
+elif np2 == 0:  # 係数が 0 の時
+    result = No + (pocket * -2 + 1)
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>↓</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">pocket, m = map(int, input().split())
+n1 = pocket * 2
+n2 = m % n1  # n2 = 係数(ポケットの x 位置)
+
+ans = (-n1 if n2 == 0 else n1 - n2 * 2) + m + 1
+
+print(ans)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>↓</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+p1 = -n * 2
+p2 = m % p1 * 2
+print(p1 - p2 + m + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>わかりそうでわからん。🤣<br>実際に数値を当ててみて証明してみようと思ったのですが・・・わかりませんでした。脳が考えることを拒絶している………。</p>
+<p>よって解説不可能です。ごめんなさい！😽<br>むしろ証明できる方がいましたら私に詳しく解説してほしいものです。😅</p>
+<p>それにしても、組んだプログラムから数式に変換できるなんてすごいね！(自画自賛)</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">FINAL問題 名刺バインダー管理</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">名刺バインダー管理</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>値の計算</summary>
+<header><h2>値の計算</h2></header>
+<article>
+<details id="c5-1"><summary>STEP: 1 値の計算</summary>
+<header><h3>値の計算</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def serial(q):
+    return resistor[q]
+
+def parallel(q):
+    return 1 / sum(1 / resistor[c] for c in list(q))
+
+def calc_resistance_value(t):
+    return sum([serial(q) if len(q) == 1 else parallel(q) for q in t])
+
+
+N = int(input())
+resistor = {s: int(w) for _ in range(N) for s, w in [input().split()]}
+_ = input()
+t = input().split()
+
+print(int(calc_resistance_value(t)))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>電気のことがわからなくても、問題の中で解き方が全て語られています。<br>「分数に分数？」……それも書き方が書かれています。その割に正解率が低いですね。</p>
+<p>パッと思いついたやり方がこのプログラム例の方法です。それぞれの抵抗は辞書にすると後々簡単です。</p>
+<p>プログラムの中枢は <strong class="func">calc_resistance_value()</strong> です。直列が <strong class="func">serial()</strong> 関数で、並列が <strong class="func">parallel()</strong> 関数です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def serial(q):
+    return resistor[q]
+
+def parallel(q):
+    return 1 / sum(1 / resistor[c] for c in list(q))
+
+def calc_resistance_value(t):
+    return sum([serial(q) if len(q) == 1 else parallel(q) for q in t])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>アルファベットが一文字の時は直列である <strong class="func">serial()</strong> 関数で、アルファベット二文字以上の時は <strong class="func">parallel()</strong> 関数でそれぞれ処理し、計算結果を返します。それら計算結果はリストに収められ、そのリストの要素を全て足すと抵抗器の値が求められます。</p>
+<p>この時点では値がまだ浮動小数型となっていますので、ここで整数型に変換して画面に出力すれば完了です。</p>
+<br>
+<p>ちなみに条件に<strong class="b">『t_i (1 ≦ i ≦ M) の長さは 1000 以下である』</strong>とあるように<strong>並列時の抵抗が最大で1000個ある</strong>ので、<mark>AB</mark> の文字と文字を分離する為に Python3 では必然的に <code>list(q)</code> という書き方が浮かぶと思います。この条件を見落として入力値の <mark>AB</mark> や問題文の絵図を見て「並列 = 抵抗は２つ」と先入観を抱いてしまった方々が正解率を下げてしまっているのかなと思います。スキルチェックではこういうところもすべてチェックして理解することが大切です。特にＢランクは、問題をよく読んで理解してからプログラムに取り掛かったほうが早く解けると思います。よく読んでもうっかり勘違いをしていることに気付くのに数時間から数日かかったりすることもよくある<s>私</s> 話です。😁</p>
+<p>あとは <code>q</code> の文字数が１つかそれ以外かで直列並列を振り分けられれば、他は問題文に書かれているやり方を参考にプログラムを組めば、形は違えども部分的にはプログラム例のようになると思います。</p>
+<p>参考になったかはわかりませんが、それでは STEP 2 以降、頑張ってください。👋</p>
+</ul>
+<footer><a class="backto" href="#c5-1" onclick="closeAccordion('c5-1')">STEP: 1 値の計算</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">値の計算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>「地下アイドルの夢」</summary>
+<header><h2>「地下アイドルの夢」</h2></header>
+<article>
+<details id="c6-1"><summary>STEP: 1 地下アイドルの夢</summary>
+<header><h3>「地下アイドルの夢」</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M = map(int, input().split())
+
+gappori_money = 0
+if N > 0 and M > 0:
+    e = [list(map(int, input().split())) for _ in range(M)]
+    profits = [v for values in e if (v:=sum(values)) > 0]
+    gappori_money = sum(profits)
+
+print(gappori_money)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題が長かったわりに単純なプログラムになりました。最初、組み合わせ問題かと思って気が遠くなってました。😅</p>
+<p>これは<strong>ライブごとの収益の見込みから、1円以上になるライブの収益を全て足す</strong>だけでした。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">profits = [v for values in e if (v:=sum(values)) > 0]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これは今言った<strong class="b">『ライブごとの収益の見込みから、1円以上になるライブ』</strong>のリストを作っています。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">gappori_money = sum(profits)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これが<strong class="b">『1円以上になるライブを全て足す』</strong>ところです。</p>
+<br>
+<p>問題は「N や M が 0 の時」です。N と M の<strong>入力直後に</strong>この条件の為の <strong class="if"></strong>文を書かないと、次の入力、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">e = [list(map(int, input().split())) for _ in range(M)]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>で、ランタイムエラーが発生してしまいます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">EOFError: EOF when reading a line
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>あっしがやっちめぇやした。😜ﾃﾍｯ 😜ﾃﾍｯ 😜ﾃﾍﾃﾍｯ</p>
+</ul>
+<ul>
+<p>それでは STEP 2 以降、頑張ってください。</p>
+</ul>
+<footer><a class="backto" href="#c6-1" onclick="closeAccordion('c6-1')">STEP: 1 地下アイドルの夢</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">「地下アイドルの夢」</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>Bランク・スキルチェック過去問題セット</p>
+</footer>
+</body>
+</html>

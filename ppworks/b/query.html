@@ -1196,7 +1196,7 @@ left += 10
 </section>
 
 <section>
-<details id="c4"><summary>点の幅</summary>
+<!-- <details id="c4"><summary>点の幅</summary> -->
 <header><h2>点の幅</h2></header>
 <article>
 <details id="c4-1"><summary>STEP: 1 'I' の数</summary>
@@ -1276,7 +1276,7 @@ if __name__ == '__main__':
 </article>
 
 <article>
-<details id="c4-2"><summary>STEP: 2 ドーナツ</summary>
+<!-- <details id="c4-2"><summary>STEP: 2 ドーナツ</summary> -->
 <header><h3>ドーナツ</h3></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -1363,8 +1363,11 @@ for y in range(H):
 <!-- ----------------------- code end ----------------------- -->
 <p>今までは二次元区間和の範囲が入力で与えられていましたが、今回はドーナツの中心の位置と一辺の長さだけしか与えられていません。その為、計算して各位置を割り出す必要があります。</p>
 <p><code>y</code> と <code>x</code> はドーナツの中心の位置です。<code>B</code> は一辺の長さなので、それを２で割った商を求めて <code>y</code> と <code>x</code> にそれぞれ足すと、ドーナツの右下の位置が求められます。</p>
-<p>条件に『S_i , B_i は奇数』とありますので <code>B // 2</code> で商を求めれば、必ず余りが 1 になります。<strong>この余りの 1 がドーナツの中心</strong>です。<br>「S_i , B_i も奇数」であることで必ず中心ができ、<strong class="b">ドーナツやドーナツの穴の大きさが偶数になる(中心がずれる)せいで、いびつな形のドーナツになったりすることはありません</strong>という保証になっています。</p>
-<p>その位置から y 方向と x 方向共に <code>B</code> を引くとドーナツの外側の位置が求められます。</p>
+<p>例えば１辺の長さが 5 の時、5 // 2 = 2 になります。ドーナツの中心から下へ <mark>y + 2</mark>、右へ <mark>x + 2</mark> の位置がドーナツの右下の位置になり、これがそれぞれ <code>y + B // 2</code> <code>x + B // 2</code> です。</p>
+<p>● ● ● ● ●<br>● ● ● ● ●<br>● ● ㊥ ● ●<br>● ● ↓ ● ●<br>● ● ② → ② 👈[yy][xx]</p>
+<p>条件に『S_i , B_i は奇数』とありますが、 <code>B // 2</code> で商を求めれば、必ず余りが 1 になります。<strong>この余りの 1 がドーナツの中心</strong>です。<br>「S_i , B_i も奇数」であることで必ず中心ができ、<strong class="b">ドーナツやドーナツの穴の大きさが偶数になる(中心がずれる)せいで、いびつな形のドーナツになったりすることはありません</strong>という保証になっています。</p>
+<br>
+<p>ドーナツの右下の位置 yy, xx から y 方向と x 方向共に <code>B</code> を引くとドーナツの外側の位置が求められます。</p>
 <p><pre>0  0  0  0  0  0<br>0  7 15 24 32 <span style="background-color: cornflowerblue;">37</span><br>0 11 21 <span style="background-color: aqua;">36 46 52</span><br>0 13 28 <span style="background-color: aqua;">46 <span style="background-color: black; color: white;">65</span> 72</span><br>0 14 <span style="background-color:greenyellow ;">32</span> <span style="background-color: aqua;">53 74 84</span><br>0 16 37 60 87 103</pre></p>
 <p class="inlook">y, x, B, S = 3, 4, 3, 1<br>yy = y + B // 2 = 4<br>xx = x + B // 2 = 5<br>cum_sum[4][5] が型を取ったドーナツ右下の <span style="background-color: aqua;">84</span></p>
 <p class="inlook">cum_sum[yy-B][xx]<br>yy - B = 4 - 3 = 1<br>cum_sum[1][5] の <span style="background-color: cornflowerblue;">37</span><br><br>cum_sum[yy][xx-B]<br>xx - B = 5 - 3 = 2<br>cum_sum[4][2] の <span style="background-color:greenyellow ;">32</span></p>
@@ -1610,7 +1613,7 @@ def initialize(cls, N, S, x, srd_maxes, srd_mins):
 <p>最後に両者の得点を比較して勝敗を宣言します。これらを K 回勝負してゲームは終了します。</p>
 </ul>
 <ul>
-<p>クエリ処理は入力を受け取り、その値に従って処理をするのみなのですが、処理量が膨大で時間がかなりかかってしまったり、入力値が常にわかりやすいものとは限りません。「ドーナツ」のように点しか与えられないものや、入力が不規則で変数に割り振るのに苦労するのはこのメニューをこなしてきて身に染みたことでしょう。既知のアルゴリズムも必要になります。</p>
+<p>クエリ処理は入力を受け取り、その値に従って処理をするのみなのですが、処理量が膨大で時間がかなりかかってしまったり、入力値が常にわかりやすいものとは限りません。「ドーナツ」のように点と線から位置を推理🕵しなければならなかったり、入力が不規則で変数に割り振るのに苦労するのはこのメニューをこなしてきて身に染みたことでしょう。既知のアルゴリズムも必要になります。</p>
 <p>しかしそれを考えまくってうまく処理できるようになると気持ちがいいです。方法は１つではないのでいろいろなやり方を試して経験し、柔軟な思考をもって自分なりの最適解を見つけられるようになると楽になります。あえてニッチなやり方にも挑戦してみるのも全然アリですので、たくさん改造して遊びましょう！魔改造が一番身に付きますよ！</p>
 </ul>
 <footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">FINAL問題 点の幅</a></footer>

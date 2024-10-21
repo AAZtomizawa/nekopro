@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../../css/style.css">
 <link rel="stylesheet" href="../../css/prism_coy.css">
-<link rel="canonical" href="https://aaztomizawa.github.io/nekopro/" />
 <script type="text/javascript" src='../../js/prism.js'></script>
 <script type="text/javascript" src='../../js/custom.js'></script>
 <title>【paiza問題集 解説】クエリメニュー</title>
@@ -1033,9 +1032,9 @@ for _ in range(K):
 <ul>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">    else:  # バケットの範囲外の時は、1つずつ調べていく
-        max_ = max(max_, A[left])
-        left += 1
+<pre><code class="language-python">else:  # バケットの範囲外の時は、1つずつ調べていく
+    max_ = max(max_, A[left])
+    left += 1
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1049,9 +1048,9 @@ for _ in range(K):
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">while left <= right:
-        if (left % x == 0) and (left + x-1 <= right):
-            max_ = max(max_, srd_maxes[left // x])
-            left += x  # 次のバケットの先頭へ飛ぶ
+    if (left % x == 0) and (left + x-1 <= right):
+        max_ = max(max_, srd_maxes[left // x])
+        left += x  # 次のバケットの先頭へ飛ぶ
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -1172,9 +1171,9 @@ left += 10
 <ul>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">    else:  # バケットの範囲外の時は、1つずつ調べていく
-        max_ = max(max_, A[left])
-        left += 1
+<pre><code class="language-python">else:  # バケットの範囲外の時は、1つずつ調べていく
+    max_ = max(max_, A[left])
+    left += 1
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->

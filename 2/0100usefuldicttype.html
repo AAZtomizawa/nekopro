@@ -1347,7 +1347,9 @@ lst.sort(A)
 <br>
 
 <li><p>値がリストの場合の例の結果と比較してみます。</p>
+<div class="x-fit">
 <p><code class="output">[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code></p>
+</div>
 <p>A : 値のリストの <strong>要素 0</strong> で降順ソート <code>-x[1][0]</code><br>
   B : 値のリストの <strong>要素 1</strong> で昇順ソート <code>x[1][1]</code><br>
   C : キーで昇順ソート <code>x[0]</code></p>
@@ -1373,25 +1375,27 @@ lst.sort(A)
 <pre><code class="language-python">sorted_kisaragi = sorted(kisaragi.items())
 print(sorted_kisaragi)
 </code></pre>
-
+<div class="x-fit">
 <code>[('alice', [100, 200]), ('rokugou', [6, 100]), ('snow', [6, 19])]</code><br>
+</div>
 <br>
 
 ２回目 B (値のリストの <strong>要素 1</strong> で昇順ソート)
 <pre><code class="language-python">sorted_kisaragi.sort(key=lambda x:x[1][1])
 print(sorted_kisaragi)
 </code></pre>
-
+<div class="x-fit">
 <code>[('snow', [6, 19]), ('rokugou', [6, 100]), ('alice', [100, 200])]</code><br>
+</div>
 <br>
 
 ３回目 A (値のリストの <strong>要素 0</strong> で降順ソート)
 <pre><code class="language-python">sorted_kisaragi.sort(key=lambda x:x[1][0], reverse=True)
 print(sorted_kisaragi)
 </code></pre>
-
+<div class="x-fit">
 <code>[('alice', [100, 200]), ('snow', [6, 19]), ('rokugou', [6, 100])]</code><br>
-
+</div>
 <br>
 <p>まとめると</p>
 

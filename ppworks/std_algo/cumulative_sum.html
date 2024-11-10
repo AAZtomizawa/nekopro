@@ -2706,7 +2706,7 @@ r = 1, len_A = 10
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><code>r <= len_A</code> は、<code>r</code> が数列の中にいる間、ループします。<br><code>cum_sum[r] - cum_sum[l-1] <= 15</code> が、累積和で総和を求めている所です。<br><mark>数列A</mark> の先頭は、<code>cum_sum</code> の要素番号 1 なので、初期値は <mark>l = 1</mark>, <mark>r = 1</mark> です。</p>
+<p><code>r <= len_A</code> は、<code>r</code> が数列の中にいる間、ループします。<br><code>cum_sum[r] - cum_sum[l-1] <= 15</code> が、累積和で区間和を求めている所です。<br><mark>数列A</mark> の先頭は、<code>cum_sum</code> の要素番号 1 なので、初期値は <mark>l = 1</mark>, <mark>r = 1</mark> です。</p>
 <p class="inlook">cum_sum[1] - cum_sum[0] &lt;= 15<br>↓<br>1 - 0 &lt;= 15 … <strong>True</strong></p>
 <p>となり、<strong>True</strong> の間は <code>r += 1</code> だけが実行されます。</p>
 <div class="x-fit">

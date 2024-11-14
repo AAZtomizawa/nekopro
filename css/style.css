@@ -39,7 +39,7 @@ footer {
 
     #ft::after {
         font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-        content: "\Aネコにしかわからない プログラミング入門 \A© 2024 富沢エアズ";
+        content: "\Aネコにしかわからない プログラミング入門 \A© 2024 富沢エアズ (Lnekox)";
         white-space: pre;
 }
 

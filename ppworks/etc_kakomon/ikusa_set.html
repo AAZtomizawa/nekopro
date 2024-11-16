@@ -270,19 +270,19 @@ for _ in range(n):
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">def line_symmetry(plane):
-  return ([row[::-1] for row in plane] == plane) or (plane[::-1] == plane)
+    return ([row[::-1] for row in plane] == plane) or (plane[::-1] == plane)
 
 def point_symmetry(plane):
-  return [row[::-1] for row in plane[::-1]] == plane
+    return [row[::-1] for row in plane[::-1]] == plane
 
 def get_result(ls, ps):
-  results = {
-      ( True,  True) : 'line point symmetry',
-      ( True, False) : 'line symmetry',
-      (False,  True) : 'point symmetry',
-      (False, False) : 'none'
-  }
-  return results[ls, ps]
+    results = {
+        ( True,  True) : 'line point symmetry',
+        ( True, False) : 'line symmetry',
+        (False,  True) : 'point symmetry',
+        (False, False) : 'none'
+    }
+    return results[ls, ps]
 
 
 n, _ = map(int, input().split())

@@ -319,7 +319,7 @@ print(f"{hour+d:0>2}:{m:0>2}")
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p><code>divmod(minute+30, 60)</code> は、<mark>minute+30 // 60</mark> と <mark>minute+30 % 60</mark> を計算してくれます。結果が <mark>(div, mod)</mark> の形で返るので、これを <code>d, m</code> にアンパック代入します。</p>
+<p><code>divmod(minute+30, 60)</code> は、<mark>(minute+30) // 60</mark> と <mark>(minute+30) % 60</mark> を計算してくれます。結果が <mark>(div, mod)</mark> の形で返るので、これを <code>d, m</code> にアンパック代入します。</p>
 <p><code>d</code> は 分 + 60 の繰り上がり分、<code>m</code> はそのまま 分 となります。</p>
 <p><strong class="func">.zfill()</strong>メソッドで 0 埋めできますが、どうしても冗長になってしまいます。そんな時は f文字列が便利です。</p>
 </ul>
@@ -349,7 +349,7 @@ for _ in range(N):
 <!-- ----------------------- code end ----------------------- -->
 <p>入力した文字列を分割していくのが大変です。まずは時刻と時間に分割します。次に時刻を <mark>:</mark> で分割します。次に時間を分割します。</p>
 <p><code>tm</code> は時刻の「分」、<code>m</code> は外出している時間の「分」。これを足して 60 で割ります。</p>
-<p>そして時刻の「時」の部分と外出時間の「時」の部分と <mark>tm + m // 60</mark> の <code>time_h</code> を足すと帰宅時刻の「時」の部分が出るので、これを 24 で割って 24時間制にします。(26時なら <mark>26 % 24</mark> で 2時に)</p>
+<p>そして時刻の「時」の部分と外出時間の「時」の部分と <mark>(tm + m) // 60</mark> の <code>time_h</code> を足すと帰宅時刻の「時」の部分が出るので、これを 24 で割って 24時間制にします。(26時なら <mark>26 % 24</mark> で 2時に)</p>
 <p>あとはこの結果を使って画面に出力するだけです。もちろん<strong class="func">.zfill()</strong>メソッドを使った書き方でもOKです。</p>
 </ul>
 <footer><a class="backto" href="#c2-7" onclick="closeAccordion('c2-7')">FINAL問題 文字列</a></footer>

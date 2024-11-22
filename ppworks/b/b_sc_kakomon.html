@@ -111,7 +111,21 @@ if __name__ == '__main__':
 <p>インスタンスを作成すると、自動でプレイヤー番号が与えられるようになっています。ゲームから脱落すると脱落者のインスタンスを消すので、残っているプレイヤーが何番のプレイヤーかを最後に出力するのに使います。このインスタンスは双方向キューの deque に格納します。訳については後程説明します。</p>
 </ul>
 <ul>
-<p>セットアップが終わったら <strong class="func">main()</strong> 関数です。まず <code>players</code> の先頭のプレイヤー(インスタンス)を取り出して、変数 <code>now_player</code> に移します。このプレイヤーのターンとなります。</p>
+<p>セットアップが終わったら <strong class="func">main()</strong> 関数です。</p>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def main(M, players):
+    for _ in range(M):
+        now_player = players.popleft()
+        now_player.shiritori()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>まず <code>players</code> の先頭のプレイヤー(インスタンス)を取り出して、変数 <code>now_player</code> に移します。以降、このプレイヤーのターンとなります。</p>
+<br>
+
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">def shiritori(self):

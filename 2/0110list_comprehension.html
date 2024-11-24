@@ -1253,7 +1253,7 @@ else:
 <p>( ) の中の値が全て <strong>True</strong> のとき</strong>だけ、<strong class="func">all()</strong>関数が <strong>True</strong> に化けます。</p>
 </li>
 <br>
-<p>※ 上記の様な <strong class="func">all()</strong> 関数の引数内で内包表記で書くと、<strong>ジェネレータ</strong>として結果が返るようです。<strong>ジェネレータ</strong>についてここでは詳しく説明しませんが、<strong class="for"></strong>文が１回ずつ実行されるたびに <strong class="func">all()</strong> 関数の引数として <strong class="func">all()</strong> 関数が都度実行されるそうです。要するに、<strong>True</strong> が登場した時点で <strong class="func">all()</strong> 関数の評価が <strong>True</strong> となり、以降は実行されません。</p>
+<p>※ 上記の様な <strong class="func">all()</strong> 関数の引数内で内包表記で書くと、<strong>ジェネレータ</strong>として結果が返るようです。<strong>ジェネレータ</strong>についてここでは詳しく説明しませんが、<strong class="for"></strong>文が１回ずつ実行されるたびに <strong class="func">all()</strong> 関数の引数として <strong class="func">all()</strong> 関数が都度実行されるそうです。要するに、<strong>False</strong> が登場した時点で <strong class="func">all()</strong> 関数の評価が <strong>False</strong> となり、以降は実行されません。</p>
 <p>言葉だけではわかりにくいでしょうから、流れを見てみましょう。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>

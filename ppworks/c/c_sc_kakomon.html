@@ -685,10 +685,811 @@ print(kg)
 </section>
 
 
+<section>
+<details id="c7"><summary>1を数えよ【ビット演算】 </summary>
+<header><h2>1を数えよ【ビット演算】</h2></header>
+<article>
+<details id="c7-1"><summary> STEP: 1 1を数えよ </summary>
+<header><h3>1を数えよ</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+N_bin = []  # リストを使う例です
+while N > 0:  # 商が 0 になるまで割り続ける
+    N, m = N // 2, N % 2  # 2 で割った商と余りの計算
+    N_bin.append(m)  # 余りをリストに追加する
+
+N_bin.reverse()  # 出来上がったリストを逆順に並べ替える
+
+# 2進数のリストから 1 の数をカウントする
+cnt = 0
+for i in N_bin:
+    if i == 1:
+        cnt += 1
+
+print(cnt)  # 結果出力
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>10進数を 2進数に変換して、2進数の 1 の個数を数えるという問題です。すでに paiza 解答コード例を閲覧された方は「何これ？」と思われたかもしれません。確かに問題文に書かれている通りの方法でプログラムが書かれていないのですから、とんだ肩透かしですよね。😅</p>
+<p>手始めなのでここでは問題文の通りにそのままのプログラムを書いてみました。</p>
+<p>10進数から 2進数に変換する方法は、後の STEP 4 の問題文に書かれていますので安心してください。😊</p>
+</ul>
+<footer><a class="backto" href="#c7-1" onclick="closeAccordion('c7-1')">STEP: 1 1を数えよ</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-2"><summary>STEP: 2 「1を数えよ」を解くために:part1 </summary>
+<header><h3>「1を数えよ」を解くために:part1 </h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題文に『入力を整数型で受け取り、』とありますので、入力後の文字列を整数型に変換してから変数に代入します。</p>
+<p>その変数を画面に出力すれば完了です。</p>
+</ul>
+<footer><a class="backto" href="#c7-2" onclick="closeAccordion('c7-2')">STEP: 2 「1を数えよ」を解くために:part1 </a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-3"><summary>STEP: 3 「1を数えよ」を解くために:part2 </summary>
+<header><h3>「1を数えよ」を解くために:part2 </h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(S.count('1'))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p><strong>例２</strong></p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+cnt = 0
+for s in S:
+    if s == '1':
+        cnt += 1
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題文には２進数とありますが、Ｄランクレベルの問題なので単純に入力を文字列で受け取ってから <code>1</code> の数をカウントするだけで良いと思います。</p>
+<p>paiza の解答コード例では <strong class="func">range()</strong> 関数が使われていますが、プログラム例２の様に入力で受け取った文字列をそのまま使うこともできます。</p>
+<br>
+<p>今後の問題を解くために、<strong>例２</strong>のプログラムを用いていきます。</p>
+</ul>
+<footer><a class="backto" href="#c7-3" onclick="closeAccordion('c7-3')">STEP: 3 「1を数えよ」を解くために:part2 </a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-4"><summary>STEP: 4 「1を数えよ」を解くために:part3</summary>
+<header><h3>「1を数えよ」を解くために:part3</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+N_bin = []
+while N > 0:
+    N, m = N // 2, N % 2
+    N_bin.append(m)
+
+N_bin.reverse()
+
+cnt = 0
+for i in N_bin:
+    if i == 1:
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『ループメニュー2 約数の列挙 - STEP: 5 10 進数から 2 進数に変換』と似た問題です。注目すべきは 10進数から 2進数への変換方法です。</p>
+<p>paiza の解答コード例もそうなのですが、最後に <code>1</code> の数をカウントするだけですので、この問題ではわざわざリバースする必要はありません。😅<br>しかし正しく 2進数を作るためには逆順にする必要がありますので、省略しないでくださいね。😉</p>
+<p>省略しちゃった猫さんはやりなおし！😸</p>
+<br>
+<small>
+<p>※ paiza 解答コード例では逆順にする際に <strong class="func">reversed()</strong>関数が使われていますが、関数は戻り値を変数に格納しなければ、戻り値がその場で消滅してしまいます。(おそらく凡ミス😅)</p>
+<p>✕ reversed(binaryNumber)<br>○ binaryNumber = reversed(binaryNumber)</p>
+<p>この他、</p>
+<p>binaryNumber = binaryNumber[::-1]</p>
+<p>という書き方でも逆順にできます。</p>
+</small>
+</ul>
+<footer><a class="backto" href="#c7-4" onclick="closeAccordion('c7-4')">STEP: 4 「1を数えよ」を解くために:part3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-5"><summary>STEP: 5 「1を数えよ」を解くために:part4 </summary>
+<header><h3>「1を数えよ」を解くために:part4 </h3></header>
+<ul>
+<li><p>paiza 解答コード例をそのまま引用</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+
+if N & 1 == 1:
+    print("Yes")
+else:
+    print("No")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>簡単に入力値が奇数ならば必ず <code class="output">Yes</code> になるのですが、今回は『<strong class="b">N を 2 進数に変換することなく、AND 演算(論理積)を使って判定してください。</strong>』と釘を刺されているので、<strong>ビット演算</strong>を用いる方法に従います。</p>
+<p>これまでのステップの内容は、ひとまず横に置いといてください。</p>
+</ul>
+<ul>
+<li><p>まず、『<ruby><strong class="special">論理積</strong><rt>ろんりせき</rt></ruby>』というものについて説明します。</p></li>
+<p>「<a href="../../2/0090set.html#c2-2h" class="linked" target="_blank">セットさんは重複を許さない - 集合と集合演算</a>」で紹介した集合演算と類似していますが、あちらは集合における演算、こちらは<strong>ビットにおける演算</strong>で、用途は別です。でも使う記号は同じです。😅</p>
+<p>初めはややこしく感じるかもしれませんが、使われる記号が同じなだけあって<strong>理屈も同じ</strong>ですので、『集合演算はわかるけど、ビット演算は初めて扱う』という方ならば、早く理解できると思います。</p>
+<br>
+<li><p>集合演算では主に「和集合」「差集合」「積集合」を扱いました。<br><strong>ビット演算(論理演算)</strong>では主に「論理和 (OR)」「排他的論理和 (XOR)」「<strong>論理積 (AND)</strong>」が使われます。<br><strong>ビット演算</strong>なので 2進数、つまり 0 と 1 のみで演算します。</p></li>
+<div class="inlook">
+<ol>
+<li><p>論理和 (OR | ←バーティカルバー)</p>
+<p><strong>A | B = C</strong></p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>A</th>
+<th>OR</th>
+<th>B</th>
+<th>の時</th>
+<th>C になる</th>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>|</td>
+<td>0</td>
+<td>=</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>|</td>
+<td>1</td>
+<td>=</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>|</td>
+<td>0</td>
+<td>=</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>|</td>
+<td>1</td>
+<td>=</td>
+<td>1</td>
+</tr>
+</tbody>    
+</table>
+</div>
+<p>論理和は、どちらかに 1 がある時は 1 になります。</p>
+</li>
+<br>
+<li><p>排他的論理和 (XOR ^ ←ハット)</p>
+<p><strong>A ^ B = C</strong></p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>A</th>
+<th>XOR</th>
+<th>B</th>
+<th>の時</th>
+<th>C になる</th>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>^</td>
+<td>0</td>
+<td>=</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>^</td>
+<td>1</td>
+<td>=</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>^</td>
+<td>0</td>
+<td>=</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>^</td>
+<td>1</td>
+<td>=</td>
+<td>0</td>
+</tr>
+</tbody>    
+</table>
+</div>
+<p>排他的論理和は、どちらかが 1 の時だけ 1 になります。</p>
+</li>
+<br>
+<li><p><strong>論理積 (AND & ←アンパサンド)</strong></p>
+<p><strong>A & B = C</strong></p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th>A</th>
+<th>AND</th>
+<th>B</th>
+<th>の時</th>
+<th>C になる</th>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>&</td>
+<td>0</td>
+<td>=</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>&</td>
+<td>1</td>
+<td>=</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>&</td>
+<td>0</td>
+<td>=</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>&</td>
+<td>1</td>
+<td>=</td>
+<td>1</td>
+</tr>
+</tbody>    
+</table>
+</div>
+<p><strong>論理積</strong>は、どちらも 1 の時だけ 1 になります。かけ算と同じですね。😊</p>
+</li>
+</ol>
+</div>
+<br>
+<p>この問題では、３番の<strong>論理積</strong>を扱います。問題にある「AND演算」とは、この<strong>論理積</strong>で演算するということです。</p>
+</ul>
+<ul>
+<p>入力して整数型に変換した N は 10進数です。ビット演算とはいいますが、Pythonでは 10進数のままでもビット演算ができます。</p>
+<p>例えば、問題の入力例1 では入力値が <code>3</code> ですが、3 は２進数では <mark>11</mark> です。<code>N & 1</code> の 1 は２進数では <mark>1</mark> です。ビット数を合わせれば <mark>01</mark> となります。</p>
+<p>よって、<code>N & 1</code> とは、</p>
+<p class="inlook">3 & 1 ← 10進数</p>
+↓
+<p class="inlook"><mark>11</mark> & <mark>01</mark> ← 2進数</p>
+<p>↓</p>
+<div class="inlook">
+<pre>  <mark>11</mark><br>& <mark>01</mark><br>----<br>  <mark>01</mark> ← 2進数</pre>
+</div>
+↓<br>
+<p class="inlook">1 ← 10進数</p>
+<p>この最後の 1 が、<strong>AND演算の結果</strong>となります。</p>
+<br>
+<li><p><code>if N & 1 == 1:</code> の <code>== 1</code> の 1 も 10進数です。これも２進数にすると <mark>01</mark> です。</p></li>
+<p>よって、「<code>N & 1 == 1</code> の時」とは、</p>
+<p class="inlook">3 & 1 == 1 の時<br>↓↑<br><mark>11</mark> & <mark>01</mark> == <mark>01</mark> の時</p>
+<p>であるので、出力結果が <code class="output">Yes</code> となるわけです。</p>
+<p>この <code>== 1</code> の 1 は、ビット数が 4 (<mark>0001</mark>) であっても、8 (<mark>00000001</mark>) であっても、1ビット目のみ 1 です。1ビット目が 1 になるということは、2進数では奇数であるということです。<code>N % 2 == 1</code> と同じです。</p>
+</ul>
+<ul>
+<p>これだけだとビット演算になんの意味があるのかがわからず、面白くもなんとも無いと思います。<strong>論理積</strong>を使った余談をしてみます。</p>
+<p>ネットワーク通信では、機器を特定するために「IPアドレス」が使われます。IPアドレスにはグループ名代わりとなる「ネットワーク部」と、機器のID番号を表す「ホスト部」の２つに分かれています。これらについての詳しい説明は省きますが、IPv4 の場合、例えば<strong>「192.168.0.1」というIPアドレスがあるとします。</strong></p>
+<p>このIPアドレスの前半のどこまでが<mark style="background-color: coral">ネットワーク部</mark>で、後半のどこからがホスト部かを見つける方法に「サブネットマスク」というものが使われます。<br>サブネットマスクは「255.255.255.0」という表記のしかたをします。255 のところは<mark style="background-color: coral">ネットワーク部</mark>で、0 のところがホスト部です。</p>
+<br>
+<p>255 は 8ビットで、2進数で書くと <mark>11111111</mark> です。0 は <mark>00000000</mark> です。</p>
+<p>「192.168.0.1」を 2進数表記にすると、</p>
+<div class="x-fit">
+<p><mark>11000000.10100000.00000000.00000001</mark></p>
+</div>
+<p>と書きます。一方サブネットマスク(「255.255.255.0」の場合)は、</p>
+<div class="x-fit">
+<p><mark>11111111.11111111.11111111.00000000</mark></p>
+</div>
+<p>と表記します。</p>
+<p>この２つを<strong>論理積</strong>、つまり<strong>AND演算</strong>にかけると、</p>
+<div class="x-fit inlook">
+<p><pre>  <mark style="background-color: coral">11000000.10100000.00000000</mark>.00000001<br>
+& <mark style="background-color: coral">11111111.11111111.11111111</mark>.00000000<br>
+-------------------------------------<br>
+  <mark style="background-color: coral">11000000.10100000.00000000</mark>.00000000<br><br>  ↓<br><br>  <mark style="background-color: coral">192.168.0</mark>.0</pre></p>
+</div>
+<p>これでこの <mark style="background-color: coral">192.168.0</mark> のところが<mark style="background-color: coral">ネットワーク部</mark>であるということを通信機器に伝えることができます。<br>ちなみにホスト部が 0 になっているIPアドレス「<mark style="background-color: coral">192.168.0</mark>.0」を「ネットワークアドレス」といいます。</p>
+</ul>
+<ul>
+<p>集合演算とビット演算は<strong>理屈は同じ</strong>と先に言いましたが、「和集合と論理和」「積集合と論理積」は同じ様な考え方ができます。</p>
+<p>和集合は「２つの集合を合わせて重複を省く」性質ですが、これは「どちらか片方、もしくは両方に同じ値がある時に選ばれる」、つまり『同じ値』というのが２進数の <mark>1</mark> に代わっただけで上の論理和の演算表のとおりとなります。</p>
+<p>積集合は「両方に同じ値がある時のみに選ばれる」、つまり上の論理積の演算表のとおりです。</p>
+<br>
+<p>そして、排他的論理和(XOR)は集合演算にも存在します。</p>
+<p><strong>どちらか片方にのみ存在する値が選ばれる</strong></p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = {1, 2, 3}
+b = {2, 3, 4}
+print(a ^ b)
+</code></pre>
+<code>{1, 4}</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = {1, 2, 3}
+a ^= {2, 3, 4}
+print(a)
+</code></pre>
+<code>{1, 4}</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>排他的論理和は「暗号化・復号」などで使われます。興味がありましたらネットなどで調べてみてください。😊</p>
+</ul>
+<ul>
+<p>これまでのことを踏まえれば、次の FINAL問題 ではどのようなプログラムが求められているのかが察しやすくなると思います。</p>
+<p>そもそも、ビット演算はプログラミング学習的には現在Ｃランク問題を頑張って解いている方にはかなり難しいと思います。😅</p>
+<p>わからなすぎて挫折してしまっても、今は問題ありませんからね！！👍</p>
+</ul>
+<footer><a class="backto" href="#c7-5" onclick="closeAccordion('c7-5')">STEP: 5 「1を数えよ」を解くために:part4 </a></footer>
+</details>
+</article>
+
+<article>
+<details id="c7-6"><summary>FINAL問題 1を数えよ【ビット演算】</summary>
+<header><h3>1を数えよ【ビット演算】</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())  # part1
+
+cnt = 0
+while N > 0:  # part3
+    if N & 1 == 1:  # part4
+        cnt += 1  # part2
+    N //= 2  # part3
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これまでの流れを混ぜ合わせれば出来上がります。</p>
+</ul>
+<ul>
+<p>まずここ、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">while N > 0:
+    ・・・
+    N //= 2
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分は 10進数を 2進数に変換する際の『商が 0 になるまで N を 2 で割っていく』所です。</p>
+<p>そして <strong class="while"></strong> の次の、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if N & 1 == 1:
+    cnt += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分は『N の１桁目が 1 の時にカウントアップする』所です。</p>
+<br>
+<p>この <strong class="while"></strong>文の流れを見てみましょう。</p>
+<p>N = 45 の時</p>
+<p class="inlook">45<br>↓<br><mark>10110</mark><mark style="background-color: aqua;">1</mark><br>cnt = 1</p>
+↓ 45 // 2 = 22
+<p class="inlook">22<br>↓<br><mark>1011</mark><mark style="background-color: aqua;">0</mark></p>
+↓ 22 // 2 = 11
+<p class="inlook">11<br>↓<br><mark>101</mark><mark style="background-color: aqua;">1</mark><br>cnt = 2</p>
+↓ 11 // 2 = 5
+<p class="inlook">5<br>↓<br><mark>10</mark><mark style="background-color: aqua;">1</mark><br>cnt = 3</p>
+↓ 5 // 2 = 2
+<p class="inlook">2<br>↓<br><mark>1</mark><mark style="background-color: aqua;">0</mark></p>
+↓ 2 // 2 = 0
+<p class="inlook">0<br>↓<br><mark style="background-color: aqua;">1</mark><br>cnt = <code class="output">4</code></p>
+<p>N が 0 なのでここでループを抜け、最後に <code>cnt</code> の値を画面に出力して完了です。</p>
+</ul>
+<br>
+<ul>
+<p>せっかくなので、paiza 解答コード例の補足説明もしてみます。上記の方法と真逆とも言えます。</p>
+<li><p>paiza 解答コード例からそのまま引用</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+ans = 0
+bitMask = 1
+while bitMask<=N:
+    if bitMask&N != 0:
+        ans += 1
+    bitMask *= 2
+    
+print(ans)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>初めのプログラム例の「N を 2 で割っていく」方法ではなく、<code>N & 1</code> の <code>1</code> の方を 2倍していく方法です。</p>
+</ul>
+<ul>
+<p>N = 45 の時</p>
+<div class="x-fit inlook">
+<p>bitMask = 1</p>
+<table class="text-center">
+<thead style="color:grey">
+<th><small>重み(10進数)</small></th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</thead>
+<tbody>
+<tr>
+<td>bitMask</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aqua;">1</td>
+</tr>
+<tr>
+<td>N</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+</tr>
+<tr>
+<td>bitMask & N</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aqua;">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>この時、</strong><code>bitMask & N</code> <strong>は「<ruby>重<rt style="color:black;">おも</rt>み」と等しくなります。</strong>よって <code>if bitMask&N != 0:</code> が <strong>True</strong> となり、<code>ans += 1</code> が実行されます。</p>
+<p>ans = 1</p>
+</div>
+↓ bitMask * 2 = 2
+<div class="x-fit inlook">
+<p>bitMask = 2</p>
+<table class="text-center">
+<thead style="color:grey">
+<th><small>重み(10進数)</small></th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</thead>
+<tbody>
+<tr>
+<td>bitMask</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>N</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bitMask & N</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: coral;">0</td>
+<td style="background-color: coral;">0</td>
+</div>
+</tr>
+</tbody>
+</table>
+<p><code>bitMask & N</code> は <code>0</code> となります。<code>if bitMask&N != 0:</code> が <strong>False</strong> となりますのでカウントアップせず、次のループに移ります。<code>== 1</code> ではなく <code>!= 0</code> になっているのは、<code>bitMask & N</code> が重みと等しくなる為に、0 か 0 でないかで判定しているわけです。</p>
+</div>
+↓ bitMask * 2 = 4
+<div class="x-fit inlook">
+<p>bitMask = 4</p>
+<table class="text-center">
+<thead style="color:grey">
+<th><small>重み(10進数)</small></th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</thead>
+<tbody>
+<tr>
+<td>bitMask</td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>N</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bitMask & N</td>
+<td></td>
+<td></td>
+<td></td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><code>if bitMask&N != 0:</code> → <strong>True</strong></p>
+<p>ans = 2</p>
+</div>
+↓ bitMask * 2 = 8
+<div class="x-fit inlook">
+<p>bitMask = 8</p>
+<table class="text-center">
+<thead style="color:grey">
+<th><small>重み(10進数)</small></th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</thead>
+<tbody>
+<tr>
+<td>bitMask</td>
+<td></td>
+<td></td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>N</td>
+<td>1</td>
+<td>0</td>
+<td style="background-color: aqua;">1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bitMask & N</td>
+<td></td>
+<td></td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><code>if bitMask&N != 0:</code> → <strong>True</strong></p>
+<p>ans = 3</p>
+</div>
+↓ bitMask * 2 = 16
+<div class="x-fit inlook">
+<p>bitMask = 16</p>
+<table class="text-center">
+<thead style="color:grey">
+<th><small>重み(10進数)</small></th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</thead>
+<tbody>
+<tr>
+<td>bitMask</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>N</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bitMask & N</td>
+<td></td>
+<td style="background-color: coral;">0</td>
+<td style="background-color: coral;">0</td>
+<td style="background-color: coral;">0</td>
+<td style="background-color: coral;">0</td>
+<td style="background-color: coral;">0</td>
+</tr>
+</tbody>
+</table>
+<p><code>if bitMask&N != 0:</code> → <strong>False</strong></p>
+</div>
+↓ bitMask * 2 = 32
+<div class="x-fit inlook">
+<p>bitMask = 32</p>
+<table class="text-center">
+<thead style="color:grey">
+<th><small>重み(10進数)</small></th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</thead>
+<tbody>
+<tr>
+<td>bitMask</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>N</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bitMask & N</td>
+<td style="background-color: aqua;">1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><code>if bitMask&N != 0:</code> → <strong>True</strong></p>
+<p>ans = <code class="output">4</code></p>
+</div>
+↓ bitMask * 2 = 64
+<p>ここで <code>N = 45</code> を超えたので、<code>while bitMask<=N:</code> の条件が <strong>False</strong> になり、ループを抜け、<code>ans</code> の値を画面に出力して完了となります。</p>
+</ul>
+<br>
+<ul>
+<p>『ビットシフトを使った解法』のほうも解説しましょう。</p>
+<li><p>paiza 解答コード例 2</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+ans = 0
+target = 0 # 1 を何ビット左にシフトさせるか
+while 1 << target <= N:
+    if 1 << target & N != 0:
+        ans += 1
+    target += 1
+    
+print(ans)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>paiza 解答コード例 2 + α</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+ans = 0
+target = 1
+while target <= N:
+    if target & N != 0:
+        ans += 1
+    target <<= 1
+    
+print(ans)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ビットシフトというのは、『ビット全体を左右にずらす』ことです。1ビットを左に１つシフト(移動)すると 2ビットとなります。さらに 1ビット左にシフトすると 3ビットとなります。</p>
+<p>4 ← 2 ← 1</p>
+<p>となるわけですが、左へシフトさせると掛け算、右へシフトさせると割り算することになります。2進数なので 2 で掛け算割り算をすることになります。これは 10進数でも同じことが言えます。</p>
+<p>100 ← 10 ← 1</p>
+<p>見た目だけなら 2進数も 10進数も同じですね。😆</p>
+</ul>
+<ul>
+<p><code>bitMask</code> が <code>target</code> に変数名が変わっただけです。ただ一箇所、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">target <<= 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここでビットをシフトしています。左にシフトする時は <code>&lt;&lt;</code> 、右にシフトする時は <code>>></code> を使います。そして何ビットシフトするのかを正数で示します。正数とは 0以上の整数のことです。今回は１ビットなので <code>1</code> です。こうすることでビット数が１つずつ増えていく、つまり倍々となって増えていくというわけです。</p>
+<p>これは <code>target *= 2</code> と同等です。<code>target &lt;&lt;= 1</code> と <code>target *= 2</code> のどちらでも等しく動作します。</p>
+<br>
+<p>ちなみに <code>target &lt;&lt;= 1</code> は、<code>target = target &lt;&lt; 1</code> のことです。</p>
+<dl>
+<dt>1 << target</dt>
+<dd>１ビットから左に targetビットシフトする。(増分は targetビット)<br>常に１ビット目から左に targetビットシフトしています。<br>10 ← 1<br>100 ← 1<br>1000 ← 1</dd>
+<dt>target << 1</dt>
+<dd>target を左に１ビットシフトする。(増分は１ビット)<br>都度 targetビットから左に１ビットずつシフトしています。<br>10 ← 1<br>100 ← 10<br>1000 ← 100</dd>
+</dl>
+<br>
+<p>paiza 解答コード例では <code>target</code> の初期値が <code>0</code> になっていますが、これは一回目のループで「左に 0 ビットシフトする」、つまり 1ビットのままそこから始める為に初期値が <code>0</code> になっています。<br>+ α のほうは初期値が <code>1</code> になっています。これはビットをシフトし始めるのがループ１周目の最後になっているからです。その上、これを <code>0</code> にしてしまうと常に <mark>0 × 2 = 0</mark> となり、無限ループに陥ります。0ビット、要するにビットが存在しないのにビットをシフトしようとしても、無いものは無いのでシフトできないので、常に 0 になってしまうわけです。</p>
+</ul>
+<ul>
+<p><strong>ビット演算</strong>は、コンピュータが使う２進数のまま値を操作するのでコンピュータに対してとても優しい演算法です。あなたが２進数を理解し、使い慣れるようにならない限り「あ、これはビット演算が効率よさそうだな」とひらめくことはまず無いでしょうけど😅、ITの学習を幅広く行なっていくと度々登場してきます。忘れちゃってもいずれまたやるべき時が必ず訪れますので『じゃあとりあえず、今はこのくらいでいいか』と割り切っちゃって次の学習に進んでしまいましょう。😄</p>
+</ul>
+<footer><a class="backto" href="#c7-6" onclick="closeAccordion('c7-6')">FINAL問題 1を数えよ【ビット演算】</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">1を数えよ【ビット演算】</a></footer>
+</details>
+</section>
 
 </main>
-
-
 
 <footer id="ft">
   <p>【paiza問題集 解説】<br>Cランク・スキルチェック過去問題セット</p>

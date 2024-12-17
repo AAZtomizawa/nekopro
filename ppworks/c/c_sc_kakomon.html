@@ -1472,10 +1472,10 @@ print(ans)
 <br>
 <p>ちなみに <code>target &lt;&lt;= 1</code> は、<code>target = target &lt;&lt; 1</code> のことです。</p>
 <dl>
-<dt>1 << target</dt>
-<dd>１ビットから左に targetビットシフトする。(増分は targetビット)<br>常に１ビット目から左に targetビットシフトしています。<br>10 ← 1<br>100 ← 1<br>1000 ← 1</dd>
 <dt>target << 1</dt>
 <dd>target を左に１ビットシフトする。(増分は１ビット)<br>都度 targetビットから左に１ビットずつシフトしています。<br>10 ← 1<br>100 ← 10<br>1000 ← 100</dd>
+<dt>1 << target</dt>
+<dd>１ビットから左に targetビットシフトする。(増分は targetビット)<br>常に１ビット目から左に targetビットシフトしています。<br>10 ← 1<br>100 ← 1<br>1000 ← 1</dd>
 </dl>
 <br>
 <p>paiza 解答コード例では <code>target</code> の初期値が <code>0</code> になっていますが、これは一回目のループで「左に 0 ビットシフトする」、つまり 1ビットの所から始める為に初期値は <code>0</code> となっています。</p>

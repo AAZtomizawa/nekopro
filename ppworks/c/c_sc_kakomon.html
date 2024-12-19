@@ -801,7 +801,7 @@ print(cnt)
 <p>省略しちゃった猫さんはやりなおし！😸</p>
 <br>
 <small>
-<p>※ paiza 解答コード例では逆順にする際に <strong class="func">reversed()</strong>関数が使われていますが、関数は戻り値を変数に格納しなければ、戻り値がその場で消滅してしまいます。(おそらく凡ミス😅)</p>
+<p>※ paiza 解答コード例では逆順にする際に <strong class="func">reversed()</strong>関数が使われていますが、この関数は戻り値を変数に格納しなければ、戻り値がその場で消滅してしまいます。(おそらく凡ミス😅)</p>
 <p>✕ reversed(binaryNumber)<br>○ binaryNumber = reversed(binaryNumber)</p>
 <p>この他、</p>
 <p>binaryNumber = binaryNumber[::-1]</p>
@@ -1028,7 +1028,7 @@ else:
 </ul>
 <ul>
 <p>集合演算とビット演算は<strong>理屈は同じ</strong>と先に言いましたが、「和集合と論理和」「積集合と論理積」は同じ様な考え方ができます。</p>
-<p>和集合は「２つの集合を合わせて重複を省く」性質ですが、言い換えると「どちらか片方、もしくは両方に同じ値がある時に選ばれる」、つまり『同じ値』というのが２進数の <mark>1</mark> に代わっただけで上の論理和の演算表のとおりとなります。</p>
+<p>和集合は「２つの集合を合わせて重複を省く」性質ですが、言い換えると「どちらか片方、もしくは両方に同じ値がある時に選ばれる」、つまり『値』が２進数の <mark>1</mark> に代わっただけで上の論理和の演算表のとおりとなります。</p>
 <p>「和」という言葉が使われるので広く「足し算」と例えられますが、『<mark>{1}</mark> と <mark>{1}</mark> を併せると <mark>{1, 1}</mark> になり、そこから重複を除去すると <mark>{1}</mark> になる』と考えれば、<strong>集合演算と同じ</strong>と考えられるので理解しやすいでしょう。</p>
 <p>積集合は「両方に同じ値がある時のみに選ばれる」、つまり上の論理積の演算表のとおりです。</p>
 <br>
@@ -1437,7 +1437,7 @@ print(ans)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<li><p>paiza 解答コード例 2 + α</p></li>
+<li><p>paiza 解答コード例 (改)</p></li>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">N = int(input())
@@ -1489,7 +1489,7 @@ print(ans)
 </dl>
 <br>
 <p>paiza 解答コード例では <code>target</code> の初期値が <code>0</code> になっていますが、これは一回目のループで「左に 0 ビットシフトする」、つまり 1ビットの所から始める為に初期値は <code>0</code> となっています。</p>
-<p>+ α のほうは初期値が <code>1</code> になっています。これはビットをシフトし始めるのがループ１周目の最後になっているからです。その上、これを <code>0</code> にしてしまうと常に <mark>0 × 2 = 0</mark> となり、無限ループに陥ります。0ビット、要するにビットが存在しないのにビットをシフトしようとしても、無いものは無いのでシフトできないので、常に 0 になってしまうわけです。</p>
+<p>(改) のほうは初期値が <code>1</code> になっています。これはビットをシフトし始めるのがループ１周目の最後になっているからです。その上、これを <code>0</code> にしてしまうと常に <mark>0 × 2 = 0</mark> となり、無限ループに陥ります。0ビット、要するにビットが存在しないのにビットをシフトしようとしても、無いものは無いのでシフトできないので、常に 0 になってしまうわけです。</p>
 </ul>
 <ul>
 <p><strong>ビット演算</strong>は、コンピュータが使う２進数のまま値を操作するのでコンピュータに対してとても優しい演算法です。あなたが２進数を理解し、使い慣れるようにならない限り「あ、これはビット演算が効率よさそうだな」とひらめくことはまず無いでしょうけど😅、ITの学習を幅広く行なっていくと度々登場してきます。理解半分でも、いずれまたやるべき時が必ず訪れますので『じゃあとりあえず、今はこのくらいでいいか』と割り切っちゃって次の学習に進んでしまいましょう。😄</p>
@@ -1501,6 +1501,379 @@ print(ans)
 <footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">1を数えよ【ビット演算】</a></footer>
 </details>
 </section>
+
+<section>
+<details id="c8"><summary> 文字列の抽出</summary>
+<header><h2>文字列の抽出</h2></header>
+<article>
+<details id="c8-1"><summary>STEP: 1 文字列の抽出</summary>
+<header><h3>文字列の抽出</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tag_a, tag_b = input().split()
+S = input()
+
+tag_a_len = len(tag_a)
+tag_b_len = len(tag_b)
+
+idx = 0
+while idx < len(S) - tag_a_len:
+    if S[idx:idx+tag_a_len] != tag_a:
+        idx += 1
+        continue
+    
+    idx += tag_a_len
+    text_st_idx = idx
+    while S[idx:idx+tag_b_len] != tag_b:
+        idx += 1
+
+    if idx - text_st_idx > 0:
+        print(S[text_st_idx:idx])
+    else:
+        print('&lt;blank&gt;')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Ｃランクにしては難易度高めだと思います。線形探索の問題です。</p>
+</ul>
+<footer><a class="backto" href="#c8-1" onclick="closeAccordion('c8-1')">STEP: 1 文字列の抽出</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-2"><summary>STEP: 2 文字列の抽出 : part1</summary>
+<header><h3>文字列の抽出 : part1</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+print(S)
+print(S)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+for _ in range(2):
+    print(S)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c8-2" onclick="closeAccordion('c8-2')">STEP: 2 文字列の抽出 : part1</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-3"><summary>STEP: 3 文字列の抽出 : part2</summary>
+<header><h3>文字列の抽出 : part2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tag_a, tag_b = input().split()
+S = input()
+a_index, b_index = map(int, input().split())
+
+idx_st = a_index + len(tag_a) - 1
+idx_ed = b_index - 1
+
+text = S[idx_st:idx_ed]
+
+if text:
+    print(text)
+else:
+    print('blank')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで求められているスキルは「インデックスの理解」です。タグの開始位置番号は与えられていますので、これを使って抽出する文字列の範囲を作ります。</p>
+</ul>
+<ul>
+<p>単純に開始タグと終了タグの開始位置番号をそのまま使って文字列を抽出すると次のようになります。</p>
+<div>
+<pre><code class="plaintext">入力例1
+    &lt;a&gt; &lt;b&gt;
+    a&lt;a&gt;c&lt;b&gt;c
+    2 6
+</code></pre>
+<code class="output">a&gt;c&lt;</code>
+</div>
+<p>与えられた開始位置は１文字目から数えられています。位置番号は 0 から始まりますので、これらの数から <strong>1 を引く必要があります。</strong></p>
+<p>そうすると今度は、</p>
+<p><code class="output">&lt;a&gt;c</code></p>
+<p>となります。開始タグも終了タグも<strong>開始位置の番号</strong>なのでこうなってしまいます。</p>
+</ul>
+<ul>
+<p>抽出する文字列の開始位置番号は<strong>「開始位置番号 + 開始タグの文字数」</strong>で得られます。</p>
+<div class="x-fit">
+<table>
+<thead>
+<th>位置番号</th>
+<th>0</th>
+<th><strong>1</strong></th>
+<th>2</th>
+<th>3</th>
+<th><strong>4</strong></th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</thead>
+<tbody>
+<tr>
+<th>S</th>
+<td>a</td>
+<td style="background-color:orange;">&lt;</td>
+<td style="background-color: orange;">a</td>
+<td style="background-color: orange;">&gt;</td>
+<td style="background-color: aqua;">c</td>
+<td>&lt;</td>
+<td>b</td>
+<td>&gt;</td>
+<td>c</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>位置番号は 1 、開始タグの文字数は 3 、<mark>1 + 3 = 4</mark> で、抽出する文字列の開始位置番号は <strong>4</strong> になります。そのプログラムが、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">idx_st = a_index + len(tag_a) - 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分です。ここから、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">idx_ed = b_index - 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分までが<strong>「抽出する文字列の範囲」</strong>となります。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">text = S[idx_st:idx_ed]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで抽出する文字列を、スライスを使って範囲を指定しているのですが、<strong>抽出する文字列が</strong></p>
+<dl>
+<dt>ある場合</dt>
+<dd><code>text</code> に抽出した文字列が代入されます。</dd>
+<dt>無かった場合</dt>
+<dd><code>text</code> に <code>''</code> が代入されます。</dd>
+</dl>
+<br>
+<p>その次のプログラムの</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if text:
+    print(text)
+else:
+    print('blank')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>if text:</code> では、<code>text</code> に文字列があれば <strong>True</strong> に、無い <code>''</code> 場合は <strong>False</strong> となってそれぞれの結果が画面に出力されます。</p>
+<p>この <strong class="if"></strong>文の評価の判定については「<a href="../../2/0020truefalse.html#c4-h" class="linked" target="_blank">bool型 True と False<wbr> - Chapter.4<wbr> -『ある』か『ない』か</a>」で表にしてありますので、そちらをご覧ください。</p>
+</ul>
+<footer><a class="backto" href="#c8-3" onclick="closeAccordion('c8-3')">STEP: 3 文字列の抽出 : part2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-4"><summary>STEP: 4 文字列の抽出 : part3</summary>
+<header><h3>文字列の抽出 : part3</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tag_a, tag_b = input().split()
+S = input()
+print(S.find(tag_a)+1, S.find(tag_b)+1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">input()
+S = input()
+
+idxs = []
+for i, s in enumerate(S, start=1):
+    if s == '<':
+        idxs.append(i)
+
+print(*idxs)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tag_a, tag_b = input().split()
+S = input()
+
+tag_a_len = len(tag_a)
+tag_b_len = len(tag_b)
+
+tag_idxs = []
+for i in range(len(S)):
+    if S[i:i+tag_a_len] == tag_a or S[i:i+tag_b_len] == tag_b:
+        tag_idxs.append(i + 1)
+
+print(*tag_idxs)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>後先考えなくてよいのであれば例１の方法が簡単です。<strong class="func">.index()</strong> メソッドも使えます。</p>
+<p>例２は、「期待する出力」に『<strong class="b">つまり、それぞれのタグの&lt;の位置が何文字目であるかを出力してください。</strong>』とありますのでただそれに従い、なるべく簡単な方法で書いただけのプログラムです。</p>
+<p>例３は、各タグの文字列を <code>S</code> の先頭から末尾まで探し、見つけたらその位置をリストに格納します。問題文に『<strong class="b">テキストデータは必ず開始タグと終了タグがこの順で丁度1つずつ存在します。</strong>』とありますので、必ずこの順で見つけられます。</p>
+<p>リストを使っているのは、出力をラクにするためです。Pythonはホント、この形式の出力がめんどくさい。😓<br>この方法ならばリストをアンパックするだけで期待する出力形式が得られます。</p>
+<p>この <strong class="func">print(*)</strong> の機能については「<a href="../../2/0030mieruka.html#c1-3h" class="linked" target="_blank">見える化ちゃん<wbr> - Chatpter.1<wbr> - print() のさらなる機能</a>」で学習できます。もうこれ以降使わないけど。😅</p>
+</ul>
+<footer><a class="backto" href="#c8-4" onclick="closeAccordion('c8-4')">STEP: 4 文字列の抽出 : part3</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-5"><summary>STEP: 5 文字列の抽出 : part4</summary>
+<header><h3>文字列の抽出 : part4</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tag_a, tag_b = input().split()
+S = input()
+
+tag_a_len = len(tag_a)
+tag_b_len = len(tag_b)
+
+idx = 0
+while idx < len(S):
+    # tag_a を探す
+    if S[idx:idx+tag_a_len] != tag_a:
+        idx += 1
+        continue
+
+    tag_a_idx = idx + 1
+    
+    # tag_b を探す
+    while S[idx:idx+tag_b_len] != tag_b:
+        idx += 1
+
+    tag_b_idx = idx + 1
+    
+    print(tag_a_idx, tag_b_idx)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>めんどくさいですね。😓</p>
+<p>しかしやっていることはいたって単純で、 文字列 <code>S</code> の先頭から <code>tag_a</code> を探し、見つけたら <code>tag_idxs</code> に位置番号を追加し、次の <code>tag_b</code> も同様の処理をします。これを文字列 <code>S</code> の末尾まで行ないます。</p>
+<p>paiza 解答コード例では、文字列 <code>S</code> の末尾まで探索するのは無駄なので、<code>tag_a</code> の文字数分を文字列 <code>S</code> の文字数から引いています。これはここでは次の FINAL問題で導入します。</p>
+</ul>
+<footer><a class="backto" href="#c8-5" onclick="closeAccordion('c8-5')">STEP: 5 文字列の抽出 : part4</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c8-6"><summary>FINAL問題 文字列の抽出</summary>
+<header><h3>文字列の抽出</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tag_a, tag_b = input().split()
+S = input()
+
+tag_a_len = len(tag_a)
+tag_b_len = len(tag_b)
+
+idx = 0
+while idx < len(S) - tag_a_len:
+    if S[idx:idx+tag_a_len] != tag_a:
+        idx += 1
+        continue
+    
+    idx += tag_a_len
+    text_st_idx = idx
+    while S[idx:idx+tag_b_len] != tag_b:
+        idx += 1
+
+    if idx - text_st_idx > 0:
+        print(S[text_st_idx:idx])
+    else:
+        print('&lt;blank&gt;')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>STEP 3 の複数取得版です。プログラムの形は１つ前の STEP 5 寄りですが。</p>
+</ul>
+<ul>
+<p>探索範囲は「<code>S</code> の文字数 - <code>tag_b_len</code>」です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">while idx < len(S) - tag_a_len:
+    if S[idx:idx+tag_a_len] != tag_a:
+        idx += 1
+        continue
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで <code>tag_a</code> を探しています。ひたすら探すだけです。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    idx += tag_a_len  # 位置番号を文字数分送る
+    text_st_idx = idx
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>tag_a</code> がみつかったら位置番号を <code>tag_a</code> の文字数分送って(STEP 3 でやったことです)、抽出する文字列の先頭の位置番号を、変数 <code>text_st_idx</code> に保存します。これは最後、抽出した文字列をスライスを使って出力する際に、開始の位置として使うためのものです。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    while S[idx:idx+tag_b_len] != tag_b:
+        idx += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は <code>tag_b</code> をひたすら探します。みつけたらこのループを抜けます。<br>この時、位置番号は <code>tag_b</code> の先頭にあり、これをスライスの [<em>start</em>:<strong>stop</strong>] に使うと、抽出する文字列の末尾までが取得できます。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    if idx - text_st_idx > 0:
+        print(S[text_st_idx:idx])
+    else:
+        print('&lt;blank&gt;')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>idx - text_st_idx > 0</code> とは、例えば、</p>
+<p><code>text_st_idx</code> = 9<br><code>idx</code> = 13</p>
+<p>の時、<mark>13 - 9 = 4</mark> で抽出する文字は４文字となります。0 より大きいとは、抽出する文字が１文字以上ある時ということになりますので、その場合はスライスを使ってその範囲の文字を出力します。</p>
+<p>抽出する文字が無い場合は、<code>idx</code> が１つも動きませんので、<code>text_st_idx</code> と <code>idx</code> の値は同じになっています。ですので <mark>idx - text_st_idx = 0</mark> で <strong class="if"></strong>文の判定は <strong>False</strong> となり、画面に <code class="output">&lt;blank&gt;</code> と出力されます。</p>
+<br>
+<p>これを初めの <strong class="while"></strong>の条件式の判定が <strong>False</strong> となるまでループします。</p>
+</ul>
+<ul>
+<p>『う～ん、わかりそうでイマイチ自信ないな』と感じたら、問題集『定番アルゴリズムの習得 - 線形探索メニュー』をやってみてください。</p>
+</ul>
+<footer><a class="backto" href="#c8-6" onclick="closeAccordion('c8-6')">FINAL問題 文字列の抽出</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">文字列の抽出 </a></footer>
+</details>
+</section>
+
 
 </main>
 

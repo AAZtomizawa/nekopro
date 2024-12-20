@@ -1029,7 +1029,7 @@ else:
 <ul>
 <p>集合演算とビット演算は<strong>理屈は同じ</strong>と先に言いましたが、「和集合と論理和」「積集合と論理積」は同じ様な考え方ができます。</p>
 <p>和集合は「２つの集合を合わせて重複を省く」性質ですが、言い換えると「どちらか片方、もしくは両方に同じ値がある時に選ばれる」、つまり『値』が２進数の <mark>1</mark> に代わっただけで上の論理和の演算表のとおりとなります。</p>
-<p>「和」という言葉が使われるので広く「足し算」と例えられますが、『<mark>{1}</mark> と <mark>{1}</mark> を併せると <mark>{1, 1}</mark> になり、そこから重複を除去すると <mark>{1}</mark> になる』と考えれば、<strong>集合演算と同じ</strong>と考えられるので理解しやすいでしょう。</p>
+<p>「和」という言葉が使われるので広く「足し算」と例えられますが、『<mark>{1}</mark> と <mark>{1}</mark> を合わせると <mark>{1, 1}</mark> になり、そこから重複を除去すると <mark>{1}</mark> になる』と考えれば、<strong>集合演算と同じ</strong>と考えられるので理解しやすいでしょう。</p>
 <p>積集合は「両方に同じ値がある時のみに選ばれる」、つまり上の論理積の演算表のとおりです。</p>
 <br>
 <p>そして、排他的論理和(XOR)は集合演算にも存在します。</p>
@@ -1503,7 +1503,7 @@ print(ans)
 </section>
 
 <section>
-<details id="c8"><summary> 文字列の抽出</summary>
+<!-- <details id="c8"><summary> 文字列の抽出</summary> -->
 <header><h2>文字列の抽出</h2></header>
 <article>
 <details id="c8-1"><summary>STEP: 1 文字列の抽出</summary>
@@ -1681,7 +1681,7 @@ else:
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p><code>if text:</code> では、<code>text</code> に文字列があれば <strong>True</strong> に、無い <code>''</code> 場合は <strong>False</strong> となってそれぞれの結果が画面に出力されます。</p>
-<p>この <strong class="if"></strong>文の評価の判定については「<a href="../../2/0020truefalse.html#c4-h" class="linked" target="_blank">bool型 True と False<wbr> - Chapter.4<wbr> -『ある』か『ない』か</a>」で表にしてありますので、そちらをご覧ください。</p>
+<p>この <strong class="if"></strong>文の評価の判定については「<a href="../../2/0020truefalse.html#c4-h" class="linked" target="_blank">bool型 True と False - 『ある』か『ない』か</a>」で表にしてありますので、そちらをご覧ください。</p>
 </ul>
 <footer><a class="backto" href="#c8-3" onclick="closeAccordion('c8-3')">STEP: 3 文字列の抽出 : part2</a></footer>
 </details>
@@ -1737,7 +1737,7 @@ print(*tag_idxs)
 <p>例２は、「期待する出力」に『<strong class="b">つまり、それぞれのタグの&lt;の位置が何文字目であるかを出力してください。</strong>』とありますのでただそれに従い、なるべく簡単な方法で書いただけのプログラムです。</p>
 <p>例３は、各タグの文字列を <code>S</code> の先頭から末尾まで探し、見つけたらその位置をリストに格納します。問題文に『<strong class="b">テキストデータは必ず開始タグと終了タグがこの順で丁度1つずつ存在します。</strong>』とありますので、必ずこの順で見つけられます。</p>
 <p>リストを使っているのは、出力をラクにするためです。Pythonはホント、この形式の出力がめんどくさい。😓<br>この方法ならばリストをアンパックするだけで期待する出力形式が得られます。</p>
-<p>この <strong class="func">print(*)</strong> の機能については「<a href="../../2/0030mieruka.html#c1-3h" class="linked" target="_blank">見える化ちゃん<wbr> - Chatpter.1<wbr> - print() のさらなる機能</a>」で学習できます。もうこれ以降使わないけど。😅</p>
+<p>この <strong class="func">print(*)</strong> の機能については「<a href="../../2/0030mieruka.html#c1-3h" class="linked" target="_blank">見える化ちゃん - print() のさらなる機能</a>」で学習できます。もうこれ以降使わないけど。😅</p>
 </ul>
 <footer><a class="backto" href="#c8-4" onclick="closeAccordion('c8-4')">STEP: 4 文字列の抽出 : part3</a></footer>
 </details>
@@ -1776,14 +1776,15 @@ while idx < len(S):
 <!-- ----------------------- code end ----------------------- -->
 <p>めんどくさいですね。😓</p>
 <p>しかしやっていることはいたって単純で、 文字列 <code>S</code> の先頭から <code>tag_a</code> を探し、見つけたら <code>tag_idxs</code> に位置番号を追加し、次の <code>tag_b</code> も同様の処理をします。これを文字列 <code>S</code> の末尾まで行ないます。</p>
-<p>paiza 解答コード例では、文字列 <code>S</code> の末尾まで探索するのは無駄なので、<code>tag_a</code> の文字数分を文字列 <code>S</code> の文字数から引いています。これはここでは次の FINAL問題で導入します。</p>
+<p>paiza 解答コード例では、文字列 <code>S</code> の末尾まで探索するのは無駄なので、<code>tag_a</code> (※)の文字数分を文字列 <code>S</code> の文字数から引いています。これはここでは次の FINAL問題で導入します。</p>
+<p>※ <code>tag_a_len + tag_b_len - 1</code> だともっとよいかも。😊</p>
 </ul>
 <footer><a class="backto" href="#c8-5" onclick="closeAccordion('c8-5')">STEP: 5 文字列の抽出 : part4</a></footer>
 </details>
 </article>
 
 <article>
-<details id="c8-6"><summary>FINAL問題 文字列の抽出</summary>
+<!-- <details id="c8-6"><summary>FINAL問題 文字列の抽出</summary> -->
 <header><h3>文字列の抽出</h3></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -1795,7 +1796,7 @@ tag_a_len = len(tag_a)
 tag_b_len = len(tag_b)
 
 idx = 0
-while idx < len(S) - tag_a_len:
+while idx < len(S) - (tag_a_len + tag_b_len - 1):
     if S[idx:idx+tag_a_len] != tag_a:
         idx += 1
         continue
@@ -1815,17 +1816,17 @@ while idx < len(S) - tag_a_len:
 <p>STEP 3 の複数取得版です。プログラムの形は１つ前の STEP 5 寄りですが。</p>
 </ul>
 <ul>
-<p>探索範囲は「<code>S</code> の文字数 - <code>tag_a_len</code>」です。</p>
+<p>探索範囲は、ここでは「<code>S</code> の文字数 - (<code>tag_a_len + tag_b_len - 1</code>)」とします。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">while idx < len(S) - tag_a_len:
+<pre><code class="language-python">while idx < len(S) - (tag_a_len + tag_b_len - 1):
     if S[idx:idx+tag_a_len] != tag_a:
         idx += 1
         continue
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>ここで <code>tag_a</code> を探しています。ひたすら探すだけです。</p>
+<p>ここで <code>tag_a</code> を探しています。ひたすら探すだけです。(詳しい説明を最後にします)</p>
 <br>
 <!-- ------------------------- code ------------------------- -->
 <div>
@@ -1862,6 +1863,63 @@ while idx < len(S) - tag_a_len:
 <p>抽出する文字が無い場合は、<code>idx</code> が１つも動きませんので、<code>text_st_idx</code> と <code>idx</code> の値は同じになっています。ですので <mark>idx - text_st_idx = 0</mark> で <strong class="if"></strong>文の判定は <strong>False</strong> となり、画面に <code class="output">&lt;blank&gt;</code> と出力されます。</p>
 <br>
 <p>これを初めの <strong class="while"></strong>の条件式の判定が <strong>False</strong> となるまでループします。</p>
+</ul>
+<ul>
+<li><p>最後に、この部分を詳しく説明します。</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">while idx < len(S) - (tag_a_len + tag_b_len - 1):  # ← ココ
+    if S[idx:idx+tag_a_len] != tag_a:
+        idx += 1
+        continue
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>抽出する文字がなかった場合、開始タグと終了タグを繋げた文字数は「<strong>開始タグの文字数 + 終了タグの文字数</strong>」です。</p>
+<p>例）</p>
+<div class="inlook">
+<p>tag_a = '&lt;a&gt;'<br>tag_a_len = <strong>3</strong></p>tag_b = '&lt;b&gt;'<br>tag_b_len = <strong>3</strong></p>
+<p>3 + 3 = <strong>6</strong>(文字)</p>
+</div>
+<p>抽出する文字がない場合は <mark>&lt;a&gt;&lt;b&gt;</mark> という文字列になっています。この場合、最低限検索に必要な文字数は<strong>６文字</strong>です。ということは、残り５文字以下の文字列からは <mark>&lt;a&gt;&lt;b&gt;</mark> という文字列はヒットしませんので、これ以降調べる意味はありません。</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<th><small>残り文字数</small></th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+</thead>
+<tbody>
+<tr>
+<th><small>6文字までは<br>ヒットする →</small></th>
+<td style="background-color: aqua;">&lt;</td>
+<td style="background-color: aqua;">a</td>
+<td style="background-color: aqua;">&gt;</td>
+<td style="background-color: aqua;">&lt;</td>
+<td style="background-color: aqua;">b</td>
+<td style="background-color: aqua;">&gt;</td>
+</tr>
+<tr>
+<th><small>5文字以下は<br>ヒットしない →</small></th>
+<td></td>
+<td style="background-color: coral">&lt;</td>
+<td style="background-color: coral">a</td>
+<td style="background-color: coral">&gt;</td>
+<td style="background-color: coral">&lt;</td>
+<td style="background-color: coral">b</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>よって、</p>
+<div class="inlook x-fit">
+<p>len(S) - (tag_a_len + tag_b_len - 1)</p>
+</div>
+<p>と書くことができます。</p>
 </ul>
 <ul>
 <p>『う～ん、わかりそうでイマイチ自信ないな』と感じたら、問題集『定番アルゴリズムの習得 - 線形探索メニュー』をやってみてください。</p>

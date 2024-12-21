@@ -1608,7 +1608,7 @@ else:
 <p>となります。開始タグも終了タグも<strong>開始位置の番号</strong>なのでこうなってしまいます。</p>
 </ul>
 <ul>
-<p>抽出する文字列の開始位置番号は<strong>「開始タグの位置番号 + 開始タグの文字数」</strong>で得られます。</p>
+<p>抽出する文字列の開始位置番号は<strong>「開始タグの開始位置番号 + 開始タグの文字数」</strong>で得られます。</p>
 <div class="x-fit">
 <table>
 <thead>
@@ -1775,7 +1775,7 @@ while idx < len(S):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>めんどくさいですね。😓</p>
-<p>しかしやっていることはいたって単純で、 文字列 <code>S</code> の先頭から <code>tag_a</code> を探し、見つけたら <code>tag_idxs</code> に位置番号を追加し、次の <code>tag_b</code> も同様の処理をします。これを文字列 <code>S</code> の末尾まで行ないます。</p>
+<p>しかしやっていることはいたって単純で、 文字列 <code>S</code> の先頭から <code>tag_a</code> を探し、見つけたら <code>tag_a_idx</code> に位置番号を記録し、次の <code>tag_b</code> も同様の処理をします。これを文字列 <code>S</code> の末尾まで行ないます。</p>
 <p>paiza 解答コード例では、文字列 <code>S</code> の末尾まで探索するのは無駄なので、<code>tag_a</code> (※)の文字数分を文字列 <code>S</code> の文字数から引いています。これはここでは次の FINAL問題で導入します。</p>
 <p>※ <code>tag_a_len + tag_b_len - 1</code> だともっとよいかも。😊</p>
 </ul>

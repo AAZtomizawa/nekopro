@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット1</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>スポーツの人数 </summary>
+<header><h2>スポーツの人数 </h2></header>
+<ul>
+<li><p>例１</p></li>
+  <!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+
+if s == 'baseball':
+    print(9)
+elif s == 'soccer':
+    print(11)
+elif s == 'rugby':
+    print(15)
+elif s == 'basketball':
+    print(5)
+else:
+    print(6)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = {
+    'baseball': 9,
+    'soccer': 11,
+    'rugby': 15,
+    'basketball': 5,
+    'volleyball': 6
+}
+
+s = input()
+print(nums[s])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は <strong class="if"></strong>文で１つ１つ判定していく方法、例２は辞書を使った方法です。見比べてみるとわかってくると思いますが、辞書は<strong class="if"></strong>文の代わりとしても使えます。</p>
+<p>{key: value}</p>
+<p>とした場合、「 s が key の時に value となる」わけです。</p>
+<p>条件外の話になりますが、例１の場合は <code>'volleyball'</code> 以外でも <code class="output">6</code> と出力されてしまいます。例２の場合は辞書に <code>s</code> と同じキーが無ければエラーとなります。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">スポーツの人数</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>バイトの休憩時間</summary>
+<header><h2>バイトの休憩時間</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">h = int(input())
+
+if h <= 6:
+    print('no break')
+elif h > 8:
+    print('60 min')
+else:
+    print('45 min')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">h = int(input())
+within_range = 45
+over_range = 60
+
+if h <= 6:
+    print('no break')
+elif h > 8:
+    print(over_range, 'min')
+else:
+    print(within_range, 'min')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『勤務時間が6時間を超え』なので、６時間「以下 <code><=</code>」は <code>'no break'</code> です。<br>『６時間を超え、８時間以下』の時の条件文を書くのが面倒なので <strong>else</strong>に投げました。😅 もし書くとするならば、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if h > 6 and h <= 8:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>もしくは</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if 6 < h <= 8:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>となります。さらに <code>6</code> と <code>8</code> も変数にしておくともっと良いでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">バイトの休憩時間</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>自動車の燃費</summary>
+<header><h2>自動車の燃費</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">v, d = map(int, input().split())
+print(int(d / v))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">v, d = map(int, input().split())
+print(d // v)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この問題で求められる『燃費』とは、俗に言う<strong>「リッター何キロ」</strong>です。走行距離(km)を消費した燃料(L)で割ると、１リットルあたりの走行距離が求められます。</p>
+<p>期待する出力に『<strong class="b">ただし、燃費は小数点以下を切り捨てて出力してください。</strong>』とありますので、<code>/</code> ではなく、割り算の商を求める <code>int(d / v)</code> で計算しますが、<code>//</code> でも同じ出力結果になります。</p>
+<dl>
+<dt>int(d / v)</dt>
+<dd>( ) 内の計算結果から<strong>小数点以下を切り捨て</strong>て整数のみにする。</dd>
+<dt>d // v</dt>
+<dd>割り算の <strong>商</strong> を求める。</dd>
+</dl>
+<p>期待する出力の文言どおりなら<strong>後者</strong>です。結果は同じと思っても、時々与えられた条件や文言に従わないと不具合が起こることがありますので注意してください。例えば、</p>
+<p class="inlook">【常に整数で計算する場合】<br><br>5 // 3 + 5 // 3<br>↓<br>1 + 1 = <code class="output">2</code></p>
+<p class="inlook">【最後に小数を切り捨てる場合】<br><br>int(5 / 3 + 5 / 3)<br>↓<br>int(1.66666… + 1.66666…)<br>↓<br>int(3.33333…) = <code class="output">3</code></p>
+<p>となり、<strong>商</strong> と <strong>切り捨て</strong> では違う結果になることがあります。ジーマーで気を付けて！！</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">自動車の燃費</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>背番号順</summary>
+<header><h2>背番号順</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+members = [[int(b), p] for _ in range(n) for b, p in [input().split()]]
+
+for num, name in sorted(members):
+    print(num, name)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Python式のこの入力方法ならば、一文で欲しい入力結果が得られます。<br>あとはまるごとソートするだけです。二次元リストになっています。Ｃランク問題の解き方じゃないなこれ。😆</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    3
+    83 PAIZA
+    11 SUZUKI
+    90 TANAKA
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題集のこの入力例を使って上記の入力方法で値を取得すると次のようになります。</p>
+<p class="inlook">members = [[83, 'PAIZA'], [11, 'SUZUKI'], [90, 'TANAKA']]</p>
+<p>これを <strong class="func">sorted()</strong> 関数にかけてソートすると、まず背番号から昇順ソートされます。</p>
+<p class="inlook">members = [[11, 'SUZUKI'], [83, 'PAIZA'], [90, 'TANAKA']]</p>
+<p>背番号が複数存在する場合は、次に名前を使って昇順ソートされるのですが、問題文に『ただし、同じ背番号の選手は存在しないものとします。』とありますので、この並びの状態でソート結果となります。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">背番号順</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット1</p>
+</footer>
+</body>
+</html>

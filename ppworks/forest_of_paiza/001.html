@@ -57,7 +57,7 @@ print(nums[s])
 <p>例１は <strong class="if"></strong>文で１つ１つ判定していく方法、例２は辞書を使った方法です。見比べてみるとわかってくると思いますが、辞書は<strong class="if"></strong>文の代わりとしても使えます。</p>
 <p>{key: value}</p>
 <p>とした場合、「 s が key の時に value となる」わけです。</p>
-<p>条件外の話になりますが、例１の場合は <code>'volleyball'</code> 以外でも <code class="output">6</code> と出力されてしまいます。例２の場合は辞書に <code>s</code> と同じキーが無ければエラーとなります。</p>
+<p>条件外の話になりますが、例１の場合はその他の文字列でも <code class="output">6</code> と出力されてしまいます。例２の場合は辞書に <code>s</code> と同じキーが無ければエラーとなります。</p>
 </ul>
 <footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">スポーツの人数</a></footer>
 </details>
@@ -138,14 +138,14 @@ print(d // v)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>この問題で求められる『燃費』とは、俗に言う<strong>「リッター何キロ」</strong>です。走行距離(km)を消費した燃料(L)で割ると、１リットルあたりの走行距離が求められます。</p>
-<p>期待する出力に『<strong class="b">ただし、燃費は小数点以下を切り捨てて出力してください。</strong>』とありますので、<code>/</code> ではなく、割り算の商を求める <code>int(d / v)</code> で計算しますが、<code>//</code> でも同じ出力結果になります。</p>
+<p>期待する出力に『<strong class="b">ただし、燃費は小数点以下を切り捨てて出力してください。</strong>』とありますので、単に <code>/</code> ではなく、割り算を求めてから小数点以下を切り捨てる <code>int(d / v)</code> で結果を出力しますが、<code>//</code> でも同じ出力結果になります。</p>
 <dl>
 <dt>int(d / v)</dt>
 <dd>( ) 内の計算結果から<strong>小数点以下を切り捨て</strong>て整数のみにする。</dd>
 <dt>d // v</dt>
 <dd>割り算の <strong>商</strong> を求める。</dd>
 </dl>
-<p>期待する出力の文言どおりなら<strong>後者</strong>です。結果は同じと思っても、時々与えられた条件や文言に従わないと不具合が起こることがありますので注意してください。例えば、</p>
+<p>期待する出力の文言どおりなら<strong>後者</strong>です。結果は同じと思っても、時々与えられた条件や文言に従わないと不具合が起こることがありますので注意してください。例えば次のような場合、</p>
 <p class="inlook">【常に整数で計算する場合】<br><br>5 // 3 + 5 // 3<br>↓<br>1 + 1 = <code class="output">2</code></p>
 <p class="inlook">【最後に小数を切り捨てる場合】<br><br>int(5 / 3 + 5 / 3)<br>↓<br>int(1.66666… + 1.66666…)<br>↓<br>int(3.33333…) = <code class="output">3</code></p>
 <p>となり、<strong>商</strong> と <strong>切り捨て</strong> では違う結果になることがあります。ジーマーで気を付けて！！</p>
@@ -168,7 +168,7 @@ for num, name in sorted(members):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>Python式のこの入力方法ならば、一文で欲しい入力結果が得られます。<br>あとはまるごとソートするだけです。二次元リストになっています。Ｃランク問題の解き方じゃないなこれ。😆</p>
+<p>Python式のこの入力方法ならば、一文で欲しい入力結果が得られます。<br>あとはまるごとソートするだけです。二次元リストになっています。Ｃランクの解き方じゃないのかな、これ？😆</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext sample-input">1
@@ -183,7 +183,7 @@ for num, name in sorted(members):
 <p class="inlook">members = [[83, 'PAIZA'], [11, 'SUZUKI'], [90, 'TANAKA']]</p>
 <p>これを <strong class="func">sorted()</strong> 関数にかけてソートすると、まず背番号から昇順ソートされます。</p>
 <p class="inlook">members = [[11, 'SUZUKI'], [83, 'PAIZA'], [90, 'TANAKA']]</p>
-<p>背番号が複数存在する場合は、次に名前を使って昇順ソートされるのですが、問題文に『ただし、同じ背番号の選手は存在しないものとします。』とありますので、この並びの状態でソート結果となります。</p>
+<p>背番号が複数存在する場合は、次に名前を使って昇順ソートされるのですが、問題文に『ただし、同じ背番号の選手は存在しないものとします。』とありますので、この並びの状態がソート結果となります。</p>
 </ul>
 <footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">背番号順</a></footer>
 </details>

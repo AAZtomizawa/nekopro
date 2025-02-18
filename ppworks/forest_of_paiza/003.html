@@ -141,7 +141,7 @@ print(text)
 </section>
 
 <section>
-<details id="c5"><summary>ラッキーナンバー </summary>
+<!-- <details id="c5"><summary>ラッキーナンバー </summary> -->
 <header><h2>ラッキーナンバー </h2></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -258,27 +258,44 @@ for j in range(n):
 </tbody>
 </table>
 <br>
-<p>10進数で 10 の時は２ビット目と４ビット目、言い換えると左に<strong>１つ</strong>シフトした時と、<strong>３つ</strong>シフトした時に 1 を見つけることができます。1 を見つけた時のこの <code>j</code> が、</p>
+<p>10進数で 10 (2進数で1010)の時は２ビット目と４ビット目、言い換えると左に<strong>１つ</strong>シフトした時と、<strong>３つ</strong>シフトした時に 1 を見つけることができます。1 を見つけた時のこの <code>j</code> が、</p>
 <p>x = [333, 222, 444, 666]</p>
-<p>の要素番号として使われます。<code>x[j]</code><br>２進数と要素の並びが左右対称になっていてちょっとわかりにくいので、説明の為に要素の並びを２進数側に合わせます。</p>
+<p>の要素番号として使われます。<code>x[j]</code><div class="x-fit">
 <table class="text-center">
+<thead>
+<tr><th colspan="5">1010</th></tr>
+</thead>
+<tr><th>j</th><td>0</td><td><strong>1</strong></td><td>2</td><td><strong>3</strong></td></tr>
 <tbody>
-<tr><th>要素番号</th><td>3</td><td>2</td><td>1</td><td>0</td></tr>
-<tr><th>要素</th><td>666</td><td>444</td><td>222</td><td>333</td></tr>
+<tr><th>1 &lt;&lt; j</th><td>0001</td><td>0010</td><td>0100</td><td>1000</td></tr>
+<tr><th>1010 & 1 &lt;&lt; j</th><td>0000</td><td><mark>0010</mark></td><td>0000</td><td><mark>1000</mark></td></tr>
+<tr><th>x[j]</th><td><em><small>False</small></em></td><td><strong>222</strong></td><td><em><small>False</small></em></td><td><strong>666</strong></td></tr>
+</tbody>
 </table>
+</div>
 <br>
-<p>そして実際にこの部分のループを回して <code>tmps</code> の中身がどうなっているかを、同じく i = 10 の時を例に表にして見てみます。</p>
+<p>そして実際にこの部分のループを回して <code>tmps</code> の中身がどうなっているかを見てみます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tmps = []
+for j in range(n):
+    if i & 1 << j:
+        tmps.append(x[j])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
 <div class="x-fit">
 <table class="text-center">
 <thead>
-<tr><th colspan="4">i = 10 の時</th></tr>
-<tr><th>1 &lt;&lt; j</th><th>1010 & 1 &lt;&lt; j</th><th>x[j]</th><th>tmps</th></tr>
+<tr><th colspan="5">1010</th></tr>
+<tr><th>j</th><th>1 &lt;&lt; j</th><th>1010 & 1 &lt;&lt; j</th><th>x[j]</th><th style="background-color: aqua;">tmps</th></tr>
 </thead>
 <tbody>
-<tr><td>0001</td><td>0000</td><td><em>false</em></td><td>[]</td></tr>
-<tr><td>0010</td><td>0010</td><td>222</td><td>[222]</td></tr>
-<tr><td>0100</td><td>0000</td><td><em>false</em></td><td>[222]</td></tr>
-<tr><td>1000</td><td>1000</td><td>666</td><td>[222, 666]</td></tr>
+<tr><td>0</td><td>0001</td><td>0000</td><td><em><small>False</small></em></td><td style="background-color: aqua;">[]</td></tr>
+<tr><td>1</td><td>0010</td><td>0010</td><td>222</td><td style="background-color: aqua;">[222]</td></tr>
+<tr><td>2</td><td>0100</td><td>0000</td><td><em><small>False</small></em></td><td style="background-color: aqua;">[222]</td></tr>
+<tr><td>3</td><td>1000</td><td>1000</td><td>666</td><td style="background-color: aqua;">[222, 666]</td></tr>
 </tbody>
 </table>
 </div>

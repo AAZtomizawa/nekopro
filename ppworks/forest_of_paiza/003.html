@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット3</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>文字列の逆順</summary>
+<header><h2>文字列の逆順</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print(s[::-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これが最も簡単な文字列の逆順方法です。文字列変数に <code>[::-1]</code> を添えるだけです。リストならともかく、文字列の逆順をこれ以外の方法で実現しようとすると面倒が多いです。</p>
+<p>気後れせずに、この方法一択で使いまくってしまいましょう！😉</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">文字列の逆順</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>英単語の生成（連結）</summary>
+<header><h2>英単語の生成（連結）</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s1, s2 = input().split()
+print(s1 + s2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print(s.replace(' ', ''))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は、 <code>s1</code> と <code>s2</code> を文字列として分割で受け取り、それを <code>+</code> で繋ぎ直して画面に出力しています。</p>
+<p>例２は、入力を１つの文字列として受け取ったものを <strong class="func">.replace()</strong> メソッドを使って、空白の部分を <code>''</code> に置き換えて空白部分を削除するという処理をしています。</p>
+<p><strong class="func">.replace()</strong> メソッドの使い方は「<a href="../../2/0050usefulstrtype.html#-replace-h" class="linked" target="_blank">２章 文字列の操作を使いこなす機能一覧</a>」をご覧ください。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">英単語の生成（連結）</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>小文字にする </summary>
+<header><h2>小文字にする </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print(s.lower())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">.lower()</strong> メソッドを使うと、文字列をすべて小文字に変換することができます。例えば、</p>
+<p class="inlook"><em>学習を続けますか？ (yes or no) _</em></p>
+<p>という質問に対して、<code>YES</code> と入力しても、<code>yes</code> として処理することができるようになります。<code>yeS</code> でも <code>YeS</code> でも、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if s.lower() == 'yes':
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>だけでよく、想定し得る入力値を予め全て用意しておく必要も無く、<code>yes</code> 以外の入力を拒否して再入力を求めたりする必要も無くなります。</p>
+<br>
+<p>全て大文字にしたい場合は <strong class="func">.upper()</strong>メソッドを使います。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">小文字にする </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>キーボードのシミュレーション </summary>
+<header><h2>キーボードのシミュレーション </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+capslock = False
+text = ''
+for _ in range(n):
+    c = input()
+    
+    if c == 'capslock':
+        capslock = not capslock
+        continue
+    
+    if ('shift' in c) or capslock:
+        text += c[-1].upper()
+    else:
+        text += c
+
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ポイントは、</p>
+<ol>
+<li>capslock の状態を<strong>フラグ</strong>で管理する</li>
+<li>shift キーが押されている時の文字列の抽出</li>
+</ol>
+<p>casplock がロックの状態を <strong>True</strong>、解除されている状態を <strong>False</strong> とし、capslock が初め解除されている状態を前提とした問題の書き方がされているだけで capslock の初期状態が問題のどこにも書かれていないのですが😅、初めは解除されている状態でないと出力例のとおりにならないので <code>capslock = False</code> で初期化します。</p>
+<p>ここからまず、入力が <code>capslock</code> の時の処理をしておきます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">capslock = not capslock
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>capslock</code> が <strong>False</strong> の時は <code>True</code> に、<strong>True</strong> の時は <code>False</code> へ、<strong>not</strong> によって反転させています。読むまでもない簡単な内容ですが、この関係を一応「３章 bool型 True と False」の「<a href="../../2/0020truefalse.html#c3-h" class="linked" target="_blank">True or not True</a>」で表にしてあります。</p>
+<br>
+<p>次に、大文字判定の処理をします。単純に <code>'shift'</code> という文字列が入力 <code>c</code> の文字列の中に含まれている場合、shift キーが押されている状態と判断します。また capslock がロックの状態(<strong>True</strong>)の時も入力文字が大文字で出力される状態です。この２つのどちらかが <strong>True</strong> の時、入力文字が大文字で出力されます。出力文字は文字列 <code>c</code> の末尾にありますので要素番号 <code>[-1]</code> を指定します。そして <strong class="func">.upper()</strong> メソッドを使って末尾の１文字を大文字に変換します。</p>
+<p>それ以外の場合は、そのままの文字列を出力します。</p>
+<br>
+<p>このプログラム例の書き方の場合、入力 <code>c</code> が <code>'capslock'</code> かどうかの判定を先に書かないと、入力値が <code>'capslock'</code> の場合でも常に <strong class="if"></strong>文の <strong>else</strong> が実行されて <code>capslock</code> という文字列が <code>text</code> に追加されてしまいますので注意です。😅</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">キーボードのシミュレーション </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>ラッキーナンバー </summary>
+<header><h2>ラッキーナンバー </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+x = [int(input()) for _ in range(n)]
+
+results = set()
+for i in range(1, 1 << n):
+    tmps = []
+    for j in range(n):
+
+        if i & 1 << j:  # ビット演算
+            tmps.append(x[j])
+    
+    if sum(tmps) == 777:
+        results.add(tuple(sorted(tmps)))
+
+    if len(results) > 1:
+        break
+
+if len(results) > 1:
+    print('multiple answers')
+elif len(results) == 1:
+    print(*results.pop())
+else:
+    print('no answer')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この問題は、入力された数列の中から、その中の数を選んで合計すると 777 になる組み合わせを求める問題です。条件が (1 ≤ n ≤ 8) で <math><msup><mi>2</mi><mn>8</mn></msup></math> = 256、何も選ばないという組み合わせは無いので 1 引いて、最多で255通りの組み合わせ数となります。組み合わせ数自体はまだ許容範囲なのですが、用意される数が 1 〜 8 個と可変なので、それに対応するための <strong class="if"></strong>文や <strong class="for"></strong>文を書くのは困難極まります。</p>
+<p>そこで今回は、ビット演算を用いた<strong>ビット全探索</strong>というアルゴリズムを使って全ての組み合わせを求めます。この方法を知らないと、いくら知恵を絞っても自力で解くのはなかなか難しいでしょう。😓</p>
+</ul>
+<ul>
+<p>プログラム例に沿ってどのようにビット全探索で解決をしているのか、見える化して実際に目で追っていってみましょう。</p>
+<p>入力例は問題の 入力例1 を利用します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    4
+    333
+    222
+    444
+    666
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>x = [333, 222, 444, 666]</p>
+<p>要素数が n = <strong>4</strong> なのでビット数も <strong>4</strong> です。0001 〜 1111 までの二進数を使い、15 通りの組み合わせができます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(1, 1 << n):
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ループは 1 〜 15 です。1 からスタートします。<code>1 << n</code> というのは <mark><math><msup><mi>2</mi><mn>n</mn></msup></math></mark> (<code>2**n</code>) と同じです。n = 4 なので 16 、<code>range(1, 16)</code> ということになります。<code>i</code> はこの後のビット演算で使いますが、10進数をビットにすると次のようになります。</p>
+<table class="text-center">
+<thead>
+<tr><th>10進数</th><th>2進数</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>10</td></tr>
+<tr><td>3</td><td>11</td></tr>
+<tr><td>4</td><td>100</td></tr>
+<tr><td>5</td><td>101</td></tr>
+<tr><td>6</td><td>110</td></tr>
+<tr><td>7</td><td>111</td></tr>
+<tr><td>8</td><td>1000</td></tr>
+<tr><td>9</td><td>1001</td></tr>
+<tr><td>10</td><td>1010</td></tr>
+<tr><td>11</td><td>1011</td></tr>
+<tr><td>12</td><td>1100</td></tr>
+<tr><td>13</td><td>1101</td></tr>
+<tr><td>14</td><td>1110</td></tr>
+<tr><td>15</td><td>1111</td></tr>
+</tbody>
+</table>
+<p>この 10進数を 2進数に変換するプログラムを自力で組んで使うということではありません。10進数のままビット演算にかけると勝手に 2進数として演算してくれます。この時点ではちょっと何言ってるかわからないかもしれませんが、その疑問を一旦置いといてこのまま解説を続けます。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">tmps = []
+for j in range(n):
+    if i & 1 << j:
+        tmps.append(x[j])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここに組み合わせ問題を解く鍵が詰まっています。<code>n</code> というのはビット数 <code>4</code> です。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if i & 1 << j:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>詳しく説明するよりまず、実際に数値を当てはめて見てみましょう。</p>
+<p>i = 10, j = 0 の時</p>
+<p class="inlook">10 & <mark>1 &lt;&lt; 0</mark><br>↓<br>1010 & <mark>0001 &lt;&lt; 0</mark>  ← ２進数<br>↓ 0 ビット左にシフトする(変わらないけど😅)<br>1010 & <mark>0001</mark><br>↓<br>0000 ← ２進数<br>↓<br>0 ← 10進数<br>↓<br>if <strong>False</strong>:<br>(0 は False)</p>
+<p>j = 1 の時</p>
+<p class="inlook">10 & <mark>1 &lt;&lt; 1</mark><br>↓<br>1010 & <mark>0001 &lt;&lt; 1</mark> ← ２進数<br>↓ 1 ビット左にシフトする<br>1010 & <mark>0010</mark><br>↓<br>0010 ← ２進数<br>↓<br>3 ← 10進数<br>↓<br>if <strong>True</strong>:<br>(0 以外は True)</p>
+<p><code>j</code> というのが左にシフトするビット数で、<code>1 << j</code> の <code>1</code> (0001) を左に j ビットシフトしていくことで 1 になっている箇所を見つけていきます。(まだ意味わからなくても大丈夫👍)</p>
+<table class="text-center">
+<thead>
+<tr><th>2進数</th><th>シフト数</th></tr>
+</thead>
+<tbody>
+<tr><td>0001</td><td>&lt;&lt; 0</td></tr>
+<tr><td>0010</td><td>&lt;&lt; 1</td></tr>
+<tr><td>0100</td><td>&lt;&lt; 2</td></tr>
+<tr><td>1000</td><td>&lt;&lt; 3</td></tr>
+</tbody>
+</table>
+<br>
+<p>10進数で 10 の時は２ビット目と４ビット目、言い換えると左に<strong>１つ</strong>シフトした時と、<strong>３つ</strong>シフトした時に 1 を見つけることができます。1 を見つけた時のこの <code>j</code> が、</p>
+<p>x = [333, 222, 444, 666]</p>
+<p>の要素番号として使われます。<code>x[j]</code><br>２進数と要素の並びが左右対称になっていてちょっとわかりにくいので、説明の為に要素の並びを２進数側に合わせます。</p>
+<table class="text-center">
+<tbody>
+<tr><th>要素番号</th><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><th>要素</th><td>666</td><td>444</td><td>222</td><td>333</td></tr>
+</table>
+<br>
+<p>そして実際にこの部分のループを回して <code>tmps</code> の中身がどうなっているかを、同じく i = 10 の時を例に表にして見てみます。</p>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<tr><th colspan="4">i = 10 の時</th></tr>
+<tr><th>1 &lt;&lt; j</th><th>1010 & 1 &lt;&lt; j</th><th>x[j]</th><th>tmps</th></tr>
+</thead>
+<tbody>
+<tr><td>0001</td><td>0000</td><td><em>false</em></td><td>[]</td></tr>
+<tr><td>0010</td><td>0010</td><td>222</td><td>[222]</td></tr>
+<tr><td>0100</td><td>0000</td><td><em>false</em></td><td>[222]</td></tr>
+<tr><td>1000</td><td>1000</td><td>666</td><td>[222, 666]</td></tr>
+</tbody>
+</table>
+</div>
+<p><code>tmps</code> の総和が 777 の時、この組み合わせを <code>results</code> に追加します。i = 10 の時では 777 になりませんので、例を変えて説明を続けます。</p>
+<p>tmps = [333, 444] の時</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if sum(tmps) == 777:
+    results.add(tuple(sorted(tmps)))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>tmps</code> を昇順ソートし、その結果をタプルにしてからセット型の <code>results</code> に格納します。問題文に『それらの数字を小さい順に出力してください。』とあります。もし、[333, 444] と [444, 333] が見つかったとなった場合、昇順ソートするとどちらも同じ [333, 444] となりますが、重複は１つとカウントすることになりますので、発生したこの重複分を削除する為にリストではなく、セット型でデータを扱います。</p>
+<p><strong class="func">sorted()</strong> 関数でソートすると、戻り値がリストとして返ります。セット型で扱える値は<strong>不変の型(<em>イミュータブル</em>)</strong>でなければなりませんので、可変(<em>ミュータブル</em>)の型であるリストから不変の型であるタプルに変換して、そのタプルをセット型の <code>results</code> に格納します。</p>
+<p class="inlook">tmps = [444, 333]<br>↓ <strong class="func">sorted(tmps)</strong><br>tmps = [333, 444]<br>↓ <strong class="func">tuple([333, 444])</strong><br>(333, 444)<br>↓ <strong class="func">results.add((333, 444))</strong><br>result = {(333, 444)}</p>
+</ul>
+<ul>
+<p>「足して 777」となる組み合わせが２つ以上ある場合は <code>multiple answers</code> と出力するだけですので、３つ目以降を見つける意味は無く、２つ見つけた時点でループを抜けてしまいましょう。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if len(results) > 1:
+    break
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if len(results) > 1:
+    print('multiple answers')
+elif len(results) == 1:
+    print(*results.pop())
+else:
+    print('no answer')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最後に見つけた組み合わせの個数に合わせた結果を画面に出力したら完了です。<code>*results.pop()</code> は、</p>
+<p>results = {(333, 444)}</p>
+<p>となっています。これを <code>print(*results)</code> だけで画面に出力すると、</p>
+<p><code class="output">(333, 444)</code></p>
+<p>と、セットが外れただけになってしまいます。{ } の中のタプルを取り出してから展開する必要がある為に、<strong class="func">.pop()</strong> を使っています。<code>*results[0]</code> でも構いません。</p>
+</ul>
+<ul>
+<p>入力例1 で実際にビット全探索で組み合わせを作っている様子を表にしました。</p>
+<p>x = [333, 222, 444, 666]</p>
+<table class="text-center">
+<tbody>
+<tr><th>要素番号</th><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><th>要素</th><td>666</td><td>444</td><td>222</td><td>333</td></tr>
+</table>
+<br>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<tr><th><code>i</code></th><th>2進数</th><th>tmps</th><th>総和</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>0001</td><td>[333]</td><td>333</td></tr>
+<tr><td>2</td><td>0010</td><td>[222]</td><td>222</td></tr>
+<tr><td>3</td><td>0011</td><td>[333, 222]</td><td>555</td></tr>
+<tr><td>4</td><td>0100</td><td>[444]</td><td>444</td></tr>
+<tr style="background-color: aqua;"><td>5</td><td>0101</td><td>[333, 444]</td><td>777</td></tr>
+<tr><td>6</td><td>0110</td><td>[222, 444]</td><td>666</td></tr>
+<tr><td>7</td><td>0111</td><td>[333, 222, 444]</td><td>999</td></tr>
+<tr><td>8</td><td>1000</td><td>[666]</td><td>666</td></tr>
+<tr><td>9</td><td>1001</td><td>[333, 666]</td><td>999</td></tr>
+<tr><td>10</td><td>1010</td><td>[222, 666]</td><td>888</td></tr>
+<tr><td>11</td><td>1011</td><td>[333, 222, 666]</td><td>1221</td></tr>
+<tr><td>12</td><td>1100</td><td>[444, 666]</td><td>1110</td></tr>
+<tr><td>13</td><td>1101</td><td>[333, 444, 666]</td><td>1443</td></tr>
+<tr><td>14</td><td>1110</td><td>[222, 444, 666]</td><td>1332</td></tr>
+<tr><td>15</td><td>1111</td><td>[333, 222, 444, 666]</td><td>1776</td></tr>
+</tbody>
+</table>
+</div>
+<p><code class="output">333</code><br><code class="output">444</code></p>
+</ul>
+<ul>
+<p>ついでなので入力例2 の時も表にしてみました。</p>
+<p>x = [111, 222, 333, 444]</p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th>要素番号</th><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><th>要素</th><td>444</td><td>333</td><td>222</td><td>111</td></tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<tr><th><code>i</code></th><th>2進数</th><th>tmps</th><th>総和</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>0001</td><td>[111]</td><td>111</td></tr>
+<tr><td>2</td><td>0010</td><td>[222]</td><td>222</td></tr>
+<tr><td>3</td><td>0011</td><td>[111, 222]</td><td>333</td></tr>
+<tr><td>4</td><td>0100</td><td>[333]</td><td>333</td></tr>
+<tr><td>5</td><td>0101</td><td>[111, 333]</td><td>444</td></tr>
+<tr><td>6</td><td>0110</td><td>[222, 333]</td><td>555</td></tr>
+<tr><td>7</td><td>0111</td><td>[111, 222, 333]</td><td>666</td></tr>
+<tr><td>8</td><td>1000</td><td>[444]</td><td>444</td></tr>
+<tr><td>9</td><td>1001</td><td>[111, 444]</td><td>555</td></tr>
+<tr><td>10</td><td>1010</td><td>[222, 444]</td><td>666</td></tr>
+<tr style="background-color: aqua;"><td>11</td><td>1011</td><td>[111, 222, 444]</td><td>777</td></tr>
+<tr style="background-color: aqua;"><td>12</td><td>1100</td><td>[333, 444]</td><td>777</td></tr>
+<tr><td colspan="4"><strong>break</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p><code class="output">multiple answers</code></p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">ラッキーナンバー </a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット3</p>
+</footer>
+</body>
+</html>

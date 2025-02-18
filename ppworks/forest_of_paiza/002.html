@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット2</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>競輪のユニフォーム </summary>
+<header><h2>競輪のユニフォーム </h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+if n == 1:
+    print('white')
+elif n == 2:
+    print('black')
+elif n == 3:
+    print('red')
+elif n == 4:
+    print('blue')
+elif n == 5:
+    print('yellow')
+elif n == 6:
+    print('green')
+elif n == 7:
+    print('orange')
+elif n == 8:
+    print('pink')
+else:
+    print('purple')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">colors = ['white', 'black', 'red', 'blue', 'yellow', 'green', 'orange', 'pink', 'purple']
+
+n = int(input())
+print(colors[n-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Ｄランクレベルなら例１の書き方でよいのですが、Ｃランクレベルなら例２のリストを使った形で書きましょう。</p>
+<p>要素番号は 0 から始まりますので、取得した入力値から 1 を引く必要があります。辞書を使ってもよいですが、その場合のキーはそのまま 1 から順に割り当てていけば、出力の際に 1 を引く必要がなくなります。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">競輪のユニフォーム </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>エレベーターの行き先</summary>
+<header><h2>エレベーターの行き先</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">f1, f2 = input().split()
+
+if int(f2[0]) > int(f1[0]):
+    print('up')
+else:
+    print('down')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>まず入力値は文字列で受け取っておきます。</p>
+<p><strong class="if"></strong>文の条件式中で文字列となっている階数を整数に変えて利用します。</p>
+<p>f1  = '1F'<br>f2 = '5F' の時、</p>
+<p class="inlook">f1[0] = '1'<br>f2[0] = '5'<br>↓<br>int(f1[0]) = 1<br>int(f2[0]) = 5</p>
+</ul>
+<ul>
+<p>プログラム例では f1 と f2 を比較する際に、f2 のほうを先に書いています。これは比較する際に、<strong>ターゲットとなる値を左に書く</strong>ルールがある為です。これは英語の文法に沿った書き方であるとも言えます。</p>
+<p>if 5 greater than 1:<br><em>(もし、5 が 1 よりも大きいならば)</em></p>
+<br>
+<p><code>n > 0</code> の時、<strong>Python3</strong>では、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if 0 < n:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と左右反対の書き方をしてもエラーは起こりませんが、言語によってはこの書き方ではエラーになります。変数ならばOKなのですが、値を左側に直接書いて比較することができないのです。一部古い言語ではこうなっていたので半ば慣習のようなものにもなっています。</p>
+<p>と言いつつ、私はテキトーに書いてますけどね！😎</p>
+<br>
+<p><em>『あ、逆だった。直すのメンドイからもういいや。』</em></p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">エレベーターの行き先</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>長方形の面積</summary>
+<header><h2>長方形の面積</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">e1, e2 = map(int, input().split())
+print(e1 * e2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>スキルチェックに挑戦するのであれば、わざわざ文字列で入力値を受け取ってから <strong class="func">int()</strong> 関数で整数に変換するよりも、この入力方法を使えば簡単です。入力例の形式がほぼ決まっていますので、標準入力の受け取り方は憶えてしまいましょう。</p>
+<p>標準入力は「<a href="../../3/0020input.html" class="linked" target="_blank">３章 標準入力</a>」をご覧ください。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">長方形の面積</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>セール販売</summary>
+<header><h2>セール販売</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+target_item = 'pants'
+
+purchased_items = set()
+sub_total = 0
+for _ in range(n):
+    c, p = input().split()
+    purchased_items.add(c)
+    sub_total += int(p)
+
+if (target_item in purchased_items) and sub_total >= 2000:
+    total = sub_total - 500
+else:
+    total = sub_total
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>少し丁寧に書いてみました。🤓</p>
+<p>この中で最も重要な値は「小計」です。購入アイテムのそれぞれの金額を <code>sub_total</code> に集計します。それが <strong class="for"></strong>文の中身です。</p>
+<p>このついでにズボンが含まれているかを後にチェックするために、セット型で用意した <code>purchased_items</code> に購入品目を記録していきます。</p>
+<p><strong class="if"></strong>文でまずズボンが含まれているか <code>target_item in purchased_items</code>、そして購入金額(小計)が 2000円以上かどうか <code>sub_total >= 2000</code> を調べます。</p>
+<p>問題文に合わせて小計と合計とで分けて書いたのでちょっと回りくどく見えるかもしれませんが、流れとしてはこんな感じでしょう。</p>
+</ul>
+<ul>
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+target_item = 'pants'
+
+receipt = {}
+for _ in range(n):
+    c, p = input().split()
+    receipt[c] = receipt.get(c, 0) + int(p)
+
+total = sum(receipt.values())
+
+if (target_item in receipt.keys()) and total >= 2000:
+    total -= 500
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例２のこちらは辞書を使って書いています。辞書には購入品目とその合計値が記録されます。例えば問題集の入力例２の場合、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">2
+    4
+    shirt 500
+    pants 1000
+    pants 500
+    shoes 2000
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>1000円と500円の pants ２つで1500円なのでこれを合わせて、 </p>
+<p class="inlook">reciept = {'shirt': 500, 'pants': 1500, 'shoes': 2000}</p>
+<p>という辞書データで出来上がります。これをやっているのが <strong class="for"></strong>文の中身です。</p>
+<br>
+<p>次にこの辞書データから購入額の小計を求めます。 <strong class="func">sum()</strong>関数の引数にある <strong class="func">.values()</strong>メソッドは、辞書データの値の部分だけを取り出してリスト化する機能です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">total = sum(receipt.values())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">total = sum([500, 1500, 2000])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">total = 4000
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<p><strong class="if"></strong>文の中にも <strong class="func">.key()</strong>メソッドが使われてますが、こちらはキーの部分だけを取り出してリスト化する機能です。 <code>.key()</code> は省略することができますが、どの部分を参照しているかを明示するためにも書いておくことをオススメします。</p>
+<br>
+<p>辞書型の各メソッドについては「<a href="../../2/0100usefuldicttype.html" class="linked" target="_blank">２章 辞書を使いこなす機能一覧</a>」をご覧ください。</p>
+
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">セール販売</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット2</p>
+</footer>
+</body>
+</html>

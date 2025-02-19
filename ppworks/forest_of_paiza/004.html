@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット4</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>花言葉</summary>
+<header><h2>花言葉</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+
+    if s == 'rose':
+        print('I love you')
+    elif s == 'cosmos':
+        print('harmony')
+    elif s == 'tulip':
+        print('perfect lover')
+    elif s == 'hydrangea':
+        print('heartlessness')
+    else:
+        print('amiability')
+
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">flower_langs = {
+    'rose': 'I love you',
+    'cosmos': 'harmony',
+    'tulip': 'perfect lover',
+    'hydrangea': 'heartlessness',
+    'jasmine': 'amiability'
+}
+
+s = input()
+print(flower_langs[s])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Ｄランクレベルなので例１の書き方をしますが、辞書の習得がまだの場合は例２の書き方ができるようになるとデータが扱いやすくなりますので、がんばって習得してください。😘</p>
+<p>今からでも！ → 「<a href="../../2/0070dict.html" class="linked" target="_blank">２章 辞書型</a>」</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">花言葉</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>じゃんけん</summary>
+<header><h2>じゃんけん</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">h = input()
+
+if h == 'R':
+    print('P')
+elif h == 'P':
+    print('S')
+else:
+    print('R')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">janken = {'R': 'P', 'P': 'S', 'S': 'R'}
+
+h = input()
+print(janken[h])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>先程の「花言葉」と同じ構造で、そのプログラム例の見様見真似で作れます。キーも値も一文字で見やすいので、辞書の理解を確認するのに適した問題だと思います。😊</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">じゃんけん</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>四季</summary>
+<header><h2>四季</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">m = int(input())
+
+if m >= 3 and m <= 5:
+    print('spring')
+elif m >= 6 and m <= 8:
+    print('summer')
+elif m >= 9 and m <= 11:
+    print('autumn')
+else:
+    print('winter')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">m = int(input())
+
+if 3 <= m <= 5:
+    print('spring')
+elif 6 <= m <= 8:
+    print('summer')
+elif 9 <= m <= 11:
+    print('autumn')
+else:
+    print('winter')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">seasons = {0: 'winter', 1: 'spring', 2: 'summer', 3: 'automn'}
+
+m = int(input())
+n = m // 3 % 4
+print(seasons[n])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>条件式を範囲の形で書くプログラムです。例１の <strong>and</strong> を使った書き方が一般的ですが、Python3では例２の様な、よりわかりやすい書き方ができ、例１の書き方で比較演算子の書き間違いなどのありがちなミスを大幅に減らせることが期待できます。</p>
+</ul>
+<ul>
+<p>例３は、「<code>n = m // 3 % 4</code> の所でなんかうまいことやってるんだろうな」くらいには考えられると思いますが、この式のしくみを実際に目で見てみましょう。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(1, 13):
+    n = i // 3 % 4
+    print(f"{i:>2}月 : {n}")
+</code></pre>
+<code>&nbsp1月: 0</code><br>
+<code>&nbsp2月: 0</code><br>
+<code>&nbsp3月: 1</code><br>
+<code>&nbsp4月: 1</code><br>
+<code>&nbsp5月: 1</code><br>
+<code>&nbsp6月: 2</code><br>
+<code>&nbsp7月: 2</code><br>
+<code>&nbsp8月: 2</code><br>
+<code>&nbsp9月: 3</code><br>
+<code>10月: 3</code><br>
+<code>11月: 3</code><br>
+<code>12月: 0</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<li><p>まず <code>i // 3</code> だけで出力してみます。</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(1, 13):
+    n = i // 3
+    print(f"{i:>2}月 : {n}")
+</code></pre>
+<code>&nbsp1月: 0</code><br>
+<code>&nbsp2月: 0</code><br>
+<code>&nbsp3月: 1</code><br>
+<code>&nbsp4月: 1</code><br>
+<code>&nbsp5月: 1</code><br>
+<code>&nbsp6月: 2</code><br>
+<code>&nbsp7月: 2</code><br>
+<code>&nbsp8月: 2</code><br>
+<code>&nbsp9月: 3</code><br>
+<code>10月: 3</code><br>
+<code>11月: 3</code><br>
+<code>12月: 4</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>12月のところだけ <code>4</code> になってしまいます。これを 0 にするために <code>% 4</code> で割った余りを求めるようにして <code>0</code> にしているわけです。</p>
+<p>試しに１年 24ヶ月にしてみると…、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(1, 25):  # 24ヶ月
+    n = i // 3 % 4
+    print(f"{i:>2}月 : {n}")
+</code></pre>
+<code>&nbsp1月: 0</code><br>
+<code>&nbsp2月: 0</code><br>
+<code>&nbsp3月: 1</code><br>
+<code>&nbsp4月: 1</code><br>
+<code>&nbsp5月: 1</code><br>
+<code>&nbsp6月: 2</code><br>
+<code>&nbsp7月: 2</code><br>
+<code>&nbsp8月: 2</code><br>
+<code>&nbsp9月: 3</code><br>
+<code>10月: 3</code><br>
+<code>11月: 3</code><br>
+<code>12月: 0</code><br>
+<code>13月: 0</code><br>
+<code>14月: 0</code><br>
+<code>15月: 1</code><br>
+<code>16月: 1</code><br>
+<code>17月: 1</code><br>
+<code>18月: 2</code><br>
+<code>19月: 2</code><br>
+<code>20月: 2</code><br>
+<code>21月: 3</code><br>
+<code>22月: 3</code><br>
+<code>23月: 3</code><br>
+<code>24月: 0</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>きちんと３ヶ月毎に次の季節が巡ってきます。</p>
+</ul>
+<ul>
+<p>数学では適した公式を利用して問題を解決することが多いですが、プログラミング(に限りませんが)では自分で式を考えて作ることがとても多いです。いや、ほとんどそうです。予め存在する公式を知っているならばそれを使うだけでよいのですが、知らなくても無理矢理自力で導き出せることも多々あります。もしかしたら世紀の大発見とも言われても不思議ではないような式が、プログラムの一部に埋もれて見過ごされてきているなんてものも、プログラミング史上幾万とあったかもしれません。冗談抜きで。😅</p>
+<p>規則的なものには必ず「法則」がありますので、その法則を見つけて式化できれば、より簡潔なプログラムに仕上がるかもしれません。例えば、１番目から始まる i と 0 から始まる要素番号を紐付けるために、i 番目の i を、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a[i - 1]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>とするのも立派な式化です。難しそうと思っても、やってるみると案外できてしまいます。</p>
+<p>今後も規則的なものを見つけたら、ぜひ法則を見つけて式化に挑戦してみてください。</p>
+<br>
+<p>四季(式)だけにね。😉</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">四季 &lt; <small>最後のｲﾗﾈ-</small></a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>オルタネーティングキャップス</summary>
+<header><h2>オルタネーティングキャップス</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print(s.lower())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字列に <strong class="func">.lower()</strong> メソッドを使うと、文字列内の英大文字がすべて英小文字に変換されます。英小文字や数字、記号、日本語文字は変化ありません。その他ギリシャ文字などの大文字も小文字に変換されます。</p>
+<p>反対に <strong class="func">.upper()</strong> メソッドを使うと、英小文字がすべて英大文字に変換されます。</p>
+</ul>
+<ul>
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+
+alphabets = {}
+for i in range(ord('A'), ord('Z')+1):
+    alphabets[chr(i)] = chr(i+32)
+
+text = ''
+for char in s:
+    if char in alphabets.keys():
+        text += alphabets[char]
+    else:
+        text += char
+
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１の方法を使えば済む問題なのですが、これをメソッドを使わない方法で書いてみます。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">alphabets = {}
+for i in range(ord('A'), ord('Z')+1):
+    alphabets[chr(i)] = chr(i+32)   # 大文字を小文字に変換する為
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分は「英大文字を英小文字に変換する」ための辞書をつくっています。</p>
+<p><strong class="func">ord('A')</strong> というのは、unicode表の <code>'A'</code> に対応する文字コード <code>65</code> に変換する機能です。 <strong class="func">ord('Z')</strong> は <code>90</code> です。 <strong class="func">ord('Z')</strong> に +1 しているのは、 <strong class="func">range(65, 90)</strong> とすると、<code>'A'</code> から <code>'Y'</code> までしかループしないので、+1 して調整しています。</p>
+<p><strong class="func">chr(i+32)</strong> は unicode表の <code>'a'</code> に対応する文字コードが <code>97</code> なので、65 に 32 を足して 97 にする為です。それを <strong class="func">chr()</strong> 関数を使って文字コードを対応する文字に変換しています。</p>
+<p>これをループさせると、</p>
+<div class="x-fit">
+<p>alphabets = {'A': 'a', 'B': 'b', …… , 'Z': 'z'}</p>
+</div>
+<p>という辞書ができあがります。</p>
+<p>次に、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">text = ''
+for char in s:
+    if char in alphabets.keys():
+        text += alphabets[char]
+    else:
+        text += char
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分は、入力された文字列 <code>s</code> を１文字ずつ取り出して、その文字が <code>alphabets</code> のキー(大文字)にあるかどうかを調べ、あればその文字を小文字にして <code>text</code> に追加し、なければそのままの文字を追加しています。</p>
+<br>
+<p>大変な作業ですね。😓</p>
+</ul>
+<ul>
+<p>例２を内包表記で書くと以下のようになります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+alphabets = {chr(i): chr(i+32) for i in range(ord('A'), ord('Z')+1)}
+text = [alphabets[char] if char in alphabets.keys() else char for char in s]
+print(*text, sep='')
+# または
+# print(''.join(text))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<p><strong class="func">.lower()</strong> が便利。😊</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">オルタネーティングキャップス</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>パワー 100 倍</summary>
+<header><h2>パワー 100 倍</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p = int(input())
+print(p * 100)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p = input()
+print(p + '00')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p = input()
+print(f"{p}00")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>一見、簡単そうに見える問題ですが、条件に『1 ≦ p ≦ 10^1000』とあります。10^1000 とは 10 の 1000 乗、つまり 1 に 0 が 1000個つく巨大な数になります。(Python3 では 10**1000 と表記します)</p>
+<div class="x-fit">
+<p>10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</p>
+</div>
+<p><a href="https://chatgpt.com/share/67b577e0-9fe4-800f-92bd-857100e2a95e" class="linked" target="_blank"><em>10^1000光年はどのくらいの距離ですか? (Chat GPT)</em></a></p>
+<p>Python3 なら例１でも問題ないのですが、言語によっては、そして現在の 64ビットCPUのコンピュータではこのような巨大な数が扱えません。</p>
+
+<br>
+<p>そんな時は、入力を文字列で受け取って、単に末尾に <code>'00'</code> を付けるだけでOKです。でもこれ、文字列であって数ではないので演算は無理です。😅</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">パワー 100 倍</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>おつり</summary>
+<header><h2>おつり</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p = int(input())
+coins = [500, 100, 50, 10, 5, 1]
+
+coin = 0
+for c in coins:
+    d, p = p // c, p % c
+    coin += d
+
+print(coin)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数の大きいコインから割り算をして、商をお釣りのコインの枚数 <code>coin</code> に足していくと求められます。余りは残りのお釣りです。</p>
+<p>p = 813 の時</p>
+<p class="inlook">500 → 1 枚, 残り 313円<br>100 → 3 枚, 残り 13円<br>&nbsp;50 → 0 枚<br>&nbsp;10 → 1 枚, 残り 3円<br>&nbsp;&nbsp;5 → 0 枚<br>&nbsp;&nbsp;1 → 3 枚, 残り 0円<br>-----------------------------------<br>計 <code class="output">8</code> 枚</p>
+<p><code>p // c, p % c</code> を <code>divmod(p, c)</code> に置き換えてもイケます。👍</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">おつり</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>ゾロ目</summary>
+<header><h2>ゾロ目</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x = int(input())
+print(x - x % 11)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この問題で言う「ゾロ目」とは<strong>11の倍数</strong>です。x を 11 で割った余りを x から引くとそれが答えになります。</p>
+<p>x = 90</p>
+<p class="inlook">90 % 11 = <mark>2</mark> (90÷11 = 8 余り <mark>2</mark>)<br>↓<br>90 - <mark>2</mark> = <code class="output">88</code></p>
+<p>x = 64</p>
+<p class="inlook">64 % 11 = <mark>9</mark> (64÷11 = 5 余り <mark>9</mark>)<br>↓<br>64 - <mark>9</mark> = <code class="output">55</code></p>
+<p>x = 60</p>
+<p class="inlook">60 % 11 = <mark>5</mark> (60÷11 = 5 余り <mark>5</mark>)<br>↓<br>60 - <mark>5</mark> = <code class="output">55</code></p>
+</ul>
+<ul>
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x = int(input())
+print(x // 11 * 11)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>もう１つ、この方法は 11 で割って余りを切り捨て、<strong>商を11倍</strong>することでも求められます。</p>
+<p>x = 90</p>
+<p class="inlook">90 // 11 = <mark>8</mark><br>↓<br>11 * <mark>8</mark> = <code class="output">88</code></p>
+</ul>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">ゾロ目</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c8"><summary>いちばんお得</summary>
+<header><h2>いちばんお得</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">g1, p1 = map(int, input().split())
+g2, p2 = map(int, input().split())
+
+choco1 = p1 / g1
+choco2 = p2 / g2
+
+if choco1 < choco2:
+    print(1)
+else:
+    print(2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">chocolates = [p / g for _ in range(2) for g, p in [map(int, input().split())]]
+print(chocolates.index(min(chocolates)) + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は問題に素直に書いたプログラムです。例２は回りくどい書き方に見えるかもしれませんが、比較するチョコをいくらでも増やせます。</p>
+
+</ul>
+<footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">いちばんお得</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c9"><summary>重さの計算</summary>
+<header><h2>重さの計算</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k, x = map(int, input().split())
+
+a = x / k
+b = a * n
+
+print(int(b))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<dl>
+<dt>k 個のボールの重さが合計 x グラム</dt><dd>x グラム を k で割ると、<mark>ボール１個の重さ</mark>になる</dd>
+<dt>n 個のボールの重さは何グラム？</dt><dd>＝ <mark>ボール１個の重さ</mark> × n 個</dd>
+</dl>
+<p>あとは小数点以下を切り捨てて画面に出力すれば完了です。</p>
+</ul>
+<footer><a class="backto" href="#c9" onclick="closeAccordion('c9')">重さの計算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c10"><summary>寒暖差</summary>
+<header><h2>寒暖差</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = [int(input()) for _ in range(10)]
+
+for i in range(9):
+    if abs(a[i] - a[i+1]) >= 3:
+        print('Yes')
+        break
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>寒暖差は前後の日の最高気温との<strong>差</strong>なので、例えば、29度と26度を比較するとその差は３度です。26度と29度を比較してもその差は３度です。どちらから引き算してもその差は３度です。ですので、差を求めた値の絶対値が<strong>寒暖差</strong>となります。</p>
+<p>寒暖差が３度以上の所を見つけたら、<code class="output">Yes</code> を画面に出力して完了です。１つ見つけられればよいのでもうそれ以上調べる必要はありません。<br>１つも無かった時はループをそのまま抜けて <strong>else</strong> が実行され、<code class="output">No</code> が画面に出力されます。</p>
+</ul>
+<footer><a class="backto" href="#c10" onclick="closeAccordion('c10')">寒暖差</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット4</p>
+</footer>
+</body>
+</html>

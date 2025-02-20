@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット6</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>球数制限</summary>
+<header><h2>球数制限</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+m = sum(int(input()) for _ in range(n))
+
+print('Yes' if m < k else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>リスト内包表記で入力するのと同様に、 <strong class="func">sum()</strong> 関数の引数に内包表記で書くこともできます。<strong class="func">list()</strong> が <strong class="func">sum()</strong> になったと見ればわかるかと思います。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">球数制限</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>最大イニング</summary>
+<header><h2>最大イニング</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">k = int(input())
+
+ball = 0
+for i in range(1, 10):
+    m = int(input())
+    
+    if ball + m > k:
+        ball += m
+        break
+
+if i == 9:
+    print('Yes')
+else:
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">k = int(input())
+
+ball = 0
+for i in range(1, 10):
+    m = int(input())
+    
+    if (ball:=ball + m) > k:
+        break
+
+print('Yes' if i == 9 else i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１、例２共通して言えるのが、 <strong class="for"></strong>文で使った変数 <code>i</code> は、ループを抜けても値が残っているという点です。その <code>i</code> を最後の出力時の判定にも用いています。</p>
+<p>問題文の最後の一行にある条件は、用いる比較演算子で解決できます。</p>
+<br>
+<li><p>６イニングでぴったり投げきった時</p></li>
+<dl>
+<dt><mark style="color: red;">></mark> で比較した時</dt><dd>次のループに移り、<var>i</var> が <code>7</code> になってから <strong>break</strong> します。</dd>
+<dt class="dm"><mark style="color:blueviolet;">>=</mark> で比較した時</dt><dd>ぴったりなので、<var>i</var> が <code>6</code> の時点で <strong>break</strong> してしまいます。</dd>
+</dl>
+<br>
+<p>例２で使われている <mark>:=</mark> の意味は「<a href="../../3/0060extra.html#c2-5h" class="linked" target="_blank">３章 補足 - :=</a>」で知ることができます。
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">最大イニング</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>ロボットの移動</summary>
+<header><h2>ロボットの移動</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y = map(int, input().split())
+print(abs(x) + abs(y))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>(0, 0) を中心としているので、マイナスの値(負数)になったとしても移動ステップ数は変わりません。</p>
+<div class="x-fit">
+<p><small>３ステップ</small> <mark>-3 ← 0 → 3</mark> <small>３ステップ</small></p>
+</div>
+<p>x も y も 絶対値にしてしまいましょう。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">ロボットの移動</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>最大の差</summary>
+<header><h2>最大の差</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">points = [int(input()) for _ in range(5)]
+print(abs(max(points) - min(points)))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>もうめんどくさいのてんこ盛りなので、関数を使いまくってしまいます。 <strong class="func">max()</strong> 関数と <strong class="func">min()</strong> 関数に引数にあてるため、入力はリストにして受け取ります。そして最大値から最小値を引いた数の<strong>絶対値</strong>を取ればOK👌。<mark>最小値 − 最大値</mark> でも構いません。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">最大の差</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>中央値</summary>
+<header><h2>中央値</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">points = [int(input()) for _ in range(5)]
+print(sorted(points)[2])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ソートして真ん中の要素番号を指定すればOK👌。要素数が奇数なので、必ず中央があります。変数にすると、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 5  # 必ず奇数であることが条件
+points = [int(input()) for _ in range(n)]
+print(sorted(points)[n//2])  # 5//2 = 2
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と書けます。</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">中央値</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>採点</summary>
+<header><h2>採点</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+point = 0
+for _ in range(n):
+    m = input()
+    
+    if m == 'correct':
+        point += 2
+    elif m == 'incorrect':
+        point -= 1
+
+print(point)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+m = [input() for _ in range(n)]
+
+point = 0
+for result in m:
+    if result == 'correct':
+        point += 2
+    elif result == 'incorrect':
+        point -= 1
+
+print(point)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+m = [input() for _ in range(n)]
+scoring_list = {'correct': 2, 'incorrect': -1,'no_answer': 0}
+
+point = sum(scoring_list[result] for result in m)
+print(point)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は個別に読み込んで採点しています。</p>
+<p>例２は入力をリストに全て読み込んでから採点しています。</p>
+<p>例３は解答結果とそれに関係した点数を辞書にして、 <strong class="func">sum()</strong> 関数で合計点を算出しています。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">採点</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット6</p>
+</footer>
+</body>
+</html>

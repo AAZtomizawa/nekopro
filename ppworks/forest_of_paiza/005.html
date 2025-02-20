@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット5</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>3 割打者</summary>
+<header><h2>3 割打者</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+
+if m / n >= 0.3:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><math><mi>ヒット数</mi><mo>÷</mo><mi>打席数</mi><mo>=</mo><mi>打率</mi></math> です。</p>
+<p>paiza解答コード例では掛け算で求めていますが、これはコンピュータが小数の扱いが苦手で正しく小数を表現できないことがある為です。『<strong>誤差</strong>』と言いますが、小数が発生する割り算をすると誤差が生まれたり、小数の計算をすると誤差が生まれたり、とにかくコンピュータで小数を扱うときには誤差に注意、さらに小数を扱うのは避けるべきとも考えられています。利子利息の計算でたとえ１円でもずれたら大変ですよね。ネコはお金に興味が無いから、たとえ１億円ずれて儲かったとしても全く気になりませんけどね。😼</p>
+<p>Python3 は数に強い言語と言われていますが、それは数学モジュール(import mathなど)を使った時の話で、普通に小数を扱うと普通に誤差が生じるのは Python3 も他の言語と同様です。</p>
+<p>ただ、今はこのことを気にしつつも、小数が発生する割り算もどんどん使っていきましょう。加減がわからないと良し悪しも理解できないと思いますし。😊</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">3 割打者</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>テレワーク可能か</summary>
+<header><h2>テレワーク可能か</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = [[int(i), s] for i, s in [input().split()]][0]
+
+if a > 30 or b == 'rainy':
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = [[int(i), s] for i, s in [input().split()]][0]
+print('Yes' if a > 30 or b == 'rainy' else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>標準入力が面倒なだけで、条件文はシンプルです。条件式は「どちらかが <em>True</em> の時」なので、<strong>or</strong> で繋げます。</p>
+<p>『30％を超える』なので、<mark>a >= 31</mark> ではなく、<code>a > 30</code> と書きます。この問題では入力が必ず整数となっていると思われますので前者でも正しく判定できますが、小数が扱われる場合は正しく判定されないことがあります。ちなみに入力に小数を扱う問題の場合は、条件の欄に『0.0 ≦ a ≦ 100.0』という書き方がされていたと思います。たしか。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">テレワーク可能か</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>文字列の反転</summary>
+<header><h2>文字列の反転</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print(s[::-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>逆順の方法は他にも存在しますが文字列の場合は扱いが面倒になってしまうので、文字列の逆順方法はこれ一択で済ませてしまいます。</p>
+<br>
+<p>s = paiza<br><mark>s[::]</mark> の時</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><td>s[0]</td><td>s[1]</td><td>s[2]</td><td>s[3]</td><td>s[4]</td></tr></thead>
+<tr><td>p</td><td>a</td><td>i</td><td>z</td><td>a</td></tr>
+</table>
+</div>
+<p><code class="output">paiza</code></p>
+<br>
+<p><mark>s[::-1]</mark> の時</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><td>s[-5]</td><td>s[-4]</td><td>s[-3]</td><td>s[-2]</td><td>s[-1]</td></tr></thead>
+<tr><td>p</td><td>a</td><td>i</td><td>z</td><td>a</td></tr>
+</table>
+</div>
+<p><code class="output">aziap</code></p>
+<p><a href="https://chatgpt.com/share/67b68be3-cbf8-800f-a847-4cfd9a498eb6" class="linked" target="_blank"><em>[::-1]はなぜ0から開始しないのか？ (ChatGPT)</em></a></p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">文字列の反転</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>CD</summary>
+<header><h2>CD</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+CD = 74
+SECOND = 60
+
+total = 0
+for _ in range(n):
+    m, s = map(int, input().split())
+    
+    total += m * SECOND + s
+
+if total <= CD * SECOND:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>いろいろな組み方が考えられますが、多いのでその中の１つだけを例に挙げました。</p>
+<p><code>total</code> は、ＣＤに収めたい曲のそれぞれ <strong>分</strong> と <strong>秒</strong> を<strong>秒数</strong>にまとめたものです。1分15秒なら 75秒に変換されて <code>total</code> に加算されます。</p>
+<p>最後に全曲がＣＤに収まるかどうかを <strong class="if"></strong>文で判定します。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">CD</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>サイクルヒット</summary>
+<header><h2>サイクルヒット</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">results = [False for _ in range(4)]
+
+for _ in range(5):
+    m = int(input())
+    
+    if m > 0:
+        results[m-1] = True
+
+if all(results):
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『<strong class="b">全てを 1 本以上打った場合</strong>』なので、各ヒットを１本打てばよいわけですから、この成績をリストにしてフラグで管理することにします。</p>
+<p>ヒットを打てなかった時は 0 、何かしら打った時は 1 以上なので、作るリストの要素数は４つで、ヒットを打った時、どのヒットを打ったかの判定を <code>m > 0</code> にします。打ったヒットに割り当てられている 1 〜 4 の番号から 1 を引いてリストの要素番号に紐付けると簡素なプログラムになります。</p>
+<div class="x-fit">
+<table class="text-center">
+<tbody><tr><th>ヒット</th><td>一塁打</td><td>二塁打</td><td>三塁打</td><td>本塁打</td></tr>
+<tr><th>番号 m</th><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><th>[m-1]</th><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<p>そして最後に <strong class="func">all()</strong> 関数を使って全ての要素が <strong>True</strong> かどうかを判定します。<strong class="func">all()</strong> 関数は、リストの要素が全て <strong>True</strong> の時、<strong>True</strong> となります。１つでも <strong>False</strong> が存在するときには <strong>False</strong> となります。今回の問題にぴったりです。😊</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">サイクルヒット</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>条件を満たす最小の整数</summary>
+<header><h2>条件を満たす最小の整数</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y, z = map(int, input().split())
+
+while x % y != z:
+    x += 1
+
+print(x)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>プログラムの解説よりも、プログラムの動作を入力例1 を使って確認してみましょう。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    11 7 2
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y, z = map(int, input().split())
+
+print(f"{x}: {x%y} {z}")
+while x % y != z:
+    x += 1
+    print(f"{x}: {x%y} {z}")
+</code></pre>
+<code>11: 4 2</code><br>
+<code>12: 5 2</code><br>
+<code>13: 6 2</code><br>
+<code>14: 0 2</code><br>
+<code>15: 1 2</code><br>
+<code>16: 2 2</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>要するに <mark>x % y</mark> が <code>z</code> と同じ数値になるまで <code>x</code> を 1 ずつ増やして計算して行くプログラムになっています。</p>
+</ul>
+<ul>
+<li><p>てやんでぇめんどくせぇ！(💢`･д･´)</p></li>
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y, z = map(int, input().split())
+n = (x//y + (x%y!=0)) * y + z
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y, z = map(int, input().split())
+n = x + ((z - (x%y) + y) % y)
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>江戸っ子は寿司食いねぇ！(;´д`) ﾀﾌﾞﾝｳｺﾞｸ</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">条件を満たす最小の整数</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット5</p>
+</footer>
+</body>
+</html>

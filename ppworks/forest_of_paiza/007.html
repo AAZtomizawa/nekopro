@@ -150,7 +150,7 @@ print(n // 2)
 <p><em>ネコ『約数ってなに？』(自滅)</em></p>
 <hr>
 <p>茶番はこれくらいにして、「約数」とは『整数を割り切ることが出来る数』のことです。12 なら 1, 2, 3, 4, 6, 12 で割れば割り切ることができます。</p>
-<p><strong>最大公約数</strong>とは、複数の数、例えば 8 と 12 の場合、それぞれの約数は「1, 2, 4, 8」と「1, 2, 3, 4, 6, 12」です。この２つ(複数)の数に共通する約数(<strong>公約数</strong>)は 「1, 2, 4」 です。この公約数の最大の数が最大公約数、つまり <strong>4</strong> となります。</p>
+<p><strong>最大公約数</strong>とは、複数の整数、例えば 8 と 12 の場合、それぞれの約数は「1, 2, 4, 8」と「1, 2, 3, 4, 6, 12」です。この２つ(複数)の整数に共通する約数(<strong>公約数</strong>)は 「1, 2, 4」 です。この公約数の最大の数が最大公約数、つまり <strong>4</strong> です。</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">from math import gcd
@@ -174,7 +174,7 @@ print(gcd(8, 12))
 </section>
 
 <section>
-<details id="c7"><summary>三冠王</summary>
+<!-- <details id="c7"><summary>三冠王</summary> -->
 <header><h2>三冠王</h2></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -186,10 +186,10 @@ max_brh = [max(tpl) for tpl in zip(*scores)]
 
 result = 'Nobody'
 for player in scores:
-    if all(top:=[score==mx for score, mx in zip(player, max_brh)]):
+    if (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
         result = 'Triple'
         break
-    elif top.count(True) == 2:
+    elif top == 2:
         result = 'Double'
 
 print(result)
@@ -205,7 +205,7 @@ print(result)
 <div>
 <pre><code class="language-python">result = 'Nobody'
 for player in scores:
-    if all(top:=[score==mx for score, mx in zip(player, max_brh)]):
+    if (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
         result = 'Triple'
         break
     elif top.count(True) == 2:
@@ -216,22 +216,22 @@ for player in scores:
 <p>ここは特に、</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">if all(top:=[score==mx for score, mx in zip(player, max_brh)]):
+<pre><code class="language-python">if (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>この一行がとんでもないですね。😂<br><code>zip(player, max_brh)</code> で各プレイヤーの「打率」「打点」「本塁打数」をそれぞれの最大値を組み合わせて<strong class="for"></strong>文の <code>score</code>, <code>mx</code> にそれぞれ代入しています。その２つを比較して同じなら <strong>True</strong>、異なるなら <strong>False</strong> をリストの要素としています。出来上がったリストは例えば二冠なら、</p>
 <p>[True, False, True]</p>
-<p>となっています。このリストを <code>top</code> に代入し、リストの要素が全て <strong>True</strong> かどうかを関数の <strong class="func">all()</strong> で判定するまでをこの一文でこなしています。</p>
+<p>となっています。このリストの要素を <strong class="func">sum()</strong>  関数で合計し、<code>top</code> にその値を代入します。<strong>True</strong> は 1、<strong>False</strong> は 0 として計算されます。要するに <strong>True</strong> の個数です。</p>
 <p>全て <strong>True</strong> の場合は「三冠王」なので画面に <code class="output">Triple</code> を出力し、それ以上調べても無意味なので <strong>break</strong> します。</p>
 <br>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">elif top.count(True) == 2:
+<pre><code class="language-python">elif top == 2:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>この <code>top</code> は、先程の <strong class="if"></strong>文の中で作って代入したリストの <code>top:=</code> の内容です。三冠の時と同じ様に二冠かどうかを判定します。二冠だった時でも、他に三冠を取っている人がいるかもしれませんので、ループは続けます。</p>
+<p>この <code>top</code> は、先程の <strong class="if"></strong>文の中で作って代入した <strong>True</strong>(1) の個数が入っています。三冠の時と同じ様に二冠かどうかを判定します。二冠だった時でも、他に三冠を取っている人がいるかもしれませんので、ループは続けます。</p>
 <br>
 <p>三冠が見つかった時は、その場で <code class="output">Triple</code> を画面に出力し、二冠が見つかった時はループを抜けた後に <code class="output">Double</code> を画面に出力し、どちらも見つからなかった場合は予め用意しておいた <code class="output">Nobody</code> を画面に出力してこのプログラムを終了します。</p>
 </ul>

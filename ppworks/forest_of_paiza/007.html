@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット7</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>占い </summary>
+<header><h2>占い </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+print('Yes' if n == 7 else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>内包表記で書いてみました。😉</p>
+<p>内包表記の書き方は「<a href="../../2/0110list_comprehension.html" class="linked" target="_blank">２章 内包表記</a>」で学べます。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">占い </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>年収計算</summary>
+<header><h2>年収計算</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c = map(int, input().split())
+
+coe = c // 5  # 係数
+print(a + coe * b)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>真っ先に <strong class="if"></strong>文で処理することを考えたと思われますが、めんどくさいなとも思われたのではないでしょうか？😅</p>
+<p>問題をよく見ると、親切にも上記プログラム例のように書ける設定になっています。😉</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">年収計算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>気温</summary>
+<header><h2>気温</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x  = int(input())
+
+if x >= 35:
+    print('extremely hot day')
+elif x >= 30:
+    print('hot summer day')
+elif x >= 25:
+    print('summer day')
+elif x < 0:
+    print('ice day')
+else:
+    print('normal day')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この問題はフィボナッチ数列のプログラムと同じように、評価順に注意しなければなりません。</p>
+<p>評価順を逆順にすると、38度の時、<code>x >= 35</code> の <mark>'extremely hot day'</mark> が出力されるはずでも 25度以上の時の評価が先に実行され、<code class="output">summer day</code> が出力されてしまいます。</p>
+<p>複数の <strong class="if"></strong>文が連なる時、<strong class="elif"></strong>が使われる時は常にこの性質のことを思い出して注意してください。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">気温</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>気温2</summary>
+<header><h2>気温2</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+x = list(map(int, input().split()))
+print(max(x) - min(x))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+x = list(map(int, input().split()))
+
+x.sort()
+print(x[-1] - x[0])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１はリストから最大値と最小値を探して差を求めています。</p>
+<p>例２は昇順ソートをし、最大値になっている末尾の要素から、最小値になっている先頭の要素を引いて求めています。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">気温2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>ブロックの埋め込み</summary>
+<header><h2>ブロックの埋め込み</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+print(n * m // 2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Ｃランク問題とあるので『単純にこの式でいいはずなんだけど、認識甘いのかな？』と怖気づいていたのですが、これでよかったみたいです。😅</p>
+<p>マスの総数が奇数の場合はマスが１つ余り、偶数の場合はぴったり収まる塩梅です。</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">ブロックの埋め込み</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>最も大きな最大公約数</summary>
+<header><h2>最も大きな最大公約数</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+print(n // 2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>突然、数学が苦手な我々ネコを混乱に陥れる魔法を使ってきました。以前の我々は抗える術を持っておらず、出題者の策から逃れるためには全力で退避するほかありませんでした(❎ｸﾘｯｸ)。しかし今の我々には <strong>ChatGPT</strong><small>(※)</small> という叡智の加護があります。</p>
+<p><small>※ 『chat<small>(シャ)</small>』はフランス語で「猫」のこと</small></p>
+<hr>
+<p><em>ChatGPT『「最大公約数」とは、複数の整数に共通する約数の中で、最も大きな整数のことです。』</em></p>
+<p><em>ネコ『約数ってなに？』(自滅)</em></p>
+<hr>
+<p>茶番はこれくらいにして、「約数」とは『整数を割り切ることが出来る数』のことです。12 なら 1, 2, 3, 4, 6, 12 で割れば割り切ることができます。</p>
+<p><strong>最大公約数</strong>とは、複数の数、例えば 8 と 12 の場合、それぞれの約数は「1, 2, 4, 8」と「1, 2, 3, 4, 6, 12」です。この２つ(複数)の数に共通する約数(<strong>公約数</strong>)は 「1, 2, 4」 です。この公約数の最大の数が最大公約数、つまり <strong>4</strong> です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from math import gcd
+print(gcd(8, 12))
+</code></pre>
+<code>4</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<p>問題の中に『<strong class="b">1 から n までの範囲にある全ての異なる整数の組のうち</strong>』とあります。1 から n までの整数を全て 1 から順に割っていって調べることをしなくても、プログラム例の式で求められます。奇数でも偶数でも、与えられた整数を 2 で割った商がそのまま最大公約数となります。</p>
+<p>n = 17 の時</p>
+<p class="inlook">17 を 2 で割った商は 8 です。<br>8 × 2 = 16<br>16 の約数は 1, 2, 4, <mark style="background-color: coral;">8</mark>, <mark style="background-color: aqua;">16</mark><br>16 未満の数で 16 と共通する約数を持つ数は <mark style="background-color: coral;">8</mark> です。<br>8 の約数は 1, 2, 4, <mark style="background-color: coral;">8</mark></p>
+<p>ちなみに 17 の約数は 1, 17 です。17 は素数ですしおすし。</p>
+<p>奇数は 2 で割り切れません。必ず 3 以上の奇数でないと割り切れる数はありません(1 は問題外)ので、偶数より奇数のほうが最大公約数が大きくなるということはありません。ですので与えられた数を 2 で割った数がそのまま最大公約数に決まってしまいます。</p>
+<p class="inlook">整数 → 最大公約数<br>17 → 1<br>16 → 8<br>15 → 5<br>14 → 7<br>13 → 1<br>12 → 6<br>11 → 1<br>10 → 5<br>&nbsp;9 → 3<br>&nbsp;8 → 4<br>&nbsp;7 → 1<br>&nbsp;6 → 3<br>&nbsp;5 → 1<br>&nbsp;4 → 2<br>&nbsp;3 → 1<br>&nbsp;2 → 1<br></p>
+<p>ちなみに 1 になるところが全て素数です。</p>
+<p>こんな解説で合ってるかな？😅</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">最も大きな最大公約数</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>三冠王</summary>
+<header><h2>三冠王</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+scores = [[float(b), int(r), int(h)] for _ in range(n) for b, r, h in [input().split()]]
+
+max_brh = [max(tpl) for tpl in zip(*scores)]
+
+result = 'Nobody'
+for player in scores:
+    if all(top:=[score==mx for score, mx in zip(player, max_brh)]):
+        result = 'Triple'
+        break
+    elif top.count(True) == 2:
+        result = 'Double'
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>わかりにくく書いちゃった。w^^[\</p>
+<p>標準入力の時に一気に型変換して、二次元リストで各プレイヤーの成績を収めてあります。</p>
+<p>テキトーに名付けた <code>max_brh</code> には、<code>zip(*scores)</code> で [[打率リスト], [打点リスト], [本塁打数リスト]] に転置し、そしてそれぞれの最大値をリストにするということを一気に行なってから、それを <code>max_brh</code> に代入しています。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">result = 'Nobody'
+for player in scores:
+    if all(top:=[score==mx for score, mx in zip(player, max_brh)]):
+        result = 'Triple'
+        break
+    elif top.count(True) == 2:
+        result = 'Double'
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここは特に、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if all(top:=[score==mx for score, mx in zip(player, max_brh)]):
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この一行がとんでもないですね。😂<br><code>zip(player, max_brh)</code> で各プレイヤーの「打率」「打点」「本塁打数」をそれぞれの最大値を組み合わせて<strong class="for"></strong>文の <code>score</code>, <code>mx</code> にそれぞれ代入しています。その２つを比較して同じなら <strong>True</strong>、異なるなら <strong>False</strong> をリストの要素としています。出来上がったリストは例えば二冠なら、</p>
+<p>[True, False, True]</p>
+<p>となっています。このリストを <code>top</code> に代入し、リストの要素が全て <strong>True</strong> かどうかを判定するまでをこの一文でこなしています。</p>
+<p>全て <strong>True</strong> の場合は「三冠王」なので画面に <code class="output">Triple</code> を出力し、それ以上調べても無意味なので <strong>break</strong> します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">elif top.count(True) == 2:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この <code>top</code> は、先程の <strong class="if"></strong>文の中で作って代入したリストの <code>top:=</code> の内容です。三冠の時と同じ様に二冠かどうかを判定します。二冠だった時でも、他に三冠を取っている人がいるかもしれませんので、ループは続けます。</p>
+<br>
+<p>三冠が見つかった時は、その場で <code class="output">Triple</code> を画面に出力し、二冠が見つかった時はループを抜けた後に <code class="output">Double</code> を画面に出力し、どちらも見つからなかった場合は予め用意しておいた <code class="output">Nobody</code> を画面に出力してこのプログラムを終了します。</p>
+</ul>
+<ul>
+<p>ちなみに w^^[\ は、</p>
+<p class="inlook">「w」「^」「^」「[」「\」<br>↓<br>「て」「へ」「へ」「゜」「ろ」<br>↓<br>てへぺろ</p>
+<p>です。 (>ڡ`*)ゞ</p>
+</ul>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">三冠王</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット7</p>
+</footer>
+</body>
+</html>

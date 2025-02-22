@@ -186,10 +186,10 @@ max_brh = [max(tpl) for tpl in zip(*scores)]
 
 result = 'Nobody'
 for player in scores:
-    if (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
+    if 3 == (top:=sum(score==mx for score, mx in zip(player, max_brh))):
         result = 'Triple'
         break
-    elif top == 2:
+    elif 2 == top:
         result = 'Double'
 
 print(result)
@@ -205,10 +205,10 @@ print(result)
 <div>
 <pre><code class="language-python">result = 'Nobody'
 for player in scores:
-    if (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
+    if 3 == (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
         result = 'Triple'
         break
-    elif top == 2:
+    elif 2 == top:
         result = 'Double'
 </code></pre>
 </div>
@@ -216,7 +216,7 @@ for player in scores:
 <p>ここは特に、</p>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">if (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
+<pre><code class="language-python">if 3 == (top:=sum(score==mx for score, mx in zip(player, max_brh))):
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -227,7 +227,7 @@ for player in scores:
 <br>
 <!-- ------------------------- code ------------------------- -->
 <div>
-<pre><code class="language-python">elif top == 2:
+<pre><code class="language-python">elif 2 == top:
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->

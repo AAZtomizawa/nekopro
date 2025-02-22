@@ -208,7 +208,7 @@ for player in scores:
     if (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
         result = 'Triple'
         break
-    elif top.count(True) == 2:
+    elif top == 2:
         result = 'Double'
 </code></pre>
 </div>

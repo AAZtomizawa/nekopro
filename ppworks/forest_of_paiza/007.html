@@ -205,7 +205,7 @@ print(result)
 <div>
 <pre><code class="language-python">result = 'Nobody'
 for player in scores:
-    if 3 == (top:=sum(score==mx for score, mx in zip(player, max_brh))) == 3:
+    if 3 == (top:=sum(score==mx for score, mx in zip(player, max_brh))):
         result = 'Triple'
         break
     elif 2 == top:

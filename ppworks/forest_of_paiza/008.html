@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット8</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>文字数カウント</summary>
+<header><h2>文字数カウント</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">m = input()
+print(len(m))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">m = input()
+
+cnt = 0
+for _ in m:
+    cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">文字数カウント</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>乗客人数</summary>
+<header><h2>乗客人数</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c = map(int, input().split())
+print(a - b + c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">乗客人数</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>OPS</summary>
+<header><h2>OPS</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">b, s = map(float, input().split())
+print(b + s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">b, s = map(float, input().split())
+
+b *= 1000
+s *= 1000
+total = (b + s) / 1000
+
+print(total)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>小数の計算は誤差が生じる可能性があります。例１は数値によっては誤差により、誤った結果となることがあります。例２はちょっと強引に誤差を避ける計算方法です。どちらも入力が小数点下３桁までであることが条件です。</p>
+<p>誤差を避けて計算できる方法はあるのですが、ここでは説明しません。😅</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">OPS</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>通貨レート</summary>
+<header><h2>通貨レート</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+values = [int(input()) for _ in range(n)]
+
+max_ = 0
+for i in range(n-1):
+    for j in range(i+1, n):
+        if values[j] - values[i] > max_:
+            max_ = values[j] - values[i]
+            results = [i+1, j+1]
+
+if max_:
+    print(*results, sep='\n')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>二重ループをつかいます。</p>
+<p>values = [72, 130, 125, 93, 101, 75, 99, 88, 93, 102, 87, 115] の場合、</p>
+<p>１回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td style="background-color: coral;">72</td><td style="background-color: aqua;">130</td><td style="background-color: aqua;">125</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">101</td><td style="background-color: aqua;">75</td><td style="background-color: aqua;">99</td><td style="background-color: aqua;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td style="background-color: magenta;">130-72=58</td><td>125-72=53</td><td>93-72=21</td><td>101-72=29</td><td>75-72=3</td><td>99-72=27</td><td>88-72=16</td><td>93-72=21</td><td>102-72=30</td><td>87-72=15</td><td>115-72=43</td></tr>
+</tbody>
+</table>
+</div>
+<p>max_ = <mark style="background-color: magenta;">58</mark></p>
+<p>↓</p>
+<p>２回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td style="background-color: coral;">130</td><td style="background-color: aqua;">125</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">101</td><td style="background-color: aqua;">75</td><td style="background-color: aqua;">99</td><td style="background-color: aqua;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td>125-130=-5</td><td>93-130=-37</td><td>101-130=-29</td><td>75-130=-55</td><td>99-130=-31</td><td>88-130=-42</td><td>93-130=-37</td><td>102-130=-28</td><td>87-130=-43</td><td>115-130=-15</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>３回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td style="background-color: coral;">125</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">101</td><td style="background-color: aqua;">75</td><td style="background-color: aqua;">99</td><td style="background-color: aqua;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td>93-125=-32</td><td>101-125=-24</td><td>75-125=-50</td><td>99-125=-26</td><td>88-125=-37</td><td>93-125=-32</td><td>102-125=-23</td><td>87-125=-38</td><td>115-125=-10</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>４回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td style="background-color: coral;">93</td><td style="background-color: aqua;">101</td><td style="background-color: aqua;">75</td><td style="background-color: aqua;">99</td><td style="background-color: aqua;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td>101-93=8</td><td>75-93=-18</td><td>99-93=6</td><td>88-93=-5</td><td>93-93=0</td><td>102-93=9</td><td>87-93=-6</td><td>115-93=22</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>５回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td>93</td><td style="background-color: coral;">101</td><td style="background-color: aqua;">75</td><td style="background-color: aqua;">99</td><td style="background-color: aqua;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td></td><td>75-101=-26</td><td>99-101=-2</td><td>88-101=-13</td><td>93-101=-8</td><td>102-101=1</td><td>87-101=-14</td><td>115-101=14</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>６回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td>93</td><td>101</td><td style="background-color: coral;">75</td><td style="background-color: aqua;">99</td><td style="background-color: aqua;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td></td><td></td><td>99-75=24</td><td>88-75=13</td><td>93-75=18</td><td>102-75=27</td><td>87-75=12</td><td>115-75=40</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>７回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td>93</td><td>101</td><td>75</td><td style="background-color: coral;">99</td><td style="background-color: aqua;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>88-99=-11</td><td>93-99=-6</td><td>102-99=3</td><td>87-99=-12</td><td>115-99=16</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>８回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td>93</td><td>101</td><td>75</td><td>99</td><td style="background-color: coral;">88</td><td style="background-color: aqua;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>93-88=5</td><td>102-88=14</td><td>87-88=-1</td><td>115-88=27</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>９回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td>93</td><td>101</td><td>75</td><td>99</td><td>88</td><td style="background-color: coral;">93</td><td style="background-color: aqua;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>102-93=9</td><td>87-93=-6</td><td>115-93=22</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>１０回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td>93</td><td>101</td><td>75</td><td>99</td><td>88</td><td>93</td><td style="background-color: coral;">102</td><td style="background-color: aqua;">87</td><td style="background-color: aqua;">115</td></></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>87-102=-15</td><td>115-102=13</td></tr>
+</tbody>
+</table>
+</div>
+<p>↓</p>
+<p>１１回目 <mark style="background-color: aqua;">values[j]</mark> - <mark style="background-color: coral;">values[i]</mark></p>
+<div class="x-fit">
+<table class="text-center">
+<tbody>
+<tr><th><small>要素番号</small></th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th></tr>
+<tr><th>values</th><td>72</td><td>130</td><td>125</td><td>93</td><td>101</td><td>75</td><td>99</td><td>88</td><td>93</td><td>102</td><td style="background-color: coral;">87</td><td style="background-color: aqua;">115</td></tr>
+<tr><th>差</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>115-87=28</td></tr>
+</tbody>
+</table>
+</div>
+<p>いきなり最初に最大値が決定してしまいましたけど、こんな流れで最大値を求めていきます。</p>
+</ul>
+<ul>
+<li><p>二重ループの部分をもう一度見てみましょう。</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = 0
+for i in range(n-1):
+    for j in range(i+1, n):
+        if values[j] - values[i] > max_:
+            max_ = values[j] - values[i]
+            results = [i+1, j+1]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark style="background-color: aqua;">円安</mark> - <mark style="background-color: coral;">円高</mark> で利益が出るので、<mark style="background-color: aqua;">values[j]</mark> から <mark style="background-color: coral;">values[i]</mark> を引いて差を求めます。必ず <mark style="background-color: coral;">円高</mark> よりも後ろの値から <mark style="background-color: aqua;">円安</mark> を探さないとプラスになりませんので、 <code>for j in range(i+1, n):</code> となります。(<code>i+1</code>がそれ)<br><mark style="background-color: coral;">values[i]</mark> は末尾の１つ手前まででよいので、<code>for i in range(n-1):</code> とします。</p>
+<p>最大値が更新されることになったら、その場で結果に求められる位置番号(i+1, j+1)をリストで保存します。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if max_:
+    print(*results, sep='\n')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>if max_:</code> は、<code>max_</code> が 0 の時は <strong>False</strong>、それ以外の時は <strong>True</strong> と判定されます。「それ以外の時」は必ず 0 より大きな値が入っています。</p>
+<br>
+<p>以上！</p>
+</ul>
+<ul>
+<p>プログラム例では、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">results = [i+1, j+1]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と、リストにしましたが、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">st = i + 1
+ed = j + 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と、変数にしてもいいです。最後の出力でも、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if max_:
+    print(st, ed, sep='\n')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>とすれば同じ結果に出力されます。わかりやすい変数名が付けられますので、こちらのほうもいいですね。😊</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">通貨レート</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>乗客人数 - その 2</summary>
+<header><h2>乗客人数 - その 2</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+max_ = -float('inf')
+c = 0
+for i in range(n):
+    c += -a[i] + b[i]
+    max_ = max(max_, c)
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+ <!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+max_ = -float('inf')
+joukyaku = 0
+for oriruhito, noruhito in zip(a, b):
+    joukyaku += noruhito - oriruhito
+    max_ = max(max_, joukyaku)
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>要するに、乗客の一番多い時の人数が、手配すべき「<strong class="b">最も少ない乗車定員</strong>」のバスです。</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">乗客人数 - その 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>OPS - その 2 </summary>
+<header><h2>OPS - その 2 </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+max_ops = -float('inf')
+for i in range(n):
+    b, s = map(float, input().split())
+    
+    ops = b*1000 + s*1000
+    if ops > max_ops:
+        max_ops = ops
+        max_i = i + 1
+
+print(max_i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><em>b + s</em> が最も大きい値の打者を見つけるだけの問題です。ここでまた小数の足し算がやってまいりました。😓</p>
+<p>どちらも1000倍して整数にしてから足し算をしています。単に最大値を求めて番号を出力するだけですので、1000で割って戻さずにこのまま比べても差し支えありません。</p>
+<br>
+<p>「<strong class="b">同率トップがいた場合は番号の早い方を出力するものとします。</strong>」</p>
+<p>これは <code>if ops > max_ops:</code> の <code>></code> です。逆に「末尾に近い方」ならば <code>>=</code> です。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">OPS - その 2 </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>タスクスケジューリング</summary>
+<header><h2>タスクスケジューリング</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+works = [list(map(int, input().split())) for _ in range(n)]
+works.sort(key=lambda x:x[1])
+
+i = 0
+while len(works)-1 > i:
+    if works[i][1] < works[i+1][0]:
+        i += 1
+    else:
+        del works[i+1]
+
+print(len(works))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+works = [list(map(int, input().split()))[::-1] for _ in range(n)]
+works.sort()
+
+i = 0
+while len(works)-1 > i:
+    if works[i][0] < works[i+1][1]:
+        i += 1
+    else:
+        del works[i+1]
+
+print(len(works))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>こういったスケジュール問題は、「<strong>終了時刻でソートする</strong>」というのが定石らしいです。アルゴリズムの本を読んで知りました。😅</p>
+<p>例１、例２ともに、<mark>終了時刻 &lt; 次の仕事の開始時刻</mark> をチェックし、仕事がかぶるようなら次の仕事をスケジュールから <code>del</code> で抹消します。</p>
+<p>そしてスケジュールに残った仕事の個数を数えて、それを画面に出力して完了です。</p>
+<br>
+<p>例２はソートのキーを省くために、入力時に <var>s</var> と <var>t</var> の前後を逆にしています。そのせいで <strong class="if"></strong>文がわかりにくくなっています。😅</p>
+</ul>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">タスクスケジューリング</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット8</p>
+</footer>
+</body>
+</html>

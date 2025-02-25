@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット9</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>最大値と最小値</summary>
+<header><h2>最大値と最小値</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = list(map(int, input().split()))
+print(min(nums), max(nums))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">最大値と最小値</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>卵の生産</summary>
+<header><h2>卵の生産</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, n = map(int, input().split())
+    print(a * n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">卵の生産</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>卵の最大の生産量</summary>
+<header><h2>卵の最大の生産量</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+max_ = -float('inf')
+for i in range(n-k + 1):
+    max_ = max(max_, sum(a[i:i+k]))
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ループで先頭から k 日間分をスライスで取得し、その総数を最大値と比較して更新していっています。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">卵の最大の生産量</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>卵の最大の生産量 - その 2</summary>
+<header><h2>卵の最大の生産量 - その 2</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+sum_ = sum(a[:k-1])
+
+max_ = -float('inf')
+for i in range(n-k+1):
+    sum_ += a[i+k-1]
+    max_ = max(max_, sum_)
+
+    sum_ -= a[i]
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+cum_sum = [0]
+for i in range(n):
+    cum_sum.append(cum_sum[i] + a[i])
+
+# これでも累積和が作れる
+# c = 0
+# cum_sum = [0] + [(c:=c+i) for i in a]
+
+max_ = -float('inf')
+for i in range(k, n+1):
+    max_ = max(max_, cum_sum[i] - cum_sum[i-k])
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は<strong>スライディングウィンドウ法</strong>と呼ばれるアルゴリズムを使って最大値を探索しています。</p>
+<p>例２は<strong>累積和</strong>というアルゴリズムで最大値を探索しています。</p>
+</ul>
+<ul>
+<li><p>スライディングウィンドウ法での解説</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+sum_ = sum(a[:k-1])
+
+max_ = -float('inf')
+for i in range(n-k+1):
+    sum_ += a[i+k-1]
+    max_ = max(max_, sum_)
+
+    sum_ -= a[i]
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>k = 3<br>a = [3, 8, 4, 9, 1, 6, 7, 5]</p>
+<p>まず先頭から k - 1 の 個数の要素を合計します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">sum_ = sum(a[:k-1])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook">[3, 8], 4, 9, 1, 6, 7, 5<br>sum_ = 3 + 8 = 11</p>
+<br>
+<p>次に<strong class="for"></strong>ループに入り、次の要素 4 を <code>sum_</code> に足します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(n-k+1):
+    sum_ += a[i+k-1]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook">[3, 8, <mark style="background-color: aqua;">4</mark>], 9, 1, 6, 7, 5<br>sum_ = 11 + 4 = 15</p>
+<br>
+<p>次に、値を比較して最大値を取ります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = max(max_, sum_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<p>先頭の要素の数を引きます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">sum_ -= a[i]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook"><mark style="background-color: coral;">3</mark>, [8, 4], 9, 1, 6, 7, 5<br>sum_ = 15 - 3 = 12</p>
+<br>
+<p>次のループに移ります。</p>
+<p class="inlook">3, [8, 4, <mark style="background-color: aqua;">9</mark>], 1, 6, 7, 5<br>sum_ = 12 + 9 = 21<br>max_ = max(15, 21)<br>max_ = 21<br>3, <mark style="background-color: coral;">8</mark>, [4, 9], 1, 6, 7, 5<br>sum_ = 21 - 8 = 13</p>
+<br>
+<p>表にして見てみましょう。</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="9">初期状態</th></tr></thead>
+<tr><th>a</th><td style="background-color: yellow;"><mark style="background-color: aqua;">3</mark></td><td style="background-color: yellow;"><mark style="background-color: aqua;">8</mark></td><td>4</td><td>9</td><td>1</td><td>6</td><td>7</td><td>5</td></tr>
+<tr><th>sum_</th><td colspan="2"><mark style="background-color: aqua;">3</mark>+<mark style="background-color: aqua;">8</mark>=11</td><td colspan="6"></td></tr>
+
+</table>
+</div>
+<p>↓ max_ = 11</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="9"><em>１回目ループ</em></th></tr></thead>
+<tr><th>a</th><td style="background-color: yellow;">3</td><td style="background-color: yellow;">8</td><td style="background-color: yellow;"><mark style="background-color: aqua;">4</mark></td><td>9</td><td>1</td><td>6</td><td>7</td><td>5</td></tr>
+<tr><th>sum_</th><td colspan="3">11+<mark style="background-color: aqua;">4</mark>=<mark style="background-color:magenta;">15</mark></td><td colspan="5"></td></tr>
+
+</table>
+</div>
+<p>↓ max_ = 15</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="9"><em>２回目ループ</em></th></tr></thead>
+<tr><th>a</th><td><mark style="background-color: coral;">3</mark></td><td style="background-color: yellow;">8</td><td style="background-color: yellow;">4</td><td style="background-color: yellow;"><mark style="background-color: aqua;">9</mark></td><td>1</td><td>6</td><td>7</td><td>5</td></tr>
+<tr><th>sum_</th><td></td><td colspan="3">15+<mark style="background-color: aqua;">9</mark>-<mark style="background-color: coral;">3</mark>=<mark style="background-color:magenta;">21</mark></td><td colspan="4"></td></tr>
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="9"><em>３回目ループ</em></th></tr></thead>
+<tr><th>a</th><td>3</td><td><mark style="background-color: coral;">8</mark></td><td style="background-color: yellow;">4</td><td style="background-color: yellow;">9</td><td style="background-color: yellow;"><mark style="background-color: aqua;">1</mark></td><td>6</td><td>7</td><td>5</td></tr>
+<tr><th>sum_</th><td colspan="2"></td><td colspan="3">21+<mark style="background-color: aqua;">1</mark>-<mark style="background-color: coral;">8</mark>=<mark style="background-color:magenta;">14</mark></td><td colspan="4"></td></tr>
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="9"><em>４回目ループ</em></th></tr></thead>
+<tr><th>a</th><td>3</td><td>8</td><td><mark style="background-color: coral;">4</mark></td><td style="background-color: yellow;">9</td><td style="background-color: yellow;">1</td><td style="background-color: yellow;"><mark style="background-color: aqua;">6</mark></td><td>7</td><td>5</td></tr>
+<tr><th>sum_</th><td colspan="3"></td><td colspan="3">14+<mark style="background-color: aqua;">6</mark>-<mark style="background-color: coral;">4</mark>=<mark style="background-color:magenta;">16</mark></td><td colspan="2"></td></tr>
+
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="9"><em>５回目ループ</em></th></tr></thead>
+<tr><th>a</th><td>3</td><td>8</td><td>4</td><td><mark style="background-color: coral;">9</mark></td><td style="background-color: yellow;">1</td><td style="background-color: yellow;">6</td><td style="background-color: yellow;"><mark style="background-color: aqua;">7</mark></td><td>5</td></tr>
+<tr><th>sum_</th><td colspan="4"></td><td colspan="3">16+<mark style="background-color: aqua;">7</mark>-<mark style="background-color: coral;">9</mark>=<mark style="background-color:magenta;">14</mark></td><td></td></tr>
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="9"><em>６回目ループ</em></th></tr></thead>
+<tr><th>a</th><td>3</td><td>8</td><td>4</td><td>9</td><td><mark style="background-color: coral;">1</mark></td><td style="background-color: yellow;">6</td><td style="background-color: yellow;">7</td><td style="background-color: yellow;"><mark style="background-color: aqua;">5</mark></td></tr>
+<tr><th>sum_</th><td colspan="5"></td><td colspan="3">14+<mark style="background-color: aqua;">5</mark>-<mark style="background-color: coral;">1</mark>=<mark style="background-color:magenta;">18</mark></td></tr>
+</table>
+</div>
+<p>max_ = <code class="output">21</code></p>
+<br>
+<p><mark style="background-color: yellow;">　　　</mark> の所を<strong>ウィンドウ(窓)</strong>とみなし、それが左から右へと<strong>スライド</strong>している様だから<strong>スライディングウィンドウ</strong>です。常に <mark style="background-color: yellow;">　　　</mark> の枠に入った次の数を足し、漏れた数を引いています。画面がスクロールする時がこんな感じですね。</p>
+<br>
+<p>１つ前の「卵の最大の生産量」のプログラムでも強引にできないことはないのですが、1つ進む度に毎回総和を求めては無駄です。例えばウィンドウの範囲が 1000個の場合、毎回 999回足し算をして総和を求め、それを <var>k</var> と比較して、次にもまた 999回足し算をして……。💤<br><strong>スライディングウィンドウ法</strong>は都度、新しい値を足して、不要となった値を引く２回の処理を繰り返すだけで済みます。</p>
+</ul>
+<ul>
+<li><p>累積和での解説</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+cum_sum = [0]
+for i in range(n):
+    cum_sum.append(cum_sum[i] + a[i])
+
+max_ = -float('inf')
+for i in range(k, n+1):
+    max_ = max(max_, cum_sum[i] - cum_sum[i-k])
+
+print(max_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>k = 3<br>a = [3, 8, 4, 9, 1, 6, 7, 5]</p>
+<p>まず、累積和を作ります。累積和については paiza問題集「定番アルゴリズム - 累積和メニュー」で学習できます。当サイトでも<a href="../std_algo/cumulative_sum.html" class="linked" target="_blank">その問題集の解説</a>を作ってありますので、よければ活用してください。😊</p>
+<p>cum_sum = [0, 3, 11, 15, 24, 25, 31, 38, 43]</p>
+<p>やっていることはスライディングウィンドウ法と同じようなものです。前処理が必要なものの、累積和は<strong>たった一回の引き算</strong>だけで区間和を求められます。累積和を作る時の足し算で１回、区間和を求める時の引き算で１回、計２回処理をするので理論上、計算量はスライディングウィンドウ法と差はありませんが。😅 でもこちらのほうがプログラムもシンプルなので混乱は少ないと思います。好みによりけりですが。</p>
+<br>
+<p>これも表にして見てみましょう。</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="10">初期状態</th></tr></thead>
+<tr><th>cum_sum</th><td>0</td><td>3</td><td>11</td><td>15</td><td>24</td><td>25</td><td>31</td><td>38</td><td>43</td></tr>
+</table>
+</div>
+<p>↓ <var>k</var> の位置から始めます k = 3</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="10"><em>１回目ループ</em></th></tr></thead>
+<tr><th>cum_sum</th><td><mark style="background-color: coral;">0</mark></td><td style="background-color: yellow;">3</td><td style="background-color: yellow;">11</td><td style="background-color: yellow;"><mark style="background-color:aqua">15</mark></td><td>24</td><td>25</td><td>31</td><td>38</td><td>43</td></tr>
+<tr><th><small>区間和</small></th><td></td><td colspan="3"><mark style="background-color: aqua;">15</mark>-<mark style="background-color: coral;">0</mark>=15</td><td colspan="5"></td></tr>
+</table>
+</div>
+<p>↓ max_ = 15</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="10"><em>２回目ループ</em></th></tr></thead>
+<tr><th>cum_sum</th><td>0</td><td><mark style="background-color: coral;">3</mark></td><td style="background-color: yellow;">11</td><td style="background-color: yellow;">15</td><td style="background-color: yellow;"><mark style="background-color: aqua;">24</mark></td><td>25</td><td>31</td><td>38</td><td>43</td></tr>
+<tr><th><small>区間和</small></th><td colspan="2"></td><td colspan="3"><mark style="background-color: aqua;">24</mark>-<mark style="background-color: coral;">3</mark>=21</td><td colspan="4"></td></tr>
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="10"><em>３回目ループ</em></th></tr></thead>
+<tr><th>cum_sum</th><td>0</td><td>3</td><td><mark style="background-color: coral;">11</mark></td><td style="background-color: yellow;">15</td><td style="background-color: yellow;">24</td><td style="background-color: yellow;"><mark style="background-color: aqua;">25</mark></td><td>31</td><td>38</td><td>43</td></tr>
+<tr><th><small>区間和</small></th><td colspan="3"></td><td colspan="3"><mark style="background-color: aqua;">25</mark>-<mark style="background-color: coral;">11</mark>=14</td><td colspan="3"></td></tr>
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="10"><em>４回目ループ</em></th></tr></thead>
+<tr><th>cum_sum</th><td>0</td><td>3</td><td>11</td><td><mark style="background-color: coral;">15</mark></td><td style="background-color: yellow;">24</td><td style="background-color: yellow;">25</td><td style="background-color: yellow;"><mark style="background-color: aqua;">31</mark></td><td>38</td><td>43</td></tr>
+<tr><th><small>区間和</small></th><td colspan="4"></td><td colspan="3"><mark style="background-color: aqua;">31</mark>-<mark style="background-color: coral;">15</mark>=16</td><td colspan="2"></td></tr>
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="10"><em>５回目ループ</em></th></tr></thead>
+<tr><th>cum_sum</th><td>0</td><td>3</td><td>11</td><td>15</td><td><mark style="background-color: coral;">24</mark></td><td style="background-color: yellow;">25</td><td style="background-color: yellow;">31</td><td style="background-color: yellow;"><mark style="background-color: aqua;">38</mark></td><td>43</td></tr>
+<tr><th><small>区間和</small></th><td colspan="5"></td><td colspan="3"><mark style="background-color: aqua;">38</mark>-<mark style="background-color: coral;">24</mark>=14</td><td></td></tr>
+</table>
+</div>
+<p>↓ max_ = 21</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th colspan="10"><em>６回目ループ</em></th></tr></thead>
+<tr><th>cum_sum</th><td>0</td><td>3</td><td>11</td><td>15</td><td>24</td><td><mark style="background-color: coral;">25</mark></td><td style="background-color: yellow;">31</td><td style="background-color: yellow;">38</mark></td><td style="background-color: yellow;"><mark style="background-color: aqua;">43</mark></td></tr>
+<tr><th><small>区間和</small></th><td colspan="6"></td><td colspan="3"><mark style="background-color: aqua;">43</mark>-<mark style="background-color: coral;">25</mark>=18</td></tr>
+</table>
+</div>
+<p>max_ = <code class="output">21</code></p>
+<br>
+<p>スライディングウィンドウ法にそっくりですが、累積和によってすでに値を足したものが用意されていますので、ループ中は引き算だけの処理になっています。足し算と引き算を同時に処理しているか分けて処理しているかの違いですね。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">卵の最大の生産量 - その 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>卵をぴったり生産</summary>
+<header><h2>卵をぴったり生産</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+cnt = 0
+for i in range(1, 1 << n):
+    egg = 0
+    for j in range(n):
+        if i & 1 << j:
+            egg += a[j]
+            if egg > k:
+            break
+
+    if egg == k:
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>2 ^ n (2**n) は <math><msup><mn>2</mn><mi>n</mi></msup></math>、条件に「2 ≦ n ≦ 15」とありますので <math><msup><mn>2</mn><mn>15</mn></msup><mo>=</mo></math>32768、何も選ばない選択はありませんので１を引いて、全 32767通りとなります。<strong class="b">『選んだニワトリが産む卵の総和が k 個になる選び方は何通りあるか求めてください。』</strong>ということは、全 <math><msup><mn>2</mn><mi>n</mi></msup><mo>-</mo><mn>1</mn></math>、つまり最多で 32767通りの全てを調べなければいけません。</p>
+<p>そこで今回は<strong>ビット全探索</strong>というアルゴリズムを使って解きます。ビット全探索は、「paizaの森練習問題コンテスト過去問題セット3 - ラッキーナンバー」でも使いました。我ながらわかりやすい解説ができたとはとてもじゃないけど言えないのですが、その解説もあります。😓</p>
+<p>その補足も兼ねて、今回も解説をしてみます。「ラッキーナンバー」の難易度はＢランクとなっていますが、めんどくささは同レベルです。今回Ａランクレベルの条件値となっていますが、ビット数が増えただけでアルゴリズム自体に変化はありません。入力 n の値(ビット数)を大きくしても変わらず処理してくれます。多分気付いてない。🤣</p>
+</ul>
+<ul>
+<p>n = 8, k = 33<br>a = [3, 8, 4, 9, 1, 6, 7, 5]</br>
+<p>要素数 8 で 8ビット。組み合わせ数は、全255通りです。00000001 〜 11111111 です。</p>
+<p><var>a</var> の要素番号 0 が ビットの１桁目、要素番号 1 が ２桁目………と対応します。そして、ビットが 1 になっている所に対応した <var>a</var> の数を全て足します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if i & 1 << j:
+    egg += a[j]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>ビット桁</th><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td></tr></thead>
+<tr><th>対応する<br>a の要素</th><td>5</td><td>7</td><td>6</td><td>1</td><td>9</td><td>4</td><td>8</td><td>3</td></tr>
+</table>
+</div>    
+<br>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>ビット</th><th>選択</th><th>卵の数</th></tr></thead>
+<tbody>
+<tr><td>00000001</td><td>3</td><td>3</td></tr>
+<tr><td>00000010</td><td>8</td><td>8</td></tr>
+<tr><td>00000011</td><td>3,8</td><td>3+8=11</td></tr>
+<tr><td>00000100</td><td>4</td><td>4</td></tr>
+<tr><td>00000101</td><td>3,4</td><td>3+4=7</td></tr>
+<tr><td>00000110</td><td>8,4</td><td>8+4=12</td></tr>
+<tr><td>00000111</td><td>3,8,4</td><td>3+8+4=15</td></tr>
+</tbody>
+</table>
+</div>
+<p>：<br>：<br></p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>ビット</th><th>選択</th><th>卵の数</th></tr></thead>
+<tbody>
+<tr><td>11111001</td><td>3,9,1,6,7,5</td><td>3+9+1+6+7+5=31</td></tr>
+<tr><td>11111010</td><td>8,9,1,6,7,5</td><td>8+9+1+6+7+5=36</td></tr>
+<tr><td>11111011</td><td>3,8,9,1,6,7,5</td><td>3+8+9+1+6+7+5=39</td></tr>
+<tr><td>11111100</td><td>4,9,1,6,7,5</td><td>4+9+1+6+7+5=32</td></tr>
+<tr><td>11111101</td><td>3,4,9,1,6,7,5</td><td>3+4+9+1+6+7+5=35</td></tr>
+<tr><td>11111110</td><td>8,4,9,1,6,7,5</td><td>8+4+9+1+6+7+5=40</td></tr>
+<tr><td>11111111</td><td>3,8,4,9,1,6,7,5</td><td>3+8+4+9+1+6+7+5=43</td></tr>
+</tbody>
+</table>
+</div>
+<p>途中がっつり省略しましたが、この様に処理をしていきます。途中で <var>k</var> と同じ数、つまり卵がぴったりになる組み合わせを見つけたらカウントアップします。</p>
+<p>この例では次の様な結果となりました。</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>i</th><th>ビット</th><th>卵の数</th></tr></thead>
+<tbody>
+<tr><td>107</td><td>01101011</td><td>3+8+9+6+7=33</td></tr>
+<tr><td>190</td><td>10111110</td><td>8+4+9+1+6+5=33</td></tr>
+<tr><td>206</td><td>11001110</td><td>8+4+9+7+5=33</td></tr>
+<tr><td>219</td><td>11011011</td><td>3+8+9+1+7+5=33</td></tr>
+<tr><td>231</td><td>11100111</td><td>3+8+4+6+7+5=33</td></tr>
+</tbody>
+</table>    
+</div>
+<p>５つ見つかりました。<br>▼ 試しにどうぞ！ ▼</p>
+<iframe src="https://paiza.io/projects/e/mwEvADUJi65cJ6WEISGL-Q?theme=twilight" width="100%" height="500" loading="lazy"></iframe>
+</ul>
+<ul>
+<div class="x-fit">
+<table class="text-center">
+<thead>
+<tr><th colspan="9">a = [3, 8, 4, 9, 1, 6, 7, 5]</th></tr>
+<tr><th>1 &lt;&lt; j</th></th><td>1 &lt;&lt; 0</td><td>1 &lt;&lt; 1</td><td>1 &lt;&lt; 2</td><td>1 &lt;&lt; 3</td><td>1 &lt;&lt; 4</td><td>1 &lt;&lt; 5</td><td>1 &lt;&lt; 6</td><td>1 &lt;&lt; 7</td></tr>
+<tr><th>a <small><em>(桁順)</em></small></th><td>5761948<mark style="background-color: aqua;">3</mark></td><td>576194<mark style="background-color: aqua;">8</mark>3</td><td>57619<mark style="background-color: aqua;">4</mark>83</td><td>5761<mark style="background-color: aqua;">9</mark>483</td><td>576<mark style="background-color: aqua;">1</mark>9483</td><td>57<mark style="background-color: aqua;">6</mark>19483</td><td>5<mark style="background-color: aqua;">7</mark>619483</td><td><mark style="background-color: aqua;">5</mark>7619483</td></tr>
+<tr><th>32767</th><td>1111111<mark>1</mark></td><td>111111<mark>1</mark>1</td><td>11111<mark>1</mark>11</td><td>1111<mark>1</mark>111</td><td>111<mark>1</mark>1111</td><td>11<mark>1</mark>11111</td><td>1<mark>1</mark>111111</td><td><mark>1</mark>1111111</td></tr>
+<tr><th>1 &lt;&lt; j</th><td>0000000<mark>1</mark></td><td>000000<mark>1</mark>0</td><td>00000<mark>1</mark>00</td><td>0000<mark>1</mark>000</td><td>000<mark>1</mark>0000</td><td>00<mark>1</mark>00000</td><td>0<mark>1</mark>000000</td><td><mark>1</mark>0000000</td></tr>
+<tr style="background-color: aquamarine;"><th>& <small>(10進数)</small></th><td>1</td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>64</td><td>128</td></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<p><code>1 << j</code> は、ビットシフトです。00000001 を左に <var>j</var> だけずらします。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if i & 1 << j:
+    egg += a[j]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark style="background-color: aquamarine;">　　　</mark> の所は <code>i & 1 &lt;&lt; j</code> の結果です。<var>i</var> がいくつの時でもこの結果になります。この結果が 0の時は <strong>False</strong>となります。それ以外の時は <strong>True</strong> となり、<code>egg</code> に、<code>a</code> の <mark style="background-color: aqua;">　</mark> の数が加算されます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">    if egg > k:
+        break
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>途中で <code>egg</code> の値が <code>k</code> を 超えてしまったら、それ以上加算しても <code>k</code> の値を下回るなんてことはありえませんので、さっさと <strong>break</strong> して次のループに移ってしまいましょう。😉</p>
+</ul>
+<ul>
+<p>ポイントはやっばり、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if i & 1 << j:
+    egg += a[j]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分でしょうか？ 特に <code>i & 1 &lt;&lt; j</code> が理解できるようになったら、総てが理解できたも同然と言えるでしょう。</p>
+<br>
+<p>今ではグラフィック関連のソフトを扱う人が増え、カラービットに 16進数が当たり前のように使われるようになりました。なので 16進数に馴染みがある方は多いかもしれませんが、その 16進数も元はといえば冗長な２進数を短く表現したものです。</p>
+<p>16進数は１桁で４ビットです。２桁で８ビット = １バイトです。</p>
+<div class="x-fit">
+<p class="inlook">【10進数】<br>0 〜 255<br><br>【２進数】<br>0000 0000 〜 1111 1111<br><br>【16進数】<br>00 〜 FF</p>
+</div>
+<div class="x-fit">
+<p class="inlook">11111111 は <math><msup><mn>2</mn><mn>8</mn></msup><mo>=</mo></math>256<br>F を２進数にすると 1111<br>F が２つで FF = 1111 1111 = <math><msup><mn>2</mn><mn>8</mn></msup></math> = 256</p>
+<p><em>『F は何ビット？』</em></p>
+<p class="inlook">F(16) = 15(10) = 1111(2) → ４ビット <em><small>( )内は進数</small></em></p>
+</div>
+</ul>
+<ul>
+<p>光の三原色 (赤, 青, 緑) のとおり、昔のパソコンも RGB の三原色で表現されていました。</p>
+<p class="inlook">GRB<br>111 ← ３ビット</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>10進数</th><th>GRB</th><th>カラー</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>000</td><td class="text-left"><span style="background-color: #000;">　　　</span> black</td></tr>
+<tr><td>1</td><td>001</td><td class="text-left"><span style="background-color: #00f;">　　　</span> blue</td></tr>
+<tr><td>2</td><td>010</td><td class="text-left"><span style="background-color: #f00;">　　　</span> red</td></tr>
+<tr><td>3</td><td>011</td><td class="text-left"><span style="background-color: #f0f;">　　　</span> magenta</td></tr>
+<tr><td>4</td><td>100</td><td class="text-left"><span style="background-color: #0f0;">　　　</span> green</td></tr>
+<tr><td>5</td><td>101</td><td class="text-left"><span style="background-color: #0ff;">　　　</span> cyan</td></tr>
+<tr><td>6</td><td>110</td><td class="text-left"><span style="background-color: #ff0;">　　　</span> yellow</td></tr>
+<tr><td>7</td><td>111</td><td class="text-left"><span style="background-color: #fff;">　　　</span> white</td></tr>
+</tbody>
+</table>
+</div>
+<p>これ以外の色は存在しないので使えません。😅<br>七色の虹なんて言われてますけど、光ではない黒と、目に見えないとされる白を除いてこれを見ると、６色しかありませんね。単純な理論ですが、虹は基本６色ということが２進数によってわかります。</p>
+<p>この後扱えるビット数が増え、16色が使え、256色が使え、4096色が使え、そして約1677万色が使える現在に至っています。</p>
+<p class="inlook">【２進数】<br>11111111(2) × 11111111(2) × 11111111(2) = 16,777,216(10)色<br>【16進数】<br>FF(16) × FF(16) × FF(16) = FFFFFF(16)色</p>
+</ul>
+<ul>
+<p>組み合わせは様々なシーンで使いますので、苦手意識を克服してサクサク使いこなせるようになりたいものです。← 私が</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">卵をぴったり生産</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット9</p>
+</footer>
+</body>
+</html>

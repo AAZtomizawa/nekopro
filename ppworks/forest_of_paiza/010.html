@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット10</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>座席</summary>
+<header><h2>座席</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">names = [input() for _ in range(9)]
+
+for i in range(3):
+    print(*names[i*3:i*3+3])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(9):
+    name = input()
+    print(name, end='')
+
+    if i % 3 == 2:
+        print()
+    else:
+        print(end=' ')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１のスライスの書き方はちょくちょく使います。あえて解説はしません。わからないままにせず、出力例と見比べて理解してみてください。😉</p>
+<p>例２は Pythonのめんどくさい出力方法をめんどくさがらずに書きました。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">座席</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>平均と平均</summary>
+<header><h2>平均と平均</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = map(int, input().split())
+
+arithmetic = (a+b) / 2
+geometric = (a*b)**0.5
+
+if arithmetic == geometric:
+    print('equal')
+elif arithmetic > geometric:
+    print('arithmetic')
+else:
+    print('geometric')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>**0.5</strong> でルートになります。わりと使わされるので覚えておいてください。😓</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">平均と平均</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>親と子</summary>
+<header><h2>親と子</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = map(int, input().split())
+
+c = a * 2
+
+if c + 1 or c + 2:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>木とかノードとかわからなくても、とりあえず書かれていることを参考に組んでみたら、だいたいこんな感じになるのではないでしょうか？</p>
+<p>木構造は問題集にもありますが、難しいので<strong>気を付けてください。</strong>頭痛くなる。😫</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">親と子</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>卒論締め切り</summary>
+<header><h2>卒論締め切り</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, a, b = map(int, input().split())
+
+if a * b >= n:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>リアルに考えて、この計算だと提出期限にギリッギリ間に合わないような気がするのですが。😅</p>
+<p>提出日には何枚書けるの？提出日は書ける時間短いよ？</p>
+<p> n 枚ぴったり収まる？１枚でも多くなったら間に合わなくなるよ？</p>
+<p>１日多く取っておいたほうが良くない？</p>
+<br>
+<p>という余計なことは考えなくてもいいみたいです。😆</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">卒論締め切り</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>WBC</summary>
+<header><h2>WBC</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">w = input()
+
+if w == 'WBC':
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">w = input()
+
+if w.isupper():
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">.isupper()</strong> は、文字列全体のアルファベットが大文字のみで構成されているかどうかを判別するメソッドです。対象はアルファベットのみなので、数字、記号、日本語、絵文字は対象外です。例えば、</p>
+<p>w = '1 ふ再A😻]'</p>
+<p>と、この中にアルファベットの大文字が１文字ある場合でも <strong>True</strong> となります。</p>
+<br>
+<p>問題のとおり、"WBC" 限定なら例１にすべきです。でも条件を考慮すれば例２でもイケます。</p>
+<p>そしてお察しのとおり、<strong class="func">.islower()</strong>メソッドもございます。😊</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">WBC</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>paiza とタイピング</summary>
+<header><h2>paiza とタイピング</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+paiza = 'paiza'
+paiza_len = len(paiza)
+
+idx = 0
+for c in s:
+    if c == paiza[idx]:
+        idx += 1
+    
+    if idx == paiza_len:
+        print('Yes')
+        break
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+paiza = 'paiza'
+paiza_len = len(paiza)
+
+idx = 0
+all((idx:=idx+(c==paiza[idx])) < paiza_len for c in s)
+
+print('Yes' if idx == paiza_len else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例２は、『工夫すれば短くできる！』というだけでパッと見、ちょっとわかりにくくておすすめはできない作り方です。😅</p>
+<p>例１も例２も、どちらも <code>s</code> を先頭から <mark>'paiza'</mark> の１文字ずつを見つけながら探索しています。<code>idx</code> は <mark>'paiza'</mark> の要素番号です。<code>idx</code> が <mark>'paiza'</mark> の文字数 5 に達したら <code class="output">Yes</code> を画面に出力してから <strong>break</strong> して終了します。<code>idx</code> が 5 に達しなかったということは <mark>'paiza'</mark> と打ち込めなかったということです。</p>
+<p>例２の <strong class="func">all()</strong> 関数は、<code>idx</code> をカウントする為の一文です。<mark>'paiza'</mark> の文字数 5 未満の時は <code>idx</code> をカウントします。 <mark>'paiza'</mark> の文字数 5 に達すると <strong>False</strong> になり、 <strong class="func">all()</strong> 関数も <strong>False</strong> になってこの関数を終了します。 <strong class="func">all()</strong> 関数の変則的な使い方です。 <strong class="while"></strong>みたいですね。😊</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">paiza とタイピング</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット10</p>
+</footer>
+</body>
+</html>

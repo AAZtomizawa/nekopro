@@ -204,9 +204,9 @@ print('Yes' if idx == paiza_len else 'No')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>例２は、『工夫すれば短くできる！』というだけでパッと見、ちょっとわかりにくくておすすめはできない作り方です。😅</p>
+<p>例２は、『工夫すれば行数減らせる！』というだけでパッと見、ちょっとわかりにくくておすすめはできない作り方です。😅</p>
 <p>例１も例２も、どちらも <code>s</code> を先頭から <mark>'paiza'</mark> の１文字ずつを見つけながら探索しています。<code>idx</code> は <mark>'paiza'</mark> の要素番号です。<code>idx</code> が <mark>'paiza'</mark> の文字数 5 に達したら <code class="output">Yes</code> を画面に出力してから <strong>break</strong> して終了します。<code>idx</code> が 5 に達しなかったということは <mark>'paiza'</mark> と打ち込めなかったということです。</p>
-<p>例２の <strong class="func">all()</strong> 関数は、<code>idx</code> をカウントする為の一文です。<mark>'paiza'</mark> の文字数 5 未満の時は <code>idx</code> をカウントします。 <mark>'paiza'</mark> の文字数 5 に達すると <strong>False</strong> になり、 <strong class="func">all()</strong> 関数も <strong>False</strong> になってこの関数を終了します。 <strong class="func">all()</strong> 関数の変則的な使い方です。 <strong class="while"></strong>みたいですね。😊</p>
+<p>例２の <strong class="func">all()</strong> 関数は、<code>idx</code> をカウントする為の一文です。<mark>'paiza'</mark> の文字数 5 未満の時は <strong>True</strong> となり、0 か 1 をカウントします。(実際は評価よりカウントが先に行われますが😅)<br>そして <mark>'paiza'</mark> の文字数 5 に達すると <strong>False</strong> になり、 <strong class="func">all()</strong> 関数も <strong>False</strong> になってこの関数を終了します。 <strong class="func">all()</strong> 関数の変則的な使い方です。 <strong class="while"></strong>みたいですね。😊</p>
 </ul>
 <footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">paiza とタイピング</a></footer>
 </details>

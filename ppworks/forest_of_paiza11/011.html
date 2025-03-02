@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット11</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>お菓子の合計金額 </summary>
+<header><h2>お菓子の合計金額 </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<p></p>
+<div>
+<pre><code class="language-python">a, b = map(int, input().split())
+print(a + b)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>さんすうのおじかんです。🤗</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">お菓子の合計金額 </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>フィボナッチ数列</summary>
+<header><h2>フィボナッチ数列</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">f = [1, 1]
+for i in range(2, 10):
+    f.append(f[i-1] + f[i-2])
+
+print(*f, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><a href="../c/array1.html#c5-8" class="linked" target="_blank">こちらの解説</a> をご覧ください。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">フィボナッチ数列</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>素数判定</summary>
+<header><h2>素数判定</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+result = 'No'
+if n > 1 and (n == 2 or n % 2 == 1):
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            break
+    else:
+        result = 'Yes'
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<ul>
+<li>1 は素数ではない</li>
+<li>2 は素数</li>
+<li>4 以上の偶数は 2 で割り切れる為、素数ではない</li>
+</ul>
+<p>3 以上の奇数のみ素数が含まれます。プログラム例の <strong class="if"></strong>文では、</p>
+<ul>
+<li>2 以上は素数の可能性あり</li>
+<li>2 は素数</li>
+<li>奇数は素数の可能性あり</li>
+</ul>
+<p>なので、この条件に合った数のみ、素数かどうかを調べます。逆に言えば 2 以外の偶数と 1 の時はスルーして <code class="output">No</code> を出力します。</p>
+</ul>
+<ul>
+<li><p>2 の場合</p></li>
+<p><strong class="for"></strong>文は、3 から開始します。2 は何もせずそのまま <strong class="for"></strong>文を正常終了します。よって <strong>else</strong> が実行され、<code>result</code> は <code>Yes</code> となります。</p>
+<br>
+<li><p>3 〜 7 の奇数の場合</p></li>
+<p>3 〜 <math><msqrt><mi>n</mi></msqrt></math> の間を調べるのですが、</p>
+<math><msqrt><mn>3</mn></msqrt><mo>=</mo><mn>1.7320508</mn></math><br><math><msqrt><mn>5</mn></msqrt><mo>=</mo><mn>2.2360679</mn></math><br><math><msqrt><mn>7</mn></msqrt><mo>=</mo><mn>2.6457513</mn></math><br><math><msqrt><mn>9</mn></msqrt><mo>=</mo><mn>3</mn></math><br><math><msqrt><mn>11</mn></msqrt><mo>=</mo><mn>3.316624</mn></math></p>
+<p>このようにループが開始する <mark>range(3, 3+1)</mark> となるには <code>n</code> が 9 以上でなくてはいけません。7 までは 2 と同じ様に何もせずループをスルーして <strong>else</strong> が実行されます。 3 も 5 も 7 も都合よく素数ですね。😆</p>
+<br>
+<li><p>9 以上の場合</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if n > 1 and (n == 2 or n % 2 == 1):
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            break
+    else:
+        result = 'Yes'
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ループは 3 から 2 ずつステップしていきます。要するに奇数しか調べません。ループ中、n が i で割り切れたら素数ではないことになるので直ちに <strong>break</strong> し、最後まで割り切ることができなかったら <strong>else</strong> が実行されます。</p>
+<br>
+<p>あとは結果を画面に出力すれば完了です。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">素数判定</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>残業時間</summary>
+<header><h2>残業時間</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">overtime = 0
+for _ in range(30):
+    m = int(input())
+    
+    overtime += m - 8
+
+print(overtime)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p></p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">残業時間</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>ロボットの移動 - その 2</summary>
+<header><h2>ロボットの移動 - その 2</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y = map(int, input().split())
+x = abs(x)
+y = abs(y)
+x_move = False
+y_move = False
+
+if x > y:
+    x_move = True
+else:
+    y_move = True
+
+cnt = 0
+while x != 0 or y != 0:
+    x = max(0, x - x_move)
+    y = max(0, y - y_move)
+    cnt += 1
+
+    x_move = not x_move
+    y_move = not y_move
+    
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>実際にロボットを動かして歩数を数えてみましょう。</p>
+</ul>
+<ul>
+    <!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y = map(int, input().split())
+x = abs(x)
+y = abs(y)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>目的地の座標の絶対値をとります。これは (0, 0) を中心としてマイナス１歩もプラス１歩も同じ１歩なので、</p>
+<p>●●●●●●●<br>●●<span style="color:cyan">●</span>●●●●<br>●●●●●<span style="color:green">●</span>●<br><span style="color:blue">●</span>●●<span style="color:red">㊥●●<span style="color:blue">●</span></span><br>●●●<span style="color:red">●●<span style="color:green">●</span>●</span><br>●●●<span style="color:red">●</span><span style="color:cyan">●</span><span style="color:red">●●</span><br>●●●<span style="color:red">●●●●</span>　同じ３歩</p>
+<p>すべて座標位置を正数にし、この<strong>赤い範囲</strong>の領域を使って数えていきます。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x_move = False
+y_move = False
+
+if x > y:
+    x_move = True
+else:
+    y_move = True
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>同じ動きが取れないということで、次に動く方向を x と y で交代しながら、または移動して止まってを繰り返しながら進んでいきます。x もしくは y 方向に「移動する」時は <strong>True</strong>、「移動しない」時は <strong>False</strong>とします。一歩動いたら向き変えるプログラムを後に行います。</p>
+<p>x と y の先にどちらから一歩目を踏み出すか。これは x と y の数値が大きいほうから移動を開始します。</p>
+<p>(x, y) = (2, 3) の時</p>
+<p><span style="color:red">㊥</span>●●●<br>●●●●<br>●●●●<br>●●<span style="color:cyan">●</span>●</p>
+<br>
+<p>y ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>●●●<br>１２●●<br>●３４●<br>●●<strong class="b"><span style="color:cyan">５</span></strong>●</p>
+<p>x ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>１●●<br>●２３●<br>●●45●<br>●●<strong class="b"><span style="color:cyan">６</span></strong>●</p>
+<p>x + y が奇数になる時は上記の様になります。</p>
+<br>
+<li><p>x + y が偶数の時はどちらから踏み出しても同じ歩数になります。</p></li>
+<p><span style="color:red">㊥</span>●●●<br>●●●●<br>●●●●<br>●●●<span style="color:cyan">●</span></p>
+<br>
+<p>(x, y) = (3, 3) の時</p>
+<p>y ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>●●●<br>１２●●<br>●３４●<br>●●56<strong class="b"><span style="color:cyan">７</span></strong></p>
+<p>x ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>１●●<br>●２３●<br>●●４56<br>●●●<strong class="b"><span style="color:cyan">７</span></strong></p>
+<br>
+<p>(x, y) = (3, 1) の時</p>
+<p>x ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>１●●<br>●２34<strong class="b"><span style="color:cyan">５</span></strong></p>
+<p>y ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>●●●<br>１2345<strong class="b"><span style="color:cyan">６</span></strong></p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if x > y:
+    x_move = True
+else:
+    y_move = True
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>x の数のほうが大きい場合は x 方向から動きます。y の数のほうが大きい場合は y 方向から動きます。x と y の数が同じ場合は、足すと偶数になるのでどちらから動いてもよいのですが、条件式のとおり、y から動くこととします。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cnt = 0
+while x != 0 or y != 0:
+    x = max(0, x - x_move)
+    y = max(0, y - y_move)
+    cnt += 1
+
+    x_move = not x_move
+    y_move = not y_move
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>目的地から (0, 0) に向かって進んでいきます。</strong>スタート地点から目的地に向かっても結果的には歩数は同じですが、(0, 0) を目的地にしたほうがちょっとだけわかりやすいので。😄</p>
+<br>
+<p>ループは x = 0, y = 0 になるまで、つまり目的地の座標 (0, 0) に到達するまでです。</p>
+<p>移動を開始します。<br><code>x</code> と <code>y</code> には、それぞれ移動後の座標が入ります。 <code>x - x_move</code> と <code> y - y_move</code> は、現在の座標から <code>x_move</code>, <code>y_move</code> を引いた数です。(0, 0) に向かってどちらもマイナス方向へ移動します。</p>
+<li><p>x 方向に移動する時<br>x_move = <strong>1</strong> (True)<br>y_move = <strong>0</strong> (False)</p></li>
+<li><p>y 方向に移動する時<br>x_move = <strong>0</strong> (False)<br>y_move = <strong>1</strong> (True)</p></li>
+<p>これを、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x_move = not x_move
+y_move = not y_move
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>にて向きを変えながらジグザグに進んでいきます。</p>
+<p class="inlook"><span style="color:red">５</span>●●●<br>４３●●<br>●２１●<br>●●🤖●</p>
+<p class="inlook">x_move, y_move = 0, 1 ← 初期値<br>↓ １歩目 (2, 2)<br>x_move, y_move = 1, 0<br>↓ ２歩目 (1, 2)<br>x_move, y_move = 0, 1<br>↓ ３歩目 (1, 1)<br>x_move, y_move = 1, 0<br>↓ ４歩目 (0, 1)<br>x_move, y_move = 0, 1<br>↓ ５歩目 (0, 0)<br>x_move, y_move = 1, 0</p>
+<p>(ループを抜ける)</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max(0, x - x_move)
+max(0, y - y_move)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これは、座標がマイナスになった時には 0 にするという意味です。要するにその位置で「静止する」ということです。ヘタに動くと遠回りになったり、二方向だけで済む移動処理が四方向になってメンドクサイので、その場に留まったほうが効率的です。</p>
+<li>✅👍</li>
+<p class="inlook"><span style="color:red">５</span>43２●<br>●●１🤖</p>
+<li>(💢ﾟдﾟ)､ﾍﾟｯ</li>
+<p class="inlook"><span style="color:red">６</span>３２●<br>５４１🤖</p>
+<br>
+<p>座標 (0, 0) に到着したらループを抜け、歩数を画面に出力して完了です。</p>
+</ul>
+<h3>数学的に高速処理する</h3>
+<ul>
+<li><p>paiza 解答コード例</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y = map(int, input().split())
+
+if x != y:
+    print(max(abs(x), abs(y)) * 2 - 1)
+else:
+    print(abs(x) * 2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ちょいと例をお借りして解説します。</p>
+<p><code>x != y</code> の <strong>else</strong> になる条件式は <code>x == y</code> です。</p>
+<p>(x, y) = (3, 3) の時</p>
+<p><span style="color:red">㊥</span>●●●<br>●●●●<br>●●●●<br>●●●🤖</p>
+<p>この場合の最短ルートは２通りしかありません。</p>
+<p class="inlook"><span style="color:red">６</span><span style="color:blue">５</span>●●<br><span style="color:green">５</span><span style="color:green">4</span><span style="color:blue">4</span><span style="color:blue">３</span>●<br>●<span style="color:green">３</span><span style="color:green">2</span><span style="color:blue">2</span><span style="color:blue">１</span><br>●●<span style="color:green">１</span>🤖</p>
+<p>なので、単純に <code>abs(x) * 2</code> だけで求められます。</p>
+</ul>
+<ul>
+<p><code>x != y</code> の場合は、</p>
+<p>(x, y) = (3, 1)</p>
+<p class="inlook"><span style="color:red">５</span>43２●<br>●●１🤖</p>
+<p>max(3, 1) * 2 - 1<br>↓<br>3 * 2 - 1 = 5</p>
+<br>
+<p>(x, y) = (2, 5)</p>
+<p class="inlook"><span style="color:red">９</span>●●<br>78●●<br>56●●<br>４３●<br>●２１<br>●●🤖</p>
+<p>max(2, 5) * 2 - 1<br>↓<br>5 * 2 - 1 = 9</p>
+<br>
+<p><code>x != y</code> ならば、<code>max(abs(x), abs(y)) * 2 - 1</code> だけで求められるようです。ｼﾗﾝｹﾄﾞ</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">x, y = map(int, input().split())
+x = abs(x)
+y = abs(y)
+
+cnt = max(x, y) * 2 - (x != y)
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>x != y</code> と <code>x == y</code> は「１を引く」かの違いです。</p>
+<p>１を引く条件を１を引く所に書くとこうなります。それだけ。😓</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">ロボットの移動 - その 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>辞書順で最も小さい文字列</summary>
+<header><h2>辞書順で最も小さい文字列</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+s = input()
+
+print(''.join(sorted(s)))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">sorted()</strong> 関数を使ってソートすればいいだけなんです。👍<br>これは <strong class="func">sorted()</strong> 関数がアルファベットに対応しているからということではなく、文字コード順にソートしているからです。</p>
+<p>簡単に説明すると、a 〜 z の文字コードは 97 〜 122 です。この数値で昇順ソートをしています。</p>
+<p>ですので、大文字が混ざった文字列、例えば、</p>
+<p>s = 'paIzA'</p>
+<p>を<strong class="func">sorted()</strong> でソートすると、</p>
+<p><code class="output">AIapz</code></p>
+<p>となります。A 〜 Z の文字コードは 65 〜 90 ですので、大文字の <code>A</code> 〜 <code>Z</code> が先になります。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+s = list(input())
+
+for i in range(n-1):
+    for j in range(n-1-i):
+        if s[j] > s[j+1]:
+            s[j], s[j+1] = s[j+1], s[j]
+
+print(''.join(s))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字を比較してバブルソートしています。文字は文字コードとして認識されていますので、単純に 'b'(98) &gt; 'a'(97) の場合は <strong>True</strong> となり、'b' と 'a' の位置が交換されます。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">辞書順で最も小さい文字列</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>全員が正答</summary>
+<header><h2>全員が正答</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+answers = [0] * n
+for i in range(m):
+    for j in range(n):
+        answers[j] += c[i][j]
+
+print('Yes' if m in answers else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+for answers in zip(*c):
+    if all(answers):
+        print('Yes')
+        break
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+print('Yes' if any(all(answers) for answers in zip(*c)) else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>横並びになっている列 <var>n</var> が問題数、行 <var>m</var> が生徒数です。問題にある『<strong class="b">生徒が全員正答できた問題があるかどうか</strong>』を調べるには <strong>列</strong> が全て <strong>1</strong> になっているかどうかを調べます。ややこしいですね。😓</p>
+<p><strong>1</strong> 0 1<br><strong>1</strong> 1 1<br><strong>1</strong> 0 0</p>
+</ul>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+answers = [0] * n
+for i in range(m):
+    for j in range(n):
+        answers[j] += c[i][j]
+
+print('Yes' if m in answers else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>answers</code> は、各問題の正答数です。各問題のうち、何人の生徒がその問題を正答したかをこのリストにカウントします。</p>
+<p><var>i</var> のループは、各生徒のテスト結果です。１問目から順に正解しているかをカウントしていきます。正答は 1、誤答は 0 となっていますので、この数値をそのままカウントに使います。</p>
+<p>最終的に生徒数と同じ数値があれば全員正答している問題があるということになります。</p>
+</ul>
+<ul>
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+for answers in zip(*c):
+    if all(answers):
+        print('Yes')
+        break
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>転置</strong>を使っています。転置とは、行と列を入れ替えることです。</p>
+<p><strong>1</strong> 0 1<br><strong>1</strong> 1 1<br><strong>1</strong> 0 0<br>↓<br><strong>1 1 1</strong><br>0 1 0<br>1 1 0</p>
+<p>転置するのは、縦並びのものを調べるより、横並びのものを調べるほうが簡単だからです。😉 その転置を行なっているのが、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">zip(*c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この関数です。二次元リストを展開して引数に与えるだけです。転置については、「<a href="../../2/0120dimension2.html#c4-4h" class="linked" target="_blank">２章 二次元リスト</a>」で学習できます。</p>
+<br>
+<p><strong class="func">all()</strong> 関数には、転置した後の行リストを引数に与えています。要素の値は 1 と 0 だけで、それらはそのまま <strong>True</strong> と <strong>False</strong> として判定に使われます。Ｂランクなら今更かもしれませんが、このことについては「<a href="../../2/0020truefalse.html" class="linked" target="_blank">２章 bool型 True と False</a>」の「<a href="../../2/0020truefalse.html#c4-h" class="linked" target="_blank">Chatpter.4 - 『ある』か『ない』か</a>」で学習できます。</p>
+</ul>
+<ul>
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+print('Yes' if any(all(answers) for answers in zip(*c)) else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>内包表記に詰め込んで書きました。例２との違いは、 <strong class="if"></strong> を <strong class="func">any()</strong> 関数に変えたところです。</p>
+<p><strong class="func">all()</strong>関数の内包表記で全員が正答した問題(<strong>True</strong>)が出現したら、<strong class="func">any()</strong> 関数が <strong>True</strong> となり、 <strong class="if"></strong> が <strong>True</strong> となります。</p>
+</ul>
+<ul>
+<li><p>paiza 解答コード例</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+c = [[0] * n] * m
+ans = [1] * n
+for i in range(m):
+    c[i] = list(map(int, input().split()))
+    for j in range(n):
+        ans[j] &= c[i][j]
+        if i == m - 1:
+            if ans[j] == 1:
+                print("Yes")
+                exit()
+print("No")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>動くプログラムにはなっていますが、Pythonプログラム的にはわかりにくいように感じます。😅</p>
+<p>リスト c は、後の入力を保管するための二次元リストを作成し、初期化します。リスト ans は、真ん中辺りにある、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">ans[j] &= c[i][j]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで論理演算(論理積)をする為に、[1] で初期化しています。最終的にこのリストに 1 が残っていれば画面に <code class="output">Yes</code> が出力されることになっています。</p>
+<br>
+<p>外側の <strong class="for"></strong> ループ <var>i</var> では、各生徒のテスト結果を入力し、チェックします。<br>内側の <strong class="for"></strong> ループ <var>j</var> では、解答の正誤を論理積で論理演算して、１つの問題に対して全員が正答しているかをチェックしてます。このループ中に、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if i == m - 1:
+    if ans[j] == 1:
+        print("Yes")
+        exit()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>もしこれが最後の生徒のテスト結果だった時、全員が正答しているかどうかの判定を行います。言い方を変えると、<var>i</var> の最終ループの時に <code>ans[j]</code> が 1、つまり全員が正答していたら画面に <code class="output">Yes</code> を出力します。</p>
+</ul>
+<ul>
+<p>流れを詳しく見てみましょう。</p>
+<ol>
+<li>入力を受け取るリストを二次元リストで作成し、初期化する。(<mark>リスト <var>c</var></mark>)</li>
+<li>全員が正答しているかどうかを判定する為の論理値を<strong>全て 1 で初期化</strong>する。</li>
+<li><strong class="for"></strong> ループ <var>i</var> で生徒のテスト結果を受け取る。</li>
+<li><strong class="for"></strong> ループ <var>j</var> で解答の正誤をチェックする。</li>
+<li>画面に <code class="output">Yes</code> または <code class="output">No</code> を出力する。</li>
+</ol>
+</ul>
+<ul>
+<p>1. 入力を受け取るリストを二次元リストで作成し、初期化する。(<mark>リスト <var>c</var></mark>)</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">c = [[0] * n] * m
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>３番で入力をこのリストに格納します。リストでまるごと格納してしまいますので、n の数だけ作る必要はありませんし、<code>0</code> で初期化しなくても <code>[]</code> だけ作っておけば大丈夫です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">c = [[]] * m
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<p>2. 全員が正答しているかどうかを判定する為の論理値を<strong>全て 1 で初期化</strong>する。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">ans = [1] * n
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>n = 3 の時でこれを作ると、</p>
+<p>ans = [1, 1, 1]</p>
+<p>となります。後の論理演算の論理積で、全員が正答した場合には最終的にどれかに <strong>1</strong> が残ります。</p>
+<p>　1 1 1 ← 初期値<br>＆1 0 1<br>-----------------<br>　1 0 1<br>＆1 1 1<br>-----------------<br>　1 0 1<br>＆1 0 0<br>-----------------<br>　<strong>1</strong> 0 0</p>
+</ul>
+<ul>
+<p>3. <strong class="for"></strong> ループ <var>i</var> で生徒のテスト結果を受け取る。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(m):
+    c[i] = list(map(int, input().split()))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>生徒１人分のテスト結果を受け取り、リストにして <code>c[i]</code> にまるごと代入します。リストをそのまま代入しますので、コピーには当たりません。</p>
+<p>リストのコピーについては「<a href="../../2/0010list.html" class="linked" target="_blank">２章 リスト型</a>」の「<a href="../../2/0010list.html#c4-h" class="linked" target="_blank">Chatpter.4 - ぼくたちは代入ができない</a>」で学習できます。</p>
+<p>本来はコピーを回避するために、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">c = [[]] * m
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>を、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">c = [[] for _ in range(m)]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と書くべきなのですが、要素をリストまるごと書き換えていますので <code>c = [[]] * m</code> という書き方でも問題ないわけです。でも誤動作防止の観点と、単純に紛らわしいのでちゃんと下の <strong class="for"></strong>文を使った書き方をしたほうが良いと私は思います。😅</p>
+</ul>
+<ul>
+<p>4. <strong class="for"></strong> ループ <var>j</var> で解答の正誤をチェックする。<br>5. 画面に <code class="output">Yes</code> または <code class="output">No</code> を出力する。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for j in range(n):
+    ans[j] &= c[i][j]
+    if i == m - 1:
+        if ans[j] == 1:
+            print("Yes")
+            exit()
+print("No")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>生徒１人のテストの正誤チェックを論理積で演算します。その結果を <code>ans[j]</code> に格納していきます。「2.」のところに書いた筆算のような流れで二重ループで作られていきます。</p>
+<p>そして <var>i</var> の最終ループ <code>if i == m - 1:</code> の時に <strong>1</strong> となったら <code>if ans[j] == 1:</code> 全員が正答していることになりますので、画面に <code class="output">Yes</code> を出力してプログラムを<strong>強制終了</strong>します。<code>exit()</code></p>
+<p>そのまま二重ループを抜けた場合は、全員が正答した問題は無かったということになりますので、画面に <code class="output">No</code> と出力してプログラムは<strong>正常終了</strong>します。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+c = [int(input().replace(' ', ''), 2) for _ in range(m)]
+
+ans = 2**n - 1
+for i in c:
+    ans &= i
+
+print('Yes' if ans != 0 else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>(*^^)っ旦~~</p>
+<br>
+<p><a href="https://docs.python.org/ja/3/library/functions.html#int" class="linked" target="_blank">int()</a> - <small><em>Python 標準ライブラリ</em></small></p>
+<p><a href="../../2/0050usefulstrtype.html#-replace-h" class="linked" target="_blank">.replace()</a> - <small>２章 文字列の操作を使いこなす機能一覧</small></p>
+</ul>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">全員が正答</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット11</p>
+</footer>
+</body>
+</html>

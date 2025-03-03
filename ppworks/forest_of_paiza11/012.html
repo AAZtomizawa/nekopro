@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット12</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>文字列の一致</summary>
+<header><h2>文字列の一致</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = input()
+b = input()
+
+print('Yes' if a == b else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">文字列の一致</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>部分文字列 </summary>
+<header><h2>部分文字列 </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = input()
+b = input()
+
+print('Yes' if b in a else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">部分文字列 </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>グラフの連結</summary>
+<header><h2>グラフの連結</h2></header>
+<ul>
+<li><p>paiza 解答コード例</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+t = [[False for j in range(3)] for i in range(3)]
+for i in range(n):
+    a, b = map(int, input().split())
+    t[a][b] = t[b][a] = True
+
+if t[0][2] or t[0][1] and t[1][2]:
+    print("Yes")
+else:
+    print("No")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<li><p>左は【木】、右は【隣接行列】</p></li>
+<p class="inlook">０　　　0 1 1<br>｜＼　　1 0 1<br>１─２　1 1 0</p>
+<p class="inlook">０　　　0 1 1<br>｜＼　　1 0 0<br>１　２　1 0 0</p>
+<p class="inlook">０　　　0 0 1<br>　＼　　0 0 1<br>１─２　1 1 0</p>
+<p class="inlook">０　　　0 1 0<br>｜　　　1 0 1<br>１─２　0 1 0</p>
+<p><code class="output">Yes</code> になるのはこの４通りですが、まず最初の３つは「０」と「２」が直接繋がっているルート。もう１つは「０」から「１」を経由して「２」に到達するルートです。この２通りのパターンを最後の、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if t[0][2] or t[0][1] and t[1][2]:
+    print("Yes")
+else:
+    print("No")
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで判定しています。<code>t[0][2]</code> というのが「０」→「２」に直接行けるかどうか、<code>t[0][1] and t[1][2]</code> が「０」→「１」、「１」→「２」の経路を表しています。</p>
+<p>隣接リストはそのまま二次元リストになりますが、この添字の要素が 1 の時、つまり<strong>辺で繋がっている時</strong>は、頂点０から頂点２に辿れるということになります。解答コード例では 1 と 0 を <strong>True</strong> と <strong>False</strong> で表しています。そして隣接行列は、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+t = [[False for j in range(3)] for i in range(3)]
+for i in range(n):
+    a, b = map(int, input().split())
+    t[a][b] = t[b][a] = True
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分で作っています。なるほどね。</p>
+</ul>
+<ul>
+<p>グラフほとんど忘れちゃったよ。(;´Д`) ﾔｳﾞｧｲ<br>ギリギリ理解できていない状態で学習を進めていたから、最後どっぷり疲れ切った記憶しか残ってない。😓</p>
+<p>苦手意識はあるけど、でも嫌いじゃないグラフ。💕<br>グラフは苦手だけど、なぜか<strong class="special">深さ優先探索(DFS)</strong>はできる謎。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">グラフの連結</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>拡張子</summary>
+<header><h2>拡張子</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+
+i = 0
+while s[i:i+4] != '.jpg' and s[i:i+4] != '.png':
+    i += 1
+
+print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+s = input()
+
+pattern = r"\.jpg|\.png"
+re_matched = re.search(pattern, s)
+
+print(re_matched.start())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>必ずどちらかが含まれているという保証がありますので、 <strong class="while"></strong>文でシンプルに書けます。(効率無視😅)</p>
+<p>例２は正規表現を使っています。正規表現がわかるならこちらのほうが簡単です。😊</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">拡張子</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>日程調整</summary>
+<header><h2>日程調整</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">l_1, r_1, l_2, r_2 = map(int, input().split())
+days = [0] * 1000
+
+for i in range(l_1, r_1+1):
+    days[i] += 1
+
+for i in range(l_2, r_2+1):
+    days[i] += 1
+
+print(days.count(2))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>それぞれの休日の期間をすべて +1 とカウントし、二人の休日が重なった所が <code>2</code> となっています。</p>
+<p>あとは <code>2</code> の個数をカウントしたものが答えとなります。</p>
+</ul>
+<ul>
+<li><p>paiza 解答コード例</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">l1, r1, l2, r2 = map(int, input().split())
+
+print(max(0, min(r1, r2) - max(l1, l2) + 1))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ちゃんと解説を載せてくれないと私が解説するハメに…。😁</p>
+<br><hr><br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    1 5 2 8
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>
+<tr><th>パイザ君</th><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>　</td><td>　</td><td>　</td></tr>
+<tr><th>霧島さん</th><td>　</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td></tr>
+</table>
+</div>
+<p><code class="output">4</code></p>
+<p class="inlook">min(r1, r2) - max(l1, l2)<br>↓<br>min(<span style="color:magenta">5</span>, 8) - max(1, <span style="color:blue">2</span>)<br>↓<br><span style="color:magenta">5</span> - <span style="color:blue">2</span> = 3</p>
+<p>実際と計算結果の間に 1 差ができるので、帳尻合わせの為に <strong>+1</strong> しています。</p>
+<p class="inlook">min(r1, r2) - max(l1, l2) <strong>+ 1</strong><br>↓<br>min(<span style="color:magenta">5</span>, 8) - max(1, <span style="color:blue">2</span>) <strong>+ 1</strong><br>↓<br><span style="color:magenta">5</span> - <span style="color:blue">2</span> <strong>+ 1</strong> = <code class="output">4</code></p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th></th><th>1</th><th style="background-color: yellow;">2</th><th style="background-color: yellow;">3</th><th style="background-color: yellow;">4</th><th style="background-color: yellow;">5</th><th>6</th><th>7</th><th>8</th></tr></thead>
+<tr><th>パイザ君</th><td>l1</td><td>＊</td><td>＊</td><td>＊</td><td><strong style="color:magenta">r1</strong></td><td>　</td><td>　</td><td>　</td></tr>
+<tr><th>霧島さん</th><td>　</td><td><strong style="color:blue">l2</strong></td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>r2</td></tr>
+</table>
+</div>
+<br>
+<p>もう言葉での説明は必要ありませんね。😙</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">2
+    8 10 1 5
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>
+<tr><th>パイザ君</th><td>　</td><td>　</td><td>　</td><td>　</td><td>　</td><td>　</td><td>　</td><td>＊</td><td>＊</td><td>＊</td></tr>
+<tr><th>霧島さん</th><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>　</td><td>　</td><td>　</td><td>　</td><td>　</td></tr>
+</table>
+</div>
+<p><code class="output">0</code></p>
+<p class="inlook">min(r1, r2) - max(l1, l2) + 1<br>↓<br>min(10, <span style="color:magenta">5</span>) - max(<span style="color:blue">8</span>, 1) + 1<br>↓<br><span style="color:magenta">5</span> - <span style="color:blue">8</span> + 1 = -2</p>
+<p>-2 日間はありえませんので、 <strong class="func">max()</strong> 関数を使って下限を 0 に設定します。</p>
+<p class="inlook">max(0, -2) = <code class="output">0</code></p>
+<br>
+<p>パイザ君、７連勤か。😿</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">3
+    4 8 2 4
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>
+<tr><th>パイザ君</th><td>　</td><td>　</td><td>　</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td><td>＊</td></tr>
+<tr><th>霧島さん</th><td>　</td><td>＊</td><td>＊</td><td>＊</td><td>　</td><td>　</td><td>　</td><td>　</td></tr>
+</table>
+</div>
+<p><code class="output">1</code></p>
+<p class="inlook">min(r1, r2) - max(l1, l2) + 1<br>↓<br>min(8, <span style="color:blue">4</span>) - max(<span style="color:magenta">4</span>, 2) + 1<br>↓<br><span style="color:blue">4</span> - <span style="color:magenta">4</span> + 1 = <code class="output">1</code></p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th></th><th>1</th><th>2</th><th>3</th><th style="background-color: yellow;">4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>
+<tr><th>パイザ君</th><td>　</td><td>　</td><td>　</td><td><strong style="color:magenta">l1</strong></td><td>＊</td><td>＊</td><td>＊</td><td>r1</td></tr>
+<tr><th>霧島さん</th><td>　</td><td>l2</td><td>＊</td><td><strong style="color:blue">r2</strong></td><td>　</td><td>　</td><td>　</td><td>　</td></tr>
+</table>
+</div>
+<br>
+<p>こんな仕組みです。😎</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">日程調整</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>プレゼントの好み</summary>
+<header><h2>プレゼントの好み</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+x = list(map(int, input().split()))
+y = list(map(int, input().split()))
+
+max_idx = x.index(max(x)) + 1
+print('Yes' if max_idx in y else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>まず受け取ったプレゼントの価格が最も高いプレゼントの位置を見つけます。１番目から数えますので +1 します。</p>
+<p>あとはその位置が <mark>リスト y</mark> に含まれているかどうかを調べて結果を画面に出力して完了です。</p>
+<br>
+<p>paiza 解答コード例はこれを、関数や <strong class="if"></strong> 〜 <strong>in</strong> を使わずに書いているだけで、やっていることは同じです。x に 1 を足して合わせているか、y から 1 を引いて合わせているかの違いだけです。</p>
+</ul>
+<ul>
+<p>実際にいるよね、こういうヤツ。😓</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">プレゼントの好み</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット12</p>
+</footer>
+</body>
+</html>

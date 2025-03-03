@@ -139,7 +139,7 @@ print(overtime)
 </section>
 
 <section>
-<details id="c5"><summary>ロボットの移動 - その 2</summary>
+<!-- <details id="c5"><summary>ロボットの移動 - その 2</summary> -->
 <header><h2>ロボットの移動 - その 2</h2></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -205,16 +205,6 @@ else:
 <p class="inlook"><span style="color:red">㊥</span>●●●<br>１２●●<br>●３４●<br>●●<strong class="b"><span style="color:cyan">５</span></strong>●</p>
 <p>x ファースト</p>
 <p class="inlook"><span style="color:red">㊥</span>１●●<br>●２３●<br>●●45●<br>●●<strong class="b"><span style="color:cyan">６</span></strong>●</p>
-<p>x + y が奇数になる時は上記の様になります。</p>
-<br>
-<li><p>x + y が偶数の時はどちらから踏み出しても同じ歩数になります。</p></li>
-<p><span style="color:red">㊥</span>●●●<br>●●●●<br>●●●●<br>●●●<span style="color:cyan">●</span></p>
-<br>
-<p>(x, y) = (3, 3) の時</p>
-<p>y ファースト</p>
-<p class="inlook"><span style="color:red">㊥</span>●●●<br>１２●●<br>●３４●<br>●●56<strong class="b"><span style="color:cyan">７</span></strong></p>
-<p>x ファースト</p>
-<p class="inlook"><span style="color:red">㊥</span>１●●<br>●２３●<br>●●４56<br>●●●<strong class="b"><span style="color:cyan">７</span></strong></p>
 <br>
 <p>(x, y) = (3, 1) の時</p>
 <p>x ファースト</p>
@@ -222,6 +212,15 @@ else:
 <p>y ファースト</p>
 <p class="inlook"><span style="color:red">㊥</span>●●●<br>１2345<strong class="b"><span style="color:cyan">６</span></strong></p>
 <br>
+<li><p>x == y の時はどちらから踏み出しても同じ歩数になります。</p></li>
+<p><span style="color:red">㊥</span>●●●<br>●●●●<br>●●●●<br>●●●<span style="color:cyan">●</span></p>
+<br>
+<p>(x, y) = (3, 3) の時</p>
+<p>y ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>●●●<br>１２●●<br>●３４●<br>●●56<strong class="b"><span style="color:cyan">７</span></strong></p>
+<p>x ファースト</p>
+<p class="inlook"><span style="color:red">㊥</span>１●●<br>●２３●<br>●●４56<br>●●●<strong class="b"><span style="color:cyan">７</span></strong></p>
+<br><br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="language-python">if x > y:
@@ -250,7 +249,7 @@ while x != 0 or y != 0:
 <p><strong>目的地から (0, 0) に向かって進んでいきます。</strong>スタート地点から目的地に向かっても結果的には歩数は同じですが、(0, 0) を目的地にしたほうがちょっとだけわかりやすいので。😄</p>
 <br>
 <p>ループは x = 0, y = 0 になるまで、つまり目的地の座標 (0, 0) に到達するまでです。</p>
-<p>移動を開始します。<br><code>x</code> と <code>y</code> には、それぞれ移動後の座標が入ります。 <code>x - x_move</code> と <code> y - y_move</code> は、現在の座標から <code>x_move</code>, <code>y_move</code> を引いた数です。(0, 0) に向かってどちらもマイナス方向へ移動します。</p>
+<p>移動を開始します。<br><code>x</code> と <code>y</code> には、それぞれ移動後の座標が入ります。 <code>x - x_move</code> と <code>y - y_move</code> は、現在の座標から <code>x_move</code>, <code>y_move</code> を引いた数です。(0, 0) に向かってどちらもマイナス方向へ移動します。</p>
 <li><p>x 方向に移動する時<br>x_move = <strong>1</strong> (True)<br>y_move = <strong>0</strong> (False)</p></li>
 <li><p>y 方向に移動する時<br>x_move = <strong>0</strong> (False)<br>y_move = <strong>1</strong> (True)</p></li>
 <p>これを、</p>

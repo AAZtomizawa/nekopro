@@ -144,7 +144,7 @@ print(result)
 </section>
 
 <section>
-<details id="c7"><summary>野球世界大会 1 次ラウンドの順位</summary>
+<!-- <details id="c7"><summary>野球世界大会 1 次ラウンドの順位</summary> -->
 <header><h2>野球世界大会 1 次ラウンドの順位</h2></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -152,7 +152,7 @@ print(result)
 <pre><code class="language-python">import re
 
 team = 5  # 参加チーム数
-num_game = (team-1) * team // 2  # ゲーム数
+num_game = team * (team-1) // 2  # ゲーム数
 top = 2  # 上位入賞数
 
 c = {input(): 0 for _ in range(team)}
@@ -209,6 +209,31 @@ for name, _ in results[:top]:
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>上位２チームの国名を１位から順に画面に出力します。</p>
+</ul>
+<ul>
+<p>説明が最後になりましたが、ゲーム数の算出についてです。</p>
+<p>＼１２３４５<br>１＼●●●●<br>２　＼●●●<br>３　　＼●●<br>４　　　＼●<br>５　　　　＼</p>
+<p>全５チームの時、全試合数は上表のとおり、</p>
+<p class="inlook">4 + 3 + 2 + 1 = 10</p>
+<p>となります。<br>1 〜 N までを足した数を求める公式は次のとおりです。</p>
+<p class="inlook"><math style="font-size: 48px;"><mfrac><mrow><mi>N</mi><mo>(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></mfrac></math></p>
+<br>
+<p>このプログラムではチーム数の「５」を使っていますので、1 を引いて算出しています。</p>
+<p class="inlook"><math style="font-size: 48px;"><mfrac><mrow><mi>team</mi><mo>(</mo><mi>team</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></mfrac></math></p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">team = 5
+num_game = team * (team-1) // 2
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">team = 5
+num_game = sum(i for i in range(1, team))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
 </ul>
 <ul>
 <p>辞書のソートがＢランク級の難易度ですね。😓</p>

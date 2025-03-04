@@ -486,6 +486,18 @@ sys.setrecursionlimit(10**5)
     unvisited.remove(2)
     for 3 in [1, 3]:
         if 3 in {3, 4}:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):
+    unvisited.remove(2)
+    for 3 in [1, 3]:
+        if True:
             dfs(3)
     return
 </code></pre>
@@ -524,7 +536,7 @@ sys.setrecursionlimit(10**5)
 <pre><code class="plaintext">def dfs(2):            # 待機中
     unvisited.remove(2)
     for 3 in [1, 3]:
-        if 3 in {3, 4}:
+        if True:
             dfs(3)
     return
 </code></pre>
@@ -596,6 +608,18 @@ sys.setrecursionlimit(10**5)
     unvisited.remove(3)
     for 4 in [2, 4]:
         if 4 in {4}:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):
+    unvisited.remove(3)
+    for 4 in [2, 4]:
+        if True:
             dfs(4)
     return
 </code></pre>
@@ -645,7 +669,7 @@ sys.setrecursionlimit(10**5)
 <pre><code class="plaintext">def dfs(3):            # 待機中
     unvisited.remove(3)
     for 4 in [2, 4]:
-        if 4 in {4}:
+        if True:
             dfs(4)
     return
 </code></pre>
@@ -741,7 +765,7 @@ sys.setrecursionlimit(10**5)
 <pre><code class="plaintext">def dfs(2):            # 待機中
     unvisited.remove(2)
     for 3 in [1, 3]:
-        if 3 in {3, 4}:
+        if True:
             dfs(3)
     return
 </code></pre>
@@ -752,13 +776,13 @@ sys.setrecursionlimit(10**5)
 <pre><code class="plaintext">def dfs(3):            # 実行中
     unvisited.remove(3)
     for 4 in [2, 4]:
-        if 4 in {4}:
+        if True:
             None    ← ココ
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>--- <strong class="func">dfs(4)</strong> は消去された ---</p>
+<p>--- <strong class="func">dfs(4)</strong> は破棄された ---</p>
 <p class="inlook"><s>１</s>─<s>２</s><br>　／<br>😺─<s>４</s></p>
 ↓<br><br><hr>
 <br>
@@ -789,13 +813,13 @@ sys.setrecursionlimit(10**5)
 <pre><code class="plaintext">def dfs(2):            # 実行中
     unvisited.remove(2)
     for 3 in [1, 3]:
-        if 3 in {3, 4}:
+        if True:
             None    ← ココ
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>--- <strong class="func">dfs(3)</strong> は消去された ---</p>
+<p>--- <strong class="func">dfs(3)</strong> は破棄された ---</p>
 <p class="inlook"><s>１</s>─😺<br>　／<br><s>３</s>─<s>４</s></p>
 ↓<br><br><hr>
 <br>
@@ -821,7 +845,7 @@ sys.setrecursionlimit(10**5)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>--- <strong class="func">dfs(2)</strong> は消去された ---</p>
+<p>--- <strong class="func">dfs(2)</strong> は破棄された ---</p>
 <p class="inlook">😺─<s>２</s><br>　／<br><s>３</s>─<s>４</s></p>
 ↓<br><br><hr>
 <br>
@@ -843,7 +867,7 @@ None  # ← 最後はココに戻る
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>--- <strong class="func">dfs(1)</strong> は消去された ---</p>
+<p>--- <strong class="func">dfs(1)</strong> は破棄された ---</p>
 <p class="inlook">🐈<br><s>１</s>─<s>２</s><br>　／<br><s>３</s>─<s>４</s></p>
 </ul>
 <ul>
@@ -859,9 +883,11 @@ print('No' if unvisited else 'Yes')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p><code>unvisited</code> が空なので <strong>False</strong> となり、画面に <code class="output">Yes</code> が出力されます。</p>
+<br><hr>
 <br>
 <p>入力例2 の場合は、頂点４が残るので <code class="output">No</code> になります。</p>
 <p class="inlook">unvisited = {4}</p>
+<p class="inlook">🐈<br><s>１</s>─<s>２</s><br>　／<br><s>３</s>　４</p>
 </ul>
 <ul>
 <p>以上です。</p>

@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット13</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>先頭が一致</summary>
+<header><h2>先頭が一致</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = input()
+b = input()
+
+print('Yes' if b[:len(a)] == a else 'No')
+print('Yes' if a[:len(b)] == b else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+a = input()
+b = input()
+
+ans1 = re.search(rf"^{a}", b)
+print('Yes' if ans1 else 'No')
+
+ans2 = re.search(rf"^{b}", a)
+print('Yes' if ans2 else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題の途中の a というのが <mark>文字列 a</mark> のことで、勝手に 'a' かと勘違いし、問題の意味がよくわからずに一匹悩んでいました。😹</p>
+<p><code>r""</code> と <code>f""</code> の両方を合わせて <code>rf""</code> と書くと、２つの機能が使えるようになります。パターンの書き方が複雑になりますけど。😅</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">先頭が一致</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>合計と平均</summary>
+<header><h2>合計と平均</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+
+sum_ = sum(a)
+
+print(sum_)
+print(int(sum_ / n))
+# print(sum_ // n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">合計と平均</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>二等辺三角形</summary>
+<header><h2>二等辺三角形</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = int(input())
+b = int(input())
+c = int(input())
+
+print('Yes' if a == b or a == c or b == c else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「正三角形」も二等辺三角形に含まれます。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">二等辺三角形</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>飽き性</summary>
+<header><h2>飽き性</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = map(int, input().split())
+
+case1 = min(a, b)
+case2 = abs(a - b) // 2
+
+print(case1, case2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>条件に『 a + b は偶数』とありますので、余りの心配をすること無く求められます。</p>
+<br>
+<p>奇数だったら食料廃棄になるプログラム。😅</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">飽き性</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>占い - その 2</summary>
+<header><h2>占い - その 2</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+m_sum = sum(map(int, input().split()))
+
+print('Yes' if m_sum % 7 == 0 else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『総和』 → 全部足す<br>『７の倍数』 → 7 で割った余りが 0</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">占い - その 2</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>連結判定</summary>
+<header><h2>連結判定</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import sys
+
+def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+
+# 再帰制限 1000回 → 100000回
+sys.setrecursionlimit(10**5)
+
+n, m = map(int, input().split())
+graph = {i+1: [] for i in range(n)}
+
+for _ in range(m):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+unvisited = {i+1 for i in range(n)}
+dfs(min(graph.keys()))
+
+print('No' if unvisited else 'Yes')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>※ 再帰回数制限を１０万回以上に変更しないと100点取れません。</strong>💦</p> 
+<p>まずは大まかな手順から。</p>
+<ol>
+<li>入力データからグラフを作成する</li>
+<li>一番若い番号の頂点から再帰を開始する</li>
+<li>辺を順番に通り、訪問した頂点を訪問リストから削除していく</li>
+<li>全ての行き止まりを訪問したら再帰を終了する</li>
+<li>訪問リストが空なら<strong>連結</strong></li>
+</ol>
+<p>分岐に分岐を重ねられるとイメージするのが難しくなりますね。😓</p>
+</ul>
+<ul>
+<p>1.【入力データからグラフを作成する】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+graph = {i+1: [] for i in range(n)}
+
+for _ in range(m):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>n = 頂点の総数<br>m = 辺の総数</p>
+<p>a = 頂点の番号<br>b = <code>a</code> に隣接する頂点の番号<br>graph = {頂点の番号: 隣接する頂点の番号}</p>
+<p>これらを基に<strong>隣接リスト</strong>でグラフを作ります。</p>
+<hr>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">graph = {i+1: [] for i in range(n)}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>グラフの空の情報を辞書で作っておきます。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for _ in range(m):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力を基にグラフを作っていきます。入力は辺の情報です。<mark>頂点 a</mark> から <mark>頂点 b</mark> に向かって辺で繋がれているということです。</p>
+<p>a → b</p>
+<p class="inlook">graph = {a: [b]}</p>
+<p>無向グラフを作るので、どちらからでも通行できるようにします。</p>
+<p>a → b <code>graph[a].append(b)</code><br>b → a <code>graph[b].append(a)</code></p>
+<p class="inlook">graph = {a: [b], b: [a]}</p>
+<p>これを問題の入力例を使って作ると次のようになります。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    4 3 ← n m
+    1 2
+    2 3
+    3 4
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<div class="x-fit">
+<p><small>graph = {頂点の番号: 隣接する頂点の番号}</small><br><code>graph = {1: [2], 2: [1, 3], 3: [2, 4], 4: [3]}</code></p>
+<p class="inlook">１─２<br>　／<br>３─４</p>
+</div>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">2
+    4 3 ← n m
+    1 2
+    2 3
+    4 4
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<div class="x-fit">
+<p><small>graph = {頂点の番号: 隣接する頂点の番号}</small><br><code>graph = {1: [2], 2: [1, 3], 3: [2], 4: [4]}</code></p>
+<p class="inlook">１─２<br>　／<br>３　４</p>
+</div>
+<br>
+<p>作成したこの隣接リストを使ってこの後から、頂点を踏み荒らしていきます。👿</p>
+</ul>
+<ul>
+<p>2.【一番若い番号の頂点から再帰を開始する】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">unvisited = {i+1 for i in range(n)}
+dfs(min(graph.keys()))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>unvisited</code> は未踏の頂点のリスト(set型)を意味しています。頂点を踏んだら消していきます。最終的にこの中身が空になったら、<strong>全ての頂点が連結している</strong>ということになります。</p>
+<p>今回は隣接リストを１番から作っていますので、この様に書いても１番確定なのですが、一応。😅</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">dfs(1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>でもOK。</p>
+<br>
+<p>いよいよ再帰関数が始まります。</p>
+</ul>
+<ul>
+<p>3.【辺を順番に通り、訪問した頂点を訪問リストから削除していく】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import sys
+
+def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+
+# 再帰制限 1000回 → 100000回
+sys.setrecursionlimit(10**5)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>sys</code> モジュールをインポートして再帰の回数制限をデフォルトの1000回から１０万回に引き上げます。</p>
+<p>引数の <code>v</code> は、現在踏んでいる頂点の番号です。</p>
+<p>初めに訪問した現在の頂点番号を <code>unvisited</code> から除去します。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in graph[v]:
+    if i in unvisited:
+        dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここが再帰する所です。現在いる頂点と隣接する頂点を <strong class="for"></strong>文で順番に訪問していきます。<code>unvisited</code> に、次に訪問する頂点 <code>i</code> が含まれる、つまり頂点 <code>i</code> が踏んだことのない頂点の時は、次にその頂点へ向かいます。ここで <code>dfs(i)</code> を呼びます。</p>
+<br>
+<div class="x-fit">
+<p><small>graph = {頂点の番号: 隣接する頂点の番号}</small><br><code>graph = {1: [2], 2: [1, 3], 3: [2, 4], 4: [3]}</code></p>
+</div>
+<p class="inlook">１─２<br>　／<br>３─４</p>
+<br><hr>
+<div class="x-fit">
+<p>v = 1<br><code>graph = {1: [2], 2: [1, 3], 3: [2, 4], 4: [3]}</code></p>
+</div>
+<p class="inlook">😺─２<br>　／<br>３─４</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):
+    unvisited.remove(1)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ unvisited = {2, 3, 4}<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):
+    unvisited.remove(1)
+    for i in graph[1]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ graph[1] = [2]<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):
+    unvisited.remove(1)
+    for i in [2]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):
+    unvisited.remove(1)
+    for 2 in [2]:
+        if 2 in {2, 3, 4}:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ 2 は未訪問<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):
+    unvisited.remove(1)
+    for 2 in [2]:
+        if True:
+            dfs(2)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ <strong class="func">dfs(2)</strong> を呼び出す<br><br><hr>
+<br>
+<div class="x-fit">
+<p>v = 2<br><code>graph = {1: [2], 2: [1, 3], 3: [2, 4], 4: [3]}</code></p>
+</div>
+<p class="inlook"><s>１</s>─😺<br>　／<br>３─４</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):            # 待機中
+    unvisited.remove(1)
+    for 2 in [2]:
+        if True:
+            dfs(2)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):            # 実行中
+    unvisited.remove(2)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ unvisited = {3, 4}<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):
+    unvisited.remove(2)
+    for i in graph[2]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ graph[2] = [1, 3]<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):
+    unvisited.remove(2)
+    for i in [1, 3]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):
+    unvisited.remove(2)
+    for 1 in [1, 3]:
+        if 1 in {3, 4}:  ← ココ
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ 1 は訪問済みなので無い<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):
+    unvisited.remove(2)
+    for 1 in [1, 3]:
+        if False:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):
+    unvisited.remove(2)
+    for 3 in [1, 3]:
+        if 3 in {3, 4}:
+            dfs(3)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ <strong class="func">dfs(3)</strong> を呼び出す<br><br><hr>
+<br>
+<div class="x-fit">
+<p>v = 3<br><code>graph = {1: [2], 2: [1, 3], 3: [2, 4], 4: [3]}</code></p>
+</div>
+<p class="inlook"><s>１</s>─<s>２</s><br>　／<br>😺─４</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):            # 待機中
+    unvisited.remove(1)
+    for 2 in [2]:
+        if True:
+            dfs(2)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):            # 待機中
+    unvisited.remove(2)
+    for 3 in [1, 3]:
+        if 3 in {3, 4}:
+            dfs(3)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):            # 実行中
+    unvisited.remove(3)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ unvisited = {4}<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):
+    unvisited.remove(3)
+    for i in graph[3]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ graph[3] = [2, 4]<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):
+    unvisited.remove(3)
+    for i in [2, 4]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):
+    unvisited.remove(3)
+    for 2 in [2, 4]:
+        if 2 in {4}:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ 2 は訪問済み<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):
+    unvisited.remove(3)
+    for 2 in [2, 4]:
+        if False:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):
+    unvisited.remove(3)
+    for 4 in [2, 4]:
+        if 4 in {4}:
+            dfs(4)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ <strong class="func">dfs(4)</strong> を呼び出す<br><br><hr>
+<br>
+<div class="x-fit">
+<p>v = 4<br><code>graph = {1: [2], 2: [1, 3], 3: [2, 4], 4: [3]}</code></p>
+</div>
+<p class="inlook"><s>１</s>─<s>２</s><br>　／<br><s>３</s>─😺</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):            # 待機中
+    unvisited.remove(1)
+    for 2 in [2]:
+        if True:
+            dfs(2)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):            # 待機中
+    unvisited.remove(2)
+    for 3 in [1, 3]:
+        if 3 in {3, 4}:
+            dfs(3)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):            # 待機中
+    unvisited.remove(3)
+    for 4 in [2, 4]:
+        if 4 in {4}:
+            dfs(4)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(4):            # 実行中
+    unvisited.remove(4)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ unvisited = {}<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(4):
+    unvisited.remove(4)
+    for i in graph[4]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ graph[4] = [3]<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(4):
+    unvisited.remove(4)
+    for i in [3]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(4):
+    unvisited.remove(4)
+    for 3 in [3]:
+        if 3 in {}:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ 3 は訪問済み<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(4):
+    unvisited.remove(4)
+    for 3 in [3]:
+        if False:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ <strong>return</strong> で呼び出し元に戻る
+</ul>
+<ul>
+<p>4.【全ての行き止まりを訪問したら再帰を終了する】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):            # 待機中
+    unvisited.remove(1)
+    for 2 in [2]:
+        if True:
+            dfs(2)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):            # 待機中
+    unvisited.remove(2)
+    for 3 in [1, 3]:
+        if 3 in {3, 4}:
+            dfs(3)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):            # 実行中
+    unvisited.remove(3)
+    for 4 in [2, 4]:
+        if 4 in {4}:
+            None    ← ココ
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>--- <strong class="func">dfs(4)</strong> は消去された ---</p>
+<p class="inlook"><s>１</s>─<s>２</s><br>　／<br>😺─<s>４</s></p>
+↓<br><br><hr>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):            # 待機中
+    unvisited.remove(1)
+    for 2 in [2]:
+        if True:
+            dfs(2)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):            # 実行中
+    unvisited.remove(2)
+    for 3 in [1, 3]:
+        if 3 in {3, 4}:
+            None    ← ココ
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>--- <strong class="func">dfs(3)</strong> は消去された ---</p>
+<p class="inlook"><s>１</s>─😺<br>　／<br><s>３</s>─<s>４</s></p>
+↓<br><br><hr>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(1):            # 実行中
+    unvisited.remove(1)
+    for 2 in [2]:
+        if True:
+            None    ← ココ
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>--- <strong class="func">dfs(2)</strong> は消去された ---</p>
+<p class="inlook">😺─<s>２</s><br>　／<br><s>３</s>─<s>４</s></p>
+↓<br><br><hr>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(v):
+    unvisited.remove(v)
+    for i in graph[v]:
+        if i in unvisited:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">unvisited = {}
+None  # ← 最後はココに戻る
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>--- <strong class="func">dfs(1)</strong> は消去された ---</p>
+<p class="inlook">🐈<br><s>１</s>─<s>２</s><br>　／<br><s>３</s>─<s>４</s></p>
+</ul>
+<ul>
+<p>5.【訪問リストが空なら連結】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">unvisited = {}  # ← 空は False
+None
+
+print('No' if unvisited else 'Yes')
+</code></pre>
+<code>Yes</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>unvisited</code> が空なので <strong>False</strong> となり、画面に <code class="output">Yes</code> が出力されます。</p>
+<br>
+<p>入力例2 の場合は、頂点４が残るので <code class="output">No</code> になります。</p>
+<p class="inlook">unvisited = {4}</p>
+</ul>
+<ul>
+<p>以上です。</p>
+<p>再帰のところを長々と書いたせいで却ってわかりにくくなってしまったかもしれませんが😅、こんな感じで処理をします。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">連結判定</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット13</p>
+</footer>
+</body>
+</html>

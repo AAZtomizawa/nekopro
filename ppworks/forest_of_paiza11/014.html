@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット14</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>回文 </summary>
+<header><h2>回文 </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print('Yes' if s == s[::-1] else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">回文 </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>区間の三分割</summary>
+<header><h2>区間の三分割</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">l, r = map(int, input().split())
+print(l + (r-l) / 3, r - (r-l) / 3)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>そのまんまです。😊</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">区間の三分割</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>割り切れる数の個数</summary>
+<header><h2>割り切れる数の個数</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = map(int, input().split())
+
+cnt = 0
+for i in range(a, b+1):
+    if i % 2 == 0 or i % 3 == 0:
+        cnt += 1
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">割り切れる数の個数</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>パイプを切る</summary>
+<header><h2>パイプを切る</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, k = map(int, input().split())
+A = map(int,input().split())
+
+sum_ = sum(a // k for a in A)
+print(sum_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>k の長さのパイプが何本取れるか</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    5 3
+    5 9 7 6 7
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>5: <span style="color:blue">■■■</span>　■■<br>9: <span style="color:blue">■■■　■■■　■■■</span><br>7: <span style="color:blue">■■■　■■■</span>　■<br>6: <span style="color:blue">■■■　■■■</span><br>7: <span style="color:blue">■■■　■■■</span>　■</p>
+<p>１本ずつ k=3 で割った商を足すと、計<code class="output">10</code>本と求めることができます。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">パイプを切る</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>好みのピザ </summary>
+<header><h2>好みのピザ </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">input()
+a = set(input().split())
+print(len(a))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>客がメニューに無い注文さえしなければ、必ず n 種類以下になるので、入力 n は不要です。入力 m も Python3 なら不要なので、入力一行目はガン無視しました。🤣</p>
+<p>結果は何種類としか考慮されていませんので、客が注文したピザの種類をセット型にして要素数を数えるだけで済みます。</p>
+<p></p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">好みのピザ </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>家計の収支</summary>
+<header><h2>家計の収支</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, k = map(int, input().split())
+a = map(int, input().split())
+b = map(int, input().split())
+
+result = k + sum(a) - sum(b)
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>a が収入、b が支出です。家計簿をつけ始めた時の貯金額 k に、a と b のそれぞれを合計した差 a - b を足すと割り出せます。</p>
+<p>a - b がマイナスの時は貯金額が減り、プラスなら貯金額が増えます。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">家計の収支</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c7"><summary>野球世界大会 1 次ラウンドの順位</summary>
+<header><h2>野球世界大会 1 次ラウンドの順位</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+team = 5  # 参加チーム数
+num_game = (team-1) * team // 2  # ゲーム数
+top = 2  # 上位入賞数
+
+c = {input(): 0 for _ in range(team)}
+
+for _ in range(num_game):
+    s1, s2, res = re.split(r"[-\s]", input())
+    c[s1 if int(res) else s2] += 1
+
+results = sorted(c.items(), key=lambda x:(-x[1], x[0]))
+
+for name, _ in results[:top]:
+    print(name)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>定数は次のとおりです。</p>
+<p>・全<strong>５</strong>チーム<br>・全<strong>１０</strong>ゲーム<br>・トップ<strong>２</strong></p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">c = {input(): 0 for _ in range(team)}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここでは辞書で参加チームと、勝ち数の初期値を <code>0</code> にして初期化しています。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for _ in range(num_game):
+    s1, s2, res = re.split(r"[-\s]", input())
+    c[s1 if int(res) else s2] += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>正規表現を使って、一気に入力を済ませています。ここぞと無理矢理使って慣れましょう。😁<br><code>\s</code> は半角スペースのことです。ハイフンと半角スペースを区切り文字として三分割しています。</p>
+<p>添字の中で内包表記を使っています。こんなところでも使えるんです。😄<br><code>1</code> の時は s1 が勝った(<strong>True</strong>)ので <code>s1</code> を +1、<code>0</code> の時は s1 が負けた(<strong>False</strong>)ので <code>s2</code> を +1 します。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">results = sorted(c.items(), key=lambda x:(-x[1], x[0]))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>辞書のキーと値を使ってソートします。<code>-x[1]</code> は値優先で降順ソート、<code>x[0]</code> はキーを昇順ソートします。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for name, _ in results[:top]:
+    print(name)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>上位２チームの国名を１位から順に画面に出力します。</p>
+</ul>
+<ul>
+<p>辞書のソートがＢランク級の難易度ですね。😓</p>
+</ul>
+<footer><a class="backto" href="#c7" onclick="closeAccordion('c7')">野球世界大会 1 次ラウンドの順位</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット14</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット15</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>出力の練習</summary>
+<header><h2>出力の練習</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">the_unique_truth_in_the_world = '池田千歳は俺の嫁'
+print(the_unique_truth_in_the_world)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>！🐱</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">出力の練習</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>red があるか調べてみよう</summary>
+<header><h2>red があるか調べてみよう</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = input().split()
+target = 'red'
+
+if target in lst:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">red があるか調べてみよう</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>階乗</summary>
+<header><h2>階乗</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+
+result = 1
+for i in range(2, n+1):
+    result *= i
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">階乗</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>単語のカウント</summary>
+<header><h2>単語のカウント</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = input().split()
+
+words = []
+counts = []
+for word in lst:
+    if word in words:
+        counts[words.index(word)] += 1
+    else:
+        words.append(word)
+        counts.append(1)
+
+for results in zip(words, counts):
+    print(*results)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = input().split()
+
+words = {}
+for word in lst:
+    if word in words:
+        words[word] += 1
+    else:
+        words[word] = 1
+
+for key, value in words.items():
+    print(key, value)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = input().split()
+
+words = {}
+for word in lst:
+    words[word] = words.get(word, 0) + 1
+
+for key, value in words.items():
+    print(key, value)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例４</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">from collections import Counter
+
+words = Counter(input().split())
+
+for key, value in words.items():
+    print(key, value)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は一次元リストだけで辞書っぽく扱ったものです。</p>
+<p>例２と例３は辞書を使った一般的な方法です。</p>
+<p>例４は <strong>collections</strong> モジュールの <strong class="func">Counter</strong>クラスを使った便利ワザです。 <strong class="func">Counter()</strong> の () 内にリストを入れるだけで、出現したワードごとにカウントしたものを辞書型にして作ってくれます。別に要らないんじゃないかなと思うかもしれませんが、何をしているのかが一発でわかるというメリットは根強く残されています。😅</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">単語のカウント</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>倍数の存在</summary>
+<header><h2>倍数の存在</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c = map(int, input().split())
+
+for i in range(b, c+1):
+    if i % a == 0:
+        print('Yes')
+        break
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c = map(int, input().split())
+print('Yes' if c%a <= c-b else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１はブルートフォースアタック。手当たり次第に b → c を a で割っていく方法です。</p>
+<p>例２は当時私が提出したもの。久々に見たらナニコレと思い、我らが ChatGPT に訊いてみました。</p>
+<p><a href="https://chatgpt.com/share/67c7db53-c48c-800f-a057-ebcde5955734" class="linked" target="_blank">プログラムの正当性証明</a> <em><small>(ChatGPT)</small></em></p>
+<p>どうやら私は、勉強するとバカになるようです。😅<br>前問の提出から間１３分で提出してるし。冴えてるな。</p>
+<br>
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c = map(int, input().split())
+print('Yes' if b <= c-(c%a) <= c else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例３の様に書くこともできます。こっちのほうがわかりやすいじゃなイカ。</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">倍数の存在</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>全員が不正答</summary>
+<header><h2>全員が不正答</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+answers = [m] * n
+for i in range(m):
+    for j in range(n):
+        answers[j] -= c[i][j]
+
+print('Yes' if 0 in answers else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+for answers in zip(*c):
+    if not all(answers):
+        print('Yes')
+        break
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_, m = map(int, input().split())
+c = [list(map(int, input().split())) for _ in range(m)]
+
+print('Yes' if any(not all(answers) for answers in zip(*c)) else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例４</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+c = set(int(input().replace(' ', ''), 2) for _ in range(m))
+
+ans = 0
+for i in c:
+    ans |= i
+
+print('Yes' if ans != pow(2, n) - 1 else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>「<a href="./011.html#c7" class="linked" target="_blank">全員が正答</a>」の 1 が 0 になったものです。真逆なので、例１は引き算に、例２例３は評価結果を <strong>not</strong> で反転しています。</p>
+<p>例４は論理和で演算しています。論理和は「0 と 0 の時だけ 0 になる」。それ以外は 1 になるので、最終的にどこかのビットに１つでも 0 があれば <code class="output">Yes</code> となります。</p>
+<br>
+<p>詳しい解説は「<a href="./011.html#c7" class="linked" target="_blank">全員が正答</a>」を参考にしてください。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">全員が不正答</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット15</p>
+</footer>
+</body>
+</html>

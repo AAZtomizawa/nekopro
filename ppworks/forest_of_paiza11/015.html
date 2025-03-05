@@ -195,7 +195,7 @@ print('Yes' if b <= c-(c%a) <= c else 'No')
 </section>
 
 <section>
-<details id="c6"><summary>全員が不正答</summary>
+<!-- <details id="c6"><summary>全員が不正答</summary> -->
 <header><h2>全員が不正答</h2></header>
 <ul>
 <li><p>例１</p></li>
@@ -220,7 +220,7 @@ print('Yes' if 0 in answers else 'No')
 c = [list(map(int, input().split())) for _ in range(m)]
 
 for answers in zip(*c):
-    if not all(answers):
+    if not any(answers):
         print('Yes')
         break
 else:
@@ -234,7 +234,7 @@ else:
 <pre><code class="language-python">_, m = map(int, input().split())
 c = [list(map(int, input().split())) for _ in range(m)]
 
-print('Yes' if any(not all(answers) for answers in zip(*c)) else 'No')
+print('Yes' if any(not any(answers) for answers in zip(*c)) else 'No')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
@@ -252,7 +252,13 @@ print('Yes' if ans != pow(2, n) - 1 else 'No')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>「<a href="./011.html#c7" class="linked" target="_blank">全員が正答</a>」の 1 が 0 になったものです。真逆なので、例１は引き算に、例２例３は評価結果を <strong>not</strong> で反転しています。</p>
+<p>「<a href="./011.html#c7" class="linked" target="_blank">全員が正答</a>」の 1 が 0 になったものです。真逆なので、例１は引き算に、例２例３は <strong class="func">all()</strong> を <strong class="func">any</strong> に変えて評価結果を <strong>not</strong> で反転しています。</p>
+<div class="x-fit">
+<dl>
+<dt>all()</dt><dd>all([1, 1, 1]) → <strong>True</strong></dd>
+<dt>not any()</dt><dd>not any([1, 0, 0]) → not True → <strong>False</strong><br>not any([0, 0, 0]) → not False → <strong>True</strong></dd>
+</dl>
+</div>
 <p>例４は論理和で演算しています。論理和は「0 と 0 の時だけ 0 になる」。それ以外は 1 になるので、最終的にどこかのビットに１つでも 0 があれば <code class="output">Yes</code> となります。</p>
 <br>
 <p>詳しい解説は「<a href="./011.html#c7" class="linked" target="_blank">全員が正答</a>」を参考にしてください。</p>

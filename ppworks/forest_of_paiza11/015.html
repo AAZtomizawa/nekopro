@@ -178,7 +178,7 @@ print('Yes' if c%a <= c-b else 'No')
 <p>例１はブルートフォースアタック。手当たり次第に b → c を a で割っていく方法です。</p>
 <p>例２は当時私が提出したもの。久々に見たらナニコレと思い、我らが ChatGPT に訊いてみました。</p>
 <p><a href="https://chatgpt.com/share/67c7db53-c48c-800f-a057-ebcde5955734" class="linked" target="_blank">プログラムの正当性証明</a> <em><small>(ChatGPT)</small></em></p>
-<p>どうやら私は、勉強するとバカになるようです。😅<br>前問の提出から間１３分で提出してるし。冴えてるな。</p>
+<p>どうやら私は、勉強するとバカになるタイプようです。😅<br>前問の提出から間１３分足らずで提出してるし。冴えてるな。</p>
 <br>
 <li><p>例３</p></li>
 <!-- ------------------------- code ------------------------- -->
@@ -188,7 +188,8 @@ print('Yes' if b <= c-(c%a) <= c else 'No')
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>例３の様に書くこともできます。こっちのほうがわかりやすいじゃなイカ。</p>
+<p>例３の様に書くこともできます。<br><code>c-(c%a)</code> というのは、c 以下の数で最も大きな a の倍数です。それが b から c の間に存在するかどうかを調べています。<mark>c 以下</mark>の数で最も大きな a の倍数なので、単に b 以上 <code>c-(c%a) >= b</code> としてもいいハズ。</p>
+<p>例２より、こっちのほうがわかりやすいじゃなイカ。</p>
 </ul>
 <footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">倍数の存在</a></footer>
 </details>
@@ -253,12 +254,10 @@ print('Yes' if ans != pow(2, n) - 1 else 'No')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>「<a href="./011.html#c7" class="linked" target="_blank">全員が正答</a>」の 1 が 0 になったものです。真逆なので、例１は引き算に、例２例３は <strong class="func">all()</strong> を <strong class="func">any</strong> に変えて評価結果を <strong>not</strong> で反転しています。</p>
-<div class="x-fit">
 <dl>
 <dt>all()</dt><dd>all([1, 1, 1]) → <strong>True</strong></dd>
 <dt>not any()</dt><dd>not any([1, 0, 0]) → not True → <strong>False</strong><br>not any([0, 0, 0]) → not False → <strong>True</strong></dd>
 </dl>
-</div>
 <p>例４は論理和で演算しています。論理和は「0 と 0 の時だけ 0 になる」。それ以外は 1 になるので、最終的にどこかのビットに１つでも 0 があれば <code class="output">Yes</code> となります。</p>
 <br>
 <p>詳しい解説は「<a href="./011.html#c7" class="linked" target="_blank">全員が正答</a>」を参考にしてください。</p>

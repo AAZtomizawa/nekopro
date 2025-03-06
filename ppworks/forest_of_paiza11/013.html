@@ -336,7 +336,7 @@ sys.setrecursionlimit(10**5)
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(1):
-    unvisited.remove(1)
+    unvisited.remove(1)  ← 今ココ
     for i in graph[v]:
         if i in unvisited:
             dfs(i)
@@ -344,12 +344,12 @@ sys.setrecursionlimit(10**5)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓ unvisited = {2, 3, 4}<br>
+↓ unvisited = {<s>1,</s> 2, 3, 4}<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(1):
     unvisited.remove(1)
-    for i in graph[1]:
+    for i in graph[1]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
@@ -361,20 +361,20 @@ sys.setrecursionlimit(10**5)
 <div>
 <pre><code class="plaintext">def dfs(1):
     unvisited.remove(1)
-    for i in [2]:
+    for 2 in [2]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓<br>
+↓ 2 は未訪問？<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(1):
     unvisited.remove(1)
     for 2 in [2]:
-        if 2 in {2, 3, 4}:
+        if 2 in {2, 3, 4}:  ← 今ココ
             dfs(i)
     return
 </code></pre>
@@ -387,7 +387,7 @@ sys.setrecursionlimit(10**5)
     unvisited.remove(1)
     for 2 in [2]:
         if True:
-            dfs(2)
+            dfs(2)  ← 今ココ
     return
 </code></pre>
 </div>
@@ -423,7 +423,7 @@ sys.setrecursionlimit(10**5)
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(2):            # 実行中
-    unvisited.remove(2)
+    unvisited.remove(2)  ← 今ココ
     for i in graph[v]:
         if i in unvisited:
             dfs(i)
@@ -431,12 +431,12 @@ sys.setrecursionlimit(10**5)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓ unvisited = {3, 4}<br>
+↓ unvisited = {<s>2,</s> 3, 4}<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(2):
     unvisited.remove(2)
-    for i in graph[2]:
+    for i in graph[2]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
@@ -448,57 +448,69 @@ sys.setrecursionlimit(10**5)
 <div>
 <pre><code class="plaintext">def dfs(2):
     unvisited.remove(2)
-    for i in [1, 3]:
+    for 1 in [1, 3]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓<br>
+↓ 1 は未訪問？<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(2):
     unvisited.remove(2)
     for 1 in [1, 3]:
-        if 1 in {3, 4}:  ← ココ
+        if 1 in {3, 4}:  ← 今ココ
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓ 1 は訪問済みなので無い<br>
+↓ 1 は訪問済みなので <strong>False</strong><br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(2):
     unvisited.remove(2)
     for 1 in [1, 3]:
-        if False:
+        if False:  ← 今ココ
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
 ↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(2):
+    unvisited.remove(2)
+    for 3 in [1, 3]:  ← 今ココ
+        if i in {3, 4}:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ 3 は未訪問？<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(2):
     unvisited.remove(2)
     for 3 in [1, 3]:
-        if 3 in {3, 4}:
+        if 3 in {3, 4}:  ← 今ココ
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓<br>
+↓ 3 は未訪問<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(2):
     unvisited.remove(2)
     for 3 in [1, 3]:
         if True:
-            dfs(3)
+            dfs(3)  ← 今ココ
     return
 </code></pre>
 </div>
@@ -545,7 +557,7 @@ sys.setrecursionlimit(10**5)
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(3):            # 実行中
-    unvisited.remove(3)
+    unvisited.remove(3)  ← 今ココ
     for i in graph[v]:
         if i in unvisited:
             dfs(i)
@@ -553,12 +565,12 @@ sys.setrecursionlimit(10**5)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓ unvisited = {4}<br>
+↓ unvisited = {<s>3,</s> 4}<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(3):
     unvisited.remove(3)
-    for i in graph[3]:
+    for i in graph[3]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
@@ -570,57 +582,69 @@ sys.setrecursionlimit(10**5)
 <div>
 <pre><code class="plaintext">def dfs(3):
     unvisited.remove(3)
-    for i in [2, 4]:
+    for 2 in [2, 4]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓<br>
+↓ 2 は未訪問？<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(3):
     unvisited.remove(3)
     for 2 in [2, 4]:
-        if 2 in {4}:
+        if 2 in {4}:  ← 今ココ
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓ 2 は訪問済み<br>
+↓ 2 は訪問済みなので <strong>False</strong><br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(3):
     unvisited.remove(3)
     for 2 in [2, 4]:
-        if False:
+        if False:  ← 今ココ
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
 ↓<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext">def dfs(3):
+    unvisited.remove(3)
+    for 4 in [2, 4]:  ← 今ココ
+        if i in {4}:
+            dfs(i)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+↓ 4 は未訪問？<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(3):
     unvisited.remove(3)
     for 4 in [2, 4]:
-        if 4 in {4}:
+        if 4 in {4}:  ← 今ココ
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓<br>
+↓ 4 は未訪問<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(3):
     unvisited.remove(3)
     for 4 in [2, 4]:
         if True:
-            dfs(4)
+            dfs(4)  ← 今ココ
     return
 </code></pre>
 </div>
@@ -658,7 +682,7 @@ sys.setrecursionlimit(10**5)
 <pre><code class="plaintext">def dfs(2):            # 待機中
     unvisited.remove(2)
     for 3 in [1, 3]:
-        if 3 in {3, 4}:
+        if True:
             dfs(3)
     return
 </code></pre>
@@ -678,7 +702,7 @@ sys.setrecursionlimit(10**5)
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(4):            # 実行中
-    unvisited.remove(4)
+    unvisited.remove(4)  ← 今ココ
     for i in graph[v]:
         if i in unvisited:
             dfs(i)
@@ -686,12 +710,12 @@ sys.setrecursionlimit(10**5)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓ unvisited = {}<br>
+↓ unvisited = {<s>4</s>}<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(4):
     unvisited.remove(4)
-    for i in graph[4]:
+    for i in graph[4]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
@@ -703,26 +727,26 @@ sys.setrecursionlimit(10**5)
 <div>
 <pre><code class="plaintext">def dfs(4):
     unvisited.remove(4)
-    for i in [3]:
+    for 3 in [3]:  ← 今ココ
         if i in unvisited:
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓<br>
+↓ 3 は未訪問？<br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(4):
     unvisited.remove(4)
     for 3 in [3]:
-        if 3 in {}:
+        if 3 in {}:  ← 今ココ
             dfs(i)
     return
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-↓ 3 は訪問済み<br>
+↓ 3 は訪問済みなので <strong>False</strong><br>
 <!-- ------------------------- code ------------------------- -->
 <div>
 <pre><code class="plaintext">def dfs(4):
@@ -730,7 +754,7 @@ sys.setrecursionlimit(10**5)
     for 3 in [3]:
         if False:
             dfs(i)
-    return
+    return  ←←←←←← 今ココ
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->

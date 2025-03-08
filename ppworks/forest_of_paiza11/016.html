@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット16</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>3つの数</summary>
+<header><h2>3つの数</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(8)
+print(1)
+print(3)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>数なので文字列にならないよう注意。といっても、文字列に強制変換されてから画面に出力されるので、文字列でも正解になりますけど。😅</p>
+<p>この数以外にしたら内申書に悪い事書かれそう！😂</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">3つの数</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>税込価格</summary>
+<header><h2>税込価格</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p = int(input())
+s = input()
+
+if s == 'T':
+    tax_in = int(p * 1.1)
+else:
+    tax_in = int(p * 1.08)
+
+print(tax_in)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p = int(input())
+s = input()
+
+if s == 'T':
+    tax_in = p + p*10//100
+else:
+    tax_in = p + p*8//100
+
+print(tax_in)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">p = int(input())
+s = input()
+tax_rate = {'T' : 10, 'E': 8}
+
+tax_in = p + p * tax_rate[s] // 100
+
+print(tax_in)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１は小数を扱った例、例２は小数を回避して計算した例、例３は <strong class="if"></strong>文を使わずに辞書で税率を判定しているものです。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">税込価格</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>パターン検出</summary>
+<header><h2>パターン検出</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+S = [input() for _ in range(N)]
+T = input()
+
+for s in S:
+    if s in T:
+        print('Yes')
+        break
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>一度全ての入力を取得しないと組めないタイプです。それさえ済めば、あとはお馴染みのパターンです。😉</p>
+<br>
+<p>よければ <strong class="for"></strong>以降を、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print('Yes' if 〜 else 'No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と、一文で書いて動くようにしてみてくださいな。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">パターン検出</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>連続ホームラン</summary>
+<header><h2>連続ホームラン</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m = map(int, input().split())
+print((1 / n) ** m)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『ホームランは確率で打つものじゃない！！』と集中砲火を浴びそうな問題ですね。🤣</p>
+<p>「物事が連続で起きる確率」は、１回の確率を回数分掛けると求められます。<br>例えば10分の1の確率の事象が３回連続で起きる確率は、</p>
+<p class="inlook"><math style="font-size: 24px;"><mfrac><mn>1</mn><mn>10</mn></mfrac><mo>×</mo><mfrac><mn>1</mn><mn>10</mn></mfrac><mo>×</mo><mfrac><mn>1</mn><mn>10</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>1000</mn></mfrac></math></p>
+<p class="inlook"><math style="font-size: 24px;"><msup style="color:red"><mrow><mo>(</mo><mfrac><mn>1</mn><mn>10</mn></mfrac><mo>)</mo></mrow><mn>3</mn></msup><mo>=</mo><mfrac><mn>1</mn><mn>1000</mn></mfrac><mo>=</mo><mn>0.001</mn></math></p>
+<p>となります。<small><em>(<strong>赤字</strong>がプログラム部分)</em></small></p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">連続ホームラン</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>辞書順で 3 番目に小さい文字列</summary>
+<header><h2>辞書順で 3 番目に小さい文字列</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+s = input()
+
+sorted_s = sorted(s)
+sorted_s[-2], sorted_s[-3] = sorted_s[-3], sorted_s[-2]
+
+print(''.join(sorted_s))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>小狡い方法ですが、『辞書順で 3 番目に小さい文字列』は、昇順ソート後の文字列の末尾から数えて２番目の文字と３番目の文字を入れ替えた文字列になります。</p>
+</ul>
+<ul>
+<p>paiza 解答コード例では組み合わせを作ってくれるモジュールをインポートし、<strong class="func">permutations()</strong> 関数を使って組み合わせを作っています。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(*sorted(itertools.permutations(s)), sep='\n')
+</code></pre>
+<code>('a', 'b', 'c')</code><br>
+<code>('a', 'c', 'b')</code><br>
+<code>('b', 'a', 'c')</code><br>
+<code>('b', 'c', 'a')</code><br>
+<code>('c', 'a', 'b')</code><br>
+<code>('c', 'b', 'a')</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これの３番目を取っています。ただしこの方法、もんんんんんんんんのすごく重いです。😅<br>１文字増えるごとに相乗的に<s>クソ</s>重くなります。組み合わせを１つずつ作って排出するジェネレータ式ではなく、全組み合わせをこの場で一気に作ってしまうからです。<br>初めは私も好んで使っていましたが、この方法では組み合わせ数によってはタイムアウトしてしまいます。やってらんないので、それからは一切使わなくなりました。😅</p>
+<p>この問題でも10文字の長さにすると若干時間がかかってしまいます。試しに解答コード例を使って11文字以上に、例えば  <code>s = 'abcdefghijk'</code> などにしてその場で実行してみてください。1文字増えるだけで相当重くなるのが体感でわかります。(本提出までしなくて大丈夫)</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">辞書順で 3 番目に小さい文字列</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>村人の友好関係(easy) </summary>
+<header><h2>村人の友好関係(easy) </h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M, Q = map(int, input().split())
+nodes = {n: {i: 0 for i in range(1, N+1) if i!=n} for n in range(1, N+1)}
+
+for _ in range(M):
+    a, b, f = map(int, input().split())
+    nodes[a][b] = f
+    nodes[b][a] = f
+
+group = set()
+for _ in range(Q):
+    op, q = input().split()
+    
+    if op == '+':
+        group.add(int(q))
+    else:
+        group.remove(int(q))
+
+result = 0
+if 0 < len(group) < N:
+    result = max(max(v for k, v in nodes[g].items() if k not in group) for g in group)
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>重み付き無向グラフ＆クエリ問題ですね。<small>重み付きグラフはまだ学習済ませてない。😖</small></p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nodes = {n: {i: 0 for i in range(1, N+1) if i!=n} for n in range(1, N+1)}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>村人 n 以外の村人との友好度を 0 に初期化して作っています。</p>
+<p class="inlook">{村人 n: {n 以外の村人 i: 友好度}}</p>
+<p>というデータ構造になっています。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for _ in range(M):
+    a, b, f = map(int, input().split())
+    nodes[a][b] = f
+    nodes[b][a] = f
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここで無向グラフを作り、重み(友好度)を付けています。村人 a と 村人 b の友好度は f ということです。その逆向きも作ります。</p>
+<br><hr>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">group = set()
+for _ in range(Q):
+    op, q = input().split()
+    
+    if op == '+':
+        group.add(int(q))
+    else:
+        group.remove(int(q))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>グループの入退会を行うクエリです。イベントは '+' '-' の２つのみで、それに合わせて入退会のクエリ処理を行なっています。条件に、不整合となる値は与えられないことが保証されていますので、退会処理はわかりやすい <strong class="func">.remove()</strong> メソッドを使いました。このメソッドは引数の値がセットに含まれていない時にはエラーとなりますので注意が必要です。</p>
+<p>この処理が完了すると、最終的にグループに残っている村人の番号が記録されています。</p>
+
+<hr><br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">result = 0
+if 0 < len(group) < N:
+    result = max(max(v for k, v in nodes[g].items() if k not in group) for g in group)
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>グループに残っている各村人の持つ、他の村人との友好度を取り出して最大値を求めます。これが内側の <strong class="func">max()</strong> 関数です。<br>そしてグループに残っている各村人の持つ友好度の最大値リストから最大値を求めます。ややこしいな。😅<br>それが外側の <strong class="func">max()</strong> 関数です。これで easy なのか・・・。</p>
+<br>
+<p>問題の複雑さや条件が多くて混乱激しいですが、これくらいならまだどうとでも解けるから easy なんでしょうね。😓</p>
+</ul>
+<ul>
+<li><p>paiza 解答コード例</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, m, q = map(int, input().split())
+
+# 隣接行列の作成
+ga = [[0 for j in range(n)] for i in range(n)]
+for i in range(m):
+    a, b, f = map(int, input().split())
+    a -= 1
+    b -= 1
+    ga[a][b] = ga[b][a] = -f
+
+
+# ログに基づいて更新する
+is_member = [False for i in range(n)]
+for i in range(q):
+    line = input().split()
+    op = line[0]
+    v = int(line[1]) - 1
+    if op == '+':
+        is_member[v] = True
+    else:
+        is_member[v] = False
+
+max_f = 0
+for a in range(n):
+    for b in range(n):
+        f = ga[a][b]
+        if is_member[a] and not is_member[b] or not is_member[a] and is_member[b]:
+            max_f = max(-f, max_f)
+print(max_f)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>隣接行列を使った解き方をされています。コメント「隣接行列の作成」の所で二次元リストで行列を作っています。なぜここで f を負数に変えているのか、その理由は私にはちょっとわかりません。😅</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python"># ログに基づいて更新する
+is_member = [False for i in range(n)]
+for i in range(q):
+    line = input().split()
+    op = line[0]
+    v = int(line[1]) - 1
+    if op == '+':
+        is_member[v] = True
+    else:
+        is_member[v] = False
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>プログラム例ではグループのデータを「加入中」の村人のみをセット型で管理していましたが、解答コード例では (村人の番号 - 1) を要素番号と紐付けて <strong>bool型</strong> で管理しています。加入中は <strong>True</strong>、そうでない場合は <strong>False</strong> です。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_f = 0
+for a in range(n):
+    for b in range(n):
+        f = ga[a][b]
+        if is_member[a] and not is_member[b] or not is_member[a] and is_member[b]:
+            max_f = max(-f, max_f)
+print(max_f)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>隣接リストの初めから終わりまで全ての値(友好度)を調べていきます。<code>a</code> は行列の行、<code>b</code> は列にあたります。</p>
+<p>村人 a と 村人 b がグループに所属する者同士かどうか、この条件式では<strong>同士でない</strong>場合に <strong>True</strong> としています。そして記録している <code>max_f</code> の最大値の比較更新を行います。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">2
+    3 2 2
+    1 2 1
+    1 3 3
+    + 1
+    + 2
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook"><strong>①　　　0</strong> 1 3<br>│＼　　1 0 0<br>②─３　3 0 0<br>グループ同士扱いとして False</p>
+<p>↓</p>
+<p class="inlook"><strong>①</strong>　　　0 <strong>1</strong> 3<br><strong>↓</strong>＼　　1 0 0<br><strong>②</strong>─３　3 0 0<br>グループ同士なので False</p>
+<p>↓</p>
+<p class="inlook"><strong>①</strong>　　　0 1 <strong>3</strong><br>│<strong style="font-family: Arial;">↘</strong>　　1 0 0<br>②─<strong>３</strong>　3 0 0<br>max_f = 3</p>
+<p>↓</p>
+<p class="inlook"><strong>①</strong>　　　0 1 3<br><strong>↑</strong>＼　　<strong>1</strong> 0 0<br><strong>②</strong>─３　3 0 0<br>グループ同士なので False</p>
+<p>↓</p>
+<p class="inlook">①　　　0 1 3<br>│＼　　1 <strong>0</strong> 0<br><strong>②</strong>─３　3 0 0<br>グループ同士扱いとして False</p>
+<p>↓</p>
+<p class="inlook">①　　　0 1 3<br>│＼　　1 0 <strong>0</strong><br><strong>②→３</strong>　3 0 0</p>
+<p>↓</p>
+<p class="inlook">①　　　0 1 3<br>│<strong style="font-family: Arial;">↖</strong>　　1 0 0<br>②─<strong>３　3</strong> 0 0<br>３は非グループなので False</p>
+<p>↓</p>
+<p class="inlook">①　　　0 1 3<br>│＼　　1 0 0<br>②<strong>←３</strong>　3 <strong>0</strong> 0<br>３は非グループなので False</p>
+<p>↓</p>
+<p class="inlook">①　　　0 1 3<br>│＼　　1 0 0<br>②─<strong>３</strong>　3 0 <strong>0</strong><br>３は非グループなので False</p>
+<p><code class="output">3</code></p>
+</ul>
+<ul>
+<p>村人が他の全ての村人と必ず関係していますので、こうしてみると隣接行列のほうがわかりやすいですね。😅<br>でもグループ管理はセットのほうが扱いやすいので、混ぜ合わせるとより良いものができそうですが、それはぜひともご自身で作ってみてください。</p>
+<br>
+<p>この問題、グループ内の<ruby>村人間<rt>むらびとかん</rt></ruby>の友好度が最も大きい時のテストケースが存在しないようですので、これを考慮しない誤ったプログラムでも100点が取れてしまいますね。😅<br>この不具合はまずい…。プログラムの組み方で回避しましょう。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">村人の友好関係(easy) </a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット16</p>
+</footer>
+</body>
+</html>

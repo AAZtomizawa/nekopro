@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット19</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>paiza2025</summary>
+<header><h2>paiza2025</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">text = 'paiza2025'
+print(text)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">paiza2025</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>ABCカウント</summary>
+<header><h2>ABCカウント</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+c = input().split()
+
+cnt_a = 0
+cnt_b = 0
+cnt_c = 0
+for char in c:
+    if char == 'A':
+        cnt_a += 1
+    elif char == 'B':
+        cnt_b += 1
+    elif char == 'C':
+        cnt_c += 1
+
+print(cnt_a)
+print(cnt_b)
+print(cnt_c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+c = input().split()
+
+abc = [0, 0, 0]
+for char in c:
+    if char == 'A':
+        abc[0] += 1
+    elif char == 'B':
+        abc[1] += 1
+    elif char == 'C':
+        abc[2] += 1
+
+for result in abc:
+    print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = input()
+c = input().split()
+
+cnt = {'A': 0, 'B': 0, 'C': 0}
+for char in c:
+    if char in cnt.keys():
+        cnt[char] += 1
+
+print(*cnt.values(), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>カウンターの保存方法が異なるだけで、どれも出現した文字ごとにただカウントしているだけです。Ｄランク問題なので例１でも十分胸張れます。😁</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">ABCカウント</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>円卓のk番目</summary>
+<header><h2>円卓のk番目</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n, k = map(int, input().split())
+print((k-1) % n + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>k を n で割った余りを計算すると、n 番目の席が０番目になってしまいます。その為に１番目から数える円卓を０番目から数えるようにしておきます。</p>
+<p class="inlook">k → k - 1</p>
+<p>この状態で n で割った余りは、1 を引いて円卓を０番目から数えているものなので、今度は 1 を足して１番目から数えるものに戻します。</p>
+<p class="inlook">(k-1) % n → (k-1) % n + 1</p>
+<br>
+<p>n = 5, k = 8 の時</p>
+<p class="inlook">１２３４５６７８<br>↓ (k-1)<br>０１２３４５６７<br>↓ (k-1) % n<br>０１２３４０１<strong>２</strong><br>↓ (k-1) % n + 1<br>１２３４５１２<strong>３</strong></p>
+<p><code class="output">3</code></p>
+<p>実際は末尾の数である <code>k</code> だけ使って処理していますので、</p>
+<p class="inlook">８<br>↓ (8-1)<br>７<br>↓ (7) % 5<br>２<br>↓ 2 + 1<br><strong>３</strong></p>
+<p>となっています。</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">円卓のk番目</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>素数</summary>
+<header><h2>素数</h2></header>
+<ul>
+<p>この問題の解説は【paizaの森練習問題コンテスト過去問題セット11】の <a href="./011.html#c3-h" class="linked" target="_blank">素数判定</a> を参照してください。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">素数</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>視界の広さ</summary>
+<header><h2>視界の広さ</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(y, x):
+    if (0 <= y < H and 0 <= x < W) and s[y][x] == '.':
+        s[y][x] = 'V'        
+        dfs(y + ny, x + nx)
+    return
+
+
+H, W = map(int, input().split())
+s = [list(input()) for _ in range(H)]
+
+any((loc:=(h, w)) for h in range(H) for w in range(W) if s[h][w] == 'A')
+NSEW = ((-1, 0), (1, 0), (0, 1), (0, -1))
+
+y, x = loc
+for ny, nx in NSEW:
+    dfs(y + ny, x + nx)
+
+for line in s:
+    print(*line, sep='')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>深さ優先探索(DFS)</strong>を使って解いたものです。</p>
+<p>マップは後に一部を書き換える予定ですので、文字列からリストに変換しておきます。</p>
+<p><strong class="func">any()</strong> 関数では A さんがいる座標を取得しています。DFS の見通しを良くする為、そして重要度が低いので、今回は一行にまとめてしまいました。</p>
+<p><code>NSEW</code> といういい加減でふざけた名前の変数は、探索方向の移動マスを表しています。北南東西の順に動いていきます。私がよく使うこの変数の命名はいつもこんなテキトーで、順番も NESW になったり NEWS になったりと定まっていません。😅 一応移動順通りに合わせて並べてはいます。</p>
+</ul>
+<ul>
+<p>それではいよいよ DFS に参りましょう。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">y, x = loc
+for ny, nx in NSEW:
+    dfs(y + ny, x + nx)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>初めは北方向、次に南、東、西の順で向いていきます。引数には移動済みの値を渡しています。</p>
+</ul>
+<ul>
+<p><mark>　</mark> が現在地。</p>
+<pre><p class="inlook">TTTTTTTTTT
+TTTTTT...T
+T.....<mark>.</mark>...
+TT....A..T
+T....T...T
+T...T....T
+T........T
+T........T
+T..T.....T
+T........T
+</p></pre>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(y, x):
+    if (0 <= y < H and 0 <= x < W) and s[y][x] == '.':
+        s[y][x] = 'V'        
+        dfs(y + ny, x + nx)
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><mark>現在地</mark>がマップの範囲内であり、現在地が '.' の時は、現在地を 'V' に書き換えます。</p>
+<pre><p class="inlook">TTTTTTTTTT
+TTTTTT...T
+T.....<mark>V</mark>...
+TT....A..T
+T....T...T
+T...T....T
+T........T
+T........T
+T..T.....T
+T........T
+</p></pre>
+<p>これをマップの端からはみ出るか、もしくは '.' ではない所、つまり 'T' の位置になるまで繰り返します。繰り返しは<strong>再帰</strong>を使います。最初に <strong class="func">dfs()</strong> 関数を呼び出した時のように、１つ移動後の座標を引数として与えます。</p>
+<p><mark>　</mark> が現在地。</p>
+<pre><p class="inlook">TTTTTT<mark>T</mark>TTT
+TTTTTTV..T
+T.....V...
+TT....A..T
+T....T...T
+T...T....T
+T........T
+T........T
+T..T.....T
+T........T
+</p></pre>
+<p>北は 'T' に当たったので、北向きを探索していた関数を全て終了し、 <strong class="func">dfs()</strong> 関数を一番最初に呼び出した所まで戻ります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def dfs(y, x):
+    if (0 <= y < H and 0 <= x < W) and s[y][x] == '.':
+        s[y][x] = 'V'        
+        dfs(y + ny, x + nx)
+    return
+
+
+H, W = map(int, input().split())
+s = [list(input()) for _ in range(H)]
+
+any((loc:=(h, w)) for h in range(H) for w in range(W) if s[h][w] == 'A')
+NSEW = ((-1, 0), (1, 0), (0, 1), (0, -1))
+
+y, x = loc
+for ny, nx in NSEW:
+    None  # ←←←←←←← ココに戻る
+
+for line in s:
+    print(*line, sep='')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<p>次は南向きです。</p>
+<pre><p class="inlook">TTTTTTTTTT
+TTTTTTV..T
+T.....V...
+TT....A..T
+T....T<mark>.</mark>..T
+T...T....T
+T........T
+T........T
+T..T.....T
+T........T
+</p></pre>
+<p>同じ様に '.' を 'V' に書き換えていきます。</p>
+
+<pre><p class="inlook">TTTTTTTTTT
+TTTTTTV..T
+T.....V...
+TT....A..T
+T....TV..T
+T...T.V..T
+T.....V..T
+T.....V..T
+T..T..V..T
+T.....V..T
+      <mark> </mark>
+</p></pre>
+<p>マップからはみ出たので、南向きの探索は終了します。</p>
+</ul>
+<ul>
+<p>東と西も同じ様に探索をし、全４方向の探索を済ませると、求めるマップが完成します。</p>
+<pre><p class="inlook">TTTTTTTTTT
+TTTTTT<mark>V</mark>..T
+T.....<mark>V</mark>...
+TT<mark>VVVV</mark>A<mark>VV</mark>T
+T....T<mark>V</mark>..T
+T...T.<mark>V</mark>..T
+T.....<mark>V</mark>..T
+T.....<mark>V</mark>..T
+T..T..<mark>V</mark>..T
+T.....<mark>V</mark>..T
+</p></pre>
+<p><mark>　</mark> は書き換えた所。</p>
+</ul>
+<ul>
+<p>paiza 解答コード例のように、DFSを使わなくても余裕でクリアできてしまいます。Ｂランク上がりたてレベルなら構いませんが、Ａランク以上を目指すなら<strong>再帰関数</strong>、<strong class="special">深さ優先探索(DFS)</strong>は余裕で書けるようにたくさん書いて慣らしておきましょう。😉</p>
+<p>いきなり完璧を目指すより、うまく動かなくて試行錯誤している時が一番理解しやすいので、悩むより手を動かしてたくさん書きまくりましょう！</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">視界の広さ</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>集合体の数</summary>
+<header><h2>集合体の数</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def bfs(h, w, group):
+    locates = {(h, w)}
+    while locates:
+        y, x = locates.pop()
+        s[y][x] = '*'
+        for ny, nx in NSEW:
+            yy = y + ny
+            xx = x + nx
+            if s[yy][xx] == group:
+                locates.add((yy, xx))
+    return 1
+    
+
+H, W = map(int, input().split())
+s = [['#'] * (W+2)] + [['#'] + list(input()) + ['#'] for _ in range(H)] + [['#'] * (W+2)]
+
+NSEW = ((-1, 0), (1, 0), (0, 1), (0, -1))
+cnt = 0
+for h in range(1, H+1):
+    for w in range(1, W+1):
+        if 'A' <= s[h][w] <= 'E':
+            cnt += bfs(h, w, s[h][w])
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def bfs(h, w, group):
+    locates = {(h, w)}
+    while locates:
+        y, x = locates.pop()
+        s[y][x] = '*'
+        for ny, nx in NSEW:
+            yy = y + ny
+            xx = x + nx
+            if (0 <= yy < H and 0 <= xx < W) and s[yy][xx] == group:
+                locates.add((yy, xx))
+    return 1
+    
+
+H, W = map(int, input().split())
+s = [list(input()) for _ in range(H)]
+
+NSEW = ((-1, 0), (1, 0), (0, 1), (0, -1))
+cnt = 0
+for h in range(H):
+    for w in range(W):
+        if 'A' <= s[h][w] <= 'E':
+            cnt += bfs(h, w, s[h][w])
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１と例２はほぼ同じことをしています。例２は座標がマップの範囲内かどうかを都度チェックしてます。例１はマップの周りを '#' でぐるっと囲むことで、都度座標が範囲内かどうかのチェックを省いています。どちらも<strong>幅優先探索(BFS)</strong>アルゴリズムを使用しています。</p>
+<p>問題には A 〜 E の記号の集合体は各１つずつしか存在しないとはとくに書かれていませんが、１つしかない場合は隣接する１つを見つければ良いだけで超簡単になってしまうので、多分複数あると思います。😅</p>
+<p>こんな感じで。</p>
+<pre><p class="inlook">AAA
+BAB
+BAB
+</p></pre>
+<p>A が１つ、B が２つで計３つ。</p>
+<br>
+<p>例１を用いて解説します。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def bfs(h, w, group):
+    locates = {(h, w)}
+    while locates:
+        y, x = locates.pop()
+        s[y][x] = '*'
+        for ny, nx in NSEW:
+            yy = y + ny
+            xx = x + nx
+            if s[yy][xx] == group:
+                locates.add((yy, xx))
+    return 1
+    
+
+H, W = map(int, input().split())
+s = [['#'] * (W+2)] + [['#'] + list(input()) + ['#'] for _ in range(H)] + [['#'] * (W+2)]
+
+NSEW = ((-1, 0), (1, 0), (0, 1), (0, -1))
+cnt = 0
+for h in range(1, H+1):
+    for w in range(1, W+1):
+        if 'A' <= s[h][w] <= 'E':
+            cnt += bfs(h, w, s[h][w])
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>このプログラムでマップを取り込むと、こんな感じになります。</p>
+<pre><p class="inlook">#####
+#AAA#
+#BAB#
+#BAB#
+#####
+</p></pre>
+<p>'#' の壁でマップを囲います。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cnt = 0
+for h in range(1, H+1):
+    for w in range(1, W+1):
+        if 'A' <= s[h][w] <= 'E':
+            cnt += bfs(h, w, s[h][w])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="for"></strong> の二重ループで、マップ内部の左上から座標を動かしていきます。A 〜 E の文字を見つけたら<strong>幅優先探索(BFS)</strong>の開始です。</p>
+<pre><p class="inlook">#####
+#<mark>A</mark>AA#
+#BAB#
+#BAB#
+#####
+</p></pre>
+<p>いきなり見つけちゃうんだけどね！<br><strong class="func">bfs()</strong> 関数の引数には、現在の座標とその位置の文字を与えます。</p>
+<p>bfs(1, 1, 'A')</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def bfs(h, w, group):
+    locates = {(h, w)}  # ・・・ (※１)
+    while locates:  # ・・・ (※２)
+        y, x = locates.pop()  # ・・・ (※３)
+        s[y][x] = '*'  # ・・・ (※４)
+        for ny, nx in NSEW:  # ・・・ (※５)
+            yy = y + ny
+            xx = x + nx
+            if s[yy][xx] == group:  # ・・・ (※６)
+                locates.add((yy, xx))
+    return 1  # ・・・ (※７)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<ol>
+<li>渡された引数の <code>h</code> と <code>w</code> は、関数内で座標としてタプルにします。そしてさらにそのタプルをセットに収めます。</li>
+<li>次の <strong class="while"></strong>ループで BFS を行います。条件の <code>locates</code> は、探索する座標リストが収められています。最初は (1, 1) だけが入っていますが、探索していくとこの中の要素が増減します。そして <code>locates</code> の中身が空になったらループを抜けます。</li>
+<li>セットの中からタプルになっている座標を取り出し、<code>y</code> と <code>x</code> にアンパック代入します。</li>
+<li>現在の座標をチェック済みとして '*' に置き換えます。</li>
+<li>この <strong class="for"></strong>ループで上下左右の文字をチェックします。ここが BFS の心臓部です。</li>
+<li>この<strong class="if"></strong>文では、 <code>group</code> と同じ文字を見つけたら、その座標を <code>locates</code> に格納します。この <strong class="for"></strong>ループを抜けた後、この座標に移動してまた同じ様に周辺の文字を探索していきます。</li>
+<li>最初の座標に繋がる文字の全ての座標を探索し終えたら(<code>locates</code> が空)、カウント +1 の意味の <strong>1</strong> を戻り値としてこの関数を終了します。</li>
+</ol>
+</ul>
+<ul>
+<p>これらを実際にマップを見ながら流れを見てみましょう。<br>まずはスタート位置です。</p>
+<pre><p class="inlook">#####
+#<mark>A</mark>AA#
+#BAB#
+#BAB#
+#####
+</p></pre>
+<p>bfs(1, 1, 'A') を呼び出し、BFS を開始。</p>
+<hr>
+<p><code>locates</code> から <strong class="func">.pop()</strong> し、次の探索を始める。</p>
+<p class="inlook">locates = {(1, 1)}<br>y, x = locates.pop()<br>↓ <strong class="func">pop 後</strong><br>locates = {}<br>y, x = 1, 1</p>
+<p><mark>A</mark> を探索済みの <mark>*</mark> に置き換え、周辺の４箇所を調べます。<small>(<strong>赤字</strong>の部分)</small></p>
+<pre><p class="inlook">#<strong>#</strong>###
+<strong>#</strong><mark>*</mark><strong>A</strong>A#
+#<strong>B</strong>AB#
+#BAB#
+#####
+</p></pre>
+<p>(1, 2) に <strong>A</strong> を発見！座標を <code>locates</code> に追加。<br>locates = {(1, 2)}</p>
+<p>↓</p>
+<hr>
+<p><code>locates</code> から <strong class="func">.pop()</strong> し、次の探索を始める。</p>
+<p class="inlook">locates = {(1, 2)}<br>y, x = locates.pop()<br>↓ <strong class="func">pop 後</strong><br>locates = {}<br>y, x = 1, 2</p>
+<p><mark>A</mark> を探索済みの <mark>*</mark> に置き換え、周辺の４箇所を調べます。</p>
+<pre><p class="inlook">##<strong>#</strong>##
+#<strong>*</strong><mark>*</mark><strong>A</strong>#
+#B<strong>A</strong>B#
+#BAB#
+#####
+</p></pre>
+<p>(2, 2) に <strong>A</strong> を発見！座標を <code>locates</code> に追加。<br>locates = {(2, 2)}</p>
+<p>(1, 3) に <strong>A</strong> を発見！座標を <code>locates</code> に追加。<br>locates = {(2, 2), (1, 3)}</p>
+<p>↓</p>
+<hr>
+<p><code>locates</code> から <strong class="func">.pop()</strong> し、次の探索を始める。</p>
+<p class="inlook">locates = {(2, 2), (1, 3)}<br>y, x = locates.pop()<br>↓<br>locates = {(2, 2)}<br>y, x = 1, 3</p>
+<p><mark>A</mark> を探索済みの <mark>*</mark> に置き換え、周辺の４箇所を調べます。</p>
+<pre><p class="inlook">###<strong>#</strong>#
+#*<strong>*</strong><mark>*</mark><strong>#</strong>
+#BA<strong>B</strong>#
+#BAB#
+#####
+</p></pre>
+<p>A が見つからなかったので、なにもしない。<br>locates = {(2, 2)}</p>
+<p>↓</p>
+<hr>
+<p><code>locates</code> から <strong class="func">.pop()</strong> し、次の探索を始める。</p>
+<p class="inlook">locates = {(2, 2)}<br>y, x = locates.pop()<br>↓<br>locates = {}<br>y, x = 2, 2</p>
+<p><mark>A</mark> を探索済みの <mark>*</mark> に置き換え、周辺の４箇所を調べます。</p>
+<pre><p class="inlook">#####
+#*<strong>*</strong>*#
+#<strong>B</strong><mark>*</mark><strong>B</strong>#
+#B<strong>A</strong>B#
+#####
+</p></pre>
+<p>(3, 2) に <strong>A</strong> を発見！座標を <code>locates</code> に追加。<br>locates = {(3, 2)}</p>
+<p>↓</p>
+<hr>
+<p><code>locates</code> から <strong class="func">.pop()</strong> し、次の探索を始める。</p>
+<p class="inlook">locates = {(3, 2)}<br>y, x = locates.pop()<br>↓<br>locates = {}<br>y, x = 3, 2</p>
+<p><mark>A</mark> を探索済みの <mark>*</mark> に置き換え、周辺の４箇所を調べます。</p>
+<pre><p class="inlook">#####
+#***#
+#B<strong>*</strong>B#
+#<strong>B</strong><mark>*</mark><strong>B</strong>#
+##<strong>#</strong>##
+</p></pre>
+<p>A が見つからなかったので、なにもしない。<br>locates = {}</p>
+<p>↓</p>
+<hr>
+<p><code>locates</code> が空になったので <strong class="while"></strong>ループを終了する。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def bfs(h, w, group):
+    locates = {(h, w)}
+    while locates:
+        y, x = locates.pop()
+        s[y][x] = '*'
+        for ny, nx in NSEW:
+            yy = y + ny
+            xx = x + nx
+            if s[yy][xx] == group:
+                locates.add((yy, xx))
+    return 1  # ← 戻り値 1 でこの関数を終了する
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<ul>
+<p>ここまで大掛かりな探索作業をしておきながら、このループの座標は未だ (1, 1) です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cnt = 0
+for h in range(1, H+1):  # → h = 1
+    for w in range(1, W+1):  # → w = 1
+        if 'A' <= s[h][w] <= 'E':
+            cnt += 1  # ← ココに戻る
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>cnt = 1</p>
+<br>
+<p><strong class="for"></strong> w のループの続きから進めます。次は (1, 2) です。</p>
+<p>現在のマップ</p>
+<p>h = 1, w = 2</p>
+<pre><p class="inlook">#####
+#*<mark>*</mark>*#
+#B*B#
+#B*B#
+#####
+</p></pre>
+<p>h = 1, w = 3</p>
+<pre><p class="inlook">#####
+#**<mark>*</mark>#
+#B*B#
+#B*B#
+#####
+</p></pre>
+<p>h = 2, w = 1</p>
+<pre><p class="inlook">#####
+#***#
+#<mark>B</mark>*B#
+#B*B#
+#####
+</p></pre>
+<p><mark>B</mark> が見つかったので bfs(2, 1, 'B') を呼び出し、BFS を開始。</p>
+</ul>
+<ul>
+<p><em>早送り <strong>》》》</strong></em></p>
+<pre><p class="inlook">#####
+#<strong>*</strong>**#
+<strong>#</strong><mark>*</mark><strong>*</strong>B#
+#<strong>B</strong>*B#
+#####
+</p></pre>
+<pre><p class="inlook">#####
+#***#
+#<mark>*</mark>*B#
+#<mark>*</mark>*B#
+#####
+</p></pre>
+<p>cnt = 2</p>
+<br><hr>
+<p>h = 2, w = 2</p>
+<pre><p class="inlook">#####
+#***#
+#*<mark>*</mark>B#
+#**B#
+#####
+</p></pre>
+<p>h = 2, w = 3</p>
+<pre><p class="inlook">#####
+#***#
+#**<mark>B</mark>#
+#**B#
+#####
+</p></pre>
+<p><mark>B</mark> が見つかったので bfs(2, 3, 'B') を呼び出し、BFS を開始。</p>
+</ul>
+<ul>
+<p><em>早送り <strong>》》》</strong></em></p>
+<pre><p class="inlook">#####
+#**<strong>*</strong>#
+#*<strong>*</strong><mark>*</mark><strong>#</strong>
+#**<strong>B</strong>#
+#####
+</p></pre>
+<pre><p class="inlook">#####
+#***#
+#**<mark>*</mark>#
+#**<mark>*</mark>#
+#####
+</p></pre>
+<p>cnt = 3</p>
+</ul>
+<ul>
+<p><em>早送り <strong>》》》</strong></em></p>
+<p>h = 3, w = 1</p>
+<pre><p class="inlook">#####
+#***#
+#***#
+#<mark>*</mark>**#
+#####
+</p></pre>
+<p>h = 3, w = 2</p>
+<pre><p class="inlook">#####
+#***#
+#***#
+#*<mark>*</mark>*#
+#####
+</p></pre>
+<p>h = 3, w = 3</p>
+<pre><p class="inlook">#####
+#***#
+#***#
+#**<mark>*</mark>#
+#####
+</p></pre>
+
+</ul>
+<ul>
+<p>ここでマップ全体の箇所を巡ったので、 <strong class="for"></strong>の二重ループは終了します。</p>
+<p>残りは、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これだけなので、<code>cnt</code> の中身 <code class="output">3</code> を画面に出力して完了となります。</p>
+</ul>
+<ul>
+<p>セットは順番の保証がありませんので、実際は末尾からポップしても、どの座標が取り出されるかはランダム状態です。なのであっちこっち飛び飛びに探索しますけど、最後は正しい結果となりますのでご安心を。</p>
+<p>この壁を作る方法はいちいち範囲内かどうかをチェックする条件文を書かなくて良いので out of range の心配を気にせず組むことができますが、マップを加工する必要があります。例２のやり方と、探索済みの座標を<strong>メモ化</strong>するやり方を合わせるとマップを一切加工せずに、さらに文字列のまま探索することができるようになります。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def bfs(h, w, group):
+    locates = {(h, w)}
+    while locates:
+        y, x = locates.pop()
+        memo.add((y, x))  # 現在の座標を探索済みとしてメモ
+        for ny, nx in NSEW:
+            yy = y + ny
+            xx = x + nx
+            if (0 <= yy < H and 0 <= xx < W) \  # マップ範囲内
+                and (yy, xx) not in memo \  # 探索済みでない
+                and s[yy][xx] == group:
+                    locates.add((yy, xx))
+    return 1
+    
+
+H, W = map(int, input().split())
+s = [input() for _ in range(H)]
+
+NSEW = ((-1, 0), (1, 0), (0, 1), (0, -1))
+memo = set()
+cnt = 0
+for h in range(H):
+    for w in range(W):
+        if ((h, w) not in memo) and ('A' <= s[h][w] <= 'E'):
+            cnt += bfs(h, w, s[h][w])
+
+print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">集合体の数</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット19</p>
+</footer>
+</body>
+</html>

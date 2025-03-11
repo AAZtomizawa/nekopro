@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット18</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>値の整列</summary>
+<header><h2>値の整列</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = [int(input()) for _ in range(4)]
+print(*sorted(nums), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">値の整列</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>シープラスプラスプラス</summary>
+<header><h2>シープラスプラスプラス</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+print('C' + '+' * n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字列もかけ算が先です。😄</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">シープラスプラスプラス</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>大晦日</summary>
+<header><h2>大晦日</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">y, m, d = input().split('-')
+
+if m == '12' and d == '31':
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">大晦日</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>背の順に並んでいるか</summary>
+<header><h2>背の順に並んでいるか</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = [int(input()) for _ in range(n)]
+
+if a == sorted(a):
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力をリストで受け取り、そのリストが昇順ソートしたリストと同じなら背の順に並んでいると言えます。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">背の順に並んでいるか</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>遠足のお菓子</summary>
+<header><h2>遠足のお菓子</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, X = map(int, input().split())
+x = sum(int(input()) for _ in range(N))
+
+if x <= X:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力 x を全部足して X と比較するだけです。</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">遠足のお菓子</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>陣取りゲーム</summary>
+<header><h2>陣取りゲーム</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">class Game:
+    def __init__(self, name, h, w):
+        self.name = name
+        self.adjacents = {(h, w)}
+        self.cnt = 1
+
+    def bfs(self):
+        new_locates = set()
+        while self.adjacents:
+            y, x = self.adjacents.pop()
+            for ny, nx in self.NSWE:
+                yy = y + ny
+                xx = x + nx
+                if (0 <= yy < self.H and 0 <= xx < self.W) and self.S[yy][xx] == '.':
+                    new_locates.add((yy, xx))
+                    self.cnt += 1
+                    self.S[yy][xx] = self.name
+
+        self.adjacents = new_locates
+
+    @classmethod
+    def initialize(cls, H, W, S, turn, players):
+        cls.H = H
+        cls.W = W
+        cls.S = S
+        cls.turn = turn
+        cls.players = players
+        
+        cls.NSWE = ((-1, 0), (1, 0), (0, -1), (0, 1))
+    
+    @classmethod
+    def play(cls):
+        while any(p.adjacents for p in cls.players):
+            now_player = cls.players[cls.turn]
+            if now_player.adjacents:
+                now_player.bfs()
+            cls.turn = not cls.turn
+        
+    @classmethod
+    def output_result(cls):
+        cnt_a = cls.players[0].cnt
+        cnt_b = cls.players[1].cnt
+        
+        print(cnt_a, cnt_b)
+        print('A' if  cnt_a > cnt_b else 'B')
+
+
+def setup():
+    H, W = map(int, input().split())
+    N = input()
+    S = [list(input()) for _ in range(H)]
+    names = {'A': 0, 'B': 1}
+
+    turn = names[N]
+    players = [None, None]
+    for h in range(H):
+        for w in range(W):
+            char = S[h][w]
+            if char == 'A' or char == 'B':
+                players[names[char]] = Game(char, h, w)
+
+    Game.initialize(H, W, S, turn, players)
+    
+    return
+    
+
+def main():
+    Game.play()
+    Game.output_result()
+
+    
+if __name__ == '__main__':
+    setup()
+    main()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ＡとＢの各プレイヤーが持つ情報が多いので、クラス型で作りました。<small><small>クラス型は解説もラク😊</small></small><br>見るからに<strong class="special">幅優先探索(BFS)</strong>で作ってくださいと言わんばかりの問題です。</p>
+<p>長くて見るのがイヤになるかもしれませんが、重要な所は<strong class="func">.bfs()</strong> メソッドと、クラスメソッドの <strong class="func">.play()</strong> メソッドの２つ、稼動部はこの２つだけなんです。</p>
+<p>それでは順を追って解説します。</p>
+</ul>
+<ul>
+<p>【 入力とインスタンスの作成 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def setup():
+    H, W = map(int, input().split())
+    N = input()
+    S = [list(input()) for _ in range(H)]
+    names = {'A': 0, 'B': 1}
+
+    turn = names[N]
+    players = [None, None]
+    for h in range(H):
+        for w in range(W):
+            char = S[h][w]
+            if char == 'A' or char == 'B':
+                players[names[char]] = Game(char, h, w)
+
+    Game.initialize(H, W, S, turn, players)
+    
+    return
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ここでは入力と、A と B の座標取得を行なっています。A と B が交互に陣取りを進めていきますので、A に <code>0</code>、B に <code>1</code> を割り当てます。これはここで作られるインスタンスを <code>players</code> に格納するのですが、この要素番号に使うのと、 <strong class="func">.play()</strong> メソッド内で A と B のターンを切り換える為の <strong>False</strong> と <strong>True</strong> の役目にもなっています。<strong>False</strong> が 0 でプレイヤーＡ、<strong>True</strong> は 1 でプレイヤーＢです。</p>
+<p><code>turn</code> には 入力 N で与えられた先行プレイヤーが格納されているリスト <code>players</code> の要素番号が代入されます。</p>
+<p><strong class="for"></strong> の二重ループで A と B の座標を取得します。それぞれの座標を Game クラスの引数に与えてインスタンスを作成します。</p>
+<p><strong class="func">Game.initialize()</strong> で、クラス内で使用する為の値をまとめて送ります。</p>
+</ul>
+<ul>
+<p>【 クラスの準備 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">@classmethod
+def initialize(cls, H, W, S, turn, players):
+    cls.H = H
+    cls.W = W
+    cls.S = S
+    cls.turn = turn
+    cls.players = players
+    
+    cls.NSWE = ((-1, 0), (1, 0), (0, -1), (0, 1))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">setup()</strong> 関数から送られてきたクラス内で使用する値を、各クラス変数に格納します。インスタンスもここに格納してクラス内で使えるようにしておきます。</p>
+</ul>
+<ul>
+<p>【 コンストラクタ 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def __init__(self, name, h, w):
+    self.name = name
+    self.adjacents = {(h, w)}
+    self.cnt = 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>self.name</code> は、マップ内の占領地に印を付けるために使う文字です。A か B が入ります。</p>
+<p><code>self.adjacents</code> は、最も外側にある領地の座標が格納されます。この座標を使って周辺に占領できる空白値があるかどうかを調べます。</p>
+<p><code>self.cnt</code> は、占領したマスの数です。最初は必ず１つから始まりますので 1 を代入します。</p>
+<br>
+<p>準備は以上です。次からいよいよゲームが始まります。</p>
+</ul>
+<ul>
+<p>【 <strong class="func">.play()</strong> メソッド 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">@classmethod
+def play(cls):
+    while any(p.adjacents for p in cls.players):
+        now_player = cls.players[cls.turn]
+        if now_player.adjacents:
+            now_player.bfs()
+        cls.turn = not cls.turn
+
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">main()</strong> 関数からこのメソッドが呼び出されます。ここがメインとなるプログラム部分です。ここでは A もしくは B に、次に探索する座標が残っている場合にループします。その後、<strong class="func">.bfs()</strong> を呼び出し、領地拡大を図ります。</p>
+<p><code>now_player</code> は、インスタンス <code>cls.players[cls.turn]</code> に名前を付けて短縮化するために行なっています。値のコピーではなく、アドレス参照です。</p>
+<p>ターンを終えたら、次の人とターンを交代します。</p>
+</ul>
+<ul>
+<p>【 <strong class="func">.bfs()</strong> メソッド 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def bfs(self):
+    new_locates = set()
+    while self.adjacents:  # １番
+        y, x = self.adjacents.pop()
+        for ny, nx in self.NSWE:  # ２番
+            yy = y + ny
+            xx = x + nx
+            # ３番
+            if (0 <= yy < self.H and 0 <= xx < self.W) and self.S[yy][xx] == '.':
+                new_locates.add((yy, xx))  # ４番
+                self.cnt += 1  # ５番
+                self.S[yy][xx] = self.name  # ６番
+
+    self.adjacents = new_locates  # ７番
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<ol>
+<li><strong class="while"></strong> ループは、今回探索する座標が入っている <code>self.adjacents</code> が空になるまでです。ここから１つポップして、(y, x) に座標を入れます。</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">while self.adjacents:
+    y, x = self.adjacents.pop()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li>そして次の <strong class="for"></strong> ループで <code>NSWE</code> (方角) の順に上下左右を探索します。</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for ny, nx in self.NSWE:
+    yy = y + ny
+    xx = x + nx
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li>チェックする座標がマップの範囲内、もしくは '.' ならば、占領します。'#' という障害物があってもこの条件文の書き方ならお構いなしです。</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">if (0 <= yy < self.H and 0 <= xx < self.W) and self.S[yy][xx] == '.':
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><code>new_locates</code> は、この探索中に新しく占領した座標を格納するセットです。 <code>self.adjacents</code> に入れてしまうと、今回探索分と次回探索分が混ざってしまい、マップ全体を探索し尽くしてしまいますので、一時的に別のセットを作ってそこに入れておきます。<br><code>self.adjacents</code> は今回探索する座標リスト、 <code>new_locates</code> は次回探索分の座標リストです。</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">new_locates = set()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">new_locates.add((yy, xx))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li>１つ占領したので、１つカウントします。</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">self.cnt += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li>占領箇所を自分の名前 A または B に書き換えます。フラグを立てるような感じです。</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">self.S[yy][xx] = self.name
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li>今回分の探索を終えると <code>self.adjacents</code> は空になり、 <code>new_locates</code> には次回探索分の座標リストが入っています。空になった <code>self.adjacents</code> に <code>new_locates</code> を入れて、次回ターンはこれらの座標を探索します。</li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">self.adjacents = new_locates
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ol>
+<br>
+<p>ターンが終了したら <strong class="func">.play()</strong> メソッドに戻り、次のターンの人に切り換わります。</p>
+</ul>
+<ul>
+<p>【 ゲーム終了 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">@classmethod
+def play(cls):
+    while any(p.adjacents for p in cls.players):
+        if cls.players[cls.turn].adjacents:
+            cls.players[cls.turn].bfs()
+        cls.turn = not cls.turn
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>A と B の <code>adjacents</code> が共に空になったら全ての探索が終了したことになります。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">def main():
+    Game.play()
+    Game.output_result()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>最後に結果を画面に出力します。</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">@classmethod
+def output_result(cls):
+    cnt_a = cls.players[0].cnt
+    cnt_b = cls.players[1].cnt
+    
+    print(cnt_a, cnt_b)
+    print('A' if  cnt_a > cnt_b else 'B')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>引き分けは無いということなので、引き分けの判定無しで簡単に出力しています。</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">陣取りゲーム</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット18</p>
+</footer>
+</body>
+</html>

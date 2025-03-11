@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『paizaの森練習問題コンテスト過去問題問題集』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】メニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット17</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>最大値と最小値</summary>
+<header><h2>最大値と最小値</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = [int(input()) for _ in range(3)]
+print(max(nums))
+print(min(nums))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">最大値と最小値</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>神経衰弱</summary>
+<header><h2>神経衰弱</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cards = map(int, input().split())
+cards_count = [0] * 13
+
+for card in cards:
+    cards_count[card-1] += 1
+
+if all(cnt % 2 == 0 for cnt in cards_count):
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>ランクＤ相当と言いながら、割と難易度高いと思います。😓<br></p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">神経衰弱</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>じゃんけん (忖度)</summary>
+<header><h2>じゃんけん (忖度)</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">y, h = input().split()
+hands = {'R': 'S', 'S': 'P', 'P': 'R'}
+
+if int(y) < 10:
+    print(hands[h])
+else:
+    print(hands[hands[h]])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>辞書で作成するジャンケンの手を、</p>
+<p class="inlook">{相手の手: 負けてあげる手}</p>
+<p>とすることで、「<mark>入力 h</mark> → 負けの手を出す」となります。10歳未満の子に対する流れです。</p>
+<br>
+<p>一方、10歳以上に対しては絶対に負けてやらない！ので必ず勝つ手を出しますが、この必ず負けてあげる辞書をそのまま使って実現できます。</p>
+<p>相手が 'R' を出したらこちらは 'P' を出して勝ちます。グーの負ける手の負ける手がグーの勝つ手となります。</p>
+<p class="inlook">【相手がグーの時】<br>{'R': 'S'} → {'S': 'P'} → パーで勝つ</p>
+<p>負ける手の負ける手を出して勝つのが、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(hands[hands[h]])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この部分になります。</p>
+<p>そしてパーの負ける手はグーであいこになり、三すくみが一周します。</p>
+<br>
+<p class="inlook">【相手がチョキの時】<br>{'S': 'P'} → {'P': 'R'} → グーで勝つ</p>
+<p class="inlook">【相手がパーの時】<br>{'P': 'R'} → {'R': 'S'} → チョキで勝つ</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">じゃんけん (忖度)</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>n→10 進法</summary>
+<header><h2>n→10 進法</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = input()
+
+result = 0
+for i, b in enumerate(a[::-1]):
+    result += pow(n, i) * int(b)
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+a = input()
+print(int(a, n))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例２のとおり、<strong class="func">int()</strong> 関数を使うと簡単に求められます。</p>
+<p><a href="https://docs.python.org/ja/3/library/functions.html#int" class="linked" target="_blank">int() 関数</a> <small><em>(Pythonリファレンス)</em></small></p>
+</ul>
+<ul>
+<p>１０進数は、<strong>重み × 各位の数</strong> を全て足すことで求められます。</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>重み</th><th><math><msup><mi>n</mi><mn>3</mn></msup></math></th><th><math><msup><mi>n</mi><mn>2</mn></msup></math></th><th><math><msup><mi>n</mi><mn>1</mn></msup></math></th><th><math><msup><mi>n</mi><mn>0</mn></msup></math></th></tr></thead>
+</table>
+</div>
+<br>
+<p>２進数</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>8</th><th>4</th><th>2</th><th>1</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>8</td><td>0</td><td>2</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+<p>8 + 0 + 2 + 0 = 10</p>
+<br>
+<p>４進数</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>64</th><th>16</th><th>4</th><th>1</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>64</td><td>0</td><td>4</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+<p>64 + 0 + 4 + 0 = 68</p>
+<br>
+<p>４進数</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>64</th><th>16</th><th>4</th><th>1</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>2</td><td>3</td><td>0</td></tr>
+<tr><td>64</td><td>32</td><td>12</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+<p>64 + 32 + 12 + 0 = 108</p>
+<br>
+<p>10進数</p>
+<div class="x-fit">
+<table class="text-center">
+<thead><tr><th>1000</th><th>100</th><th>10</th><th>1</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1000</td><td>200</td><td>30</td><td>4</td></tr>
+</tbody>
+</table>
+</div>
+<p>1000 + 200 + 30 + 4 = 1234</p>
+</ul>
+<ul>
+<p>一桁目から計算していますので、入力値を逆順にしてから計算しています。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">n→10 進法</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>お菓子の価格帯</summary>
+<header><h2>お菓子の価格帯</h2></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+a = list(map(int, input().split()))
+q = int(input())
+
+for _ in range(q):
+    l, r = list(map(int, input().split()))
+
+    cnt = 0
+    for kind in a:
+        if l <= kind <= r:
+            cnt += 1
+        
+    print(cnt)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+a = list(map(int, input().split()))
+q = int(input())
+
+for _ in range(q):
+    l, r = list(map(int, input().split()))
+    print(sum(l <= kind <= r for kind in a))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">_ = int(input())
+a = list(map(int, input().split()))
+q = int(input())
+lr = [list(map(int, input().split())) for _ in range(q)]
+
+print(*(sum(l <= kind <= r for kind in a) for l, r in lr), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+
+<p>初め、「個数」と言うから買えるだけ買うのかと思いましたが、「お菓子の種類数」という意味で安心しました。😓</p>
+<p>与えられたクエリに基づいて線形探索をするだけですが、二重ループを使います。クエリはパイザ君が求める価格帯 <code>l</code>, <code>r</code> なので、この中央にお菓子の価格を当てて評価にかけていきます。</p>
+<p>この a_i の値はとくに昇順となっているわけではないようです。 <strong>break</strong> や <strong>continue</strong> を使って効率を求めようとすると不正解になります。←やった</p>
+</ul>
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">お菓子の価格帯</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary><s>ぴったり卵を生産 - その 2</s></summary>
+<header><h2>ぴったり卵を生産 - その 2</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<!-- <div>
+<pre><code class="language-python">
+</code></pre>
+</div> -->
+<!-- ----------------------- code end ----------------------- -->
+<p>わからないので勉強してきます。😸</p>
+</ul>
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">ぴったり卵を生産 - その 2</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>paizaの森練習問題コンテスト過去問題セット17</p>
+</footer>
+</body>
+</html>

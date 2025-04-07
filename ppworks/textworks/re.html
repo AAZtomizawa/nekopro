@@ -441,7 +441,7 @@ print(re_matched.start())
 <p>グループ 0 … <code>[^ ]*(\.jpg|\.png)</code><br>グループ 1 … <code>(\.jpg|\.png)</code></p>
 <p>となっています。グループ 1 以降を作らなくても、常に全体がグループ 0 となっています。また前半も () で囲うと、</p>
 <p><code>r"([^ ]*)(\.jpg|\.png)"</code></p>
-<p>グループ 0 … <code>[^ ]*(\.jpg|\.png)</code><br>グループ 1 … <code>([^ ]*)</code><br>グループ 2 … <code>(\.jpg|\.png)</code></p>
+<p>グループ 0 … <code>([^ ]*)(\.jpg|\.png)</code><br>グループ 1 … <code>([^ ]*)</code><br>グループ 2 … <code>(\.jpg|\.png)</code></p>
 <p>となります。これは <strong class="func">.group()</strong> メソッドの引数にグループ番号を与えると、マッチしたグループの文字列が抽出されます。</p>
 <p>例）&lt;re.Match object; span=(8, 13), match='paiza'&gt;</p>
 <!-- ------------------------- code ------------------------- -->

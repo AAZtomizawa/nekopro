@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『Cランク実力確認問題セット1 』を解くための助言を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Cランク実力確認問題セット1 </title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top">
+<h1>Cランク実力確認問題セット1 </h1>
+<p>ヒントを頼りにプログラムを組んでみてください。</p>
+</header>
+<main>
+
+<section>
+<details id="c1"><summary>電話番号</summary>
+<header><h2>電話番号</h2></header>
+
+<article>
+<details id="c1-1"><summary>print()関数内に直接書く方法</summary>
+<header><h3>print()関数内に直接書く方法</h3></header>
+
+<ul>
+<p>入力が３行になっていて、この文字列(数字)と文字列の間にハイフン <code>-</code> をつけて一行にして出力します。入力に使う変数は「入力される値」に、</p>
+<p class="inlook">A<br>B<br>C</p>
+<p>とありますので、これをそのまま使ってしまいましょう。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">print()関数内に直接書く方法</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>空の文字列に詰め込んでいく方法</summary>
+<header><h3>空の文字列に詰め込んでいく方法</h3></header>
+<ul>
+<p>空の文字列を予め用意しておいて、そこに入力１行とハイフン <code>-</code> を交互に詰め込んでいく方法です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">phone_number = ''  # 空の文字列を用意
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この場合、最後に余分なハイフンが入ってしまうかもしれません。どのようにして最後だけハイフンを入れないようにするか。</p>
+<li><p>方法１<br><strong class="for"></strong>文で２行目までを出力し、３行目の処理を別に行う。</p></li>
+<li><p>方法２<br><strong class="for"></strong>文の中で<strong class="if"></strong>文を使い、３行目かどうかの判定を行う。</p></li>
+<li><p>方法３<br>その他ニッチな方法を考える。😼</p></li>
+<br>
+<p>可能な限り、たくさんの<strong>方法３</strong>で書いてみてください。😸</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">空の文字列に詰め込んでいく方法</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>.join()メソッドを使う</summary>
+<header><h3>.join()メソッドを使う</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = [input() for _ in range(3)]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この入力方法を使うと、３行の文字列が３つの要素のリストとして作成されます。このリストを <strong class="func">print()</strong> 関数の () 内で <a href="../../2/0030mieruka.html#c1-2h" class="linked" target="_blank">とある方法</a> で出力すれば、思いの結果が得られます。</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">.join()メソッドを使う</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>リストで入力して展開する</summary>
+<header><h3>リストで入力して展開する</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">lst = [input() for _ in range(3)]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この入力方法を使うと、３行の文字列が３つの要素のリストとして作成されます。このリストを <strong class="func">print()</strong> 関数の <a href="../../2/0030mieruka.html#c1-4h" class="linked" target="_blank">ある方法</a> で出力すれば、思いの結果が得られます。</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">リストで入力して展開する</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">電話番号</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>気象観測</summary>
+<header><h2>気象観測</h2></header>
+
+<article>
+<details id="c2-1"><summary>問題文の通りに条件文を書く</summary>
+<header><h3>問題文の通りに条件文を書く</h3></header>
+<ul>
+<p>雲の割合が、</p>
+<ul>
+<li><strong class="if"></strong> で、0 以上 2 未満</li>
+<li><strong class="elif"></strong> で、2 以上 9 未満</li>
+<li><strong class="elif"></strong> で、9 以上 10 以下</li>
+</ul>
+<p>このような形で比較式をを書いていって条件文を完成させましょう。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">問題文の通りに条件文を書く</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>少し簡潔に比較式を書く</summary>
+<header><h3>少し簡潔に比較式を書く</h3></header>
+<ul>
+<p>雲の割合が、</p>
+<ul>
+<li><strong class="if"></strong> で、2 未満</li>
+<li><strong class="elif"></strong> で、2 以上 9 未満</li>
+<li><strong class="elif"></strong> で、9 以上</li>
+</ul>
+<p>このような形で比較式をを書いていって条件文を完成させましょう。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">少し簡潔に比較式を書く</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>もう少し簡潔に条件文を書く</summary>
+<header><h3>else文に置き換える</h3></header>
+<ul>
+<p>雲の割合が、</p>
+<ul>
+<li><strong class="if"></strong> で、2 未満</li>
+<li><strong class="elif"></strong> で、2 以上 9 未満</li>
+<li><strong>else</strong> で、9 以上</li>
+</ul>
+<p>このような形で条件文を書いてみましょう。</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">もう少し簡潔に条件文を書く</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">気象観測</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>荷物検査</summary>
+<header><h2>荷物検査</h2></header>
+
+<article>
+<details id="c3-1"><summary>入力を順に足していく</summary>
+<header><h3>入力を順に足していく</h3></header>
+
+<ul>
+<p>例えば、total という変数を用意してこれを 0 で初期化し、それから入力値を順に total に足していきます。</p>
+<p>最後に M と比較して判定し、結果を画面に出力するという流れを取るという方法です。</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">入力を順に足していく</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>入力を順に足していく (途中判定)</summary>
+<header><h3>入力を順に足していく (途中判定)</h3></header>
+<ul>
+<p>例えば、total という変数を用意してこれを 0 で初期化し、それから入力値を順に total に足していきます。</p>
+<p>入力を受け取って total に足していくごとに M と比較して判定します。M を超えていればこれ以上足しても意味がないので、ループを中断し、結果を出力します。この時、</p>
+<ul>
+<li>フラグを使って最後に <strong class="if"></strong>文で判定する方法</li>
+<li><strong class="for"></strong> 〜 <strong>else</strong> で結果を出力する方法</li>
+</ul>
+<p>おおむねこのどちらかの書き方が思いつくと思います。どちらの方法でも書いてみましょう。😊</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">入力を順に足していく (途中判定)</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>入力と同時に全部足してしまう</summary>
+<header><h3>入力と同時に全部足してしまう</h3></header>
+<ul>
+<p><strong class="func">sum()</strong> 関数の () 内に入力を内包表記で書きます。 <strong class="func">list()</strong> を使った入力の受け取り方を <strong class="func">sum()</strong> にそのまま置き換えるのです。その結果を変数に代入し、その変数と M を比較して判定を行います。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">入力と同時に全部足してしまう</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">荷物検査</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>背の順</summary>
+<header><h2>背の順</h2></header>
+
+<article>
+<details id="c4-1"><summary>考え方</summary>
+<header><h3>考え方</h3></header>
+<ul>
+<p>ランクＢでも良いくらいの難問ですね。😅 Ｂランクの入口問題と思って頑張って解いてみましょう。</p>
+<p>どのようにソートするかによって入力の形が変わってきます。この問題で求められている結果は「背の高い順に名前を画面に出力する」ことです。</p>
+<p>最も簡単なのは「二次元リストとして入力する」方法です。入力のしかたは <a href="../../3/0020input.html#hard-2h" class="linked" target="_blank">こちら</a> をよく読んで理解してみてください。理解に至れなかった時はとりあえずそれを参考に二次元リストで値を入力してみてください。見様見真似でも作れるはずです。😊</p>
+<br><hr>
+<p>二次元リストで入力が出来たら、次のような二次元リストになっているはずです。</p>
+<div class="x-fit">
+<p><code>A = [[173, 'Hashimoto'], [195, 'Yamamoto'], [113, 'Yoshida']]</code></p>
+</div>
+<p>内側のリストの要素０が整数型、要素１が文字列型です。</p>
+
+</ul>
+<ul>
+<li><p>問題文や条件から考えられること</p></li>
+<ul>
+<li>身長が同じ人はいない</li>
+<li>名前が同じ人はいない</li>
+</ul>
+<p>これらは条件の『A_i, S_iは全て相異なる』からわかります。</p>
+</ul>
+<ul>
+<p>背の高い順に<strong>ソート</strong>しますので、整数、つまり要素０を基準にします。この後のソートメソッドや関数を使うと、初めに要素０を基準としてソートされます。ちょうど要素０が身長の値になっていますので、加工せずともこのまま使えますね。😊<br>身長が同じ場合は次に要素１の名前でソートされますが、この問題では同じ身長の人はいないことになっていますので考慮する必要はありません。</p>
+</ul>
+<ul>
+<p>自分でソートするプログラムが組めたら素晴らしいですが、ここではラクしてソートメソッドや関数を使って解いてみましょう。😉</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">考え方</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>.sort()メソッドを使う</summary>
+<header><h3>.sort()メソッドを使う</h3></header>
+
+<ul>
+<p><strong class="func">.sort()</strong> メソッドは単体で使います。この時、<strong>身長が高い順</strong>に並び替えますので、ソート順は<strong>降順</strong>です。</p>
+<p>降順は reverse= を引数に使います。</p>
+<p><strong class="func">.sort()</strong> メソッドの使い方は <a href="../../2/0040usefullisttype.html#-sort-h" class="linked" target="_blank">こちら</a> を見て参考にしてください。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">.sort()メソッドを使う</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>sorted()関数を使う</summary>
+<header><h3>sorted()関数を使う</h3></header>
+<ul>
+<p><strong class="func">sorted()</strong> 関数は単体で使うことは出来ません。必ず変数に代入するか、イテラブルとして使います。</p>
+<p><strong class="func">.sorted()</strong> 関数の使い方は <a href="../../2/0040usefullisttype.html#sorted-h" class="linked" target="_blank">こちら</a> を見て参考にしてください。</p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">sorted()関数を使う</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>最後に画面に出力する</summary>
+<header><h3>最後に画面に出力する</h3></header>
+<ul>
+<p>降順ソート後に出来上がった二次元リストの中のリストの一部分、つまり名前だけを画面に表示しますが、 <strong class="for"></strong>文を使うのが一般的です。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for height, name in [[195, 'Yamamoto'], [173, 'Hashimoto'], [113, 'Yoshida']]:
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>こうすると、二次元リストの中のリストが順に <code>height</code> と <code>name</code> に振り分けられていくようになります。</p>
+<p>実際にこの部分をどう書けばよいか、もうわかりますね！👍</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">最後に画面に出力する</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-5"><summary>他の方法も考える</summary>
+<header><h3>他の方法も考える</h3></header>
+<ul>
+<p>100点取れたからといってここで満足していてはいけません。他のやり方も考えてみましょう。</p>
+</ul>
+<ul>
+<li><p>身長と名前をそれぞれの一次元リストに分割する</p></li>
+<p>身長リスト: [173, 195, 113]<br>名前リスト: ['Hashimoto', 'Yamamoto', 'Yoshida']</p>
+<p>身長リストと名前リストの要素番号を合わせます。二次元リストの中身を縦にしたような形に見えますね。あとは身長リストを使って降順ソートするわけですが・・・・・ソート関数は使えません。身長リストをソートしても、名前リストも連動してソートされるわけではないからです。</p>
+<p>ソート方法は<strong>手動</strong>です。簡単なバブルソートでも高速にソートできるクイックソートでもお好きな方法でソートしてください。スワップが発生したら、一緒に名前リストの同じ要素番号同士もスワップします。</p>
+<li><p>例</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = 3
+heights = [173, 195, 113]
+names = ['Hashimoto', 'Yamamoto', 'Yoshida']
+
+# 降順バブルソート
+for i in range(N):
+    for j in range(N-i-1):
+        if heights[j] < heights[j+1]:
+            # ↓ 身長と名前を同時にスワップしている ↓
+            heights[j], heights[j+1] = heights[j+1], heights[j]
+            names[j], names[j+1] = names[j+1], names[j]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>めんどくさいので今後この方法を最優先に選択するということは無いでしょうが、しくみを知る、またはこんなやり方でもできるのか〜くらいには感じておくと、いつかどこかでいいことがあるかもしれません。😉</p>
+<p>プログラムで使われるアルゴリズムは、リアルの生活の中でも役に立つことが多いです。当たり前過ぎてこれが当たり前だということにすら気付けないくらい当たり前を目指しましょう。</p>
+<p>Don't think. Feel!</p>
+</ul>
+<ul>
+<li><p>リストの代わりに辞書を使う</p></li>
+<p>辞書を使う場合の注意点は、キーが必ず一意でなければなりません。この問題では身長も名前も同じ値は存在しないということが保証されています。よって、身長をキーとしても、名前をキーとしても不具合が起こることはありません。</p>
+<p>身長をキーとすると、ソートが簡単になります。そのままソートメソッドや関数にかけるだけで済みますので。逆に名前をキーとすると途端に難しくなります。</p>
+<p>身長をキーとした場合は、辞書に <strong class="func">.items()</strong> メソッドを添えてソートすると、ソート後のリストとなって返ってきます。<br>名前をキーとした場合は、キーワード引数として <code>key=lambda x:-x[1]</code> が必要になります。lambdaがわからないとわかりませんね。😓</p>
+<p><small>※ どちらの方法も返ってきたリストは、正確には<strong>リストではありません。</strong> これをリストとして使うには <strong class="func">list()</strong> 関数を使ってリストに変換します。これについての詳しい説明はここでは割愛させていただきます。リストではありませんが、イテラブルとして使えますので <strong class="for"></strong>文にはそのまま使えます。</small></p>
+</ul>
+<ul>
+<p>いずれにしても、100点が取れればどの方法でも構わないのですが、プログラミング問題を解いていく本当の目的はそこではありません。</p>
+<p>与えられた値を扱いやすい・管理しやすいデータ形式として受け取って保存し、このデータの形式を利用していく為にいろいろな方法を知る必要があるのです。今回も二次元リスト、辞書、身長と名前を分割した場合とを考えましたが、二次元リストが一番扱いやすく、管理しやすいので二次元リストでの解き方を最初に選びました。しかし今後、辞書で管理する必要が出た場合には辞書でのソートのやり方を知らないと、途端に思考も手も止まってしまいます。いろいろなやり方が考えられますが、そのすべてのやり方を学習するのではなく、どんな時もその場で自力で素早く実現させる為には知識や経験だけでなく、柔軟な思考を持つことが最も重要だと私は思います。方法を知る前にまず自力で考えることはとても大切です。これが出来ない人はプログラミングには向いていないかもしれませんし、実生活おいても何をやっても不器用でしょう。正解ではなく、最善ですね。あらゆる方法を試した上で最善を見つける力を養いましょう。慣れれば頭の中だけで最善を見つけられるようになったりならなかっ・・・・・なります！😄</p>
+<p>ですので、すっっっごく回りくどい方法を取ったプログラムでも、その中の一部のテクニックが別の所で役立つということがあるかもしれませんし、実際にあったりもします。いきなり正解にこだわらず、最善を求めていろいろたくさん考えまくっていきましょう！それがＣランクのうちに身につけておきたいスキルだと思っています。😉</p>
+</ul>
+<footer><a class="backto" href="#c4-5" onclick="closeAccordion('c4-5')">他の方法も考える</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">背の順</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>Cランク実力確認問題セット1 </p>
+</footer>
+</body>
+</html>

@@ -55,7 +55,7 @@ print(*f, sep='\n')
 </section>
 
 <section>
-<details id="c3"><summary>素数判定</summary>
+<details id="c3"><summary id="c3-h">素数判定</summary>
 <header><h2>素数判定</h2></header>
 <ul>
 <!-- ------------------------- code ------------------------- -->
@@ -370,7 +370,7 @@ print(''.join(s))
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>文字を比較してバブルソートしています。文字は文字コードとして認識されていますので、単純に 'b'(98) &gt; 'a'(97) の場合は <strong>True</strong> となり、'b' と 'a' の位置が交換されます。</p>
+<p>文字を比較してバブルソートしています。文字は単純に文字コードとして認識されていますので、'b'(98) &gt; 'a'(97) の場合は <strong>True</strong> となり、'b' と 'a' の位置が交換されます。</p>
 </ul>
 <footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">辞書順で最も小さい文字列</a></footer>
 </details>
@@ -484,7 +484,7 @@ print('Yes' if any(all(answers) for answers in zip(*c)) else 'No')
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>内包表記に詰め込んで書きました。例２との違いは、 <strong class="if"></strong> を <strong class="func">any()</strong> 関数に変えたところです。</p>
-<p><strong class="func">all()</strong>関数の内包表記で全員が正答した問題(<strong>True</strong>)が出現したら、<strong class="func">any()</strong> 関数が <strong>True</strong> となり、 <strong class="if"></strong> が <strong>True</strong> となります。</p>
+<p><strong class="func">any()</strong>関数の内包表記で全員が正答した問題(<strong>True</strong>)が出現したら、<strong class="func">any()</strong> 関数が <strong>True</strong> となり、 <strong class="if"></strong> が <strong>True</strong> となります。</p>
 </ul>
 <ul>
 <li><p>paiza 解答コード例</p></li>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『Bランク実力確認問題セット1 』を解くための助言を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Bランク実力確認問題セット1 </title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top">
+<h1>Bランク実力確認問題セット1 </h1>
+<p>ヒントを頼りにプログラムを組んでみてください。</p>
+</header>
+<main>
+
+<section>
+<details id="c1"><summary>外貨計算</summary>
+<header><h2>外貨計算</h2></header>
+
+<article>
+<details id="c1-1"><summary>問題文を理解しましょう</summary>
+<header><h3>問題文を理解しましょう</h3></header>
+<ul>
+<p>私が子供の頃は、まだ１ドル＝360円の時代でした。なので、こんななぞなぞがありました。</p>
+<p class="inlook"><em>問『ハンドルは何円？』</em><br><br><em>答『180円』(半ドルだから)</em></p>
+<p>現在は相場が変動するのでリアルタイムに調べないと答えられませんが😂、当時は固定だったのです。</p>
+</ul>
+<ul>
+<p>問題文に『ドルを示す正整数 N が与えられるので、N に 360 を掛けた値を出力してください。』とあります。１ドル＝360円と定義されていますので、<strong>Nドル ＝ N×360円</strong>です。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">問題文を理解しましょう</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">外貨計算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>タイピング練習</summary>
+<header><h2>タイピング練習 </h2></header>
+
+<article>
+<details id="c2-1"><summary>方法はいつもひとつとは限らない</summary>
+<header><h3>方法はいつもひとつなんてありえない</h3></header>
+<ul>
+<p>真っ先に <strong class="for"></strong>文を思い浮かべるのは自然なことです。しかし方法は１つしかないなんてことはありえません。</p>
+<br>
+<p>Python3 では、こんな機能があったことを覚えていますか?</p>
+<p><a href="../../1/0050suushiki.html#c3-s1" class="linked" target="_blank">こんな機能</a></p>
+<p>表を作成するときに、ラインを引いたりする際に使ったことがあるかもしれません。あとはこれを使ってどうにかすれば、 <strong class="for"></strong>文を使わない方法で結果を実現させることができるはずです。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">方法はいつもひとつとは限らない</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">タイピング練習</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>taぬき</summary>
+<header><h2>taぬき</h2></header>
+
+<article>
+<details id="c3-1"><summary>考え方</summary>
+<header><h3>考え方</h3></header>
+<ul>
+<p><strong>文字列</strong>に含まれる 't' と 'a' を削除したいわけですが、大きく分けて、</p>
+<ol>
+<li>リストに変換してから 't' と 'a' をアレしてから、最後に文字列に戻す</li>
+<li>文字列のまま 't' と 'a' をアレする</li>
+</ol>
+<p>それでは早速アレしてみましょう。😊</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">考え方</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>リストに変換してから 't' と 'a' を取り除く その１</summary>
+<header><h3>要素を指定して取り除く</h3></header>
+<ul>
+<p>「取り除く」といったら <a href="../../2/0040usefullisttype.html#-remove-h" class="linked" target="_blank">アレ</a> でしょう。ただし取り除けるのは１回につき１つのみです。さらに該当文字が無ければ<strong>エラー</strong>が返されてしまいます。</p>
+<p>'t' と 'a' の文字数を予めカウントしておき、それぞれの回数分アレして取り除くとかしちめんどくさいなもう！</p>
+<br>
+<p>やってみてください。😊</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">リストに変換してから 't' と 'a' を取り除く その１</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>リストに変換してから 't' と 'a' を取り除く その２</summary>
+<header><h3>要素番号を指定して取り除く</h3></header>
+<ul>
+<p>もう１つ、取り除くといったら <a href="../../2/0040usefullisttype.html#-pop-h" class="linked" target="_blank">コレ</a> もアリでしょう。</p>
+<ol>
+<li>'t' もしくは 'a' の要素番号を調べ、あったらコレして取り除く</li>
+<li>どちらもなければ除去完了</li>
+</ol>
+<p>要素番号を調べる際、 <strong class="func">.index()</strong> メソッドをそのまま使ってしまうと、やがてエラーとなります。どうしましょ？</p>
+<br>
+<p>めんどくさいからやっぱりナシだけど、やってみてください。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">リストに変換してから 't' と 'a' を取り除く その２</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>リストに変換してから 't' と 'a' を取り除く その３</summary>
+<header><h3>手動で線形探索して取り除く</h3></header>
+<ul>
+<p>単純に先頭である要素0 から順に 't' と 'a' を探して該当要素を取り除く方法です。この方法だとエラーが起こりにくいです。</p>
+<p>要素番号を使って取り除く方法全てで使えますね。一回の探索で済みますが、効率良いとはちょっと言い難いかな？１つ要素を取り除くと、それ以降の要素が全て前に詰められる処理が発生するからです。</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>要素番号</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><td>S</td><td>m</td><td>e</td><td>t</td><td>d</td><td>i</td><td>t</td><td>a</td><td>u</td><td>m</td></tr>
+</table>
+</div>
+<p>↓ 要素番号 2 の 't' を取り除く</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>要素番号</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><td>S</td><td>m</td><td>e</td><td></td><td>d</td><td>i</td><td>t</td><td>a</td><td>u</td><td>m</td></tr>
+</table>
+</div>
+<p>↓ 'd' を前に詰める</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>要素番号</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><td>S</td><td>m</td><td>e</td><td>d</td><td></td><td>i</td><td>t</td><td>a</td><td>u</td><td>m</td></tr>
+</table>
+</div>
+<p>↓ 'i' を前に詰める</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>要素番号</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><td>S</td><td>m</td><td>e</td><td>d</td><td>i</td><td></td><td>t</td><td>a</td><td>u</td><td>m</td></tr>
+</table>
+</div>
+<p>↓ (以下略)</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>要素番号</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr>
+<tr><td>S</td><td>m</td><td>e</td><td>d</td><td>i</td><td>t</td><td>a</td><td>u</td><td>m</td></tr>
+</table>
+</div>
+<p>前に詰める処理が６回発生しました。この処理は、文字列が長いほど、そして 't' や 'a' が多いほど時間がかかってしまいます。</p>
+</ul>
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">リストに変換してから 't' と 'a' を取り除く その３</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-5"><summary>リストに変換してから 't' と 'a' を取り除く その４</summary>
+<header><h3>ヌルストリングに置き換える</h3></header>
+<ul>
+<p>除去する度に前に詰めていく処理の無駄を軽減するために、't' と 'a' の所を一時、<code>''</code> (ヌルストリング) に置き換えておくのはどうでしょう？</p>
+<p class="inlook">['m', 'e', 't', 'd', 't', 'i', 'a', 'u', 'm']<br>↓<br>['m', 'e', '', 'd', '', 'i', '', 'u', 'm']</p>
+<p>このリストを <code>''.join()</code> で文字列に変換すると、</p>
+<p class="inlook">medium</p>
+<p>となります。いいね。👍</p>
+</ul>
+<footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">リストに変換してから 't' と 'a' を取り除く その４</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-6"><summary>文字列から 't' と 'a' を取り除く その１</summary>
+<header><h3>文字列には文字列メソッドを</h3></header>
+<ul>
+<p>文字列には、文字を取り除くための関数やメソッドがありません。考え方を変えて、あるものをないものに変えてしまいましょう。</p>
+<p><a href="../../2/0050usefulstrtype.html#-replace-h" class="linked" target="_blank">これとかどうよ</a></p>
+<p>このメソッドは指定した文字を一気に変換してくれるのですが、't' と 'a' のように、複数の文字列を一度に指定することが出来ません。ですので、't' の分と 'a' の分、メソッドを計２回実行する必要があります。</p>
+</ul>
+<footer><a class="backto" href="#c3-6" onclick="closeAccordion('c3-6')">文字列から 't' と 'a' を取り除く その１</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-7"><summary>文字列から 't' と 'a' を取り除く その２</summary>
+<header><h3>そこで・・・</h3></header>
+<ul>
+<p>'t' と 'a' の２回分だけならまだしも、これが10文字、100文字と増殖していく度に回数分のメソッドを書いていくこととなってしまいます。<strong class="for"></strong>文の出番です。</p>
+<p>あるものをないものに変えてしまうという方法は変えずに、この機能を必要回数分繰り返せるようにします。単純に「あるものリスト」を作成して１つずつメソッドの「あるもの」に当てはめていくだけです。こうすれば文字列の変更や増減が自在になります。</p>
+</ul>
+<footer><a class="backto" href="#c3-7" onclick="closeAccordion('c3-7')">文字列から 't' と 'a' を取り除く その２</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-8"><summary>文字列から 't' と 'a' を取り除く その３</summary>
+<header><h3>新しく文字列をつくる</h3></header>
+<ul>
+<hr>
+<p>【 Copilot が勝手に記述 】</p>
+<p>リストに変換してから 't' と 'a' を取り除く方法もありますが、もう一つの方法は新しく文字列を作ることです。</p>
+<p>具体的には、't' と 'a' 以外の文字を集めて新しい文字列を作るという方法です。</p>
+<hr>
+<p>先に書かれた！🤣</p>
+<p>線形探索で文字列の先頭から１文字ずつチェックしていき、<strong>'t' または 'a' 以外の時</strong>、空の文字列で初期化した変数に代入していきます。't' と 'a' の時は無視します。</p>
+<p>これを文字列の最後まで続ければ、最終的に taぬき の文字列が出来上がるというすんぽーなのだ。</p>
+</ul>
+<footer><a class="backto" href="#c3-8" onclick="closeAccordion('c3-8')">文字列から 't' と 'a' を取り除く その３</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">taぬき</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>格闘ゲーム</summary>
+<header><h2>格闘ゲーム</h2></header>
+
+<article>
+<details id="c4-1"><summary>問題を理解する</summary>
+<header><h3>問題を理解する</h3></header>
+<ul>
+<p>格闘ゲームを知らない人には難題かと思われます。そんな方のために少し解説をしますが、昇竜拳やアキラ３連コンボの猛特訓をしていた過去がある方には不要と思われますので読み飛ばしちゃってください。</p>
+<p>ゲームコントローラの十字ボタン(またはレバー)と、AボタンとBボタンがあるようです。ゲームコントローラすらわからない方は、</p>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9" class="linked" target="_blank">ゲームコントローラ - <em>Wikipedia</em></a></p>
+<p>に現物画像がありますので、そちらで確認してください。</p>
+<p>'L', 'R', 'U', 'D' は、それぞれ十字ボタンの「←」「→」「↑」「↓」でしょう。Aボタンが「パンチ」、Bボタンが「キック」と思われます。</p>
+<p><strong>rolling</strong>、 <strong>upper</strong>、 <strong>rush</strong> という３種類の技を作ります。</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>技名</th><th>コマンド</th><th>操作</th></tr>
+<tr><td>rolling</td><td>LLLRB</td><td>←←←→Ｂ</td></tr>
+<tr><td>upper</td><td>DDRRA</td><td>↓↓→→Ａ</td></tr>
+<tr><td>rush</td><td>AAAAA</td><td>Ａを5回</td></tr>
+</table>
+</div>
+<p>それぞれの技を使う為には、この通りにボタンを入力する必要があります。ピンと来ない方は、タイピングゲームのように、例えば 'DDRRA' とキーを打つと「upper」が使えると考えても差し支えありません。</p>
+</ul>
+<ul>
+<p>条件を確認してみましょう。</p>
+<ul>
+<li>1 ≦ |S| ≦ 100000</li>
+<li>|S| は文字列 S の長さ</li>
+<li>S は 'R', 'L', 'D', 'U', 'A', 'B' のいずれかからなる文字列</li>
+<li>S にはコマンドの文字列が 1 つ以上含まれることが保証される</li>
+</ul>
+<p>文字列10万文字くらいなら強引なやり方をしてもイケちゃいそうです。出力する技名は、最低でも１つはあるということになります。何も技が出せなくて出力が空になるということはありません。</p>
+</ul>
+<ul>
+<p>プログラムを組む上で最も考慮すべきところが、</p>
+<p><strong class="b">『ただし、1 つのボタン入力は 1 つのコマンドにしか使用されません。例えば、"DDRRAAAAA" という入力があった場合、"DDRRA" はコマンド「upper」として認識しますが、残る入力は "AAAA" となるためコマンド「rush」は認識されないことに注意してください。』</strong></p>
+<p>この部分は次に説明します。</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">問題を理解する</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>コマンド技の発動条件</summary>
+<header><h3>コマンド技の発動条件</h3></header>
+<ul>
+<p>【入力 S】</p>
+<p class="inlook">DDRRAAAAALLLRB</p>
+<p>問題集の入力例を使って説明します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    DDRRAAAAALLLRB
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>各技のコマンド入力数がすべて５ですので、５文字ずつ調べていきます。</p>
+<p class="inlook"><mark>DDRRA</mark>AAAALLLRB</p>
+<p>まずここで何らかの技とコマンドが一致するかを調べます。</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>技名</th><th>コマンド</th><th>操作</th></tr>
+<tr><td>rolling</td><td>LLLRB</td><td>←←←→Ｂ</td></tr>
+<tr style="background-color: yellow;"><td>upper</td><td><strong>DDRRA</strong></td><td>↓↓→→Ａ</td></tr>
+<tr><td>rush</td><td>AAAAA</td><td>Ａを5回</td></tr>
+</table>
+</div>
+<p>upper と一致しましたので、'upper'を画面に出力します。</p>
+<p><code class="output">upper</code></p>
+</ul>
+<ul>
+<p>次に１つずつずらしてチェックしていきます。</p>
+<p class="inlook">D<mark>DRRAA</mark>AAALLLRB<br>↓<br>DD<mark>RRAAA</mark>AALLLRB<br>↓<br>DDR<mark>RAAAA</mark>ALLLRB<br>↓<br>DDRR<mark>AAAAA</mark>LLLRB</p>
+<p>ここで 'rush' がヒットします。が、ここでの先頭の 'A' は既に最初の 'DDRRA' の末尾の 'A' で使用されています。</p>
+<p class="inlook"><s>DDRR</s><mark><s>A</s></mark><mark>AAAA</mark>LLLRB</p>
+<p>これが問題文の、</p>
+<p><strong class="b">『残る入力は "AAAA" となるためコマンド「rush」は認識されないことに注意してください。』</strong></p>
+<p>の意味になります。</p>
+<br>
+<p>となると、単純に１つずつずらしてチェックしていく方法をとると 'AAAAA' がヒットし、'rush' が画面に出力されてしまいます。この現象はバグとなるため、これを解決できる別の方法を考える必要があります。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">コマンド技の発動条件</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>チェック済みの操作は消去する方法</summary>
+<header><h3>チェック済みの操作は消去する方法</h3></header>
+<ul>
+<p>先頭からチェック済みの文字列を消去していきます。</p>
+<p class="inlook"><mark>DDRRA</mark>AAAALLLRB</p>
+<p>これは 'upper' の技のコマンドとして成立します。ですので、５つの文字を消去します。</p>
+<p class="inlook">AAAALLLRB</p>
+<p>また入力を調べていきます。</p>
+<p class="inlook"><mark>AAAAL</mark>LLRB<br>↓<br>A<mark>AAALL</mark>LRB<br>↓<strong class="func">先頭の１文字を消去</strong><br><mark>AAALL</mark>LRB<br>↓<br>A<mark>AALLL</mark>RB<br>↓<strong class="func">先頭の１文字を消去</strong><br><mark>AALLL</mark>RB<br>↓<br>A<mark>ALLLR</mark>B<br>↓<strong class="func">先頭の１文字を消去</strong><br><mark>ALLLR</mark>B<br>↓<br>A<mark>LLLRB</mark><br>↓<strong class="func">先頭の１文字を消去</strong><br><mark>LLLRB</mark></p>
+<p>ここで 'rolling' の技のコマンドがヒットしました。技の発動と同時にコマンドを消去します。</p>
+<p class="inlook"><mark>LLLRB</mark><br>↓<br>'' ← 文字列が空になった</p>
+</ul>
+<ul>
+<p>・・・・・で、ここからどうしましょ？😅<br>探索終了条件をまだ決めていません。文字列が空になったら探索終了とすると、今回はたまたま最後にぴったり技のコマンドが出現して空になったから良いものの、最後までコマンドが出現しなかったり半端に残ってしまった場合は、空かどうかを終了条件にしてしまうと out of range エラーになってしまいそうですね。リアルタイムに入力しているのなら終了条件とか要りませんが、この問題の場合、ちと面倒そうです。</p>
+<br>
+<li><p><strong class="b">入力の文字列が４文字以下(または５文字でない)になったら探索を終了する。</strong><br>→ 毎回 <strong class="func">len()</strong>関数で数えるのは無駄なので、最初に文字数をカウントしてから都度文字数を引いていく。</p></li>
+<li><p><strong class="b">現在位置からスライスで取得した文字列が４文字以下(５文字でない)になったら探索を終了する。</strong><br>→ <strong class="func">len()</strong>関数で毎回チェックする？ え、するの？</p></li>
+<br>
+<p>ここまで書いておいてなんですが、私ならこの方法は選びません。</p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">チェック済みの操作は消去する方法</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>置換とかどうかな？</summary>
+<header><h3>置換、ダメ？ 絶対？</h3></header>
+<ul>
+<p>リアルタイムでコマンド入力して処理する場合は、不要となった入力は破棄してしまえばよいのですが、全ての入力から順に技をピックアップしていくとなると考え方を少し変えなければならないようです、たぶん。</p>
+<p>もう、ゲームとかリアルタイムとか、そういうの全部無視して、この問題をラクにクリアするためだけの方法でやっつけちまいましょう。</p>
+</ul>
+<ul>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>技名</th><th>コマンド</th><th>操作</th></tr>
+<tr><td>rolling</td><td>LLLRB</td><td>←←←→Ｂ</td></tr>
+<tr><td>upper</td><td>DDRRA</td><td>↓↓→→Ａ</td></tr>
+<tr><td>rush</td><td>AAAAA</td><td>Ａを5回</td></tr>
+</table>
+</div>
+<p class="inlook">DDRRAAAAALLLRB</p>
+<p>問題文にあるとおり、技は３種類のみ。各種、技のコマンドも上記のように決まっています。先頭から該当する各コマンドを見つけ、別の文字に置き換えていきます。探索する技の順番に注意で、問題文にもあるように、'AAAAA' を最初に見つけてしまうと、'DDRRA' が見つけられなくなってしまう恐れがあります。上記の順番通りに探索してみましょう。</p>
+<p>置き換える文字は「数字」にします。</p>
+<li><p>１回目　'LLLRB'</p></li>
+<p class="inlook">DDRRAAAAA<mark>LLLRB</mark><br>↓<br>DDRRAAAAA<mark>0</mark> ← 0 に置換えた</p>
+<li><p>２回目　'DDRRA'</p></li>
+<p class="inlook"><mark>DDRRA</mark>AAAALLLRB<br>↓<br><mark>1</mark>AAAA0 ← 1 に置換えた</p>
+<li><p>３回目　'AAAAA'</p></li>
+<p class="inlook">1AAAA0<br>１つも見つからなかったので、そのまま</p>
+</ul>
+<ul>
+<p class="inlook">1AAAA0</p>
+<p>これをどうするか。辞書を次のようにつくります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">dic = {
+    '0': 'rolling',
+	'1': 'upper',
+	'2': 'rush'
+}
+</code></pre>
+</div>
+<!-- ----------------------- code end -------------３つのうちの---------- -->
+<p>あとは文字列を線形探索で数字を見つけたら、キーとなっているその数字の値を画面に出力していきます。でもこの方法、線形探索を４回行うことになりますので、効率いいとは言えないですね。😓</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">置換とかどうかな？</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-5"><summary>１回の線形探索でしっかりと</summary>
+<header><h3>１回の線形探索でしっかりと</h3></header>
+<ul>
+<p>今度は先頭から５文字ずつ、３つの技のいずれかのコマンドと一致するかを調べていきます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">dic = {
+    'LLLRB': 'rolling',
+	'DDRRA': 'upper',
+	'AAAAA': 'rush'
+}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>スライスなどで５文字の文字列を参照し、その文字列が辞書のキーに含まれているかを調べ、含まれていたらそのキーの値を画面に出力していきます。しかしこのままだとまた 'AAAAA' を見つけてしまって 'rush' が出力されてしまいますので、画面に出力したら現在位置を<strong>５文字分送ります。</strong></p>
+<p>そして文字列の末尾に到達したら探索を終了します。あっさりだ。😯</p>
+</ul>
+<ul>
+<p>プログラム構造は次のとおりです。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = (標準入力)
+dic = {
+    'LLLRB': 'rolling',
+    'DDRRA': 'upper',
+    'AAAAA': 'rush'
+}
+
+(S を探索する位置を 0 で初期化する)
+(S の長さを取得する)
+while (Sの長さ未満の時にループする):
+    (S の現在位置から５文字を取得して変数に代入する)
+    (もしその変数が辞書のキーに含まれていたら):
+        (そのキーの値を画面に出力する)
+        (現在位置から５文字分飛ばす)
+    (なければ):
+        (現在位置を１文字分進める)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>残り４文字以下を調べても無駄なので、S の長さから -4 してもよいです。</p>
+</ul>
+<footer><a class="backto" href="#c4-5" onclick="closeAccordion('c4-5')">１回の線形探索でしっかりと</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">格闘ゲーム</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>Bランク実力確認問題セット1 </p>
+</footer>
+</body>
+</html>

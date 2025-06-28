@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｄランクレベルアップ問題集『Dランク・実力確認問題セット1』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Dランク・実力確認問題セット1</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top">
+<h1>【paiza問題集 解説】<br>Dランク・実力確認問題セット1</h1>
+<p>ヒントを頼りにプログラムを組んでみてください。</p>
+</header>
+
+<main>
+
+<section>
+<details id="c1"><summary>ダウンロード(Easy)</summary>
+<header><h2>ダウンロード(Easy)</h2></header>
+<ul>
+<p>問題文を整理して書き換えてみます。</p>
+</ul>
+<ul>
+<p>あなたは、複数のファイルをダウンロードしています。現在の進捗率を整数で求めてください。</p>
+<ul>
+<li>ダウンロードするファイルは全部で <strong>S</strong> 個</li>
+<li>１ファイルは <strong>A</strong> MB</li>
+<li><strong>T</strong> 個のファイルがダウンロード済み</li>
+</ul>
+</ul>
+<ul>
+<p>『進捗率をダウンロードが終わったファイルのデータ量の総和(ここでは, T×A MB)を全てのファイルのデータ量の総和(ここでは, S×A MB)で割り、百分率に直したものとします。』</p>
+<ul>
+<li><mark>T 個 × A MB</mark> ダウンロード済</li>
+<li>全ファイルのサイズは <mark>S 個 × A MB</mark></li>
+</ul>
+<p>→ <mark>T 個 × A MB</mark> を、<mark>S 個 × A MB</mark> で割ります。</p>
+
+<p class="inlook">(T × A ÷ S × A) × ヒミツ😉</p>
+この結果を整数にして画面に出力すれば完了です。
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">ダウンロード(Easy)</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>オリンピックのスコア</summary>
+<header><h2>オリンピックのスコア</h2></header>
+<ul>
+<ol>
+<li>全部足す <strong class="func">sum()</strong></li>
+<li>最大値を引く <strong class="func">max()</strong></li>
+<li>最小値を引く <strong class="func">min()</strong></li>
+</ol>
+<p>それぞれ関数を使ってプログラムを組んでみてください。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">オリンピックのスコア</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>次のごはん</summary>
+<header><h2>次のごはん</h2></header>
+<ul>
+<p>「次のごはん」なので、現在ごはん中でも次のごはんのことを考えます。🤣<br>条件に『(H,M) は (7,0),(13,0),(19,0) のいずれとも異なる』とあります。7時、13時、19時ぴったりの時刻が与えられることはないということです。これは以下と未満のどちらかを考えなくて済むということです。<br>ちなみに「分」は無視しても大丈夫なはずです。8時36分の場合は「8時台」と考えます。</p>
+<p><strong class="if"></strong>文を使って次のごはんがどれになるのかを判定することになりますが、気をつけてください。少しばかり罠が仕込まれています。問題文と条件をよく読んで罠を見つけてみましょう。</p>
+</ul>
+<ul>
+<p>条件式が複雑でめんどくさくてワケわからなくなってしまったら、思考を変えて、０時またぎを無くしてみましょう。</p>
+<li>H % 19</li>
+<p class="inlook">0時 → 0<br>1時 → 1<br>2時 → 2<br>3時 → 3<br>4時 → 4<br>5時 → 5<br>6時 → 6<br>7時 → 7<br>8時 → 8<br>9時 → 9<br>10時 → 10<br>11時 → 11<br>12時 → 12<br>13時 → 13<br>14時 → 14<br>15時 → 15<br>16時 → 16<br>17時 → 17<br>18時 → 18<br>19時 → 0<br>20時 → 1<br>21時 → 2<br>22時 → 3<br>23時 → 4</p>
+<p>0 〜 6 : <code class="output">breakfast</code><br>7 〜 12 : <code class="output">lunch</code><br>13 〜 18 : <code class="output">dinner</code></p>
+<hr>
+<p>19時台から23時台は、0時台から6時台と同じグループ扱いとなります。つまり19時1分〜23時59分は、0時〜6時59分と同じく朝ごはんのことを気にしていることになりますので、要件に一致しますね。はよ寝ろ！😂</p>
+<p>こうすれば、条件文が書きやすくなると思いますよ。😊</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">次のごはん</a></footer>
+</details>
+</section>
+ 
+<section>
+<details id="c4"><summary>ダウンロード(Hard)</summary>
+<header><h2>ダウンロード(Hard)</h2></header>
+<ul>
+<p>Easyの時は数値(T)だけで進捗率を求めましたが、Hardでは進捗バー(o)から進捗率を求めます。ダウンロードするファイル数は５と定まっています。</p>
+<div class="x-fit">
+<table class="text-center">
+<tr><th>i</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+<tr><th>A</th><td>13</td><td>17</td><td>77</td><td>89</td><td>25</td></tr>
+<tr><th>T</th><td>o</td><td>o</td><td>x</td><td>x</td><td>x</td></tr>
+</table>
+</div>
+<p>予め 0 で初期化した変数を用意し、単純に T_i が <code>o</code> の時に、A_i を用意した変数に足していくだけです。この時、以下のように入力を5つずつ受け取った時、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A_1, A_2, A_3, A_4, A_5 = map(int, input().split())
+T_1, T_2, T_3, T_4, T_5 = map(str, input().split())
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>A_i と T_i を比較する <strong class="if"></strong>文を５つ分用意すれば求められます。</p>
+</ul>
+<ul>
+<p>『もっと良い方法無いのかな？』</p>
+<p>至高のプログラムを求めてそう考えられることはとても良いことです。しかしこれ以上のことをするとなるとＣランクレベルのスキルが必要となりますので、今はここまでということにしておきましょう。</p>
+<br>
+<p>大丈夫！ここまでできれば、もうＣランクの問題集に余裕で進めるよ！</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">ダウンロード(Hard)</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>Dランク・実力確認問題セット1</p>
+</footer>
+</body>
+</html>

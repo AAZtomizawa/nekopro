@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｄランクレベルアップ問題集『Dランクレベルアップメニュー』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Dランクレベルアップメニュー</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>Dランクレベルアップメニュー</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>2 つの数値を出力</summary>
+<header><h2>2 つの数値を出力</h2></header>
+<article>
+<details id="c1-1"><summary>STEP: 1 1 つの文字列を出力</summary>
+<header><h3>1 つの文字列を出力</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print('paiza')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = 'paiza'
+print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="special">文字列</strong> とは、</p>
+<p>『文字列（もじれつ）は、単語や文章のような、文字の連なったもの。ストリング (英: string)、テキスト (英: text) という場合もある』<em>(Wikipediaより)</em></p>
+<p>「文字」は１文字を指します。その「文字」が列として連なったものが「文字列」です。</p>
+<p>文字 ・・・ <strong><em>char型</em></strong><br>文字列 ・・・ <strong><em>str型 または string型</em></strong></p>
+<p>このように文字と文字列は別物なのですが、str型ならば１文字でも「文字列」と呼びます。ややこしいですね。😅 この文章もすべて文字列ということなります。<br>「文字」と呼ぶか、「文字列」と呼ぶかは型の違いで分けています。２つの違いに意味はあるのですが、Python3 はほとんどが文字列として扱いますので、char型の存在は忘れても構いません。しかし他の言語では普通にchar型も使いますので、他の言語にも興味がある方は覚えておくとよいです。しかし先ずは Python3 でしっかり基礎を学びましょう。そうすれば他の言語も学びやすくなります。Python3 はプログラミングの基礎学習に最適！</p>
+<p>textと呼んでいたのは遥か昔の話です。文字列のことをテキスト、テキスト型と呼んでいました。</p>
+<br>
+<p>慣れないうちは例１のように <strong class="func">print()</strong> の () 内に直接 <strong class="func">input()</strong> を書いても構いませんが、今後のためにも値は<strong>変数に格納して</strong>扱うようにしましょう。<var>s</var> は string の頭文字をとった省略形です。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">STEP: 1 1 つの文字列を出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>STEP: 2 2 つの文字列を出力 </summary>
+<header><h3>2 つの文字列を出力 </h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print('paiza' + ' ' + 'learning')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print('paiza', 'learning')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = 'paiza'
+t = 'learning'
+print(s, t)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１の書き方が一般的ですが、 <strong class="func">print()</strong> の機能(?)として、文字列をカンマで区切ると、間に半角スペースが自動で付きます。こういった出力が求められることが非常に多いので、この書き方をするとこうなるということを理解してモノにしておくと後々便利です。</p>
+</ul>
+<ul>
+<p>余談になりますが、文字をくくる記号に <code>'</code> を使いましたが、<code>"</code> でも構いません。これは例えば、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = "The cat said. 'I am a hunyan!'"
+print(s)
+</code></pre>
+<code>The cat said. 'I am a hunyan!'</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = 'The cat said. "I am a hunyan!"'
+print(s)
+</code></pre>
+<code>The cat said. "I am a hunyan!"</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と、文字列に <code>'</code> <code>"</code> を使いたいとき、文字列をくくった記号とは別のもう１つの記号の方を文字列内で使うことが出来ます。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">STEP: 2 2 つの文字列を出力 </a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>STEP: 3 1 行の出力 </summary>
+<header><h3>1 行の出力 </h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(813)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 813
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="special">数値</strong>を扱います。数値とは 10進数の、</p>
+<dl><dt>整数型</dt><dd>… -1, 0, 1, 2 …</dd><dt>浮動小数型</dt><dd>1.0, 2.5, 3.14 など</dd></dl>
+<p>主にこの２種類を指します。同じ数値でも、整数型と浮動小数型は別世界です。詳しく説明しませんが、型として分けられている以上、別物なんだなということだけでも覚えておいてください。</p>
+<br>
+<p>この数値 <code>813</code> を上記の例のように書くと、画面に <code class="output">813</code> と表示されます。
+</ul>
+
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">STEP: 3 1 行の出力 </a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>STEP: 4 3 行の出力</summary>
+<header><h3>3 行の出力 </h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(8)
+print(1)
+print(3)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 8
+m = 1
+k = 3
+print(n)
+print(m)
+print(k)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = [8, 1, 3]
+for n in nums:
+    print(num)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例４</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">nums = [8, 1, 3]
+print(*num, sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>他にもまだまだ方法はあります。例３と例４の方法は、今後使いまくります。 <code>[8, 1, 3]</code> の形のものを<strong class="special">リスト</strong>と言います。</p>
+<p>これがどのようなものなのかは <a href="../../2/0010list.html" class="linked" target="_blank">２章 - リスト型</a> で学習できます。</p>
+</ul>
+
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">STEP: 4 3 行の出力 </a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>FINAL問題 2 つの数値を出力 </summary>
+<header><h3>2 つの数値を出力 </h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(str(1) + ' ' + str(1))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(1, 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 1
+m = 1
+print(n, m)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例４</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 1
+print(n, n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong>数値</strong> <code>1</code> を半角スペース区切りで一行出力します。お題を見てください。『2 つの数値を出力』ですよ！よって、</p>
+<br>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print('1 1')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>という書き方をしてはいけません。これは数値ではなく「数字」を含む文字列です。これでもクリアしてしまいますけどね。😅</p>
+<p>数値は出力する際、 <strong class="func">print()</strong> 関数が見えないところで数値を文字列に変換してから出力しています。タイミングとしては画面に出力する直前ですので、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(1 + ' ' + 1)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>という書き方をすると<strong class="special">エラー</strong>となります。<strong>数値</strong>と<strong>文字列</strong>は別の型なので、混在させることはできません。ですので、例１のように<strong>str型 (文字列型)</strong>に変換して文字列型に統一したわけです。</p>
+<p><strong class="func">print()</strong> 関数は数値のままでも問題なく画面に出力されます。数値は最終的に文字列に変換してから画面に出力されるからです。</p>
+<p>半角スペースは数値に変換できません。エラーとなります。ですので必然的に文字列である半角スペースに合わせて数値を文字列に変換することになります。型を合わせるのメンドイですけど、そうしないとコンピュータはわからないのですから仕方がありません。</p>
+</ul>
+<ul>
+<p>コンピュータは二次元の世界なので <strong>正誤</strong> があり <strong>反対</strong> です。</p>
+<p><em>『A が正しく、B は誤りである』</em></p>
+<p>四次元である現実は<strong>相対</strong>です。</p>
+<p><em>『 A が正しいと言えるなら、相対する B もまた正しいと言える』</em></p>
+<br>
+<p>コンピュータみたいな思考しかできないヒト、たくさんいますよね？😓 だからといってそういうヒトを「悪い」と決めつけてしまうと、それも二次元思考であり、目くそ鼻くそとなって争いが起こってしまいます。</p>
+<p>しかしそんな融通の利かないヒトをコンピュータになぞらえれば、こちらが全面的になんとかしなければ動いてくれない、解決しないということは理解に容易いでしょう。きちんと正確に伝えられていないこちらが全面的に「悪い」のです。</p>
+<p>ただ違うのは、コンピュータはこちらの指示を全て聞いてくれます。</p>
+<p>ですのでエラーが出たり、エラーが直らなかったり、エラーが出なくても思い通りに全然動いてくれなかったとしても、100％こちらが間違っていると理解していれば、あとはひたすら自力で正解を見つけるだけです。コンピュータはいつまでも待っていてくれます。コンピュータは迷惑と感じません。必ず実行し、考える時間を無期限に与えてくれるぶん、ヒト相手と違って楽ちんです。</p>
+<br>
+<p>今は学習段階。エラーなんかに怯えず怯まず、試行錯誤しまくって作りまくってどんどん動かしまくっていきましょう！1000回エラーを出した頃には、すっかりプログラミング脳となっていること請け合いです。勲章です。祝杯ものです。🍷🎉</p>
+</ul>
+<footer><a class="backto" href="#c1-5" onclick="closeAccordion('c1-5')">FINAL問題 2 つの数値を出力 </a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">2 つの数値を出力</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>代入演算 1</summary>
+<header><h2>代入演算 1</h2></header>
+
+<article>
+<details id="c2-1"><summary>STEP: 1 足し算</summary>
+<header><h3>足し算</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(1231 + 5178)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = 1231 + 5178
+print(a)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = 1231
+b = 5178
+print(a + b)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例４</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = 1231
+a += 5178
+print(a)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>コンピュータは<strong>計算機</strong>なので、計算ができます。</p>
+<p><a href="../../1/0010importantsof4.html#c1-h" class="linked" target="_blank">１章 - 演算子</a></p>
+<br>
+<p>問題文には<strong class="b">『1,231 と 5,178 の和を出力してください。』</strong>と、カンマで区切った形で表記されていますが、カンマは使えません。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = 1,231
+b = 5,178
+print(a, b)
+</code></pre>
+<code>(1, 231) (5, 178)</code><span> </span>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これは <mark>(<code>1</code> と <code>231</code>) (<code>5</code> と <code>178</code>)</mark> の組み合わせを持つデータで、今はまだ意味がわからないと思いますが、 <code>1231</code> や <code>5178</code> という数値とは異なります。足し算もできません。このことについては気にせず学習を進めていけば、カンマの意味が自ずとわかってくると思います。</p>
+</ul>
+<ul>
+<p>足し算の場合、数を足していく順番はとくに決まりはありませんが、引き算の場合は順番がありますので注意です。</p>
+<p class="inlook">5 - 3 = 2<br>3 - 5 = -2</p>
+<p>めちゃくちゃ当たり前に思うかもしれませんが、これが変数を使った時に、</p>
+<li><p>a = 5<br>b = 3</p></li>
+<p class="inlook">a - b = 2<br>b - a = -2</p>
+<li><p>a = 3<br>b = 5</p></li>
+<p class="inlook">a - b = -2<br>b - a = 2</p>
+<p>数値が見えていないので間違えやすくなります。結果をすぐに <strong class="func">print()</strong> で出力すればすぐに確認できて間違いに気付けますが、画面に出力しないと気付くのが難しくなります。「なんでちゃんと動かないんだろう？」と、何時間も画面とにらめっこしたり、考えすぎて夜眠れなくなってしまい得る原因となったりします。いや、ホントに。冗談抜きで。😓</p>
+</ul>
+<ul>
+<p>プログラム例を４つ紹介しましたが、今はどれか１つが理解できればオーケー。👍<br>これらの他にも書き方がありますし、今無理に全部を憶えようとしなくて大丈夫です。</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">STEP: 1 足し算</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-2"><summary>STEP: 2 割り算</summary>
+<header><h3>割り算</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">print(437326 // 9085, 437326 % 9085)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>プログラムで使う割り算には３つの目的があります。</p>
+<dl>
+<dt><code style="color:black">//</code> 商を求める</dt><dd>例）10 // 2 = 5</dd>
+<dt><code style="color:black">%</code> 余りを求める</dt><dd>例）10 % 2 = 0</dd>
+<dt><code style="color:black">/</code> 割り算の結果を求める (小数点付き)</dt><dd>例）10 / 2 = 5.0</dd>
+</dl>
+<p>特に<strong>余りを求める</strong>割り算を多用します。学校では余りを切り捨てるなんてことは日常茶飯事でしたが、プログラミングでは余りのほうが重要視されることが多いです。逆に商が切り捨てられます。🤣</p>
+</ul>
+<ul>
+<p>プログラムの世界でも計算順位は、足し算引き算より、掛け算割り算のほうが優先されます。</p>
+</ul>
+<footer><a class="backto" href="#c2-2" onclick="closeAccordion('c2-2')">STEP: 2 割り算</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-3"><summary>STEP: 3 累乗</summary>
+<header><h3>累乗</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = 202
+B = 134
+C = 107
+
+N = ((A + B) * C) ** 2
+print(N)
+</code></pre>
+<code>1292546304</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>累乗は <mark>**</mark> という記号を使います。プログラム言語によっては <mark>^</mark> を使いますが、Python3 では <mark>^</mark> は<strong>累乗の演算子としては使えません。</strong></p>
+<p>足し算引き算よりも掛け算割り算を優先して計算しますが、累乗はそれらよりもさらに優先します。</p>
+<p>数学でも () で囲ったところから計算するように優先順位をコントロールしますが、プログラムの場合も同様に、先に計算してほしい所を () で囲います。 初めに () の最深部から、次に最も左側の () から順に計算されます。上記プログラム例で示すと <mark>(A + B)</mark> が最深部、次に <mark>(336 * C)</mark> が最も左側の () となり、最後に <mark>35952 ** 2</mark> が計算されます。</p>
+<p><mark>(A + B) * C ** 2</mark> としてしまうと、 <mark>(A + B)</mark> の次に <mark>C ** 2</mark> が計算され、最後に <mark>336 * 11449</mark> という順で計算されてしまいます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A = 202
+B = 134
+C = 107
+
+N = (A + B) * C ** 2
+print(N)
+</code></pre>
+<code>3846864</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>式が複雑になると () が４重にも５重にもなることがあります。そして () の数が合わないエラーが出た時に、『１、２、１、２、３、２、１、０』と指差し確認しながら () の数を数えるなんて場面をいつしか体験する時がやってくるでしょう。え、さっきやっちゃった？😄</p>
+</ul>
+<footer><a class="backto" href="#c2-3" onclick="closeAccordion('c2-3')">STEP: 3 累乗</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c2-4"><summary>FINAL問題 代入演算 1</summary>
+<header><h3>代入演算 1</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = 0
+N = N + 3286
+N = N * 4736
+N = N % 12312
+
+print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = 0
+N += 3286
+N *= 4736
+N %= 12312
+
+print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>１つ計算するごとに N に代入していく流れになっています。問題の指示どおりに組めば上記の様になります。なりましたよね？😄</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = N + 3286
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N += 3286
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>この２つの書き方はそれぞれ同じ結果を返します。もともとは上の <code>N = N + 3286</code> という書き方をしていたものを、いつしか <code>N += 3286</code> という省略形が生まれ、現在はこの形の書き方が主流となっています。この <code>+=</code> という書き方の記号を<strong>代入演算子</strong>といいます。</p>
+<br>
+<p>ただ、この省略形の使い方には注意が必要です。</p>
+<li><p>N = 0</p>
+</li>
+<p class="inlook">N = N * 2 + 1<br>↓<br>N = 0 * 2 + 1<br>↓<br>N = 0 + 1<br>↓<br>N = 1</p>
+<li><p>N = 0</p></li>
+<p class="inlook">N *= 2 + 1<br>↓<br>N *= 3<br>↓<br>N = N * 3<br>↓<br>N = 0 * 3<br>↓<br>N = 0</p>
+<p>計算順位の違いによって、結果が異なりました。どこで流れが変わるのか、ご自身で流れをよく確認して考えてみてください。腑に落ちるはずです。</p>
+</ul>
+<footer><a class="backto" href="#c2-4" onclick="closeAccordion('c2-4')">代入演算 1</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">代入演算 1</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>半角スペース区切りの 2 つの入力</summary>
+<header><h2>半角スペース区切りの 2 つの入力</h2></header>
+
+<article>
+<details id="c3-1"><summary>STEP: 1 1 行の入力</summary>
+<header><h3>1 行の入力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力される値に『文字列 s が 1 行で与えられます。』とあります。入力された文字列を変数に収め、その変数の値を画面に出力します。用語のオンパレードです。</p>
+<p>変数は何でも良いのですが、s とありますのでこれをそのまま使ってしまいましょう。</p>
+<br>
+<p>この入力方法に関しては <a href="../../3/0020input.html" class="linked" target="_blank">３章 - 標準入力</a> にありますので、そちらをカンニングしながら進めてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">STEP: 1 1 行の入力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>STEP: 2 2 行の入力</summary>
+<header><h3>2 行の入力</h3></header>
+<ul>
+  <!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+t = input()
+print(s)
+print(t)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><vqr>s</vqr> と <var>t</var> それぞれの変数に入力値を代入して、それぞれを出力します。<vqr>s</vqr> と <var>t</var> の入力順と出力順を間違えないように気をつけてください。😊</p>
+<p><vqr>s</vqr> と <var>t</var> を逆にしても正しく出力されますが、プログラミング的には<strong>誤り</strong>です。<br><var>s</var> には <var>s</var> の入力値、<var>t</var> には <var>t</var> の入力値をきちんと代入しましょう。</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">STEP: 2 2 行の入力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>STEP: 3 1 つの入力</summary>
+<header><h3>1 つの入力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+print(s)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>初めのと何が違うのかわかりにくいですが、意味合いが違うだけでやるべきことは全く同じです。最初のは「1 行の入力」、こちらは「1 つの入力」。 <strong class="func">input()</strong> 関数ならばどちらも変わりがありません。</p>
+<br>
+<p>しかし次の問題ではこの違いが重要になります。</p>
+</ul>
+
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">STEP: 3 1 つの入力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>FINAL問題 半角スペース区切りの 2 つの入力</summary>
+<header><h3>半角スペース区切りの 2 つの入力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s_1, s_2 = input().split()
+print(s_1)
+print(s_2)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>単純に <strong class="func">input()</strong> 関数のみを使うと、半角スペースで区切られた２つの文字列を「１つの文字列」として受け取ってしまいます。</p>
+<p>そこで <strong class="func">.split()</strong> メソッドというものを使います。この機能は「<a href="../../2/0050usefulstrtype.html#-split-h" class="linked" target="_blank">２章 - 文字列の操作を使いこなす機能一覧</a>」で解説しています。</p>
+<p>メソッドとは・・・・・ 難しすぎるのでここでは説明しませんが😓、 <code>.</code> の後に関数っぽい書き方をすると、その関数の機能が働くオプションです。</p>
+<p>そんな感じで文字列に <strong class="func">.split()</strong> を付けると、<strong>指定した区切り文字で区切られた文字列を区切り文字の所で分割し、リストとなって返ってきますとなりのきゃくはよくかきくうきゃくだ。</strong>むずいね。😓</p>
+<p>ですので、上のリンク先の内容と今回の問題を比較して理解してみてください。もし理解できなかったら全部私のせいですごめんなさい。</p>
+</ul>
+
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">FINAL問題 半角スペース区切りの 2 つの入力</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">半角スペース区切りの 2 つの入力</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>乗客人数 </summary>
+<header><h2>乗客人数 </h2></header>
+
+<article>
+<details id="c4-1"><summary>STEP: 1 入力された 2 つの文字列を出力</summary>
+<header><h3>入力された 2 つの文字列を出力</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+T = input()
+print(S)
+print(T)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>何度も同じことをやらされてる感があると思いますが、入力と出力はどの問題でも必ずやることなので、まだまだ続きますし、学習が終わっても続きますよ。😅</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">STEP: 1 入力された 2 つの文字列を出力</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>STEP: 2 引き算・掛け算</summary>
+<header><h3>引き算・掛け算</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A, B = input().split()
+a = int(A)
+b = int(B)
+D = a - b
+P = a * b
+print(D, P)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A, B = map(int, input().split())
+D = A - B
+P = A * B
+print(D, P)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>問題文中の『A と B の差 D』の意味がちょっとわかりにくいですが、出力例を見る限り <mark>A - B = D</mark> という意味と捉えて良いと思います。</p>
+<p>A と B との差はいくつかと解釈すると、絶対値をとるので結果がマイナスの数になるのはおかしいなと。</p>
+<p>と、こんな感じで捉え方が複数生じる書き方の問題に出くわした場合、<strong class="b">条件</strong>や<strong class="b">期待する出力</strong>、<strong class="b">出力例</strong>を見て察してください。😅<br>それでも極稀に１つに絞りきれない問題もあったりします。その場合は素直に一発100点は諦めましょう。だってしょーがないし。😓</p>
+<br>
+<p>１行に並ぶ２つの数値の入力方法も、</p>
+<p><a href="../../3/0020input.html#easy-1h" class="linked" target="_blank">３章 - 標準入力</a></p>
+<p>をご覧ください。</p>
+</ul>
+<ul>
+<p>文字列となっている<strong>数となりうる数字</strong>を整数に変換する時には <strong class="func">int()</strong> 関数を使います。文字列全てが数字でなくてはなりません。区切り文字(通常は半角スペース)がある場合は <strong class="func">.split()</strong> メソッドを使って分割することができます。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">STEP: 2 引き算・掛け算</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>STEP: 3 代入演算 2</summary>
+<header><h3>代入演算 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A, B, C = map(int, input().split())
+N = 0
+N += A
+N *= B
+N %= C
+print(N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>先の「代入演算 1」でやったことと同じです。使用する数値が定数から入力値に変わりました。入力方法さえわかれば特に困ったことはなかったのではないかと思われます。</p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">STEP: 3 代入演算 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>FINAL問題 乗客人数</summary>
+<header><h3>乗客人数</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c = map(int, input().split())
+print(a - b + c)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b, c = map(int, input().split())
+n = a
+n -= b
+n += c
+print(n)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例２はこれまでの流れのとおりに書いたものです。わかりやすさで言えば例１ですね。😅<br>でも今は例２が理解できて合格と言えます。</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">FINAL問題 乗客人数</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">乗客人数 </a></footer>
+</details>
+</section>
+
+<section>
+<details id="c5"><summary>占い</summary>
+<header><h2>占い</h2></header>
+
+<article>
+<details id="c5-1"><summary>STEP: 1 単純な条件分岐</summary>
+<header><h3>単純な条件分岐</h3></header>
+
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">S = input()
+if S == 'paiza':
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>条件分岐の基本形です。条件分岐(<strong class="if"></strong>文 )については、</p>
+<p><a href="../../1/0060if.html" class="linked" target="_blank">１章 - 条件分岐・条件文・条件式・インデント</a></p>
+<p>で学習できます。必修ですが、強さは四天王の中でも最強です！</p>
+</ul>
+<footer><a class="backto" href="#c5-1" onclick="closeAccordion('c5-1')">STEP: 1 単純な条件分岐</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-2"><summary>STEP: 2 数値の分岐</summary>
+<header><h3>数値の分岐</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = input()
+if int(N) <= 100:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+if N <= 100:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例１と例２の違いは入力した数となりうる文字列を整数に変換している場所です。N を整数として使いたい所で変換しているか、入力と同時に変換しているかです。</p>
+<p>どちらの方法でも構いません。<code>int(N)</code> をたくさん使う場合は例２のように初めから整数に変換しておくとプログラムが楽になり、読みやすくもなります。初めから整数としてしか使わない場合は最初に整数にしておくと、変数に適切な名前を付けやすくもなります。</p>
+</ul>
+<ul>
+<p><mark>&lt;=</mark> という記号を<string>比較演算子</string>といいます。比較演算子は、</p>
+<p><a href="../../1/0010importantsof4.html#c1-hikaku" class="linked" target="_blank">演算子</a></p>
+<p>にて表にしてあります。</p>
+</ul>
+<footer><a class="backto" href="#c5-2" onclick="closeAccordion('c5-2')">STEP: 2 数値の分岐</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-3"><summary>STEP: 3 数値演算結果で分岐</summary>
+<header><h3>数値演算結果で分岐</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">A, B, C = map(int, input().split())
+if A * B <= C:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code class="output">YES</code> の条件は「A × B が C 以下のとき」です。</p>
+<p><code class="output">NO</code> の条件は、単純に「それ以外のとき」と考えてＯＫです。ただし一応「A × B が C より大きいときで合ってるよね・・・」と確認のために考えておいたほうが無難です。要件によっては <strong>else</strong> では不具合が生じる場合もあるのです。</p>
+</ul>
+<footer><a class="backto" href="#c5-3" onclick="closeAccordion('c5-3')">STEP: 3 数値演算結果で分岐</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c5-4"><summary>FINAL問題 占い</summary>
+<header><h3>占い</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = int(input())
+if n == 7:
+    print('Yes')
+else:
+    print('No')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>総括です。といっても、STEP 1 から書式が変わっていませんので悩むこともなかったでしょう。ただ、出力が <code>YES</code> <code>NO</code> だったのが <code class="output">Yes</code> <code class="output">No</code> に変わりました。コピペで済ませて動作確認せず提出すると致命傷を負います。😂</p>
+<br>
+<p><strong>条件分岐</strong>については、</p>
+<p><a href="../../1/0060if.html" class="linked" target="_blank">１章 - 条件分岐・条件文・条件式・インデント</a></p>
+<p>で学習できます。これまでに出てこなかったことも書いてありますので、予習のつもりでぜひ読んでみてください。😉</p>
+</ul>
+<footer><a class="backto" href="#c5-4" onclick="closeAccordion('c5-4')">占い</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c5" onclick="closeAccordion('c5')">占い</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c6"><summary>FizzBuzz</summary>
+<header><h2>FizzBuzz</h2></header>
+
+<article>
+<details id="c6-1"><summary>STEP: 1 ある数字までの出力 2</summary>
+<header><h3>ある数字までの出力 2</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for i in range(1, N+1):
+    print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><small><small>※「ある数字までの出力 1」は、問題集「Ｃランク獲得 - ループメニュー 1」にあります。</small></small></p>
+<p>これは<strong>繰り返し文</strong>を使う問題ですね。</p>
+<p><a href="../../1/0070forwhile.html" class="linked" target="_blank">１章 - 繰り返し文</a></p>
+<p>で学習できます。繰り返し文についてはそちらをお読みください。</p>
+</ul>
+<ul>
+<p><a href="../../1/0070forwhile.html" class="linked" target="_blank">１章 - 繰り返し文</a> を読めばもう解説することもないので、別の方法を紹介します。</p>
+<li><p><strong class="while"></strong>文を使った書き方</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+i = 1
+while i <= N:
+    print(i)
+    i += 1
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="while"></strong>文を使った書き方のほうが何をしているのかがわかりやすいですね。</p>
+<br>
+<li><p><strong class="func">print()</strong>関数と<strong class="func">range()</strong>関数の組み合わせ技</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+print(*range(1, N+1), sep='\n')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これら２つの方法はＣランクレベルの書き方なので、今はまだこんな方法でも解けるのかくらいに思ってもらえればそれで構いません。次第に解るようになってきますから焦らなくて大丈夫！👍</p>
+</ul>
+<footer><a class="backto" href="#c6-1" onclick="closeAccordion('c6-1')">STEP: 1 ある数字までの出力 2</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c6-2"><summary>FINAL問題 FizzBuzz</summary>
+<header><h3>FizzBuzz</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(1, 101):
+    if i % 3 == 0 and i % 5 == 0:
+        print('FizzBuzz')
+    elif i % 3 == 0:
+        print('Fizz')
+    elif i % 5 == 0:
+        print('Buzz')
+    else:
+        print(i)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>FizzBuzz の事前知識が必要です。まずは、</p>
+<p><a href="../../1/0080fizzbuzz.html" class="linked" target="_blank">１章 - アホとイヌ</a></p>
+<p>で学習してみてください。解説もリンク先に任せます。😅</p>
+<br>
+<p>条件分岐を増やす <strong class="elif"></strong> を使った問題です。 <strong class="elif"></strong> に関しては、</p>
+<p><a href="../../1/0060if.html" class="linked" target="_blank">１章 - 条件分岐・条件文・条件式・インデント</a></p>
+<p>で学習できます。</p>
+</ul>
+<ul>
+<p>問題の書き方がとても優しいですね。😊<br>与えられた条件の順番のとおりに条件文を書いていけば、自ずと正しい結果が得られるようになっています。</p>
+</ul>
+<ul>
+<p>これにてDランクレベルアップメニューは終了となりますが、これまでのことで理解しきれずにいる部分がありましたら、</p>
+<p><a href="../../index.html#c1-h" class="linked" target="_blank">１章 - 入門者向け</a></p>
+<p>を読破してみてください。気軽に学習できる様、読むだけでなんとなくわかった気になれるくらいの軽い内容となっています。一旦頭を空にしてモバイル端末などからアクセスして、寝転がりながら読んでいってみてください。</p>
+<p>それでも理解に至れなかったときは、きちんと伝えられなかった私に全面非がありますので、遠慮なく私のせいにして次の学習に進んじゃってください。😉</p>
+<br>
+<p><small>でも可愛さに免じて許してください。😺</small></p>
+</ul>
+<footer><a class="backto" href="#c6-2" onclick="closeAccordion('c6-2')">FINAL問題 FizzBuzz</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c6" onclick="closeAccordion('c6')">FizzBuzz</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>Dランクレベルアップメニュー</p>
+</footer>
+</body>
+</html>

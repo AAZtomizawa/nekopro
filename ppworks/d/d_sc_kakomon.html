@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｄランクレベルアップ問題集『Dランク・スキルチェック過去問題セット』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Dランク・スキルチェック過去問題セット</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>Dランク・スキルチェック過去問題セット</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>Eメールアドレス</summary>
+<header><h2>Eメールアドレス</h2></header>
+<article>
+<details id="c1-1"><summary>FINAL問題 Eメールアドレス </summary>
+<header><h3>Eメールアドレス</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+t = input()
+print(s + '@' + t)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+t = input()
+
+mail_address = s + '@' + t
+print(mail_address)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字列と文字列の間に指定の文字列を挟むという問題です。文字列と文字列の接続は <code>+</code> の記号を使います。</p>
+</ul>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">s = input()
+t = input()
+
+mail_address = f"{s}@{t}"
+print(mail_address)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>という書き方もあります。<strong>f文字列</strong>と呼ばれています。f は <em>format</em> (書式) の頭文字です。簡単に解説することは難しいのでここではしません。興味ある方はChatGPTなどに訊いてみてください。🤓</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">FINAL問題 Eメールアドレス </a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">Eメールアドレス</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>N倍の文字列</summary>
+<header><h2>N倍の文字列</h2></header>
+<article>
+<details id="c2-1"><summary>FINAL問題 N倍の文字列</summary>
+<header><h3>N倍の文字列</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+for _ in range(N):
+    print('*', end='')
+print()
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+print('*' * N)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>Python3 ならば例２の書き方で出来あがってしまいます。文字列を整数で掛け算すると整数の回数分、同じ文字列が繰り返されて繋がります。この方法は、まぁまぁ使います。😁</p>
+</ul>
+<footer><a class="backto" href="#c2-1" onclick="closeAccordion('c2-1')">FINAL問題 N倍の文字列</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">N倍の文字列</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>Dランク・スキルチェック過去問題セット</p>
+</footer>
+</body>
+</html>

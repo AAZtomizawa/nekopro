@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｄランクレベルアップ問題集『Dランク・スキルチェック見本問題セット』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Dランク・スキルチェック見本問題セット</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top"><h1>【paiza問題集 解説】<br>Dランク・スキルチェック見本問題セット</h1></header>
+<main>
+
+<section>
+<details id="c1"><summary>掛け算</summary>
+<header><h2>掛け算</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = int(input())
+b = int(input())
+print(a * b)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>入力が２行か、横並びになっているかで書き方が大きく変わります。なるべく多くの書き方を覚えてサクッと入力を済ませられるようになっておきましょう。😉</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">掛け算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>足し算</summary>
+<header><h2>足し算</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a, b = map(int, input().split())
+print(a + b)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今度は横並びになっています。分割後の値の個数にだけ気をつければ、全部まる暗記です。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">足し算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>一番小さい値</summary>
+<header><h2>一番小さい値</h2></header>
+<ul>
+<p>この問題は、入力方法によって書き方が大きく変わります。</p>
+</ul>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n_1 = int(input())
+n_2 = int(input())
+n_3 = int(input())
+n_4 = int(input())
+n_5 = int(input())
+
+print(min(n_1, n_2, n_3, n_4, n_5))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>値の中から最小値を求めるのに <strong class="func">min()</strong> 関数を使います。 () の中に変数を書いてそれぞれカンマで区切れば、あとは関数が最も小さな数を見つけてその値を返してくれます。</p>
+<p>最大値を求める時は <strong class="func">max()</strong> を使います。セットで覚えておきましょう。</p>
+</ul>
+<ul>
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = [int(input()) for _ in range(5)]
+print(min(n))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>もう１つの入力方法です。</p>
+<p><a href="../../3/0020input.html#normal-1h" class="linked" target="_blank">複数行の整数をリストで入力する - 内包表記</a></p>
+<p>流れを見て理解してみましょう。全然意味がわからなったとしても、この書き方を暗記してしまえば不都合は無いでしょう。暗記しきれなければ都度見に来てください。😊</p>
+<br>
+<p>リストという型にまとめると、変数１つ書くだけで済みます。リストはＣランクで学んで使いますので、今はまだわからなくても大丈夫！</p>
+</ul>
+<ul>
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n_1 = int(input())
+n_2 = int(input())
+n_3 = int(input())
+n_4 = int(input())
+n_5 = int(input())
+
+min_ = 127
+if n_1 < min_:
+    min_ = n_1
+if n_2 < min_:
+    min_ = n_2
+if n_3 < min_:
+    min_ = n_3
+if n_4 < min_:
+    min_ = n_4
+if n_5 < min_:
+    min_ = n_5
+
+print(min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><strong class="func">min()</strong> 関数の存在を知らなくても、リストとかわからなくても、 <strong class="if"></strong>文さえわかれば解決できる！しかしこれ、比較数が100万個あったら途方に暮れてしまうだろうということは容易に想像つくでしょう。そんな時のためにも <strong class="func">min()</strong> 関数をマスターしてね。😉</p>
+<p><code>min_</code> の初期値を <code>127</code> にしてあります。条件を見ると 100以下の数となっていますので、100以上の数でしたら問題ありません。上限が変わったときのためにもなるべく大きい数に設定しておくと良いです。</p>
+<br>
+<p>『なるべく大きい数と言われても、上限がどのくらいかよくわからないし……』</p>
+<br>
+<p>そんなあなたに <code>float('inf')</code> をオススメします。これは<strong>無限</strong>という意味です。決まった上限がありません。数値の代わりに、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">min_ = float('inf')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と書くだけです。上限設定に悩むことから開放されます。</p>
+<br>
+<p>反対に最大値を求める場合は、下限をなるべく小さな数で初期化します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">max_ = -float('inf')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>意識していないと無限とマイナス無限を書き間違えます。😅 注意！</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">一番小さい値</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>文字の一致</summary>
+<header><h2>文字の一致</h2></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">a = input()
+b = input()
+
+if a == b:
+    print('OK')
+else:
+    print('NG')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今後、学習を進めていくと <strong class="if"></strong>文を使わない条件分岐の書き方も紹介することがあります。しかしどんな方法を選んだとしても条件分岐には違いありませんので、なるべく早く、基礎の基礎である <strong class="if"></strong>文を使いこなせるようになっておきましょう。 <strong class="if"></strong>文は永久に不滅です！</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">文字の一致</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>Dランク・スキルチェック見本問題セット</p>
+</footer>
+</body>
+</html>

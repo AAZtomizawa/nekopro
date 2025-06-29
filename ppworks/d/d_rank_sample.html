@@ -52,7 +52,7 @@ print(a + b)
 </section>
 
 <section>
-<details id="c3"><summary>一番小さい値</summary>
+<!-- <details id="c3"><summary>一番小さい値</summary> -->
 <header><h2>一番小さい値</h2></header>
 <ul>
 <p>この問題は、入力方法によって書き方が大きく変わります。</p>
@@ -137,6 +137,36 @@ print(min_)
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>意識していないと無限とマイナス無限を書き間違えます。😅 注意！</p>
+</ul>
+<ul>
+<li><p>例４</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">min_ = float('inf')
+for _ in range(5):
+    n = int(input())
+    if n < min_:
+        min_ = n
+
+print(min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これが<strong class="for"></strong>文と<strong class="if"></strong>文を組み合わせた基本中の基本の書き方です。入力した <code>n</code> が現在の最小値 <code>min_</code> よりも小さかったら、最小値を <code>n</code> に書き換えます。</p>
+<br>
+<p><strong class="if"></strong>文のところは次のように書くこともできます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">min_ = float('inf')
+for _ in range(5):
+    n = int(input())
+    min_ = min(min_, n) # ←ココ
+
+print(min_)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>min_</code> と <code>n</code> の小さい方を <code>min_</code> に代入しています。こうすると一行で書けますし、比較する値が後から増減することになったとしても書き換えが簡単です。</p>
 </ul>
 <footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">一番小さい値</a></footer>
 </details>

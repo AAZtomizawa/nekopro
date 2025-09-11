@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza Ｄランクレベルアップ問題集『Dランク・実力確認問題セット2』のプラスαな解説を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Dランク・実力確認問題セット2</title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top">
+<h1>【paiza問題集 解説】<br>Dランク・実力確認問題セット2</h1>
+<p>ヒントを頼りにプログラムを組んでみてください。</p>
+</header>
+
+<main>
+
+<section>
+<details id="c1"><summary>最初のメッセージ</summary>
+<header><h2>最初のメッセージ</h2></header>
+<ul>
+<p>文字列の切り出し問題です。</p>
+<p><code>user_id:</code> は、文字列 <var>S</var> の前に必ず付きます。問題文に<strong class="b">『文字列 'user_id:' と 文字列 S が<strong>空白区切り</strong>で与えられるので』</strong>とありますので、<code>user_id:</code> と 文字列 <var>S</var> を分割して文字列 <var>S</var> だけを取得する方法で組み上げてみましょう。</p>
+<p>入力時に分割する場合は <a href="../../3/0020input.html#easy-3h" class="linked" target="_blank">この方法</a> で入力し、また、<strong class="func">input()</strong> 関数で一行全てを入力してから分割する場合は <a href="../../2/0050usefulstrtype.html#-split-h" class="linked" target="_blank">このメソッド</a> を使うとよいでしょう。</p>
+</ul>
+<ul>
+<p>もう１つ、<strong class="func">input()</strong> 関数で入力後に <a href="../../2/0010list.html#c3-2h" class="linked" target="_blank">スなんとか</a> という機能を使い、文字列の欲しい部分だけを切り出す方法があります。<code>user_id:</code> と、その次の半角スペースの文字数は固定です。ならばその文字数を数えて、それ以降を文字列 <var>S</var> として切り出すとよいでしょう。</p>
+</ul>
+<ul>
+<p>最後に取得した文字列 <var> S</var> を使って画面に出力します。</p>
+<p>一般的には文字列と文字列を <code>+</code> で繋げる方法で出力できます。</p>
+<p>また、<strong class="func">print()</strong> 関数の () 内で文字列ごとにカンマで区切ると自動で半角スペースが付く特性を利用することもできます。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">最初のメッセージ</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>攻撃力の計算</summary>
+<header><h2>攻撃力の計算</h2></header>
+<ul>
+<p>問題文に N を 5回掛けると書かれていますので、単純にこれを式にすると、</p>
+<p class="inlook">5 × 5 × 5 × 5 × 5</p>
+<p>と書けます。そしてこれは N の 5乗と同等です。</p>
+<p class="inlook"><math><msup><mi>N</mi><mn>5</mn></msup></math></p>
+<p>累乗(べき乗)の書き方は <a href="../../1/0010importantsof4.html#c1-h" class="linked" target="_blank">こちら</a> を見て参考にしてください。</p>
+</ul>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">攻撃力の計算</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>2 ケタで表示</summary>
+<header><h2>2 ケタで表示</h2></header>
+<ul>
+<p>こういうのを <strong>０埋め</strong> と言いますが、これが意外と地味に難しいのです。😓</p>
+</ul>
+<ul>
+<p>まずは簡単な方法としては <strong class="if"></strong>文を使って、数が１桁か２桁かで出力形式を変えます。数が１桁の時は先頭に０を付ける、２桁の時はそのまま表示するという感じです。０を付ける時は<strong>型</strong>に注意してください。</p>
+</ul>
+<ul>
+<p>他に <strong>f文字列</strong> を使って書くこともできます。f はフォーマット<em>(formatted)</em>の f です。書式が難しいので詳しく説明するのも困難なのですが、とりあえずこの問題を f文字列形式で書くと次のようになります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = '1'
+print(f"{n:0>2}")
+</code></pre>
+<code>01</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>変数を {} で囲うと、型に関係なく文字列として扱われます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 1
+print(f"{n}")
+print(type(f"{n}"))
+</code></pre>
+<code>1</code><br>
+<code>&lt;class 'str'&gt;</class></code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>{n:0>2}</code> は、左から<strong class="b">『「nを <code>{n}</code>」「０埋めして <code>0</code>」「(<code>n</code>を)右寄せで <code>></code>」「２桁 <code>2</code>」の書式で出力する』</strong>という意味になっています。変数と書式の間はコロン <code>:</code> で区切ります。書式の書き順は決まっています。</p>
+<br>
+<p><code>0</code> を別の文字に変えるとその文字で埋められます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 1
+print(f"{n:%>2}")
+</code></pre>
+<code>%1</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>2</code> を他の数に変えると表示する桁数(文字数)が変えられます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 123
+print(f"{n:*>10}")
+</code></pre>
+<code>*******123</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p><code>n</code> は文字列に変換されるので、数や数字でなくても使えます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = 'abc'
+print(f"{n:@^11}") # ^ は中央寄せ
+</code></pre>
+<code>@@@@abc@@@@</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今は理解するのは難しいかもしれませんが、これだけでも知っておくと今後役に立つところがありますので、いじりまくって試してみてください。😊 もちろん他にもたくさんの機能がありますので、興味がありましたらネットなどでぜひ調べてみてください。👍</p>
+</ul>
+<ul>
+<p>他にも文字列で使える <strong class="func">zfill()</strong>メソッドというのもあります。</p>
+<p><a href="https://docs.python.org/ja/3/library/stdtypes.html#str.zfill" class="linked" target="_blank">組み込み型 Python3 ドキュメント</a></p>
+<p>この関数を使う場合、次のように書きます。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">n = '3'
+print(n.zfill(2))
+</code></pre>
+<code>03</code>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>文字列専用のメソッドなので、整数型<em>(int)</em>の時は文字列型に変換する必要があります。</p>
+<p>使い方はリンク先を読みつつ、たくさんいじってみてください。😊</p>
+</ul>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">2 ケタで表示</a></footer>
+</details>
+</section>
+ 
+<section>
+<details id="c4"><summary>N 番目のアルファベット</summary>
+<header><h2>N 番目のアルファベット</h2></header>
+<ul>
+<p>まず整数 <var>N</var> が 1 〜 5 の範囲内で与えられます。(条件 1 ≦ N ≦ 5)</p>
+<p>問題文の<strong class="b">『辞書順における N 番目のアルファベットを大文字で』</strong>とはつまり、</p>
+<p class="inlook">1 → A<br>2 → B<br>3 → C<br>4 → D<br>5 → E</p>
+<p>ということでしょう。</p>
+</ul>
+<ul>
+<p>まずは <strong class="if"></strong> と <strong class="elif"></strong> を使って書く方法があります。この方法で組む場合はもうこれ以上のヒントは不要でしょう。😉</p>
+</ul>
+<ul>
+<p>次は、予め文字列で <code>'ABCDE'</code> を作っておく方法です。位置番号が 0 から始まりますので、N番目の <code>N</code> から 1 を引いて合わせます。あとは添字を使って出力します。</p>
+</ul>
+<ul>
+<p>Ｃランクレベルの解き方ですが、辞書を使って組む方法もあります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">dic = {'1': 'A', '2': 'B', '3': 'C', '4': 'D', '5': 'E'}
+print(dic[input()])
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>今はまだわからなくても大丈夫ですが、Ｃランクでは使うと捗るようになりますので、その時が来たら頑張って学習しましょう！🎉</p>
+<p>辞書は「<a href="../../2/0070dict.html" class="linked" target="_blank">２章 - 辞書型</a>」で学習できます。</p>
+</ul>
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">N 番目のアルファベット</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>【paiza問題集 解説】<br>Dランク・実力確認問題セット2</p>
+</footer>
+</body>
+</html>

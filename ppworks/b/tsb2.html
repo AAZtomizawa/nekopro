@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『Bランク実力確認問題セット2 』を解くための助言を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Bランク実力確認問題セット1 </title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top">
+<h1>Bランク実力確認問題セット2 </h1>
+<p>ヒントを頼りにプログラムを組んでみてください。</p>
+</header>
+<main>
+
+<section>
+<details id="c1"><summary>俳句</summary>
+<header><h2>俳句</h2></header>
+<ul>
+<p>一行の文字列から、半角スペース区切りで３つの文字列に分割する問題です。</p>
+<li>
+<p>入力を一行で受け取ってから分割する場合<br><a href="../../2/0050usefulstrtype.html#-split-h" class="linked" target="_blank">.split() メソッド</a></p>
+</li>
+<li>
+<p>入力ついでに分割してしまう場合<br><a href="../../3/0020input.html#easy-3h" class="linked" target="_blank">横並びの文字列を入力する - input().split()</a></p>
+</li>
+<p>問題集やスキルチェックで頻繁に使うのは後者ですが、 <strong class="func">.split()</strong> メソッドの機能自体を理解しておくと応用が利くようになります。</p>
+<br>
+<p><strong class="func">.split()</strong> メソッドを使わない原始的な方法も考えられますが、そこまでする必要は無いでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">俳句</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>総和と総積</summary>
+<header><h2>総和と総積 </h2></header>
+<ul>
+<p>総和は<strong class="func">sum()</strong>関数を使えば簡単ですが、この問題では総積も同じ数列を使って求めます。よって別々に計算するよりは同時に計算したほうがラクそうです。</p>
+<p>数値を１つを入力して足し算と掛け算をして、それぞれの変数に計算結果を保存していきます。</p>
+<p>変数に都度保存していくというこの方法はあまり賢くないように思えるかもしれませんが、基本的な手法でもあり、様々なアルゴリズムでも使われています。「一行でも少なく、少しでも簡潔に」を意識してばかりいると、かえってわかりにくいプログラムとなることに繋がってしまいます。</p>
+<p>この後の問題もこの「計算結果を都度変数に保存していく」テクニックが使われるようです。関数を使うとかえって効率悪くなることもあることを踏まえつつ、この問題のプログラムを書いてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">総和と総積</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>陣地取りゲーム</summary>
+<header><h2>陣地取りゲーム</h2></header>
+
+<article>
+<details id="c3-1"><summary>考え方</summary>
+<header><h3>考え方</h3></header>
+<ul>
+<p>まずは問題を理解してイメージしてみましょう。問題の入力例1 を使って進めていきます。</p>
+<p><strong class="b">『A くんと B くんは、1 列に並んだ N 個のマスでゲームをしています。<br>ゲーム開始時、すべてのマスはどちらの陣地でもありません。』</strong></p>
+<ul>
+<li>N 個のマスがある</li>
+<li>すべてのマスはどちらの陣地でもない</li>
+</ul>
+<p>入力例1 では、N = 5 となっていますので、マスが５つあることになります。</p>
+<div class="x-fit">
+<table>
+<tbody>
+<tr>
+<td>　</td><td>　</td><td>　</td><td>　</td><td>　</td>
+</tr>
+</tbody>
+</table>
+</div>
+</ul>
+<ul>
+<p>次に、このゲームのルール説明です。</p>
+<p><strong class="b">『どちらの陣地でもないマスを獲得すると、そのマスはそのプレイヤーの陣地になる。』</strong></p>
+<p>要するに空いているマスは占拠できるということです。</p>
+<div class="x-fit">
+<table>
+<thead>
+<tr>
+<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>　</td><td>　</td><td>　</td><td>Ａ</td><td>　</td>
+</tr>
+</tbody>
+</table>
+</div>占領
+<br><hr><br>
+<p><strong class="b">『すでに自分の陣地であるマスを獲得しようとしても何も起きない。』</strong></p>
+<div class="x-fit">
+<table>
+<thead>
+<tr>
+<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>　</td><td>　</td><td>　</td><td>Ａ</td><td>　</td>
+</tr>
+<tr>
+<td>　</td><td>　</td><td>　</td><td>↑<br>Ａ</td><td>　</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>何かイベントが発生するということはなく、静かに陣地を増やしていくだけのゲームのようです。</p>
+<br><hr><br>
+<p><strong class="b">『相手の陣地を奪うことはできない。』</strong></p>
+<div class="x-fit">
+<table>
+<thead>
+<tr>
+<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>　</td><td>Ｂ</td><td>　</td><td>Ａ</td><td>　</td>
+</tr>
+<tr>
+<td>　</td><td>↑<br>Ａ</td><td>　</td><td>　</td><td>　</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>野蛮な争いはしないようです。</p>
+</ul>
+</ul>
+<ul>
+<p>最後に、より多くの陣地を獲得した方の勝ちとなります。</p>
+</ul>
+<footer><a class="backto" href="#c3-1" onclick="closeAccordion('c3-1')">考え方</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-2"><summary>プログラム構成を考える</summary>
+<header><h3>プログラム構成を考える</h3></header>
+<ul>
+<li><p>マスの入力が用意されていませんので、自分で作る必要があります。</p></li>
+<li><p>各プレイヤーが獲得した陣地のカウントをする必要があります。</p></li>
+<li><p>勝敗を判定する必要があります。</p></li>
+<br>
+<p>どのようなプログラムにするにも、最低限この３つの要素は必要になりそうです。</p>
+</ul>
+<footer><a class="backto" href="#c3-2" onclick="closeAccordion('c3-2')">プログラム構成を考える</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-3"><summary>案 - その１</summary>
+<header><h3>マスをリストでつくる</h3></header>
+<ul>
+<p>N 個のマスをリストで用意します。入力例1 では N = 5 となっていますので、５つのマスを用意します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cells = ['', '', '', '', '']
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これを N 個つくる方法に書き換えてください。<code>''</code> の代わりに <code>None</code> とかでもイケます。👍</p>
+</ul>
+<ul>
+<p>次に、各プレイヤーが占拠した陣地をカウントする為の変数を用意します。この変数を使って、最後に勝敗の判定をします。</p>
+</ul>
+<ul>
+<p>ゲーム開始です。１ターンずつ順番に入力をし、ルールに則って空白地を占拠していきます。このときに、陣地の数もカウントアップしておきます。</p>
+<p>これを Q ターン行います。A と B が交互に行うわけではありませんので注意。</p>
+</ul>
+<ul>
+<p>すべてのターンが終了したら、勝敗の判定を行い、結果を画面に出力してプログラム終了です。</p>
+</ul>
+<footer><a class="backto" href="#c3-3" onclick="closeAccordion('c3-3')">案 - その１</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-4"><summary>案 - その２</summary>
+<header><h3>まとめてカウントする</h3></header>
+<ul>
+<p>カウントはターン毎でなく、全てのターン終了後に行うこともできます。<code>'A'</code> の数 <code>'B'</code> の数をまとめて数えて変数に代入すれば、初めにカウント用の変数を初期化して用意する必要がなくなります。</p>
+<ul>
+<li><strong class="func">.count()</strong> メソッドを使う</li>
+<li><code>from collection import Counter</code> モジュールを呼び出してアレを使う</li>
+</ul>
+<p>カウントする方法は他にもあります。なかなか寝付けない時にでもたくさんの方法を考えてみてください。😊</p>
+</ul>
+<footer><a class="backto" href="#c3-4" onclick="closeAccordion('c3-4')">案 - その２</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-5"><summary>案 - その３</summary>
+<header><h3>セットを使う</h3></header>
+<ul>
+<p>初めは空のセットを用意し、番号をセットに加えていくと同時にカウントアップする方法です。セットに入っている値(番号)は、A もしくは B が占拠済みのマスを指しています。この方法ならば初めに N マスを用意しておく必要がありません。この方法はリストでも可能ですが、今回の場合は効率の良い探索処理をしてくれるセットのほうが向いています。</p>
+<p>プログラム構造はほとんど変わらないので、試してみてください。</p>
+</ul>
+<footer><a class="backto" href="#c3-5" onclick="closeAccordion('c3-5')">案 - その３</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c3-6"><summary>おまけ</summary>
+<header><h3>いろいろ考えていじりまくってみましょう</h3></header>
+<ul>
+<p><strong class="b">『すでに自分の陣地であるマスを獲得しようとしても何も起きない。』<br>『相手の陣地を奪うことはできない。』</strong></p>
+<p>この２つの処理方法は同じです。占拠しようとしているマスが既に自分の陣地であっても相手の陣地であっても何もしないからです。「何もしない」ので、プログラムを組んでいるその場で気付いたかとも思われますが。</p>
+<p>「何もしない」という部分を、今度はあえて <strong>continue</strong> を使って組み換えてみてください。そしてどんな見た目になるのかを実際に確認してみてください。</p>
+<p>その他、特定の処理を関数にしてみたり、関数型で書いたりもしてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c3-6" onclick="closeAccordion('c3-6')">おまけ</a></footer>
+</details>
+</article>
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">陣地取りゲーム</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>陣地取りゲーム 2D</summary>
+<header><h2>陣地取りゲーム 2D</h2></header>
+
+<article>
+<details id="c4-1"><summary>問題を整理する</summary>
+<header><h3>問題を整理する</h3></header>
+<ul>
+<p>前回は直線だったマスが、今度は面になっています。ということは二次元リストを使うのだろうということは想像つくでしょう。</p>
+<p>今度はルールが複雑化しています。</p>
+<hr>
+<p><strong class="b">『どちらの陣地でもないマスを獲得すると、そのマスはそのプレイヤーの陣地になる。』</strong></p>
+<p>これは前回同様のルールです。</p>
+<hr>
+<p><strong class="b">『相手の陣地を獲得しようとすると、そのマスはどちらの陣地でもなくなる（中立化される）。』</strong></p>
+<p>言い換えれば<strong>空白のマスに戻る</strong>ということです。</p>
+<hr>
+<p><strong class="b">『すでに自分の陣地であるマスを再度獲得しようとすると、そのマスは完全にそのプレイヤーの陣地となり、それ以降は相手に奪われたり、中立化されたりしない（ロックされる）。』</strong></p>
+<p>同じマスに続けて二回訪れないと「占拠した」ことにならないということです。餌を見つけた時のアリみたいですね。😆</p>
+<hr>
+<p><strong class="b">『すでにロックされているマスは、誰が行っても状態は変化しない。』</strong></p>
+<p>これも前回の<strong class="b">『すでに自分の陣地であるマスを獲得しようとしても何も起きない。』『相手の陣地を奪うことはできない。』</strong>と同様、「何もしない」という処理になりそうです。</strong></p>
+</ul>
+<ul>
+<p>ゲームの判定方法も前回同様、より多くの陣地を獲得したほうの勝ちとなっています。</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">問題を整理する</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>二次元リストでマップをつくる</summary>
+<header><h3>二次元リストでマップをつくる</h3></header>
+<ul>
+<p>二次元のリストでマップを作る際に注意しなければならないのが、コピーの問題です。一次元リストは、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cells = [''] * N
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と書くことができましたが、二次元リストは、</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">cells = [[''] * N] * M]
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>と書くことができません。(理由は省略)<br><small><small>そういえばうちのサイト、二次元マップの作り方を扱ってなかったな・・・。</small></small></p>
+<p><small><small>そ、</small></small>そんな時は、<strong class="for"></strong>文を使って一次元リストを増やしましょう！😆</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">二次元リストでマップをつくる</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>ルールに基づいてゲームを進める</summary>
+<header><h3>「占有」と「占拠」</h3></header>
+<ul>
+<p>「占有」とは、『自分の所有とすること <small><em>(大辞泉より)</em></small>』です。<br>「占拠」は、『ある場所を占有して他人を寄せつけないこと。<small><em>(大辞泉より)</em></small>』です。「占領」も同じ様な意味合いです。</p>
+<p>占有するだけでは、相手プレイヤーに<strong class="b">中立化</strong>されてしまいます。占有してから続けてもう一度同じマスを獲ることで<strong class="b">占拠 (ロック)</strong>することができます。</p>
+<p>マップには、空白地は <code>''</code> とし、各プレイヤーは <code>A</code> と <code>B</code> となっているので、占有の時は <code>a</code> <code>b</code> と、小文字で表記することにしておきましょうか。</p>
+<br>
+<p>前回と比べて今回の違いは、マップが二次元となったところと、上記のルールが新たに追加されたところです。二次元マップが作れたら、残りはこのルールに集中してプログラムを組んでいきます。</p>
+</ul>
+<ul>
+<p><strong class="if"></strong>文では次のように書きます。</p>
+<ul>
+<li>まず、空白地 <code>''</code> になっているところは占有となります。プレイヤーＡの場合は <code>a</code>、プレイヤーＢの場合は <code>b</code> に変更します。</li>
+<li>もし、相手の占有地を獲ろうとした時は、そこは空白地に戻します。</li>
+<li>もし、獲ろうとしたマスが自分の占有地だった時は、占拠(ロック)になります。<code>a</code> の時は <code>A</code> へ、<code>b</code> の時は <code>B</code> へ変更します。</li>
+<br>
+<li>それ以外は「何もしない」ことになります。<strong class="b">『すでにロックされているマスは、誰が行っても状態は変化しない。』</strong>に該当します。</li>
+</ul>
+<p>二次元リストへのアクセスがちょっとアヤシイという方は <a href="../../2/0120dimension2.html#c3-h" class="linked" target="_blank">２章 二次元リスト</a> を読んで確認してください。</p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">ルールに基づいてゲームを進める</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>カウント処理</summary>
+<header><h3>カウントをどこで行うか</h3></header>
+<ul>
+<p>問題文に書かれている「陣地」とは、<code>A</code> と <code>B</code> の他に、<code>a</code> と <code>b</code> も該当します。つまりプレイヤーＡの陣地は <code>a</code> と <code>A</code>、プレイヤーＢの陣地は <code>b</code> と <code>B</code> の所になります。</p>
+<p>占有したところは単純にカウントを +1 するだけで良いのですが、占拠した時と中立化した時とでも、それぞれカウントを考慮しなければなりません。</p>
+<p>どこでどのようなカウントを行えばよいか、考えてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">カウント処理</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-5"><summary>最後に</summary>
+<header><h3>最後に</h3></header>
+<ul>
+<p>残りは勝敗判定です。正しくカウント処理ができていれば、前回と同様の記述で問題ないはずです。</p>
+<p>前回から追加されたルールと、それに伴うカウント処理が複雑で、素直に書いて出来上がったプログラムもちょっと読みにくくなっている状態にあるかもしれません。きちんと整理できていればそれなりに読みやすくはなっているかと思われますが、他にもどのような構造のプログラムで作れるか、いろいろ考えていじりまくってみてください。(ヒント： <strong class="if"></strong>文は辞書を使うと簡潔に書けることがあります)<br>関数型やクラス型でも書いてみましょう。</p>
+<p>ランクＢの問題はいろんな組み方ができて遊び甲斐がありますので、一回クリアしたら終わりとせず、考えまくってたくさんのプログラムを書きまくってみてください。👍</p>
+</ul>
+<footer><a class="backto" href="#c4-5" onclick="closeAccordion('c4-5')">最後に</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">陣地取りゲーム 2D</a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>Bランク実力確認問題セット2 </p>
+</footer>
+</body>
+</html>

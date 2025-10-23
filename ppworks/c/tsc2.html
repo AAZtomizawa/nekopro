@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Python3プログラミング paiza 『Cランク実力確認問題セット2 』を解くための助言を公開しています。PC歴40年以上、プログラミング歴足掛け15年以上、完全独学、業界未経験のシロウトネコ富沢エアズが、入門者向けにラフなプログラミング学習をお送りしています。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/prism_coy.css">
+<script type="text/javascript" src='../../js/prism.js'></script>
+<script type="text/javascript" src='../../js/custom.js'></script>
+<title>【paiza問題集 解説】Cランク実力確認問題セット2 </title>
+<div class="homebtn"><a href="../" id="homeBtn">🔙</a></div>
+<div class="topbtn"><a href="#" id="topBtn" onclick="closeAllAccordions()">🔝</a></div>
+</head>
+<body>
+<header id="top">
+<h1>Cランク実力確認問題セット2 </h1>
+<p>ヒントを頼りにプログラムを組んでみてください。</p>
+</header>
+<main>
+
+<section>
+<details id="c1"><summary>しりとり</summary>
+<header><h2>しりとり</h2></header>
+
+<article>
+<details id="c1-1"><summary>１文字を取得する</summary>
+<header><h3>１文字を取得する</h3></header>
+
+<ul>
+<p>問題文に書かれているとおり、入力 <var>S</var> の末尾の文字と、入力 <var>T</var> の先頭の文字が一致しているかどうかを判定するプログラムを作ることが求められているところまではわかると思います。まずは入力 <var>S</var> の末尾の文字と、入力 <var>T</var> の先頭の文字を取得することを目指します。</p>
+</ul>
+<footer><a class="backto" href="#c1-1" onclick="closeAccordion('c1-1')">１文字を取得する</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-2"><summary>len()関数を使う</summary>
+<header><h3>len()関数を使う</h3></header>
+<ul>
+<p>文字列からある１文字を取得するには添字を使いますが、１文字目を参照する文字列 <var>T</var> はともかく、文字数が定まっていない文字列 <var>S</var> の末尾をどう狙い撃ちするかが問題です。</p>
+<p>そこで <strong class="func">len()</strong> 関数を使って文字列 <var>S</var> の文字数を取得し、末尾の文字を参照します。その際文字数と、０から数える文字列の位置番号に１差が生じますので、そこに注意して文字列 <var>S</var> の末尾の文字を取得してみましょう。</p>
+</ul>
+<footer><a class="backto" href="#c1-2" onclick="closeAccordion('c1-2')">len()関数を使う</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-3"><summary>添字で末尾を取得する</summary>
+<header><h3>添字で末尾を取得する</h3></header>
+<ul>
+<p>Python3は、添字に負の整数を使うと末尾から順に参照できます。<a href="../../2/0010list.html#c3-2h" class="linked" target="_blank">こちら</a> にある表を参考にプログラムを組んでみてください。</p>
+</ul>
+<footer><a class="backto" href="#c1-3" onclick="closeAccordion('c1-3')">添字で末尾を取得する</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-4"><summary>文字列を逆順にする</summary>
+<header><h3>文字列を逆順にする</h3></header>
+<ul>
+<p>文字列を逆順にすると、末尾にあった文字が先頭に位置するようになります。</p>
+<p><a href="../../2/0010list.html#c3-2h" class="linked" target="_blank">２章 - リスト型</a></p>
+<p>この問題にはこの方法はふさわしいとは言い難いのですが、この方法でも組んでみてください。結果理想通りに動かなかったとしても、思いついたことはできるだけ形にしてみることも大切です。👍</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">文字列を逆順にする</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c1-5"><summary>正規表現を使う</summary>
+<header><h3>正規表現を使う</h3></header>
+<ul>
+<p>Ｄランクレベルの解き方ではありませんが、正規表現を使うとより自由度が高まります。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">import re
+
+S, T = input().split()
+s = re.search(r".$", S).group()
+t = re.search(r"^.", T).group()
+
+if s == t:
+    print('YES')
+else:
+    print('NO')
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>『なにこれ、どうなってんの？』と興味がわきましたら、paiza問題集にも正規表現が学べる問題集がありますので、ぜひこなしてみてください。今解いてるこの問題集を修了できるレベルなら難しくはないでしょう。その <a href="../textworks/re.html" class="linked" target="_blank">正規表現の問題集の解説</a> もありますので、そちらも参考にしてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">正規表現を使う</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c1" onclick="closeAccordion('c1')">しりとり</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c2"><summary>投票サイト</summary>
+<header><h2>投票サイト</h2></header>
+
+<ul>
+<p>これは、<strong class="if"></strong>と<strong class="elif"></strong>と <strong>else</strong>のいずれかを使って組み上げられます。</p>
+<p><strong class="if"></strong>文の基本さえわかれば難しいことはないでしょう。</p>
+</ul>
+
+<footer><a class="backto" href="#c2" onclick="closeAccordion('c2')">投票サイト</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c3"><summary>宿題管理</summary>
+<header><h2>宿題管理</h2></header>
+
+<ul>
+<p>それぞれの入力から M 以下の数を探してカウントするという線形探索問題です。１つずつ入力しながら調べるか、すべての値を取得してから１つずつ調べていくかの違いくらいで、プログラムの構成は大きく異なりますが、やることは同じです。</p>
+<ul>
+<li>比較演算</li>
+<li>型変換</li>
+<li><strong class="for"></strong>文</li>
+<li><strong class="if"></strong>文</li>
+</ul>
+<p>プログラミングの基礎が盛り込まれた問題になっています。１つの方法だけでなく、100点を取れなくても構いませんので、あらゆる組み方をぜひ考えてみてください。ここで頭をやわらかくしておくと後々ラクになります。😄</p>
+</ul>
+
+<footer><a class="backto" href="#c3" onclick="closeAccordion('c3')">宿題管理</a></footer>
+</details>
+</section>
+
+<section>
+<details id="c4"><summary>M 件目の仕事 </summary>
+<header><h2>M 件目の仕事 </h2></header>
+
+<article>
+<details id="c4-1"><summary>考え方</summary>
+<header><h3>考え方</h3></header>
+<ul>
+<p><strong class="for"></strong> と <strong class="if"></strong>を使ってカウントしていけば求められます。</p>
+<p>もう１つ、剰余算(余りを求めるアレ)を使っても求められます。この方法ならば１つの計算式を作るだけで一発で求められます。</p>
+<br>
+<p>結果は n番目ではなく、<strong>n番目の人の名前</strong>を出力しますので、どちらの方法も名前を<strong>リスト</strong>にして使うことにします。</p>
+</ul>
+<footer><a class="backto" href="#c4-1" onclick="closeAccordion('c4-1')">考え方</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-2"><summary>for文を使って求める</summary>
+<header><h3>for文を使って求める</h3></header>
+<ul>
+<p>まず、n番目の仕事を請け負う人が<strong>何番目</strong>の人かを求めます。問題の入力例の場合、</p>
+<p class="inlook">1番目 → 0<br>2番目 → 1<br>3番目 → 2<br>4番目 → 3<br>5番目 → 0<br>6番目 → 1<br>7番目 → 2<br></p>
+<p>で、3番目の人が請け負うことになります。ゼロから数えるので 1 を引いて <strong>2</strong> となります。</p>
+<p>3 を超えたら 0 に戻す方法は、<strong class="if"></strong>文を使って、カウントを 0 に初期化すれば 0 〜 3 の範囲をループするようになります。</p>
+</ul>
+<footer><a class="backto" href="#c4-2" onclick="closeAccordion('c4-2')">for文を使って求める</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-3"><summary>剰余算を使って求める</summary>
+<header><h3>剰余算を使って求める</h3></header>
+<ul>
+<p>入力値を見ると、単純に、</p>
+<p class="inlook">7 % 4 = 3</p>
+<p>とすることで、3番目がすぐに割り出せそうなことに気づくと思います。</p>
+</ul>
+<footer><a class="backto" href="#c4-3" onclick="closeAccordion('c4-3')">剰余算を使って求める</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-4"><summary>結果を出力する</summary>
+<header><h3>結果を出力する</h3></header>
+<ul>
+<p>最後に結果を出力するのですが、求められている出力は n番目ではなく、<strong>n番目の人の名前</strong>です。そのために予め名前をリストとして取得しておきます。</p>
+<p class="inlook">S = ['ichiro', 'jiro', 'saburo', 'shiro']</p>
+<p>リストの要素番号は<strong>ゼロ</strong>から始まります。 <strong class="for"></strong>を使った方法ならばそのまま添字に使えますが、剰余算で求めた場合は、その結果から <strong>1</strong> を引く必要があります。その添字を使って画面に出力すればOKです。</p>
+</ul>
+<ul>
+<p>リストを使わない方法で名前を出力することもできます。</p>
+<p>最初に <var>N</var> と <var>M</var> だけを入力し、n番目を求めてから、名前の入力を <strong>n回ループ</strong>します。</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">for i in range(n):
+    result = input()
+
+print(result)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>これは一回だけ出力する方法にしか使えません。繰り返し求めて出力する場合にはやはりリストが便利です。複数の値をリストにすることで、それらの値を何回でも利用することができるようになります。(再利用)</p>
+</ul>
+<footer><a class="backto" href="#c4-4" onclick="closeAccordion('c4-4')">結果を出力する</a></footer>
+</details>
+</article>
+
+<article>
+<details id="c4-5"><summary>他の方法も考える</summary>
+<header><h3>他の方法も考える</h3></header>
+<ul>
+<p>リストの代わりに辞書を使う方法もあります。今回のような単純な問題の方法としてはプログラムが複雑化してしまいますのであまりおすすめしませんが、ぜひともヒント無しで挑戦してみてください。辞書の作成や扱いに慣れていない方にとっては、良い訓練になるでしょう。</p>
+</ul>
+<footer><a class="backto" href="#c4-5" onclick="closeAccordion('c4-5')">他の方法も考える</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c4" onclick="closeAccordion('c4')">M 件目の仕事 </a></footer>
+</details>
+</section>
+
+</main>
+
+<footer id="ft">
+  <p>Cランク実力確認問題セット2 </p>
+</footer>
+</body>
+</html>

@@ -7,7 +7,7 @@ html {
 
 
 header {
-    font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+    font-family: 'メイリオ', 'Noto Sans', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
     word-wrap: break-word
 }
 
@@ -39,7 +39,7 @@ footer {
 
     #ft::after {
         font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-        content: "\Aネコにしかわからない プログラミング入門 \A© 2024-2026 富沢エアズ (Lnekox) \A Bluesky : @lnekox.bsky.social";
+        content: "\Aネコにしかわからない プログラミング入門 \A© 2024-2026 富沢エアズ (Lnekox) \A Bluesky : @lnekox00.bsky.social";
         white-space: pre;
 }
 
@@ -910,4 +910,3 @@ body::before {
 
     background-color: #5dabff7f;
 }
-

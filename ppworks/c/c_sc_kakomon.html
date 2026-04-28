@@ -1468,7 +1468,7 @@ print(ans)
 </code></pre>
 </div>
 <!-- ----------------------- code end ----------------------- -->
-<p>ここでビットをシフトしています。左にシフトする時は <code>&lt;&lt;</code> 、右にシフトする時は <code>>></code> を使います。そして何ビットシフトするのかを正数で示します。正数とは 0以上の整数のことです。今回は１ビットなので <code>1</code> です。こうすることでビット数が１つずつ増えていく、つまり倍々となっていきます。</p>
+<p>ここでビットをシフトしています。左にシフトする時は <code>&lt;&lt;</code> 、右にシフトする時は <code>>></code> を使います。そして何ビットシフトするのかを 0 以上の整数で示します。今回は１ビットなので <code>1</code> です。こうすることでビット数が１つずつ増えていく、つまり倍々となっていきます。</p>
 <p>これは <code>target *= 2</code> と同等です。<code>target &lt;&lt;= 1</code> と <code>target *= 2</code> のどちらでも等しく動作します。</p>
 <br>
 <p>ということで、初めのプログラムの</p>
@@ -1927,8 +1927,178 @@ while idx < len(S) - (tag_a_len + tag_b_len - 1):
 <footer><a class="backto" href="#c8-6" onclick="closeAccordion('c8-6')">FINAL問題 文字列の抽出</a></footer>
 </details>
 </article>
+<footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">イルミネーション </a></footer>
+</details>
+</section>
 
-<footer><a class="backto" href="#c8" onclick="closeAccordion('c8')">文字列の抽出 </a></footer>
+<section>
+<details id="c9"><summary>イルミネーション</summary>
+<header><h2>イルミネーション</h2></header>
+<article>
+<details id="c9-1"><summary>FINAL問題 イルミネーション</summary>
+<header><h3>イルミネーション</h3></header>
+<ul>
+<li><p>例１</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M = map(int, input().split())
+lights = [0] * N  # 1
+
+for _ in range(M):  # 2
+    a, b = map(int, input().split())
+    lights[a-1] = b
+    
+    if all(lights):  # 3
+        print(sum(lights))
+        break
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<ol>
+<li>初めに全てのライトが消灯しているリストを作ります。</li>
+<li>次に <strong class="for"></strong>文内で都度ライトの照度を書き換えていきます。</li>
+<li>その後、都度全てのライトが 1 以上かどうかをチェックし、<strong>True</strong> ならば全ての照度を足して結果を画面に出力します。全てのライトが点灯した時点で終了しますので、ここで <strong>break</strong> してループを脱出し、プログラムが終了します。</li>
+</ol>
+<br>
+<p>paiza 回答コード例では <strong class="func">min()</strong> 関数を使っていますが、リストの要素の最小値が 0 より大きい、つまり 0 が含まれていなければ全てが点灯しているとみなしています。<strong class="func">all()</strong> 関数と同じことです。但し、 <strong class="func">all()</strong>関数は 0 未満の数も <strong>True</strong> となってしまいます。しかし条件に M が 0 以上とありますので、この問題では不具合は起こりません。</p>
+</ul>
+<ul>
+<li><p>例２</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, M = map(int, input().split())
+lights = {i+1 for i in range(N)}
+brightness = [0] * N
+
+for _ in range(M):
+    a, b = map(int, input().split())
+    brightness[a-1] = b
+    if b:
+        lights -= {a}
+        if not lights:
+            print(sum(brightness))
+            break
+    else:
+        lights |= {a}
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>集合(セット)を使って少し効率を上げたプログラムです。複雑になってしまい、私もミスして一回で100点取れませんでした。😓</p>
+<p>例１では毎回 0 が含まれていないかどうかを、リストの要素を全てチェックしています。 N の上限が 100 なので、最大で 100 の要素をチェックします。 M の最大が 500 なので、100 × 500 = 50000回チェックすることになります。</p>
+<p>セットを使うと、要素の追加削除で１回、全点灯チェックで１回なので、最大で 2 × 500 = 1000回で済みます。</p>
+<p>注意するのが、照度が 0 の時には 「点灯 → 消灯」 に変更しなくてはなりません。(私がミスしたところ😅)<br>この条件文をプログラム例の様に作ればうまくいきます。</p>
+<br>
+<dl>
+<dt>lights -= {a}</dt><dd>差集合。集合(lights)から <code>a</code> を除去します。 <code>a</code> が含まれていない場合は変化なし。</dd>
+<dt>lights |= {a}</dt><dd>和集合。集合(lights)に <code>a</code> を加えます。 <code>a</code> が含まれている場合は変化なし。</dd>
+</dl>
+</ul>
+<ul>
+<li><p>例３</p></li>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N, _ = map(int, input().split())
+lights = {i+1 for i in range(N)}
+brightness = [0] * N
+
+while lights:
+    a, b = map(int, input().split())
+    brightness[a-1] = b
+    if b:
+        lights -= {a}
+    else:
+        lights |= {a}
+
+print(sum(brightness))
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>例２の <strong class="for"></strong> を <strong class="while"></strong> に変更したものです。問題文にはありませんが、必ずどこかで<strong>全てのライトが点灯する</strong>ようです。全てのライトが点灯しないままプログラムが終了してしまうことはありません。ですので、<strong class="if"></strong>文を１つ削って、代わりに <strong class="while"></strong>文を使いました。</p>
+<p>例１も <strong class="while"></strong>文で書いてみてください。またその上で <strong class="func">min()</strong> 関数を使った書き方もしてみてください。それと、もし一度も全点灯しなかった場合があったとしたら、どのような結果となるかも考えてみてください。</p>
+</ul>
+<footer><a class="backto" href="#c9-1" onclick="closeAccordion('c9-1')">FINAL問題 イルミネーション</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c9" onclick="closeAccordion('c9')">イルミネーション </a></footer>
+</details>
+</section>
+
+<section>
+<!-- <details id="c10"><summary>数列の調査</summary> -->
+<header><h2>数列の調査</h2></header>
+<article>
+<!-- <details id="c10-1"><summary>FINAL問題 数列の調査</summary> -->
+<header><h3>数列の調査 (割り算で求める)</h3></header>
+<ul>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="language-python">N = int(input())
+A = list(map(int ,input().split()))
+
+tousa = 'Yes'
+touhi = 'Yes'
+p = A[1] - A[0]
+q = A[1] / A[0]
+for i in range(N-1):
+    if tousa == 'Yes' and A[i+1] - A[i] != p:
+        tousa = 'No'
+    if touhi == 'Yes' and A[i+1] / A[i] != q:
+        touhi = 'No'
+
+print(tousa)
+print(touhi)
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p>まずは条件を理解します。</p>
+<ul>
+<li>数列の数の個数は、２つから５つまで</li>
+<li>数列に 0 は含まない</li>
+</ul>
+<p>そして入力例2 を見ると、差は小数(分数)もありのようです。</p>
+<p>割り算をして小数が発生すると誤差が生じる可能性がありますが、全ての入力で誤差が生じないような数列が用意されているようでしたので、割り算の方法でも100点が取れました。まずはこの方法で進めます。</p>
+</ul>
+<ul>
+<p>【 等差数列 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">1
+    5
+    3 6 9 12 15
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook">3 6 9 12 15</p>
+<p>数列はこのようになっています。このとき、隣り合う数の差がすべて一定になるのが等差数列です。３ずつ増えていく数列となっています。</p>
+<p class="inlook">3 + 3 = 6<br>6 + 3 = 9<br>9 + 3 = 12<br>12 + 3 = 15</p>
+<br><hr><br>
+<p>【 等比数列 】</p>
+<!-- ------------------------- code ------------------------- -->
+<div>
+<pre><code class="plaintext sample-input">2
+    3
+    4 6 9
+</code></pre>
+</div>
+<!-- ----------------------- code end ----------------------- -->
+<p class="inlook">4 6 9</p>
+<p>数列はこのようになっています。4 と 6 に注目したとき、</p>
+<p class="inlook"><math><mn>6</mn><mo>÷</mo><mn>4</mn><mo>=</mo><mfrac style="font-size: 28px"><mrow><mn>3</mn></mrow><mn>2</mn></mfrac></math> (1.5)</p>
+<p>となり、隣り合う数の比率は全て、</p>
+<p class="inlook"><math><mn>2</mn><mo>:</mo><mn>3</mn></math></p>
+<p>となっています。等差数列は同じ数ずつ足していきましたが、等比数列では掛け算をしていきます。</p>
+<p class="inlook">4 × 1.5 = 6<br>6 × 1.5 = 9</p>
+<p>ここで、数列のいずれかに 0 が含まれるとそこからずっと 0 になってしまう為、<strong class="b">『A_i ≠ 0 (1 ≦ i ≦ N)』（数列に 0 は含まない）</strong>という条件が付いていると思われます。</p>
+</ul>
+<ul>
+<p></p>
+</ul>
+<footer><a class="backto" href="#c10-1" onclick="closeAccordion('c10-1')">FINAL問題 数列の調査</a></footer>
+</details>
+</article>
+
+<footer><a class="backto" href="#c10" onclick="closeAccordion('c10')">数列の調査 </a></footer>
 </details>
 </section>
 

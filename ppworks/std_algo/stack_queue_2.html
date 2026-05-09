@@ -132,10 +132,10 @@ for i in range(K):
 </div>
 <!-- ----------------------- code end ----------------------- -->
 <p>N はマスの数 = 入力行数、K はワープ回数です。マス 1 から開始します。</p>
-<p>マス = <mark>1</mark> 2 3 4 5 ← <mark>&nbsp;</mark> は現在地</p>
+<p><pre style="font-family: 'BIZ UDゴシック', 'Noto Sans Mono CJK JP', 'ＭＳ ゴシック';">マス = <mark>1</mark> 2 3 4 5 ← <mark>&nbsp;</mark> は現在地</pre></p>
 <p>1 回目のワープ先のマスは 2 です。</p>
 <div class="inlook">
-<p><pre>  <span style="background-color: aqua;">2</span>  3  4  5 -1
+<p><pre style="font-family: 'BIZ UDゴシック', 'Noto Sans Mono CJK JP', 'ＭＳ ゴシック';">  <span style="background-color: aqua;">2</span>  3  4  5 -1
  -1 -1 -1 -1 -1
   3  3  3  3  3
   1  2  3  4  5
@@ -147,7 +147,7 @@ route = [1, <mark>2</mark>]<br>
 </div>
 <p>2 回目のワープ先は -1 になっていますので、１つ前のマスに戻ります。</p>
 <div class="inlook">
-<p><pre>  2  3  4  5 -1
+<p><pre style="font-family: 'BIZ UDゴシック', 'Noto Sans Mono CJK JP', 'ＭＳ ゴシック';">  2  3  4  5 -1
  -1 <span style="background-color: coral;">-1</span> -1 -1 -1
   3  3  3  3  3
   1  2  3  4  5
@@ -159,7 +159,7 @@ route = [<mark>1</mark>]<br>
 </div>
 <p>3 回目のワープ先のマスは 4 です。</p>
 <div class="inlook">
-<p><pre>  2  3  <span style="background-color: aqua;">4</span>  5 -1
+<p><pre style="font-family: 'BIZ UDゴシック', 'Noto Sans Mono CJK JP', 'ＭＳ ゴシック';">  2  3  <span style="background-color: aqua;">4</span>  5 -1
  -1 -1 -1 -1 -1
   3  3  3  3  3
   1  2  3  4  5
@@ -171,7 +171,7 @@ route = [1, <mark>4</mark>]<br>
 </div>
 <p>4 回目のワープ先のマスは 4 です。</p>
 <div class="inlook">
-<p><pre>  2  3  4  5 -1
+<p><pre style="font-family: 'BIZ UDゴシック', 'Noto Sans Mono CJK JP', 'ＭＳ ゴシック';">  2  3  4  5 -1
  -1 -1 -1 -1 -1
   3  3  3  3  3
   1  2  3  <span style="background-color: aqua;">4</span>  5
@@ -183,7 +183,7 @@ route = [1, 4, <mark>4</mark>]<br>
 </div>
 <p>5 回目のワープ先のマスは 5 です。</p>
 <div class="inlook">
-<p><pre>  2  3  4  5 -1
+<p><pre style="font-family: 'BIZ UDゴシック', 'Noto Sans Mono CJK JP', 'ＭＳ ゴシック';">  2  3  4  5 -1
  -1 -1 -1 -1 -1
   3  3  3  3  3
   1  2  3  4  <span style="background-color: aqua;">5</span>
@@ -242,7 +242,7 @@ print(sum(stack))
 <p>となり、<strong class="while"></strong>の条件式 <code>y > 0</code> が <strong>True</strong> なので、もう１冊本を取って読みます。<br>次の本の未読ページが 800ページだった場合、</p>
 <p class="inlook">500 - 800 = -300 ← 300ページ読み切れなかった</p>
 <p>となり、<strong class="while"></strong>の条件式 <code>y > 0</code> が <strong>False</strong> となってループを抜けます。</p>
-<p><code>if y:</code> は、本が読み切れなかった場合は<strong>残り300ページ</strong>として本の山に戻………します。😓<br>読み切れなかったときは必ず <code>y</code> が負数になっているので、これを正数にします。<code>abs(y)</code><br>必ず負数になっているので <code>-y</code> でも大丈夫です。</p>
+<p><code>if y:</code> は、本が読み切れなかった場合は<strong>残り300ページ</strong>として本の山に戻………します。😓<br>読み切れなかったときは必ず <code>y</code> が負数になっているので、これを正の整数にします。<code>abs(y)</code><br>必ず負数になっているので <code>-y</code> でも大丈夫です。</p>
 <p><code>y</code> が <code>0</code>、つまり本一冊をぴったり読み切った時は読み切った本を本の山に返しませんので<strong>何もしません。</strong></p>
 </ul>
 <footer><a class="backto" href="#c1-4" onclick="closeAccordion('c1-4')">STEP: 4 積読</a></footer>

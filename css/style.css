@@ -59,7 +59,7 @@ body {
     margin: 0 auto;
     overflow-y: scroll;
 
-    font-family: 'BIZ UDゴシック', 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+    font-family: 'メイリオ', 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
     font-size: 16px;
     line-height: 1.6;
 
@@ -826,6 +826,7 @@ h3 {
 
 .inlook {
     background-color: rgba(248, 180, 148, 0.616);
+    font-family: 'Noto Sans Mono CJK JP', 'ＭＳ ゴシック';
     padding: 5px;
     border-radius: 8px;
     margin-bottom: 30px;
